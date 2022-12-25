@@ -1,0 +1,40 @@
+{{ $backlinks := slice }}
+{{ $parents := slice }}
+{{ $path_base := .page.File.ContentBaseName }}
+{{ $path_base_re := printf `["/(]%s["/)]` $path_base }}
+
+{{ range where site.RegularPages "RelPermalink" "ne" .page.RelPermalink }}
+    {{ if in .Params.children $path_base }}
+        {{ $parents = $parents | append . }}
+    {{ end }}
+
+    {{ if (findRE $path_base_re .RawContent 1) }}
+        {{ $backlinks = $backlinks | append . }}
+    {{ end }}
+{{ end }}
+
+{{ with $parents }}
+    <section class="backlinks">
+        {{ printf "%s" ($.heading | default "<h4>Parents</h4>") | safeHTML }}
+        <nav>
+            <ul>
+                {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+    </section>
+{{ end }}
+
+{{ with $backlinks }}
+    <section class="backlinks">
+        {{ printf "%s" ($.heading | default "<h4>Backlinks</h4>") | safeHTML }}
+        <nav>
+            <ul>
+                {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+    </section>
+{{ end }}

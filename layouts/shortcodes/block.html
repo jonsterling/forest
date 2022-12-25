@@ -1,0 +1,13 @@
+<section class="block">
+  <b>{{.Get "taxon"}}</b>
+  {{- if .Get "title" }}
+   ({{.Get "title"}})
+  {{- else }}
+   ({{.Page.Title}})
+  {{- end }}
+  {{- if not (.Get "hide-slug") }}
+  <a href="{{.Page.RelPermalink}}" class="slug">#{{.Page.File.ContentBaseName}}</a>
+  {{- end -}}
+  .
+  {{ .Inner }}
+</section>

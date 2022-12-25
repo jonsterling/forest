@@ -1,0 +1,13 @@
+{{ $hash := md5 .Inner }}
+{{ $path := printf "latex/%s.svg" $hash }}
+{{ $image := resources.Get $path }}
+
+<center>
+{{ if $image }}
+<img
+ class="latex"
+ src="{{ $image.RelPermalink }}">
+{{ else }}
+[Missing image: {{ $path }}]
+{{ end }}
+</center>
