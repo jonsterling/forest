@@ -12,7 +12,7 @@ import (
   "crypto/md5"
   "encoding/hex"
   "path/filepath"
-  "gopkg.in/ryankurte/go-async-cmd.v1"
+  "brain/hugoserver"
 )
 
 func check(e error) {
@@ -20,19 +20,6 @@ func check(e error) {
     panic(e)
   }
 }
-
-func reSubMatchMap(r *regexp.Regexp, str string) (map[string]string) {
-  match := r.FindStringSubmatch(str)
-  subMatchMap := make(map[string]string)
-  for i, name := range r.SubexpNames() {
-    if i != 0 {
-      subMatchMap[name] = match[i]
-    }
-  }
-
-  return subMatchMap
-}
-
 
 func MD5(text string) string {
   hasher := md5.New()
@@ -110,20 +97,17 @@ func processMarkdown(force bool, markdown string) bool {
   return changed
 }
 
-func makeHugoCmd() *gocmd.Cmd {
-  cmd := gocmd.Command("hugo", "server", "-D", "--ignoreCache", "--disableFastRender")
-  cmd.OutputChan = make(chan string)
-
+func main() {
+  hugo := hugoserver.Server()
+  channel := make(chan os.Signal, 2)
+  signal.Notify(channel, os.Interrupt, syscall.SIGTERM)
   go func() {
-    line, _ := <-cmd.OutputChan
-    fmt.Printf("[hugo] %s", line)
+    <-channel
+    fmt.Println("cleaning up");
+    hugo.Exit()
+    os.Exit(1)
   }()
 
-  return cmd
-}
-
-
-func main() {
   dirPtr := flag.String("dir", "content/lectures", "a directory")
   forceFlagPtr := flag.Bool("force", false, "a bool")
   flag.Parse()
@@ -131,19 +115,7 @@ func main() {
   dir := *dirPtr
   force := *forceFlagPtr;
 
-  hugoCmd := makeHugoCmd()
-  channel := make(chan os.Signal, 2)
-  signal.Notify(channel, os.Interrupt, syscall.SIGTERM)
-  go func() {
-    <-channel
-    fmt.Println("cleaning up");
-    check(hugoCmd.Exit())
-    os.Exit(1)
-  }()
-
-
-  check(hugoCmd.Start())
-  fmt.Println("started hugo")
+  hugo.Restart()
 
   for true {
     files, err := os.ReadDir(dir)
@@ -162,11 +134,7 @@ func main() {
     time.Sleep(time.Second / 4)
 
     if changed {
-      hugoCmd.Exit()
-      hugoCmd = makeHugoCmd()
-      fmt.Println("killed hugo")
-      check(hugoCmd.Start())
-      fmt.Println("revived hugo")
+      hugo.Restart()
     }
   }
 }

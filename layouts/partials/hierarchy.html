@@ -1,0 +1,45 @@
+<section class="block">
+
+  {{ $taxon := .context.Params.Taxon }}
+  {{ $title := .context.Page.Title }}
+  {{ $relPermalink := .context.Page.RelPermalink }}
+  {{ $slug := .context.Page.File.ContentBaseName }}
+  {{ $trail := .trail }}
+
+  <details open>
+    <summary>
+      {{ if $taxon }}
+      <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b> ({{ $title }})
+      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      {{ else }}
+      <h1>
+        § {{- partial "trail.html" (dict "context" . "trail" $trail) }} {{ $title }}
+        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      </h1>
+      {{ end }}
+    </summary>
+
+    {{- with .context -}}
+    {{- if .Content }}
+    <div class="post-content">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+      {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}{{ .Content }}{{ end }}
+    </div>
+    {{- end }}
+    {{- end -}}
+
+
+    {{ $site := .context.Site }}
+
+    {{ range $child_ix, $child := .context.Params.Children }}
+      {{ with $site.GetPage $child }}
+        {{ partial "hierarchy.html"
+            (dict
+              "context" .
+              "trail" (append $trail (slice $child_ix))) }}
+      {{ end }}
+    {{ end }}
+
+  </details>
+</section>

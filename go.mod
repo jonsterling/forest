@@ -1,4 +1,4 @@
-module github.com/jonsterling/brain
+module brain
 
 go 1.19
 

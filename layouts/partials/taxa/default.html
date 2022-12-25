@@ -1,0 +1,9 @@
+{{ $taxon := .Params.Taxon }}
+{{ $title := .Page.Title }}
+{{ $relPermalink := .Page.RelPermalink }}
+{{ $slug := .Page.File.ContentBaseName }}
+
+{{ with $taxon }}
+<b>{{ . }}</b> ({{ $title }})
+<a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+{{ end }}
