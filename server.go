@@ -51,16 +51,17 @@ func latexFromSnippet(snippet string, macroPackages []string) string {
 	return latex
 }
 
+func iterateBetweenDelimiters(document, left string, right string, handler func(string)) {
+	rx := regexp.MustCompile(`(?s)` + regexp.QuoteMeta(left) + `(.*?)` + regexp.QuoteMeta(right))
+	for _, res := range rx.FindAllStringSubmatch(document, -1) {
+		body := res[1]
+		handler(body)
+	}
+}
+
 func processMarkdown(force bool, markdown string) bool {
 	changed := false
-
-	left := "{{<latex>}}"
-	right := "{{</latex>}}"
-	rx := regexp.MustCompile(`(?s)` + regexp.QuoteMeta(left) + `(.*?)` + regexp.QuoteMeta(right))
-	allSubmatches := rx.FindAllStringSubmatch(markdown, -1)
-
-	for _, res := range allSubmatches {
-		body := res[1]
+	iterateBetweenDelimiters(markdown, "{{<latex>}}", "{{</latex>}}", func(body string) {
 		hash := MD5(body)
 
 		dir := "assets/latex/"
@@ -68,10 +69,10 @@ func processMarkdown(force bool, markdown string) bool {
 		relDviFileName := hash + ".dvi"
 		relSvgFileName := hash + ".svg"
 
-		if force || fileDoesNotExist(dir+relTeXFileName) {
+		if fileDoesNotExist(dir + relTeXFileName) {
 			texFile, err := os.Create(dir + relTeXFileName)
-			defer check(texFile.Close())
 			check(err)
+			defer texFile.Close()
 
 			// TODO: get this info from the file itself
 			packages := []string{"topos"}
@@ -96,7 +97,7 @@ func processMarkdown(force bool, markdown string) bool {
 			dvisvgmCmd.Run()
 			changed = true
 		}
-	}
+	})
 
 	return changed
 }
@@ -135,7 +136,7 @@ func main() {
 
 		force = false
 
-		time.Sleep(time.Second / 4)
+		time.Sleep(time.Second)
 
 		if changed {
 			hugo.Restart()
