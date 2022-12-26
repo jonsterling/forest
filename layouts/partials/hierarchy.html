@@ -6,14 +6,15 @@
   {{ $slug := .context.Page.File.ContentBaseName }}
   {{ $trail := .trail }}
 
-  <details open>
+  <details {{ if lt (len .trail) 1 }} open {{end}}>
     <summary>
       {{ if $taxon }}
       <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b> ({{ $title }})
       <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
       <h1>
-        § {{- partial "trail.html" (dict "context" . "trail" $trail) }} {{ $title }}
+        §{{- partial "trail.html" (dict "context" . "trail" $trail) -}}.
+        {{ $title }}
         <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       </h1>
       {{ end }}
@@ -37,7 +38,7 @@
         {{ partial "hierarchy.html"
             (dict
               "context" .
-              "trail" (append $trail (slice $child_ix))) }}
+              "trail" (append (slice $child_ix) $trail)) }}
       {{ end }}
     {{ end }}
 

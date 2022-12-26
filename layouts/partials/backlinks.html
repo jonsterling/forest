@@ -3,15 +3,29 @@
 {{ $path_base := .page.File.ContentBaseName }}
 {{ $path_base_re := printf `["/(]%s["/)]` $path_base }}
 
+{{ $currRellink := substr .page.RelPermalink 0 -1 }}
+{{ $currContent := .page.Content }}
+{{ $backlinks := slice }}
+{{ $forwardlinks := slice }}
+
 {{ range where site.RegularPages "RelPermalink" "ne" .page.RelPermalink }}
     {{ if in .Params.children $path_base }}
         {{ $parents = $parents | append . }}
     {{ end }}
 
-    {{ if (findRE $path_base_re .RawContent 1) }}
-        {{ $backlinks = $backlinks | append . }}
+    {{ $found := findRE $currRellink .Content 1 }}
+    {{ if $found }}
+      {{ $backlinks = $backlinks | append . }}
+    {{ else }}
+      {{ $rellink := substr .RelPermalink 0 -1 }}
+      {{ $found = findRE $rellink $currContent 1 }}
+      {{ if $found }}
+        {{ $forwardlinks = $forwardlinks | append . }}
+      {{ end }}
     {{ end }}
+
 {{ end }}
+
 
 {{ with $parents }}
     <section class="backlinks">
