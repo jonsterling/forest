@@ -1,5 +1,7 @@
 ---
 macrolib: topos
+title: cartesian closure of the meta-category of all categories
+taxon: Remark
 ---
 
 Consequently there exists a meta-category $\BoldSymbol{\mathfrak{Cat}}$ of all
