@@ -98,16 +98,34 @@ func extractAndWriteImages(force bool, source []byte) bool {
 		relDviFileName := hash + ".dvi"
 		relSvgFileName := hash + ".svg"
 
-		if fileDoesNotExist(dir + relTeXFileName) {
+		if force || fileDoesNotExist(dir+relTeXFileName) {
+			fmt.Printf("- emitting %v.tex\n", hash)
 			texFile, err := os.Create(dir + relTeXFileName)
 			check(err)
 			defer texFile.Close()
 
 			packages := []string{}
+			packagesData, packagesPresent := metadata["packages"]
+			if packagesPresent {
+				packagesArray, packagesArrayOk := packagesData.([]interface{})
+				if packagesArrayOk {
+					for _, datum := range packagesArray {
+						packages = append(packages, datum.(string))
+					}
+				} else {
+					packageString, packageStringOk := packagesData.(string)
+					if packageStringOk {
+						packages = append(packages, packageString)
+					} else {
+						panic("packages field malformed")
+					}
+				}
+
+			}
 
 			macrolib, macrolibPresent := metadata["macrolib"]
 			if macrolibPresent {
-				packages = []string{macrolib.(string)}
+				packages = append(packages, macrolib.(string))
 			}
 
 			tex := latexFromSnippet(code, packages)
