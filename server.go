@@ -145,7 +145,7 @@ func extractAndWriteImages(force bool, source []byte) bool {
 
 		if force || fileDoesNotExist(dir+relSvgFileName) {
 			fmt.Printf("- compiling %v.svg\n", hash)
-			dvisvgmCmd := exec.Command("dvisvgm", "--exact", "--clipjoin", "--bbox=papersize", "--zoom=1.75", relDviFileName, `--output=%f`)
+			dvisvgmCmd := exec.Command("dvisvgm", "--exact", "--clipjoin", "--font-format=woff", "--bbox=papersize", "--zoom=1.75", relDviFileName, `--output=%f`)
 			dvisvgmCmd.Dir = dir
 			err := dvisvgmCmd.Run()
 			check(err)
