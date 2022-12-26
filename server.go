@@ -167,7 +167,7 @@ func main() {
 		os.Exit(1)
 	}()
 
-	dirPtr := flag.String("dir", "content/lectures", "a directory")
+	dirPtr := flag.String("dir", "content/notes", "a directory")
 	forceFlagPtr := flag.Bool("force", false, "a bool")
 	flag.Parse()
 

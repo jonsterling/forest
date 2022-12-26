@@ -34,7 +34,10 @@
         var childrenDetailsElements = []
         {{with .context.Params.children}}
         {{range .}}
-        childrenDetailsElements.push(document.getElementById("details-{{.}}"))
+        var childDetailsElement = document.getElementById("details-{{.}}")
+        if (childDetailsElement) {
+          childrenDetailsElements.push(document.getElementById("details-{{.}}"))
+        }
         {{end}}
         {{end}}
 
@@ -99,6 +102,12 @@
     {{ range $child_ix, $child := .context.Params.Children }}
     {{ with $site.GetPage $child }}
     {{ partial "hierarchy.html" (dict "context" .  "trail" (append (slice $child_ix) $trail)) }}
+    {{ else }}
+      <div class="block">
+        <span class="error">
+          [Unpublished child: <span class="slug">#{{$child}}</span>]
+        </span>
+      </div>
     {{ end }}
     {{ end }}
     </div>
