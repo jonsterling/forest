@@ -9,46 +9,62 @@
 {{ $forwardlinks := slice }}
 
 {{ range where site.RegularPages "RelPermalink" "ne" .page.RelPermalink }}
-    {{ if in .Params.children $path_base }}
-        {{ $parents = $parents | append . }}
-    {{ end }}
+{{ if in .Params.children $path_base }}
+{{ $parents = $parents | append . }}
+{{ end }}
 
-    {{ $found := findRE $currRellink .Content 1 }}
-    {{ if $found }}
-      {{ $backlinks = $backlinks | append . }}
-    {{ else }}
-      {{ $rellink := substr .RelPermalink 0 -1 }}
-      {{ $found = findRE $rellink $currContent 1 }}
-      {{ if $found }}
-        {{ $forwardlinks = $forwardlinks | append . }}
-      {{ end }}
-    {{ end }}
+{{ $found := findRE $currRellink .Content 1 }}
+{{ if $found }}
+{{ $backlinks = $backlinks | append . }}
+{{ else }}
+{{ $rellink := substr .RelPermalink 0 -1 }}
+{{ $found = findRE $rellink $currContent 1 }}
+{{ if $found }}
+{{ $forwardlinks = $forwardlinks | append . }}
+{{ end }}
+{{ end }}
 
 {{ end }}
 
 
 {{ with $parents }}
-    <section class="backlinks">
-        {{ printf "%s" ($.heading | default "<h4>Parents</h4>") | safeHTML }}
-        <nav>
-            <ul>
-                {{ range . }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                {{ end }}
-            </ul>
-        </nav>
-    </section>
+<section class="backlinks">
+    {{ printf "%s" ($.heading | default "<h4>Parents</h4>") | safeHTML }}
+    <nav>
+        <ul>
+            {{ range . }}
+            <li>
+                <a href="{{ .RelPermalink }}">
+                    {{with .Title}}
+                    {{.}}
+                    {{else}}
+                    <span class="slug">#{{.File.ContentBaseName}}</span>
+                    {{end}}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</section>
 {{ end }}
 
 {{ with $backlinks }}
-    <section class="backlinks">
-        {{ printf "%s" ($.heading | default "<h4>Backlinks</h4>") | safeHTML }}
-        <nav>
-            <ul>
-                {{ range . }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                {{ end }}
-            </ul>
-        </nav>
-    </section>
+<section class="backlinks">
+    {{ printf "%s" ($.heading | default "<h4>Backlinks</h4>") | safeHTML }}
+    <nav>
+        <ul>
+            {{ range . }}
+            <li>
+                <a href="{{ .RelPermalink }}">
+                    {{with .Title}}
+                    {{.}}
+                    {{else}}
+                    <span class="slug">#{{.File.ContentBaseName}}</span>
+                    {{end}}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</section>
 {{ end }}

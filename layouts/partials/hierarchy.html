@@ -73,17 +73,18 @@
   {{ end }}
   {{ end }}
 
-  <details {{ if lt (len .trail) 2 }} open {{end}} id="details-{{$slug}}">
+  <details open id="details-{{$slug}}">
     <summary>
       {{ if $taxon }}
-      <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b> ({{ $title }})
+      <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b>
+      {{with $title}} ({{.}}) {{end}}
       <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
-      <h1>
+      <b>
         §{{- partial "trail.html" (dict "context" . "trail" $trail) -}}.
         {{ $title }}
         <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-      </h1>
+      </b>
       {{ end }}
     </summary>
 
