@@ -15,7 +15,7 @@ Let $E$ be displayed over $B$. Then $E$ is a cartesian fibration in the sense of
    is hypocartesian.
 
 {{%proof%}}
-**Proof.** Suppose first that $E$ is a cartesian fibration in our sense. Then
+Suppose first that $E$ is a cartesian fibration in our sense. Then
 $E$ has hypocartesian lifts because it has cartesian lifts. For closure under
 composition, fix hypocartesian $\bar{f},\bar{g}$; by {{<cref frct-002C>}} we know that
 $\bar{f},\bar{g}$ are also cartesian and hence by {{<cref frct-001H>}} so is the composite $\bar{f};\bar{g}$; therefore it follows

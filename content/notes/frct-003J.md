@@ -14,4 +14,4 @@ well-defined; the notion is entirely schematic.
 
 
 **Assumption.** We assume a meta-category $\BoldSymbol{\mathfrak{Coll}}$ whose
-objects we will refer to as "collections". We assume that the meta-category of all collections satisfies the axioms of Lawvere's {%nlab ETCS%}.
+objects we will refer to as "collections". We assume that the meta-category of all collections satisfies the axioms of Lawvere's ETCS.

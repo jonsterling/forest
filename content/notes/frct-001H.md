@@ -32,7 +32,7 @@ over $f$.
 ```
 
 {{%proof%}}
-**Proof.** Suppose first that $\bar{f}$ is cartesian. To see that $\bar{f};\bar{g}$
+Suppose first that $\bar{f}$ is cartesian. To see that $\bar{f};\bar{g}$
 is cartesian, we must construct a unique factorization as follows:
 ```latex
   \begin{tikzpicture}[diagram]
