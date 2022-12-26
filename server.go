@@ -39,14 +39,16 @@ func fileDoesNotExist(filename string) bool {
 	return !fileExists(filename)
 }
 
-func latexFromSnippet(snippet string) string {
-	preamble :=
-		`\documentclass[crop,tikz,dvisvgm]{standalone}
-\usepackage{preamble}
-\usepackage{topos}
-\begin{document}`
-	postamble := `\end{document}`
-	return preamble + snippet + postamble
+func latexFromSnippet(snippet string, macroPackages []string) string {
+	latex := `\documentclass[crop,tikz,dvisvgm]{standalone}`
+	latex += `\usepackage{preamble}`
+	for _, pkg := range macroPackages {
+		latex += `\usepackage{` + pkg + `}`
+	}
+	latex += `\begin{document}`
+	latex += snippet
+	latex += `\end{document}`
+	return latex
 }
 
 func processMarkdown(force bool, markdown string) bool {
@@ -71,7 +73,9 @@ func processMarkdown(force bool, markdown string) bool {
 			defer check(texFile.Close())
 			check(err)
 
-			tex := latexFromSnippet(body)
+			// TODO: get this info from the file itself
+			packages := []string{"topos"}
+			tex := latexFromSnippet(body, packages)
 			texFile.WriteString(tex)
 			texFile.Sync()
 			changed = true
