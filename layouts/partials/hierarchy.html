@@ -8,28 +8,69 @@
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
-    const sectionElement = document.getElementById({{ $slug }});
-    renderMathInElement(sectionElement, {
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
-      ],
-      throwOnError: false,
-      {{ with $macrolib }}
+    const sectionElement = document.getElementById("content-{{$slug}}");
+    if (sectionElement) {
+      renderMathInElement(sectionElement, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        throwOnError: false,
+        {{ with $macrolib }}
         {{ $macrolibFile := print . ".katex.json" }}
         {{ with resources.Get $macrolibFile }}
         macros: {{.Content | transform.Unmarshal }}
         {{ end }}
-      {{ end }}
-    });
+        {{ end }}
+      });
+    }
+
+    const toggleChildrenButton = document.getElementById("toggle-children-button-{{$slug}}");
+    if (toggleChildrenButton) {
+      toggleChildrenButton.onclick = function () {
+        var childrenAreOpen = false;
+        var childrenDetailsElements = []
+        {{with .context.Params.children}}
+        {{range .}}
+        childrenDetailsElements.push(document.getElementById("details-{{.}}"))
+        {{end}}
+        {{end}}
+
+        childrenDetailsElements.forEach((e) =>
+          childrenAreOpen = childrenAreOpen || e.hasAttribute("open")
+        )
+
+        parentDetails = document.getElementById("details-{{$slug}}")
+        if (parentDetails.hasAttribute("open")) {
+          childrenDetailsElements.forEach((e) =>
+            !childrenAreOpen ? e.setAttribute("open", true) : e.removeAttribute("open")
+          );
+        } else {
+          document.getElementById("details-{{$slug}}").setAttribute("open", true);
+        }
+      };
+    }
   })
 </script>
 
 <section class="block">
 
-  <details {{ if lt (len .trail) 1000 }} open {{end}}>
+  {{ with .context.Params.Children }}
+  {{ if gt (len .) 0 }}
+  <button class="toggle-children-button" id="toggle-children-button-{{$slug}}">
+    <svg viewBox='0 0 10 8' width='15'>
+      <path d='M1 1h8M1 4h 8M1 7h8'
+            stroke='#000'
+            stroke-width='2'
+            stroke-linecap='round'/>
+    </svg>
+  </button>
+  {{ end }}
+  {{ end }}
+
+  <details {{ if lt (len .trail) 1 }} open {{end}} id="details-{{$slug}}">
     <summary>
       {{ if $taxon }}
       <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b> ({{ $title }})
@@ -45,7 +86,7 @@
 
     {{- with .context -}}
     {{- if .Content }}
-    <div class="post-content" id="{{$slug}}">
+    <div class="post-content" id="content-{{$slug}}">
       {{- if not (.Param "disableAnchoredHeadings") }}
       {{- partial "anchored_headings.html" .Content -}}
       {{- else }}{{ .Content }}{{ end }}
@@ -54,14 +95,13 @@
     {{- end -}}
 
 
+    <div id="children-{{$slug}}">
     {{ range $child_ix, $child := .context.Params.Children }}
     {{ with $site.GetPage $child }}
-    {{ partial "hierarchy.html"
-    (dict
-    "context" .
-    "trail" (append (slice $child_ix) $trail)) }}
+    {{ partial "hierarchy.html" (dict "context" .  "trail" (append (slice $child_ix) $trail)) }}
     {{ end }}
     {{ end }}
+    </div>
 
   </details>
 </section>
