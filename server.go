@@ -10,9 +10,15 @@ import (
 	"os/exec"
 	"os/signal"
 	"path/filepath"
-	"regexp"
+
+	"strings"
 	"syscall"
 	"time"
+
+	"github.com/yuin/goldmark"
+	meta "github.com/yuin/goldmark-meta"
+	"github.com/yuin/goldmark/ast"
+	"github.com/yuin/goldmark/text"
 )
 
 func check(e error) {
@@ -51,19 +57,42 @@ func latexFromSnippet(snippet string, macroPackages []string) string {
 	return latex
 }
 
-func iterateBetweenDelimiters(document, left string, right string, handler func(string)) {
-	rx := regexp.MustCompile(`(?s)` + regexp.QuoteMeta(left) + `(.*?)` + regexp.QuoteMeta(right))
-	for _, res := range rx.FindAllStringSubmatch(document, -1) {
-		body := res[1]
-		handler(body)
-	}
+func processSource(source []byte, handleTeX func(metadata map[string]interface{}, code string)) {
+	markdown := goldmark.New(
+		goldmark.WithExtensions(
+			meta.New(
+				meta.WithStoresInDocument(),
+			),
+		),
+	)
+
+	document := markdown.Parser().Parse(text.NewReader(source))
+	metadata := document.OwnerDocument().Meta()
+
+	ast.Walk(document, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
+		if entering {
+			return ast.WalkContinue, nil
+		}
+
+		if n.Kind() == ast.KindFencedCodeBlock {
+			strs := []string{}
+			lines := n.Lines()
+			for i := 0; i < lines.Len(); i++ {
+				seg := lines.At(i)
+				strs = append(strs, string(seg.Value(source)))
+			}
+			code := strings.Join(strs, "")
+			handleTeX(metadata, code)
+		}
+		return ast.WalkContinue, nil
+	})
 }
 
-func processMarkdown(force bool, markdown string) bool {
+func extractAndWriteImages(force bool, source []byte) bool {
 	changed := false
-	iterateBetweenDelimiters(markdown, "{{<latex>}}", "{{</latex>}}", func(body string) {
-		hash := MD5(body)
 
+	processSource(source, func(metadata map[string]interface{}, code string) {
+		hash := MD5(strings.TrimSuffix(code, "\n"))
 		dir := "assets/latex/"
 		relTeXFileName := hash + ".tex"
 		relDviFileName := hash + ".dvi"
@@ -74,9 +103,14 @@ func processMarkdown(force bool, markdown string) bool {
 			check(err)
 			defer texFile.Close()
 
-			// TODO: get this info from the file itself
-			packages := []string{"topos"}
-			tex := latexFromSnippet(body, packages)
+			packages := []string{}
+
+			macrolib, macrolibPresent := metadata["macrolib"]
+			if macrolibPresent {
+				packages = []string{macrolib.(string)}
+			}
+
+			tex := latexFromSnippet(code, packages)
 			texFile.WriteString(tex)
 			texFile.Sync()
 			changed = true
@@ -86,7 +120,8 @@ func processMarkdown(force bool, markdown string) bool {
 			fmt.Printf("- compiling %v.dvi\n", hash)
 			latexCmd := exec.Command("latex", relTeXFileName)
 			latexCmd.Dir = dir
-			latexCmd.Run()
+			err := latexCmd.Run()
+			check(err)
 			changed = true
 		}
 
@@ -94,7 +129,8 @@ func processMarkdown(force bool, markdown string) bool {
 			fmt.Printf("- compiling %v.svg\n", hash)
 			dvisvgmCmd := exec.Command("dvisvgm", "--exact", "--clipjoin", "--bbox=papersize", "--zoom=1.75", relDviFileName)
 			dvisvgmCmd.Dir = dir
-			dvisvgmCmd.Run()
+			err := dvisvgmCmd.Run()
+			check(err)
 			changed = true
 		}
 	})
@@ -131,7 +167,7 @@ func main() {
 			path := filepath.Join(dir, file.Name())
 			data, err := os.ReadFile(path)
 			check(err)
-			changed = processMarkdown(force, string(data)) || changed
+			changed = extractAndWriteImages(force, data) || changed
 		}
 
 		force = false

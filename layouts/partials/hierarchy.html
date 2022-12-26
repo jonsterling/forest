@@ -1,12 +1,35 @@
+{{ $site := .context.Site }}
+{{ $taxon := .context.Params.Taxon }}
+{{ $macrolib := .context.Params.macrolib }}
+{{ $title := .context.Page.Title }}
+{{ $relPermalink := .context.Page.RelPermalink }}
+{{ $slug := .context.Page.File.ContentBaseName }}
+{{ $trail := .trail }}
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    const sectionElement = document.getElementById({{ $slug }});
+    renderMathInElement(sectionElement, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      throwOnError: false,
+      {{ with $macrolib }}
+        {{ $macrolibFile := print . ".katex.json" }}
+        {{ with resources.Get $macrolibFile }}
+        macros: {{.Content | transform.Unmarshal }}
+        {{ end }}
+      {{ end }}
+    });
+  })
+</script>
+
 <section class="block">
 
-  {{ $taxon := .context.Params.Taxon }}
-  {{ $title := .context.Page.Title }}
-  {{ $relPermalink := .context.Page.RelPermalink }}
-  {{ $slug := .context.Page.File.ContentBaseName }}
-  {{ $trail := .trail }}
-
-  <details {{ if lt (len .trail) 1 }} open {{end}}>
+  <details {{ if lt (len .trail) 1000 }} open {{end}}>
     <summary>
       {{ if $taxon }}
       <b>{{ $taxon }} {{ partial "trail.html" (dict "context" . "trail" $trail) }} </b> ({{ $title }})
@@ -22,7 +45,7 @@
 
     {{- with .context -}}
     {{- if .Content }}
-    <div class="post-content">
+    <div class="post-content" id="{{$slug}}">
       {{- if not (.Param "disableAnchoredHeadings") }}
       {{- partial "anchored_headings.html" .Content -}}
       {{- else }}{{ .Content }}{{ end }}
@@ -31,15 +54,13 @@
     {{- end -}}
 
 
-    {{ $site := .context.Site }}
-
     {{ range $child_ix, $child := .context.Params.Children }}
-      {{ with $site.GetPage $child }}
-        {{ partial "hierarchy.html"
-            (dict
-              "context" .
-              "trail" (append (slice $child_ix) $trail)) }}
-      {{ end }}
+    {{ with $site.GetPage $child }}
+    {{ partial "hierarchy.html"
+    (dict
+    "context" .
+    "trail" (append (slice $child_ix) $trail)) }}
+    {{ end }}
     {{ end }}
 
   </details>
