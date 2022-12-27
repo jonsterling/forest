@@ -4,7 +4,6 @@
 {{ $title := .context.Page.Title }}
 {{ $relPermalink := .context.Page.RelPermalink }}
 {{ $slug := .context.Page.File.ContentBaseName }}
-{{ $trail := .trail }}
 {{ $shouldCollapseChildren := default false .context.Params.collapse }}
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
@@ -90,11 +89,6 @@
 <section class="block splice">
   <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
     <summary class="post-content" id="content-{{$slug}}">
-        {{- if gt (len $trail) 0 -}}
-      <h1>
-          {{- partial "trail.html" (dict "trail" $trail) -}}.
-      </h1>
-        {{- end }}
       {{- with .context -}}
       {{- if .Content }}
         {{.Content}}
@@ -104,7 +98,7 @@
     <div id="children-{{$slug}}">
     {{ range $child_ix, $child := .context.Params.Children }}
     {{ with $site.GetPage $child }}
-    {{ partial "hierarchy.html" (dict "context" .  "trail" (append (slice $child_ix) $trail)) }}
+    {{ partial "hierarchy.html" (dict "context" . "collapse" $shouldCollapseChildren) }}
     {{ else }}
       <div class="block">
         <span class="error">
@@ -139,16 +133,11 @@
   <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
     <summary>
       {{ if $taxon }}
-      <b>{{ $taxon }} {{ partial "trail.html" (dict "trail" $trail) }}</b>
+      <b>{{ $taxon }}</b>
       {{with $title}} ({{.}}) {{end}}
       <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
-      <b>
-        {{- if gt (len $trail) 0 -}}
-          {{- partial "trail.html" (dict "trail" $trail) -}}.
-        {{- end }}
-        {{ $title | title | markdownify }}
-      </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      <b> {{ $title | title | markdownify }} </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ end }}
 
       {{ if .context.Params.Draft }}
@@ -172,8 +161,7 @@
     {{ partial "hierarchy.html"
        (dict
         "context" .
-        "collapse" $shouldCollapseChildren
-        "trail" (append (slice $child_ix) $trail))
+        "collapse" $shouldCollapseChildren)
     }}
     {{ else }}
       <div class="block">
