@@ -2,6 +2,7 @@
 taxon: Construction
 title: the internal category associated to a displayed object
 macrolib: topos
+packages: jon-tikz
 ---
 
 In particular, we let the object of objects $\gl{\bar{u}}\Sub{0}$ be $u$ itself; defining the object of arrows $\gl{\bar{u}}\Sub{1}$ is more complex, making critical use of the local smalness of $E$ over $B$.
