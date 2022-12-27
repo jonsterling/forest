@@ -20,14 +20,16 @@
 
     {{ if eq hugo.Environment "development" }}
     {{ $projectPath := or (os.Getenv "HUGO_PROJECT_PATH" ) (os.Getenv "PWD") }}
+    {{ with .File }}
     ninja.data.push({
       id: 'Edit',
       title: 'Edit current file in Visual Studio Code',
       section: 'File Commands',
       handler: () => {
-        window.location.href = 'vscode://file/{{ $projectPath }}/content/{{ .File.Path }}'
+        window.location.href = 'vscode://file/{{ $projectPath }}/content/{{ .Path }}'
       }
     });
+    {{ end }}
     {{ end }}
 
     ninja.data.push({
