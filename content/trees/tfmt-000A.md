@@ -1,0 +1,9 @@
+---
+title: lessons from "Foundations of Relative Category Theory"
+date: 2022-12-27T23:22:56+01:00
+children:
+- tfmt-0008
+- tfmt-0009
+---
+
+Here I compile some of the lessons that I have synthesized from the experience of writing {{<cref frct-003I>}} in hypertext, and my subsequent investigations into the concept of {{<cref tfmt-0003>}}. As it was my first attempt to develop transformative hypertext media, I believe I made some mistakes.

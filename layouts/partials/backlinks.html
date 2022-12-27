@@ -36,7 +36,7 @@
       <li>
         <a class="local" href="{{ .RelPermalink }}">
           {{with .Title}}
-          {{.}}
+          {{. | markdownify}}
           {{end}}
           <span class="slug">#{{.File.ContentBaseName}}</span>
         </a>
@@ -56,7 +56,7 @@
       <li>
         <a class="local" href="{{ .RelPermalink }}">
           {{with .Title}}
-          {{.}}
+          {{. | markdownify}}
           {{end}}
           <span class="slug">#{{.File.ContentBaseName}}</span>
         </a>
@@ -76,8 +76,8 @@
       {{ range . }}
       <li>
         <a class="local" href="{{ .RelPermalink }}">
-          {{with .Title}}
-          {{.}}
+          {{with .Title |}}
+          {{. | markdownify}}
           {{end}}
           <span class="slug">#{{.File.ContentBaseName}}</span>
         </a>
