@@ -7,19 +7,6 @@ on:
   pull_request:
 
 jobs:
-  build_latex:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-go@v3
-
-      - uses: xu-cheng/texlive-action/full@v1
-        with:
-          run: |
-            go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.1.0
-            ~/go/bin/forester -input content/notes/
-
-
   deploy:
     runs-on: ubuntu-22.04
     steps:
@@ -33,6 +20,18 @@ jobs:
         with:
           hugo-version: 'latest'
           # extended: true
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+
+
+      - name: Install Forester
+        run: |
+         sudo apt-get install texlive
+         go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.1.0
+
+      - name: Build SVGs using Forester
+        run: ~/go/bin/forester -input content/notes/
 
       - name: Build with Hugo
         run: hugo --minify
