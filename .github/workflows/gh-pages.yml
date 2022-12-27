@@ -24,11 +24,11 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v3
 
+      - name: Install TeXLive
+        run: sudo apt-get install texlive-full
 
       - name: Install Forester
-        run: |
-         sudo apt-get install texlive
-         go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.1.0
+        run: go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.1.0
 
       - name: Build SVGs using Forester
         run: ~/go/bin/forester -input content/notes/
