@@ -11,24 +11,49 @@
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
-    const sectionElement = document.getElementById("content-{{$slug}}");
-    if (sectionElement) {
-      renderMathInElement(sectionElement, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false },
-          { left: '\\(', right: '\\)', display: false },
-          { left: '\\[', right: '\\]', display: true }
-        ],
-        throwOnError: false,
-        {{ with $macrolib }}
-        {{ $macrolibFile := print . ".katex.json" }}
-        {{ with resources.Get $macrolibFile }}
-        macros: {{.Content | transform.Unmarshal }}
-        {{ end }}
-        {{ end }}
-      });
+    function awaitVisibility(element, callback) {
+      var options = {
+        root: document.documentElement,
+      };
+
+      var observer = new IntersectionObserver((entries, observer) => {
+        for (const entry of entries) {
+          if (entry.intersectionRatio > 0) {
+            callback()
+            observer.disconnect()
+            break
+          }
+        }
+      }, options);
+
+      observer.observe(element);
     }
+
+    // render math in the content element only once it is visible; this is
+    // necessary in order to support very large documents.
+    const detailsElement = document.getElementById("details-{{$slug}}")
+    awaitVisibility(detailsElement, () => {
+      const contentElement = document.getElementById("content-{{$slug}}")
+      if (contentElement) {
+        renderMathInElement(contentElement, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+          ],
+          throwOnError: false,
+          {{ with $macrolib }}
+          {{ $macrolibFile := print . ".katex.json" }}
+          {{ with resources.Get $macrolibFile }}
+          macros: {{.Content | transform.Unmarshal }}
+          {{ end }}
+          {{ end }}
+        })
+
+        hasRendered = true
+      }
+    })
 
     const toggleChildrenButton = document.getElementById("toggle-children-button-{{$slug}}");
     if (toggleChildrenButton) {
