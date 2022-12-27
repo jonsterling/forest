@@ -15,14 +15,62 @@
 <script type="module" src="https://unpkg.com/ninja-keys?module"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const ninja = document.querySelector('ninja-keys');
+  document.addEventListener('DOMContentLoaded', function () {
+    const ninja = document.querySelector('ninja-keys')
+    ninja.data = []
+
+    {{ if eq hugo.Environment "development" }}
+      {{ $projectPath := or (os.Getenv "HUGO_PROJECT_PATH" ) (os.Getenv "PWD") }}
+      ninja.data.push({
+        id: 'Edit',
+        title: 'Edit current file in Visual Studio Code',
+        section: 'File Commands',
+        handler: () => {
+          window.location.href = 'vscode://file/{{ $projectPath }}/content/{{ .File.Path }}'
+        }
+      });
+    {{ end }}
+
+    ninja.data.push({
+      id: 'ExpandAll',
+      title: 'Expand all outline nodes',
+      section: 'Page Interaction',
+      handler: () => {
+        document.body.querySelectorAll("details").forEach((e) =>
+          e.setAttribute("open", true)
+        )
+      }
+    });
+
+    ninja.data.push({
+      id: 'CollapseAll',
+      title: 'Collapse all outline nodes',
+      section: 'Page Interaction',
+      handler: () => {
+        const firstDetails = document.body.querySelector("details")
+        if (!firstDetails) return
+        firstDetails.querySelectorAll("details").forEach((e) =>
+          e.removeAttribute("open")
+        )
+      }
+    });
+
+    ninja.data.push({
+      id: 'Home',
+      title: 'Go to home page',
+      section: 'Site Navigation',
+      handler: () => {
+        window.location.href = '{{.Site.BaseURL}}'
+      }
+    });
+
     {{range .Site.RegularPages}}
     ninja.data.push({
-      id: "{{.File.ContentBaseName}}",
-      title: "#{{.File.ContentBaseName}} {{.Title}}",
+      id: 'AllNotes-{{.File.ContentBaseName}}',
+      title: '{{ .Params.Taxon }} #{{.File.ContentBaseName}}: {{.Title}}',
+      section: 'All Notes',
       handler: () => {
-        window.location.href = "{{.Permalink}}"
+        window.location.href = '{{.Permalink}}'
       }
     });
     {{end}}
