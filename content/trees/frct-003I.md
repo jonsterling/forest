@@ -5,7 +5,6 @@ author:
 - Jonathan Sterling
 - Carlo Angiuli
 macrolib: topos
-weight: 1
 collapse: true
 children:
 - frct-000R
