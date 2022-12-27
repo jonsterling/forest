@@ -1,33 +1,22 @@
-{{ $backlinks := slice }}
-{{ $parents := slice }}
-{{ $path_base := .page.File.ContentBaseName }}
-{{ $path_base_re := printf `["/(]%s["/)]` $path_base }}
+{{ $bwdPages := slice }}
+{{ $fwdPages := slice }}
+{{ $upwdPages := slice }}
 
-{{ $currRellink := substr .page.RelPermalink 0 -1 }}
-{{ $currContent := .page.Content }}
-{{ $backlinks := slice }}
-{{ $forwardlinks := slice }}
+{{ $page := .page }}
 
-{{ range where site.RegularPages "RelPermalink" "ne" .page.RelPermalink }}
-{{ if in .Params.children $path_base }}
-{{ $parents = $parents | append . }}
+{{ range where site.RegularPages "RelPermalink" "ne" $page.RelPermalink }}
+  {{ if in .Params.Children $page.File.ContentBaseName }}
+    {{ $upwdPages = $upwdPages | append . }}
+  {{ end }}
+
+  {{ if or (in .Params.Related $page.File.ContentBaseName) (findRE $page.RelPermalink .Content 1) }}
+    {{ $bwdPages = $bwdPages | append . }}
+  {{ else if or (in $page.Params.Related .File.ContentBaseName) (findRE .RelPermalink $page.Content 1) }}
+    {{ $fwdPages = $fwdPages | append . }}
+  {{ end }}
 {{ end }}
 
-{{ $found := findRE $currRellink .Content 1 }}
-{{ if $found }}
-{{ $backlinks = $backlinks | append . }}
-{{ else }}
-{{ $rellink := substr .RelPermalink 0 -1 }}
-{{ $found = findRE $rellink $currContent 1 }}
-{{ if $found }}
-{{ $forwardlinks = $forwardlinks | append . }}
-{{ end }}
-{{ end }}
-
-{{ end }}
-
-
-{{ with $parents }}
+{{ with $upwdPages }}
 <section class="backlinks">
   {{ printf "%s" ($.heading | default "<h4>Parents</h4>") | safeHTML }}
   <nav>
@@ -47,7 +36,7 @@
 </section>
 {{ end }}
 
-{{ with $forwardlinks }}
+{{ with $fwdPages }}
 <section class="backlinks">
   {{ printf "%s" ($.heading | default "<h4>Related</h4>") | safeHTML }}
   <nav>
@@ -68,7 +57,7 @@
 {{ end }}
 
 
-{{ with $backlinks }}
+{{ with $bwdPages }}
 <section class="backlinks">
   {{ printf "%s" ($.heading | default "<h4>Backlinks</h4>") | safeHTML }}
   <nav>
