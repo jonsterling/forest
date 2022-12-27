@@ -139,17 +139,16 @@
   <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
     <summary>
       {{ if $taxon }}
-      <h1>{{ $taxon }} {{ partial "trail.html" (dict "trail" $trail) }}</h1>
+      <b>{{ $taxon }} {{ partial "trail.html" (dict "trail" $trail) }}</b>
       {{with $title}} ({{.}}) {{end}}
       <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
-      <h1>
+      <b>
         {{- if gt (len $trail) 0 -}}
           {{- partial "trail.html" (dict "trail" $trail) -}}.
         {{- end }}
         {{ $title | title | markdownify }}
-      </h1>
-      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ end }}
 
       {{ if .context.Params.Draft }}
