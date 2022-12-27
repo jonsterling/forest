@@ -1,6 +1,7 @@
 ---
 macrolib: topos
 title: relating two definitions of cartesian fibration
+splice: true
 children:
 - frct-002B
 - frct-002D

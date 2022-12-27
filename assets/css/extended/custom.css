@@ -22,12 +22,35 @@ h4 {
   margin-top: .5em;
 }
 
+.block.splice {
+  padding-top: 1em;
+}
+
 .block:hover {
-  background-color: rgba(0, 0, 255, 0.04);
+  background-color: rgba(0, 100, 255, 0.04);
 }
 
 .dark .block:hover {
   background-color: rgba(255, 255, 255, 0.04);
+}
+
+article a:hover {
+  background-color: rgba(0, 100, 255, 0.1);
+}
+
+.dark article a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.block > .block-uid {
+  visibility: hidden;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.block:hover > .block-uid {
+  visibility: visible;
 }
 
 .dark img.latex {
@@ -42,25 +65,42 @@ h4 {
   color: rgb(255, 50, 50, .8);
 }
 
-details summary {
-  cursor: pointer;
-}
-
-details summary>* {
+details > summary > * {
   display: inline;
 }
 
 
-.toggle-children-button {
+details > summary {
+  list-style-type: '▸';
+}
+
+details[open] > summary {
+  list-style-type: '▾';
+}
+
+details > summary::marker{
+  color: gray;
+}
+
+details > summary > h1 {
+  font-size: 1em !important;
+}
+
+.block > .toggle-children-button {
+  padding-right: 3pt;
+  visibility: hidden;
   float: right;
-  opacity: 0.8;
+}
+
+.block:hover > .toggle-children-button {
+  visibility: visible;
 }
 
 .dark .toggle-children-button {
   filter: invert(1);
 }
 
-a.local {
+a.local, a.slug {
   box-shadow: none !important;
   text-decoration: underline;
   text-decoration-style: dotted;

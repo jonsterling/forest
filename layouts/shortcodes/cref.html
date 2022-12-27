@@ -1,7 +1,7 @@
 {{- $slug := index .Params 0 -}}
 {{- $page := .Site.GetPage $slug -}}
 {{- if $page -}}
-{{- $title := default $page.Title (index .Params 1) -}}
+{{- $title := default $page.Title (index .Params 1) | markdownify -}}
 <a class="local" href="{{$page.RelPermalink}}">
   {{- with $title -}}
   {{- . -}}

@@ -1,5 +1,6 @@
 ---
 title: definable classes in fibered categories
+splice: true
 macrolib: topos
 children:
 - frct-002Q

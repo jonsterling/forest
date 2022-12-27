@@ -1,6 +1,6 @@
 ---
 title: two ways to generalize pullbacks
-taxon: remark
+taxon: Remark
 ---
 
 {{<cref frct-002A "Hypocartesian">}} and {{<cref frct-0001 "cartesian">}}

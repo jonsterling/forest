@@ -1,5 +1,6 @@
 ---
-title: internal categories
+splice: true
+deleted: true
 children:
 - frct-001A
 ---

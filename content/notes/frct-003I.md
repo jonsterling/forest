@@ -1,11 +1,12 @@
 ---
-title: Foundations of Relative Category Theory
+title: foundations of relative category theory
 date: 2022-01-01
 author:
 - Jonathan Sterling
 - Carlo Angiuli
 macrolib: topos
 weight: 1
+collapse: true
 children:
 - frct-000R
 - frct-0008

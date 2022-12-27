@@ -1,5 +1,6 @@
 ---
 macrolib: topos
+splice: true
 children:
 - frct-001V
 - frct-001W

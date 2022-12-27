@@ -5,6 +5,9 @@
 {{ $relPermalink := .context.Page.RelPermalink }}
 {{ $slug := .context.Page.File.ContentBaseName }}
 {{ $trail := .trail }}
+{{ $shouldCollapseChildren := default false .context.Params.collapse }}
+{{ $shouldCollapse := default false .collapse }}
+{{ $shouldExpand := not $shouldCollapse }}
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
@@ -58,53 +61,21 @@
   })
 </script>
 
-<section class="block">
-
-  {{ with .context.Params.Children }}
-  {{ if gt (len .) 0 }}
-  <button class="toggle-children-button" id="toggle-children-button-{{$slug}}">
-    <svg viewBox='0 0 10 8' width='15'>
-      <path d='M1 1h8M1 4h 8M1 7h8'
-            stroke='#000'
-            stroke-width='2'
-            stroke-linecap='round'/>
-    </svg>
-  </button>
-  {{ end }}
-  {{ end }}
-
-  <details open id="details-{{$slug}}">
-    <summary>
-      {{ if $taxon }}
-      <b>{{ $taxon }} {{ partial "trail.html" (dict "trail" $trail) }} </b>
-      {{with $title}} ({{.}}) {{end}}
-      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-      {{ else }}
-      <b>
-        §{{- partial "trail.html" (dict "trail" $trail) -}}.
-        {{ $title }}
-        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-      </b>
-      {{ end }}
-
-      {{ if .context.Params.Draft }}
-      <sup>
-        <span class="entry-isdraft">  [draft]</span>
-      </sup>
-      {{ end }}
+{{ if .context.Params.Splice }}
+<section class="block splice">
+  <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
+    <summary class="post-content" id="content-{{$slug}}">
+        {{- if gt (len $trail) 0 -}}
+      <h1>
+          {{- partial "trail.html" (dict "trail" $trail) -}}.
+      </h1>
+        {{- end }}
+      {{- with .context -}}
+      {{- if .Content }}
+        {{.Content}}
+      {{- end }}
+      {{- end -}}
     </summary>
-
-    {{- with .context -}}
-    {{- if .Content }}
-    <div class="post-content" id="content-{{$slug}}">
-      {{- if not (.Param "disableAnchoredHeadings") }}
-      {{- partial "anchored_headings.html" .Content -}}
-      {{- else }}{{ .Content }}{{ end }}
-    </div>
-    {{- end }}
-    {{- end -}}
-
-
     <div id="children-{{$slug}}">
     {{ range $child_ix, $child := .context.Params.Children }}
     {{ with $site.GetPage $child }}
@@ -118,6 +89,79 @@
     {{ end }}
     {{ end }}
     </div>
+  </details>
+    <div class="block-uid">
+      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+    </div>
+</section>
+
+{{else}}
+
+<section class="block">
+  {{ with .context.Params.Children }}
+  {{ if gt (len .) 0 }}
+  <button class="toggle-children-button" id="toggle-children-button-{{$slug}}">
+    <svg viewBox='0 0 10 15' width='15'>
+      <path d='M1 1h8M1 4h 8M1 7h8'
+            stroke='gray'
+            stroke-width='2'
+            stroke-linecap='round'/>
+    </svg>
+  </button>
+  {{ end }}
+  {{ end }}
+
+  <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
+    <summary>
+      {{ if $taxon }}
+      <h1>{{ $taxon }} {{ partial "trail.html" (dict "trail" $trail) }}</h1>
+      {{with $title}} ({{.}}) {{end}}
+      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      {{ else }}
+      <h1>
+        {{- if gt (len $trail) 0 -}}
+          {{- partial "trail.html" (dict "trail" $trail) -}}.
+        {{- end }}
+        {{ $title | title | markdownify }}
+      </h1>
+      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      {{ end }}
+
+      {{ if .context.Params.Draft }}
+      <sup>
+        <span class="entry-isdraft">  [draft]</span>
+      </sup>
+      {{ end }}
+    </summary>
+
+    {{- with .context -}}
+    {{- if .Content }}
+    <div class="post-content" id="content-{{$slug}}">
+      {{.Content}}
+    </div>
+    {{- end }}
+    {{- end -}}
+
+    <div id="children-{{$slug}}">
+    {{ range $child_ix, $child := .context.Params.Children }}
+    {{ with $site.GetPage $child }}
+    {{ partial "hierarchy.html"
+       (dict
+        "context" .
+        "collapse" $shouldCollapseChildren
+        "trail" (append (slice $child_ix) $trail))
+    }}
+    {{ else }}
+      <div class="block">
+        <span class="error">
+          [Unpublished child: <span class="slug">#{{$child}}</span>]
+        </span>
+      </div>
+    {{ end }}
+    {{ end }}
+    </div>
 
   </details>
 </section>
+
+{{end}}

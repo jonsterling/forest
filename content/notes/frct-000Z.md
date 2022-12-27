@@ -3,7 +3,7 @@ title: the internalization of a small fibration
 macrolib: topos
 ---
 
-Let $C$ be a {{<cref frct-001Q "small fibration">}} over $B$ a category with finite limits, i.e. a cartesian fibration that is both {{<cref frct-001B "locally small">}} and {{<cref frct-000P "globally small">}}. We will show that $C$ is equivalent to the {{<cref frct-000V "externalization">}} of an {{<cref frct-000O "internal category">}} $\underline{C}$ in $B$, namely the {{<cref frct-0011 "full internal subcategory">}} associated to the generic object $\bar{u}\in C$.
+Let $C$ be a {{<cref frct-001Q "small fibration">}} over $B$ a category with finite limits, i.e. a cartesian fibration that is both {{<cref frct-001B "locally small">}} and {{<cref frct-000P "globally small">}}. We will show that $C$ is equivalent to the {{<cref frct-000V "externalization">}} of an {{<cref frct-001A "internal category">}} $\underline{C}$ in $B$, namely the {{<cref frct-0011 "full internal subcategory">}} associated to the generic object $\bar{u}\in C$.
 
 {{%proof%}}
 By {{<cref frct-001S>}} we know that the externalization of $\underline{C}$ so-defined
