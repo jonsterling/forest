@@ -21,9 +21,10 @@ jobs:
           hugo-version: 'latest'
           # extended: true
 
+      - name: Setup Go
+        uses: actions/setup-go@v3
 
       - name: Install Forester
-        uses: actions/setup-go@v3
         run: go install git.sr.ht/~jonsterling/forester/cmd/forester@latest
 
       - name: Build SVGs using Forester
