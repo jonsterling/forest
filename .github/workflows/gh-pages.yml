@@ -24,8 +24,19 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v3
 
-      - name: Install TeXLive
-        run: sudo apt-get install texlive-full
+      # - name: Install TeXLive
+      #   run: sudo apt-get install texlive-full
+
+      - name: Setup TeX Live
+        uses: teatimeguest/setup-texlive-action@v2
+        with:
+          packages: >-
+            scheme-basic
+            cleveref
+            hyperref
+
+      - name: Check `latex` version
+        run: latex --version
 
       - name: Install Forester
         run: go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.1.0
