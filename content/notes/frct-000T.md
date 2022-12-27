@@ -1,5 +1,5 @@
 ---
-title: characterization of cartesian maps
+title: cartesian maps in the opposite category
 macrolib: topos
 children:
 - frct-0020

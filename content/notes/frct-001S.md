@@ -5,7 +5,7 @@ macrolib: topos
 packages: jon-tikz
 ---
 
-The externalization $\brk{\gl{\bar{u}}}$ of the internal category $\gl{\bar{u}}$ is equivalent to $\FullSubfib{\bar{u}}$.
+The {{<cref frct-001R "externalization">}} $\brk{\gl{\bar{u}}}$ of the internal category $\gl{\bar{u}}$ {{<cref frct-003Q "associated to">}} $\bar{u}$ is equivalent to the {{<cref frct-0010 "full internal subfibration">}} $\FullSubfib{\bar{u}}$.
 
 {{%proof%}}
 

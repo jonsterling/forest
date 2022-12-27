@@ -1,8 +1,14 @@
 {{- $slug := index .Params 0 -}}
 {{- $page := .Site.GetPage $slug -}}
 {{- if $page -}}
-{{- $title := index .Params 1 | default $page.Title -}}
-<a class="local" href="{{$page.RelPermalink}}">{{$title}}</a>
+{{- $title := default $page.Title (index .Params 1) -}}
+<a class="local" href="{{$page.RelPermalink}}">
+  {{- with $title -}}
+  {{- . -}}
+  {{- else -}}
+  <span class="slug">#{{$slug}}</span>
+  {{- end -}}
+</a>
 {{- else -}}
 <span class="error">[unpublished: #{{$slug}}]</span>
 {{- end -}}

@@ -1,4 +1,5 @@
 ---
+title: opposite fibered category
 taxon: Construction
 macrolib: topos
 packages: jon-tikz

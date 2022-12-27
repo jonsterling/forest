@@ -1,5 +1,6 @@
 ---
-taxon: construction
+title: total opposite category
+taxon: Construction
 macrolib: topos
 ---
 

@@ -1,4 +1,5 @@
 ---
+title: global smallness
 taxon: Definition
 ---
 
