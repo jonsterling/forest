@@ -1,0 +1,19 @@
+<section>
+  <h4>{{.title}}</h4>
+  <nav>
+    <ul>
+      {{ range .pages }}
+      <li>
+        <a class="local" href="{{.RelPermalink}}">
+          {{with .Title}}
+          {{. | markdownify}}
+          {{end}}
+          <span class="slug">
+            #{{.File.ContentBaseName}}
+          </span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</section>
