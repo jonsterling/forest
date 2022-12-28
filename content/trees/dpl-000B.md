@@ -1,5 +1,6 @@
 ---
 title: conventions of univalent mathematics
+author: Jonathan Sterling
 date: 2022-12-26T14:08:21+01:00
 draft: false
 ---
