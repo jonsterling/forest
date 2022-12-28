@@ -1,19 +1,32 @@
-{{ $bwdPages := slice }}
-{{ $fwdPages := slice }}
-{{ $upwdPages := slice }}
-
 {{ $page := .page }}
 
-{{ range where site.RegularPages "RelPermalink" "ne" $page.RelPermalink }}
-  {{ if in .Params.Children $page.File.ContentBaseName }}
-    {{ $upwdPages = $upwdPages | append . }}
-  {{ end }}
+{{ $fwdPages := slice }}
+{{ $bwdPages := slice }}
+{{ $dwdPages := slice }}
+{{ $upwdPages := slice }}
 
-  {{ if or (in .Params.Related $page.File.ContentBaseName) (findRE $page.RelPermalink .Content 1) }}
-    {{ $bwdPages = $bwdPages | append . }}
-  {{ else if or (in $page.Params.Related .File.ContentBaseName) (findRE .RelPermalink $page.Content 1) }}
-    {{ $fwdPages = $fwdPages | append . }}
-  {{ end }}
+{{ range $page.Store.Get "bwdSlugs" }}
+{{ with site.GetPage . }}
+{{ $bwdPages = $bwdPages | append . }}
+{{ end }}
+{{ end }}
+
+{{ range $page.Store.Get "fwdSlugs" }}
+{{ with site.GetPage . }}
+{{ $fwdPages = $fwdPages | append . }}
+{{ end }}
+{{ end }}
+
+{{ range $page.Store.Get "upwdSlugs" }}
+{{ with site.GetPage . }}
+{{ $upwdPages = $upwdPages | append . }}
+{{ end }}
+{{ end }}
+
+{{ range $page.Store.Get "dwdSlugs" }}
+{{ with site.GetPage . }}
+{{ $dwdPages = $dwdPages | append . }}
+{{ end }}
 {{ end }}
 
 {{ with $upwdPages }}

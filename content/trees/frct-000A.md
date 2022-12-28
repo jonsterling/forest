@@ -2,8 +2,6 @@
 title: The total category and its projection
 date: 2022
 macrolib: topos
-children:
-- frct-001T
 ---
 
 Note that any displayed category $E$ over $B$ can be viewed as an undisplayed
@@ -16,3 +14,5 @@ B$; in this case $\TotCat{E}$ is called the *total category* of $E$.
    $f:x\to y$ and $\bar{f}:\bar{x}\to\Sub{f}\bar{y}$.
 
 The construction of the total category of a displayed category is called the *Grothendieck construction.*
+
+{{<child frct-001T>}}

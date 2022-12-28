@@ -7,6 +7,7 @@
 {{ $shouldCollapseChildren := default false .context.Params.collapse }}
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
+{{ $pageChildren := default slice (.context.Page.Store.Get "dwdSlugs") }}
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
@@ -28,30 +29,53 @@
       observer.observe(element);
     }
 
+    function renderMathWithMacrosInElement(element) {
+      renderMathInElement(childElement, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        throwOnError: false,
+        {{ with $macrolib }}
+        {{ $macrolibFile := print . ".katex.json" }}
+        {{ with resources.Get $macrolibFile }}
+        macros: {{.Content | transform.Unmarshal }}
+        {{ end }}
+        {{ end }}
+      })
+    }
+
+    function elementContainsMathBarrier(element) {
+      if (element.classList.contains('math-barrier')) {
+        return true
+      }
+
+      for (child of element.children) {
+        if (elementContainsMathBarrier(child)) {
+          return true
+        }
+      }
+
+      return false
+    }
+
     // render math in the content element only once it is visible; this is
     // necessary in order to support very large documents.
-    const detailsElement = document.getElementById("details-{{$slug}}")
-    awaitVisibility(detailsElement, () => {
-      const contentElement = document.getElementById("content-{{$slug}}")
-      if (contentElement) {
-        renderMathInElement(contentElement, {
-          delimiters: [
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-            { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true }
-          ],
-          throwOnError: false,
-          {{ with $macrolib }}
-          {{ $macrolibFile := print . ".katex.json" }}
-          {{ with resources.Get $macrolibFile }}
-          macros: {{.Content | transform.Unmarshal }}
-          {{ end }}
-          {{ end }}
-        })
+    const contentElement = document.getElementById('content-{{$slug}}')
+    awaitVisibility(contentElement, () => {
+      const childElements = contentElement.children
 
-        hasRendered = true
+      for (childElement of childElements) {
+        if (elementContainsMathBarrier(childElement)) {
+          continue
+        }
+
+        renderMathWithMacrosInElement(childElement)
       }
+
+      hasRendered = true
     })
 
     const toggleChildrenButton = document.getElementById("toggle-children-button-{{$slug}}");
@@ -59,13 +83,11 @@
       toggleChildrenButton.onclick = function () {
         var childrenAreOpen = false;
         var childrenDetailsElements = []
-        {{with .context.Params.children}}
-        {{range .}}
+        {{range $pageChildren}}
         var childDetailsElement = document.getElementById("details-{{.}}")
         if (childDetailsElement) {
           childrenDetailsElements.push(document.getElementById("details-{{.}}"))
         }
-        {{end}}
         {{end}}
 
         childrenDetailsElements.forEach((e) =>
@@ -73,7 +95,7 @@
         )
 
         parentDetails = document.getElementById("details-{{$slug}}")
-        if (parentDetails.hasAttribute("open")) {
+        if (!parentDetails || parentDetails.hasAttribute("open")) {
           childrenDetailsElements.forEach((e) =>
             !childrenAreOpen ? e.setAttribute("open", true) : e.removeAttribute("open")
           );
@@ -86,39 +108,8 @@
 </script>
 
 {{ if .context.Params.Splice }}
-<section class="block splice">
-  <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
-    <summary class="post-content" id="content-{{$slug}}">
-      {{- with .context -}}
-      {{- if .Content }}
-        {{.Content}}
-      {{- end }}
-      {{- end -}}
-    </summary>
-    <div id="children-{{$slug}}">
-    {{ range $child_ix, $child := .context.Params.Children }}
-    {{ with $site.GetPage $child }}
-    {{ partial "hierarchy.html" (dict "context" . "collapse" $shouldCollapseChildren) }}
-    {{ else }}
-      <div class="block">
-        <span class="error">
-          [Unpublished child: <span class="slug">#{{$child}}</span>]
-        </span>
-      </div>
-    {{ end }}
-    {{ end }}
-    </div>
-  </details>
-    <div class="block-uid">
-      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-    </div>
-</section>
-
-{{else}}
-
-<section class="block">
-  {{ with .context.Params.Children }}
-  {{ if gt (len .) 0 }}
+<section class="block math-barrier splice">
+  {{ if gt (len $pageChildren) 0 }}
   <button class="toggle-children-button" id="toggle-children-button-{{$slug}}">
     <svg viewBox='0 0 10 15' width='15'>
       <path d='M1 1h8M1 4h 8M1 7h8'
@@ -128,6 +119,31 @@
     </svg>
   </button>
   {{ end }}
+
+  {{- with .context -}}
+  {{- if .Content }}
+  <div class="post-content" id="content-{{$slug}}">
+    {{.Content}}
+  </div>
+  {{- end }}
+  {{- end -}}
+
+  </details>
+</section>
+
+
+{{else}}
+
+<section class="block math-barrier">
+  {{ if gt (len $pageChildren) 0 }}
+  <button class="toggle-children-button" id="toggle-children-button-{{$slug}}">
+    <svg viewBox='0 0 10 15' width='15'>
+      <path d='M1 1h8M1 4h 8M1 7h8'
+            stroke='gray'
+            stroke-width='2'
+            stroke-linecap='round'/>
+    </svg>
+  </button>
   {{ end }}
 
   <details {{if $shouldExpand}} open {{end}} id="details-{{$slug}}">
@@ -154,24 +170,6 @@
     </div>
     {{- end }}
     {{- end -}}
-
-    <div id="children-{{$slug}}">
-    {{ range $child_ix, $child := .context.Params.Children }}
-    {{ with $site.GetPage $child }}
-    {{ partial "hierarchy.html"
-       (dict
-        "context" .
-        "collapse" $shouldCollapseChildren)
-    }}
-    {{ else }}
-      <div class="block">
-        <span class="error">
-          [Unpublished child: <span class="slug">#{{$child}}</span>]
-        </span>
-      </div>
-    {{ end }}
-    {{ end }}
-    </div>
 
   </details>
 </section>

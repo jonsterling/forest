@@ -2,10 +2,6 @@
 title: Displayed categories from functors
 macrolib: topos
 packages: jon-tikz
-children:
-- frct-001U
-- frct-003F
-- frct-000C
 ---
 
 In many cases, one starts with a functor $P:E\to B$; if it were meaningful to
@@ -48,3 +44,11 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 \draw[->,bend right=30] (x) to node [below] {$f$} (y);
 \end{tikzpicture}
 ````
+
+{{<child frct-001U>}}
+
+We have a functor $\TotCat{P\Sub{\bullet}}\to E$ taking a pair $(x,(u,\phi\Sub{u}))$ to $u$.
+
+{{<child frct-001V>}}
+{{<child frct-001W>}}
+{{<child frct-000C>}}

@@ -1,9 +1,6 @@
 ---
 title: full subfibrations and figure shapes
 macrolib: topos
-children:
-- frct-0010
-- frct-002K
 ---
 
 In a category $E$, a morphism $f : x\to y$ can be thought of as a "figure"
@@ -20,3 +17,6 @@ this family is given by any cartesian morphism $\bar{z}\to\bar{u}$. We will
 generalize this situation to the case of an arbitrary fibration, by
 constructing the full subfibration spanned by displayed objects equipped
 with a cartesian morphism into $\bar{u}$ in {{<cref frct-0010>}} below.
+
+{{<child frct-0010>}}
+{{<child frct-002K>}}

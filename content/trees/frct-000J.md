@@ -1,9 +1,5 @@
 ---
 title: globally small fibrations
-children:
-- frct-001D
-- frct-000K
-- frct-000P
 ---
 
 In ordinary category theory, a category $C$ is called *small* when the objects
@@ -12,3 +8,7 @@ collection of morphisms $x\to y$. It is useful to separate these two conditions
 when we generalize them to fibrations. The latter is called *local smallness*
 and is discussed and defined in {{<cref frct-000F>}}; the former is called *global
 smallness* by Jacobs and factors through an important concept: the *generic object*.
+
+{{<child frct-001D>}}
+{{<child frct-000K>}}
+{{<child frct-000P>}}

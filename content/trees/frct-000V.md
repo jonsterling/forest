@@ -1,8 +1,8 @@
 ---
 title: the externalization of an internal category
-children:
-- frct-001R
-- frct-000W
-- frct-000X
-- frct-000Y
 ---
+
+{{<child frct-001R>}}
+{{<child frct-000W>}}
+{{<child frct-000X>}}
+{{<child frct-000Y>}}
