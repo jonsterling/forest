@@ -1,9 +1,11 @@
 {{ $site := .context.Site }}
+{{ $seed := now.Unix }}
 {{ $taxon := .context.Params.Taxon }}
 {{ $macrolib := .context.Params.macrolib }}
 {{ $title := .context.Page.Title }}
 {{ $relPermalink := .context.Page.RelPermalink }}
 {{ $slug := .context.Page.File.ContentBaseName }}
+{{ $mungedSlug := printf "%s::%s" $seed $slug }}
 {{ $shouldCollapseChildren := default false .context.Params.collapse }}
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
@@ -63,7 +65,7 @@
 
     // render math in the content element only once it is visible; this is
     // necessary in order to support very large documents.
-    const contentElement = document.querySelector('.post-content[data-slug="{{$slug}}"]')
+    const contentElement = document.querySelector('.post-content[data-slug="{{$mungedSlug}}"]')
     awaitVisibility(contentElement, () => {
       const childElements = contentElement.children
 
@@ -78,29 +80,25 @@
       hasRendered = true
     })
 
-    const toggleChildrenButton = document.querySelector('.toggle-children-button[data-slug="{{$slug}}"]');
-    if (toggleChildrenButton) {
+    const toggleChildrenButton = document.querySelector('.toggle-children-button[data-slug="{{$mungedSlug}}"]');
+    const parentDetails = document.querySelector('details[data-slug="{{$mungedSlug}}"]')
+    if (parentDetails && toggleChildrenButton) {
+
       toggleChildrenButton.onclick = function () {
         var childrenAreOpen = false;
-        var childrenDetailsElements = []
-        {{range $pageChildren}}
-        var childDetailsElement = document.querySelector('details[data-slug="{{.}}"]')
-        if (childDetailsElement) {
-          childrenDetailsElements.push(childDetailsElement)
-        }
-        {{end}}
-
+        var childrenDetailsElements = document.querySelectorAll('.post-content[data-slug="{{$mungedSlug}}"] > section > details');
+        console.log("foo")
+        console.log(childrenDetailsElements)
         childrenDetailsElements.forEach((e) =>
           childrenAreOpen = childrenAreOpen || e.hasAttribute("open")
         )
 
-        parentDetails = document.querySelector('details[data-slug="{{$slug}}"]')
-        if (!parentDetails || parentDetails.hasAttribute("open")) {
+        if (parentDetails.hasAttribute("open")) {
           childrenDetailsElements.forEach((e) =>
             !childrenAreOpen ? e.setAttribute("open", true) : e.removeAttribute("open")
           )
         } else {
-          document.querySelector('details[data-slug="{{$slug}}"]').setAttribute("open", true)
+          parentDetails.setAttribute("open", true)
         }
       };
     }
@@ -110,7 +108,7 @@
 {{ if .context.Params.Splice }}
 <section class="block math-barrier splice">
   {{ if gt (len $pageChildren) 0 }}
-  <button class="toggle-children-button" data-slug="{{$slug}}">
+  <button class="toggle-children-button" data-slug="{{$mungedSlug}}">
     <svg viewBox='0 0 10 15' width='15'>
       <path d='M1 1h8M1 4h 8M1 7h8'
             stroke='gray'
@@ -122,7 +120,7 @@
 
   {{- with .context -}}
   {{- if .Content }}
-  <div class="post-content" data-slug="{{$slug}}">
+  <div class="post-content" data-slug="{{$mungedSlug}}">
     {{.Content}}
   </div>
   {{- end }}
@@ -134,9 +132,9 @@
 
 {{else}}
 
-<section class="block math-barrier">
+<section class="block math-barrier" data-slug="{{$mungedSlug}}">
   {{ if gt (len $pageChildren) 0 }}
-  <button class="toggle-children-button" data-slug="{{$slug}}" class="toggle-children-button">
+  <button class="toggle-children-button" data-slug="{{$mungedSlug}}" class="toggle-children-button">
     <svg viewBox='0 0 10 15' width='15'>
       <path d='M1 1h8M1 4h 8M1 7h8'
             stroke='gray'
@@ -146,7 +144,7 @@
   </button>
   {{ end }}
 
-  <details {{if $shouldExpand}} open {{end}} data-slug="{{$slug}}">
+  <details {{if $shouldExpand}} open {{end}} data-slug="{{$mungedSlug}}">
     <summary>
       {{ if $taxon }}
       <b>{{ $taxon }}</b>
@@ -165,7 +163,7 @@
 
     {{- with .context -}}
     {{- if .Content }}
-    <div class="post-content" data-slug="{{$slug}}">
+    <div class="post-content" data-slug="{{$mungedSlug}}">
       {{.Content}}
     </div>
     {{- end }}
