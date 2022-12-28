@@ -1,4 +1,12 @@
-{{ $transcludedSlug := .Get 0 }}
+{{ $transcludedSlug := "" }}
+
+{{ if .IsNamedParams }}
+{{ $transcludedSlug = .Get "id" }}
+{{ else }}
+{{ $transcludedSlug = .Get 0 }}
+{{ end }}
+
+{{ $splice := default false (.Get "splice") }}
 {{ $transcludedPage := .Site.GetPage $transcludedSlug }}
 {{ $page := .Page }}
 
@@ -12,4 +20,4 @@
 {{ end }}
 
 
-{{- partial "hierarchy.html" (dict "context" $transcludedPage "collapse" $page.Params.collapse) }}
+{{- partial "hierarchy.html" (dict "context" $transcludedPage "collapse" $page.Params.collapse "splice" $splice) }}

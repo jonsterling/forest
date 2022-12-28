@@ -10,6 +10,7 @@
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
 {{ $pageChildren := default slice (.context.Page.Store.Get "dwdSlugs") }}
+{{ $splice := .splice }}
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
@@ -105,7 +106,7 @@
   })
 </script>
 
-{{ if .context.Params.Splice }}
+{{ if $splice }}
 <section class="block math-barrier splice">
   {{ if gt (len $pageChildren) 0 }}
   <button class="toggle-children-button" data-slug="{{$mungedSlug}}">
