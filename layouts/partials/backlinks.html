@@ -6,28 +6,34 @@
 {{ $upwdPages := slice }}
 
 {{ range $page.Store.Get "bwdSlugs" }}
-{{ with site.GetPage . }}
-{{ $bwdPages = $bwdPages | append . }}
-{{ end }}
+  {{ with site.GetPage . }}
+    {{ $bwdPages = $bwdPages | append . }}
+  {{ end }}
 {{ end }}
 
 {{ range $page.Store.Get "fwdSlugs" }}
-{{ with site.GetPage . }}
-{{ $fwdPages = $fwdPages | append . }}
-{{ end }}
+  {{ with site.GetPage . }}
+    {{ $fwdPages = $fwdPages | append . }}
+  {{ end }}
 {{ end }}
 
 {{ range $page.Store.Get "upwdSlugs" }}
-{{ with site.GetPage . }}
-{{ $upwdPages = $upwdPages | append . }}
-{{ end }}
+  {{ with site.GetPage . }}
+    {{ $upwdPages = $upwdPages | append . }}
+  {{ end }}
 {{ end }}
 
 {{ range $page.Store.Get "dwdSlugs" }}
-{{ with site.GetPage . }}
-{{ $dwdPages = $dwdPages | append . }}
+  {{ with site.GetPage . }}
+    {{ $dwdPages = $dwdPages | append . }}
+  {{ end }}
 {{ end }}
-{{ end }}
+
+{{ $upwdPages = where $upwdPages "Params.splice" "!=" true }}
+{{ $bwdPages = where $bwdPages "Params.splice" "!=" true }}
+{{ $fwdPages = where $fwdPages "Params.splice" "!=" true }}
+{{ $dwdPages = where $dwdPages "Params.splice" "!=" true }}
+
 
 {{ with $upwdPages }}
 {{ partial "links_section" (dict "pages" . "title" "Context")}}
