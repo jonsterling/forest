@@ -18,18 +18,50 @@
     const ninja = document.querySelector('ninja-keys')
     ninja.data = []
 
+    function syncNinjaDarkMode() {
+      if (document.body.classList.contains('dark')) {
+        ninja.classList.add('dark')
+      } else {
+        ninja.classList.remove('dark')
+      }
+    }
+
+    syncNinjaDarkMode()
+
+    const bodyObserver = new MutationObserver((mutationList, observer) => {
+      mutationList.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          syncNinjaDarkMode()
+        }
+      })
+    })
+
+    bodyObserver.observe(document.body, {attributes: true})
+
+
     {{ if eq hugo.Environment "development" }}
     {{ $projectPath := or (os.Getenv "HUGO_PROJECT_PATH" ) (os.Getenv "PWD") }}
+    {{ $title := .Title }}
     {{ with .File }}
     ninja.data.push({
       id: 'Edit',
       title: 'Edit current file in Visual Studio Code',
       section: 'File Commands',
-      hotkey: 'ctrl+E, cmd+E',
+      hotkey: 'space+E',
       handler: () => {
         window.location.href = 'vscode://file/{{ $projectPath }}/content/{{ .Path }}'
       }
-    });
+    })
+
+    ninja.data.push({
+      id: 'CopyRef',
+      title: 'Copy a Forester reference to the current note',
+      section: 'File Commands',
+      hotkey: 'space+R',
+      handler: () => {
+        navigator.clipboard.writeText("\{\{<cref {{.ContentBaseName}} \"{{$title}}\">\}\}")
+      }
+    })
     {{ end }}
     {{ end }}
 
@@ -37,6 +69,7 @@
       id: 'ExpandAll',
       title: 'Expand all outline nodes',
       section: 'Page Interaction',
+      hotkey: 'cmd+alt+down',
       handler: () => {
         document.body.querySelectorAll("details").forEach((e) =>
           e.setAttribute("open", true)
@@ -48,6 +81,7 @@
       id: 'CollapseAll',
       title: 'Collapse all outline nodes',
       section: 'Page Interaction',
+      hotkey: 'cmd+alt+up',
       handler: () => {
         const firstDetails = document.body.querySelector("details")
         if (!firstDetails) return
