@@ -1,11 +1,19 @@
 {{ $site := .context.Site }}
-{{ $seed := now.Unix }}
+
+{{ $seed := .context.Store.Get "seed" }}
+{{ if not $seed }}
+{{ $seed = now.Unix }}
+{{end}}
+
+{{ $random := mod (add (mul 13 $seed) 97) 400000 }}
+{{ .context.Store.Set "seed" $random }}
+
 {{ $taxon := .context.Params.Taxon }}
 {{ $macrolib := .context.Params.macrolib }}
 {{ $title := .context.Page.Title }}
 {{ $relPermalink := .context.Page.RelPermalink }}
 {{ $slug := .context.Page.File.ContentBaseName }}
-{{ $mungedSlug := printf "%s::%s" $seed $slug }}
+{{ $mungedSlug := printf "%s::%s" $random $slug }}
 {{ $shouldCollapseChildren := default false .context.Params.collapse }}
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
