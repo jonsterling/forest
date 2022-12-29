@@ -71,7 +71,9 @@
       section: 'Page Interaction',
       hotkey: 'cmd+alt+down',
       handler: () => {
-        document.body.querySelectorAll("details").forEach((e) =>
+        const firstDetails = document.body.querySelector("details")
+        if (!firstDetails) return
+        firstDetails.querySelectorAll("details").forEach((e) =>
           e.setAttribute("open", true)
         )
       }
