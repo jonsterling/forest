@@ -2,7 +2,6 @@
 title: relative hierarchy in existing tools
 author: Jonathan Sterling
 date: 2022-12-29T13:49:59+01:00
-draft: true
 ---
 
 There are a few $\LaTeX$ packages that implement relative hierarchy for sectioning as an alternative to the {{<cref tfmt-000B "backward model of absolute hierarchy">}}.
