@@ -6,6 +6,7 @@
 {{ $transcludedSlug := .Destination }}
 {{ $page := .Page }}
 {{ $splice := eq ($query.Get "splice") "true" }}
+{{ $collapse := or $page.Params.collapse (eq ($query.Get "collapse") "true") }}
 
 {{ with $page }}
   {{ with .File }}
@@ -18,7 +19,7 @@
 
 {{- partial "hierarchy.html"
     (dict "context" $transcludedPage
-          "collapse" $page.Params.collapse
+          "collapse" $collapse
           "splice" $splice) }}
 
 {{- else -}}
