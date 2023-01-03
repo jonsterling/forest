@@ -5,7 +5,7 @@ author:
 - Jonathan Sterling
 - Carlo Angiuli
 macrolib: topos
-collapse: true
+collapseChildren: true
 ---
 
 We assume knowledge of basic categorical concepts such as categories, functors,
