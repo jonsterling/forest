@@ -18,5 +18,5 @@ generalize this situation to the case of an arbitrary fibration, by
 constructing the full subfibration spanned by displayed objects equipped
 with a cartesian morphism into $\bar{u}$ in [](frct-0010) below.
 
-{{<child frct-0010>}}
-{{<child frct-002K>}}
+![](frct-0010)
+![](frct-002K)

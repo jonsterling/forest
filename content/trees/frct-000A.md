@@ -15,4 +15,4 @@ B$; in this case $\TotCat{E}$ is called the *total category* of $E$.
 
 The construction of the total category of a displayed category is called the *Grothendieck construction.*
 
-{{<child frct-001T>}}
+![](frct-001T)

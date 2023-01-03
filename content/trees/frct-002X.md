@@ -10,4 +10,4 @@ As discussed in [](frct-001Y), $\SelfIx{B}$ is a cartesian fibration over $B$ if
 only if $B$ has pullbacks. However, $\SelfIx{B}$ is unconditionally a *cocartesian*
 fibration.
 
-{{<child frct-002Y>}}
+![](frct-002Y)

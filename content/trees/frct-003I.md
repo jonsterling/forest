@@ -22,9 +22,9 @@ We will draw on the following materials:
 
 This material is deeply influenced by conversations with Thomas Streicher, as well as his writings.
 
-{{<child frct-000R>}}
-{{<child frct-0008>}}
-{{<child frct-0009>}}
-{{<child frct-000E>}}
-{{<child frct-000N>}}
-{{<child frct-0012>}}
+![](frct-000R)
+![](frct-0008)
+![](frct-0009)
+![](frct-000E)
+![](frct-000N)
+![](frct-0012)

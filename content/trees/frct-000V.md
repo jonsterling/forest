@@ -2,7 +2,7 @@
 title: the externalization of an internal category
 ---
 
-{{<child frct-001R>}}
-{{<child frct-000W>}}
-{{<child frct-000X>}}
-{{<child frct-000Y>}}
+![](frct-001R)
+![](frct-000W)
+![](frct-000X)
+![](frct-000Y)

@@ -1,0 +1,28 @@
+{{- $url := urls.Parse .Destination }}
+{{- $isLocal := not $url.Host }}
+{{- if $isLocal -}}
+{{- $transcludedPage := site.GetPage $url.Path -}}
+{{ $query := $url.Query }}
+{{ $transcludedSlug := .Destination }}
+{{ $page := .Page }}
+{{ $splice := eq ($query.Get "splice") "true" }}
+
+{{ with $page }}
+  {{ with .File }}
+    {{ with .ContentBaseName }}
+      {{ $transcludedPage.Store.Set "upwdSlugs" (union ($transcludedPage.Store.Get "upwdSlugs") (slice .)) }}
+      {{ end }}
+  {{ end }}
+  {{ .Store.Set "dwdSlugs" (union (.Store.Get "dwdSlugs") (slice $transcludedSlug)) }}
+{{ end }}
+
+{{- partial "hierarchy.html"
+    (dict "context" $transcludedPage
+          "collapse" $page.Params.collapse
+          "splice" $splice) }}
+
+{{- else -}}
+
+<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+
+{{- end -}}

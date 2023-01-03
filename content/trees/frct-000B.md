@@ -45,10 +45,10 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 \end{tikzpicture}
 ````
 
-{{<child frct-001U>}}
+![](frct-001U)
 
 We have a functor $\TotCat{P\Sub{\bullet}}\to E$ taking a pair $(x,(u,\phi\Sub{u}))$ to $u$.
 
-{{<child frct-001V>}}
-{{<child frct-001W>}}
-{{<child frct-000C>}}
+![](frct-001V)
+![](frct-001W)
+![](frct-000C)

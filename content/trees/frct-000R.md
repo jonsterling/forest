@@ -2,7 +2,7 @@
 title: foundational assumptions
 macrolib: topos
 ---
-{{<child frct-001F>}}
-{{<child frct-003J>}}
-{{<child frct-001G>}}
-{{<child frct-003K>}}
+![](frct-001F)
+![](frct-003J)
+![](frct-001G)
+![](frct-003K)

@@ -6,8 +6,8 @@ To motivate Bénabou's general notion of definability, we will first develop an 
 perspective on definability for classes of sets in terms of *families* of
 sets.
 
-{{<child frct-002M>}}
-{{<child frct-002N>}}
-{{<child frct-002P>}}
-{{<child frct-002R>}}
-{{<child frct-002T>}}
+![](frct-002M)
+![](frct-002N)
+![](frct-002P)
+![](frct-002R)
+![](frct-002T)

@@ -17,12 +17,12 @@ theory in some ambient set theory. We will refer to
 an element of $\mathscr{M}$ as a set, and a subcollection of $\mathscr{M}$
 as a class.
 
-{{<child frct-002U>}}
-{{<child frct-002V>}}
+![](frct-002U)
+![](frct-002V)
 
 Bénabou then generalizes these definitions to an arbitrary fibration,
 in such a way that the general fibered notion of definable class is
 equivalent in the fundamental self-indexing $\SelfIx{\mathscr{M}}$ to that of definable classes in the sense of [](frct-002V).
 
-{{<child frct-002Q>}}
-{{<child frct-002S>}}
+![](frct-002Q)
+![](frct-002S)
