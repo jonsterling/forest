@@ -1,7 +1,9 @@
 {{- $url := urls.Parse .Destination }}
 {{- $isLocal := not $url.Host }}
-{{- if $isLocal -}}
 {{- $transcludedPage := site.GetPage $url.Path -}}
+
+{{- if and $isLocal $transcludedPage -}}
+
 {{ $query := $url.Query }}
 {{ $transcludedSlug := .Destination }}
 {{ $page := .Page }}
