@@ -4,7 +4,7 @@ macrolib: topos
 title: cartesian lifts in the externalization
 ---
 
-The {{<cref frct-001R "externalization">}} is a cartesian fibration.
+The [externalization](frct-001R) is a cartesian fibration.
 
 {{%proof%}}
 Given an object $v\in \brk{C}\Sub{y}$ and a

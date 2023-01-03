@@ -11,12 +11,12 @@ The perspective of morphisms as figures is developed in more detail by Lawvere a
 
 It often happens that a useful class of figure shapes can be arranged
 into a *set*-indexed family $\prn{u\Sub{i}}\Sub{i\in I}$; viewed from the
-perspective of the family fibration $\FAM{E}$ ({{<cref frct-0006>}}), this family is just a
+perspective of the family fibration $\FAM{E}$ ([](frct-0006)), this family is just a
 displayed object $\bar{u}$ over $I$ and then a figure shape "in"
 this family is given by any cartesian morphism $\bar{z}\to\bar{u}$. We will
 generalize this situation to the case of an arbitrary fibration, by
 constructing the full subfibration spanned by displayed objects equipped
-with a cartesian morphism into $\bar{u}$ in {{<cref frct-0010>}} below.
+with a cartesian morphism into $\bar{u}$ in [](frct-0010) below.
 
 {{<child frct-0010>}}
 {{<child frct-002K>}}

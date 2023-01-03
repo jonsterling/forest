@@ -1,11 +1,11 @@
 {{- $page := .Page -}}
 {{- $slug := $page.File.ContentBaseName -}}
-{{- $linkedSlug := index .Params 0 -}}
-{{- $linkedPage := .Site.GetPage $linkedSlug -}}
+{{- $linkedSlug := .Destination -}}
+{{- $linkedPage := site.GetPage $linkedSlug -}}
 {{- $page.Store.Set "fwdSlugs" (union ($page.Store.Get "fwdSlugs") (slice $linkedSlug)) -}}
 {{- if $linkedPage -}}
 {{- $linkedPage.Store.Set "bwdSlugs" (union ($linkedPage.Store.Get "bwdSlugs") (slice $slug)) -}}
-{{- $title := default $linkedPage.Title (index .Params 1) | markdownify -}}
+{{- $title := default $linkedPage.Title .Text -}}
 <a class="local" href="{{$linkedPage.RelPermalink}}">
   {{- with $title -}}
   {{- . -}}
@@ -13,6 +13,6 @@
   <span class="slug">#{{$linkedSlug}}</span>
   {{- end -}}
 </a>
-{{- else -}}
-<span class="error">[unpublished: #{{$linkedSlug}}]</span>
-{{- end -}}
+{{else}}
+<a href="{{ .Destination | safeURL }}">{{ .Text | safeHTML }}</a>
+{{end}}

@@ -28,7 +28,7 @@ consider the cartesian map displayed over $z : I \to C$:
 
 Conversely assume that $\FAM{C}$ has a generic object $\bar{u}\in\FAM{C}[U]$
 for some $U\in \SET$; then we may equip $U$ with the structure of a globally
-small category such that $U$ is equivalent to $C$, using a construction that is similar to our implementation of the opposite fibration ({{<cref frct-000Q>}}). In particular we define a
+small category such that $U$ is equivalent to $C$, using a construction that is similar to our implementation of the opposite fibration ([](frct-000Q)). In particular we define a
 morphism $x\to y\in U$ to be given by the following data:
 
 1. a cartesian map $a\to\Sub{x} \bar{u}$ over $x : 1\to U$,

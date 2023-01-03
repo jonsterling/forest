@@ -5,7 +5,7 @@ macrolib: topos
 packages: jon-tikz
 ---
 
-Let $E$ be a cartesian fibration in the sense of {{<cref frct-0002>}}, and let
+Let $E$ be a cartesian fibration in the sense of [](frct-0002), and let
 $\bar{f} : \bar{x}\to\Sub{f}\bar{y}$ be displayed over $f:x\to y$. The
 displayed morphism $\bar{f}$ is cartesian if and only if it is hypocartesian.
 

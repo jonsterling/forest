@@ -22,7 +22,7 @@ as a class.
 
 Bénabou then generalizes these definitions to an arbitrary fibration,
 in such a way that the general fibered notion of definable class is
-equivalent in the fundamental self-indexing $\SelfIx{\mathscr{M}}$ to that of definable classes in the sense of {{<cref frct-002V>}}.
+equivalent in the fundamental self-indexing $\SelfIx{\mathscr{M}}$ to that of definable classes in the sense of [](frct-002V).
 
 {{<child frct-002Q>}}
 {{<child frct-002S>}}

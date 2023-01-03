@@ -12,5 +12,5 @@ displayed over $\OpCat{B}$ as follows:
 2. Given $f : x \to y\in \OpCat{B}$, a displayed morphism $\bar{x}\to\Sub{f} \bar{y}$ in $\TotOpCat{E}$
    is given by a displayed morphism $\bar{y}\to\Sub{f} \bar{x}$ in $E$.
 
-**Warning.** Do not confuse this construction with {{<cref frct-001Z>}}, which produces a
+**Warning.** Do not confuse this construction with [](frct-001Z), which produces a
 displayed category over $B$ and not $\OpCat{B}$.

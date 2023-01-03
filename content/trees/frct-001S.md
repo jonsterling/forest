@@ -5,13 +5,13 @@ macrolib: topos
 packages: jon-tikz
 ---
 
-The {{<cref frct-001R "externalization">}} $\brk{\gl{\bar{u}}}$ of the internal category $\gl{\bar{u}}$ {{<cref frct-003Q "associated to">}} $\bar{u}$ is equivalent to the {{<cref frct-0010 "full internal subfibration">}} $\FullSubfib{\bar{u}}$.
+The [externalization](frct-001R) $\brk{\gl{\bar{u}}}$ of the internal category $\gl{\bar{u}}$ [associated to](frct-003Q) $\bar{u}$ is equivalent to the [full internal subfibration](frct-0010) $\FullSubfib{\bar{u}}$.
 
 {{%proof%}}
 
 We will define a fibred equivalence $F : \brk{\gl{\bar{u}}}\to \FullSubfib{\bar{u}}$ over $B$.
 
-1. Fix $x\in B$ and $\chi\Sub{x} \in \brk{\gl{\bar{u}}}\Sub{x}$, i.e. $\chi\Sub{x} : x\to u$; we define $F\prn{\chi\Sub{x}}$ to be an arbitrary cartesian map $\phi\Sub{x} : \bar{x}\to\Sub{\chi\Sub{x}} \bar{u}$. (Here we have used the {{<cref frct-000R "axiom of choice for collections">}}.)
+1. Fix $x\in B$ and $\chi\Sub{x} \in \brk{\gl{\bar{u}}}\Sub{x}$, i.e. $\chi\Sub{x} : x\to u$; we define $F\prn{\chi\Sub{x}}$ to be an arbitrary cartesian map $\phi\Sub{x} : \bar{x}\to\Sub{\chi\Sub{x}} \bar{u}$. (Here we have used the [axiom of choice for collections](frct-000R).)
 
 2. Fix $f : x\to y\in B$ and $\chi\Sub{x} :x\to u$ and $\chi\Sub{y}:y\to u$ and a diagram representing a displayed morphism $h$ from $\chi\Sub{x}$ to $\chi\Sub{y}$ over $f$ as below:
    ```latex

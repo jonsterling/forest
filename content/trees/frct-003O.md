@@ -3,7 +3,7 @@ title: internal categories
 macrolib: topos
 ---
 
-We have already seen in {{<cref frct-000G>}} and {{<cref frct-000L>}} that smallness in the
+We have already seen in [](frct-000G) and [](frct-000L) that smallness in the
 sense of the definition above appropriately generalizes the ordinary notion of
 smallness for categories over $\SET$. Another perspective on smallness is given
 by the *internal language*, in which a category is viewed as an algebra for the

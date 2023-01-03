@@ -5,12 +5,12 @@ packages: jon-tikz
 title: locally small externalization
 ---
 
-The {{<cref frct-001R "externalization">}} is locally small.
+The [externalization](frct-001R) is locally small.
 
 {{%proof%}}
 Fix $x\in E$ and $u,v\in
 \brk{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
-$\TotCat{\CandHom{x}{u}{v}}$ of "hom candidates" defined in {{<cref frct-000I>}}.
+$\TotCat{\CandHom{x}{u}{v}}$ of "hom candidates" defined in [](frct-000I).
 First we define $\brk{u,v}$ to be the following pullback in $E$:
 ```latex
 \DiagramSquare{
@@ -106,7 +106,7 @@ $\TotCat{\CandHom{x}{u}{v}}$ is the following span in $\brk{C}$:
 \end{tikzpicture}
 ```
 
-Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{x}{u}{v}}$, according to {{<cref frct-000I>}} we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
+Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{x}{u}{v}}$, according to [](frct-000I) we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
    ```latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};
@@ -187,7 +187,7 @@ exists. We define $\bar\alpha$ using the universal property of the cartesian lif
 \end{tikzpicture}
 ```
 
-That $\bar{\alpha}:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u$ is cartesian follows from {{<cref frct-0014 "the generalized pullback lemma for cartesian morphisms">}}: it suffices
+That $\bar{\alpha}:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u$ is cartesian follows from [the generalized pullback lemma for cartesian morphisms](frct-0014): it suffices
 to observe that both $\bar{p}\Sub{h}:\bar{h}\to u$ and its second factor
 $\bar{p}:\InvImg{\brk{u,v}}u\to u$ are cartesian.
 {{%/proof%}}

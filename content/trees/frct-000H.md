@@ -7,7 +7,7 @@ packages: jon-tikz
 We will reformulate the local smallness property of the family fibration in a way that uses only the language that makes
 sense for an arbitrary cartesian fibration, though for now we stick with $\FAM{C}$. Given
 $u,v\in \FAM{C}[I]$, we have a "relative hom family" $[u,v]\in\Sl{\SET}{I}$,
-defined in {{<cref frct-000G>}}. The fact that each $[u,v]\Sub{i}$ is the set of all
+defined in [](frct-000G). The fact that each $[u,v]\Sub{i}$ is the set of all
 morphisms $u\Sub{i}\to v\Sub{i}$ can be rephrased more abstractly.
 
 First we consider the restriction of $u\in \FAM{C}[I]$ to $\FAM{C}[[u,v]]$ as follows:

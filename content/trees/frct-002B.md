@@ -5,7 +5,7 @@ macrolib: topos
 packages: jon-tikz
 ---
 
-Let $E$ be displayed over $B$. Then $E$ is a cartesian fibration in the sense of {{<cref frct-0002>}} if and only if the following two conditions hold:
+Let $E$ be displayed over $B$. Then $E$ is a cartesian fibration in the sense of [](frct-0002) if and only if the following two conditions hold:
 
 1. *Hypocartesian lifts.* For each $f:x\to y\in B$ and $\bar{y}\in E\Sub{y}$ there
    exists a displayed object $\bar{x}\in E\Sub{x}$ and hypocartesian morphism
@@ -17,8 +17,8 @@ Let $E$ be displayed over $B$. Then $E$ is a cartesian fibration in the sense of
 {{%proof%}}
 Suppose first that $E$ is a cartesian fibration in our sense. Then
 $E$ has hypocartesian lifts because it has cartesian lifts. For closure under
-composition, fix hypocartesian $\bar{f},\bar{g}$; by {{<cref frct-002C>}} we know that
-$\bar{f},\bar{g}$ are also cartesian and hence by {{<cref frct-001H>}} so is the composite $\bar{f};\bar{g}$; therefore it follows
+composition, fix hypocartesian $\bar{f},\bar{g}$; by [](frct-002C) we know that
+$\bar{f},\bar{g}$ are also cartesian and hence by [](frct-001H) so is the composite $\bar{f};\bar{g}$; therefore it follows
 that $\bar{f};\bar{g}$ is also hypocartesian.
 
 Conversely, suppose that $E$ is a cartesian fibration in the sense of

@@ -5,10 +5,10 @@ packages: jon-tikz
 title: globally small externalization
 ---
 
-The {{<cref frct-001R "externalization">}} is globally small
+The [externalization](frct-001R) is globally small
 
 {{%proof%}}
-We may choose a {{<cref frct-000K "generic object">}} for $\brk{C}$, namely the identity element $(C\Sub{0},\Idn{C\Sub{0}})\in \TotCat{\brk{C}}$. Given any object $(x,u)\in \TotCat{\brk{C}}$ the cartesian map $(x,u)\to (C\Sub{0},\Idn{C\Sub{0}})$ is given as follows:
+We may choose a [generic object](frct-000K) for $\brk{C}$, namely the identity element $(C\Sub{0},\Idn{C\Sub{0}})\in \TotCat{\brk{C}}$. Given any object $(x,u)\in \TotCat{\brk{C}}$ the cartesian map $(x,u)\to (C\Sub{0},\Idn{C\Sub{0}})$ is given as follows:
 ```latex
 \begin{tikzpicture}[diagram]
   \node (x) {$x$};
