@@ -13,6 +13,9 @@
 
 <script defer type="module" src="https://unpkg.com/ninja-keys?module"></script>
 
+{{ $forestScripts := resources.Get "/js/forest.js" }}
+
+<script defer type="text/javascript" src={{$forestScripts.RelPermalink}}></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const ninja = document.querySelector('ninja-keys')
@@ -37,7 +40,6 @@
     })
 
     bodyObserver.observe(document.body, {attributes: true})
-
 
     {{ if eq hugo.Environment "development" }}
     {{ $projectPath := or (os.Getenv "HUGO_PROJECT_PATH" ) (os.Getenv "PWD") }}
