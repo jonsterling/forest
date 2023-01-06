@@ -9,7 +9,7 @@ The [externalization](frct-001R) is globally small
 
 {{%proof%}}
 We may choose a [generic object](frct-000K) for $\brk{C}$, namely the identity element $(C\Sub{0},\Idn{C\Sub{0}})\in \TotCat{\brk{C}}$. Given any object $(x,u)\in \TotCat{\brk{C}}$ the cartesian map $(x,u)\to (C\Sub{0},\Idn{C\Sub{0}})$ is given as follows:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
   \node (x) {$x$};
   \node (y) [below = of x] {$C\Sub{0}$};

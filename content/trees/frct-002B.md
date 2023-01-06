@@ -26,7 +26,7 @@ Grothendieck, and let $\bar{f}:\bar{x}\to\Sub{f}\bar{y}$ be the hypocartesian
 lift of $f:x\to y$ at $\bar{y}\in E\Sub{y}$; we shall see that $\bar{f}$ is also
 a *cartesian* lift of $f$ at $\bar{y}$ by constructing a unique factorization as
 follows:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,
@@ -53,7 +53,7 @@ $m$ at $\bar{x}$, where $\bar{u}\tick\in E\Sub{u}$. By hypothesis, the
 composite $\bar{m};\bar{f} : \bar{u}\tick\to\Sub{m;f}\bar{y}$ is
 hypocartesian, so $\bar{h}$ factors uniquely through $\bar{m};\bar{f}$ over
 $\Idn{u}$:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,

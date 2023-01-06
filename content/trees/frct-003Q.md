@@ -9,7 +9,7 @@ In particular, we let the object of objects $\gl{\bar{u}}\Sub{0}$ be $u$ itself;
 
 We will think of the fiber $E\Sub{u\times u}$ as the category of
 objects indexed in the *boundary* (source and target) of a morphism. Restricting $\bar{u}$ along the source and target projections, we obtain the displayed objects of "points of the source" and "points of the target" respectively:
-```latex
+```render-latex
 \DiagramSquare{
   height = 1.5cm,
   nw/style = pullback,

@@ -7,7 +7,7 @@ packages: jon-tikz
 
 For any $x\in B$ and displayed objects $u,v\in E\Sub{x}$, we define a *hom
 candidate* for $u,v$ to be a span $u\leftarrow \bar{h} \rightarrow v$ in $E$ in which the left-hand leg is cartesian:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
 \SpliceDiagramSquare<l/>{
   height = 1.5cm,
@@ -49,7 +49,7 @@ This structure can be rephrased in terms of a displayed category $\CandHom{x}{u}
    $\bar{h}\in \CandHom{x}{u}{v}\Sub{h}$, a morphism $\bar{h}\to\Sub{\alpha} \bar{l}$ is given by a
    cartesian morphism $\bar\alpha:\bar{l}\to\Sub{\alpha}\bar{h}$ in $E$ such that the
    following diagram commutes:
-   ```latex
+   ```render-latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};
      \node (l) [above right = 1.5cm of u,xshift=.5cm] {$\bar{l}$};

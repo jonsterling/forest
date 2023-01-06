@@ -14,7 +14,7 @@ We will define a fibred equivalence $F : \brk{\gl{\bar{u}}}\to \FullSubfib{\bar{
 1. Fix $x\in B$ and $\chi\Sub{x} \in \brk{\gl{\bar{u}}}\Sub{x}$, i.e. $\chi\Sub{x} : x\to u$; we define $F\prn{\chi\Sub{x}}$ to be an arbitrary cartesian map $\phi\Sub{x} : \bar{x}\to\Sub{\chi\Sub{x}} \bar{u}$. (Here we have used the [axiom of choice for collections](frct-000R).)
 
 2. Fix $f : x\to y\in B$ and $\chi\Sub{x} :x\to u$ and $\chi\Sub{y}:y\to u$ and a diagram representing a displayed morphism $h$ from $\chi\Sub{x}$ to $\chi\Sub{y}$ over $f$ as below:
-   ```latex
+   ```render-latex
    \begin{tikzpicture}[diagram]
    \node (x) {$x$};
    \node (y) [below = of x] {$y$};
@@ -34,7 +34,7 @@ We will define a fibred equivalence $F : \brk{\gl{\bar{u}}}\to \FullSubfib{\bar{
    cartesian maps $\bar\chi\Sub{x}:\bar{x}\to\Sub{\chi\Sub{x}}\bar{u}$ and
    $\bar\chi\Sub{y}:\bar{y}\to\Sub{\chi\Sub{y}}\bar{u}$. First we lift $h:x\to \brk{\bar\partial\Sub{1},\bar\partial\Sub{2}}$
    into $E$ using the universal property of the cartesian lift:
-   ```latex
+   ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare<0/>{
         height = 1.5cm,
@@ -84,7 +84,7 @@ We will define a fibred equivalence $F : \brk{\gl{\bar{u}}}\to \FullSubfib{\bar{
    ```
 
    By composition with the "evaluation map" for our hom object, we have a map $\bar{x}\to\Sub{f;\chi\Sub{y}}\bar{u}$:
-   ```latex
+   ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare<0/>{
         height = 1.5cm,
@@ -132,7 +132,7 @@ We will define a fibred equivalence $F : \brk{\gl{\bar{u}}}\to \FullSubfib{\bar{
    ```
 
    Next we define $F\prn{h}:\bar{x}\to\Sub{f}\bar{y}$ using the universal property of (another) cartesian lift:
-   ```latex
+   ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare<l/>{
         height = 1.5cm,

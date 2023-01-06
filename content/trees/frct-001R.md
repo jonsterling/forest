@@ -12,7 +12,7 @@ Let $C$ be an internal category in $E$. We may define a fibered category $\brk{C
 2. Given $x,y\in E$ and $f:x\to y$ and $u \in \brk{C}\Sub{x}$ and $v\in
    \brk{C}\Sub{y}$, a morphism $u\to\Sub{f} v$ is defined to be a morphism $h :
    x\to C\Sub{1}$ in $E$ such that the following diagram commutes:
-   ```latex
+   ```render-latex
    \begin{tikzpicture}[diagram]
    \node (x) {$x$};
    \node (y) [below = of x] {$y$};

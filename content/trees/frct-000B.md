@@ -14,7 +14,7 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 1. We define an object of $P\Sub{x}$ to be a pair $(u,\phi\Sub{u})$ where $u\in E$ and
    $\phi\Sub{u} : Pu\cong x$. It is good to visualize such a pair as a "crooked
    leg" like so:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
 \node (u) {$u$};
 \node (Pu) [below = 1cm of u] {$Pu$};
@@ -27,7 +27,7 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 2. A morphism $(u,\phi\Sub{u})\to\Sub{f} (v,\phi\Sub{v})$ over $f : x \to y$ is given by
    a morphism $h : u\to v$ that lies over $f$ modulo the isomorphisms
    $\phi\Sub{u},\phi\Sub{v}$ in sense depicted below:
-````latex
+````render-latex
 \begin{tikzpicture}[diagram]
 \node (pu) {$Pu$};
 \node (pv) [right = of pu] {$Pv$};

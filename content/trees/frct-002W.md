@@ -8,7 +8,7 @@ packages: jon-tikz
 Let $E$ be a cartesian fibration over $B$. A *definable class*
 $\mathfrak{F}$ in $E$ is a stable subcollection of the displayed objects of $E$
 such that for any $\bar{u}\in E\Sub{u}$, there exists a cartesian map $\bar{v}\to \bar{u}$ lying over a monomorphism $v\rightarrowtail u$ such that $\bar{v}\in \mathfrak{F}$ and, moreover, any cartesian morphism $\bar{w}\to\bar{u}$ such that $\bar{w}\in\mathfrak{F}$ factors through $\bar{v}\to\bar{u}$.
-```latex
+```render-latex
   \DiagramSquare{
     height = 1.5cm,
     west/style = lies over,

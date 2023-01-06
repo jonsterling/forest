@@ -13,7 +13,7 @@ Suppose that $E$ is a right fibration over $B$, and fix $b\in B$,
 $\bar{b}\in E\Sub{b}$, and a vertical map $f:\bar{b}\to\Sub{1\Sub{b}} \bar{b}$.
 Using the hypothesis that $f$ is cartesian, it has a unique section
 $g:\bar{b}\to\Sub{1\Sub{b}} \bar{b}$ as follows:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,
@@ -43,7 +43,7 @@ Conversely, suppose that $E$ is a cartesian fibration whose vertical maps are
 isomorphisms. Fix $f:x\to y \in B$ and an arbitrary displayed morphism
 $\bar{g}:\bar{x}\to\Sub{f}\bar{y}$. Then $\bar{g}$ is the precomposition of a
 cartesian lift $\bar{f}:\bar{x}\tick\to\Sub{f}\bar{y}$ with a vertical map:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,
@@ -69,7 +69,7 @@ cartesian lift $\bar{f}:\bar{x}\tick\to\Sub{f}\bar{y}$ with a vertical map:
 Because vertical maps are isomorphisms and $\bar{f}$ is cartesian, we can observe
 that $\bar{g}$ is cartesian as follows, writing $\bar{m} : \bar{u}\to\Sub{m}
 \bar{x}\tick$ for the unique factorization of $\bar{h}$ through $\bar{f}$ over $m$:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,

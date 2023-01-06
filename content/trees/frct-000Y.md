@@ -12,7 +12,7 @@ Fix $x\in E$ and $u,v\in
 \brk{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
 $\TotCat{\CandHom{x}{u}{v}}$ of "hom candidates" defined in [](frct-000I).
 First we define $\brk{u,v}$ to be the following pullback in $E$:
-```latex
+```render-latex
 \DiagramSquare{
   nw/style = pullback,
   ne = C\Sub{1},
@@ -30,7 +30,7 @@ First we define $\brk{u,v}$ to be the following pullback in $E$:
 
 We define $\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \brk{C}\Sub{\brk{u,v}}$ to be
 the cartesian lift of $u\in \brk{C}\Sub{x}$ along $p:\brk{u,v}\to x$:
-```latex
+```render-latex
 \DiagramSquare{
   height = 1.5cm,
   nw/style = pullback,
@@ -50,7 +50,7 @@ We need to define a displayed evaluation map
 $\epsilon : \InvImg{\brk{u,v}}u\to\Sub{p} v$; unraveling the definition of a displayed
 morphism in the externalization of $C$, we choose the following diagram:
 
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       ne = C\Sub{1},
@@ -76,7 +76,7 @@ morphism in the externalization of $C$, we choose the following diagram:
 
 Putting all this together, we assert that the terminal object of
 $\TotCat{\CandHom{x}{u}{v}}$ is the following span in $\brk{C}$:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
 \SpliceDiagramSquare<l/>{
   height = 1.5cm,
@@ -107,7 +107,7 @@ $\TotCat{\CandHom{x}{u}{v}}$ is the following span in $\brk{C}$:
 ```
 
 Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{x}{u}{v}}$, according to [](frct-000I) we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
-   ```latex
+   ```render-latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};
      \node (h) [above right = 1.5cm of u,xshift=.5cm] {$\bar{h}$};
@@ -125,7 +125,7 @@ First we note that the evaluation map $\epsilon\Sub{h} : \bar{h}\to v$ amounts
 to an internal morphism $h\to C\Sub{1}$ satisfying the appropriate
 compatibility conditions. Therefore we may define the base $\alpha:h\to \brk{u,v}$ of
 the universal map using the universal property of the pullback that defines $\brk{u,v}$:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare{
     nw/style = pullback,
@@ -152,7 +152,7 @@ satisfying the conditions required of the base for $\bar\alpha$; therefore, it
 suffices to show that there exists a cartesian morphism
 $\bar\alpha:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u$ since it will be unique if it
 exists. We define $\bar\alpha$ using the universal property of the cartesian lift:
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare<l/>{
     ne/style = pullback,

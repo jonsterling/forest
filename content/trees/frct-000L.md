@@ -12,7 +12,7 @@ To see that this is the case, suppose that $C$ has a set of objects. Then
 $C\in\SET$ and we define $\lfloor{C}\rfloor$ to be the displayed object
 $\brc{x}\Sub{x\in C}\in \FAM{C}[C]$. Fixing $I\in \SET$ and $z\in C^I$, we
 consider the cartesian map displayed over $z : I \to C$:
-```latex
+```render-latex
 \DiagramSquare{
   height = 1.5cm,
   width = 3cm,
@@ -37,7 +37,7 @@ morphism $x\to y\in U$ to be given by the following data:
 
 such that $(a\Sub{1},b\Sub{1},h\Sub{1})$ is identified with $(a\Sub{2},b\Sub{2},h\Sub{2})$ when $h_1$ and $h_2$ are equal modulo the (unique) vertical isomorphisms between the cartesian lifts in the sense depicted below:
 
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare{
     nw = a_1,

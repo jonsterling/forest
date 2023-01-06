@@ -11,7 +11,7 @@ follows:
    $(\bar{x}\in B,p\Sub{x}:x\to\bar{x})$.
 2. For $f : x\to y\in B$, define $\overline{B}\Sub{f}$ to be the collection of
    commuting squares in the following configuration:
-```latex
+```render-latex
   \DiagramSquare{
     height = 1.7cm,
     sw = \bar{x},

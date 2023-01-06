@@ -13,7 +13,7 @@ displayed morphism $\bar{f}$ is cartesian if and only if it is hypocartesian.
 Any cartesian map is clearly hypocartesian. To see that a hypocartesian map
 $\bar{f}:\bar{x}\to\Sub{f}\bar{y}$ in a cartesian fibration is cartesian, we
 consider the cartesian lift of $f:x\to y$ under $\bar{y}$:
-```latex
+```render-latex
 \DiagramSquare{
   height = 1.5cm,
   west/style = lies over,

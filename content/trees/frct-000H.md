@@ -11,7 +11,7 @@ defined in [](frct-000G). The fact that each $[u,v]\Sub{i}$ is the set of all
 morphisms $u\Sub{i}\to v\Sub{i}$ can be rephrased more abstractly.
 
 First we consider the restriction of $u\in \FAM{C}[I]$ to $\FAM{C}[[u,v]]$ as follows:
-```latex
+```render-latex
 \DiagramSquare{
   nw/style = pullback,
   west/style = lies over,
@@ -40,7 +40,7 @@ morphism $\epsilon\Sub{h} : \InvImg{h}u\to\Sub{h} v$ in $\FAM{C}$, there is a
 unique cartesian map $\InvImg{h}u\to \InvImg{[u,v]}u$ factoring $\epsilon\Sub{h}$ through $\epsilon\Sub{[u,v]}$
 in the sense depicted below:
 
-```latex
+```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare{
     height = 1.5cm,

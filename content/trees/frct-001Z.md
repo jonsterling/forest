@@ -13,7 +13,7 @@ $\OpCat{E}$ over $B$ like so:
 2. Given $f : x \to y\in B$, a morphism $\bar{x}\to_f \bar{y}$ in $\OpCat{E}$
    is given in terms of $E$ by a cartesian map $\bar{y}\Sub{f} : \bar{y}\Sub{x} \to\Sub{f} \bar{y}$ together
    with a *vertical* map $h : \bar{y}\Sub{x}\to\Sub{\Idn{x}} \bar{y}$ as depicted below:
-   ```latex
+   ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare{
         height = 1.5cm,
@@ -37,7 +37,7 @@ $\OpCat{E}$ over $B$ like so:
    identified with $\brc{\bar{x}\leftarrow\bar{y}\Sub{x}\Sup{2}\to \bar{y}}$
    when they agree up to the unique vertical isomorphism $\bar{y}\Sub{x}\Sup{1}\cong\bar{y}\Sub{x}\Sup{2}$
    induced by the universal property of cartesian maps in the sense that the following diagram commutes:
-   ```latex
+   ```render-latex
    \begin{tikzpicture}[diagram]
     \node (x) {$\bar{x}$};
     \node (yx/1) [above right = of x] {$\bar{y}\Sub{x}\Sup{1}$};

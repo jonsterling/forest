@@ -9,7 +9,7 @@ Let $\bar{f} : \bar{x}\to\Sub{f}\bar{y}$, and suppose that
 $\bar{g} : \bar{y}\to\Sub{g}\bar{z}$ is cartesian over $g$. Then
 $\bar{f};\bar{g}$ is cartesian over $f;g$ if and only if $\bar{f}$ is cartesian
 over $f$.
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       height = 1.5cm,
@@ -34,7 +34,7 @@ over $f$.
 {{%proof%}}
 Suppose first that $\bar{f}$ is cartesian. To see that $\bar{f};\bar{g}$
 is cartesian, we must construct a unique factorization as follows:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,
@@ -72,7 +72,7 @@ $\bar{h} = j;\bar{f};\bar{g}$, as required.
 
 Conversely, suppose that $\bar{f};\bar{g}$ is cartesian. To see that $\bar{f}$ is
 cartesian, we must construct a unique factorization as follows:
-```latex
+```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
       west/style = lies over,
