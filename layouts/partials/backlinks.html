@@ -4,6 +4,7 @@
 {{ $bwdPages := slice }}
 {{ $dwdPages := slice }}
 {{ $upwdPages := slice }}
+{{ $refPages := slice }}
 
 {{ range $page.Store.Get "bwdSlugs" }}
   {{ with site.GetPage . }}
@@ -14,6 +15,12 @@
 {{ range $page.Store.Get "fwdSlugs" }}
   {{ with site.GetPage . }}
     {{ $fwdPages = $fwdPages | append . }}
+  {{ end }}
+{{ end }}
+
+{{ range $page.Store.Get "refSlugs" }}
+  {{ with site.GetPage . }}
+    {{ $refPages = $refPages | append . }}
   {{ end }}
 {{ end }}
 
@@ -39,4 +46,8 @@
 
 {{ with $bwdPages }}
 {{ partial "links_section" (dict "pages" . "title" "Backlinks")}}
+{{ end }}
+
+{{ with $refPages }}
+{{ partial "links_section" (dict "pages" . "title" "References")}}
 {{ end }}

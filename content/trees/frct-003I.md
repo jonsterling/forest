@@ -14,13 +14,13 @@ notion of a category *over* another category.
 
 We will draw on the following materials:
 
-> - Ahrens and Lumsdaine. [Displayed Categories](https://arxiv.org/abs/1705.04296).
-> - Benabou. Fibered categories and the foundations of naive category theory.
-> - Borceux. Handbook of Categorical Algebra 2: Categories and Structures.
-> - Jacobs.  [Categorical Logic and Type Theory](https://people.mpi-sws.org/~dreyer/courses/catlogic/jacobs.pdf) .
-> - Streicher. [Fibered Categories à la Jean Bénabou](https://www2.mathematik.tu-darmstadt.de/~streicher/FIBR/FiBo.pdf).
+![](ahrens-lumsdaine-2019)
+![](benabou-1985)
+![](borceux-hca-2)
+![](jacobs-1999)
+![](streicher-fcjb)
 
-This material is deeply influenced by conversations with Thomas Streicher, as well as his writings.
+These lecture notes are deeply influenced by Thomas Streicher.
 
 ![](frct-000R)
 ![](frct-0008)

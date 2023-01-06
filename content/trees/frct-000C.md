@@ -4,12 +4,12 @@ macrolib: topos
 ---
 
 In classical category theory, cartesian fibrations are defined by
-Grothendieck to be certain functors $E\to B$ such that any morphism $f:x\to Pv$
+[Grothendieck](sga-1) to be certain functors $E\to B$ such that any morphism $f:x\to Pv$
 in $B$ lies strictly underneath a cartesian morphism in $E$. As we have
 discussed, this condition cannot be formulated unless equality is meaningful
 for the collection of objects of $B$.
 
-There is an alternative definition of cartesian fibration due to Street that avoids
+There is an alternative definition of cartesian fibration due to [Street](street-1980) that avoids
 equality of objects; here we require for each $f:x\to Pv$ a cartesian morphism
 $h:\InvImg{f}v \to v$ together with an isomorphism $\phi : P(\InvImg{f}v)\cong x$
 such that $\phi^{-1};Ph = f$.

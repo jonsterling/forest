@@ -13,7 +13,7 @@
 {{ $title := .context.Page.Title }}
 {{ $relPermalink := .context.Page.RelPermalink }}
 {{ $slug := .context.Page.File.ContentBaseName }}
-{{ $mungedSlug := printf "%s::%s" $random $slug }}
+{{ $mungedSlug := printf "%v::%s" $random $slug }}
 {{ $shouldCollapse := default false .collapse }}
 {{ $shouldExpand := not $shouldCollapse }}
 {{ $pageChildren := default slice (.context.Page.Store.Get "dwdSlugs") }}
@@ -74,6 +74,9 @@
     // render math in the content element only once it is visible; this is
     // necessary in order to support very large documents.
     const contentElement = document.querySelector('.post-content[data-slug="{{$mungedSlug}}"]')
+    if (!contentElement) {
+      console.log("failed to find content element: {{$mungedSlug}}")
+    }
     awaitVisibility(contentElement, () => {
       const childElements = contentElement.children
 
@@ -95,8 +98,6 @@
       toggleChildrenButton.onclick = function () {
         var childrenAreOpen = false;
         var childrenDetailsElements = document.querySelectorAll('.post-content[data-slug="{{$mungedSlug}}"] > section > details');
-        console.log("foo")
-        console.log(childrenDetailsElements)
         childrenDetailsElements.forEach((e) =>
           childrenAreOpen = childrenAreOpen || e.hasAttribute("open")
         )
@@ -143,29 +144,31 @@
 
   <details {{if $shouldExpand}} open {{end}} data-slug="{{$mungedSlug}}">
     <summary>
-      {{ if $taxon }}
-      <b>{{ $taxon }}</b>
-      {{with $title}} ({{.}}) {{end}}
-      <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+      {{ if eq .context.Page.Type "refs" }}
+        {{- partial "bibitem_summary.html" .context.Page.Params -}}
+        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
-      <b> {{ $title | title | markdownify }} </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-      {{ end }}
+        {{ if $taxon }}
+        <b>{{ $taxon }}</b>
+        {{with $title}} ({{.}}) {{end}}
+        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+        {{ else }}
+        <b> {{ $title | title | markdownify }} </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+        {{ end }}
 
-      {{ if .context.Params.Draft }}
-      <sup>
-        <span class="entry-isdraft">  [draft]</span>
-      </sup>
+        {{ if .context.Params.Draft }}
+        <sup>
+          <span class="entry-isdraft">  [draft]</span>
+        </sup>
+        {{ end }}
       {{ end }}
     </summary>
 
     {{- with .context -}}
-    {{- if .Content }}
-    <div class="post-content" data-slug="{{$mungedSlug}}">
-      {{.Content}}
-    </div>
-    {{- end }}
+      <div class="post-content" data-slug="{{$mungedSlug}}">
+        {{.Content}}
+      </div>
     {{- end -}}
-
   </details>
 </section>
 

@@ -1,0 +1,23 @@
+{{ $authors := .author }}
+{{ $title := .title }}
+{{ $journal := .journal }}
+
+<p>
+{{ range $i, $a := $authors }}
+{{- if $i -}}; {{ end }}
+{{ $a -}}
+{{ end -}}
+.
+<b>{{$title}}</b>.
+
+{{ if $journal }}
+  In: <i>{{$journal}}</i>
+{{ end }}
+
+{{ with .date }} ({{. | time.Format ":date_medium"}}). {{ end }}
+
+{{ $doi := default .doi .DOI }}
+{{ with $doi }}
+  <a href="https://www.doi.org/{{ . }}">{{ . }}</a>.
+{{ end }}
+</p>
