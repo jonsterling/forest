@@ -3,12 +3,6 @@
 {{- $linkedSlug := .Destination -}}
 {{- $linkedPage := site.GetPage $linkedSlug -}}
 {{- if $linkedPage -}}
-{{ if eq $linkedPage.Type "refs" }}
-{{- $page.Store.Set "refSlugs" (union ($page.Store.Get "refSlugs") (slice $linkedSlug)) -}}
-{{ else }}
-{{- $page.Store.Set "fwdSlugs" (union ($page.Store.Get "fwdSlugs") (slice $linkedSlug)) -}}
-{{ end }}
-{{- $linkedPage.Store.Set "bwdSlugs" (union ($linkedPage.Store.Get "bwdSlugs") (slice $slug)) -}}
 {{- $title := default $linkedPage.Title .Text -}}
 <a class="local" href="{{$linkedPage.RelPermalink}}">
   {{- with $title -}}

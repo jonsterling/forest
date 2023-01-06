@@ -1,4 +1,5 @@
 {{ $page := .page }}
+{{ $slug := $page.File.ContentBaseName }}
 
 {{ $fwdPages := slice }}
 {{ $bwdPages := slice }}
@@ -6,48 +7,57 @@
 {{ $upwdPages := slice }}
 {{ $refPages := slice }}
 
-{{ range $page.Store.Get "bwdSlugs" }}
-  {{ with site.GetPage . }}
-    {{ $bwdPages = $bwdPages | append . }}
+{{ with site.Data.forest }}
+  {{ with .linksTo }}
+    {{ range index . $slug }}
+      {{ with site.GetPage . }}
+        {{ $bwdPages = $bwdPages | append . }}
+      {{ end }}
+    {{ end }}
   {{ end }}
-{{ end }}
 
-{{ range $page.Store.Get "fwdSlugs" }}
-  {{ with site.GetPage . }}
-    {{ $fwdPages = $fwdPages | append . }}
+  {{ with .linksFrom }}
+    {{ range index . $slug }}
+      {{ with site.GetPage . }}
+        {{ if eq .Type "refs" }}
+          {{ $refPages = $refPages | append . }}
+        {{ else }}
+          {{ $fwdPages = $fwdPages | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
   {{ end }}
-{{ end }}
 
-{{ range $page.Store.Get "refSlugs" }}
-  {{ with site.GetPage . }}
-    {{ $refPages = $refPages | append . }}
+  {{ with .parentsOf }}
+    {{ range index . $slug }}
+      {{ with site.GetPage . }}
+        {{ $upwdPages = $upwdPages | append . }}
+      {{ end }}
+    {{ end }}
   {{ end }}
-{{ end }}
 
-{{ range $page.Store.Get "upwdSlugs" }}
-  {{ with site.GetPage . }}
-    {{ $upwdPages = $upwdPages | append . }}
+  {{ with .childrenOf }}
+    {{ range index . $slug }}
+      {{ with site.GetPage . }}
+        {{ $dwdPages = $dwdPages | append . }}
+      {{ end }}
+    {{ end }}
   {{ end }}
-{{ end }}
 
-{{ range $page.Store.Get "dwdSlugs" }}
-  {{ with site.GetPage . }}
-    {{ $dwdPages = $dwdPages | append . }}
+  {{ with $upwdPages }}
+  {{ partial "links_section" (dict "pages" . "title" "Context")}}
   {{ end }}
-{{ end }}
 
-{{ with $upwdPages }}
-{{ partial "links_section" (dict "pages" . "title" "Context")}}
-{{ end }}
+  {{ with $fwdPages }}
+  {{ partial "links_section" (dict "pages" . "title" "Related")}}
+  {{ end }}
 
-{{ with $fwdPages }}
-{{ partial "links_section" (dict "pages" . "title" "Related")}}
-{{ end }}
+  {{ with $bwdPages }}
+  {{ partial "links_section" (dict "pages" . "title" "Backlinks")}}
+  {{ end }}
 
-{{ with $bwdPages }}
-{{ partial "links_section" (dict "pages" . "title" "Backlinks")}}
-{{ end }}
+  {{ with $refPages }}
+  {{ partial "links_section" (dict "pages" . "title" "References")}}
+  {{ end }}
 
-{{ with $refPages }}
-{{ partial "links_section" (dict "pages" . "title" "References")}}
 {{ end }}
