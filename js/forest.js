@@ -24,23 +24,10 @@ function renderMathWithMacrosInElement(macros, element) {
       { left: '\\(', right: '\\)', display: false },
       { left: '\\[', right: '\\]', display: true }
     ],
+    ignoredClasses: ["math-barrier"],
     throwOnError: false,
     macros: macros
   })
-}
-
-function elementContainsMathBarrier(element) {
-  if (element.classList.contains('math-barrier')) {
-    return true
-  }
-
-  for (const child of element.children) {
-    if (elementContainsMathBarrier(child)) {
-      return true
-    }
-  }
-
-  return false
 }
 
 function renderMathContentForSlug(macros, slug) {
@@ -49,15 +36,7 @@ function renderMathContentForSlug(macros, slug) {
   const contentElements = document.querySelectorAll(`.post-content[data-slug="${slug}"]`)
   contentElements.forEach((contentElement) => {
     awaitVisibility(contentElement, () => {
-      const childElements = contentElement.children
-
-      for (const childElement of childElements) {
-        if (elementContainsMathBarrier(childElement)) {
-          continue
-        }
-
-        renderMathWithMacrosInElement(macros, childElement)
-      }
+      renderMathWithMacrosInElement(macros, contentElement)
     })
   })
 }
