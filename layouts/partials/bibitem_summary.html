@@ -11,13 +11,13 @@
 <b>{{$title}}</b>.
 
 {{ if $journal }}
-  In: <i>{{$journal}}</i>
+  In: <i>{{$journal}}</i>.
 {{ end }}
 
-{{ with .date }} ({{. | time.Format ":date_medium"}}). {{ end }}
+{{ with .date }} {{. | time.Format ":date_medium"}}. {{ end }}
 
 {{ $doi := default .doi .DOI }}
 {{ with $doi }}
-  <a href="https://www.doi.org/{{ . }}">{{ . }}</a>.
+  <a class="doi" href="https://www.doi.org/{{ . }}">{{ . }}</a>.
 {{ end }}
 </p>

@@ -1,6 +1,8 @@
 ---
 journal: Logical Methods in Computer Science
 title: Displayed Categories
+doi: 10.23638/LMCS-15%281%3A20%292019
+date: 2019-03-05
 author:
 - Benedick Ahrens
 - Peter LeFanu Lumsdaine
