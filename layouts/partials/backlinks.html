@@ -64,9 +64,23 @@
     document.addEventListener('DOMContentLoaded', () => {
       const highlightIn = (containerSelector, highlightSelector) => {
         document.querySelectorAll(containerSelector).forEach((nav) => {
-          nav.querySelectorAll(highlightSelector).forEach((el) => {
-            if (el.getAttribute('data-slug') == "{{$slug}}") {
-              el.classList.add('highlighted')
+          nav.querySelectorAll(`${highlightSelector}[data-slug="{{$slug}}"]`).forEach((el) => {
+            el.classList.add('highlighted')
+          })
+        })
+      }
+
+      const jumpToContextIn = (containerSelector, targetSelector) => {
+        document.querySelectorAll(`${containerSelector}>section>details`).forEach((details) => {
+          details.addEventListener('toggle', () => {
+            if (details.hasAttribute('open')) {
+              const target = details.querySelector(`${targetSelector}[data-slug="{{$slug}}"]`)
+              if (target) {
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                })
+              }
             }
           })
         })
@@ -74,7 +88,8 @@
 
       highlightIn('nav#context', 'section')
       highlightIn('nav#backlinks', 'a')
-      highlightIn('nav#related', 'a')
+      jumpToContextIn('nav#backlinks', ':scope > .post-content > p a')
+      jumpToContextIn('nav#context', 'section')
     })
   </script>
 
