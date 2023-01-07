@@ -4,7 +4,7 @@ author: Jonathan Sterling
 date: 2023-01-07T14:42:26+01:00
 ---
 
-Despite attempts to support the structured representation of high-level mathematical idioms via [Content MathML](https://www.w3.org/TR/MathML/chapter4.html), MathML is not really suitable as an authoring language today. First of all, the content dictionaries (collections of basic elements) of Content MathML are chosen to pertain to the needs of grade-school and secondary-school mathematics and not at all to the needs of professional mathematics:
+Despite attempts to support the structured representation of high-level mathematical idioms via [Content MathML](https://www.w3.org/TR/MathML/chapter4.html), MathML is not really used as an authoring language today. First of all, the content dictionaries (collections of basic elements) of Content MathML are chosen to pertain to the needs of grade-school and secondary-school mathematics and not at all to the needs of professional mathematics:
 
 > The base set of content elements is chosen to be adequate for simple coding of most of the formulas used from kindergarten to the end of high school in the United States, and probably beyond through the first two years of college, that is up to A-Level or Baccalaureate level in Europe.
 

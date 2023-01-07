@@ -13,7 +13,7 @@ The situation for *hypertext* mathematical tools is somewhat less advanced than 
 ![](tfmt-000J?collapse=true)
 ![](tfmt-000K?collapse=true)
 
-Both [KaTeX](tfmt-000J) and [MathJax](tfmt-000K) have the benefit that diagrams created using them will respect the ambient macro package with which the tool has been configured; therefore, if one looks past the rudimentary nature of the support for commutative diagrams, our main requirement is indeed satisfied. Another tool worth discussing is [quiver](tfmt-000I):
+Both [KaTeX](tfmt-000J) and [MathJax](tfmt-000K) have the benefit that diagrams created using them will respect the ambient macro package with which the tool has been configured; therefore, if one looks past the rudimentary nature of the support for commutative diagrams, our main requirement is indeed satisfied. Another tool worth discussing is [quiver](tfmt-000I).
 
 ![](tfmt-000I?collapse=true)
 
