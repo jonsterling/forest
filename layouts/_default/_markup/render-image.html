@@ -11,7 +11,7 @@
 {{ $splice := eq ($query.Get "splice") "true" }}
 {{ $collapse := or $page.Params.collapseChildren (eq ($query.Get "collapse") "true") }}
 
-{{- partial "hierarchy.html"
+{{- partial "tree.html"
     (dict "context" $transcludedPage
           "collapse" $collapse
           "splice" $splice) }}
