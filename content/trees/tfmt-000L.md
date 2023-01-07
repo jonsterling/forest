@@ -1,5 +1,5 @@
 ---
-title: Generating images statically using LaTeX
+title: generating images statically using LaTeX
 author: Jonathan Sterling
 date: 2023-01-07T13:47:18+01:00
 ---
