@@ -4,7 +4,7 @@ author: Jonathan Sterling
 date: 2023-01-07T12:58:19+01:00
 ---
 
-In $\LaTeX$, macros are organized into packages that are then globally imported into a single document. Because a $\LaTeX$ document comprise just one project, and any transclusions (via `\input` or `\include`) are of components to that one project, this model is adequate --- although experienced users of LaTeX are nonetheless all to aware of the difficulties of namespacing macro commands when interacting with multiple packages or document classes.
+In $\LaTeX$, macros are organized into packages that are then globally imported into a single document. Because a $\LaTeX$ document comprises just one project and thus any transclusions (via `\input` or `\include`) are of components local to that one project, this model is adequate --- although experienced users of $\LaTeX$ are nonetheless all too aware of the difficulties of namespacing macro commands when interacting with multiple packages or document classes.
 
 **The requirements for a [tool](tfmt-0002) that aims to bring together multiple projects over a very long period of time are somewhat different:** many distinct packages of notation will be used across the body of work, and it is not possible to fix a single global notation package.
 
