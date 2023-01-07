@@ -1,7 +1,7 @@
 ---
 title: "Handbook of Categorical Algebra 2: Categories and Structures"
 author:
-- Borceux, Francis
+- Francis Borceux
 publisher: Cambridge University Press
 ---
 
