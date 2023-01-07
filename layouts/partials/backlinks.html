@@ -45,19 +45,37 @@
   {{ end }}
 
   {{ with $upwdPages }}
-  {{ partial "links_section" (dict "pages" . "title" "Context")}}
+  {{ partial "links_section" (dict "pages" . "title" "Context" "id" "context")}}
   {{ end }}
 
   {{ with $fwdPages }}
-  {{ partial "links_section" (dict "pages" . "title" "Related")}}
+  {{ partial "links_section" (dict "pages" . "title" "Related" "id" "related")}}
   {{ end }}
 
   {{ with $bwdPages }}
-  {{ partial "links_section" (dict "pages" . "title" "Backlinks")}}
+  {{ partial "links_section" (dict "pages" . "title" "Backlinks" "id" "backlinks")}}
   {{ end }}
 
   {{ with $refPages }}
-  {{ partial "links_section" (dict "pages" . "title" "References")}}
+  {{ partial "links_section" (dict "pages" . "title" "id" "references" "References")}}
   {{ end }}
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      const highlightIn = (containerSelector, highlightSelector) => {
+        document.querySelectorAll(containerSelector).forEach((nav) => {
+          nav.querySelectorAll(highlightSelector).forEach((el) => {
+            if (el.getAttribute('data-slug') == "{{$slug}}") {
+              el.classList.add('highlighted')
+            }
+          })
+        })
+      }
+
+      highlightIn('nav#context', 'section')
+      highlightIn('nav#backlinks', 'a')
+      highlightIn('nav#related', 'a')
+    })
+  </script>
 
 {{ end }}
