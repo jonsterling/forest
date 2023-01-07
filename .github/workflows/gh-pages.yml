@@ -43,10 +43,10 @@ jobs:
         run: latex --version
 
       - name: Install Forester
-        run: go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.2.1
+        run: go install git.sr.ht/~jonsterling/forester/cmd/forester@v0.2.2
 
       - name: Build SVGs and dependency graph using Forester
-        run: ~/go/bin/forester -active-fence render-latex -input content/trees/
+        run: ~/go/bin/forester -active-fence render-latex -input-dir content/trees/
 
       - name: Build with Hugo
         run: hugo --minify

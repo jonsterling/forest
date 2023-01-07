@@ -8,7 +8,7 @@ Building:
 
 ```bash
 # Convert LaTeX blocks to SVG and compute dependency graph
-forester -active-fence render-latex -input content/trees/
+forester -active-fence render-latex -input-dir content/trees/
 
 # Run Hugo to build and serve the static site
 hugo server
