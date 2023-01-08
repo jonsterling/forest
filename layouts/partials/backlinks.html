@@ -100,20 +100,20 @@
 <section>
     <h4>Macros Defined</h4>
     {{ range . }}
-      <nav id="macros">
-        <code>
-          {{ with .include }}
-          {{ $includedSlug := . }}
-          {{ with site.GetPage . }}
-            include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a>
-          {{ end }}
-          {{ else }}
-            define {{.name}}[{{.args}}]
-            :=
-            {{.body}}
-          {{ end }}
-        </pre>
-      </nav>
+      <p>
+        {{ with .include }}
+        {{ $includedSlug := . }}
+        {{ with site.GetPage . }}
+          <code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code>
+        {{ end }}
+        {{ else }}
+          <code>
+          define {{.name}}[{{.args}}]
+          :=
+          {{.body}}
+          </code>
+        {{ end }}
+      </p>
     {{ end }}
 </section>
 {{ end }}
