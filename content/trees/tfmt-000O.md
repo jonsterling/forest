@@ -2,6 +2,7 @@
 title: MathML is not an authoring language
 author: Jonathan Sterling
 date: 2023-01-07T14:42:26+01:00
+lastmod: 2023-01-08
 ---
 
 Despite some preliminary support for structured representation of high-level mathematical idioms via [Content MathML](https://www.w3.org/TR/MathML/chapter4.html), MathML is not intended to be an authoring language: it is a target language for other tools. Moreover, the content dictionaries (collections of basic elements) of Content MathML are chosen to pertain to the needs of grade-school and secondary-school mathematics and not at all to the needs of professional mathematics:
