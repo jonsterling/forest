@@ -1,6 +1,7 @@
 ---
 taxon: Lemma
-macrolib: topos
+macros:
+- include: frct-001C
 packages: jon-tikz
 title: locally small externalization
 ---

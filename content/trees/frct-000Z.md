@@ -1,6 +1,7 @@
 ---
 title: the internalization of a small fibration
-macrolib: topos
+macros:
+- include: base-macros
 lastmod: 2023-01-08
 ---
 

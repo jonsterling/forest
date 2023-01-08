@@ -9,13 +9,8 @@
 {{ $shouldExpand := not $shouldCollapse }}
 {{ $splice := .splice }}
 
-{{ $macros := dict }}
-{{ with $macrolib }}
-  {{ $macrolibFile := print . ".katex.json" }}
-  {{ with resources.Get $macrolibFile }}
-    {{ $macros = .Content | transform.Unmarshal }}
-  {{ end }}
-{{ end }}
+{{ $macrolibFile := print $slug ".katex" }}
+{{ $macros := index $site.Data $macrolibFile }}
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", () => {

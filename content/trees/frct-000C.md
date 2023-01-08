@@ -1,6 +1,7 @@
 ---
 title: relationship to Street's fibrations
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 In classical category theory, cartesian fibrations are defined by

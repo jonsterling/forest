@@ -1,6 +1,7 @@
 ---
 title: Displayed categories from functors
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

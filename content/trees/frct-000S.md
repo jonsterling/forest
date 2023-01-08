@@ -1,6 +1,7 @@
 ---
 title: exegesis of opposite categories
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 The construction of [fibered opposite categories](frct-001Z) does appear quite

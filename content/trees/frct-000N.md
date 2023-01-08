@@ -1,6 +1,7 @@
 ---
 title: small fibrations and internal categories
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 The purpose of this section is to develop the relationship between *internal

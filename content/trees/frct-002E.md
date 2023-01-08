@@ -1,6 +1,7 @@
 ---
 title: separators for cartesian fibrations
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $E$ be an ordinary category. In general,

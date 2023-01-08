@@ -1,6 +1,7 @@
 ---
 title: Bénabou's notion of definability
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 We will now construe [](frct-002Q) as the instantiation at the fundamental

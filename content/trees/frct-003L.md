@@ -1,6 +1,7 @@
 ---
 taxon: Intuition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 The intuition of [](frct-002G) is that to compare two morphisms $f,g:x\to y\in E$,

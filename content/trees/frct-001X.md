@@ -1,7 +1,8 @@
 ---
 title: the fundamental self-indexing
 taxon: Construction
-macrolib: topos
+macros:
+- include: base-macros
 packages:
   jon-tikz
 ---

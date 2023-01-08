@@ -1,7 +1,8 @@
 ---
 taxon: Definition
 title: generic object
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $E$ be a cartesian fibration over $B$; a *generic object* for $E$ is defined to be an object $\bar{u}\in \TotCat{E}$  such that for any $\bar{z}\in \TotCat{E}$ there exists a cartesian map $\bar{z}\to \bar{u}$.

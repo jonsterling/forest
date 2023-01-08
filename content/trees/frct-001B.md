@@ -1,7 +1,8 @@
 ---
 title: locally small fibration
 taxon: Definition
-macrolib: topos
+macros:
+- include: frct-001C
 ---
 
 A cartesian fibration $E$ over $B$ is *locally small* if and only if for

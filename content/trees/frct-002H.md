@@ -1,7 +1,8 @@
 ---
 title: small separator for a fibration
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $E$ be a cartesian fibration over $B$ such that $B$ has

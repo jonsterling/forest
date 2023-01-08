@@ -1,6 +1,7 @@
 ---
 taxon: Remark
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $\mathscr{M}$ be a model of ETCS; and let $\mathfrak{C}$ be a

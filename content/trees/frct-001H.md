@@ -1,7 +1,8 @@
 ---
 taxon: Lemma
 title: generalized pullback lemma
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

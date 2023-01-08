@@ -1,7 +1,8 @@
 ---
 taxon: Lemma
 title: characterization of definable classes of families
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $\mathfrak{C}\subseteq\mathscr{M}$ be a class of sets; then $\bar{\mathfrak{C}}$ is a definable class of families of sets if and only if $\mathfrak{C}$ is a definable class of sets.

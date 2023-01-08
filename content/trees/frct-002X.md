@@ -1,7 +1,8 @@
 ---
 taxon: Example
 title: revisiting the fundamental self-indexing
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Recall that the fundamental self-indexing $\SelfIx{B}$ {%pref 001X %} of a category $B$

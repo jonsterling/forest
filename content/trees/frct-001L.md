@@ -1,6 +1,8 @@
 ---
 taxon: Exercise
-macrolib: topos
+macros:
+- include: base-macros
+- include: frct-001I
 ---
 
 Prove that a displayed category $E$ is a cartesian fibration over $B$

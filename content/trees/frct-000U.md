@@ -1,6 +1,7 @@
 ---
 title: cartesian lifts in the opposite category
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 The foregoing characterization of cartesian maps in $\OpCat{E}$

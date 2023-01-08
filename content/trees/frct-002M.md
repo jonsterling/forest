@@ -1,7 +1,8 @@
 ---
 taxon: Construction
 title: closure of a class of sets under base change
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $\mathfrak{C}\subseteq\mathscr{M}$ be a class of sets; there exists a class $\bar{\mathfrak{C}}$ of *families*

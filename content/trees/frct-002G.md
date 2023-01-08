@@ -1,7 +1,8 @@
 ---
 title: separating family for a category
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Given an ordinary category $E$, a set-indexed family

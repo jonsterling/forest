@@ -1,6 +1,7 @@
 ---
 title: a more abstract formulation of locally small family fibrations
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

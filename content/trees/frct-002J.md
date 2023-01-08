@@ -1,6 +1,7 @@
 ---
 title: full subfibrations and figure shapes
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 In a category $E$, a morphism $f : x\to y$ can be thought of as a "figure" of shape $x$ drawn in $y$. For instance, if $x$ is the point (i.e. $x=\ObjTerm{E}$) then a morphism $x\to y$ is a "point" of the "space" $y$. We refer to $x$ as the figure-shape in any such scenario. The perspective of morphisms as figures is developed in more detail by Lawvere and Schanuel.

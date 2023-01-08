@@ -1,7 +1,8 @@
 ---
 title: internal category
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $E$ be a category with finite limits; then an _internal category_

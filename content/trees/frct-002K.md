@@ -1,7 +1,8 @@
 ---
 title: figures and figure shapes in the full subfibration
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $E$ be a cartesian fibration and let $\FullSubfib{\bar{s}}\subseteq E$ be the full subfibration determined by a displayed object $\bar{s}\in E$ as in [](frct-0010). We now develop the following vocabulary:

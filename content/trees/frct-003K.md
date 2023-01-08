@@ -1,5 +1,6 @@
 ---
-macrolib: topos
+macros:
+- include: base-macros
 title: cartesian closure of the meta-category of all categories
 taxon: Remark
 ---

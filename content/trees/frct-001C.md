@@ -1,8 +1,15 @@
 ---
 title: hom candidates
 taxon: Definition
-macrolib: topos
 packages: jon-tikz
+macros:
+- include: base-macros
+- name: DispHom
+  args: 3
+  body: '\overline{\mathbf{hom}}\Sub{#1}(#2,#3)'
+- name: CandHom
+  args: 3
+  body: '\mathbf{H}_{#1}(#2,#3)'
 ---
 
 For any $x\in B$ and displayed objects $u,v\in E\Sub{x}$, we define a *hom

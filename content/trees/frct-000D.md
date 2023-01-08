@@ -1,6 +1,7 @@
 ---
 title: iteration and pushforward
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 It also makes sense to speak of categories displayed over other displayed

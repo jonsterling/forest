@@ -1,7 +1,8 @@
 ---
 taxon: Lemma
 title: hypocartesian = cartesian in a cartesian fibration
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

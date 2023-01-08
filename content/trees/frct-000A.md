@@ -1,7 +1,8 @@
 ---
 title: The total category and its projection
 date: 2022
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Note that any displayed category $E$ over $B$ can be viewed as an undisplayed

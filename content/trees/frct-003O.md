@@ -1,6 +1,7 @@
 ---
 title: internal categories
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 We have already seen in [](frct-000G) and [](frct-000L) that smallness in the

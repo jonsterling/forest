@@ -1,6 +1,7 @@
 ---
 taxon: Exercise
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Suppose that $B$ is an internal category in $\mathbf{Set}$, i.e.

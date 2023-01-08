@@ -1,6 +1,7 @@
 ---
 taxon: Lemma
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 title: globally small externalization
 ---

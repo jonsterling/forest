@@ -1,7 +1,8 @@
 ---
 title: definable class in a fibration
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

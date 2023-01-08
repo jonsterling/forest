@@ -1,6 +1,7 @@
 ---
 title: definable classes à la Bénabou
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 A class of sets $\mathfrak{C}$ is sometimes said to be *formally

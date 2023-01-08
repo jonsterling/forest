@@ -1,7 +1,8 @@
 ---
 taxon: Definition
 title: meta-category
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 A *meta-category* $\mathfrak{C}$ is defined by explaining what

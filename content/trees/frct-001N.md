@@ -1,6 +1,7 @@
 ---
 taxon: Exercise
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Prove that the [total category](frct-000A) of $\overline{B}$ is the

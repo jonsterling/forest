@@ -1,6 +1,7 @@
 ---
 title: cartesian maps in the opposite category
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 There is a simple characterization of cartesian maps in $\OpCat{E}$.

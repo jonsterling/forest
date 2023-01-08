@@ -1,7 +1,8 @@
 ---
 taxon: Lemma
 title: equivalence with Grothendieck's fibrations
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

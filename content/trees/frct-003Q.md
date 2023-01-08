@@ -1,7 +1,8 @@
 ---
 taxon: Construction
 title: the internal category associated to a displayed object
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

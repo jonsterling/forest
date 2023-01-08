@@ -1,6 +1,7 @@
 ---
 title: foundational assumptions
-macrolib: topos
+macros:
+- include: base-macros
 ---
 ![](frct-001F)
 ![](frct-003J)

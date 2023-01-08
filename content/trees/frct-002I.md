@@ -1,7 +1,8 @@
 ---
 title: agreement on a class of figure shapes
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 Let $\bar{s}$ be a displayed object in a cartesian fibration $E$ over $B$.

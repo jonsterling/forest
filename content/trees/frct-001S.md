@@ -1,7 +1,8 @@
 ---
 taxon: Theorem
 title: characterization of the externalization
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

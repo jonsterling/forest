@@ -1,5 +1,6 @@
 ---
-macrolib: topos
+macros:
+- include: base-macros
 taxon: Exercise
 ---
 

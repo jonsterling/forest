@@ -1,7 +1,8 @@
 ---
 taxon: Theorem
 title: characterization of right fibrations
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

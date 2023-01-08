@@ -1,6 +1,7 @@
 ---
 title: "warmup: locally small family fibrations"
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 An ordinary category $E$ is called *locally small* when for any $x,y\in E$ the

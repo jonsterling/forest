@@ -1,7 +1,11 @@
 ---
 title: total opposite category
 taxon: Construction
-macrolib: topos
+macros:
+- include: base-macros
+- name: TotOpCat
+  args: 1
+  body: '#1\Sup{\tilde{\mathsf{o}}}'
 ---
 
 Let $E$ be displayed over $B$; we define its *total opposite* $\TotOpCat{E}$

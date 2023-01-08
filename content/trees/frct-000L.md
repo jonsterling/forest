@@ -1,7 +1,8 @@
 ---
 title: globally small categories
 taxon: Theorem
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

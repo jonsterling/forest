@@ -1,7 +1,8 @@
 ---
 title: hypocartesian morphisms
 taxon: Definition
-macrolib: topos
+macros:
+- include: base-macros
 packages: jon-tikz
 ---
 

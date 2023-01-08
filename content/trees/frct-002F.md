@@ -1,7 +1,8 @@
 ---
 title: well-pointedness of the category of sets
 taxon: Example
-macrolib: topos
+macros:
+- include: base-macros
 ---
 
 In the category of sets, to compare two morphisms it is enough to check

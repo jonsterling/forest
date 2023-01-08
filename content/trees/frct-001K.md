@@ -1,6 +1,8 @@
 ---
 taxon: Exercise
-macrolib: topos
+macros:
+- include: base-macros
+- include: frct-001I
 ---
 
 Let $E$ be displayed over $B$, and let $f:x\to y\in B$. Prove that a
