@@ -10,7 +10,7 @@ Despite some preliminary support for structured representation of high-level mat
 
 Nonetheless, it seems that the goal was for the content dictionaries of Content MathML to be extended by the individual "communities of practice" to meet their specific needs:
 
->  Hence, it is not in general possible for a user agent to automatically determine the proper interpretation for definitionURL values without further information about the context and community of practice in which the MathML instance occurs.
+>  Hence, it is not in general possible for a user agent to automatically determine the proper interpretation for `definitionURL` values without further information about the context and community of practice in which the MathML instance occurs.
 
 > However, in contexts where highly precise semantics are required (e.g. communication between computer algebra systems, within formal systems such as theorem provers, etc.) it is the responsibility of the relevant community of practice to verify, extend or replace definitions provided by OpenMath CDs as appropriate.
 
