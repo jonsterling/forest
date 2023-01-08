@@ -4,7 +4,7 @@ author: Jonathan Sterling
 date: 2022-12-29T13:59:02+01:00
 ---
 
-Many document markup languages, including $\LaTeX$ and HTML, use sectioning commands that evince an *implicit* hierarchical structure: for instance, consider the following HTML code:
+Many document markup languages, including {#\LaTeX#} and HTML, use sectioning commands that evince an *implicit* hierarchical structure: for instance, consider the following HTML code:
 
 ```html
 <h1>Foo</h1>

@@ -1,0 +1,7 @@
+{{- $slug := .Page.File.ContentBaseName -}}
+{{- $macrolibFile := print $slug ".katex" -}}
+{{- $macros := index site.Data $macrolibFile | jsonify -}}
+<div class="forester-math display" data-code="{{.Inner}}" data-macros="{{$macros}}">
+  {{- .Inner -}}
+</div>
+{{- "" -}}

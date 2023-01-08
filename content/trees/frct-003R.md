@@ -6,4 +6,4 @@ macros:
 title: square brackets for subscripts
 ---
 
-When we have too many subscripts, we will write $E[x]$ instead of $E\Sub{x}$.
+When we have too many subscripts, we will write {#E[x]#} instead of {#E\Sub{x}#}.

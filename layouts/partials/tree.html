@@ -12,20 +12,22 @@
 {{ $macrolibFile := print $slug ".katex" }}
 {{ $macros := index $site.Data $macrolibFile }}
 
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", () => {
-    renderMathContentForSlug({{$macros}}, {{$slug}})
-  })
-</script>
+{{ $content := "" }}
+{{ with .context }}
+{{ $content = .RawContent
+  | replaceRE `{##` `{{<display-math>}}`
+  | replaceRE `##}` `{{</display-math>}}`
+  | replaceRE `{#` `{{<inline-math>}}`
+  | replaceRE `#}` `{{</inline-math>}}`
+  | .RenderString }}
+{{ end }}
 
 {{ if $splice }}
 <section class="block math-barrier splice">
   {{- with .context -}}
-    {{- if .Content }}
     <div class="post-content" data-slug="{{$slug}}">
-      {{.Content}}
+      {{$content}}
     </div>
-    {{- end }}
   {{- end -}}
   </details>
 </section>
@@ -58,7 +60,7 @@
 
     {{- with .context -}}
       <div class="post-content" data-slug="{{$slug}}">
-        {{.Content}}
+        {{$content}}
       </div>
     {{- end -}}
   </details>

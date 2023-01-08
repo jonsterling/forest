@@ -8,7 +8,7 @@ A basic requirement of [tools for mathematical thought](tfmt-0002) is to support
 
 ![](tfmt-000P)
 
-The situation for *hypertext* mathematical tools is somewhat less advanced than that of $\LaTeX$ and PFG/TikZ, but there are several options which we discuss below.
+The situation for *hypertext* mathematical tools is somewhat less advanced than that of {#\LaTeX#} and PFG/TikZ, but there are several options which we discuss below.
 
 ![](tfmt-000J?collapse=true)
 ![](tfmt-000K?collapse=true)
@@ -17,7 +17,7 @@ Both [KaTeX](tfmt-000J) and [MathJax](tfmt-000K) have the benefit that diagrams 
 
 ![](tfmt-000I?collapse=true)
 
-Because of the currently [inadequate support of quiver](tfmt-000I) for embedding diagrams in hypertext settings, we cannot consider it any further. There is a final option that turns out to be the most used in practice: generating SVG images statically from embedded $\LaTeX$ code.
+Because of the currently [inadequate support of quiver](tfmt-000I) for embedding diagrams in hypertext settings, we cannot consider it any further. There is a final option that turns out to be the most used in practice: generating SVG images statically from embedded {#\LaTeX#} code.
 
 ![](tfmt-000L?collapse=true)
 

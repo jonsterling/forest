@@ -6,10 +6,10 @@ macros:
 packages: jon-tikz
 ---
 
-Let $\bar{f} : \bar{x}\to\Sub{f}\bar{y}$, and suppose that
-$\bar{g} : \bar{y}\to\Sub{g}\bar{z}$ is cartesian over $g$. Then
-$\bar{f};\bar{g}$ is cartesian over $f;g$ if and only if $\bar{f}$ is cartesian
-over $f$.
+Let {#\bar{f} : \bar{x}\to\Sub{f}\bar{y}#}, and suppose that
+{#\bar{g} : \bar{y}\to\Sub{g}\bar{z}#} is cartesian over {#g#}. Then
+{#\bar{f};\bar{g}#} is cartesian over {#f;g#} if and only if {#\bar{f}#} is cartesian
+over {#f#}.
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
@@ -33,7 +33,7 @@ over $f$.
 ```
 
 {{%proof%}}
-Suppose first that $\bar{f}$ is cartesian. To see that $\bar{f};\bar{g}$
+Suppose first that {#\bar{f}#} is cartesian. To see that {#\bar{f};\bar{g}#}
 is cartesian, we must construct a unique factorization as follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
@@ -65,13 +65,13 @@ is cartesian, we must construct a unique factorization as follows:
     \draw[->,exists] (u') to (nw);
   \end{tikzpicture}
 ```
-Because $\bar{g}$ is cartesian, we can factor $\bar{h} = i;\bar{g}$ for a unique
-$i:\bar{u}\to\Sub{m;f}\bar{y}$. Then, because $\bar{f}$ is cartesian, we can further
-factor $i = j;\bar{f}$ for a unique $j:\bar{u}\to\Sub{m}\bar{x}$. We conclude that
-there is a unique $j:\bar{u}\to\Sub{m}\bar{x}$ for which
-$\bar{h} = j;\bar{f};\bar{g}$, as required.
+Because {#\bar{g}#} is cartesian, we can factor {#\bar{h} = i;\bar{g}#} for a unique
+{#i:\bar{u}\to\Sub{m;f}\bar{y}#}. Then, because {#\bar{f}#} is cartesian, we can further
+factor {#i = j;\bar{f}#} for a unique {#j:\bar{u}\to\Sub{m}\bar{x}#}. We conclude that
+there is a unique {#j:\bar{u}\to\Sub{m}\bar{x}#} for which
+{#\bar{h} = j;\bar{f};\bar{g}#}, as required.
 
-Conversely, suppose that $\bar{f};\bar{g}$ is cartesian. To see that $\bar{f}$ is
+Conversely, suppose that {#\bar{f};\bar{g}#} is cartesian. To see that {#\bar{f}#} is
 cartesian, we must construct a unique factorization as follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
@@ -102,12 +102,12 @@ cartesian, we must construct a unique factorization as follows:
     \draw[->,exists] (u') to (nw);
   \end{tikzpicture}
 ```
-Because $\bar{f};\bar{g}$ is cartesian, we can factor
-$\bar{h};\bar{g} = i;\bar{f};\bar{g}$ for a unique $i:\bar{u}\to\Sub{m}\bar{x}$.
-On the other hand, because $\bar{g}$ is cartesian, there is a unique
-$j:\bar{u}\to\Sub{m;f}\bar{y}$ for which $\bar{h};\bar{g} = j;\bar{g}$; as both
-$\bar{h}$ and $i;\bar{f}$ satisfy this condition, we conclude $\bar{h}=i;\bar{f}$.
-Therefore, there is a unique $i:\bar{u}\to\Sub{m}\bar{x}$ for which
-$\bar{h} = i;\bar{f}$, as required.
+Because {#\bar{f};\bar{g}#} is cartesian, we can factor
+{#\bar{h};\bar{g} = i;\bar{f};\bar{g}#} for a unique {#i:\bar{u}\to\Sub{m}\bar{x}#}.
+On the other hand, because {#\bar{g}#} is cartesian, there is a unique
+{#j:\bar{u}\to\Sub{m;f}\bar{y}#} for which {#\bar{h};\bar{g} = j;\bar{g}#}; as both
+{#\bar{h}#} and {#i;\bar{f}#} satisfy this condition, we conclude {#\bar{h}=i;\bar{f}#}.
+Therefore, there is a unique {#i:\bar{u}\to\Sub{m}\bar{x}#} for which
+{#\bar{h} = i;\bar{f}#}, as required.
 
 {{%/proof%}}

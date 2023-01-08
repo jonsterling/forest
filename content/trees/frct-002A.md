@@ -6,10 +6,10 @@ macros:
 packages: jon-tikz
 ---
 
-Let $E$ be displayed over $B$, and let $f:x\to y \in B$; a morphism
-$\bar{f}:\bar{x}\to\Sub{f} \bar{y}$ in $E$ is called *hypocartesian* over $f$ when
-for any $\bar{u}\in E\Sub{x}$ and $\bar{h}:\bar{u}\to\Sub{f} \bar{y}$ there exists a
-unique $i : \bar{u}\to\Sub{\Idn{x}} \bar{x}$ with $i;\bar{f} = \bar{h}$ as follows:
+Let {#E#} be displayed over {#B#}, and let {#f:x\to y \in B#}; a morphism
+{#\bar{f}:\bar{x}\to\Sub{f} \bar{y}#} in {#E#} is called *hypocartesian* over {#f#} when
+for any {#\bar{u}\in E\Sub{x}#} and {#\bar{h}:\bar{u}\to\Sub{f} \bar{y}#} there exists a
+unique {#i : \bar{u}\to\Sub{\Idn{x}} \bar{x}#} with {#i;\bar{f} = \bar{h}#} as follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{

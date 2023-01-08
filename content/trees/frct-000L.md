@@ -6,13 +6,13 @@ macros:
 packages: jon-tikz
 ---
 
-An ordinary category $C$ is equivalent to a globally small category if and only if the fibration $\FAM{C}$ has a generic object.
+An ordinary category {#C#} is equivalent to a globally small category if and only if the fibration {#\FAM{C}#} has a generic object.
 
 {{%proof%}}
-To see that this is the case, suppose that $C$ has a set of objects. Then
-$C\in\SET$ and we define $\lfloor{C}\rfloor$ to be the displayed object
-$\brc{x}\Sub{x\in C}\in \FAM{C}[C]$. Fixing $I\in \SET$ and $z\in C^I$, we
-consider the cartesian map displayed over $z : I \to C$:
+To see that this is the case, suppose that {#C#} has a set of objects. Then
+{#C\in\SET#} and we define {#\lfloor{C}\rfloor#} to be the displayed object
+{#\brc{x}\Sub{x\in C}\in \FAM{C}[C]#}. Fixing {#I\in \SET#} and {#z\in C^I#}, we
+consider the cartesian map displayed over {#z : I \to C#}:
 ```render-latex
 \DiagramSquare{
   height = 1.5cm,
@@ -27,16 +27,16 @@ consider the cartesian map displayed over $z : I \to C$:
 }
 ```
 
-Conversely assume that $\FAM{C}$ has a generic object $\bar{u}\in\FAM{C}[U]$
-for some $U\in \SET$; then we may equip $U$ with the structure of a globally
-small category such that $U$ is equivalent to $C$, using a construction that is similar to our implementation of the opposite fibration ([](frct-000Q)). In particular we define a
-morphism $x\to y\in U$ to be given by the following data:
+Conversely assume that {#\FAM{C}#} has a generic object {#\bar{u}\in\FAM{C}[U]#}
+for some {#U\in \SET#}; then we may equip {#U#} with the structure of a globally
+small category such that {#U#} is equivalent to {#C#}, using a construction that is similar to our implementation of the opposite fibration ([](frct-000Q)). In particular we define a
+morphism {#x\to y\in U#} to be given by the following data:
 
-1. a cartesian map $a\to\Sub{x} \bar{u}$ over $x : 1\to U$,
-2. a cartesian map $b\to\Sub{y} \bar{u}$ over $y : 1\to U$,
-3. and a vertical map $h:a\to b$ in $\FAM{C}[1]\simeq C$,
+1. a cartesian map {#a\to\Sub{x} \bar{u}#} over {#x : 1\to U#},
+2. a cartesian map {#b\to\Sub{y} \bar{u}#} over {#y : 1\to U#},
+3. and a vertical map {#h:a\to b#} in {#\FAM{C}[1]\simeq C#},
 
-such that $(a\Sub{1},b\Sub{1},h\Sub{1})$ is identified with $(a\Sub{2},b\Sub{2},h\Sub{2})$ when $h_1$ and $h_2$ are equal modulo the (unique) vertical isomorphisms between the cartesian lifts in the sense depicted below:
+such that {#(a\Sub{1},b\Sub{1},h\Sub{1})#} is identified with {#(a\Sub{2},b\Sub{2},h\Sub{2})#} when {#h_1#} and {#h_2#} are equal modulo the (unique) vertical isomorphisms between the cartesian lifts in the sense depicted below:
 
 ```render-latex
 \begin{tikzpicture}[diagram]
@@ -57,8 +57,8 @@ such that $(a\Sub{1},b\Sub{1},h\Sub{1})$ is identified with $(a\Sub{2},b\Sub{2},
 \end{tikzpicture}
 ```
 
-Remember that a cartesian map $a\to\Sub{x}\bar{u}$ is standing for a *choice*
-of an object of $C$ encoded by $x\in U$. Because such choices are unique only
+Remember that a cartesian map {#a\to\Sub{x}\bar{u}#} is standing for a *choice*
+of an object of {#C#} encoded by {#x\in U#}. Because such choices are unique only
 up to isomorphism, we must include them explicitly in the data.
 
 {{%/proof%}}

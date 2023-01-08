@@ -16,7 +16,30 @@
 {{ $forestScripts := resources.Get "/js/forest.js" }}
 
 <script defer type="text/javascript" src={{$forestScripts.RelPermalink}}></script>
-<script>
+<script async>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    var observer = new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        if (entry.intersectionRatio > 0) {
+          const macros = JSON.parse(entry.target.getAttribute('data-macros')) || {}
+          const code = entry.target.getAttribute('data-code')
+          observer.unobserve(entry.target)
+          katex.render(code, entry.target, {
+            throwOnError: false,
+            macros: macros,
+            displayMode: entry.target.classList.contains('display')
+          })
+        }
+      }
+    }, {root: document.documentElement});
+
+    document.querySelectorAll('.forester-math').forEach((span) => {
+      observer.observe(span)
+    })
+
+  })
+
   document.addEventListener('DOMContentLoaded', () => {
     const ninja = document.querySelector('ninja-keys')
     ninja.data = []

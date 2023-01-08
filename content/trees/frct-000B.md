@@ -5,15 +5,15 @@ macros:
 packages: jon-tikz
 ---
 
-In many cases, one starts with a functor $P:E\to B$; if it were meaningful to
+In many cases, one starts with a functor {#P:E\to B#}; if it were meaningful to
 speak of *equality* of objects in an arbitrary category then there would be an
-obvious construction of a displayed category $P\Sub{\bullet}$ from $P$; we would
-simply set $P\Sub{x}$ to be the collection of objects $u\in E$ such that $Pu=x$. As
+obvious construction of a displayed category {#P\Sub{\bullet}#} from {#P#}; we would
+simply set {#P\Sub{x}#} to be the collection of objects {#u\in E#} such that {#Pu=x#}. As
 it stands there is a more subtle version that will coincide up to categorical
 equivalence with the naïve one in all cases that the latter is meaningful.
 
-1. We define an object of $P\Sub{x}$ to be a pair $(u,\phi\Sub{u})$ where $u\in E$ and
-   $\phi\Sub{u} : Pu\cong x$. It is good to visualize such a pair as a "crooked
+1. We define an object of {#P\Sub{x}#} to be a pair {#(u,\phi\Sub{u})#} where {#u\in E#} and
+   {#\phi\Sub{u} : Pu\cong x#}. It is good to visualize such a pair as a "crooked
    leg" like so:
 ```render-latex
 \begin{tikzpicture}[diagram]
@@ -25,9 +25,9 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 \end{tikzpicture}
 ```
 
-2. A morphism $(u,\phi\Sub{u})\to\Sub{f} (v,\phi\Sub{v})$ over $f : x \to y$ is given by
-   a morphism $h : u\to v$ that lies over $f$ modulo the isomorphisms
-   $\phi\Sub{u},\phi\Sub{v}$ in sense depicted below:
+2. A morphism {#(u,\phi\Sub{u})\to\Sub{f} (v,\phi\Sub{v})#} over {#f : x \to y#} is given by
+   a morphism {#h : u\to v#} that lies over {#f#} modulo the isomorphisms
+   {#\phi\Sub{u},\phi\Sub{v}#} in sense depicted below:
 ````render-latex
 \begin{tikzpicture}[diagram]
 \node (pu) {$Pu$};
@@ -48,7 +48,7 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 
 ![](frct-001U)
 
-We have a functor $\TotCat{P\Sub{\bullet}}\to E$ taking a pair $(x,(u,\phi\Sub{u}))$ to $u$.
+We have a functor {#\TotCat{P\Sub{\bullet}}\to E#} taking a pair {#(x,(u,\phi\Sub{u}))#} to {#u#}.
 
 ![](frct-001V)
 ![](frct-001W)

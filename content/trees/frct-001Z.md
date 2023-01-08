@@ -6,14 +6,14 @@ macros:
 packages: jon-tikz
 ---
 
-Let $E$ be fibered over $B$; we may define the *opposite* fibered category
-$\OpCat{E}$ over $B$ like so:
+Let {#E#} be fibered over {#B#}; we may define the *opposite* fibered category
+{#\OpCat{E}#} over {#B#} like so:
 
-1. An object of $\OpCat{E}\Sub{x}$ is given by an object of $E\Sub{x}$.
+1. An object of {#\OpCat{E}\Sub{x}#} is given by an object of {#E\Sub{x}#}.
 
-2. Given $f : x \to y\in B$, a morphism $\bar{x}\to_f \bar{y}$ in $\OpCat{E}$
-   is given in terms of $E$ by a cartesian map $\bar{y}\Sub{f} : \bar{y}\Sub{x} \to\Sub{f} \bar{y}$ together
-   with a *vertical* map $h : \bar{y}\Sub{x}\to\Sub{\Idn{x}} \bar{y}$ as depicted below:
+2. Given {#f : x \to y\in B#}, a morphism {#\bar{x}\to_f \bar{y}#} in {#\OpCat{E}#}
+   is given in terms of {#E#} by a cartesian map {#\bar{y}\Sub{f} : \bar{y}\Sub{x} \to\Sub{f} \bar{y}#} together
+   with a *vertical* map {#h : \bar{y}\Sub{x}\to\Sub{\Idn{x}} \bar{y}#} as depicted below:
    ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare{
@@ -34,9 +34,9 @@ $\OpCat{E}$ over $B$ like so:
       \draw[double] (x) to (sw);
     \end{tikzpicture}
    ```
-   such that $\brc{\bar{x} \leftarrow \bar{y}\Sub{x}\Sup{1}\to \bar{y}}$ is
-   identified with $\brc{\bar{x}\leftarrow\bar{y}\Sub{x}\Sup{2}\to \bar{y}}$
-   when they agree up to the unique vertical isomorphism $\bar{y}\Sub{x}\Sup{1}\cong\bar{y}\Sub{x}\Sup{2}$
+   such that {#\brc{\bar{x} \leftarrow \bar{y}\Sub{x}\Sup{1}\to \bar{y}}#} is
+   identified with {#\brc{\bar{x}\leftarrow\bar{y}\Sub{x}\Sup{2}\to \bar{y}}#}
+   when they agree up to the unique vertical isomorphism {#\bar{y}\Sub{x}\Sup{1}\cong\bar{y}\Sub{x}\Sup{2}#}
    induced by the universal property of cartesian maps in the sense that the following diagram commutes:
    ```render-latex
    \begin{tikzpicture}[diagram]

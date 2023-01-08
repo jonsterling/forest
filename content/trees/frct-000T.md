@@ -4,5 +4,5 @@ macros:
 - include: base-macros
 ---
 
-There is a simple characterization of cartesian maps in $\OpCat{E}$.
+There is a simple characterization of cartesian maps in {#\OpCat{E}#}.
 ![](frct-0020)

@@ -9,10 +9,10 @@ title: locally small externalization
 The [externalization](frct-001R) is locally small.
 
 {{%proof%}}
-Fix $x\in E$ and $u,v\in
+Fix {#x\in E#} and $u,v\in
 \Extrn{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
-$\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$ of "hom candidates" defined in [](frct-000I).
-First we define $\brk{u,v}$ to be the following pullback in $E$:
+{#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} of "hom candidates" defined in [](frct-000I).
+First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
 ```render-latex
 \DiagramSquare{
   nw/style = pullback,
@@ -29,8 +29,8 @@ First we define $\brk{u,v}$ to be the following pullback in $E$:
 }
 ```
 
-We define $\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \Extrn{C}\Sub{\brk{u,v}}$ to be
-the cartesian lift of $u\in \Extrn{C}\Sub{x}$ along $p:\brk{u,v}\to x$:
+We define {#\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \Extrn{C}\Sub{\brk{u,v}}#} to be
+the cartesian lift of {#u\in \Extrn{C}\Sub{x}#} along {#p:\brk{u,v}\to x#}:
 ```render-latex
 \DiagramSquare{
   height = 1.5cm,
@@ -48,8 +48,8 @@ the cartesian lift of $u\in \Extrn{C}\Sub{x}$ along $p:\brk{u,v}\to x$:
 ```
 
 We need to define a displayed evaluation map
-$\epsilon : \InvImg{\brk{u,v}}u\to\Sub{p} v$; unraveling the definition of a displayed
-morphism in the externalization of $C$, we choose the following diagram:
+{#\epsilon : \InvImg{\brk{u,v}}u\to\Sub{p} v#}; unraveling the definition of a displayed
+morphism in the externalization of {#C#}, we choose the following diagram:
 
 ```render-latex
   \begin{tikzpicture}[diagram]
@@ -76,7 +76,7 @@ morphism in the externalization of $C$, we choose the following diagram:
 
 
 Putting all this together, we assert that the terminal object of
-$\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$ is the following span in $\Extrn{C}$:
+{#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} is the following span in {#\Extrn{C}#}:
 ```render-latex
 \begin{tikzpicture}[diagram]
 \SpliceDiagramSquare<l/>{
@@ -107,7 +107,7 @@ $\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$ is the following span in $\Extrn{C}$
 \end{tikzpicture}
 ```
 
-Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$, according to [](frct-000I) we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
+Fixing another such candidate hom span {#\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#}, according to [](frct-000I) we must exhibit a unique cartesian morphism {#\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}#} making the following diagram commute:
    ```render-latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};
@@ -122,10 +122,10 @@ Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\
    \end{tikzpicture}
    ```
 
-First we note that the evaluation map $\epsilon\Sub{h} : \bar{h}\to v$ amounts
-to an internal morphism $h\to C\Sub{1}$ satisfying the appropriate
-compatibility conditions. Therefore we may define the base $\alpha:h\to \brk{u,v}$ of
-the universal map using the universal property of the pullback that defines $\brk{u,v}$:
+First we note that the evaluation map {#\epsilon\Sub{h} : \bar{h}\to v#} amounts
+to an internal morphism {#h\to C\Sub{1}#} satisfying the appropriate
+compatibility conditions. Therefore we may define the base {#\alpha:h\to \brk{u,v}#} of
+the universal map using the universal property of the pullback that defines {#\brk{u,v}#}:
 ```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare{
@@ -148,11 +148,11 @@ the universal map using the universal property of the pullback that defines $\br
 \end{tikzpicture}
 ```
 
-The morphism $\alpha:h\to \brk{u,v}$ defined above is the *unique* map in $E$
-satisfying the conditions required of the base for $\bar\alpha$; therefore, it
+The morphism {#\alpha:h\to \brk{u,v}#} defined above is the *unique* map in {#E#}
+satisfying the conditions required of the base for {#\bar\alpha#}; therefore, it
 suffices to show that there exists a cartesian morphism
-$\bar\alpha:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u$ since it will be unique if it
-exists. We define $\bar\alpha$ using the universal property of the cartesian lift:
+{#\bar\alpha:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u#} since it will be unique if it
+exists. We define {#\bar\alpha#} using the universal property of the cartesian lift:
 ```render-latex
 \begin{tikzpicture}[diagram]
   \SpliceDiagramSquare<l/>{
@@ -188,7 +188,7 @@ exists. We define $\bar\alpha$ using the universal property of the cartesian lif
 \end{tikzpicture}
 ```
 
-That $\bar{\alpha}:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u$ is cartesian follows from [the generalized pullback lemma for cartesian morphisms](frct-0014): it suffices
-to observe that both $\bar{p}\Sub{h}:\bar{h}\to u$ and its second factor
-$\bar{p}:\InvImg{\brk{u,v}}u\to u$ are cartesian.
+That {#\bar{\alpha}:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u#} is cartesian follows from [the generalized pullback lemma for cartesian morphisms](frct-0014): it suffices
+to observe that both {#\bar{p}\Sub{h}:\bar{h}\to u#} and its second factor
+{#\bar{p}:\InvImg{\brk{u,v}}u\to u#} are cartesian.
 {{%/proof%}}

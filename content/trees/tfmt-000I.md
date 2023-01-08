@@ -8,7 +8,7 @@ The [quiver](https://q.uiver.app/) application is an excellent graphical interfa
 
 One positive aspect of quiver is that it is possible to load it with [your own macro library](tfmt-000F), so that diagrams involving custom notations render correctly in the graphical interface. The downside of the approach here is that the macro library must be located on a publicly accessible URL that can be pasted into the quiver interface.
 
-Quiver also offers excellent support for embedding the resulting diagrams in existing $\LaTeX$ documents: after creating your diagram, you can request a $\LaTeX$ snippet that includes a URL which allows you to resume editing your diagram. For example:
+Quiver also offers excellent support for embedding the resulting diagrams in existing {#\LaTeX#} documents: after creating your diagram, you can request a {#\LaTeX#} snippet that includes a URL which allows you to resume editing your diagram. For example:
 
 ```latex
 % https://q.uiver.app/?q=WzAsMixbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDFdXQ==
@@ -26,4 +26,4 @@ Quiver also offers excellent support for embedding the resulting diagrams in exi
 <iframe class="quiver-embed" src="https://q.uiver.app/?q=WzAsMixbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDFdXQ==&embed" width="304" height="176" style="border-radius: 8px; border: none;"></iframe>
 ```
 
-Therefore, we must conclude that although quiver is an excellent tool for authors of traditional $\LaTeX$ documents, it is not currently a candidate for inclusion in tools for hypertext mathematical authoring.
+Therefore, we must conclude that although quiver is an excellent tool for authors of traditional {#\LaTeX#} documents, it is not currently a candidate for inclusion in tools for hypertext mathematical authoring.
