@@ -39,14 +39,14 @@ candidate* for $u,v$ to be a span $u\leftarrow \bar{h} \rightarrow v$ in $E$ in 
 
 In the above, $h$ should be thought of as a candidate for the "hom object" of $u,v$,
 and $\epsilon\Sub{h}$ should be viewed as the structure of an "evaluation map" for $h$.
-This structure can be rephrased in terms of a displayed category $\CandHom{x}{u}{v}$ over $\Sl{B}{x}$:
+This structure can be rephrased in terms of a displayed category $\CandHom{E\Sub{x}}{u}{v}$ over $\Sl{B}{x}$:
 
-1. Given $h\in \Sl{B}{x}$, an object of $\CandHom{x}{u}{v}\Sub{h}$ is given by a hom candidate
+1. Given $h\in \Sl{B}{x}$, an object of $\CandHom{E\Sub{x}}{u}{v}\Sub{h}$ is given by a hom candidate
    whose apex in the base is $h$ itself. We will write $\bar{h}$ metonymically
    for the entire hom candidate over $h$.
 
-2. Given $\alpha:l\to h\in\Sl{B}{x}$ and hom candidates $\bar{l}\in \CandHom{x}{u}{v}\Sub{l}$ and
-   $\bar{h}\in \CandHom{x}{u}{v}\Sub{h}$, a morphism $\bar{h}\to\Sub{\alpha} \bar{l}$ is given by a
+2. Given $\alpha:l\to h\in\Sl{B}{x}$ and hom candidates $\bar{l}\in \CandHom{E\Sub{x}}{u}{v}\Sub{l}$ and
+   $\bar{h}\in \CandHom{E\Sub{x}}{u}{v}\Sub{h}$, a morphism $\bar{h}\to\Sub{\alpha} \bar{l}$ is given by a
    cartesian morphism $\bar\alpha:\bar{l}\to\Sub{\alpha}\bar{h}$ in $E$ such that the
    following diagram commutes:
    ```render-latex

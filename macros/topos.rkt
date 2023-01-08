@@ -94,6 +94,18 @@
 (define-global (CandHom i u v)
   (bold "H") (Sub i) "(" u "," v ")")
 
+(define-global (Hom E u v)
+  (bold "hom") (Sub E) "(" u "," v ")")
+
+(define-global (DispHom E u v)
+  (overline (bold "hom")) (Sub E) "(" u "," v ")")
+
+(define-local (underline x)
+  @raw{\underline{@x}})
+
+(define-global (Ob E)
+  (bold "ob") (Sub E))
+
 (define-global (brc x)
   @raw{\{ @x \}})
 
@@ -108,6 +120,10 @@
 
 (define-global (FullSubfib u)
   (bold "Full") (prn u))
+
+; the externalization of an internal category
+(define-global (Extrn C)
+  (brk C))
 
 (define-global (tick)
   @raw{'})

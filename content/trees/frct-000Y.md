@@ -9,8 +9,8 @@ The [externalization](frct-001R) is locally small.
 
 {{%proof%}}
 Fix $x\in E$ and $u,v\in
-\brk{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
-$\TotCat{\CandHom{x}{u}{v}}$ of "hom candidates" defined in [](frct-000I).
+\Extrn{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
+$\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$ of "hom candidates" defined in [](frct-000I).
 First we define $\brk{u,v}$ to be the following pullback in $E$:
 ```render-latex
 \DiagramSquare{
@@ -28,8 +28,8 @@ First we define $\brk{u,v}$ to be the following pullback in $E$:
 }
 ```
 
-We define $\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \brk{C}\Sub{\brk{u,v}}$ to be
-the cartesian lift of $u\in \brk{C}\Sub{x}$ along $p:\brk{u,v}\to x$:
+We define $\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \Extrn{C}\Sub{\brk{u,v}}$ to be
+the cartesian lift of $u\in \Extrn{C}\Sub{x}$ along $p:\brk{u,v}\to x$:
 ```render-latex
 \DiagramSquare{
   height = 1.5cm,
@@ -75,7 +75,7 @@ morphism in the externalization of $C$, we choose the following diagram:
 
 
 Putting all this together, we assert that the terminal object of
-$\TotCat{\CandHom{x}{u}{v}}$ is the following span in $\brk{C}$:
+$\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$ is the following span in $\Extrn{C}$:
 ```render-latex
 \begin{tikzpicture}[diagram]
 \SpliceDiagramSquare<l/>{
@@ -106,7 +106,7 @@ $\TotCat{\CandHom{x}{u}{v}}$ is the following span in $\brk{C}$:
 \end{tikzpicture}
 ```
 
-Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{x}{u}{v}}$, according to [](frct-000I) we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
+Fixing another such candidate hom span $\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}$, according to [](frct-000I) we must exhibit a unique cartesian morphism $\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}$ making the following diagram commute:
    ```render-latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};

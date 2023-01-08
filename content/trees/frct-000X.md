@@ -8,7 +8,7 @@ title: globally small externalization
 The [externalization](frct-001R) is globally small
 
 {{%proof%}}
-We may choose a [generic object](frct-000K) for $\brk{C}$, namely the identity element $(C\Sub{0},\Idn{C\Sub{0}})\in \TotCat{\brk{C}}$. Given any object $(x,u)\in \TotCat{\brk{C}}$ the cartesian map $(x,u)\to (C\Sub{0},\Idn{C\Sub{0}})$ is given as follows:
+We may choose a [generic object](frct-000K) for $\Extrn{C}$, namely the identity element $(C\Sub{0},\Idn{C\Sub{0}})\in \TotCat{\Extrn{C}}$. Given any object $(x,u)\in \TotCat{\Extrn{C}}$ the cartesian map $(x,u)\to (C\Sub{0},\Idn{C\Sub{0}})$ is given as follows:
 ```render-latex
 \begin{tikzpicture}[diagram]
   \node (x) {$x$};
