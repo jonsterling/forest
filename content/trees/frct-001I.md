@@ -8,8 +8,7 @@ macros:
   body: '#1\Sup{\tilde{\mathsf{o}}}'
 ---
 
-Let $E$ be displayed over $B$; we define its *total opposite* $\TotOpCat{E}$
-displayed over $\OpCat{B}$ as follows:
+Let $E$ be displayed over $B$; we define its *total opposite* $\TotOpCat{E}$ displayed over $\OpCat{B}$ as follows:
 
 1. An object of $\TotOpCat{E}\Sub{x}$ is given by an object of $E\Sub{x}$.
 
