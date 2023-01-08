@@ -6,6 +6,9 @@
 {{ $dwdPages := slice }}
 {{ $upwdPages := slice }}
 {{ $refPages := slice }}
+{{ $macrolibFile := print $slug ".katex" }}
+{{ $katexMacros := index site.Data $macrolibFile }}
+
 
 {{ with site.Data.forest }}
   {{ with .linksTo }}
@@ -99,22 +102,34 @@
 {{ with $page.Params.macros }}
 <section>
     <h4>Macros Defined</h4>
+    <table class="macros">
     {{ range . }}
-      <p>
+      <tr>
         {{ with .include }}
         {{ $includedSlug := . }}
         {{ with site.GetPage . }}
-          <code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code>
+          <td><code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code></td>
         {{ end }}
         {{ else }}
-          <code>
-          define {{.name}}[{{.args}}]
-          :=
-          {{.body}}
-          </code>
+          <td colspan="2">
+            <code>
+              \{{ .name }}{{- range $i := (seq .args) -}}{#{{- . -}}}{{ end }}
+            </code>
+          </td>
+          <td><span id="rhs-{{.name}}">
+          ${{.body | replaceRE "#" "\\#"}}$
+          </span>
+          </td>
+          <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+              const rhs = document.getElementById('rhs-{{.name}}')
+              renderMathWithMacrosInElement({{$katexMacros}}, rhs)
+            })
+          </script>
         {{ end }}
-      </p>
+      </tr>
     {{ end }}
+    </table>
 </section>
 {{ end }}
 {{ end }}
