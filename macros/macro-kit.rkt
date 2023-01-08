@@ -65,7 +65,7 @@
 
 (define (publish-macro-library sym)
   (render-macros-to-tex (string-append "../assets/latex/" (symbol->string sym) ".sty"))
-  (render-macros-to-katex (string-append "../static/" (symbol->string sym) ".katex.json")))
+  (render-macros-to-katex (string-append "../assets/" (symbol->string sym) ".katex.json")))
 
 (define (index a b)
   (let [(tail (member a (reverse b)))]

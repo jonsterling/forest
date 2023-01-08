@@ -60,24 +60,6 @@
 (define-local (bold kwd)
   @raw{\mathbf{@kwd}})
 
-(define-global (PCartGU)
-  (bold "GU")
-  (Sub @raw{\textit{pcart}}))
-
-(define-global (CartGU)
-  (bold "GU")
-  (Sub @raw{\textit{cart}}))
-
-(define-global (AlgGU)
-  (bold "GU")
-  (Sub @raw{\textit{alg}}))
-
-(define-global (LogGU)
-  (bold "GU")
-  (Sub @raw{\textit{log}}))
-
-
-
 (define-global (TOP E)
   (bold "Top")
   (Sub E))
