@@ -94,3 +94,27 @@
   </script>
 
 {{ end }}
+
+{{ if eq hugo.Environment "development" }}
+{{ with $page.Params.macros }}
+<section>
+    <h4>Macros Defined</h4>
+    {{ range . }}
+      <nav id="macros">
+        <code>
+          {{ with .include }}
+          {{ $includedSlug := . }}
+          {{ with site.GetPage . }}
+            import <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a>
+          {{ end }}
+          {{ else }}
+            define {{.name}}[{{.args}}]
+            :=
+            {{.body}}
+          {{ end }}
+        </pre>
+      </nav>
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}

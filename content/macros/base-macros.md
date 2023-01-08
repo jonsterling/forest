@@ -1,4 +1,5 @@
 ---
+title: Basic macros
 macros:
 - name: Con
   args: 1
@@ -76,3 +77,5 @@ macros:
   args: 2
   body: '#2\Sup{\setminus #1}'
 ---
+
+This tree defines the basic notational macros used across [](jms-0001).
