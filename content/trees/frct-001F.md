@@ -12,8 +12,8 @@ what a morphism from {#x#} to {#y#} is, together with the following operations:
 1. for each object {#x\in \mathfrak{E}#}, an *identity* map {#\Idn{x} : x \to x#},
 2. for any two maps {#f:x\to y#} and {#g:y\to z#}, a *composite map* {#f;g : x \to z#},
 3. such that the following equations hold:
-$$
+{##
   \Idn{x};h = h\qquad
   h;\Idn{y} = h\qquad
   f;(g;h) = (f;g);{h}
-$$
+##}
