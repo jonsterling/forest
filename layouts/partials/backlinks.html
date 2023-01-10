@@ -6,9 +6,9 @@
 {{ $dwdPages := slice }}
 {{ $upwdPages := slice }}
 {{ $refPages := slice }}
-{{ $macrolibFile := print $slug ".macros" }}
-{{ $katexMacros := index site.Data $macrolibFile }}
 
+{{ $macrolibFile := print $slug ".macros" }}
+{{ $katexMacros := default slice (index site.Data $macrolibFile) }}
 
 {{ with site.Data.forest }}
   {{ with .linksTo }}
