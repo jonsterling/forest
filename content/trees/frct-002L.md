@@ -4,12 +4,7 @@ macros:
 - include: base-macros
 ---
 
-A class of sets {#\mathfrak{C}#} is sometimes said to be *formally
-definable* when there is a formula $\prn{x \mid
-\phi\Sub{\mathfrak{C}}\prn{x}}$ in the language of set theory such that a
-set {#S#} lies in {#\mathfrak{C}#} if and only if
-{#\phi\Sub{\mathfrak{C}}\prn{S}#} holds. This concept is a bit sensitive, as
-it presupposes that we have a notion of "class" whose constituents are not
+A class of sets {#\mathfrak{C}#} is sometimes said to be *formally definable* when there is a formula {#\prn{x \mid \phi\Sub{\mathfrak{C} \prn{x}}}#} in the language of set theory such that a set {#S#} lies in {#\mathfrak{C}#} if and only if {#\phi\Sub{\mathfrak{C}}\prn{S}#} holds. This concept is a bit sensitive, as it presupposes that we have a notion of "class" whose constituents are not
 all definable in this sense.
 
 A better behaved notion of definability for sets than the formal one is

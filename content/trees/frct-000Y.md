@@ -8,10 +8,8 @@ title: locally small externalization
 The [externalization](frct-001R) is locally small.
 
 {{%proof%}}
-Fix {#x\in E#} and $u,v\in
-\Extrn{C}\Sub{x}$, we must exhibit a terminal object to the (total) category
-{#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} of "hom candidates" defined in [](frct-000I).
-First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
+Fix {#x\in E#} and {#u,v\in \Extrn{C}\Sub{x}#}, we must exhibit a terminal object to the (total) category {#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} of "hom candidates" defined in [](frct-000I). First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
+
 ```render-latex
 \DiagramSquare{
   nw/style = pullback,
