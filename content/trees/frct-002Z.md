@@ -2,14 +2,16 @@
 taxon: Construction
 macros:
 - include: base-macros
+- name: DualSelfIx
+  args: 1
+  body: '\overline{#1}'
 ---
 
-Let {#B#} be a category. Define the displayed category {#\overline{B}#} over {#B#} as
+Let {#B#} be a category. Define the displayed category {#\DualSelfIx{B}#} over {#B#} as
 follows:
 
-1. For {#x\in B#}, define {#\overline{B}\Sub{x}#} as the collection of pairs
-   {#(\bar{x}\in B,p\Sub{x}:x\to\bar{x})#}.
-2. For {#f : x\to y\in B#}, define {#\overline{B}\Sub{f}#} to be the collection of
+1. For {#x\in B#}, define {#\DualSelfIx{B}\Sub{x}#} as the collection of pairs {#(\bar{x}\in B,p\Sub{x}:x\to\bar{x})#}.
+2. For {#f : x\to y\in B#}, define {#\DualSelfIx{B}\Sub{f}#} to be the collection of
    commuting squares in the following configuration:
 ```render-latex
   \DiagramSquare{
