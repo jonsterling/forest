@@ -1,7 +1,7 @@
 ---
 taxon: Lemma
 macros:
-- include: base-macros
+- include: frct-000A
 title: globally small externalization
 ---
 

@@ -311,10 +311,6 @@ macros:
   args: 2
   body: '{#1}\Sub{/#2}'
   doc: the slice of a category over an object
-- name: TotCat
-  args: 1
-  body: '\widetilde{#1}'
-  doc: the total category of a displayed category
 - name: Hom
   args: 3
   body: '\mathbf{hom}\Sub{#1}(#2,#3)'
@@ -341,10 +337,6 @@ macros:
 - name: DirImg
   args: 1
   body: '#1\Sub{*}'
-- name: SelfIx
-  args: 1
-  body: '\underline{#1}'
-  doc: 'the fundamental self-indexing of a category'
 - name: OpCat
   args: 1
   body: '#1\Sup{\mathsf{o}}'

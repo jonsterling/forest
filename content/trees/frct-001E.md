@@ -2,6 +2,7 @@
 taxon: Definition
 title: generic object
 macros:
+- include: frct-000A
 - include: base-macros
 ---
 

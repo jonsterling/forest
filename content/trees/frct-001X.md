@@ -3,6 +3,10 @@ title: the fundamental self-indexing
 taxon: Construction
 macros:
 - include: base-macros
+- name: SelfIx
+  args: 1
+  body: '\underline{#1}'
+  doc: 'the fundamental self-indexing of a category'
 ---
 
 Let {#B#} be an ordinary category; there is an important displayed category

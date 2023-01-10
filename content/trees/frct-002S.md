@@ -1,7 +1,7 @@
 ---
 title: Bénabou's notion of definability
 macros:
-- include: base-macros
+- include: frct-001X
 ---
 
 We will now construe [](frct-002Q) as the instantiation at the fundamental

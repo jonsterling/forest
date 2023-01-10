@@ -2,6 +2,7 @@
 taxon: Exercise
 macros:
 - include: base-macros
+- include: frct-000A
 - include: frct-001I
 ---
 

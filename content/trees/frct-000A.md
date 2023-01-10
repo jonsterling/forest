@@ -3,6 +3,10 @@ title: The total category and its projection
 date: 2022
 macros:
 - include: base-macros
+- name: TotCat
+  args: 1
+  body: '\widetilde{#1}'
+  doc: the total category of a displayed category
 ---
 
 Note that any displayed category {#E#} over {#B#} can be viewed as an undisplayed category {#\TotCat{E}#} equipped with a projection functor {#p\Sub{E}: \TotCat{E}\to B#}; in this case {#\TotCat{E}#} is called the *total category* of {#E#}.

@@ -1,6 +1,6 @@
 ---
 macros:
-- include: base-macros
+- include: frct-000A
 taxon: Exercise
 ---
 

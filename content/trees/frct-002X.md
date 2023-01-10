@@ -2,7 +2,7 @@
 taxon: Example
 title: revisiting the fundamental self-indexing
 macros:
-- include: base-macros
+- include: frct-001X
 ---
 
 Recall that the fundamental self-indexing {#\SelfIx{B}#} {%pref 001X %} of a category {#B#}

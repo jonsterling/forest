@@ -1,7 +1,7 @@
 ---
 title: relationship to Street's fibrations
 macros:
-- include: base-macros
+- include: frct-000A
 ---
 
 In classical category theory, cartesian fibrations are defined by

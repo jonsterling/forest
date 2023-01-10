@@ -2,6 +2,7 @@
 taxon: Lemma
 macros:
 - include: frct-001C
+- include: frct-000A
 title: locally small externalization
 ---
 

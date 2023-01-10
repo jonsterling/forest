@@ -3,6 +3,7 @@ title: locally small fibration
 taxon: Definition
 macros:
 - include: frct-001C
+- include: frct-000A
 - name: DispHom
   args: 3
   body: '\overline{\mathbf{hom}}\Sub{#1}(#2,#3)'

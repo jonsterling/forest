@@ -1,7 +1,7 @@
 ---
 taxon: Remark
 macros:
-- include: base-macros
+- include: frct-001X
 ---
 
 Let {#\mathscr{M}#} be a model of ETCS; and let {#\mathfrak{C}#} be a

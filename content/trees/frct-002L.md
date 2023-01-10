@@ -1,7 +1,7 @@
 ---
 title: definable classes à la Bénabou
 macros:
-- include: base-macros
+- include: frct-001X
 ---
 
 A class of sets {#\mathfrak{C}#} is sometimes said to be *formally definable* when there is a formula {#\prn{x \mid \phi\Sub{\mathfrak{C} \prn{x}}}#} in the language of set theory such that a set {#S#} lies in {#\mathfrak{C}#} if and only if {#\phi\Sub{\mathfrak{C}}\prn{S}#} holds. This concept is a bit sensitive, as it presupposes that we have a notion of "class" whose constituents are not
