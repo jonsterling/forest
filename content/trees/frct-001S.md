@@ -5,22 +5,23 @@ macros:
 - include: frct-0000
 - include: frct-0010
 - include: frct-001R
+- include: frct-003Q
 ---
 
-The [externalization](frct-001R) {#\Extrn{\gl{\bar{u}}}#} of the internal category {#\gl{\bar{u}}#} [associated to](frct-003Q) a displayed object {#\bar{u}#} in a [locally small](frct-001B) fibered category {#E#} over {#B#} is equivalent to the [full internal subfibration](frct-0010) {#\FullSubfib{\bar{u}}#}.
+The [externalization](frct-001R) {#\Extrn{\Intrn{\bar{u}}}#} of the internal category {#\Intrn{\bar{u}}#} [associated to](frct-003Q) a displayed object {#\bar{u}#} in a [locally small](frct-001B) fibered category {#E#} over {#B#} is equivalent to the [full internal subfibration](frct-0010) {#\FullSubfib{\bar{u}}#}.
 
 {{%proof%}}
 
-We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\bar{u}}#} over {#B#}.
+We will define a fibred equivalence {#F : \Extrn{\Intrn{\bar{u}}}\to \FullSubfib{\bar{u}}#} over {#B#}.
 
-1. Fix {#x\in B#} and {#\chi\Sub{x} \in \Extrn{\gl{\bar{u}}}\Sub{x}#}, i.e. {#\chi\Sub{x} : x\to u#}; we define {#F\prn{\chi\Sub{x}}#} to be an arbitrary cartesian map {#\phi\Sub{x} : \bar{x}\DispTo{\chi\Sub{x}} \bar{u}#}. (Here we have used the [axiom of choice for collections](frct-000R).)
+1. Fix {#x\in B#} and {#\chi\Sub{x} \in \Extrn{\Intrn{\bar{u}}}\Sub{x}#}, i.e. {#\chi\Sub{x} : x\to u#}; we define {#F\prn{\chi\Sub{x}}#} to be an arbitrary cartesian map {#\phi\Sub{x} : \bar{x}\DispTo{\chi\Sub{x}} \bar{u}#}. (Here we have used the [axiom of choice for collections](frct-000R).)
 
 2. Fix {#f : x\to y\in B#} and {#\chi\Sub{x} :x\to u#} and {#\chi\Sub{y}:y\to u#} and a diagram representing a displayed morphism {#h#} from {#\chi\Sub{x}#} to {#\chi\Sub{y}#} over {#f#} as below:
    ```render-latex
    \begin{tikzpicture}[diagram]
    \node (x) {$x$};
    \node (y) [below = of x] {$y$};
-   \node (C/1) [right = of x] {$\Extrn{\gl{\bar{u}}}\Sub{1}$};
+   \node (C/1) [right = of x] {$\Extrn{\Intrn{\bar{u}}}\Sub{1}$};
    \node (C/0) [below = of C/1] {$u$};
    \node (C/0') [above = of C/1] {$u$};
    \draw[->,magenta] (x) to node [upright desc] {$h$} (C/1);
@@ -34,7 +35,7 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
 
    We must define {#F\prn{h}:\bar{x}\DispTo{f} \bar{y}#}, fixing arbitrary
    cartesian maps {#\bar\chi\Sub{x}:\bar{x}\DispTo{\chi\Sub{x}}\bar{u}#} and
-   {#\bar\chi\Sub{y}:\bar{y}\DispTo{\chi\Sub{y}}\bar{u}#}. First we lift {#h:x\to \Extrn{\gl{\bar{u}}}\Sub{1}#}
+   {#\bar\chi\Sub{y}:\bar{y}\DispTo{\chi\Sub{y}}\bar{u}#}. First we lift {#h:x\to \Extrn{\Intrn{\bar{u}}}\Sub{1}#}
    into {#E#} using the universal property of the cartesian lift:
    ```render-latex
     \begin{tikzpicture}[diagram]
@@ -48,8 +49,8 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
         north/style = {->,exists},
         nw = \bar{x},
         sw = x,
-        se = \Extrn{\gl{\bar{u}}}\Sub{1},
-        ne = \InvImg{\Extrn{\gl{\bar{u}}}\Sub{1}}\bar\partial\Sub{1},
+        se = \Extrn{\Intrn{\bar{u}}}\Sub{1},
+        ne = \InvImg{\Extrn{\Intrn{\bar{u}}}\Sub{1}}\bar\partial\Sub{1},
         south = h,
         north = \bar{h},
       }
@@ -96,8 +97,8 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
         width = 2.5cm,
         nw = \bar{x},
         sw = x,
-        se = \Extrn{\gl{\bar{u}}}\Sub{1},
-        ne = \InvImg{\Extrn{\gl{\bar{u}}}\Sub{1}}\bar\partial\Sub{1},
+        se = \Extrn{\Intrn{\bar{u}}}\Sub{1},
+        ne = \InvImg{\Extrn{\Intrn{\bar{u}}}\Sub{1}}\bar\partial\Sub{1},
         south = h,
         north = \bar{h},
       }
