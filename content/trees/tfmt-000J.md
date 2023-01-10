@@ -4,7 +4,7 @@ author: Jonathan Sterling
 date: 2023-01-07T13:26:54+01:00
 ---
 
-[KaTeX](https://katex.org/) has a very rudimentary support for commutative diagrams built-in, by emulating the `amscd` package. Unfortunately, this support is completely inadequate for usage by mathematicians today:
+[{#\KaTeX#}](https://katex.org/) has a very rudimentary support for commutative diagrams built-in, by emulating the `amscd` package. Unfortunately, this support is completely inadequate for usage by mathematicians today:
 
 1. **Only square diagram shapes are supported:** commutative diagrams in general have diagonal and curved lines, but these are not supported.
 
