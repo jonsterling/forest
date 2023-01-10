@@ -2,7 +2,11 @@
 taxon: Construction
 title: externalization
 macros:
-- include: base-macros
+- include: frct-0000
+- name: Extrn
+  args: 1
+  body: '\brk{#1}'
+  doc: the externalization of an internal category
 ---
 
 Let {#C#} be an internal category in {#E#}. We may define a fibered category {#\Extrn{C}#} over {#E#} called the *externalization* of {#C#}.

@@ -2,7 +2,7 @@
 title: hom candidates
 taxon: Definition
 macros:
-- include: base-macros
+- include: frct-0000
 - name: CandHom
   args: 3
   body: '\mathbf{H}_{#1}(#2,#3)'

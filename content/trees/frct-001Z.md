@@ -2,7 +2,7 @@
 title: opposite fibered category
 taxon: Construction
 macros:
-- include: base-macros
+- include: frct-0000
 ---
 
 Let {#E#} be fibered over {#B#}; we may define the *opposite* fibered category

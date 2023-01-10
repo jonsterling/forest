@@ -327,10 +327,6 @@ macros:
   args: 0
   body: '\mathbf{Set}'
   doc: 'the category of sets'
-- name: FAM
-  args: 1
-  body: '\boldsymbol{\mathcal{F}}\Sub{#1}'
-  doc: the family fibration
 - name: InvImg
   args: 1
   body: '#1\Sup{*}'
@@ -344,10 +340,6 @@ macros:
 - name: ObjTerm
   args: 1
   body: '\mathbf{1}\Sub{#1}'
-- name: Extrn
-  args: 1
-  body: '\brk{#1}'
-  doc: the externalization of an internal category
 - name: tick
   args: 0
   body: "'"
@@ -359,10 +351,6 @@ macros:
   args: 2
   body: '#2\Sup{\setminus #1}'
   doc: the coslice of a category under an object
-- name: DispTo
-  args: 1
-  body: '\mathrel{{\to}\Sub{#1}}'
-  doc: to denote an arrow displayed over another arrow
 ---
 
 This tree defines the basic notational macros used across [](jms-0001).

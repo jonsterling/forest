@@ -1,7 +1,8 @@
 ---
 title: iteration and pushforward
 macros:
-- include: base-macros
+- include: frct-000A
+- include: frct-0000
 ---
 
 It also makes sense to speak of categories displayed over other displayed

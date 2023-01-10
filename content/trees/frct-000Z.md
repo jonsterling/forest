@@ -2,6 +2,7 @@
 title: the internalization of a small fibration
 macros:
 - include: frct-0010
+- include: frct-001R
 lastmod: 2023-01-10
 ---
 

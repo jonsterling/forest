@@ -1,7 +1,7 @@
 ---
 title: "warmup: locally small family fibrations"
 macros:
-- include: base-macros
+- include: frct-0006
 ---
 
 An ordinary category {#E#} is called *locally small* when for any {#x,y\in E#} the

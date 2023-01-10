@@ -2,7 +2,7 @@
 taxon: Lemma
 title: hypocartesian = cartesian in a cartesian fibration
 macros:
-- include: base-macros
+- include: frct-0000
 ---
 
 Let {#E#} be a cartesian fibration in the sense of [](frct-0002), and let

@@ -2,7 +2,7 @@
 taxon: Theorem
 title: characterization of right fibrations
 macros:
-- include: base-macros
+- include: frct-0000
 ---
 
 A cartesian fibration {#E#} over {#B#} is a right fibration if and only if

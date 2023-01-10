@@ -2,7 +2,7 @@
 title: total opposite category
 taxon: Construction
 macros:
-- include: base-macros
+- include: frct-0000
 - name: TotOpCat
   args: 1
   body: '#1\Sup{\tilde{\mathsf{o}}}'

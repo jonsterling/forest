@@ -2,7 +2,9 @@
 taxon: Theorem
 title: characterization of the externalization
 macros:
+- include: frct-0000
 - include: frct-0010
+- include: frct-001R
 ---
 
 The [externalization](frct-001R) {#\Extrn{\gl{\bar{u}}}#} of the internal category {#\gl{\bar{u}}#} [associated to](frct-003Q) a displayed object {#\bar{u}#} in a [locally small](frct-001B) fibered category {#E#} over {#B#} is equivalent to the [full internal subfibration](frct-0010) {#\FullSubfib{\bar{u}}#}.

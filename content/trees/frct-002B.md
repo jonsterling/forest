@@ -2,7 +2,7 @@
 taxon: Lemma
 title: equivalence with Grothendieck's fibrations
 macros:
-- include: base-macros
+- include: frct-0000
 ---
 
 Let {#E#} be displayed over {#B#}. Then {#E#} is a cartesian fibration in the sense of [](frct-0002) if and only if the following two conditions hold:

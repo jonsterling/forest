@@ -2,7 +2,7 @@
 title: small separator for a fibration
 taxon: Definition
 macros:
-- include: base-macros
+- include: frct-0000
 ---
 
 Let {#E#} be a cartesian fibration over {#B#} such that {#B#} has

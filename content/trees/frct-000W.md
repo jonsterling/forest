@@ -1,7 +1,8 @@
 ---
 taxon: Lemma
 macros:
-- include: base-macros
+- include: frct-001R
+- include: frct-0000
 title: cartesian lifts in the externalization
 ---
 

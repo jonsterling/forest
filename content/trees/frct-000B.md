@@ -1,8 +1,8 @@
 ---
-title: Displayed categories from functors
+title: displayed categories from functors
 macros:
-- include: base-macros
 - include: frct-000A
+- include: frct-0000
 ---
 
 In many cases, one starts with a functor {#P:E\to B#}; if it were meaningful to
