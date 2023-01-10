@@ -3,6 +3,10 @@ title: locally small fibration
 taxon: Definition
 macros:
 - include: frct-001C
+- name: DispHom
+  args: 3
+  body: '\overline{\mathbf{hom}}\Sub{#1}(#2,#3)'
+  doc: the apex of the universal hom candidate
 ---
 
 A cartesian fibration {#E#} over {#B#} is *locally small* if and only if for

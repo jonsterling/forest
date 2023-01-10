@@ -11,9 +11,9 @@ Let {#E#} be fibered over {#B#}; we may define the *opposite* fibered category
 
 1. An object of {#\OpCat{E}\Sub{x}#} is given by an object of {#E\Sub{x}#}.
 
-2. Given {#f : x \to y\in B#}, a morphism {#\bar{x}\to_f \bar{y}#} in {#\OpCat{E}#}
-   is given in terms of {#E#} by a cartesian map {#\bar{y}\Sub{f} : \bar{y}\Sub{x} \to\Sub{f} \bar{y}#} together
-   with a *vertical* map {#h : \bar{y}\Sub{x}\to\Sub{\Idn{x}} \bar{y}#} as depicted below:
+2. Given {#f : x \to y\in B#}, a morphism {#\bar{x}\DispTo{f} \bar{y}#} in {#\OpCat{E}#}
+   is given in terms of {#E#} by a cartesian map {#\bar{y}\Sub{f} : \bar{y}\Sub{x} \DispTo{f} \bar{y}#} together
+   with a *vertical* map {#h : \bar{y}\Sub{x}\DispTo{\Idn{x}} \bar{y}#} as depicted below:
    ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare{

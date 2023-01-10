@@ -29,7 +29,7 @@ First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
 }
 ```
 
-We define {#\overline{p}:\InvImg{\brk{u,v}}{u}\to\Sub{p} u\in \Extrn{C}\Sub{\brk{u,v}}#} to be
+We define {#\overline{p}:\InvImg{\brk{u,v}}{u}\DispTo{p} u\in \Extrn{C}\Sub{\brk{u,v}}#} to be
 the cartesian lift of {#u\in \Extrn{C}\Sub{x}#} along {#p:\brk{u,v}\to x#}:
 ```render-latex
 \DiagramSquare{
@@ -48,7 +48,7 @@ the cartesian lift of {#u\in \Extrn{C}\Sub{x}#} along {#p:\brk{u,v}\to x#}:
 ```
 
 We need to define a displayed evaluation map
-{#\epsilon : \InvImg{\brk{u,v}}u\to\Sub{p} v#}; unraveling the definition of a displayed
+{#\epsilon : \InvImg{\brk{u,v}}u\DispTo{p} v#}; unraveling the definition of a displayed
 morphism in the externalization of {#C#}, we choose the following diagram:
 
 ```render-latex
@@ -151,7 +151,7 @@ the universal map using the universal property of the pullback that defines {#\b
 The morphism {#\alpha:h\to \brk{u,v}#} defined above is the *unique* map in {#E#}
 satisfying the conditions required of the base for {#\bar\alpha#}; therefore, it
 suffices to show that there exists a cartesian morphism
-{#\bar\alpha:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u#} since it will be unique if it
+{#\bar\alpha:\bar{h}\DispTo{\alpha}\InvImg{\brk{u,v}}u#} since it will be unique if it
 exists. We define {#\bar\alpha#} using the universal property of the cartesian lift:
 ```render-latex
 \begin{tikzpicture}[diagram]
@@ -188,7 +188,7 @@ exists. We define {#\bar\alpha#} using the universal property of the cartesian l
 \end{tikzpicture}
 ```
 
-That {#\bar{\alpha}:\bar{h}\to\Sub{\alpha}\InvImg{\brk{u,v}}u#} is cartesian follows from [the generalized pullback lemma for cartesian morphisms](frct-0014): it suffices
+That {#\bar{\alpha}:\bar{h}\DispTo{\alpha}\InvImg{\brk{u,v}}u#} is cartesian follows from [the generalized pullback lemma for cartesian morphisms](frct-0014): it suffices
 to observe that both {#\bar{p}\Sub{h}:\bar{h}\to u#} and its second factor
 {#\bar{p}:\InvImg{\brk{u,v}}u\to u#} are cartesian.
 {{%/proof%}}

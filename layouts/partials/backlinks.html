@@ -6,7 +6,7 @@
 {{ $dwdPages := slice }}
 {{ $upwdPages := slice }}
 {{ $refPages := slice }}
-{{ $macrolibFile := print $slug ".katex" }}
+{{ $macrolibFile := print $slug ".macros" }}
 {{ $katexMacros := index site.Data $macrolibFile }}
 
 
@@ -98,38 +98,44 @@
 
 {{ end }}
 
+
 {{ if eq hugo.Environment "development" }}
 {{ with $page.Params.macros }}
 <section>
-    <h4>Macros Defined</h4>
-    <table class="macros">
-    {{ range . }}
-      <tr>
-        {{ with .include }}
-        {{ $includedSlug := . }}
-        {{ with site.GetPage . }}
-          <td><code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code></td>
-        {{ end }}
-        {{ else }}
-          <td colspan="2">
-            <code>
-              \{{ .name }}{{- range $i := (seq .args) -}}{#{{- . -}}}{{ end }}
-            </code>
-          </td>
-          <td><span id="rhs-{{.name}}">
-          ${{.body | replaceRE "#" "\\#"}}$
+  <h4>Macros Defined</h4>
+  <table class="macros">
+  {{ range . }}
+    <tr>
+      {{ with .include }}
+      {{ $includedSlug := . }}
+      {{ with site.GetPage . }}
+        <td colspan="3"><code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code></td>
+      {{ end }}
+      {{ else }}
+        <td class="macro-name">
+          <code>
+            \{{ .name }}{{- range $i := (seq .args) -}}{#{{- . -}}}{{ end }}
+          </code>
+        </td>
+        <td class="macro-body">
+          <span id="rhs-{{.name}}">
+            {{partial "inline-math.html" (dict "Page" $page "Inner" (.body | replaceRE "#" "\\#"))}}
           </span>
-          </td>
-          <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', () => {
-              const rhs = document.getElementById('rhs-{{.name}}')
-              renderMathWithMacrosInElement({{$katexMacros}}, rhs)
-            })
-          </script>
-        {{ end }}
-      </tr>
-    {{ end }}
-    </table>
+        </td>
+        <td class="macro-doc">{{.doc}}</td>
+      {{ end }}
+    </tr>
+  {{ end }}
+  </table>
 </section>
 {{ end }}
 {{ end }}
+
+<script type="text/javascript">
+  const macros = compileKaTeXMacros({{$katexMacros}})
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.macro-body').forEach((el) => {
+      renderMathWithMacrosInElement(macros, el)
+    })
+  })
+</script>

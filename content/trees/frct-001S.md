@@ -12,7 +12,7 @@ The [externalization](frct-001R) {#\Extrn{\gl{\bar{u}}}#} of the internal catego
 
 We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\bar{u}}#} over {#B#}.
 
-1. Fix {#x\in B#} and {#\chi\Sub{x} \in \Extrn{\gl{\bar{u}}}\Sub{x}#}, i.e. {#\chi\Sub{x} : x\to u#}; we define {#F\prn{\chi\Sub{x}}#} to be an arbitrary cartesian map {#\phi\Sub{x} : \bar{x}\to\Sub{\chi\Sub{x}} \bar{u}#}. (Here we have used the [axiom of choice for collections](frct-000R).)
+1. Fix {#x\in B#} and {#\chi\Sub{x} \in \Extrn{\gl{\bar{u}}}\Sub{x}#}, i.e. {#\chi\Sub{x} : x\to u#}; we define {#F\prn{\chi\Sub{x}}#} to be an arbitrary cartesian map {#\phi\Sub{x} : \bar{x}\DispTo{\chi\Sub{x}} \bar{u}#}. (Here we have used the [axiom of choice for collections](frct-000R).)
 
 2. Fix {#f : x\to y\in B#} and {#\chi\Sub{x} :x\to u#} and {#\chi\Sub{y}:y\to u#} and a diagram representing a displayed morphism {#h#} from {#\chi\Sub{x}#} to {#\chi\Sub{y}#} over {#f#} as below:
    ```render-latex
@@ -31,9 +31,9 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
    \end{tikzpicture}
    ```
 
-   We must define {#F\prn{h}:\bar{x}\to\Sub{f} \bar{y}#}, fixing arbitrary
-   cartesian maps {#\bar\chi\Sub{x}:\bar{x}\to\Sub{\chi\Sub{x}}\bar{u}#} and
-   {#\bar\chi\Sub{y}:\bar{y}\to\Sub{\chi\Sub{y}}\bar{u}#}. First we lift {#h:x\to \Extrn{\gl{\bar{u}}}\Sub{1}#}
+   We must define {#F\prn{h}:\bar{x}\DispTo{f} \bar{y}#}, fixing arbitrary
+   cartesian maps {#\bar\chi\Sub{x}:\bar{x}\DispTo{\chi\Sub{x}}\bar{u}#} and
+   {#\bar\chi\Sub{y}:\bar{y}\DispTo{\chi\Sub{y}}\bar{u}#}. First we lift {#h:x\to \Extrn{\gl{\bar{u}}}\Sub{1}#}
    into {#E#} using the universal property of the cartesian lift:
    ```render-latex
     \begin{tikzpicture}[diagram]
@@ -84,7 +84,7 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
     \end{tikzpicture}
    ```
 
-   By composition with the "evaluation map" for our hom object, we have a map {#\bar{x}\to\Sub{f;\chi\Sub{y}}\bar{u}#}:
+   By composition with the "evaluation map" for our hom object, we have a map {#\bar{x}\DispTo{f;\chi\Sub{y}}\bar{u}#}:
    ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare<0/>{
@@ -132,7 +132,7 @@ We will define a fibred equivalence {#F : \Extrn{\gl{\bar{u}}}\to \FullSubfib{\b
     \end{tikzpicture}
    ```
 
-   Next we define {#F\prn{h}:\bar{x}\to\Sub{f}\bar{y}#} using the universal property of (another) cartesian lift:
+   Next we define {#F\prn{h}:\bar{x}\DispTo{f}\bar{y}#} using the universal property of (another) cartesian lift:
    ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare<l/>{

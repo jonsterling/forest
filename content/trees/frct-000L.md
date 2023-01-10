@@ -32,8 +32,8 @@ for some {#U\in \SET#}; then we may equip {#U#} with the structure of a globally
 small category such that {#U#} is equivalent to {#C#}, using a construction that is similar to our implementation of the opposite fibration ([](frct-000Q)). In particular we define a
 morphism {#x\to y\in U#} to be given by the following data:
 
-1. a cartesian map {#a\to\Sub{x} \bar{u}#} over {#x : 1\to U#},
-2. a cartesian map {#b\to\Sub{y} \bar{u}#} over {#y : 1\to U#},
+1. a cartesian map {#a\DispTo{x} \bar{u}#} over {#x : 1\to U#},
+2. a cartesian map {#b\DispTo{y} \bar{u}#} over {#y : 1\to U#},
 3. and a vertical map {#h:a\to b#} in {#\FAM{C}[1]\simeq C#},
 
 such that {#(a\Sub{1},b\Sub{1},h\Sub{1})#} is identified with {#(a\Sub{2},b\Sub{2},h\Sub{2})#} when {#h_1#} and {#h_2#} are equal modulo the (unique) vertical isomorphisms between the cartesian lifts in the sense depicted below:
@@ -57,7 +57,7 @@ such that {#(a\Sub{1},b\Sub{1},h\Sub{1})#} is identified with {#(a\Sub{2},b\Sub{
 \end{tikzpicture}
 ```
 
-Remember that a cartesian map {#a\to\Sub{x}\bar{u}#} is standing for a *choice*
+Remember that a cartesian map {#a\DispTo{x}\bar{u}#} is standing for a *choice*
 of an object of {#C#} encoded by {#x\in U#}. Because such choices are unique only
 up to isomorphism, we must include them explicitly in the data.
 

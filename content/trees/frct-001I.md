@@ -12,6 +12,6 @@ Let {#E#} be displayed over {#B#}; we define its *total opposite* {#\TotOpCat{E}
 
 1. An object of {#\TotOpCat{E}\Sub{x}#} is given by an object of {#E\Sub{x}#}.
 
-2. Given {#f : x \to y\in \OpCat{B}#}, a displayed morphism {#\bar{x}\to\Sub{f} \bar{y}#} in {#\TotOpCat{E}#} is given by a displayed morphism {#\bar{y}\to\Sub{f} \bar{x}#} in {#E#}.
+2. Given {#f : x \to y\in \OpCat{B}#}, a displayed morphism {#\bar{x}\DispTo{f} \bar{y}#} in {#\TotOpCat{E}#} is given by a displayed morphism {#\bar{y}\DispTo{f} \bar{x}#} in {#E#}.
 
 **Warning.** Do not confuse this construction with the [opposite fibered category](frct-001Z), which produces a displayed category over {#B#} and not {#\OpCat{B}#}.

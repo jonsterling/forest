@@ -25,7 +25,7 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 \end{tikzpicture}
 ```
 
-2. A morphism {#(u,\phi\Sub{u})\to\Sub{f} (v,\phi\Sub{v})#} over {#f : x \to y#} is given by
+2. A morphism {#(u,\phi\Sub{u})\DispTo{f} (v,\phi\Sub{v})#} over {#f : x \to y#} is given by
    a morphism {#h : u\to v#} that lies over {#f#} modulo the isomorphisms
    {#\phi\Sub{u},\phi\Sub{v}#} in sense depicted below:
 ````render-latex

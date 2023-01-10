@@ -4,12 +4,10 @@ taxon: Definition
 packages: jon-tikz
 macros:
 - include: base-macros
-- name: DispHom
-  args: 3
-  body: '\overline{\mathbf{hom}}\Sub{#1}(#2,#3)'
 - name: CandHom
   args: 3
   body: '\mathbf{H}_{#1}(#2,#3)'
+  doc: the displayed category of hom candidates
 ---
 
 For any {#x\in B#} and displayed objects {#u,v\in E\Sub{x}#}, we define a *hom
@@ -53,8 +51,8 @@ This structure can be rephrased in terms of a displayed category {#\CandHom{E\Su
    for the entire hom candidate over {#h#}.
 
 2. Given {#\alpha:l\to h\in\Sl{B}{x}#} and hom candidates {#\bar{l}\in \CandHom{E\Sub{x}}{u}{v}\Sub{l}#} and
-   {#\bar{h}\in \CandHom{E\Sub{x}}{u}{v}\Sub{h}#}, a morphism {#\bar{h}\to\Sub{\alpha} \bar{l}#} is given by a
-   cartesian morphism {#\bar\alpha:\bar{l}\to\Sub{\alpha}\bar{h}#} in {#E#} such that the
+   {#\bar{h}\in \CandHom{E\Sub{x}}{u}{v}\Sub{h}#}, a morphism {#\bar{h}\DispTo{\alpha} \bar{l}#} is given by a
+   cartesian morphism {#\bar\alpha:\bar{l}\DispTo{\alpha}\bar{h}#} in {#E#} such that the
    following diagram commutes:
    ```render-latex
    \begin{tikzpicture}[diagram]

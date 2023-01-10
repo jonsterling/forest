@@ -10,9 +10,9 @@ Let {#E#} be displayed over {#B#}. Then {#E#} is a cartesian fibration in the se
 
 1. *Hypocartesian lifts.* For each {#f:x\to y\in B#} and {#\bar{y}\in E\Sub{y}#} there
    exists a displayed object {#\bar{x}\in E\Sub{x}#} and hypocartesian morphism
-   {#\bar{f}:\bar{x}\to\Sub{f}\bar{y}#}.
-2. *Closure under composition.* If {#\bar{f}:\bar{x}\to\Sub{f}\bar{y}#} and
-   {#\bar{g}:\bar{y}\to\Sub{g}\bar{z}#} are hypocartesian, then {#\bar{f};\bar{g}#}
+   {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#}.
+2. *Closure under composition.* If {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#} and
+   {#\bar{g}:\bar{y}\DispTo{g}\bar{z}#} are hypocartesian, then {#\bar{f};\bar{g}#}
    is hypocartesian.
 
 {{%proof%}}
@@ -23,7 +23,7 @@ composition, fix hypocartesian {#\bar{f},\bar{g}#}; by [](frct-002C) we know tha
 that {#\bar{f};\bar{g}#} is also hypocartesian.
 
 Conversely, suppose that {#E#} is a cartesian fibration in the sense of
-Grothendieck, and let {#\bar{f}:\bar{x}\to\Sub{f}\bar{y}#} be the hypocartesian lift of {#f:x\to y#} at {#\bar{y}\in E\Sub{y}#}; we shall see that {#\bar{f}#} is also a *cartesian* lift of {#f#} at {#\bar{y}#} by constructing a unique factorization as
+Grothendieck, and let {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#} be the hypocartesian lift of {#f:x\to y#} at {#\bar{y}\in E\Sub{y}#}; we shall see that {#\bar{f}#} is also a *cartesian* lift of {#f#} at {#\bar{y}#} by constructing a unique factorization as
 follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
@@ -48,7 +48,7 @@ follows:
   \end{tikzpicture}
 ```
 
-Let {#\bar{m}:\bar{u}\tick\to\Sub{m}\bar{x}#} be the hypocartesian lift of {#m#} at {#\bar{x}#}, where {#\bar{u}\tick\in E\Sub{u}#}. By hypothesis, the composite {#\bar{m};\bar{f} : \bar{u}\tick\to\Sub{m;f}\bar{y}#} is hypocartesian, so {#\bar{h}#} factors uniquely through {#\bar{m};\bar{f}#} over {#\Idn{u}#}:
+Let {#\bar{m}:\bar{u}\tick\DispTo{m}\bar{x}#} be the hypocartesian lift of {#m#} at {#\bar{x}#}, where {#\bar{u}\tick\in E\Sub{u}#}. By hypothesis, the composite {#\bar{m};\bar{f} : \bar{u}\tick\DispTo{m;f}\bar{y}#} is hypocartesian, so {#\bar{h}#} factors uniquely through {#\bar{m};\bar{f}#} over {#\Idn{u}#}:
 
 ```render-latex
   \begin{tikzpicture}[diagram]
@@ -73,6 +73,6 @@ Let {#\bar{m}:\bar{u}\tick\to\Sub{m}\bar{x}#} be the hypocartesian lift of {#m#}
   \end{tikzpicture}
 ```
 
-The composite {#i;\bar{m} : \bar{u}\to\Sub{m}\bar{x}#} is the required (cartesian) factorization of {#\bar{h}#} through {#\bar{f}#} over {#m#}. To see that {#i;\bar{m}#} is the unique such map, we observe that all morphisms {#\bar{u}\to\Sub{m}\bar{x}#} factor uniquely through {#\bar{m}#} over {#\Idn{u}#} as a consequence of {#\bar{m}#} being hypocartesian.
+The composite {#i;\bar{m} : \bar{u}\DispTo{m}\bar{x}#} is the required (cartesian) factorization of {#\bar{h}#} through {#\bar{f}#} over {#m#}. To see that {#i;\bar{m}#} is the unique such map, we observe that all morphisms {#\bar{u}\DispTo{m}\bar{x}#} factor uniquely through {#\bar{m}#} over {#\Idn{u}#} as a consequence of {#\bar{m}#} being hypocartesian.
 
 {{%/proof%}}

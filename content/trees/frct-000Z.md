@@ -5,7 +5,7 @@ macros:
 lastmod: 2023-01-10
 ---
 
-Let {#E#} be a [small fibration](frct-001Q) over {#B#} a category with finite limits, i.e. a cartesian fibration that is both [locally small](frct-001B) and [globally small](frct-000P). We will show that {#E#} is equivalent to the [externalization](frct-000V) {#\Extrn{C}#} of an [internal category](frct-001A) $C$ in {#B#}, namely the [full internal subcategory](frct-0011) associated to the [generic object](frct-001E) {#\bar{u}\in E#}.
+Let {#E#} be a [small fibration](frct-001Q) over {#B#} a category with finite limits, i.e. a cartesian fibration that is both [locally small](frct-001B) and [globally small](frct-000P). We will show that {#E#} is equivalent to the [externalization](frct-000V) {#\Extrn{C}#} of an [internal category](frct-001A) {#C#} in {#B#}, namely the [full internal subcategory](frct-0011) associated to the [generic object](frct-001E) {#\bar{u}\in E#}.
 
 {{%proof%}}
 By [](frct-001S) we know that the externalization of {#C#} so-defined

@@ -196,8 +196,94 @@ table.macros {
 table.macros td {
   padding-left: 5pt;
   padding-right: 15pt;
+  vertical-align: top;
 }
 
-.inline-math {
+td.macro-name,
+td.macro-body {
   white-space: nowrap;
+}
+
+td.macro-doc {
+  font-size: .9em;
+  vertical-align: top;
+}
+
+.enclosing.macro-scope>.enclosing {
+  border-radius: 2px;
+}
+
+.enclosing.macro-scope>.enclosing:hover {
+  background-color: rgba(0, 100, 255, 0.1);
+}
+
+.dark .enclosing.macro-scope>.enclosing:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+
+[aria-label][role~="tooltip"]::after {
+  font-family: "Inria Sans";
+}
+
+
+
+.tooltip {
+  position: relative;
+}
+
+.inline.tooltip {
+  display: inline-block;
+}
+
+.display.tooltip {
+  display: block;
+}
+
+/* The tooltip class is applied to the span element that is the tooltip */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  white-space: nowrap;
+  min-width: fit-content;
+  background-color: black;
+  color: #fff;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+}
+
+/* Show the tooltip */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext a {
+  color: white
+}
+
+.macro-doc {
+  font-style: italic;
+}
+
+.macro-name {
+  font-family: monospace;
 }

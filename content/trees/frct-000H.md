@@ -32,12 +32,12 @@ Explicitly the family {#\InvImg{[u,v]}u#} is indexed in a pair of an element {#i
 We can think of {#\InvImg{[u,v]}u#} as the object of elements of {#u\Sub{i}#} indexed in pairs {#(i,u\Sub{i}\to v\Sub{i})#}.
 
 There is a canonical map
-{#\epsilon\Sub{[u,v]}:\InvImg{[u,v]}u\to\Sub{p\Sub{[u,v]}} v#} that
+{#\epsilon\Sub{[u,v]}:\InvImg{[u,v]}u\DispTo{p\Sub{[u,v]}} v#} that
 "evaluates" each indexing morphism {#u\Sub{i}\to v\Sub{i}#}.
 
 That each {#[u,v]\Sub{i}#} is the set of all morphisms {#u\Sub{i}\to v\Sub{i}#} can be
 rephrased as a universal property: for any family {#h\in\Sl{\SET}{I}#} and
-morphism {#\epsilon\Sub{h} : \InvImg{h}u\to\Sub{h} v#} in {#\FAM{C}#}, there is a
+morphism {#\epsilon\Sub{h} : \InvImg{h}u\DispTo{h} v#} in {#\FAM{C}#}, there is a
 unique cartesian map {#\InvImg{h}u\to \InvImg{[u,v]}u#} factoring {#\epsilon\Sub{h}#} through {#\epsilon\Sub{[u,v]}#}
 in the sense depicted below:
 
@@ -67,4 +67,4 @@ in the sense depicted below:
 \end{tikzpicture}
 ```
 
-To convince ourselves of this, we note that the family {#H \coloneqq \brc{u\Sub{i}\to v\Sub{i}}\Sub{i\in I}#} itself satisfies the universal property above. Indeed, fix a candidate {#h \in \Sl{\SET}{I}#} equipped with a map {#\epsilon\Sub{h} : \InvImg{h}u \to_h v#}. Unfolding the meaning of this map in set theoretical notation, we see that it amounts to a family of maps {#\epsilon\Sub{h}[i] : \prod\Sub{x\in h_i} \brc{u_i\to v_i}#} for each {#i\in I#}; such a family immediately induces the desired map {#h\to H#}.
+To convince ourselves of this, we note that the family {#H \coloneqq \brc{u\Sub{i}\to v\Sub{i}}\Sub{i\in I}#} itself satisfies the universal property above. Indeed, fix a candidate {#h \in \Sl{\SET}{I}#} equipped with a map {#\epsilon\Sub{h} : \InvImg{h}u \DispTo{h} v#}. Unfolding the meaning of this map in set theoretical notation, we see that it amounts to a family of maps {#\epsilon\Sub{h}[i] : \prod\Sub{x\in h_i} \brc{u_i\to v_i}#} for each {#i\in I#}; such a family immediately induces the desired map {#h\to H#}.

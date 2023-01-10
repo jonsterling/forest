@@ -10,26 +10,34 @@
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
   rel="stylesheet">
-
 <script defer type="module" src="https://unpkg.com/ninja-keys?module"></script>
 
 {{ $forestScripts := resources.Get "/js/forest.js" }}
+{{ $permalinks := dict }}
+  {{ range site.Pages }}
+  {{ $permalink := .RelPermalink }}
+  {{ with .File }}
+  {{ with .ContentBaseName }}
+    {{ $permalinks = merge $permalinks (dict . $permalink) }}
+  {{ end }}
+  {{ end }}
+{{ end }}
 
-<script defer type="text/javascript" src={{$forestScripts.RelPermalink}}></script>
+<script type="text/javascript" src={{$forestScripts.RelPermalink}}></script>
 <script async>
-  document.addEventListener('DOMContentLoaded', () => {
+  const siteData = {{site.Data}}
+  const permalinks = {{$permalinks}}
 
+  document.addEventListener('DOMContentLoaded', () => {
     var observer = new IntersectionObserver((entries, observer) => {
       for (const entry of entries) {
         if (entry.intersectionRatio > 0) {
-          const macros = JSON.parse(entry.target.getAttribute('data-macros')) || {}
+          const macros = JSON.parse(entry.target.getAttribute('data-macros')) || []
+          const katexMacros = compileKaTeXMacros(macros)
           const code = entry.target.getAttribute('data-code')
           observer.unobserve(entry.target)
-          katex.render(code, entry.target, {
-            throwOnError: false,
-            macros: macros,
-            displayMode: entry.target.classList.contains('display')
-          })
+
+          renderForesterMath(siteData, permalinks, katexMacros, entry.target.classList.contains('display'), code, entry.target)
         }
       }
     }, {root: document.documentElement});
@@ -37,8 +45,8 @@
     document.querySelectorAll('.forester-math').forEach((span) => {
       observer.observe(span)
     })
-
   })
+
 
   document.addEventListener('DOMContentLoaded', () => {
     const ninja = document.querySelector('ninja-keys')

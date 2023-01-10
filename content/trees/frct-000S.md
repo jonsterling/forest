@@ -12,8 +12,8 @@ by unfolding definitions, we see that the vertical map {#h : u \to v#} is
 uniquely determined by a morphism {#v\to u\in E\Sub{x}#}.
 
 {{%proof%}}
-A displayed morphism {#u\to\Sub{\Idn{x}} v\in \OpCat{E}#} is
+A displayed morphism {#u\DispTo{\Idn{x}} v\in \OpCat{E}#} is
 determined by a span {#\brc{u\leftarrow v\Sub{x} \to v}\in E#} where the right-hand
 map is cartesian over {#\Idn{x} : x\to x#} and the left-hand map is vertical, taken up to the identification of
-different cartesian lifts {#v\Sub{x}\to x#}. A displayed morphism that is cartesian over the identity is an isomorphism; hence, displayed morphisms {#u\to\Sub{\Idn{x}} v\in\OpCat{E}#} are equivalently determined by vertical maps {#v\to u \in E#}.
+different cartesian lifts {#v\Sub{x}\to x#}. A displayed morphism that is cartesian over the identity is an isomorphism; hence, displayed morphisms {#u\DispTo{\Idn{x}} v\in\OpCat{E}#} are equivalently determined by vertical maps {#v\to u \in E#}.
 {{%/proof%}}

@@ -10,7 +10,7 @@ Let {#C#} be an internal category in {#E#}. We may define a fibered category {#\
 
 1. Given {#x\in E#}, an object of {#\Extrn{C}\Sub{x}#} is defined to be a morphism {#x\to C\Sub{0}#} in {#E#}.
 
-2. Given {#x,y\in E#} and {#f:x\to y#} and {#u \in \Extrn{C}\Sub{x}#} and {#v\in \Extrn{C}\Sub{y}#}, a morphism {#u\to\Sub{f} v#} is defined to be a morphism {#h : x\to C\Sub{1}#} in {#E#} such that the following diagram commutes:
+2. Given {#x,y\in E#} and {#f:x\to y#} and {#u \in \Extrn{C}\Sub{x}#} and {#v\in \Extrn{C}\Sub{y}#}, a morphism {#u\DispTo{f} v#} is defined to be a morphism {#h : x\to C\Sub{1}#} in {#E#} such that the following diagram commutes:
 
    ```render-latex
    \begin{tikzpicture}[diagram]
