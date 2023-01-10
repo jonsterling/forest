@@ -45,7 +45,6 @@ function renderForesterMath(siteData, permalinks, katexMacros, displayMode, code
 
   const macroInspector = outer.querySelector('.tooltiptext')
   const macrosUl = document.createElement('ul')
-  console.log(macrosUsed)
 
   if (macrosUsed.size == 0) {
     macroInspector.remove()
