@@ -14,7 +14,6 @@ macros:
     \usetikzlibrary{decorations.pathmorphing}
     \usetikzlibrary{decorations.markings}
 
-
     \renewcommand{\zxDefaultRowSep}{5mm}
     \renewcommand{\zxDefaultColumnSep}{2mm}
 
@@ -357,10 +356,6 @@ macros:
   args: 1
   body: '\brk{#1}'
   doc: the externalization of an internal category
-- name: FullSubfib
-  args: 1
-  body: '\mathbf{Full}\prn{#1}'
-  doc: the full subfibration associated to a displayed object
 - name: tick
   args: 0
   body: "'"
