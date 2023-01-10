@@ -3,7 +3,6 @@ title: definable class in a fibration
 taxon: Definition
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#E#} be a cartesian fibration over {#B#}. A *definable class*

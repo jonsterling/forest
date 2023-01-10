@@ -1,7 +1,6 @@
 ---
 title: hom candidates
 taxon: Definition
-packages: jon-tikz
 macros:
 - include: base-macros
 - name: CandHom

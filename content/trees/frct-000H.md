@@ -2,7 +2,6 @@
 title: a more abstract formulation of locally small family fibrations
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 We will reformulate the local smallness property of the family fibration in a way that uses only the language that makes

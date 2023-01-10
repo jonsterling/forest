@@ -3,7 +3,6 @@ taxon: Construction
 title: the internal category associated to a displayed object
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#\bar{u}#} be a displayed object in a [locally small](frct-001B) fibration {#E#} over {#B#}. We will define the [internal category](frct-001A) {#\gl{\bar{u}}#} in {#B#} associated to {#\bar{u}#}. In particular, we let the object of objects {#\gl{\bar{u}}\Sub{0}#} be {#u#} itself; defining the object of arrows {#\gl{\bar{u}}\Sub{1}#} is more complex, making critical use of the local smallness of {#E#} over {#B#}.

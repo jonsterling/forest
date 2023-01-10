@@ -3,7 +3,6 @@ taxon: Theorem
 title: characterization of right fibrations
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 A cartesian fibration {#E#} over {#B#} is a right fibration if and only if

@@ -3,7 +3,6 @@ title: globally small categories
 taxon: Theorem
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 An ordinary category {#C#} is equivalent to a globally small category if and only if the fibration {#\FAM{C}#} has a generic object.

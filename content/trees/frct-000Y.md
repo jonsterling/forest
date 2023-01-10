@@ -2,7 +2,6 @@
 taxon: Lemma
 macros:
 - include: frct-001C
-packages: jon-tikz
 title: locally small externalization
 ---
 

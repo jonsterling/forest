@@ -2,7 +2,6 @@
 title: Displayed categories from functors
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 In many cases, one starts with a functor {#P:E\to B#}; if it were meaningful to

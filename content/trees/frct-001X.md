@@ -3,8 +3,6 @@ title: the fundamental self-indexing
 taxon: Construction
 macros:
 - include: base-macros
-packages:
-  jon-tikz
 ---
 
 Let {#B#} be an ordinary category; there is an important displayed category

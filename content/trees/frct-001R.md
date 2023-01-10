@@ -3,7 +3,6 @@ taxon: Construction
 title: externalization
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#C#} be an internal category in {#E#}. We may define a fibered category {#\Extrn{C}#} over {#E#} called the *externalization* of {#C#}.

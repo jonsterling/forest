@@ -3,7 +3,6 @@ title: opposite fibered category
 taxon: Construction
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#E#} be fibered over {#B#}; we may define the *opposite* fibered category

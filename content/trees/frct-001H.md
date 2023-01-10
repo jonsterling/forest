@@ -3,7 +3,6 @@ taxon: Lemma
 title: generalized pullback lemma
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#\bar{f} : \bar{x}\DispTo{f}\bar{y}#}, and suppose that

@@ -3,7 +3,6 @@ title: hypocartesian morphisms
 taxon: Definition
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#E#} be displayed over {#B#}, and let {#f:x\to y \in B#}; a morphism

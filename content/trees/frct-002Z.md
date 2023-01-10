@@ -2,7 +2,6 @@
 taxon: Construction
 macros:
 - include: base-macros
-packages: jon-tikz
 ---
 
 Let {#B#} be a category. Define the displayed category {#\overline{B}#} over {#B#} as
