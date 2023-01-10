@@ -108,7 +108,7 @@
     <tr>
       {{ if .include }}
       {{ $includedSlug := .include }}
-      {{ if site.GetPage .include }}
+      {{ with site.GetPage .include }}
         <td colspan="3"><code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code></td>
       {{ end }}
       {{ else if .name }}
