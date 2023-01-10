@@ -14,7 +14,7 @@
 
 {{ $forestScripts := resources.Get "/js/forest.js" }}
 {{ $permalinks := dict }}
-  {{ range site.Pages }}
+{{ range site.RegularPages }}
   {{ $permalink := .RelPermalink }}
   {{ with .File }}
   {{ with .ContentBaseName }}
@@ -135,7 +135,7 @@
       }
     });
 
-    {{range .Site.RegularPages}}
+    {{ range .Site.RegularPages }}
     ninja.data.push({
       id: 'AllNotes-{{.File.ContentBaseName}}',
       title: '{{ .Params.Taxon }} #{{.File.ContentBaseName}}{{with .Title}}: {{.}}{{end}}',

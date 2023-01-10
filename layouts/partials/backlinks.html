@@ -106,12 +106,12 @@
   <table class="macros">
   {{ range . }}
     <tr>
-      {{ with .include }}
-      {{ $includedSlug := . }}
-      {{ with site.GetPage . }}
+      {{ if .include }}
+      {{ $includedSlug := .include }}
+      {{ if site.GetPage .include }}
         <td colspan="3"><code>include <a class="local" href="{{.RelPermalink}}">{{$includedSlug}}</a></code></td>
       {{ end }}
-      {{ else }}
+      {{ else if .name }}
         <td class="macro-name">
           <code>
             \{{ .name }}{{- range $i := (seq .args) -}}{#{{- . -}}}{{ end }}
