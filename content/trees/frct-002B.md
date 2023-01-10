@@ -5,7 +5,7 @@ macros:
 - include: frct-0000
 ---
 
-Let {#E#} be displayed over {#B#}. Then {#E#} is a cartesian fibration in the sense of [](frct-0002) if and only if the following two conditions hold:
+Let {#E#} be displayed over {#B#}. Then {#E#} is a [cartesian fibration](frct-0002) if and only if the following two conditions hold:
 
 1. *Hypocartesian lifts.* For each {#f:x\to y\in B#} and {#\bar{y}\in E\Sub{y}#} there
    exists a displayed object {#\bar{x}\in E\Sub{x}#} and hypocartesian morphism
@@ -16,14 +16,9 @@ Let {#E#} be displayed over {#B#}. Then {#E#} is a cartesian fibration in the se
 
 {{%proof%}}
 Suppose first that {#E#} is a cartesian fibration in our sense. Then
-{#E#} has hypocartesian lifts because it has cartesian lifts. For closure under
-composition, fix hypocartesian {#\bar{f},\bar{g}#}; by [](frct-002C) we know that
-{#\bar{f},\bar{g}#} are also cartesian and hence by [](frct-001H) so is the composite {#\bar{f};\bar{g}#}; therefore it follows
-that {#\bar{f};\bar{g}#} is also hypocartesian.
+{#E#} has hypocartesian lifts because it has cartesian lifts. For closure under composition, fix hypocartesian {#\bar{f},\bar{g}#}; because [hypocartesian and cartesian maps coincide in a cartesian fibration](frct-002C) we know that {#\bar{f},\bar{g}#} are also cartesian and hence by the [generalized pullback lemma](frct-001H) so is the composite {#\bar{f};\bar{g}#}; therefore it follows that {#\bar{f};\bar{g}#} is also hypocartesian.
 
-Conversely, suppose that {#E#} is a cartesian fibration in the sense of
-Grothendieck, and let {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#} be the hypocartesian lift of {#f:x\to y#} at {#\bar{y}\in E\Sub{y}#}; we shall see that {#\bar{f}#} is also a *cartesian* lift of {#f#} at {#\bar{y}#} by constructing a unique factorization as
-follows:
+Conversely, suppose that {#E#} is a cartesian fibration in the sense of Grothendieck, and let {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#} be the hypocartesian lift of {#f:x\to y#} at {#\bar{y}\in E\Sub{y}#}; we shall see that {#\bar{f}#} is also a *cartesian* lift of {#f#} at {#\bar{y}#} by constructing a unique factorization as follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
