@@ -12,7 +12,7 @@ Let {#E#} be fibered over {#B#}; we may define the *opposite* fibered category
 
 2. Given {#f : x \to y\in B#}, a morphism {#\bar{x}\DispTo{f} \bar{y}#} in {#\OpCat{E}#}
    is given in terms of {#E#} by a cartesian map {#\bar{y}\Sub{f} : \bar{y}\Sub{x} \DispTo{f} \bar{y}#} together
-   with a *vertical* map {#h : \bar{y}\Sub{x}\DispTo{\Idn{x}} \bar{y}#} as depicted below:
+   with a *vertical* map {#h : \bar{y}\Sub{x}\DispTo{\Idn{x}} \bar{x}#} as depicted below:
    ```render-latex
     \begin{tikzpicture}[diagram]
       \SpliceDiagramSquare{
