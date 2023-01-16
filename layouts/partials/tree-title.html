@@ -1,0 +1,13 @@
+{{ if .Params.Taxon }}
+<b>{{ .Params.Taxon }}</b>
+{{with .Title}} ({{.}}) {{end}}
+<a href="{{.RelPermalink}}" class="slug">#{{.File.ContentBaseName}}</a>
+{{ else }}
+<b> {{ .Title | title | markdownify }} </b> <a href="{{.RelPermalink}}" class="slug">#{{.File.ContentBaseName}}</a>
+{{ end }}
+
+{{ if .Params.Draft }}
+<sup>
+  <span class="entry-isdraft">  [draft]</span>
+</sup>
+{{ end }}

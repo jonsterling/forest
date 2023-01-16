@@ -1,5 +1,4 @@
 {{ $site := .context.Site }}
-
 {{ $taxon := .context.Params.Taxon }}
 {{ $macrolib := .context.Params.macrolib }}
 {{ $title := .context.Page.Title }}
@@ -39,19 +38,7 @@
         {{- partial "bibitem_summary.html" .context.Page.Params }}
         <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
       {{ else }}
-        {{ if $taxon }}
-        <b>{{ $taxon }}</b>
-        {{with $title}} ({{.}}) {{end}}
-        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-        {{ else }}
-        <b> {{ $title | title | markdownify }} </b> <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-        {{ end }}
-
-        {{ if .context.Params.Draft }}
-        <sup>
-          <span class="entry-isdraft">  [draft]</span>
-        </sup>
-        {{ end }}
+        {{- partial "tree-title.html" .context -}}
       {{ end }}
     </summary>
 
