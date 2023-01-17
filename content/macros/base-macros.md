@@ -340,6 +340,9 @@ macros:
 - name: ObjTerm
   args: 1
   body: '\mathbf{1}\Sub{#1}'
+- name: ObjInit
+  args: 1
+  body: '\mathbf{0}\Sub{#1}'
 - name: tick
   args: 0
   body: "'"

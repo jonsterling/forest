@@ -1,8 +1,8 @@
 {{ $authors := .author }}
 {{ $title := .title }}
 {{ $journal := .journal }}
+{{ $link := .link }}
 
-<p>
 {{ range $i, $a := $authors }}
 {{- if $i -}}; {{ end }}
 {{ $a -}}
@@ -20,4 +20,7 @@
 {{ with $doi }}
   <a class="doi" href="https://www.doi.org/{{ . }}">{{ . }}</a>.
 {{ end }}
-</p>
+
+{{ with $link }}
+  <a href="{{.}}">External Link</a>.
+{{ end }}

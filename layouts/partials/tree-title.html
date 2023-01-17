@@ -1,13 +1,18 @@
-{{ if .Params.Taxon }}
-<b>{{ .Params.Taxon | title }}</b>
-{{with .Title}} ({{.}}) {{end}}
-<a href="{{.RelPermalink}}" class="slug">#{{.File.ContentBaseName}}</a>
-{{ else }}
-<b> {{ .Title | title | markdownify }} </b> <a href="{{.RelPermalink}}" class="slug">#{{.File.ContentBaseName}}</a>
-{{ end }}
+<header>
+  {{ if .Params.Taxon }}
+    <span class="slug">[{{.File.ContentBaseName}}]</span>
+    <b>
+     {{ .Params.Taxon | title }}
+    </b>
+    {{with .Title}} ({{.}}). {{end}}
+  {{ else }}
+    <b>{{ .Title | title | markdownify }} </b>
+    <a href="{{.RelPermalink}}" class="slug">[{{.File.ContentBaseName}}]</a>
+  {{ end }}
 
-{{ if .Params.Draft }}
-<sup>
-  <span class="entry-isdraft">  [draft]</span>
-</sup>
-{{ end }}
+  {{ if .Params.Draft }}
+  <sup>
+    <span class="entry-isdraft">[draft]</span>
+  </sup>
+  {{ end }}
+</header>

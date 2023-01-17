@@ -7,16 +7,22 @@
 {{ $shouldExpand := not $shouldCollapse }}
 {{ $splice := .splice }}
 
-{{ $content := .context.Content }}
+{{ $content := "" }}
+{{ $synopsis := "" }}
 {{ with .context }}
-{{ if .RawContent }}
 {{ $content = .RawContent
   | replaceRE `{##` `{{<display-math>}}`
   | replaceRE `##}` `{{</display-math>}}`
   | replaceRE `{#` `{{<inline-math>}}`
   | replaceRE `#}` `{{</inline-math>}}`
   | .RenderString }}
-{{ end }}
+{{ $synopsis = .Params.Synopsis
+  | default "" 
+  | replaceRE `{##` `{{<display-math>}}`
+  | replaceRE `##}` `{{</display-math>}}`
+  | replaceRE `{#` `{{<inline-math>}}`
+  | replaceRE `#}` `{{</inline-math>}}`
+  | .RenderString (dict "display" "block") }}
 {{ end }}
 
 {{ if $splice }}
@@ -33,22 +39,29 @@
 {{else}}
 
 <section class="block math-barrier" data-slug="{{$slug}}">
-  <details {{if $shouldExpand}} open {{end}} data-slug="{{$slug}}">
-    <summary>
-      {{ if eq .context.Page.Type "refs" }}
-        {{- partial "bibitem_summary.html" .context.Page.Params }}
-        <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
-      {{ else }}
-        {{- partial "tree-title.html" .context -}}
-      {{ end }}
-    </summary>
+  <div class="post-content" data-slug="{{$slug}}">
+    <details 
+      {{if $shouldExpand}} open {{end}} 
+      data-slug="{{$slug}}"
+      {{if .context.Page.Params.Taxon}}class="result"{{end}}>
+      <summary>
+        {{ if eq .context.Page.Type "refs" }}
+          <header>
+            {{- partial "bibitem_summary.html" .context.Page.Params }}
+            <a href="{{$relPermalink}}" class="slug">#{{$slug}}</a>
+          </header>
+        {{ else }}
+          {{- partial "tree-title.html" .context -}}
+        {{ end }}
+        {{$synopsis}}
+      </summary>
+      
+      {{- with .context -}}
+      {{$content}}
+      {{- end -}}
 
-    {{- with .context -}}
-      <div class="post-content" data-slug="{{$slug}}">
-        {{$content}}
-      </div>
-    {{- end -}}
-  </details>
+    </details>
+  </div>
 </section>
 
 {{end}}
