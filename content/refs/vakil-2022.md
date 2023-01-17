@@ -1,0 +1,9 @@
+---
+title: The Rising Sea
+author:
+- Ravi Vakil
+date: 2022-12-31
+link: http://math.stanford.edu/~vakil/216blog/FOAGdec3122public.pdf
+---
+
+Draft textbook for [Math 216](https://math216.wordpress.com/).
