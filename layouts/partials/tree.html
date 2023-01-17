@@ -8,7 +8,6 @@
 {{ $splice := .splice }}
 
 {{ $content := "" }}
-{{ $synopsis := "" }}
 {{ with .context }}
 {{ $content = .RawContent
   | replaceRE `{##` `{{<display-math>}}`
@@ -16,13 +15,6 @@
   | replaceRE `{#` `{{<inline-math>}}`
   | replaceRE `#}` `{{</inline-math>}}`
   | .RenderString }}
-{{ $synopsis = .Params.Synopsis
-  | default "" 
-  | replaceRE `{##` `{{<display-math>}}`
-  | replaceRE `##}` `{{</display-math>}}`
-  | replaceRE `{#` `{{<inline-math>}}`
-  | replaceRE `#}` `{{</inline-math>}}`
-  | .RenderString (dict "display" "block") }}
 {{ end }}
 
 {{ if $splice }}
@@ -53,7 +45,6 @@
         {{ else }}
           {{- partial "tree-title.html" .context -}}
         {{ end }}
-        {{$synopsis}}
       </summary>
       
       {{- with .context -}}

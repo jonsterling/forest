@@ -1,14 +1,13 @@
 <header>
   {{ if .Params.Taxon }}
-    <span class="slug">[{{.File.ContentBaseName}}]</span>
     <b>
      {{ .Params.Taxon | title }}
     </b>
-    {{with .Title}} ({{.}}). {{end}}
+    {{with .Title}} ({{.}}) {{end}}
   {{ else }}
     <b>{{ .Title | title | markdownify }} </b>
-    <a href="{{.RelPermalink}}" class="slug">[{{.File.ContentBaseName}}]</a>
   {{ end }}
+  <a href="{{.RelPermalink}}" class="slug">[{{.File.ContentBaseName}}]</a>
 
   {{ if .Params.Draft }}
   <sup>
