@@ -1,6 +1,6 @@
 ---
 title: two ways to generalize pullbacks
-taxon: Remark
+taxon: remark
 ---
 
 [Hypocartesian](frct-002A) and [cartesian](frct-0001)

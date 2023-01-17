@@ -1,6 +1,6 @@
 ---
 title: the fundamental self-indexing
-taxon: Construction
+taxon: construction
 macros:
 - include: base-macros
 - name: SelfIx

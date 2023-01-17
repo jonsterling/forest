@@ -2,7 +2,7 @@
 macros:
 - include: base-macros
 title: cartesian closure of the meta-category of all categories
-taxon: Remark
+taxon: remark
 ---
 
 Consequently there exists a meta-category {#\BoldSymbol{\mathfrak{Cat}}#} of all

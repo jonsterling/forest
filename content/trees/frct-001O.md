@@ -1,6 +1,6 @@
 ---
 title: right fibration
-taxon: Definition
+taxon: definition
 ---
 
 A cartesian fibration {#E#} over {#B#} is said to be a *right fibration*

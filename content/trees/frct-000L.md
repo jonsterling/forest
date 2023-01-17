@@ -1,6 +1,6 @@
 ---
 title: globally small categories
-taxon: Theorem
+taxon: theorem
 macros:
 - include: frct-0006
 - include: frct-0000

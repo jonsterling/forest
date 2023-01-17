@@ -1,5 +1,5 @@
 ---
-taxon: Theorem
+taxon: theorem
 title: characterization of the externalization
 macros:
 - include: frct-0000

@@ -1,6 +1,6 @@
 ---
 title: total opposite category
-taxon: Construction
+taxon: construction
 macros:
 - include: frct-0000
 - name: TotOpCat

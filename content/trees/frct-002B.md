@@ -1,5 +1,5 @@
 ---
-taxon: Lemma
+taxon: lemma
 title: equivalence with Grothendieck's fibrations
 macros:
 - include: frct-0000

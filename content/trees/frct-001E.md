@@ -1,5 +1,5 @@
 ---
-taxon: Definition
+taxon: definition
 title: generic object
 macros:
 - include: frct-000A

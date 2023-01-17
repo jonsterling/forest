@@ -1,5 +1,5 @@
 ---
-taxon: Lemma
+taxon: lemma
 macros:
 - include: frct-001C
 - include: frct-000A

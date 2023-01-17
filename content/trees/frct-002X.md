@@ -1,5 +1,5 @@
 ---
-taxon: Example
+taxon: example
 title: revisiting the fundamental self-indexing
 macros:
 - include: frct-001X

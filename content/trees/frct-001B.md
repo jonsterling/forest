@@ -1,6 +1,6 @@
 ---
 title: locally small fibration
-taxon: Definition
+taxon: definition
 macros:
 - include: frct-001C
 - include: frct-000A

@@ -1,5 +1,5 @@
 ---
-taxon: Construction
+taxon: construction
 title: the internal category associated to a displayed object
 macros:
 - include: base-macros

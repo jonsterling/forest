@@ -139,7 +139,7 @@
     {{ range .Site.RegularPages }}
     ninja.data.push({
       id: 'AllNotes-{{.File.ContentBaseName}}',
-      title: '{{ .Params.Taxon }} #{{.File.ContentBaseName}}{{with .Title}}: {{.}}{{end}}',
+      title: '{{ .Params.Taxon | title }} #{{.File.ContentBaseName}}{{with .Title}}: {{.}}{{end}}',
       section: 'All Notes',
       handler: () => {
         window.location.href = '{{.Permalink}}'

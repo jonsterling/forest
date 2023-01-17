@@ -1,5 +1,5 @@
 ---
-taxon: Theorem
+taxon: theorem
 title: characterization of right fibrations
 macros:
 - include: frct-0000

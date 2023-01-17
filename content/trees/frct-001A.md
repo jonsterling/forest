@@ -1,6 +1,6 @@
 ---
 title: internal category
-taxon: Definition
+taxon: definition
 macros:
 - include: base-macros
 ---

@@ -1,6 +1,6 @@
 ---
 title: definable class in a fibration
-taxon: Definition
+taxon: definition
 macros:
 - include: base-macros
 ---

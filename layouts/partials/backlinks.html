@@ -114,8 +114,13 @@
       {{ else if .name }}
         <td class="macro-name">
           <code>
-            \{{ .name }}{{- range $i := (seq .args) -}}{#{{- . -}}}{{ end }}
+            \{{ .name }}
           </code>
+          {{ if .private }}
+          <sup>
+            <span class="macro-is-private">  [private]</span>
+          </sup>
+          {{ end }}
         </td>
         <td class="macro-body">
           <span id="rhs-{{.name}}">

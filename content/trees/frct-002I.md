@@ -1,6 +1,6 @@
 ---
 title: agreement on a class of figure shapes
-taxon: Definition
+taxon: definition
 macros:
 - include: base-macros
 ---

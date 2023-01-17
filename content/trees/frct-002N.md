@@ -1,5 +1,5 @@
 ---
-taxon: Construction
+taxon: construction
 title: from classes of families to classes of sets
 macros:
 - include: base-macros

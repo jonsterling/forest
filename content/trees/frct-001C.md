@@ -1,6 +1,6 @@
 ---
 title: hom candidates
-taxon: Definition
+taxon: definition
 macros:
 - include: frct-0000
 - name: CandHom

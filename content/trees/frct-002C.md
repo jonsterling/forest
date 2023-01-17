@@ -1,5 +1,5 @@
 ---
-taxon: Lemma
+taxon: lemma
 title: hypocartesian = cartesian in a cartesian fibration
 macros:
 - include: frct-0000

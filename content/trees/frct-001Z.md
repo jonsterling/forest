@@ -1,6 +1,6 @@
 ---
 title: opposite fibered category
-taxon: Construction
+taxon: construction
 macros:
 - include: frct-0000
 ---

@@ -1,5 +1,5 @@
 ---
-taxon: Lemma
+taxon: lemma
 title: characterization of definable classes of families
 macros:
 - include: base-macros

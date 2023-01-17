@@ -1,5 +1,5 @@
 ---
-taxon: Remark
+taxon: remark
 macros:
 - include: frct-001X
 ---

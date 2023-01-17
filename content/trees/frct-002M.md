@@ -1,5 +1,5 @@
 ---
-taxon: Construction
+taxon: construction
 title: closure of a class of sets under base change
 macros:
 - include: base-macros

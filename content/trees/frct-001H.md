@@ -1,5 +1,5 @@
 ---
-taxon: Lemma
+taxon: lemma
 title: generalized pullback lemma
 macros:
 - include: frct-0000

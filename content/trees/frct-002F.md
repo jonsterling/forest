@@ -1,6 +1,6 @@
 ---
 title: well-pointedness of the category of sets
-taxon: Example
+taxon: example
 macros:
 - include: base-macros
 ---

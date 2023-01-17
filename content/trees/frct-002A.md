@@ -1,6 +1,6 @@
 ---
 title: hypocartesian morphisms
-taxon: Definition
+taxon: definition
 macros:
 - include: frct-0000
 ---

@@ -2,10 +2,11 @@
 {{ $path := printf "latex/%s.svg" $hash }}
 {{ $image := resources.Get $path }}
 
-<center>
-  {{ if $image }}
+{{ if $image }}
+  <center>
   <img class="latex" src="{{ $image.RelPermalink }}" alt="{{.Inner}}" loading="lazy">
-  {{ else }}
-  [Missing image: {{ $path }}]
-  {{ end }}
-</center>
+  </center>
+{{ else }}
+  <p>[Missing image: {{ $path }}]</p>
+  <pre>{{.Inner}}</pre>
+{{ end }}

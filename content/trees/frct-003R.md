@@ -1,6 +1,6 @@
 ---
 date: 2022-12-27T17:42:49+01:00
-taxon: Notation
+taxon: notation
 macros:
 - include: base-macros
 title: square brackets for subscripts

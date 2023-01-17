@@ -1,7 +1,7 @@
 ---
 macros:
 - include: base-macros
-taxon: Remark
+taxon: remark
 ---
 
 Cartesian morphisms are clearly hypocartesian (setting {#u=x#} and {#m=\Idn{x}#}),

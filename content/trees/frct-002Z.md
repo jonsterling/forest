@@ -1,5 +1,5 @@
 ---
-taxon: Construction
+taxon: construction
 macros:
 - include: base-macros
 - name: DualSelfIx

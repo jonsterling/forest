@@ -1,5 +1,5 @@
 ---
-taxon: Exercise
+taxon: exercise
 macros:
 - include: frct-0000
 - include: frct-001I

@@ -1,5 +1,4 @@
 {{ $site := .context.Site }}
-{{ $taxon := .context.Params.Taxon }}
 {{ $macrolib := .context.Params.macrolib }}
 {{ $title := .context.Page.Title }}
 {{ $relPermalink := .context.Page.RelPermalink }}
@@ -8,14 +7,16 @@
 {{ $shouldExpand := not $shouldCollapse }}
 {{ $splice := .splice }}
 
-{{ $content := "" }}
+{{ $content := .context.Content }}
 {{ with .context }}
+{{ if .RawContent }}
 {{ $content = .RawContent
   | replaceRE `{##` `{{<display-math>}}`
   | replaceRE `##}` `{{</display-math>}}`
   | replaceRE `{#` `{{<inline-math>}}`
   | replaceRE `#}` `{{</inline-math>}}`
   | .RenderString }}
+{{ end }}
 {{ end }}
 
 {{ if $splice }}

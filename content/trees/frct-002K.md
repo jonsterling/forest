@@ -1,6 +1,6 @@
 ---
 title: figures and figure shapes in the full subfibration
-taxon: Definition
+taxon: definition
 macros:
 - include: frct-0010
 ---

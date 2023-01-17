@@ -1,7 +1,7 @@
 ---
 macros:
 - include: base-macros
-taxon: Remark
+taxon: remark
 title: collections
 ---
 

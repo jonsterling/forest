@@ -1,7 +1,7 @@
 ---
 macros:
 - include: base-macros
-taxon: Remark
+taxon: remark
 ---
 
 Recall from [](frct-0005) that for every {#b\in B#}, the collection of displayed

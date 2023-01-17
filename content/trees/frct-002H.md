@@ -1,6 +1,6 @@
 ---
 title: small separator for a fibration
-taxon: Definition
+taxon: definition
 macros:
 - include: frct-0000
 ---

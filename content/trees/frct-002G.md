@@ -1,6 +1,6 @@
 ---
 title: separating family for a category
-taxon: Definition
+taxon: definition
 macros:
 - include: base-macros
 ---

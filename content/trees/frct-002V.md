@@ -1,5 +1,5 @@
 ---
-taxon: Definition
+taxon: definition
 title: definable class of sets
 ---
 

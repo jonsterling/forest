@@ -1,5 +1,5 @@
 ---
-taxon: Definition
+taxon: definition
 title: meta-category
 macros:
 - include: base-macros

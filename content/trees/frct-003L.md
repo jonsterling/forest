@@ -1,5 +1,5 @@
 ---
-taxon: Intuition
+taxon: intuition
 macros:
 - include: base-macros
 ---
