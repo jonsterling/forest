@@ -313,7 +313,7 @@ macros:
   doc: the slice of a category over an object
 - name: Hom
   args: 3
-  body: '\mathbf{hom}\Sub{#1}(#2,#3)'
+  body: '\mathbf{hom}\Sub{#1}\prn{#2,#3}'
   doc: the collection of morphisms between two objects
 - name: Ob
   args: 1

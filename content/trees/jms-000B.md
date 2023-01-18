@@ -12,4 +12,4 @@ macros:
   scope: private
 ---
 
-A *category with zero morphisms* is defined to be a category enriched in the category of pointed sets and strict maps. The distinguished point of {#\Hom{\ACat}{A}{B}#} shall be written {#0#}. 
+A *category with zero morphisms* is defined to be a category [enriched](jms-000H) in the category of pointed sets and strict maps. The distinguished point of {#\Hom{\ACat}{A}{B}#} shall be written {#0#}. 
