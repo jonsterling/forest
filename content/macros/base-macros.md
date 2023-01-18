@@ -354,6 +354,10 @@ macros:
   args: 2
   body: '#2\Sup{\setminus #1}'
   doc: the coslice of a category under an object
+- name: FibProd
+  args: 3
+  body: '#1\mathbin{\times\Sub{#2}}#3'
+  doc: the fiber product
 ---
 
 This tree defines the basic notational macros used across [](jms-0001).
