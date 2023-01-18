@@ -11,7 +11,7 @@ Let {#\prn{V,I,\otimes,\alpha,\lambda,\rho}#} be a [monoidal category](jms-000D)
 
 1. a collection {#\Ob{C}#} of *objects*;
 2. for any two objects {#x,y#}, an object {#\Hom{C}{x}{y}\in V#};
-3. for every object {#x#}, a morphism {#I\xrightarrow{i\Sub{x}}\Hom{C}{x}{y}#} in {#V#};
+3. for every object {#x#}, a morphism {#I\xrightarrow{i\Sub{x}}\Hom{C}{x}{x}#} in {#V#};
 4. for all objects {#x,y,z#}, a morphism {#\Hom{C}{x}{y}\otimes\Hom{C}{y}{z}\xrightarrow{c\Sub{x,y,z}}\Hom{C}{x}{z}#} in {#V#}.
 5. such that the following diagrams commute in {#V#}:
    ```render-latex
