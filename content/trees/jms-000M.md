@@ -18,4 +18,4 @@ For example, even though the external statement of well-pointedness may not hold
 
 > **Externalization:** for any set {#I#} and functions {#f,g:I\times A \to B#}, if for all {#i:J\to I#} and {#a:J\to A#} we have {#f \circ \gl{i,a} = g\circ\gl{i,a}#}, then {#f=g#}.
 
-The two statements above are nothing more than the (equivalent) internal and external formulations of the **function extensionality** principle, which is always true in any adequate foundation for mathematics. If the internal statement is read directly as if it were external already, it would be exactly the statement of **well-pointedness*, which is much stronger than function extensionality.
+The two statements above are nothing more than the (equivalent) internal and external formulations of the **function extensionality** principle, which is always true in any adequate foundation for mathematics. If the internal statement is read directly as if it were external already, it would be exactly the statement of **well-pointedness**, which is much stronger than function extensionality.
