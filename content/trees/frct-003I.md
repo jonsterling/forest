@@ -4,7 +4,6 @@ date: 2022-01-01
 author:
 - Jonathan Sterling
 - Carlo Angiuli
-collapseChildren: true
 macros:
 - include: base-macros
 ---
@@ -15,11 +14,11 @@ notion of a category *over* another category.
 
 We will draw on the following materials:
 
-![](ahrens-lumsdaine-2019)
-![](benabou-1985)
-![](borceux-hca-2)
-![](jacobs-1999)
-![](streicher-fcjb)
+![](ahrens-lumsdaine-2019?collapse=true)
+![](benabou-1985?collapse=true)
+![](borceux-hca-2?collapse=true)
+![](jacobs-1999?collapse=true)
+![](streicher-fcjb?collapse=true)
 
 These lecture notes are deeply influenced by Thomas Streicher.
 
