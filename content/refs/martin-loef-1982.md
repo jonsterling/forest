@@ -1,0 +1,10 @@
+---
+title: Constructive Mathematics and Computer Programming
+author:
+- Per Martin-Löf
+doi: 10.1016/S0049-237X(09)70189-2
+journal: Studies in Logic and the Foundations of Mathematics
+date: 1982-01-01
+---
+
+This chapter discusses that relating constructive mathematics to computer programming seems to be beneficial. Among the benefits to be derived by constructive mathematics from its association with computer programming, one is that you see immediately why you cannot rely upon the law of excluded middle: its uninhibited use would lead to programs that one did not know how to execute. By choosing to program in a formal language for constructive mathematics, like the theory of types, one gets access to the conceptual apparatus of pure mathematics, neglecting those parts that depend critically on the law of excluded middle, whereas even the best high level programming languages so far designed are wholly inadequate as mathematical languages. The virtue of a machine code is that a program written in it can be directly read and executed by the machine. The distinction between low and high level programming languages is of course relative to the available hardware. It may well be possible to turn what is now regarded as a high level programming language into machine code by the invention of new hardware.
