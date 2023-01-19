@@ -31,28 +31,45 @@
 {{else}}
 
 <section class="block math-barrier" data-slug="{{$slug}}">
-  <div class="post-content" data-slug="{{$slug}}">
-    <details 
-      {{if $shouldExpand}} open {{end}} 
-      data-slug="{{$slug}}"
-      {{if .context.Page.Params.Taxon}}class="result"{{end}}>
-      <summary>
-        {{ if eq .context.Page.Type "refs" }}
-          <header>
-            {{- partial "bibitem_summary.html" .context.Page.Params }}
-            <a href="{{$relPermalink}}" class="slug">[{{$slug}}]</a>
-          </header>
-        {{ else }}
-          {{- partial "tree-title.html" .context -}}
+  <details 
+    {{if $shouldExpand}} open {{end}} 
+    data-slug="{{$slug}}"
+    {{if .context.Page.Params.Taxon}}class="result"{{end}}>
+    <summary>
+      {{ if eq .context.Page.Type "refs" }}
+        <header>
+          {{- partial "bibitem_summary.html" .context.Page.Params }}
+          <a href="{{$relPermalink}}" class="slug">[{{$slug}}]</a>
+        </header>
+      {{ else }}
+        {{- partial "tree_title.html" .context -}}
+      {{ end }}
+    </summary>
+    
+    {{ if not .parent }}
+      {{ with site.Data.forest }}
+        {{ with .childrenOf }}
+          {{ $children := index . $slug }}
+          {{ with $children }}
+            <nav class="block" id="toc">
+              <details open>
+              <summary><h3>Table of Contents</h3></summary>
+              {{ partial "toc_items.html" . }}
+              </details>
+            </nav>
+          {{ end }}
         {{ end }}
-      </summary>
-      
-      {{- with .context -}}
-      {{$content}}
-      {{- end -}}
+      {{ end }}
+    {{ end }}
 
-    </details>
-  </div>
+    
+    {{- with .context -}}
+    <div class="post-content" data-slug="{{$slug}}">
+    {{$content}}
+    </div>
+    {{- end -}}
+
+  </details>
 </section>
 
 {{end}}

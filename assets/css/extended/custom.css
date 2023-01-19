@@ -1,5 +1,6 @@
 :root {
-  --content-gap: 15px
+  --content-gap: 15px;
+  --radius: 5px;
 }
 
 @font-face {
@@ -30,7 +31,7 @@
 body {
   font-family: "Inria Sans";
   font-size: 12pt;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 .katex {
@@ -38,12 +39,12 @@ body {
 }
 
 
-section {
-  /* padding-top: .25em; */
-  margin-bottom: 1em;
-  margin-left: .5em;
-  margin-right: .25em;
-  border-radius: 5px;
+.block {
+  border-radius: var(--radius)
+}
+
+.post-content {
+  margin-bottom: .2em;
 }
 
 .logo {
@@ -125,7 +126,9 @@ h4 {
 
 .slug,
 .doi {
+  font-family: 'Inria Sans';
   color: gray;
+  font-weight: normal;
 }
 
 .error {
@@ -137,7 +140,7 @@ details>summary>header {
 }
 
 
-details {
+.block {
   padding-left: 10px;
   padding-right: 10px !important;
   padding-bottom: 2px;
@@ -308,4 +311,46 @@ td.macro-doc {
 
 .post-content blockquote {
   border-inline-start: 1px solid var(--secondary);
+}
+
+.taxon {
+  font-weight: bold;
+}
+
+details h1,
+details h2,
+details h3 {
+  font-size: 12pt !important;
+  margin: 0 0 0 0 !important;
+  display: inline;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em !important;
+}
+
+article>section>details>summary {
+  list-style-type: none;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em !important;
+}
+
+nav#toc {
+  margin-top: 1.25em;
+  margin-bottom: 1.5em;
+}
+
+nav#toc h2 {
+  font-size: 1.1em !important;
+}
+
+nav#toc ul {
+  padding-left: 1.5em;
+}
+
+nav#toc ul {
+  list-style-type: square;
 }

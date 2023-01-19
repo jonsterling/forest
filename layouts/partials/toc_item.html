@@ -1,0 +1,26 @@
+{{ $slug := .File.ContentBaseName }}
+{{ $relPermalink := .RelPermalink }}
+
+{{ if .Title }}
+{{ if eq .Type "trees" }}
+  <li>
+    <a href="{{$relPermalink}}">
+      {{ if .Params.Taxon }}
+      <span class="taxon">{{ .Params.Taxon | title }}</span>: {{.Title | title}}
+      {{ else }}
+      {{.Title | title }}
+      {{ end }}
+    </a>
+    <a href="{{$relPermalink}}" class="slug">[{{$slug}}]</a>
+    
+    {{ with site.Data.forest }}
+      {{ with .childrenOf }}
+        {{ $children := index . $slug }}
+        {{ with $children }}
+          {{ partial "toc_items.html" $children }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </li>
+{{ end }}
+{{ end }}
