@@ -10,8 +10,7 @@ draft: true
 - define coimages
 - define cokernels
 
-![](jms-000I)
-![](jms-000K)
+![](jms-000P)
 
 ![](jms-000H)
 ![](jms-000E)

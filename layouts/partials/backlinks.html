@@ -19,18 +19,6 @@
     {{ end }}
   {{ end }}
 
-  {{ with .linksFrom }}
-    {{ range index . $slug }}
-      {{ with site.GetPage . }}
-        {{ if eq .Type "refs" }}
-          {{ $refPages = $refPages | append . }}
-        {{ else }}
-          {{ $fwdPages = $fwdPages | append . }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
   {{ with .parentsOf }}
     {{ range index . $slug }}
       {{ with site.GetPage . }}
@@ -46,6 +34,19 @@
       {{ end }}
     {{ end }}
   {{ end }}
+  
+  {{ with .linksFrom }}
+    {{ range index . $slug }}
+      {{ with site.GetPage . }}
+        {{ if eq .Type "refs" }}
+          {{ $refPages = $refPages | append . }}
+        {{ else }}
+          {{ $fwdPages = $fwdPages | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
 
   {{ with $upwdPages }}
   {{ partial "links_section" (dict "pages" . "title" "Context" "id" "context")}}
