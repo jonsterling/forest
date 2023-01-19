@@ -3,7 +3,7 @@
 {{- $linkedSlug := .Destination -}}
 {{- $linkedPage := site.GetPage $linkedSlug -}}
 {{- if $linkedPage -}}
-{{- $title := default $linkedPage.Title .Text -}}
+{{- $title := default $linkedPage.Title (safeHTML .Text) -}}
 <a class="local"
    data-slug="{{$linkedSlug}}"
    href="{{$linkedPage.RelPermalink}}"
