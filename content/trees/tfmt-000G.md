@@ -10,20 +10,20 @@ A basic requirement of [tools for mathematical thought](tfmt-0002) is to support
 
 The situation for *hypertext* mathematical tools is somewhat less advanced than that of {#\LaTeX#} and PFG/TikZ, but there are several options which we discuss below.
 
-![](tfmt-000J?collapse=true)
-![](tfmt-000K?collapse=true)
+![](tfmt-000J)
+![](tfmt-000K)
 
 Both [{#\KaTeX#}](tfmt-000J) and [MathJax](tfmt-000K) have the benefit that diagrams created using them will respect the ambient macro package with which the tool has been configured; therefore, if one looks past the rudimentary nature of the support for commutative diagrams, our main requirement is indeed satisfied. Another tool worth discussing is [quiver](tfmt-000I).
 
-![](tfmt-000I?collapse=true)
+![](tfmt-000I)
 
 Because of the currently [inadequate support of quiver](tfmt-000I) for embedding diagrams in hypertext settings, we cannot consider it any further. There is a final option that turns out to be the most used in practice: generating SVG images statically from embedded {#\LaTeX#} code.
 
-![](tfmt-000L?collapse=true)
+![](tfmt-000L)
 
 
 Finally, we comment on more principled approaches using web standards such as SVG and MathML that we hope will take form in the future.
 
-![](tfmt-000N?collapse=true)
-![](tfmt-000O?collapse=true)
-![](tfmt-000M?collapse=true)
+![](tfmt-000N)
+![](tfmt-000O)
+![](tfmt-000M)
