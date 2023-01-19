@@ -4,7 +4,7 @@ macros:
 - include: frct-001X
 ---
 
-Let {#\mathscr{M}#} be a model of ETCS; and let {#\mathfrak{C}#} be a
+Let {#\mathscr{M}#} be a model of [ETCS](lawvere-1964-etcs); and let {#\mathfrak{C}#} be a
 class of families of sets in {#\mathscr{M}#}. Then {#\mathfrak{C}#} is a class of
 objects in the fundamental self-indexing {#\SelfIx{\mathscr{M}}#} over
 {#\mathscr{M}#}.  Furthermore, {#\mathscr{M}#} a definable class in

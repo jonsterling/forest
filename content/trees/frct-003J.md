@@ -11,4 +11,4 @@ We may define analogous notions of meta-functor, etc. But we do not
 assume that the notion of "all meta-functors {#\mathfrak{C}\to\mathfrak{D}#}" is well-defined; the notion is entirely schematic.
 
 
-**Assumption.** We assume a meta-category {#\BoldSymbol{\mathfrak{Coll}}#} whose objects we will refer to as "collections". We assume that the meta-category of all collections satisfies the axioms of Lawvere's ETCS.
+**Assumption.** We assume a meta-category {#\BoldSymbol{\mathfrak{Coll}}#} whose objects we will refer to as "collections". We assume that the meta-category of all collections satisfies the axioms of Lawvere's [ETCS](lawvere-1964-etcs).

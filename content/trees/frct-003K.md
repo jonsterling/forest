@@ -13,7 +13,7 @@ categories exist regardless of size.
 
 **Assumption.** At times we may assume that there exists a *category*
 {#\SET\subseteq\BoldSymbol{\mathfrak{Coll}}#} of collections that we will refer
-to as sets, such that {#\SET#} is closed under the axioms of ETCS. Rather than work with {#\SET#} at all
+to as sets, such that {#\SET#} is closed under the axioms of [ETCS](lawvere-1964-etcs). Rather than work with {#\SET#} at all
 times, our approach is to use the tools of relative category theory to
 objectify the notions of "small" and "locally small" category over any category
 {#B#}, generalizing the role of {#\SET#} from classical category theory.
