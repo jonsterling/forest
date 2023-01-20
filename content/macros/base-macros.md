@@ -292,6 +292,9 @@ macros:
 - name: prn
   args: 1
   body: '(#1)'
+- name: floors
+  args: 1
+  body: '\lfloor #1 \rfloor'
 - name: brc
   args: 1
   body: '\{#1\}'

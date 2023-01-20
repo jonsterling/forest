@@ -4,6 +4,7 @@ author:
 - Alexander Grothendieck
 - Michele Raynaud
 title: Revêtements étales et groupe fondamental (SGA 1)
+bookSeries: Seminaire de Geometrie Algebrique du Bois-Marie 
 ---
 
 Le texte présente les fondements d'une théorie du groupe fondamental en Géométrie Algébrique, dans le point de vue "kroneckerien" permettant de traiter sur le même pied le cas d'une variété algébrique au sens habituel, et celui d'un anneau des entiers d'un corps de nombres, par exemple.
