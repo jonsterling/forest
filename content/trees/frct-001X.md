@@ -9,12 +9,9 @@ macros:
   doc: 'the fundamental self-indexing of a category'
 ---
 
-Let {#B#} be an ordinary category; there is an important displayed category
-{#\SelfIx{B}#} over {#B#} given fiberwise by the *slices* of {#B#}.
-1. For {#x\in B#}, we define {#\SelfIx{B}\Sub{x}#} to be the collection {#\Sl{B}{x}#}
-   of pairs {#(\bar{x}\in B,p\Sub{x}:\bar{x}\to x)#}.
-2. For {#f : x\to y\in B#}, we define {#\SelfIx{B}\Sub{f}#} to be the collection of
-   commuting squares in the following configuration:
+Let {#B#} be an ordinary category; there is an important displayed category {#\SelfIx{B}#} over {#B#} given fiberwise by the *slices* of {#B#}.
+1. For {#x\in B#}, we define {#\SelfIx{B}\Sub{x}#} to be the collection {#\Sl{B}{x}#} of pairs {#(\bar{x}\in B,\Mor{p\Sub{x}}{\bar{x}}{x})#}.
+2. For {#\Mor{f}{x}{y}\in B#}, we define {#\SelfIx{B}\Sub{f}#} to be the collection of commuting squares in the following configuration:
 
 ```render-latex
   \DiagramSquare{

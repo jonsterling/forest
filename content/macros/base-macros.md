@@ -6,30 +6,12 @@ macros:
     \usepackage{mlmodern}
     \usepackage{xparse}
     \usepackage{tikz}
-    \usepackage{zx-calculus}
     \usepackage{tikz-cd}
     \usetikzlibrary{matrix,arrows}
     \usetikzlibrary{fit,positioning,calc,shapes}
     \usetikzlibrary{decorations.pathreplacing}
     \usetikzlibrary{decorations.pathmorphing}
     \usetikzlibrary{decorations.markings}
-
-    \renewcommand{\zxDefaultRowSep}{5mm}
-    \renewcommand{\zxDefaultColumnSep}{2mm}
-
-    \tikzset{
-      /zx/styles/rounded style/.append style={
-        zxShort/.append style={
-          font={\fontsize{8}{10}\selectfont},
-        },
-        stylePhaseInLabel/.append style={
-          font={\fontsize{8}{10}\selectfont},
-        },
-      },
-      close/.style = {
-        outer sep = -1.7pt
-      }
-    }
 
     \tikzset{
       desc/.style={sloped, fill=white,inner sep=2pt},
@@ -154,21 +136,6 @@ macros:
       }
     }
 
-    \ExplSyntaxOn
-
-    \cs_new:Npn \jms_tikz_morphism:nnn #1 #2 #3 {
-      \tikz[inline~diagram, baseline = (Y.base)]{
-        \node (X) {$#2$};
-        \node (Y) [right = 3ex~of~X] {$#3$};
-        \path[#1] (X) edge (Y);
-      }
-    }
-
-    \ExplSyntaxOff
-
-
-
-
     \tikzset{
       square/nw/.style = {},
       square/ne/.style = {},
@@ -279,8 +246,7 @@ macros:
         \__jon_tikz_render_square:nn {#1} {#3}
       \end{tikzpicture}
     }
-
-
+    
     \ExplSyntaxOff
 
 - name: Con
@@ -310,6 +276,9 @@ macros:
 - name: Sup
   args: 1
   body: '^{#1}'
+- name: SubSup
+  args: 2
+  body: '_{#1}^{#2}'
 - name: Sl
   args: 2
   body: '{#1}\Sub{/#2}'
@@ -361,6 +330,9 @@ macros:
   args: 3
   body: '#1\mathbin{\times\Sub{#2}}#3'
   doc: the fiber product
+- name: Mor
+  args: 3
+  body: '{#2}\xrightarrow{#1}{#3}'
 ---
 
 This tree defines the basic notational macros used across [](jms-0001).

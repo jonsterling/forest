@@ -5,10 +5,8 @@ macros:
 - include: frct-0000
 ---
 
-Let {#E#} be displayed over {#B#}, and let {#f:x\to y \in B#}; a morphism
-{#\bar{f}:\bar{x}\DispTo{f} \bar{y}#} in {#E#} is called *hypocartesian* over {#f#} when
-for any {#\bar{u}\in E\Sub{x}#} and {#\bar{h}:\bar{u}\DispTo{f} \bar{y}#} there exists a
-unique {#i : \bar{u}\DispTo{\Idn{x}} \bar{x}#} with {#i;\bar{f} = \bar{h}#} as follows:
+Let {#E#} be displayed over {#B#}, and let {#f:x\to y \in B#}; a morphism {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#} in {#E#} is called *hypocartesian* over {#f#} when for any {#\bar{u}\in E\Sub{x}#} and {#\DispMor{\bar{h}}{f}{\bar{u}}{\bar{y}}#} there exists a
+unique {#\DispMor{i}{\Idn{x}}{\bar{u}}{\bar{x}}#} with {#i;\bar{f} = \bar{h}#} as follows:
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
