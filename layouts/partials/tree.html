@@ -1,23 +1,23 @@
-{{ $site := .context.Site }}
-{{ $macrolib := .context.Params.macrolib }}
-{{ $title := .context.Page.Title }}
-{{ $relPermalink := .context.Page.RelPermalink }}
-{{ $slug := .context.Page.File.ContentBaseName }}
-{{ $shouldCollapse := default false .collapse }}
-{{ $shouldExpand := not $shouldCollapse }}
-{{ $splice := .splice }}
+{{- $site := .context.Site -}}
+{{- $macrolib := .context.Params.macrolib -}}
+{{- $title := .context.Page.Title -}}
+{{- $relPermalink := .context.Page.RelPermalink -}}
+{{- $slug := .context.Page.File.ContentBaseName -}}
+{{- $shouldCollapse := default false .collapse -}}
+{{- $shouldExpand := not $shouldCollapse -}}
+{{- $splice := .splice -}}
 
-{{ $content := "" }}
-{{ with .context }}
-{{ $content = .RawContent
+{{- $content := "" -}}
+{{- with .context -}}
+{{- $content = trim .RawContent "\n"
   | replaceRE `{##` `{{<display-math>}}`
   | replaceRE `##}` `{{</display-math>}}`
   | replaceRE `{#` `{{<inline-math>}}`
   | replaceRE `#}` `{{</inline-math>}}`
-  | .RenderString }}
-{{ end }}
+  | .RenderString -}}
+{{- end -}}
 
-{{ if $splice }}
+{{- if $splice -}}
 <section class="block math-barrier splice">
   {{- with .context -}}
     <div class="post-content" data-slug="{{$slug}}">
@@ -28,7 +28,7 @@
 </section>
 
 
-{{else}}
+{{- else -}}
 
 <section class="block math-barrier" data-slug="{{$slug}}">
   <details 
@@ -36,31 +36,31 @@
     data-slug="{{$slug}}"
     {{if .context.Page.Params.Taxon}}class="result"{{end}}>
     <summary>
-      {{ if eq .context.Page.Type "refs" }}
+      {{- if eq .context.Page.Type "refs" -}}
         <header>
-          {{- partial "bibitem_summary.html" .context.Page.Params }}
+          {{- partial "bibitem_summary.html" .context.Page.Params -}}
           <a href="{{$relPermalink}}" class="slug">[{{$slug}}]</a>
         </header>
-      {{ else }}
+      {{- else -}}
         {{- partial "tree_title.html" .context -}}
-      {{ end }}
+      {{- end -}}
     </summary>
     
-    {{ if not .parent }}
-      {{ with site.Data.forest }}
-        {{ with .childrenOf }}
-          {{ $children := index . $slug }}
-          {{ with $children }}
+    {{- if not .parent -}}
+      {{- with site.Data.forest -}}
+        {{- with .childrenOf -}}
+          {{- $children := index . $slug -}}
+          {{- with $children -}}
             <nav class="block" id="toc">
               <details open>
               <summary><h3>Table of Contents</h3></summary>
-              {{ partial "toc_items.html" . }}
+              {{- partial "toc_items.html" . -}}
               </details>
             </nav>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
 
     
     {{- with .context -}}
