@@ -257,19 +257,19 @@ macros:
   body: '\boldsymbol{#1}'
 - name: prn
   args: 1
-  body: '(#1)'
+  body: '\left(#1\right)'
 - name: floors
   args: 1
-  body: '\lfloor #1 \rfloor'
+  body: '\left\lfloor #1 \right\rfloor'
 - name: brc
   args: 1
-  body: '\{#1\}'
+  body: '\left\{#1\right\}'
 - name: brk
   args: 1
-  body: '[#1]'
+  body: '\left[#1\right]'
 - name: gl
   args: 1
-  body: '\langle #1 \rangle'
+  body: '\left\langle #1 \right\rangle'
 - name: Sub
   args: 1
   body: '_{#1}'
