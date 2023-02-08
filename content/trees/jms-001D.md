@@ -7,7 +7,7 @@ macros:
 - include: jms-001E
 - name: ETop
   args: 0
-  body: '\mathscr{E}'
+  body: '\mathcal{E}'
   doc: a given elementary topos
 ---
 
