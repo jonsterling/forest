@@ -5,17 +5,13 @@ date: 2023-02-08T12:03:12Z
 taxon: conjecture
 macros:
 - include: jms-001E
-- name: ETop
-  args: 0
-  body: '\mathcal{E}'
-  doc: a given elementary topos
 - name: ICat
   args: 0
   body: '\mathcal{I}'
-  doc: 'a given internal connected category'
+  doc: 'a given connected category'
 ---
 
-Let {#\ETop#} be an elementary topos and let {#A_\bullet#} be an internal diagram of dcpos in {#\ETop#} indexed in an internal connected category {#\ICat#}. Then the lifting endofunctor {#\Lift#} on dcpos in {#\ETop#} preserves the colimit of {#A_\bullet#}.
+Let {#\ECat#} be an elementary topos and let {#A_\bullet#} be an internal diagram of dcpos in {#\ECat#} indexed in an internal connected category {#\ICat#} in {#\ECat#}. Then the lifting endofunctor {#\Lift#} on dcpos in {#\ECat#} preserves the colimit of {#A_\bullet#}.
 
 <span style="color:red">The following proof is not carefully checked, but looks quite plausible.</span>
 

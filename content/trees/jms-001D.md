@@ -5,13 +5,9 @@ taxon: theorem
 date: 2023-02-08T10:50:21Z
 macros:
 - include: jms-001E
-- name: ETop
-  args: 0
-  body: '\mathcal{E}'
-  doc: a given elementary topos
 ---
 
-Let {#A#} be a dcpo object in an elementary topos {#\ETop#}. Then the following is a co-comma square in the posetal 2-category of dcpos in {#\ETop#}, where {#\Lift#} takes a dcpo to its *lift* or *Scott-open partial map classifier*.
+Let {#A#} be a dcpo object in an elementary topos {#\ECat#}. Then the following is a co-comma square in the posetal 2-category of dcpos in {#\ECat#}, where {#\Lift#} takes a dcpo to its *lift* or *Scott-open partial map classifier*.
 
 ```render-latex
 \begin{tikzpicture}[diagram]
