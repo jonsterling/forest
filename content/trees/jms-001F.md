@@ -2,7 +2,7 @@
 title: lifting preserves connected colimits
 author: Jonathan Sterling
 date: 2023-02-08T12:03:12Z
-taxon: conjecture
+taxon: theorem
 macros:
 - include: jms-001E
 - name: ICat
@@ -12,8 +12,6 @@ macros:
 ---
 
 Let {#\ECat#} be an elementary topos and let {#A_\bullet#} be an internal diagram of dcpos in {#\ECat#} indexed in an internal connected category {#\ICat#} in {#\ECat#}. Then the lifting endofunctor {#\Lift#} on dcpos in {#\ECat#} preserves the colimit of {#A_\bullet#}.
-
-<span style="color:red">The following proof is not carefully checked, but looks quite plausible.</span>
 
 {{%proof "Proof sketch"%}}
 Let {#A_\bullet\xrightarrow{\iota_\bullet}\brc{A_\infty}#} be a universal cocone; we must show that {#\Lift{A_\bullet}\xrightarrow{\Lift{\iota_\bullet}}\brc{\Lift{A_\infty}}#} is universal as well, i.e. show any cocone {#\Lift{A_\bullet}\xrightarrow{d_\bullet}\brc{D}#} factors uniquely through {#\Lift{A_\bullet}\xrightarrow{\Lift{\iota_\bullet}}\brc{\Lift{A_\infty}}#} in the following sense:
