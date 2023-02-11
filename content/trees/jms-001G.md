@@ -1,5 +1,5 @@
 ---
-title: Colimits reflected by the forgetful functor
+title: colimits reflected by the forgetful functor
 taxon: lemma
 author: Jonathan Sterling
 date: 2023-02-11T16:17:59Z
@@ -23,7 +23,7 @@ macros:
   doc: 'The Eilenberg–Moore category'
 ---
 
-Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. Suppose that {#T#} preserves colimits of diagrams of the form {#\Mor{}{\ICat}{\CCat}#} for a given small category {#\ICat#}. Then {#\Mor{U}{\EM}{\CCat}#} reflect colimits of this form.
+Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. If {#T#} preserves colimits of {#\ICat#}-figures for a given small category {#\ICat#}, then {#\Mor{U}{\EM}{\CCat}#} reflect colimits of {#\ICat#}-figures.
 
 {{%proof "Constructive proof"%}}
 Let {#\Mor{X_\bullet}{\ICat}{\EM}#} be a diagram in {#\EM#} and let {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} be a cocone in {#\EM#} such that {#\Mor{Uy_\bullet}{UX_\bullet}{\brc{UY}}#} is a universal cocone for {#UX_\bullet = \ICat\xrightarrow{X_\bullet}\EM\xrightarrow{U}\CCat#}. We must show that {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} is a universal cocone.
