@@ -19,7 +19,7 @@ macros:
   doc: 'A given indexing category'
 ---
 
-Let {#\LiftMon=\prn{\Lift,\eta,\mu}#} be the lifting monad on dcpos; the Eilenberg--Moore category {#\LiftAlg#} is closed under connected colimits, and these colimits are created by the forgetful functor {#\Mor{U}{\LiftAlg}{\DCPO}#}.
+Let {#\LiftMon=\prn{\Lift,\eta,\mu}#} be the lifting monad on dcpos; the Eilenberg--Moore category {#\LiftAlg#} is closed under connected colimits, and these colimits are [created](jms-001H) by the forgetful functor {#\Mor{U}{\LiftAlg}{\DCPO}#}.
 
 {{%proof "Constructive proof"%}}
 This follows from the following facts:

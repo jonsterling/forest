@@ -2,7 +2,7 @@
 title: lifting preserves connected colimits
 author: Jonathan Sterling
 date: 2023-02-08T12:03:12Z
-taxon: theorem
+taxon: lemma
 macros:
 - include: jms-001E
 - name: ICat
