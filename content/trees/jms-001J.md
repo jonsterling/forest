@@ -28,7 +28,7 @@ By assumption, {#\Mor{Tc_\bullet}{TUX_\bullet}{\brc{TC}}#} is a universal cocone
 
 We must show that the map {#\Mor{\beta}{TC}{C}#} depicted above satisfies the axioms of a {#\TMon#}-algebra. 
 
-1. To show that {#C\xrightarrow{\eta_C}TC\xrightarrow{\beta}C#} is the identity, we note that {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#} is univeral so it suffices to check that {#UX_\bullet\xrightarrow{c_\bullet}\brc{C}\xrightarrow{\brc{\eta_C}}\brc{TC}\xrightarrow{\brc{\beta}}{\brc{C}}#} is equal to {#c_\bullet#} by the uniqueness property. This follows by inspection of the following commuting diagram, in which the top square is the naturality of the unit:
+1. To show that {#C\xrightarrow{\eta_C}TC\xrightarrow{\beta}C#} is the identity, we note that {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#} is universal so it suffices to check that {#UX_\bullet\xrightarrow{c_\bullet}\brc{C}\xrightarrow{\brc{\eta_C}}\brc{TC}\xrightarrow{\brc{\beta}}{\brc{C}}#} is equal to {#c_\bullet#} by the uniqueness property. This follows by inspection of the following commuting diagram, in which the top square is the naturality of the unit:
 
   ```render-latex
   \begin{tikzpicture}[diagram]
