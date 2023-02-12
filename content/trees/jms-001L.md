@@ -24,6 +24,6 @@ Let {#\LiftMon=\prn{\Lift,\eta,\mu}#} be the lifting monad on dcpos; the Eilenbe
 {{%proof "Constructive proof"%}}
 This follows from the following facts:
 1. The category of dcpos is (even constructively) known to be cocomplete.
-2. [Lifting monad preserves connected colimits](jms-001F).
+2. [Lifting preserves connected colimits](jms-001F).
 3. [The forgetful functor {#\Mor{U}{\LiftAlg}{\DCPO}#} creates whatever colimits {#T#} preserves](jms-001K).
 {{%/proof%}}
