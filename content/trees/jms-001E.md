@@ -8,6 +8,10 @@ macros:
   args: 0
   body: '\Con{L}'
   doc: the lifting endofunctor on dcpos
+- name: DCPO
+  args: 0
+  body: '\Con{dcpo}'
+  doc: the category of directed-complete partial orders
 ---
 
 ![](jms-001D)

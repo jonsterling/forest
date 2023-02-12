@@ -1,0 +1,29 @@
+---
+title: "connected colimits of lift-algebras"
+taxon: lemma
+author: Jonathan Sterling
+date: 2023-02-12T12:58:45Z
+macros: 
+- include: jms-001E
+- name: LiftMon
+  doc: the lifting monad
+  args: 0
+  body: '\mathbb{L}'
+- name: LiftAlg
+  args: 0
+  doc: the category of lift-algebras
+  body: '\DCPO\Sup{\LiftMon}'
+- name: ICat
+  args: 0
+  body: '\mathcal{I}'
+  doc: 'A given indexing category'
+---
+
+Let {#\LiftMon=\prn{\Lift,\eta,\mu}#} be the lifting monad on dcpos; the Eilenberg--Moore category {#\LiftAlg#} is closed under connected colimits, and these colimits are created by the forgetful functor {#\Mor{U}{\LiftAlg}{\DCPO}#}.
+
+{{%proof "Constructive proof"%}}
+This follows from the following facts:
+1. The category of dcpos is (even constructively) known to be cocomplete.
+2. [Lifting monad preserves connected colimits](jms-001F).
+3. [The forgetful functor {#\Mor{U}{\LiftAlg}{\DCPO}#} creates whatever colimits {#T#} preserves](jms-001K).
+{{%/proof%}}
