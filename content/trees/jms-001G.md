@@ -1,5 +1,5 @@
 ---
-title: colimits reflected by the forgetful functor
+title: reflection of colimits by the forgetful functor
 taxon: lemma
 author: Jonathan Sterling
 date: 2023-02-11T16:17:59Z
