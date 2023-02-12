@@ -12,7 +12,7 @@ macros:
 - name: ICat
   args: 0
   body: '\mathcal{I}'
-  doc: 'A given small category'
+  doc: 'A given indexing category'
 - name: TMon
   args: 0
   body: '\mathbb{T}'
@@ -23,7 +23,7 @@ macros:
   doc: 'The Eilenberg–Moore category'
 ---
 
-Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. If {#T#} preserves colimits of {#\ICat#}-figures for a given small category {#\ICat#}, then {#\Mor{U}{\EM}{\CCat}#} reflect colimits of {#\ICat#}-figures.
+Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. If {#T#} preserves colimits of {#\ICat#}-figures for a given indexing category {#\ICat#}, then {#\Mor{U}{\EM}{\CCat}#} reflects colimits of {#\ICat#}-figures.
 
 {{%proof "Constructive proof"%}}
 Let {#\Mor{X_\bullet}{\ICat}{\EM}#} be a diagram in {#\EM#} and let {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} be a cocone in {#\EM#} such that {#\Mor{Uy_\bullet}{UX_\bullet}{\brc{UY}}#} is a universal cocone for {#UX_\bullet = \ICat\xrightarrow{X_\bullet}\EM\xrightarrow{U}\CCat#}. We must show that {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} is a universal cocone.
@@ -37,7 +37,7 @@ In particular, we must factor any cocone {#\Mor{z_\bullet}{X_\bullet}{\brc{Z}}#}
 \node[below = of ne] (se) {$\brc{UZ}$};
 \draw[->] (nw) to node[above] {$Uy_\bullet$} (ne);
 \draw[->] (nw) to node[sloped,below] {$Uz_\bullet$} (se);
-\draw[->] (ne) to node[right] {$\exists!h$} (se);
+\draw[->] (ne) to node[right] {$\exists!\brc{h}$} (se);
 \end{tikzpicture}
 ```
 
