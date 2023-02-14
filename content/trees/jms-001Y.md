@@ -7,10 +7,10 @@ macros:
 - include: jms-001E
 ---
 
-The category of {#\LiftMon#}-algebras and homomorphisms is (canonically) equivalent to the category of pointed dcpos and bottom-preserving morphisms of dcpos. It follows that pointed dcpos are *monadic* over dcpos.
+The category of {#\LiftMon#}-algebras and homomorphisms is (canonically) equivalent to the category of [pointed dcpos](jms-001S) and bottom-preserving morphisms of dcpos. It follows that pointed dcpos are *monadic* over dcpos.
 
 {{%proof "Constructive proof"%}}
-Having a bottom element and being an algebra are both *properties* of dcpos, because these structures are uniquely determined. Therefore, we will argue that pointed dcpos with bottom-preserving morphisms form the same *subcategory* of {#\DCPO#} as the category of algebras with algebra-preserving maps. We have already seen that pointed structure and algebra structure are interchangeable:
+Having a bottom element and being an algebra are both *properties* of dcpos, because these structures are uniquely determined. Therefore, we will argue that [pointed dcpos](jms-001S) with bottom-preserving morphisms form the same *subcategory* of {#\DCPO#} as the category of algebras with algebra-preserving maps. We have already seen that pointed structure and algebra structure are interchangeable:
 
 1. [Pointed dcpos are lift-algebras](jms-001T)
 2. [Lift-algebras are pointed](jms-001V)
