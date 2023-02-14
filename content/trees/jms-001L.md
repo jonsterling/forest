@@ -5,14 +5,6 @@ author: Jonathan Sterling
 date: 2023-02-12T12:58:45Z
 macros: 
 - include: jms-001E
-- name: LiftMon
-  doc: the lifting monad
-  args: 0
-  body: '\mathbb{L}'
-- name: LiftAlg
-  args: 0
-  doc: the category of lift-algebras
-  body: '\DCPO\Sup{\LiftMon}'
 - name: ICat
   args: 0
   body: '\mathcal{I}'

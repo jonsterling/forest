@@ -12,8 +12,18 @@ macros:
   args: 0
   body: '\Con{dcpo}'
   doc: the category of directed-complete partial orders
+- name: LiftMon
+  doc: the lifting monad
+  args: 0
+  body: '\mathbb{L}'
+- name: LiftAlg
+  args: 0
+  doc: the category of lift-algebras
+  body: '\DCPO\Sup{\LiftMon}'
 ---
 
-![](jms-001D)
-![](jms-001F)
-![](jms-001L)
+In these notes, we will try to use the convention of referring to dcpos by {#A,B,C,\ldots#} and algebras as {#L,M,N#}. In some cases we may deviate from this convention, but those should be edited accordingly.
+
+![](jms-001R)
+![](jms-001W)
+![](jms-001Q)
