@@ -11,6 +11,6 @@ macros:
   args: 0
 ---
 
-An element {#u#} of an {#\Lift#}-algebra {#M#} is *positive* when for any subdirected subset {#U\subseteq M#}, if {#u\leq \bigsqcup{U}#} then {#U#} is inhabited. We will write {#\IsPos\,{u}#} to mean that {#u#} is a positive element.
+An element {#u#} of an {#\Lift#}-algebra {#M#} is *positive* when for any subdirected subset {#I\subseteq UM#}, if {#u\leq \bigsqcup{I}#} then {#I#} is inhabited. We will write {#\IsPos\,{u}#} to mean that {#u#} is a positive element.
 
 (This definition is from Johnstone to the case of dcpos by Tom de Jong.)
