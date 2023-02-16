@@ -10,6 +10,8 @@ In a lifted dcpo {#\Lift{A}#}, the [positive elements](jms-001P) form an *open* 
 
 ![](jms-0022)
 ![](jms-002F)
+![](jms-002J)
+![](jms-002I)
 ![](jms-0023)
 ![](jms-0027)
 
