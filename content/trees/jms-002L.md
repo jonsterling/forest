@@ -7,5 +7,5 @@ date: 2023-02-16T18:07:12Z
 We describe some light conditions under which a continuous dcpo is [positively generated](jms-0023).
 
 ![](jms-0026)
-![](jms-002M)
 ![](jms-002K)
+![](jms-002M)
