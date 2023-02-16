@@ -1,6 +1,9 @@
 ---
 title: constructive domain theory
-author: Jonathan Sterling
+author:
+- Tom de Jong
+- Martín Escardó
+- Jonathan Sterling
 date: 2023-02-08T11:43:05Z
 macros:
 - include: base-macros
@@ -30,6 +33,5 @@ macros:
   body: '\DCPO\Sup{\LiftM}'
 ---
 
-![](jms-001R)
 ![](jms-001W)
 ![](jms-001Q)

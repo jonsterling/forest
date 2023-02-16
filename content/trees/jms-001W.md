@@ -13,4 +13,6 @@ macros:
 ![](jms-001X)
 ![](jms-001Y)
 
-By virtue of the [monadicity result](jms-001Y), we will refer to pointed dcpos and {#\LiftM#}-algebras interchangeably.
+By virtue of the [monadicity result](jms-001Y), we will refer to [pointed](jms-001S) dcpos and {#\LiftM#}-algebras interchangeably.
+
+![](jms-001R)
