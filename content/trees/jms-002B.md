@@ -1,5 +1,5 @@
 ---
-title: freeness = positive generation
+title: liftedness = positive generation
 taxon: corollary
 author: 
 - Tom de Jong
@@ -8,7 +8,7 @@ author:
 date: 2023-02-16T15:43:55Z
 ---
 
-A [pointed](jms-001S) dcpo {#A#} is free if and only if it is [positively generated](jms-0023).
+A [pointed](jms-001S) dcpo {#A#} is lifted if and only if it is [positively generated](jms-0023).
 
 {{%proof "Constructive proof"%}}
 This follows from two existing lemmas:
