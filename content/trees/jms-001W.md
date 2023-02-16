@@ -2,6 +2,8 @@
 title: pointed dcpos and lift-algebras
 author: Jonathan Sterling
 date: 2023-02-14T11:26:09Z
+macros:
+- include: jms-001E
 ---
 
 ![](jms-001S)
@@ -10,3 +12,5 @@ date: 2023-02-14T11:26:09Z
 ![](jms-001V)
 ![](jms-001X)
 ![](jms-001Y)
+
+By virtue of the [monadicity result](jms-001Y), we will refer to pointed dcpos and {#\LiftM#}-algebras interchangeably.

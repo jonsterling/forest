@@ -11,3 +11,4 @@ Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {
 
 {{%proof "Constructive proof"%}}
 Let {#\Mor{X_\bullet}{\ICat}{\EM}#} be a diagram such that {#\ICat\xrightarrow{X_\bullet}\EM\xrightarrow{U}\CCat#} has a (co)limit cocone {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#}. Let {#\bar{C}=\prn{C,\alpha_{\bar{C}}}#} be the [canonical algebra structure on the colimit apex](jms-001J) {#C#} such that {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#} lifts to a cocone of algebras. Then we conclude that this cocone is universal because {#U#} [reflects colimits of {#\ICat#}-figures](jms-001G). It is evident (by definition) that {#U#} preserves this colimit.
+{{%/proof%}}

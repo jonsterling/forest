@@ -7,7 +7,7 @@ macros:
 - include: jms-001E
 ---
 
-Let {#M#} be an {#\LiftMon#}-algebra; then subposet {#M^+\subseteq UM#} of {#M#} spanned by [positive](jms-001M) is a dcpo.
+Let {#A#} be a pointed dcpo; then the subposet {#A^+\subseteq A#} spanned by [positive](jms-001M) is a dcpo.
 
 {{%proof%}}
 This follows from the [closure of positive elements in an algebra under directed suprema](jms-001O).
