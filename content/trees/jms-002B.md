@@ -13,5 +13,5 @@ A [pointed](jms-001S) dcpo {#A#} is lifted if and only if it is [positively gene
 {{%proof "Constructive proof"%}}
 This follows from two existing lemmas:
 1. [Lifted dcpos (free algebras) are positively generated](jms-0025).
-2. [Positively generated pointed dcpos are free](jms-002B).
+2. [Positively generated pointed dcpos are free](jms-002A).
 {{%/proof%}}
