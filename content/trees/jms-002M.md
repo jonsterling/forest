@@ -3,7 +3,6 @@ title: positively generated basis yields positive generation
 taxon: corollary
 author: Jonathan Sterling
 date: 2023-02-16T18:08:42Z
-draft: true
 ---
 
 Let {#A#} be a pointed continuous dcpo presented by a basis {#B\subseteq A#} whose elements are all [positively generated](jms-002F) in {#A#}. Then {#A#} is [positively generated](jms-0023).

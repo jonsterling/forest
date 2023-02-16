@@ -3,7 +3,6 @@ title: basis with decidable bottomhood yields positive generation
 taxon: corollary
 author: Jonathan Sterling
 date: 2023-02-16T18:02:03Z
-draft: true
 ---
 
 Let {#A#} be a pointed continuous dcpo presented by a basis {#B\subseteq A#} for each element {#b\in B#} it is decidable whether {#b=\bot#}. Then {#A#} is [positively generated](jms-0023).
