@@ -11,13 +11,15 @@ In a lifted dcpo {#\Lift{A}#}, the [positive elements](jms-001P) form an *open* 
 ![](jms-0022)
 ![](jms-002F)
 ![](jms-002J)
+![](jms-002N)
 ![](jms-002I)
 ![](jms-0023)
 ![](jms-0027)
 
 ![](jms-0025)
 ![](jms-0024)
-![](jms-0026)
+
+![](jms-002L)
 
 I am not sure how useful the [following construction](jms-002G) is. On the other hand, maybe it has a universal property at the level of posets.
 
