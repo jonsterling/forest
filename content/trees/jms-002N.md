@@ -10,5 +10,5 @@ macros:
 Let {#a#} be a [positively generated element](jms-002F) of a [pointed](jms-001S) dcpo {#A#}. Then {#a#} is also [non-negatively generated](jms-002J).
 
 {{%proof "Constructive proof"%}}
-We must check that {#a\leq \bigsqcup_{p:\lnot\prn{a = \bot}}a#}. By assumption, it suffices to check that {#\bigsqcup_{p:\IsPos\,a}a\leq\bigsqcup_{p:\lnot\prn{a=\bot}}#}, which follows because [the bottom element is not positive](jms-002H).
+We must check that {#a\leq \bigsqcup_{p:\lnot\prn{a = \bot}}a#}. By assumption, it suffices to check that {#\bigsqcup_{p:\IsPos\,a}a\leq\bigsqcup_{p:\lnot\prn{a=\bot}}a#}, which follows because [the bottom element is not positive](jms-002H).
 {{%/proof%}}
