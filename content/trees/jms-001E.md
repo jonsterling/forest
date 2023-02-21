@@ -33,5 +33,6 @@ macros:
   body: '\DCPO\Sup{\LiftM}'
 ---
 
+![](jms-002U)
 ![](jms-001W)
 ![](jms-001Q)
