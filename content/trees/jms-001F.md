@@ -45,7 +45,7 @@ Using the [universal property of {#\Lift{A_\infty}#} as a co-comma dcpo](jms-001
     south = {h\Sub{A_\infty}},
     west/style = double,
   }
-  \node[between = sq/nw and sq/se] {$\geq$};
+  \node[between = sq/nw and sq/se] {$\sqsupseteq$};
 \end{tikzpicture}
 ```
 
@@ -68,7 +68,7 @@ Next we define {#\Mor{h\Sub{A_\infty}}{A_\infty}{D}#} using the universal proper
 }
 ```
 
-To arrange {#h\Sub{A_\infty}#} and {#h_\bot#} into the desired lax square, we must check that for all {#a_\infty:A_\infty#} we have {#h_\bot \leq h\Sub{A_\infty}a_\infty#}. Fixing arbitrary {#i\in \ICat#} and {#a\in A_i#}, it suffices to check that {#h_\bot \leq h\Sub{A_\infty}\iota\Sub{i}a#}. As {#h_\bot=d_i\bot#} and {#h\Sub{A_\infty}\iota_ia = d_i\eta\Sub{A_i}a#}, our goal follows directly from the monotonicity of {#\Mor{d_i}{\Lift{A_i}}{D}#}.
+To arrange {#h\Sub{A_\infty}#} and {#h_\bot#} into the desired lax square, we must check that for all {#a_\infty:A_\infty#} we have {#h_\bot \sqsubseteq h\Sub{A_\infty}a_\infty#}. Fixing arbitrary {#i\in \ICat#} and {#a\in A_i#}, it suffices to check that {#h_\bot \sqsubseteq h\Sub{A_\infty}\iota\Sub{i}a#}. As {#h_\bot=d_i\bot#} and {#h\Sub{A_\infty}\iota_ia = d_i\eta\Sub{A_i}a#}, our goal follows directly from the monotonicity of {#\Mor{d_i}{\Lift{A_i}}{D}#}.
 
 Thus we have the desired lax square and a unique morphism {#\Mor{h}{\Lift{A_\infty}}{D}#} factoring it through the co-comma square that defines {#\Lift{A_\infty}#}:
 
@@ -89,7 +89,7 @@ Thus we have the desired lax square and a unique morphism {#\Mor{h}{\Lift{A_\inf
     east/node/style = upright desc,
     south/node/style = upright desc,
   }
-  \node [between = sq/nw and sq/se] {$\geq$};
+  \node [between = sq/nw and sq/se] {$\sqsupseteq$};
   \node (se) [below right = of sq/se] {$D$};
   \draw[->,bend left=30] (sq/ne) to node[right] {$h_\bot$} (se);
   \draw[->,bend right=30] (sq/sw) to node[sloped,below] {$h\Sub{A_\infty}$} (se);

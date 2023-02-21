@@ -10,5 +10,5 @@ macros:
 The bottom element {#\bot#} of a pointed dcpo {#A#} is not [positive](jms-001M).
 
 {{%proof "Constructive proof"%}}
-Suppose that {#\bot#} was positive. The empty set {#\brc{}\subseteq A#} is semidirected and {#\bot\leq \bigsqcup\brc{}=\bot#}, but nonetheless {#\brc{}#} is not inhabited.
+Suppose that {#\bot#} was positive. The empty set {#\brc{}\subseteq A#} is semidirected and {#\bot\sqsubseteq \bigsqcup\brc{}=\bot#}, but nonetheless {#\brc{}#} is not inhabited.
 {{%/proof%}}

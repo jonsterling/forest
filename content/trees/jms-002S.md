@@ -12,7 +12,7 @@ Let {#A#} be a [pointed](jms-001S) dcpo. Then an element {#x:A#} is a [positive 
 {{%proof "Constructive proof"%}}
 We first observe that the [latter condition](jms-002R) is equivalent to the following:
 
-> For any {#u\in LA#}, if {#a\leq \bigsqcup_{p: u{\downarrow}}u[p]#} then {#u{\downarrow}=\top#}.
+> For any {#u\in LA#}, if {#a\sqsubseteq \bigsqcup_{p: u{\downarrow}}u[p]#} then {#u{\downarrow}=\top#}.
 
 This follows from the [(constructive) characterization](https://github.com/jonsterling/coq-domains/blob/main/theories/Path.v) of the [path](jms-002Q) order in dcpos. Therefore, our result follows from our [earlier characterization](jms-002T) of positive elements of a pointed dcpo in terms of partial elements.
 {{%/proof%}}

@@ -23,7 +23,7 @@ For any dcpo {#A#}, the following is a co-comma square in the posetal 2-category
     south = \eta_A,
     west/style = double,
   }
-  \node [between = nw and se] {$\geq$};
+  \node [between = nw and se] {$\sqsupseteq$};
 \end{tikzpicture}
 ```
 
@@ -42,11 +42,11 @@ We fix another lax square of the following form:
     south = d_A,
     west/style = double,
   }
-  \node [between = nw and se] {$\geq$};
+  \node [between = nw and se] {$\sqsupseteq$};
 \end{tikzpicture}
 ```
 
-We must show that there exists a *unique* morphism {#\Lift{A}\xrightarrow{d}D#} factoring the square above through {#\brc{d_\bot\leq d_A}#} as follows:
+We must show that there exists a *unique* morphism {#\Lift{A}\xrightarrow{d}D#} factoring the square above through {#\brc{d_\bot\sqsubseteq d_A}#} as follows:
 
 ```render-latex
 \begin{tikzpicture}[diagram]
@@ -64,7 +64,7 @@ We must show that there exists a *unique* morphism {#\Lift{A}\xrightarrow{d}D#} 
     east/node/style = upright desc,
     south/node/style = upright desc,
   }
-  \node [between = sq/nw and sq/se] {$\geq$};
+  \node [between = sq/nw and sq/se] {$\sqsupseteq$};
   \node (se) [below right = of sq/se] {$D$};
   \draw[->,bend left=30] (sq/ne) to node[right] {$d_\bot$} (se);
   \draw[->,bend right=30] (sq/sw) to node[sloped,below] {$d_A$} (se);
