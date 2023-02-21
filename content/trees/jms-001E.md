@@ -33,6 +33,8 @@ macros:
   body: '\DCPO\Sup{\LiftM}'
 ---
 
+I am accumulating an understanding of constructive domain theory --- that is, the domain theory that can be carried out in an elementary topos with a natural numbers object. These notes are based on the work of [Tom de Jong](dejong-2022-thesis) and Martín Escardó; these notes, however, assume the propositional resizing principle whereas de Jong and Escardó explore a predicative version domain theory based on large and locally small domains.
+
 ![](jms-002U)
 ![](jms-001W)
 ![](jms-001Q)
