@@ -11,6 +11,6 @@ macros:
   args: 0
 ---
 
-An element {#u#} of a pointed dpco {#A#} is called *positive* when for any semidirected subset {#I\subseteq A#}, if {#u\sqsubseteq \bigsqcup{I}#} then {#I#} is inhabited. We will write {#\IsPos\,{u}#} to mean that {#u#} is a positive element.
+An element {#u#} of a [pointed](jms-001S) dpco {#A#} is called *positive* when for any semidirected subset {#I\subseteq A#}, if {#u\sqsubseteq \bigsqcup{I}#} then {#I#} is inhabited. We will write {#\IsPos\,{u}#} to mean that {#u#} is a positive element.
 
 (This is adapted from [Johnstone](johnstone-1984)'s definition of positive elements of frames to the case of dcpos by [Tom de Jong](dejong-2022-thesis).)
