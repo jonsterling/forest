@@ -9,4 +9,4 @@ macros:
 
 It follows from our [characterization](jms-002T) of [positivity](jms-001M) in terms of partial elements that an element {#a: A#} of a [pointed](jms-001S) dcpo {#A#} is [positive](jms-001M) if and only if it is [strictly above](jms-002W) the bottom element, i.e. {#\bot\StBelow a#}.
 
-(See also Proposition 6.2.12 of [Tom de Jong's thesis](dejong-2022-thesis).)
+(See also Proposition 6.2.12 of [Tom de Jong's thesis](dejong-2023-thesis).)

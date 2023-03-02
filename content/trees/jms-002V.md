@@ -13,4 +13,4 @@ macros:
 
 Let {#x,y:D#} be two elements of a dcpo {#D#}; we say that {#x#} is *way below* {#y#}, written {#x\WayBelow y#}, when for any directed subset {#I\subseteq D#} such that {#y\sqsubseteq \bigsqcup{I}#}, there exists {#z\in I#} such that {#x\sqsubseteq z#}.
 
-(Adapted from [Tom de Jong's thesis](dejong-2022-thesis).)
+(Adapted from [Tom de Jong's thesis](dejong-2023-thesis).)
