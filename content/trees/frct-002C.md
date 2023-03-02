@@ -5,7 +5,7 @@ macros:
 - include: frct-0000
 ---
 
-Let {#E#} be a [cartesian fibration](frct-0002), and let {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#} be displayed over {#\Mor{f}{x}{y}#}. The displayed morphism {#\bar{f}#} is cartesian if and only if it is hypocartesian.
+Let {#E#} be a [cartesian fibration](frct-0002), and let {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#} be displayed over {#\Mor{f}{x}{y}#}. The displayed morphism {#\bar{f}#} is [cartesian](frct-0001) if and only if it is [hypocartesian](frct-002A).
 
 {{%proof%}}
 Any cartesian map is clearly hypocartesian. To see that a hypocartesian map {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#} in a cartesian fibration is cartesian, we consider the cartesian lift of {#\Mor{f}{x}{y}#} under {#\bar{y}#}:
