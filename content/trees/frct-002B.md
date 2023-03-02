@@ -68,5 +68,4 @@ Let {#\bar{m}:\bar{u}\tick\DispTo{m}\bar{x}#} be the hypocartesian lift of {#m#}
 ```
 
 The composite {#i;\bar{m} : \bar{u}\DispTo{m}\bar{x}#} is the required (cartesian) factorization of {#\bar{h}#} through {#\bar{f}#} over {#m#}. To see that {#i;\bar{m}#} is the unique such map, we observe that all morphisms {#\bar{u}\DispTo{m}\bar{x}#} factor uniquely through {#\bar{m}#} over {#\Idn{u}#} as a consequence of {#\bar{m}#} being hypocartesian.
-
 {{%/proof%}}

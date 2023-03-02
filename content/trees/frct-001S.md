@@ -166,5 +166,5 @@ We will define a fibred equivalence {#F : \Extrn{\Intrn{\bar{u}}}\to \FullSubfib
       \draw[->,bend left=30] (l/nw) to node [above] {$\bar{h};\bar{\epsilon};\bar\pi\Sub{2}$} (r/ne);
     \end{tikzpicture}
    ```
-
+   
 {{%/proof%}}

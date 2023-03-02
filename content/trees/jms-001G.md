@@ -56,7 +56,9 @@ We must check that {#h#} is a homomorphism of {#\TMon#}-algebras:
 }
 ```
 
-To see that {#\alpha_Y;h = Th;\alpha_Z#} it suffices to observe that they both factor the cocone {##TUX_\bullet\xrightarrow{\alpha_{X_\bullet}}UX_\bullet\xrightarrow{Uz_\bullet}\brc{UZ}##} through the  cocone {#\Mor{TUy_\bullet}{TUX_\bullet}{\brc{TUY}}#}, which is universal by our assumption that {#T#} preserves {#\ICat#}-colimits.
+To see that {#\alpha_Y;h = Th;\alpha_Z#} it suffices to observe that they both factor the cocone
+{##TUX_\bullet\xrightarrow{\alpha_{X_\bullet}}UX_\bullet\xrightarrow{Uz_\bullet}\brc{UZ}##}
+through the  cocone {#\Mor{TUy_\bullet}{TUX_\bullet}{\brc{TUY}}#}, which is universal by our assumption that {#T#} preserves {#\ICat#}-colimits.
 
 1. First we must check that the following diagram commutes:
 
@@ -93,4 +95,5 @@ To see that {#\alpha_Y;h = Th;\alpha_Z#} it suffices to observe that they both f
    ```
    
    This follows from the factorization {#Uy_\bullet;h=Uz_\bullet#} and the homomorphism property of {#z_\bullet#}.
+   
 {{%/proof%}}

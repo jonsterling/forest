@@ -16,5 +16,4 @@ Having a bottom element and being an algebra are both *properties* of dcpos, bec
 2. [Lift-algebras are pointed](jms-001V)
 
 To finish, we recall that a morphism of dcpos [preserves algebra structure if and only if it preserves the bottom element](jms-001X).
-
 {{%/proof%}}

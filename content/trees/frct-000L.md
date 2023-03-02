@@ -60,5 +60,4 @@ such that {#(a\Sub{1},b\Sub{1},h\Sub{1})#} is identified with {#(a\Sub{2},b\Sub{
 Remember that a cartesian map {#a\DispTo{x}\bar{u}#} is standing for a *choice*
 of an object of {#C#} encoded by {#x\in U#}. Because such choices are unique only
 up to isomorphism, we must include them explicitly in the data.
-
 {{%/proof%}}

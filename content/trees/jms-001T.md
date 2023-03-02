@@ -25,5 +25,4 @@ The unit law for the algebra is trivial. The multiplication law is verified as f
 u[p][q]
 = \alpha\prn{\mu_A\prn{\phi,u}}
 ##}
-
 {{%/proof%}}

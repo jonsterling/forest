@@ -100,5 +100,4 @@ Conversely, suppose that {#\bar{f};\bar{g}#} is cartesian. To see that {#\bar{f}
 
 Because {#\bar{f};\bar{g}#} is cartesian, we can factor {#\bar{h};\bar{g} = i;\bar{f};\bar{g}#} for a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#}. On the other hand, because {#\bar{g}#} is cartesian, there is a unique {#\DispMor{j}{m;f}{\bar{u}}{\bar{y}}#} for which {#\bar{h};\bar{g} = j;\bar{g}#}; as both {#\bar{h}#} and {#i;\bar{f}#} satisfy this condition, we conclude {#\bar{h}=i;\bar{f}#}. Therefore, there is a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#} for which
 {#\bar{h} = i;\bar{f}#}, as required.
-
 {{%/proof%}}

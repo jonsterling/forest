@@ -121,5 +121,4 @@ We must show that the map {#\Mor{\beta}{TC}{C}#} depicted above satisfies the ax
   ##}
 
 Hence we may define a {#\TMon#}-algebra structure {#\bar{C}#} with {#U\bar{C}=P#}, setting {#\Mor{\alpha_{\bar{C}}}{TC}{C}#} to be {#\beta#}. That {#c_\bullet#} lifts to a cocone of algebras is *exactly* the defining condition of {#\alpha_{\bar{C}}=\beta#} via the universal property of {#\Mor{Tc_\bullet}{TUX_\bullet}{\brc{TC}}#}; uniqueness of the algebra structure with this property follows from the same universal property.
-
 {{%/proof%}}

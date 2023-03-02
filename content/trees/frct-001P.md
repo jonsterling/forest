@@ -90,5 +90,4 @@ Because vertical maps are isomorphisms and {#\bar{f}#} is cartesian, we can obse
     \draw[->,exists] (u') to node [desc] {$\bar{m};i\Sup{-1}$} (nw);
   \end{tikzpicture}
 ```
-
 {{%/proof%}}

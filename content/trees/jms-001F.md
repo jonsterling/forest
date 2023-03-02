@@ -166,5 +166,4 @@ Using the universal property of the co-comma squares for each {#\Lift{A_i}#}, it
    ```
 
 Finally, we must check that any two morphisms {#\Mor{k,k'}{\Lift{A_\infty}}{D}#} factoring {#\Mor{d_\bullet}{\Lift{A_\bullet}}{\brc{D}}#} through {#\Mor{\Lift{\iota_\bullet}}{\Lift{A_\bullet}}{\brc{\Lift{A_\infty}}}#} are equal. To that end, we will use the universal property of the co-comma square defining {#\Lift{A_\infty}#} once more to reduce this to checking that {#k,k'#} agree on {#\bot#} and on {#\eta\Sub{A_\bullet}#}. The former follows directly from the strictness of {#\Lift{\iota_\bullet}#}, as we have {#k\bot = k\prn{\Lift \iota_\bullet\bot}=d_\bullet\bot#}. For the latter, we must check that {#k\circ \eta\Sub{A_\infty}=k'\circ \eta\Sub{A_\infty}#}; by the universal property of the colimiting cocone {#\Mor{\iota_\bullet}{A_\bullet}{A_\infty}#}, it suffices to check that {#k\circ\eta\Sub{A_\infty}\circ \iota_\bullet = k'\circ\eta\Sub{A_\infty}\circ\iota_\bullet#}. By naturality of the unit, these are both equal to {#d_\bullet\circ \eta\Sub{A_\bullet}#}.
-
 {{%/proof%}}

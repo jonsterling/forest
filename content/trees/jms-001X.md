@@ -27,6 +27,4 @@ It is clear that a homomorphism of algebras must preserve the bottom element. On
 Because both composites preserve the bottom element, it is enough to observe that they both take {#u\in TA#} to the supremum of the following *semi*directed subset:
 
 {##\brc{n\in B\mid \exists m:A. u=\eta_{A}m \land n=fm}##}
-
-
 {{%/proof%}}
