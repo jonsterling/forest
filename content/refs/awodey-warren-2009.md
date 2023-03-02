@@ -1,5 +1,6 @@
 ---
 title: Homotopy theoretic models of identity types
+taxon: reference
 author:
 - Steve Awodey
 - Michael A. Warren

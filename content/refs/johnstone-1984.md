@@ -1,5 +1,6 @@
 ---
 title: Open Locales and Exponentiation
+taxon: reference
 author: 
 - Peter T. Johnstone
 journal: Contemporary Mathematics

@@ -1,5 +1,6 @@
 ---
 title: Categorical logic and type theory
+taxon: reference
 author:
 - Bart Jacobs
 date: 1999-01-14

@@ -1,5 +1,6 @@
 ---
 title: Computational Semantics of Cartesian Cubical Type Theory
+taxon: reference
 author:
 - Carlo Angiuli
 publisher: Carnegie Mellon University

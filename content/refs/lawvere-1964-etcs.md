@@ -1,5 +1,6 @@
 ---
 title: An elementary theory of the category of sets
+taxon: reference
 author:
 - F. William Lawvere
 journal: Proceedings of the National Academy of Science of the U.S.A.

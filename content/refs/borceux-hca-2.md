@@ -1,5 +1,6 @@
 ---
 title: "Handbook of Categorical Algebra 2: Categories and Structures"
+taxon: reference
 author:
 - Francis Borceux
 publisher: Cambridge University Press

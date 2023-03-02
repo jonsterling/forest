@@ -1,5 +1,6 @@
 ---
 title: Canonicity for Cubical Type Theory
+taxon: reference
 author:
 - Simon Huber
 journal: Journal of Automated Reasoning

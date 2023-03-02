@@ -1,5 +1,6 @@
 ---
 title: Semantic Analysis of Normalisation by Evaluation for Typed Lambda Calculus
+taxon: reference
 author:
 - Marcelo Fiore
 journal: Proceedings of the 4th ACM SIGPLAN International Conference on Principles and Practice of Declarative Programming

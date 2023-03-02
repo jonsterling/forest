@@ -1,5 +1,6 @@
 ---
 title: A new characterization of lambda definability
+taxon: reference
 author: 
 - Achim Jung
 - Jerzy Tiuryn

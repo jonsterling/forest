@@ -1,5 +1,6 @@
 ---
 title: Fibred Categories à la Jean Bénabou
+taxon: reference
 author:
 - Thomas Streicher
 date: 2022-12-16

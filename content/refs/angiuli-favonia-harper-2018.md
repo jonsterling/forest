@@ -1,5 +1,6 @@
 ---
 title: "Cartesian Cubical Computational Type Theory: Constructive Reasoning with Paths and Equalities"
+taxon: reference
 author: 
 - Carlo Angiuli
 - Kuen-Bang Hou (Favonia)

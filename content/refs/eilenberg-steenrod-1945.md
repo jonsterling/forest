@@ -1,4 +1,5 @@
 ---
+taxon: reference
 author:
 - Samuel Eilenberg
 - Norman E. Steenrod

@@ -1,5 +1,6 @@
 ---
 title: A category-theoretic account of program modules
+taxon: reference
 author:
 - Eugenio Moggi
 date: 1989-01-01

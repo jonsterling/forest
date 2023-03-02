@@ -1,5 +1,6 @@
 ---
 doi: 10.48550/ARXIV.MATH/0206203
+taxon: reference
 author:
 - Alexander Grothendieck
 - Michele Raynaud

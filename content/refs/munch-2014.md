@@ -1,5 +1,6 @@
 ---
 title: Models of a Non-Associative Composition
+taxon: reference
 author:
 - Guillaume Munch-Maccagnoni
 doi: 10.1007/978-3-642-54830-7_26

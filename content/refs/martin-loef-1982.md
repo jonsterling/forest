@@ -1,5 +1,6 @@
 ---
 title: Constructive Mathematics and Computer Programming
+taxon: reference
 author:
 - Per Martin-Löf
 doi: 10.1016/S0049-237X(09)70189-2

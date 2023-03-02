@@ -1,5 +1,6 @@
 ---
 title: A cost-aware logical framework
+taxon: reference
 author:
 - Yue Niu
 - Jonathan Sterling

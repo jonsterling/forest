@@ -2,6 +2,7 @@
 title: "Homotopy Type Theory: Univalent Foundations of Mathematics"
 publisher: Institute for Advanced Study
 link: https://homotopytypetheory.org/book
+taxon: reference
 author:
 - The Univalent Foundations Program
 ---

@@ -38,7 +38,7 @@
   {{ with .linksFrom }}
     {{ range index . $slug }}
       {{ with site.GetPage . }}
-        {{ if eq .Type "refs" }}
+        {{ if eq .Params.Taxon "reference" }}
           {{ $refPages = $refPages | append . }}
         {{ else }}
           {{ $fwdPages = $fwdPages | append . }}

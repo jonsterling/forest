@@ -1,5 +1,6 @@
 ---
 title: Sharp Elements and Apartness in Domains
+taxon: reference
 author: 
 - Tom de Jong
 journal: 37th Conference on Mathematical Foundations of Programming Semantics

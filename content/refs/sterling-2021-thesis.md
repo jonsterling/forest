@@ -1,5 +1,6 @@
 ---
 title: "First Steps in Synthetic Tait Computability: The Objective Metatheory of Cubical Type Theory"
+taxon: reference
 author:
 - Jonathan Sterling
 date: 2021-09-13

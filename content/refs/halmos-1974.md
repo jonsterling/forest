@@ -1,5 +1,6 @@
 ---
 title: Naive Set Theory
+taxon: reference
 author:
 - Paul R. Halmos
 date: 1974-01-01

@@ -1,5 +1,6 @@
 ---
 doi: 10.1007/BFb0081551
+taxon: reference
 author:
 - Alexander Grothendieck
 - Jean-Louis Verdier

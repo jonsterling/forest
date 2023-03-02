@@ -1,5 +1,6 @@
 ---
 title: First steps in synthetic domain theory
+taxon: reference
 author: 
 - J. M. E. Hyland
 bookSeries: Lecture Notes in Mathematics

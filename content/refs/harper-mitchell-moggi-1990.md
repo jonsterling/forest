@@ -1,5 +1,6 @@
 ---
 title: Higher-Order Modules and the Phase Distinction
+taxon: reference
 author:
 - Robert Harper
 - John C. Mitchell

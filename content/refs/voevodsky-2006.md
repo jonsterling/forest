@@ -1,5 +1,6 @@
 ---
 title: A very short note on the homotopy λ-calculus
+taxon: reference
 author: 
 - Vladimir Voevodsky
 date: 2006-10-02

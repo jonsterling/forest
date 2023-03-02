@@ -1,4 +1,5 @@
 ---
+taxon: reference
 author:
 - Alexander Grothendieck
 title: Sur quelques points d'algèbre homologique, I.

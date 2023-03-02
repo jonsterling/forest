@@ -1,5 +1,6 @@
 ---
 title: Semantical Analysis of Higher-Order Abstract Syntax
+taxon: reference
 author: 
 - Martin Hofmann
 journal: Proceedings of the 14th Annual IEEE Symposium on Logic in Computer Science

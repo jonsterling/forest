@@ -1,5 +1,6 @@
 ---
 title: An extension of models of Axiomatic Domain Theory to models of Synthetic Domain Theory
+taxon: reference
 author:
 - Marcelo P. Fiore
 - Gordon D. Plotkin

@@ -1,5 +1,6 @@
 ---
 title: Normalization for Cubical Type Theory
+taxon: reference
 author: 
 - Jonathan Sterling
 - Carlo Angiuli

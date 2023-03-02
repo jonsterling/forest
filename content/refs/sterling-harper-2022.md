@@ -1,5 +1,6 @@
 ---
 title: Sheaf Semantics of Termination-Insensitive Noninterference
+taxon: reference
 author:
 - Jonathan Sterling
 - Robert Harper

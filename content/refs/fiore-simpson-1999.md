@@ -1,5 +1,6 @@
 ---
 title: Lambda Definability with Sums via Grothendieck Logical Relations
+taxon: reference
 author:
 - Marcelo Fiore
 - Alex Simpson

@@ -1,6 +1,7 @@
 ---
 title: "Conceptual Mathematics: A First Introduction to Categories"
 publisher: Cambridge University Press
+taxon: reference
 author:
 - F. William Lawvere
 - Stephen H. Schanuel
