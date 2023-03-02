@@ -13,6 +13,6 @@ In a pointed dcpo, any non-bottom element is non-negatively generated.
 
 Hence, any element {#a#} for which it is decidable whether {#a=\bot#} is non-negatively generated.
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 The bottom element is clearly non-negatively generated, as it lies beneath any element. Now fix {#a:A#} and assume {#\lnot\prn{a=\bot}#}; we must check that {#a \sqsubseteq \bigsqcup_{p:\lnot\prn{a=\bot}}a#} but the latter is equal to {#a#}.
 {{%/proof%}}

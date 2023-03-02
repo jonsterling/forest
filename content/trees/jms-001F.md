@@ -13,7 +13,7 @@ macros:
 
 Let {#A_\bullet#} be a diagram of dcpos indexed in a connected category {#\ICat#}. Then the lifting endofunctor {#\Lift#} on dcpos preserves the colimit of {#A_\bullet#}.
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 Let {#A_\bullet\xrightarrow{\iota_\bullet}\brc{A_\infty}#} be a universal cocone; we must show that {#\Lift{A_\bullet}\xrightarrow{\Lift{\iota_\bullet}}\brc{\Lift{A_\infty}}#} is universal as well, i.e. show any cocone {#\Lift{A_\bullet}\xrightarrow{d_\bullet}\brc{D}#} factors uniquely through {#\Lift{A_\bullet}\xrightarrow{\Lift{\iota_\bullet}}\brc{\Lift{A_\infty}}#} in the following sense:
 
 ```render-latex

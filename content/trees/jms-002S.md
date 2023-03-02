@@ -9,7 +9,7 @@ macros:
 
 Let {#A#} be a [pointed](jms-001S) dcpo. Then an element {#x:A#} is a [positive element of the pointed dcpo](jms-001M) if and only if {#\Mor{x}{\ObjTerm{}}{A}#} is a [positive element in the dominion](jms-002R) {#\mathcal{O}#} of Scott-open immersions of dcpos.
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 We first observe that the [latter condition](jms-002R) is equivalent to the following:
 
 > For any {#u\in LA#}, if {#a\sqsubseteq \bigsqcup_{p: u{\downarrow}}u[p]#} then {#u{\downarrow}=\top#}.

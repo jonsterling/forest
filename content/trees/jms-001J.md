@@ -9,7 +9,7 @@ macros:
 
 Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. Suppose that {#T#} preserves colimits of {#\ICat#}-figures for a given small category {#\ICat#}. Let {#\Mor{X_\bullet}{\ICat}{\EM}#} be a diagram in {#\EM#} such that {#\ICat\xrightarrow{X_\bullet}\EM\xrightarrow{U}\CCat#} has a universal cocone {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#}. We may lift {#C#} to an essentially unique {#\TMon#}-algebra structure {#\bar{C}#} with {#U\bar{C}=C#} in a canonical way such that {#\Mor{c_\bullet}{UX_\bullet}{\brc{C}}#} lifts to a cocone of algebras {#\Mor{\bar{c}\Sub{\bullet}}{X\Sub{\bullet}}{\bar{C}}#} with {#U\bar{c}_\bullet=c_\bullet#}.
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 By assumption, {#\Mor{Tc_\bullet}{TUX_\bullet}{\brc{TC}}#} is a universal cocone. We may define a further cocone {#TUX_\bullet\xrightarrow{\alpha_{X_\bullet}}UX_\bullet\xrightarrow{c_\bullet}\brc{C}#}. The universal property of {#Tc_\bullet#} then gives us a unique morphism {#\Mor{\beta}{TC}{C}#} satisfying the following condition:
 
 ```render-latex

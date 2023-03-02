@@ -25,7 +25,7 @@ macros:
 
 Let {#\CCat#} be a category and let {#\TMon = \prn{T,\eta,\mu}#} be a monad on {#\CCat#}, writing {#\Mor{U}{\EM}{\CCat}#} for the forgetful functor from the Eilenberg--Moore category {#\EM#}. If {#T#} preserves colimits of {#\ICat#}-figures for a given indexing category {#\ICat#}, then {#\Mor{U}{\EM}{\CCat}#} reflects colimits of {#\ICat#}-figures.
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 Let {#\Mor{X_\bullet}{\ICat}{\EM}#} be a diagram in {#\EM#} and let {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} be a cocone in {#\EM#} such that {#\Mor{Uy_\bullet}{UX_\bullet}{\brc{UY}}#} is a universal cocone for {#UX_\bullet = \ICat\xrightarrow{X_\bullet}\EM\xrightarrow{U}\CCat#}. We must show that {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#} is a universal cocone.
 
 In particular, we must factor any cocone {#\Mor{z_\bullet}{X_\bullet}{\brc{Z}}#} uniquely through {#\Mor{y_\bullet}{X_\bullet}{\brc{Y}}#}. Because {#Uy_\bullet#} is universal, there exists a unique {#\Mor{h}{Y}{Z}#} such that the following diagram commutes:
@@ -93,3 +93,4 @@ To see that {#\alpha_Y;h = Th;\alpha_Z#} it suffices to observe that they both f
    ```
    
    This follows from the factorization {#Uy_\bullet;h=Uz_\bullet#} and the homomorphism property of {#z_\bullet#}.
+{{%/proof%}}

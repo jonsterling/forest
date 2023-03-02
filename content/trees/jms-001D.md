@@ -27,7 +27,7 @@ For any dcpo {#A#}, the following is a co-comma square in the posetal 2-category
 \end{tikzpicture}
 ```
 
-{{%proof "Constructive proof"%}}
+{{%proof%}}
 We fix another lax square of the following form:
 
 ```render-latex
