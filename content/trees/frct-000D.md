@@ -16,7 +16,7 @@ displayed category {#B\Sub{!}F#} over {#B#} as follows:
 1. An object of {#(B\Sub{!}F)\Sub{x}#} is a pair {#(\bar{x},{\ddot{x}})#} with {#\bar{x}\in E\Sub{x}#} and {#{\ddot{x}}\in F\Sub{\bar{x}}#}.
 2. A morphism {#(\bar{x},{\ddot{x}})\DispTo{f}(\bar{y},{\ddot{y}})#} is given by a pair {#(\bar{f},{\ddot{f}})#} where {#\bar{f}:\bar{x}\DispTo{f}\bar{y}#} in {#E#} and {#{\ddot{f}}:{\ddot{x}}\DispTo{\bar{f}} {\ddot{y}}#} in {#F#}.
 
-By virtue of [](frct-000B), we may define the *pushforward* of a displayed category along a functor. In particular, let {#E#}
+Using the [displayed category induced by a functor](frct-000B), we may define the *pushforward* of a displayed category along a functor. In particular, let {#E#}
 be displayed over {#B#} and let {#U:B\to C#} be an ordinary functor; then we may
 obtain a displayed category {#U\Sub{!}E#} over {#C#} as follows:
 

@@ -5,7 +5,7 @@ taxon: remark
 title: collections
 ---
 
-In the definition of [](frct-001F), we have not imposed any restrictions on what kinds of things the objects and morphisms are; our definition is pre-mathematical, so we do not assume beforehand that there is a such thing as a collection of "all" meta-categories.
+In the definition of [meta-categories](frct-001F), we have not imposed any restrictions on what kinds of things the objects and morphisms are; our definition is pre-mathematical, so we do not assume beforehand that there is a such thing as a collection of "all" meta-categories.
 
 We may define analogous notions of meta-functor, etc. But we do not
 assume that the notion of "all meta-functors {#\mathfrak{C}\to\mathfrak{D}#}" is well-defined; the notion is entirely schematic.

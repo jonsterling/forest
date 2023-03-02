@@ -11,7 +11,7 @@ title: locally small externalization
 The [externalization](frct-001R) is locally small.
 
 {{%proof%}}
-Fix {#x\in E#} and {#u,v\in \Extrn{C}\Sub{x}#}, we must exhibit a terminal object to the (total) category {#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} of "hom candidates" defined in [](frct-000I). First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
+Fix {#x\in E#} and {#u,v\in \Extrn{C}\Sub{x}#}, we must exhibit a terminal object to the (total) category {#\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#} of ["hom candidates"](frct-000I). First we define {#\brk{u,v}#} to be the following pullback in {#E#}:
 
 ```render-latex
 \DiagramSquare{
@@ -107,7 +107,7 @@ Putting all this together, we assert that the terminal object of
 \end{tikzpicture}
 ```
 
-Fixing another such candidate hom span {#\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#}, according to [](frct-000I) we must exhibit a unique cartesian morphism {#\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}#} making the following diagram commute:
+Fixing another such candidate hom span {#\brc{u \leftarrow \bar{h}\rightarrow v}\in\TotCat{\CandHom{\Extrn{C}\Sub{x}}{u}{v}}#}, we [must exhibit](frct-000I) a unique cartesian morphism {#\bar\alpha : \bar{h}\to \InvImg{\brk{u,v}}{u}#} making the following diagram commute:
    ```render-latex
    \begin{tikzpicture}[diagram]
      \node (u) {$u$};

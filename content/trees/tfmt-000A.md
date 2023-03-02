@@ -6,6 +6,7 @@ related:
 - tfmt-0001
 ---
 
-Here I compile some of the lessons that I have synthesized from the experience of writing [](frct-003I) in hypertext, and my subsequent investigations into the concept of [](tfmt-0003). As it was my first attempt to develop transformative hypertext media, I believe I made some mistakes.
+Here I compile some of the lessons that I have synthesized from the experience of writing the [foundations of relative category theory](frct-003I) in hypertext, and my subsequent investigations into the concept of [evergreen notes](tfmt-0003). As it was my first attempt to develop transformative hypertext media, I believe I made some mistakes.
+
 ![](tfmt-0008)
 ![](tfmt-0009)
