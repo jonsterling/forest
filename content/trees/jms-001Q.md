@@ -1,8 +1,6 @@
 ---
 title: positivity in constructive domain theory
 author:
-- Tom de Jong
-- Martín Escardó
 - Jonathan Sterling
 date: 2023-02-14T10:02:55Z
 ---

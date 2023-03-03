@@ -1,8 +1,6 @@
 ---
 title: characterizing freeness in terms of positivity
 author:
-- Tom de Jong
-- Martín Escardó
 - Jonathan Sterling
 date: 2023-02-16T15:51:46Z
 macros:
