@@ -1,12 +1,13 @@
 ---
 taxon: theorem
 title: characterization of right fibrations
+author:
+- Jonathan Sterling
 macros:
 - include: frct-0000
 ---
 
-A cartesian fibration {#E#} over {#B#} is a right fibration if and only if
-all its vertical maps are isomorphisms.
+A cartesian fibration {#E#} over {#B#} is a right fibration if and only if all its vertical maps are isomorphisms.
 
 {{%proof%}}
 Suppose that {#E#} is a right fibration over {#B#}, and fix {#b\in B#},

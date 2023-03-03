@@ -1,5 +1,7 @@
 ---
 title: hypocartesian morphisms
+author:
+- Carlo Angiuli
 taxon: definition
 macros:
 - include: frct-0000

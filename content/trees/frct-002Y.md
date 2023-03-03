@@ -1,5 +1,7 @@
 ---
 taxon: exercise
+author:
+- Carlo Angiuli
 macros:
 - include: frct-001X
 ---

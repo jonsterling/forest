@@ -1,5 +1,8 @@
 ---
+title: the dual self-indexing
 taxon: construction
+author:
+- Carlo Angiuli
 macros:
 - include: base-macros
 - name: DualSelfIx

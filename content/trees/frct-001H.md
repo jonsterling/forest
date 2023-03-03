@@ -1,13 +1,14 @@
 ---
 taxon: lemma
 title: generalized pullback lemma
+author:
+- Carlo Angiuli
 macros:
 - include: frct-0000
 ---
 
-Let {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#}, and suppose that {#\DispMor{\bar{g}}{g}{\bar{y}}{\bar{z}}#} is cartesian over {#g#}. Then
-{#\bar{f};\bar{g}#} is cartesian over {#f;g#} if and only if {#\bar{f}#} is cartesian
-over {#f#}.
+Let {#\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}#}, and suppose that {#\DispMor{\bar{g}}{g}{\bar{y}}{\bar{z}}#} is cartesian over {#g#}. Then {#\bar{f};\bar{g}#} is cartesian over {#f;g#} if and only if {#\bar{f}#} is cartesian over {#f#}.
+
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
@@ -31,8 +32,8 @@ over {#f#}.
 ```
 
 {{%proof%}}
-Suppose first that {#\bar{f}#} is cartesian. To see that {#\bar{f};\bar{g}#}
-is cartesian, we must construct a unique factorization as follows:
+Suppose first that {#\bar{f}#} is cartesian. To see that {#\bar{f};\bar{g}#} is cartesian, we must construct a unique factorization as follows:
+
 ```render-latex
   \begin{tikzpicture}[diagram]
     \SpliceDiagramSquare{
@@ -98,6 +99,5 @@ Conversely, suppose that {#\bar{f};\bar{g}#} is cartesian. To see that {#\bar{f}
   \end{tikzpicture}
 ```
 
-Because {#\bar{f};\bar{g}#} is cartesian, we can factor {#\bar{h};\bar{g} = i;\bar{f};\bar{g}#} for a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#}. On the other hand, because {#\bar{g}#} is cartesian, there is a unique {#\DispMor{j}{m;f}{\bar{u}}{\bar{y}}#} for which {#\bar{h};\bar{g} = j;\bar{g}#}; as both {#\bar{h}#} and {#i;\bar{f}#} satisfy this condition, we conclude {#\bar{h}=i;\bar{f}#}. Therefore, there is a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#} for which
-{#\bar{h} = i;\bar{f}#}, as required.
+Because {#\bar{f};\bar{g}#} is cartesian, we can factor {#\bar{h};\bar{g} = i;\bar{f};\bar{g}#} for a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#}. On the other hand, because {#\bar{g}#} is cartesian, there is a unique {#\DispMor{j}{m;f}{\bar{u}}{\bar{y}}#} for which {#\bar{h};\bar{g} = j;\bar{g}#}; as both {#\bar{h}#} and {#i;\bar{f}#} satisfy this condition, we conclude {#\bar{h}=i;\bar{f}#}. Therefore, there is a unique {#\DispMor{i}{m}{\bar{u}}{\bar{x}}#} for which {#\bar{h} = i;\bar{f}#}, as required.
 {{%/proof%}}
