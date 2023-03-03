@@ -1,7 +1,8 @@
 ---
 title: closure of positivity under directed suprema
 taxon: lemma
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T09:42:42Z
 macros:
 - include: jms-001M

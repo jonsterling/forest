@@ -1,7 +1,8 @@
 ---
 title: way-below vs. positivity
 taxon: warning
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-21T16:44:39-05:00
 macros:
 - include: jms-002V

@@ -1,7 +1,8 @@
 ---
 title: the disorder of created limits
 taxon: lament
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-12T11:13:11Z
 ---
 

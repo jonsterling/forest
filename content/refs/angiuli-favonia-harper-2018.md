@@ -1,7 +1,7 @@
 ---
 title: "Cartesian Cubical Computational Type Theory: Constructive Reasoning with Paths and Equalities"
 taxon: reference
-author: 
+author:
 - Carlo Angiuli
 - Kuen-Bang Hou (Favonia)
 - Robert Harper

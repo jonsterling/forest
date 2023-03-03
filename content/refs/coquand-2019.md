@@ -1,7 +1,7 @@
 ---
 title: Canonicity and normalization for dependent type theory
 taxon: reference
-author: 
+author:
 - Thierry Coquand
 journal: Theoretical Computer Science
 date: 2019-06-19

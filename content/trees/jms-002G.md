@@ -1,7 +1,8 @@
 ---
 title: the positively generated core of a dcpo
 taxon: construction
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T16:55:39Z
 macros:
 - include: jms-001M

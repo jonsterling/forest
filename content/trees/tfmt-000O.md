@@ -1,6 +1,7 @@
 ---
 title: MathML is not an authoring language
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-07T14:42:26+01:00
 lastmod: 2023-01-08
 ---

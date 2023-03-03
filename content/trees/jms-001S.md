@@ -1,7 +1,8 @@
 ---
 title: pointed dcpo
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T10:22:13Z
 ---
 

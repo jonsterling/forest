@@ -1,7 +1,8 @@
 ---
 title: Euclid's parallel postulate
 taxon: postulate
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T08:47:58-05:00
 ---
 

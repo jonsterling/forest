@@ -1,6 +1,7 @@
 ---
 title: detailed overview of *First Steps in Synthetic Tait Computability*
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T19:13:18-05:00
 ---
 

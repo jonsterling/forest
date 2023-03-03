@@ -1,6 +1,7 @@
 ---
 title: pointed dcpos and lift-algebras
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T11:26:09Z
 macros:
 - include: jms-001E

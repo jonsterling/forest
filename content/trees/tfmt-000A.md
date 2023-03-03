@@ -1,6 +1,7 @@
 ---
 title: lessons from "Foundations of Relative Category Theory"
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2022-12-27T23:22:56+01:00
 related:
 - tfmt-0001

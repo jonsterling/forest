@@ -1,7 +1,7 @@
 ---
 title: All (∞,1)-toposes have strict univalent universes)
 taxon: reference
-author: 
+author:
 - Michael Shulman
 doi: 10.48550/arXiv.1904.07004
 date: 2019-04-15

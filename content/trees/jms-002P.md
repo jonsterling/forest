@@ -1,7 +1,8 @@
 ---
 title: the Sierpiński interval of a dominion
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-21T12:25:27-05:00
 macros:
 - include: base-macros

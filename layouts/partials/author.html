@@ -1,0 +1,36 @@
+{{- $authors := slice -}}
+{{- $contributors := slice -}}
+
+{{- $hasAuthors := or .Params.author site.Params.author -}}
+{{- if $hasAuthors -}}
+{{- $authors = (.Params.author | default site.Params.author) -}}
+{{- end -}}
+
+{{- $site := .Site -}}
+{{- with .Page.File -}}
+  {{- $slug := .ContentBaseName -}}
+  {{- with $site.Data.forest -}}
+    {{- with .hereditaryChildrenOf -}}
+      {{- range index . $slug -}}
+        {{- with site.GetPage . -}}
+          {{- range .Params.Author -}}
+            {{- if not (in $authors .) -}}
+            {{- $contributors = union $contributors (slice .) -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $hasContributors := gt (len $contributors) 0 -}}
+
+{{- if $hasAuthors -}}
+  {{- delimit $authors ", " }}
+{{- end }}
+
+{{ if $hasContributors -}}
+  with contributions from
+  {{ delimit $contributors ", " -}}
+{{- end -}}

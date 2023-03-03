@@ -1,7 +1,8 @@
 ---
 title: monoidal category
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-18T13:48:02-05:00
 macros: 
 - include: base-macros

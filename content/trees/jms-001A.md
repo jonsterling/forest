@@ -1,6 +1,7 @@
 ---
 title: "§ 8.1: two phase distinctions for program modules"
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T20:56:03-05:00
 ---
 

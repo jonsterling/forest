@@ -1,7 +1,8 @@
 ---
 title: non-negatively generated elements
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T17:52:36Z
 macros:
 - include: base-macros

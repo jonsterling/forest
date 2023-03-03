@@ -1,7 +1,8 @@
 ---
 title: creation of (co)limits
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-11T18:15:43Z
 macros:
 - include: base-macros

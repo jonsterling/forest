@@ -1,7 +1,8 @@
 ---
 title: the two notions of positivity coincide for pointed dcpos
 taxon: corollary
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-21T13:19:01-05:00
 macros: 
 - include: jms-002P

@@ -1,6 +1,7 @@
 ---
 title: the relationship between internal and external language
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T08:57:41-05:00
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "chapter 1: objective syntax of dependent types"
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T19:17:05-05:00
 ---
 

@@ -1,5 +1,7 @@
 ---
 title: hypocartesian morphisms need not be closed composable
+author:
+- Carlo Angiuli
 macros:
 - include: base-macros
 taxon: remark

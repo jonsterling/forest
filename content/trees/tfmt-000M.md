@@ -1,6 +1,7 @@
 ---
 title: towards mixing SVG and MathML in hypertext mathematics
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-07T14:20:01+01:00
 ---
 

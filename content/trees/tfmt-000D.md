@@ -1,6 +1,7 @@
 ---
 title: implicit vs. explicit hierarchy in document markup languages
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2022-12-29T13:59:02+01:00
 ---
 

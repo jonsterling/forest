@@ -1,6 +1,7 @@
 ---
 title: notational macros in mathematical authoring
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-07T12:43:15+01:00
 ---
 

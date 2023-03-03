@@ -1,6 +1,6 @@
 ---
 title: characterizing freeness in terms of positivity
-author: 
+author:
 - Tom de Jong
 - Martín Escardó
 - Jonathan Sterling

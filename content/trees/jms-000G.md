@@ -1,7 +1,8 @@
 ---
 title: monoidal categories are bicategories with a single object
 taxon: observation
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-18T14:35:23-05:00
 macros: 
 - include: base-macros

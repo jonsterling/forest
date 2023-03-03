@@ -1,9 +1,5 @@
 ---
 title: constructive domain theory
-author:
-- Tom de Jong
-- Martín Escardó
-- Jonathan Sterling
 date: 2023-02-08T11:43:05Z
 macros:
 - include: base-macros

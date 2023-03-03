@@ -1,7 +1,8 @@
 ---
 title: monadicity of pointed dcpos
 taxon: corollary
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T11:41:18Z
 macros:
 - include: jms-001E

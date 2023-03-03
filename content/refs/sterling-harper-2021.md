@@ -1,7 +1,7 @@
 ---
 title: "Logical Relations as Types: Proof-Relevant Parametricity for Program Modules"
 taxon: reference
-author: 
+author:
 - Jonathan Sterling
 - Robert Harper
 doi: 10.1145/3474834

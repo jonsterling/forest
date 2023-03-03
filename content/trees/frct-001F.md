@@ -1,6 +1,8 @@
 ---
 taxon: definition
 title: meta-category
+author:
+- Jonathan Sterling
 macros:
 - include: base-macros
 ---

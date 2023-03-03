@@ -1,6 +1,7 @@
 ---
 title: contributions of *First Steps in Synthetic Tait Computability*
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T13:53:58-05:00
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: competing terminologies for cartesian maps
 taxon: warning
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-03-02T23:08:35+01:00
 ---
 

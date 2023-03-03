@@ -1,6 +1,7 @@
 ---
 title: well-pointedness vs. function extensionality
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T09:16:35-05:00
 macros:
 - include: base-macros

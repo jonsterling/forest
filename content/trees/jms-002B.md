@@ -1,7 +1,7 @@
 ---
 title: liftedness = positive generation
 taxon: corollary
-author: 
+author:
 - Tom de Jong
 - Martín Escardó
 - Jonathan Sterling

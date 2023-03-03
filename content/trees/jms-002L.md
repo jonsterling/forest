@@ -1,6 +1,7 @@
 ---
 title: when is a continuous pointed dcpo positively generated?
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T18:07:12Z
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: the bottom element is not positive
 taxon: lemma
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T17:25:49Z
 macros:
 - include: jms-001M

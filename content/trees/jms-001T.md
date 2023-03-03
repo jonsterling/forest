@@ -1,7 +1,8 @@
 ---
 title: pointed dcpos are lift-algebras
 taxon: lemma
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T10:23:48Z
 macros:
 - include: jms-001E

@@ -1,7 +1,8 @@
 ---
 title: algebra structure on the colimit apex
 taxon: lemma
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-12T11:24:34Z
 macros:
 - include: jms-001G

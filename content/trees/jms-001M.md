@@ -1,7 +1,8 @@
 ---
 title: the positive elements of a pointed dcpo
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T09:25:54Z
 macros:
 - include: jms-001E

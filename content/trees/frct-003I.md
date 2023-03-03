@@ -2,8 +2,8 @@
 title: foundations of relative category theory
 date: 2022-01-01
 author:
-- Carlo Angiuli
 - Jonathan Sterling
+- Carlo Angiuli
 macros:
 - include: base-macros
 ---

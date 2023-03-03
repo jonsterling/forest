@@ -1,6 +1,7 @@
 ---
 title: "Working Area"
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-18T09:44:48-05:00
 collapseChildren: true
 draft: true

@@ -1,6 +1,6 @@
 ---
 title: basic properties of positivity
-author: 
+author:
 - Tom de Jong
 - Martín Escardó
 - Jonathan Sterling

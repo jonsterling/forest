@@ -1,6 +1,7 @@
 ---
 title: relative hierarchy in existing tools
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2022-12-29T13:49:59+01:00
 ---
 

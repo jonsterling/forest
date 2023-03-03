@@ -1,6 +1,7 @@
 ---
 title: cocompleteness of pointed dcpos
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T10:04:59Z
 ---
 

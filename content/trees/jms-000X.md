@@ -1,6 +1,7 @@
 ---
 title: "chapter 0: conspectus on type theory"
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T19:15:38-05:00
 ---
 

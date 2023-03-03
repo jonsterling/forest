@@ -1,6 +1,7 @@
 ---
 title: using synthetic methods to prove analytical facts
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T10:05:26-05:00
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Open Locales and Exponentiation
 taxon: reference
-author: 
+author:
 - Peter T. Johnstone
 journal: Contemporary Mathematics
 volume: 30

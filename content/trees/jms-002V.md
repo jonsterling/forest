@@ -1,7 +1,8 @@
 ---
 title: the way-below relation
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-21T16:23:22-05:00
 macros:
 - include: base-macros

@@ -1,7 +1,8 @@
 ---
 title: bottom and non-bottom elements are non-negatively generated
 taxon: example
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T17:32:34Z
 macros:
 - include: jms-001M

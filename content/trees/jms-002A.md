@@ -1,7 +1,7 @@
 ---
 title: positively generated pointed dcpos are free
 taxon: lemma
-author: 
+author:
 - Tom de Jong
 - Martín Escardó
 - Jonathan Sterling

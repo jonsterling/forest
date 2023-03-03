@@ -1,7 +1,7 @@
 ---
 title: Normalization by evaluation for typed lambda calculus with coproducts
 taxon: reference
-author: 
+author:
 - Thorsten Altenkirch
 - Peter Dybjer
 - Martin Hofmann

@@ -1,7 +1,8 @@
 ---
 title: the subdcpo spanned by positive elements
 taxon: corollary
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-14T09:58:52Z
 macros: 
 - include: jms-001E

@@ -1,7 +1,8 @@
 ---
 title: positively generated elements
 taxon: definition
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T16:51:57Z
 macros: 
 - include: jms-001M

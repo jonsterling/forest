@@ -1,6 +1,7 @@
 ---
 title: positive generation and open positivity predicates
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-16T15:49:02Z
 macros: 
 - include: jms-001M

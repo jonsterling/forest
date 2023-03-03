@@ -1,7 +1,8 @@
 ---
 title: kernels as equalizers
 taxon: remark
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-18T09:24:41-05:00
 macros: 
 - include: base-macros

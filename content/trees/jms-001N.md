@@ -1,7 +1,7 @@
 ---
 title: positivity = definedness in a lifted dcpo
 taxon: lemma
-author: 
+author:
 - Martín Escardó
 - Jonathan Sterling
 date: 2023-02-14T09:25:54Z

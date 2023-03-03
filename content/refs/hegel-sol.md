@@ -1,7 +1,7 @@
 ---
 title: Wissenschaft der Logik
 taxon: reference
-author: 
+author:
 - Georg Wilhelm Friedrich Hegel
 date: 1812-01-01
 ---

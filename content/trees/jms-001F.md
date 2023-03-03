@@ -1,6 +1,7 @@
 ---
 title: lifting preserves connected colimits
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-08T12:03:12Z
 taxon: lemma
 macros:

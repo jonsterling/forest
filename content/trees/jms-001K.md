@@ -1,6 +1,7 @@
 ---
 title: creation of colimits by the forgetful functor
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-12T11:24:34Z
 taxon: theorem
 macros:

@@ -1,6 +1,7 @@
 ---
 title: a general characterization of positivity
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-02-21T12:24:20-05:00
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: Euclid's synthetic plane geometry
 taxon: example
-author: Jonathan Sterling
+author:
+- Jonathan Sterling
 date: 2023-01-19T09:10:29-05:00
 ---
 
