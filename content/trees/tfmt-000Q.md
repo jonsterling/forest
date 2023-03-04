@@ -3,7 +3,6 @@ title: authorship and responsibility in forests
 author:
 - Jonathan Sterling
 date: 2023-03-04T10:09:12+01:00
-draft: true
 ---
 
 A [forest of evergreen notes](tfmt-000R) may in general contain the work of many authors: for example, the tree on [constructive domain theory](jms-001E) comprises mathematical contributions of not only the present author, but also Martín Escardó and Tom de Jong. However, the correct attribution of authorship to a given tree is more subtle than one might at first think.
