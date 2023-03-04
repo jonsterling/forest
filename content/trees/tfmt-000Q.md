@@ -11,7 +11,7 @@ To understand this subtlety, we first consider that each individual tree may con
 
 > They agree to be held accountable for any issues relating to the correctness or integrity of the work with the understanding that depending on the circumstances not all authors are necessarily held "equally" accountable. In the case of publications-related misconduct, it may be the case that penalties may vary for co-authors listed on a single publication. 
 
-In particular, although one person may be aware of and respnosible for the content of a given tree, it would be unreasonable to require them to be responsible for any subsequent (and potentially erroneous!) re-contextualization of that tree in the forest. For this reason, **[authors](tfmt-000S) must be distinguished from [contributors](tfmt-000T)** in [forests of evergreen notes](tfmt-000R).
+In particular, although one person may be aware of and responsible for the content of a given tree, it would be unreasonable to require them to be responsible for any subsequent (and potentially erroneous!) re-contextualization of that tree in the forest. For this reason, **[authors](tfmt-000S) must be distinguished from [contributors](tfmt-000T)** in [forests of evergreen notes](tfmt-000R).
 
 ![](tfmt-000S)
 ![](tfmt-000T)
