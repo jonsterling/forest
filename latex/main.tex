@@ -1,9 +1,8 @@
-\documentclass[a4paper]{article}
+\documentclass[oneside,a4paper]{book}
 
 \usepackage{doi}
 \usepackage{forester}
 \usepackage{biblatex}
-
 
 \addbibresource{trees/forest.bib}
 
@@ -30,17 +29,29 @@
 \usepackage{newpxtext,newpxmath}
 \usepackage{fontspec}
 \setmonofont{inconsolata}
-
-\usepackage{listings}
 \usepackage{forester}
-\lstset{basicstyle=\ttfamily,breaklines=true}
 
+
+\ForesterSetup{
+  treeCommands = {forest,chapter,section,subsection,subsubsection,paragraph,subparagraph},
+  forestSite = {https://forest.jonmsterling.com}
+}
+
+\RenewDocumentCommand\forest{om}{
+  \title{#1}
+  \frontmatter
+  \maketitle
+  \tableofcontents
+  \mainmatter
+}
 
 \begin{document}
 
 \author{Jonathan Sterling\and Carlo Angiuli}
 
 \input{frct-003I}
+
+\backmatter
 
 \printbibliography
 

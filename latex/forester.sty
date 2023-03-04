@@ -3,14 +3,12 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{hyperref}
 \RequirePackage{xspace}
-\RequirePackage{titlecaps}
-
-
-\usepackage{fancyvrb}
+\RequirePackage{mparhack}
 
 \setcounter{secnumdepth}{5}
 
 \newcounter{forest}
+
 \NewDocumentCommand\forest{om}{
   \title{#1}
   \maketitle
@@ -20,50 +18,63 @@
 
 \ExplSyntaxOn
 
+\tl_new:N \l__forester_current_counter
+\clist_new:N \l__forester_counters
+\clist_set:Nn \l__forester_counters {forest,section,subsection,subsubsection,paragraph,subparagraph}
+
+\keys_define:nn { forester } {
+  treeCommands .clist_set:N = \l__forester_counters,
+  forestSite .tl_set:N = \l__forester_site,
+}
+
 \keys_define:nn { forester_tree } {
   title .tl_set:N = \l__forester_tree_title,
   taxon .tl_set:N = \l__forester_tree_taxon,
   slug .tl_set:N = \l__forester_tree_slug,
 }
 
-\int_new:N \forester_level
-\seq_new:N \forester_counters
-\seq_set_from_clist:Nn \forester_counters {forest,section,subsection,subsubsection,paragraph,subparagraph}
-
-\tl_new:N \forester_current_counter
-
 \cs_new:Npn \forester_format_slug:n #1 {
-  \hyperref[#1]{\textcolor{gray}{\texttt{#1}}}
+  \textcolor{gray}{\texttt{#1}}
+}
+
+\cs_new:Npn \forester_format_slug_link:n #1 {
+  \tl_if_empty:NTF \l__forester_site {
+    \hyperref[#1]{\forester_format_slug:n {#1}}
+  } {
+    \href{\l__forester_site / trees / \text_lowercase:n{#1}}{
+      \forester_format_slug:n {#1}
+    }
+  }
 }
 
 \cs_new:Npn \forester_format_result: {
   \medskip\par\noindent
-  \marginpar{\forester_format_slug:n {\l__forester_tree_slug}}
-  \textbf{\titlecap{\l__forester_tree_taxon}~\use:c{the\forester_current_counter}}
+  \marginpar{\forester_format_slug_link:n {\l__forester_tree_slug}}
+  \textbf{\text_titlecase_first:n{\l__forester_tree_taxon}~\use:c{the\l__forester_current_counter}}
   \tl_if_empty:NTF \l__forester_tree_title {} {~(\l__forester_tree_title)}
   .\xspace
 }
 
 \cs_new:Npn \forester_format_section: {
-  \use:c{\forester_current_counter}[
-    \titlecap{\l__forester_tree_title}
+  \use:c{\l__forester_current_counter}[
+    \text_titlecase_first:n{\l__forester_tree_title}
   ]{
-    \titlecap{\l__forester_tree_title}
-    \marginpar{\forester_format_slug:n {\l__forester_tree_slug}}
+    \text_titlecase_first:n{\l__forester_tree_title}
+    \marginpar{\forester_format_slug_link:n {\l__forester_tree_slug}}
   }
 }
 
 \NewDocumentEnvironment{tree}{m}{
   \group_begin:
   \keys_set:nn { forester_tree } {#1}
-  \seq_pop_left:NN \forester_counters \forester_current_counter
+  \clist_pop:NN \l__forester_counters \l__forester_current_counter
   \tl_if_empty:NTF \l__forester_tree_taxon {
     \forester_format_section:
   } {
-    \refstepcounter{\forester_current_counter}
-    \addcontentsline{toc}{\forester_current_counter}{
-      \protect{\numberline{\use:c{the\forester_current_counter}}}
-      \textbf{\titlecap{\l__forester_tree_taxon}}
+    \refstepcounter{\l__forester_current_counter}
+    \addcontentsline{toc}{\l__forester_current_counter}{
+      \protect{\numberline{\use:c{the\l__forester_current_counter}}}
+      \textbf{\text_titlecase_first:n{\l__forester_tree_taxon}}
       \tl_if_empty:NTF \l__forester_tree_title {} {~(\l__forester_tree_title)}
     }
     \forester_format_result:
@@ -77,5 +88,10 @@
   \group_end:
 }
 
+\NewDocumentCommand\ForesterSetup{+m}{
+  \keys_set:nn { forester } { #1}
+}
+
 \ExplSyntaxOff
+
 
