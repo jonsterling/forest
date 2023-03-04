@@ -14,7 +14,9 @@
   {{ with .linksTo }}
     {{ range index . $slug }}
       {{ with site.GetPage . }}
-        {{ $bwdPages = $bwdPages | append . }}
+        {{ if not .Params.Deleted }}
+          {{ $bwdPages = $bwdPages | append . }}
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -22,7 +24,9 @@
   {{ with .parentsOf }}
     {{ range index . $slug }}
       {{ with site.GetPage . }}
-        {{ $upwdPages = $upwdPages | append . }}
+        {{ if not .Params.Deleted }}
+          {{ $upwdPages = $upwdPages | append . }}
+        {{ end }}
       {{ end }}
     {{ end }}
   {{ end }}
