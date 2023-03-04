@@ -4,7 +4,7 @@ taxon: reference
 author:
 - Alexander Grothendieck
 - Jean-Louis Verdier
-title: Theorie des Topos et Cohomologie Etale des Schemas (SGA 4)
-bookSeries: Seminaire de Geometrie Algebrique du Bois-Marie 
+title: Théorie des Topos et Cohomologie Étale des Schémas (SGA 4)
+bookSeries: Séminaire de Géométrie Algébrique du Bois-Marie 
 ---
 
