@@ -1,14 +1,27 @@
 \documentclass[a4paper]{article}
 
-\usepackage{doi}
+\usepackage[final]{microtype}
+\usepackage{amsthm}
+\usepackage{newpxtext,newpxmath}
+\usepackage{fontspec}
 \usepackage{forester}
 \usepackage{biblatex}
 \usepackage{listings}
-\lstset{basicstyle=\ttfamily,breaklines=true}
+\usepackage{bxtexlogo}
+\setmonofont{inconsolata}
 
-\let\oldlatexcmd\LaTeX
-\renewcommand\LaTeX{\mbox{\oldlatexcmd}}
-\NewDocumentCommand\KaTeX{}{\mbox{KaTeX}}
+\lstset{
+  basicstyle=\ttfamily,
+  breaklines=true,
+  literate={"}{\textquotedbl}1,
+}
+
+\bxtexlogoimport{KaTeX}
+
+\let\oldLaTeX\LaTeX
+\let\oldKaTeX\KaTeX
+\renewcommand\LaTeX{\mbox{\oldLaTeX}}
+\renewcommand\KaTeX{\mbox{\oldKaTeX}}
 
 \addbibresource{trees/forest.bib}
 
@@ -29,13 +42,6 @@
   colorlinks = true,
   linkcolor = Matterhorn,
 }
-
-\usepackage[final]{microtype}
-\usepackage{amsthm}
-\usepackage{newpxtext,newpxmath}
-\usepackage{fontspec}
-\setmonofont{inconsolata}
-\usepackage{forester}
 
 
 \ForesterSetup{
