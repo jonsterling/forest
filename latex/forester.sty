@@ -37,11 +37,15 @@
   \textcolor{gray}{\texttt{#1}}
 }
 
+\cs_new:Npn \forester_slug_url:n #1 {
+  \l__forester_site / \text_lowercase:n {#1}
+}
+
 \cs_new:Npn \forester_format_slug_link:n #1 {
   \tl_if_empty:NTF \l__forester_site {
     \hyperref[#1]{\forester_format_slug:n {#1}}
   } {
-    \href{\l__forester_site / trees / \text_lowercase:n{#1}}{
+    \href{\forester_slug_url:n {#1}}{
       \forester_format_slug:n {#1}
     }
   }
@@ -88,8 +92,24 @@
   \group_end:
 }
 
+\cs_new:Npn \forester_ref:nn #1 #2 {
+  \cs_if_exist:cTF {r@#1} {
+    \hyperref[#1]{#2}
+  } {
+    \tl_if_empty:NTF \l__forester_site {
+      #2 (\textbf{???})
+    } {
+      \href{\forester_slug_url:n {#1}}{#2}
+    }
+  }
+}
+
 \NewDocumentCommand\ForesterSetup{+m}{
-  \keys_set:nn { forester } { #1}
+  \keys_set:nn { forester } { #1 }
+}
+
+\NewDocumentCommand\ForesterRef{mm}{
+  \forester_ref:nn {#1} {#2}
 }
 
 \ExplSyntaxOff
