@@ -3,11 +3,11 @@
     <span class="taxon">
      {{ .Params.Taxon | title }}
     </span>
-    {{with .Title}} ({{.}}) {{end}}
+    {{if .Title}} ({{.Title | .RenderString}}) {{end}}
     <a href="{{.RelPermalink}}" class="slug">[{{.File.ContentBaseName}}]</a>
   {{ else }}
     <h1>
-      {{ .Title | title | markdownify }}
+      {{ .Title | title | .RenderString }}
       <a href="{{.RelPermalink}}" class="slug">[{{.File.ContentBaseName}}]</a>   
     </h1>
   {{ end }}
