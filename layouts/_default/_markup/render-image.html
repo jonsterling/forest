@@ -1,17 +1,19 @@
-{{- $url := urls.Parse .Destination -}}
-{{- $isLocal := not $url.Host -}}
-{{- $transcludedPage := site.GetPage $url.Path -}}
-{{- if and $isLocal $transcludedPage -}}
-{{- $query := $url.Query -}}
-{{- $transcludedSlug := .Destination -}}
-{{- $page := .Page -}}
-{{- $splice := eq ($query.Get "splice") "true" -}}
-{{- $collapse := or $page.Params.collapseChildren (eq ($query.Get "collapse") "true") -}}
-{{- partial "tree.html"
+
+{{ $url := urls.Parse .Destination }}
+{{ $isLocal := not $url.Host }}
+{{ $transcludedPage := site.GetPage $url.Path }}
+{{ if and $isLocal $transcludedPage }}
+{{ $query := $url.Query }}
+{{ $transcludedSlug := .Destination }}
+{{ $page := .Page }}
+{{ $splice := eq ($query.Get "splice") "true" }}
+{{ $collapse := or $page.Params.collapseChildren (eq ($query.Get "collapse") "true") }}
+{{ partial "tree.html"
     (dict "context" $transcludedPage
           "collapse" $collapse
           "splice" $splice
-          "parent" $page) -}}
-{{- else -}}
+          "parent" $page) }}
+{{ else }}
 <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
-{{- end -}}
+{{ end }}
+

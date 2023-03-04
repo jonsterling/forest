@@ -62,39 +62,37 @@ To see that {#\alpha_Y;h = Th;\alpha_Z#} it suffices to observe that they both f
 through the  cocone {#\Mor{TUy_\bullet}{TUX_\bullet}{\brc{TUY}}#}, which is universal by our assumption that {#T#} preserves {#\ICat#}-colimits.
 
 1. First we must check that the following diagram commutes:
+    ```render-latex
+    \DiagramSquare{
+      nw = TUX_\bullet,
+      sw = UX_\bullet,
+      se = \brc{UZ},
+      ne = \brc{TUY},
+      north = TUy_\bullet,
+      west = \alpha_{X_\bullet},
+      south = Uz_\bullet,
+      east = \alpha_Y;h,
+      width = 2.5cm,
+    }
+    ```
 
-   ```render-latex
-   \DiagramSquare{
-     nw = TUX_\bullet,
-     sw = UX_\bullet,
-     se = \brc{UZ},
-     ne = \brc{TUY},
-     north = TUy_\bullet,
-     west = \alpha_{X_\bullet},
-     south = Uz_\bullet,
-     east = \alpha_Y;h,
-     width = 2.5cm,
-   }
-   ```
-   
-   This holds immediately from the homomorphism property of {#y_\bullet#}.
+    This holds immediately from the homomorphism property of {#y_\bullet#}.
    
 1. Second, we must check that the following diagram commutes:
+    ```render-latex
+    \DiagramSquare{
+      nw = TUX_\bullet,
+      sw = UX_\bullet,
+      se = \brc{UZ},
+      ne = \brc{TUY},
+      north = TUy_\bullet,
+      west = \alpha_{X_\bullet},
+      south = Uz_\bullet,
+      east = Th;\alpha_Z,
+      width = 2.5cm,
+    }
+    ```
 
-   ```render-latex
-   \DiagramSquare{
-     nw = TUX_\bullet,
-     sw = UX_\bullet,
-     se = \brc{UZ},
-     ne = \brc{TUY},
-     north = TUy_\bullet,
-     west = \alpha_{X_\bullet},
-     south = Uz_\bullet,
-     east = Th;\alpha_Z,
-     width = 2.5cm,
-   }
-   ```
-   
-   This follows from the factorization {#Uy_\bullet;h=Uz_\bullet#} and the homomorphism property of {#z_\bullet#}.
+    This follows from the factorization {#Uy_\bullet;h=Uz_\bullet#} and the homomorphism property of {#z_\bullet#}.
    
 {{%/proof%}}

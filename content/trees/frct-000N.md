@@ -10,4 +10,5 @@ cartesian fibrations over {#B#}, generalizing the relationship between categorie
 to {#\SET#} (i.e. small categories) and their family fibrations over {#\SET#}.
 
 ![](frct-001Q)
+
 ![](frct-003O)

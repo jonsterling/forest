@@ -8,10 +8,15 @@ macros:
 ---
 
 ![](jms-001S)
+
 ![](jms-001U)
+
 ![](jms-001T)
+
 ![](jms-001V)
+
 ![](jms-001X)
+
 ![](jms-001Y)
 
 By virtue of the [monadicity result](jms-001Y), we will refer to [pointed](jms-001S) dcpos and {#\LiftM#}-algebras interchangeably.

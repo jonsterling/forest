@@ -13,8 +13,13 @@ We assume knowledge of basic categorical concepts such as categories, functors, 
 We will draw on the work of [Ahrens and Lumsdaine](ahrens-lumsdaine-2019), [Bénabou](benabou-1985), [Borceux](borceux-hca-2), [Jacobs](jacobs-1999), and [Streicher](streicher-fcjb).
 
 ![](frct-000R)
+
 ![](frct-0008)
+
 ![](frct-0009)
+
 ![](frct-000E)
+
 ![](frct-000N)
+
 ![](frct-0012)

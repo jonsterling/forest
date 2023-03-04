@@ -51,5 +51,7 @@ equivalence with the naïve one in all cases that the latter is meaningful.
 We have a functor {#\TotCat{P\Sub{\bullet}}\to E#} taking a pair {#(x,(u,\phi\Sub{u}))#} to {#u#}.
 
 ![](frct-001V)
+
 ![](frct-001W)
+
 ![](frct-000C)

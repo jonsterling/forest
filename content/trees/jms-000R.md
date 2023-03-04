@@ -12,6 +12,7 @@ In the current millennium, a new identification has been taking shape in which *
 Thus one of the main projects for the first decade of homotopy type theory was to substantiate the relationship between HoTT and mathematics on the one hand, and between HoTT and computer programming on the other hand. The question of whether homotopy type theoretic language can be interpreted in sheaves on arbitrary infinite-dimensional spaces (<span class="nowrap">{#\infty#}-topoi</span>) has finally been resolved satisfactorily by [Shulman](shulman-2019) in 2019. On the other hand, the computational interpretation of homotopy type theory has involved a reformulation of HoTT called **[cubical](abchfl-2021) [type](angiuli-favonia-harper-2018) [theory](cchm-2017)** that reorganizes the higher-dimensional structure discussed by considering all the points, lines, squares, cubes, hypercubes, and so-on that one can draw in a given type. The computational interpretation of the new cubical type theory can be split into two different conjectures:
 
 ![](jms-000S)
+
 ![](jms-000T)
 
 The [canonicity conjecture](jms-000S) ensures that terms written in cubical type theory can be thought of as computer programs, and was verified independently by [Huber](huber-2018) and [Angiuli](angiuli-2019) for different variants of cubical type theory. The [decidability conjecture](jms-000T) is no less important, as it is a necessary ingredient to implement a *typechecker* or a *compiler* for a programming language based on cubical type theory.

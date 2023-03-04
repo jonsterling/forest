@@ -9,6 +9,9 @@ We have already seen in our discussion of  [locally small](frct-000G) and [globa
 The notion of a (meta-)category is an essentially algebraic theory. As such it is possible to compute *models* of this theory in any category that has finite limits.
 
 ![](frct-001A)
+
 ![](frct-000V)
+
 ![](frct-0011)
+
 ![](frct-000Z)

@@ -14,4 +14,5 @@ To understand this subtlety, we first consider that each individual tree may con
 In particular, although one person may be aware of and responsible for the content of a given tree, it would be unreasonable to require them to be responsible for any subsequent (and potentially erroneous!) re-contextualization of that tree in the forest. For this reason, **[authors](tfmt-000S) must be distinguished from [contributors](tfmt-000T)** in [forests of evergreen notes](tfmt-000R).
 
 ![](tfmt-000S)
+
 ![](tfmt-000T)
