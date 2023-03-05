@@ -283,6 +283,10 @@ macros:
   args: 2
   body: '{#1}\Sub{/#2}'
   doc: the slice of a category over an object
+- name: Homs
+  args: 1
+  body: '\mathbf{hom}\Sub{#1}'
+  doc: the collection of all morphisms in a given category
 - name: Hom
   args: 3
   body: '\mathbf{hom}\Sub{#1}\prn{#2,#3}'
