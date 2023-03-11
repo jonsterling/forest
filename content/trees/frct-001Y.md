@@ -1,4 +1,5 @@
 ---
+title: pullbacks and cartesian maps
 taxon: exercise
 macros:
 - include: frct-001X
