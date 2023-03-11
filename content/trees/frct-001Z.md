@@ -1,5 +1,5 @@
 ---
-title: opposite fibered category
+title: the opposite of an uncloven fibration
 taxon: construction
 macros:
 - include: frct-0000
