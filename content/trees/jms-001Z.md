@@ -1,5 +1,7 @@
 ---
 title: characterizing freeness in terms of positivity
+tags:
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-16T15:51:46Z

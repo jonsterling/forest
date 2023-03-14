@@ -1,6 +1,8 @@
 ---
 title: non-negatively generated elements
 taxon: definition
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-16T17:52:36Z

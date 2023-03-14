@@ -1,6 +1,8 @@
 ---
 title: closure of positivity under directed suprema
 taxon: lemma
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-14T09:42:42Z

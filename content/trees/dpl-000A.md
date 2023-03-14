@@ -1,5 +1,7 @@
 ---
 title: polarized object
+tags:
+- uf
 author:
 - Jonathan Sterling
 date: 2022-12-26T01:03:36+01:00

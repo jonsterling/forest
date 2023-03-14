@@ -1,6 +1,8 @@
 ---
 title: positivity and the strictly-below relation
 taxon: corollary
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-21T16:44:39-05:00

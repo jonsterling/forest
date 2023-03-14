@@ -1,6 +1,8 @@
 ---
 title: basis with decidable bottomhood yields positive generation
 taxon: corollary
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-16T18:02:03Z

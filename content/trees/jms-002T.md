@@ -1,6 +1,8 @@
 ---
 title: characterization of positivity in terms of partial elements
 taxon: theorem
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-21T13:29:42-05:00

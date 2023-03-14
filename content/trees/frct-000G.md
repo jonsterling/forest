@@ -4,10 +4,7 @@ macros:
 - include: frct-0006
 ---
 
-An ordinary category {#E#} is called *locally small* when for any {#x,y\in E#} the
-collection of morphisms {#x\to y#} is a set.  This property of {#E#} can be
-rephrased in terms of its [family fibration](frct-0006) {#\FAM{E}#} over
-{#\SET#} as follows.
+An ordinary category {#E#} is called *locally small* when for any {#x,y\in E#} the collection of morphisms {#x\to y#} is a set.  This property of {#E#} can be rephrased in terms of its [family fibration](frct-0006) {#\FAM{E}#} over {#\SET#} as follows.
 
 Consider an index set {#I\in \SET#} and two families {#u,v\in C^I#}. We may define
 an {#I#}-indexed collection {#[u,v]\Sub{i\in I}#} consisting (pointwise) of all the

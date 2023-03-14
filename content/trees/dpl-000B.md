@@ -1,5 +1,7 @@
 ---
 title: conventions of univalent mathematics
+tags:
+- uf
 taxon: convention
 author:
 - Jonathan Sterling

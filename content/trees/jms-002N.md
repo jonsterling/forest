@@ -1,6 +1,8 @@
 ---
 title: positively generated elements are non-negatively generated
 taxon: lemma
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-16T18:10:46Z

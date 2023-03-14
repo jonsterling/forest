@@ -1,5 +1,7 @@
 ---
 title: liftedness = positive generation
+tags: 
+- uf
 taxon: corollary
 author:
 - Tom de Jong

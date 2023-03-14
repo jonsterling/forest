@@ -21,9 +21,6 @@
   {{- partial "tree.html" (dict "context" .) }}
 
   <footer class="post-footer">
-    <div>
-      {{ partial "backlinks.html" (dict "page" .) }}
-    </div>
 
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
@@ -31,6 +28,12 @@
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>
+    
+    <div>
+      {{ partial "backlinks.html" (dict "page" .) }}
+    </div>
+
+    
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post_nav_links.html" . }}
     {{- end }}

@@ -1,5 +1,7 @@
 ---
 title: algebra structure on the colimit apex
+tags:
+- uf
 taxon: lemma
 author:
 - Jonathan Sterling

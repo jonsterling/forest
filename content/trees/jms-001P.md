@@ -1,6 +1,8 @@
 ---
 title: the subdcpo spanned by positive elements
 taxon: corollary
+tags: 
+- uf
 author:
 - Jonathan Sterling
 date: 2023-02-14T09:58:52Z
