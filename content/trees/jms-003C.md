@@ -17,10 +17,10 @@ macros:
 
 Let {#\CCat#} be a [wild category](jms-0037); the *identity 0-functor* {#\Mor{\Idn{\CCat}}{\CCat}{\CCat}#} on {#\CCat#} is defined as follows:
 {##
-\begin{align*}
+\begin{aligned}
 \Ob{\Idn{\CCat}}A &:\equiv A\\ 
 \Homs{\Idn{\CCat}}f &:\equiv f
-\end{align*}
+\end{aligned}
 ##}
 
 The above may be extended to a [wild 1-semi-functor](jms-003F) as follows:
