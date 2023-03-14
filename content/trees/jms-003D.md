@@ -1,5 +1,5 @@
 ---
-title: constant 0-functor
+title: the constant 0-functor
 author:
 - Jonathan Sterling
 taxon: example
