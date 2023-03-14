@@ -1,5 +1,5 @@
 ---
-title: the constant 0-functor
+title: the wild constant functor
 author:
 - Jonathan Sterling
 taxon: example
@@ -7,7 +7,7 @@ tags:
 - uf
 date: 2023-03-14T11:29:08+01:00
 macros:
-- include: base-macros
+- include: jms-003G
 - name: CCat
   args: 0
   body: '\mathcal{C}'
@@ -25,4 +25,10 @@ Let {#\CCat#} and {#\DCat#} be [wild categories](jms-0037), and let {#D:\Ob{\DCa
 \Ob{\Delta D}C &:\equiv D\\
 \Homs{\Delta D} f &:\equiv \Idn{D}
 \end{align*}
+##}
+
+The above may be extended to a [wild 1-semi-functor](jms-003F) as follows:
+
+{##
+\Con{seq}_{F}\,f\,g :\equiv \Refl
 ##}

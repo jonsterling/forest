@@ -13,11 +13,15 @@ We describe some basic definitions and results in "wild (incoherent) category th
 
 ![](jms-0038)
 
+![](jms-003F)
+
 ![](jms-003C)
 
 ![](jms-003D)
 
 ![](jms-0039)
+
+![](jms-003H)
 
 ![](jms-003B)
 
