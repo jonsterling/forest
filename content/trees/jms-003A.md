@@ -20,3 +20,5 @@ We describe some basic definitions and results in "wild (incoherent) category th
 ![](jms-0039)
 
 ![](jms-003B)
+
+![](jms-003E)
