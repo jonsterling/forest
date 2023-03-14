@@ -1,4 +1,5 @@
 ---
+title: splitting the generic element of a cone
 taxon: construction
 tags:
 - uf
