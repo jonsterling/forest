@@ -7,7 +7,7 @@ tags:
 - uf
 ---
 
-We describe some basic definitions and results in "wild (incoherent) category theory", i.e. the study of untruncated category-like objects in univalent foundations that may lack higher coherences and saturation/completeness assumptions. Some of this is based on the [Homotopy Type Theory Coq library](https://github.com/HoTT/Coq-HoTT/blob/master/theories/WildCat/Core.v), as well as ideas from [blog post](https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/) of Mike Shulman.
+We describe some basic definitions and results in "wild (incoherent) category theory", i.e. the study of untruncated category-like objects in univalent foundations that may lack higher coherences and saturation/completeness assumptions. Some of this is based on the [Homotopy Type Theory Coq library](https://github.com/HoTT/Coq-HoTT/blob/master/theories/WildCat/Core.v), as well as ideas from a [blog post](https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/) of Mike Shulman and private conversations with Mike Shulman.
 
 ![](jms-0037)
 
