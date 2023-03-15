@@ -337,6 +337,9 @@ macros:
 - name: Mor
   args: 3
   body: '{#2}\xrightarrow{#1}{#3}'
+- name: Comma
+  args: 2
+  body: '{#1}\downarrow{#2}'
 ---
 
 This tree defines the basic notational macros used across [](jms-0001).

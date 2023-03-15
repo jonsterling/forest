@@ -9,5 +9,23 @@ macros:
   args: 0
   docs: the reflexivity element for the identity type
   body: '\Con{refl}'
+- name: UU
+  args: 0
+  body: '\mathcal{U}'
+- name: VV
+  args: 0
+  body: '\mathcal{V}'
+- name: TpIdn
+  args: 3
+  body: '{#2} =_{#1} {#3}'
+- name: TpHtpy
+  args: 3
+  body: '{#2} \sim_{#1} {#3}'
+- name: Prod
+  args: 1
+  body: '{\textstyle\prod_{#1}}'
+- name: Sum
+  args: 1
+  body: '{\textstyle\sum_{#1}}'
 ---
 
