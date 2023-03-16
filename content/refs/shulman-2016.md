@@ -7,9 +7,9 @@ author:
 - Michael Shulman
 date: 2023-03-15T10:39:40+01:00
 bibtex: |
-  @article{shulman:2017,
+  @article{shulman-2016,
     author = {Shulman, Michael},
-    year = {2017},
+    year = {2016},
     month = apr,
     doi = {10.2168/LMCS-12(3:9)2016},
     issue = {3},
