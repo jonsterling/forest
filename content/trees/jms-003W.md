@@ -36,3 +36,5 @@ To define the displayed algebra structure {#\bar\eta\Sub{\SemicohStr}#}, we will
 
 
 Given an element {#u:\widetilde{\SemicohStr}#}, we shall write {#\epsilon\Sub{u},\vartheta\Sub{u}#} for the components of its underlying [incoherent naturality structure](jms-003V) {#\pi\Sub{\SemicohStr}u#} and {#\varsigma\Sub{u} : \SemicohStr[\pi\Sub{\SemicohStr}u]#} for the semicoherence structure itself.
+
+This definition is similar to that of [Awodey, Frey, and Speight](awodey-frey-speight-2018), except that we do not impose any coherence law for identities.

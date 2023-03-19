@@ -24,3 +24,5 @@ Let {#\UU\in\VV#} be an impredicative universe pair with {#A:\VV#} a type in the
 ##}
 
 Given an element {#u:\widetilde{\IncohNatStr}#}, we will write {#\epsilon\Sub{u} : \Prod{X:\Comma{A}{\UU}}#} for the first component {#\pi\Sub{\IncohNatStr}u#} and {#\vartheta\Sub{u} : \IncohNatStr[\epsilon\Sub{u}]#} for the second component.
+
+This definition is equivalent to one given by [Awodey, Frey, and Speight](awodey-frey-speight-2018).
