@@ -28,12 +28,11 @@ In particular, we define {#\SemicohStr#} over {#\widetilde{\IncohNatStr}#} as fo
   \end{array}
 ##}
 
-To define the displayed algebra structure {#\bar\eta\Sub{\SemicohStr}#}, we will use the contractibility of singletons several times. In particular, given {#\prn{Y,f}#} where {#Y:\Comma{A}{\UU}#} and {#f:X\multimap Y#}, the algebra component {#\eta\Sub{Y}#} is completely determined by the homotopy {#\eta\Sub{f} :\eta\Sub{Y}\sim f \circ \eta\Sub{X}#}; likewise, by our [characterization of paths between homomorphisms](jms-003Y), the pair {#\prn{h,\phi}#} is uniquely determined. Therefore, we may define {#\bar\eta\Sub{\SemicohStr}#} to be the unique function determined as follows:
+To define the displayed algebra structure {#\bar\eta\Sub{\SemicohStr}#}, we will use the contractibility of singletons several times. In particular, given {#\prn{Y,f}#} where {#Y:\Comma{A}{\UU}#} and {#f:X\multimap Y#}, the algebra component {#\eta\Sub{Y}#} is completely determined by the homotopy {#\eta\Sub{f} :\eta\Sub{Y}\sim f \circ \eta\Sub{X}#}; likewise, by our [characterization of paths between homomorphisms](jms-003Y), the pair {#\prn{h,\phi}#} is uniquely determined. Therefore, we may define {#\bar\eta\Sub{\SemicohStr}#} to be the unique function satisfying the following equation:
 
 {##
-\bar\eta\Sub{\SemicohStr}\,a\,\prn{f,\lambda\_.\Refl}\,\prn{g,\lambda\_.\Refl}\,\prn{\prn{f;g},\lambda\_.\Refl}, \prn{\lambda\_.\Refl,\lambda\_.\Refl} :\equiv \Refl
+\bar\eta\Sub{\SemicohStr}\,a\,\prn{f,\lambda\_.\Refl}\,\prn{g,\lambda\_.\Refl}\,\prn{\prn{f;g},\lambda\_.\Refl}, \prn{\lambda\_.\Refl,\lambda\_.\Refl} := \Refl
 ##}
-
 
 Given an element {#u:\widetilde{\SemicohStr}#}, we shall write {#\epsilon\Sub{u},\vartheta\Sub{u}#} for the components of its underlying [incoherent naturality structure](jms-003V) {#\pi\Sub{\SemicohStr}u#} and {#\varsigma\Sub{u} : \SemicohStr[\pi\Sub{\SemicohStr}u]#} for the semicoherence structure itself.
 
