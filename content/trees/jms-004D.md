@@ -12,10 +12,10 @@ macros:
 
 The following are equivalent for a deductive system {#\mathcal{D}#}:
 
-1. every map is [linear](dpl-0004);
-2. every map is [thunkable](dpl-0004);
-3. every object is [positive](dpl-0005);
-5. every object is [negative](dpl-0005);
+1. every map is [linear](jms-004A);
+2. every map is [thunkable](jms-004A);
+3. every object is [positive](jms-004B);
+5. every object is [negative](jms-004B);
 6. the **cut** law is associative;
 7. {#\mathcal{D}#} is a precategory.
 

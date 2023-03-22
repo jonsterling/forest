@@ -10,6 +10,7 @@ An ordinary category {#C#} is equivalent to a globally small category if and onl
 
 {{%proof%}}
 To see that this is the case, suppose that {#C#} has a set of objects. Then {#C\in\SET#} and we define {#\lfloor{C}\rfloor#} to be the displayed object {#\brc{x}\Sub{x\in C}\in \FAM{C}[C]#}. Fixing {#I\in \SET#} and {#z\in C^I#}, we consider the cartesian map displayed over {#z : I \to C#}:
+
 ```render-latex
 \DiagramSquare{
   height = 1.5cm,

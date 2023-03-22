@@ -10,7 +10,7 @@ macros:
 taxon: definition
 ---
 
-Let {#f:C \vdash D#} be a morphism in a [deductive system](dpl-0002) {#\mathcal{D}#}.
+Let {#f:C \vdash D#} be a morphism in a [deductive system](jms-0048) {#\mathcal{D}#}.
 
 1. We say that {#f#} is *linear* when for all {#g:B\vdash C#} and {#h:A\vdash B#}, we have {#h;\prn{g;f} = \prn{h;g};f#}.
 
