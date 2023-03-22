@@ -14,7 +14,7 @@ Given a pair of [reflection algebras](jms-003O) {#X,Y:\Comma{\UU}{A}#} and a pai
    \bar\phi :
    \Prod{a:A}
    \TpIdn{
-      \TpIdn{Y}{f\prn{\eta\Sub{X}a}}{\eta\Sub{Y}a}
+      \TpIdn{Y}{g\prn{\eta\Sub{X}a}}{\eta\Sub{Y}a}
     }{
       \eta\Sub{g}a
    }{
