@@ -10,4 +10,4 @@ macros:
 - include: jms-003G
 ---
 
-We will write {#\Comma{A}{\UU} \simeq \Sum{X:\UU}{A\to X}#} for the type of [reflection algebras](jms-003O) under {#A#}; given two reflection algebras {#X,Y:\Comma{A}{\UU}#} we will write {#\prn{X\multimap Y} \simeq \Sum{f:X\to Y} \eta\Sub{Y}\sim f\circ \eta\Sub{X}#} for the type of *homomorphisms* of [reflection algebras](jms-003O).
+We will write {#\Comma{A}{\UU} \simeq \Sum{X:\UU}{A\to X}#} for the type of [reflection algebras](jms-003O) under {#A#}; given two reflection algebras {#X,Y:\Comma{A}{\UU}#} we will write {#\prn{X\multimap Y} \simeq \Sum{f:X\to Y} \TpHtpy{A\to Y}{\eta\Sub{Y}}{f\circ \eta\Sub{X}}#} for the type of *homomorphisms* of [reflection algebras](jms-003O).

@@ -21,14 +21,14 @@ In particular, we define {#\SemicohStr#} over {#\widetilde{\IncohNatStr}#} as fo
     \Prod{f : X\multimap Y}
     \Prod{g : Y\multimap Z}
     \Prod{h : X \multimap Z}
-    \Prod{\phi : f;g \approx h}\\
+    \Prod{\phi : \TpHtpy{X\multimap Z}{f;g}{h}}\\
     \Con{ap}\Sub{g} \prn{\vartheta\Sub{u} f} \bullet \vartheta\Sub{u} g 
     = \phi\prn{\epsilon\Sub{u} X} \bullet \vartheta\Sub{u} h
     \end{array}
   \end{array}
 ##}
 
-To define the displayed algebra structure {#\bar\eta\Sub{\SemicohStr}#}, we will use the contractibility of singletons several times. In particular, given {#\prn{Y,f}#} where {#Y:\Comma{A}{\UU}#} and {#f:X\multimap Y#}, the algebra component {#\eta\Sub{Y}#} is completely determined by the homotopy {#\eta\Sub{f} :\eta\Sub{Y}\sim f \circ \eta\Sub{X}#}; likewise, by our [characterization of paths between homomorphisms](jms-003Y), the pair {#\prn{h,\phi}#} is uniquely determined. Therefore, we may define {#\bar\eta\Sub{\SemicohStr}#} to be the unique function satisfying the following equation:
+To define the displayed algebra structure {#\bar\eta\Sub{\SemicohStr}#}, we will use the contractibility of singletons several times. In particular, given {#\prn{Y,f}#} where {#Y:\Comma{A}{\UU}#} and {#f:X\multimap Y#}, the algebra component {#\eta\Sub{Y}#} is completely determined by the homotopy {#\eta\Sub{f} :\TpHtpy{A\to Y}{\eta\Sub{Y}}{f \circ \eta\Sub{X}}#}; likewise, by our [characterization of paths between homomorphisms](jms-003Y), the pair {#\prn{h,\phi}#} is uniquely determined. Therefore, we may define {#\bar\eta\Sub{\SemicohStr}#} to be the unique function satisfying the following equation:
 
 {##
 \bar\eta\Sub{\SemicohStr}\,a\,\prn{f,\lambda\_.\Refl}\,\prn{g,\lambda\_.\Refl}\,\prn{\prn{f;g},\lambda\_.\Refl}, \prn{\lambda\_.\Refl,\lambda\_.\Refl} := \Refl
