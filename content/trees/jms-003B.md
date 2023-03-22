@@ -1,5 +1,5 @@
 ---
-title: wild initial objects from cones with trivial generic element
+title: wild initial objects from universal cones
 taxon: lemma
 tags:
 - uf

@@ -1,5 +1,5 @@
 ---
-title: splitting the generic element of a cone
+title: a wild universal cone from a splitting of the generic element
 taxon: construction
 tags:
 - uf
