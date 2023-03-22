@@ -11,5 +11,3 @@ macros:
 ---
 
 Given a path of [reflection algebras](jms-003O) {#X,Y:\Comma{A}{\UU}#} and a [homomorphism](jms-003O) {#f : X\multimap Y#}, the type {#\Sum{g:X\multimap Y}{\TpHtpy{X\multimap Y}{g}{f}}#} of homomorphisms equipped with a [homotopy](jms-003X) to {#f#} is contractible, by function extensionality and the characterization of path spaces in dependent sums. Hence it follows that the canonical map {#\TpIdn{X\multimap Y}{f}{g}\to \TpHtpy{X\multimap Y}{f}{g}#} is an equivalence.
-
-**TODO: Did I get this right ??**
