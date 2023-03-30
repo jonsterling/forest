@@ -8,11 +8,13 @@
 {{ $page := .Page }}
 {{ $splice := eq ($query.Get "splice") "true" }}
 {{ $collapse := or $page.Params.collapseChildren (eq ($query.Get "collapse") "true") }}
-{{ partial "tree.html"
+{{- $treePartialCacheKey := (dict "slug" .Destination "collapse" $collapse "isRoot" false "splice" $splice)}}
+{{ partialCached "tree.html"
     (dict "context" $transcludedPage
           "collapse" $collapse
           "splice" $splice
-          "parent" $page) }}
+          "isRoot" false)
+    $treePartialCacheKey }}
 {{ else }}
 <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
 {{ end }}

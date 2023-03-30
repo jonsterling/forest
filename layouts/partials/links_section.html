@@ -3,7 +3,8 @@
 
   <nav id="{{.id}}">
     {{ range .pages }}
-      {{ partial "tree.html" (dict "context" . "collapse" true) }}
+      {{- $treePartialCacheKey := (dict "slug" .File.ContentBaseName "collapse" true "isRoot" true "splice" false)}}
+      {{ partialCached "tree.html" (dict "context" . "collapse" true "isRoot" true) $treePartialCacheKey }}
     {{ end }}
   </nav>
 
