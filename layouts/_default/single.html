@@ -18,8 +18,7 @@
     {{- end }}
   </header>
 
-  {{- $treePartialCacheKey := (dict "slug" .File.ContentBaseName "collapse" false "isRoot" true "splice" false)}}
-  {{- partialCached "tree.html" (dict "context" . "isRoot" true) $treePartialCacheKey -}}
+  {{- partial "tree.html" (dict "context" .) }}
 
   <footer class="post-footer">
 
@@ -31,7 +30,7 @@
     </ul>
     
     <div>
-      {{ partial "backlinks.html" (dict "page" .) . }}
+      {{ partial "backlinks.html" (dict "page" .) }}
     </div>
 
     
