@@ -2,7 +2,7 @@
 doi: 10.48550/arXiv.2212.11082
 taxon: reference
 author:
-- Egbert Rijke
+- egbertrijke
 title: Introduction to Homotopy Type Theory
 publisher: Cambridge University Press
 date: 2022-12-21

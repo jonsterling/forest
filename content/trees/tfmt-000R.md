@@ -2,7 +2,7 @@
 title: forest and trees of evergreen notes
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:12:15+01:00
 ---
 

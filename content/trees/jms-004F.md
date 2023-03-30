@@ -3,7 +3,7 @@ title: preduploid
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T01:01:53+01:00
 taxon: definition
 ---

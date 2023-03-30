@@ -4,7 +4,7 @@ taxon: lemma
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T16:14:39+01:00
 macros:
 - include: jms-003G

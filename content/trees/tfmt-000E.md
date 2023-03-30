@@ -1,7 +1,7 @@
 ---
 title: requirements for typesetting mathematics
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T12:37:04+01:00
 ---
 

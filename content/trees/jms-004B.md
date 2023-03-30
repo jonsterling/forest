@@ -3,7 +3,7 @@ title: positive and negative objects
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T00:21:42+01:00
 taxon: definition
 macros:

@@ -1,7 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: {{ .Date }}
 draft: true
 ---

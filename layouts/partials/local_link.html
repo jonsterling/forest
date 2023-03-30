@@ -1,0 +1,16 @@
+{{- $linkedPage := .page -}}
+{{- $linkedSlug := $linkedPage.File.ContentBaseName -}}
+{{- $title := .title -}}
+<a class="local"
+   data-slug="{{$linkedSlug}}"
+   href="{{$linkedPage.RelPermalink}}"
+   role="tooltip"
+   data-microtip-position="top"
+   aria-label="{{with $linkedPage.Params.taxon}}{{. | title}} ({{$linkedPage.Title}}){{else}}{{$linkedPage.Title}}{{end}} #{{$linkedSlug}}">
+  {{- with $title -}}
+  {{- . -}}
+  {{- else -}}
+  <span class="slug">#{{$linkedSlug}}</span>
+  {{- end -}}
+</a>
+{{- printf "" -}}

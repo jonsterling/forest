@@ -2,7 +2,7 @@
 title: Syntax and models of Cartesian cubical type theory
 taxon: reference
 author:
-- Carlo Angiuli
+- carloangiuli
 - Guillaume Brunerie
 - Thierry Coquand
 - Robert Harper

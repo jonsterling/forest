@@ -2,7 +2,7 @@
 title: bicategory
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-18T14:07:57-05:00
 macros:
 - include: base-macros

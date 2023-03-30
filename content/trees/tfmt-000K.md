@@ -1,7 +1,7 @@
 ---
 title: commutative diagrams in MathJax
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T13:33:23+01:00
 ---
 

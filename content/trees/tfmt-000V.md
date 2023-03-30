@@ -1,7 +1,7 @@
 ---
 title: forests of evergreen notes
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:41:10+01:00
 ---
 

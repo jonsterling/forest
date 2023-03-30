@@ -2,7 +2,7 @@
 title: Domain Theory in Constructive and Predicative Univalent Foundations
 taxon: reference
 author:
-- Tom de Jong
+- tomdejong
 date: 2023-01-29
 doi: 10.48550/arXiv.2301.12405
 publisher: University of Birmingham

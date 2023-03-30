@@ -3,7 +3,7 @@ title: results in constructive monad theory
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-21T15:16:13-05:00
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: background on homotopy and cubical type theory
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T13:17:16-05:00
 ---
 

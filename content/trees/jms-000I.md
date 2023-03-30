@@ -1,7 +1,7 @@
 ---
 title: synthesis, analysis, and the axiomatic method
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T08:44:50-05:00
 ---
 

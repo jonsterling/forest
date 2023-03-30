@@ -1,7 +1,7 @@
 ---
 title: category theory vs. type theory
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T09:17:55-05:00
 ---
 

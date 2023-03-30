@@ -3,7 +3,7 @@ title: the structure identity principle
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-22T09:08:11+01:00
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: naïve logical relations in synthetic Tait computability
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T10:20:54-05:00
 ---
 

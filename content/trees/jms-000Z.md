@@ -1,7 +1,7 @@
 ---
 title: "part II: mathematical Background"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T19:30:20-05:00
 ---
 

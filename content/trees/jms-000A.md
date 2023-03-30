@@ -2,7 +2,7 @@
 title: kernel
 taxon: notation
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-18T09:07:12-05:00
 macros:
 - include: base-macros

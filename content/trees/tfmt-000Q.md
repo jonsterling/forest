@@ -1,7 +1,7 @@
 ---
 title: authorship and responsibility in forests
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:09:12+01:00
 ---
 

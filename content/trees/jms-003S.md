@@ -4,7 +4,7 @@ taxon: definition
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T15:17:01+01:00
 macros:
 - include: jms-003G

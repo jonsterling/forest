@@ -4,7 +4,7 @@ taxon: example
 tags: 
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-16T17:32:34Z
 macros:
 - include: jms-001M

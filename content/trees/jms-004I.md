@@ -3,7 +3,7 @@ title: 'the main result: reflectivity of impredicative subuniverses'
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-22T08:29:15+01:00
 ---
 

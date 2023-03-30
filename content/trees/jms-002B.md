@@ -4,9 +4,9 @@ tags:
 - uf
 taxon: corollary
 author:
-- Tom de Jong
-- Martín Escardó
-- Jonathan Sterling
+- tomdejong
+- martinescardo
+- jonmsterling
 date: 2023-02-16T15:43:55Z
 ---
 

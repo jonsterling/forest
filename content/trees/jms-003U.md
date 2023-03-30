@@ -3,7 +3,7 @@ title: reflection algebras, homomorphisms, and displays
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T15:22:23+01:00
 ---
 

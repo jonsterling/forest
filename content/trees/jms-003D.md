@@ -1,7 +1,7 @@
 ---
 title: the wild constant functor
 author:
-- Jonathan Sterling
+- jonmsterling
 taxon: example
 tags:
 - uf

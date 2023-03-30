@@ -4,8 +4,8 @@ taxon: lemma
 tags: 
 - uf
 author:
-- Martín Escardó
-- Jonathan Sterling
+- martinescardo
+- jonmsterling
 date: 2023-02-14T09:25:54Z
 macros:
 - include: jms-001E

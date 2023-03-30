@@ -10,10 +10,10 @@
 {{- $content := "" -}}
 {{- with .context -}}
 {{- $content = trim .RawContent "\n"
-  | replaceRE `{##` `{{<display-math>}}`
-  | replaceRE `##}` `{{</display-math>}}`
-  | replaceRE `{#` `{{<inline-math>}}`
-  | replaceRE `#}` `{{</inline-math>}}`
+  | replaceRE `{##` `{{<display_math>}}`
+  | replaceRE `##}` `{{</display_math>}}`
+  | replaceRE `{#` `{{<inline_math>}}`
+  | replaceRE `#}` `{{</inline_math>}}`
   | .RenderString -}}
 {{- end -}}
 
@@ -39,6 +39,10 @@
         <header>
           {{- partial "bibitem_summary.html" .context.Page.Params -}}
           <a href="{{$relPermalink}}" class="slug">[{{$slug}}]</a>
+        </header>
+      {{- else if eq .context.Page.Params.Taxon "person" -}}
+        <header>
+          {{- partial "biographic_summary.html" .context.Page.Params -}}
         </header>
       {{- else -}}
         {{- partial "tree_title.html" .context -}}

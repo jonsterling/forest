@@ -2,7 +2,7 @@
 title: homotopies between reflection algebra homomorphisms
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T16:03:10+01:00
 macros:
 - include: jms-003G

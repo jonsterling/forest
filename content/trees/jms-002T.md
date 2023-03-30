@@ -4,7 +4,7 @@ taxon: theorem
 tags: 
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-21T13:29:42-05:00
 macros:
 - include: jms-001M

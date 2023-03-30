@@ -2,7 +2,7 @@
 title: cleaving of a displayed category
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-11T10:56:48+01:00
 macros:
 - include: base-macros

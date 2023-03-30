@@ -2,7 +2,7 @@
 title: cleaving the family fibration
 taxon: construction
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-11T11:11:25+01:00
 macros:
 - include: frct-0006

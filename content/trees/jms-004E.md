@@ -3,7 +3,7 @@ title: polarization and preduploids
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T01:00:49+01:00
 ---
 

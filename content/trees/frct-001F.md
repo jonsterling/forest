@@ -2,7 +2,7 @@
 taxon: definition
 title: meta-category
 author:
-- Jonathan Sterling
+- jonmsterling
 macros:
 - include: base-macros
 ---

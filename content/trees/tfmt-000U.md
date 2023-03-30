@@ -2,7 +2,7 @@
 title: the extent of a tree in a forest
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:35:12+01:00
 ---
 

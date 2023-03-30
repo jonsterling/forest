@@ -2,7 +2,7 @@
 title: "connected colimits of lift-algebras"
 taxon: lemma
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-12T12:58:45Z
 macros: 
 - include: jms-001E

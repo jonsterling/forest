@@ -2,7 +2,7 @@
 title: cleavings from the axiom of choice
 taxon: remark
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-11T11:04:59+01:00
 ---
 

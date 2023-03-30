@@ -2,7 +2,7 @@
 taxon: lemma
 title: generalized pullback lemma
 author:
-- Carlo Angiuli
+- carloangiuli
 macros:
 - include: frct-0000
 ---

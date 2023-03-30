@@ -2,7 +2,7 @@
 taxon: theorem
 title: characterization of right fibrations
 author:
-- Jonathan Sterling
+- jonmsterling
 macros:
 - include: frct-0000
 ---

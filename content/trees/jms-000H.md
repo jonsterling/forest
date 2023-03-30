@@ -2,7 +2,7 @@
 title: enriched category
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-18T16:40:10-05:00
 macros:
 - include: base-macros

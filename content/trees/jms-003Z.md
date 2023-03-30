@@ -2,7 +2,7 @@
 title: alternative presentation of semicoherence structure
 taxon: remark
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T16:30:01+01:00
 macros:
 - include: jms-003G

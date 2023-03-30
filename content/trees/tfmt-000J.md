@@ -1,7 +1,7 @@
 ---
 title: commutative diagrams in KaTeX
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T13:26:54+01:00
 ---
 

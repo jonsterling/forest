@@ -1,7 +1,7 @@
 ---
 title: lifting as a co-comma construction
 author:
-- Jonathan Sterling
+- jonmsterling
 taxon: lemma
 date: 2023-02-08T10:50:21Z
 macros:

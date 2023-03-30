@@ -4,7 +4,7 @@ taxon: example
 tags: 
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-14T11:24:08+01:00
 macros:
 - include: base-macros

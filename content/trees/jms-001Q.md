@@ -1,7 +1,7 @@
 ---
 title: positivity in constructive domain theory
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-14T10:02:55Z
 ---
 

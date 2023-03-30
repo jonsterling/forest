@@ -1,7 +1,7 @@
 ---
 title: macros for dependent type theory
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-14T14:41:33+01:00
 macros:
 - include: base-macros

@@ -2,7 +2,7 @@
 title: suprema of semidirected subsets in pointed dcpos
 taxon: lemma
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-14T11:16:03Z
 macros:
 - include: jms-001E

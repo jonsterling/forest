@@ -2,7 +2,7 @@
 title: convention on chirality of unitors
 taxon: warning
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-18T14:32:39-05:00
 ---
 

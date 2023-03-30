@@ -1,7 +1,7 @@
 ---
 title: "§ 8.2: type refinements and program extraction"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T20:57:12-05:00
 macros: 
 - include: base-macros

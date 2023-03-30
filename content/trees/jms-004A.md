@@ -3,7 +3,7 @@ title: "linear and thunkable maps"
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T00:12:26+01:00
 macros:
 - include: base-macros

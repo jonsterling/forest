@@ -1,7 +1,7 @@
 ---
 title: the quiver interactive diagramming tool
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T13:15:11+01:00
 ---
 

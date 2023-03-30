@@ -2,7 +2,7 @@
 title: the opposite of a cloven fibration
 taxon: construction
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-11T11:29:48+01:00
 macros:
 - include: frct-0000

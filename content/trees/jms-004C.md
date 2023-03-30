@@ -3,7 +3,7 @@ title: deductive systems
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T00:27:08+01:00
 ---
 

@@ -2,7 +2,7 @@
 title: author of a tree
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:28:50+01:00
 ---
 

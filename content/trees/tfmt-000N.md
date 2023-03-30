@@ -1,7 +1,7 @@
 ---
 title: SVG is not an authoring language
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T14:30:35+01:00
 ---
 

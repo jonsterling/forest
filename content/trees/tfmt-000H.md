@@ -1,7 +1,7 @@
 ---
 title: notational macros are local, not global
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T12:58:19+01:00
 ---
 

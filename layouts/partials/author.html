@@ -26,11 +26,19 @@
 
 {{- $hasContributors := gt (len $contributors) 0 -}}
 
-{{- if $hasAuthors -}}
-  {{- delimit $authors ", " }}
-{{- end }}
+<span>
+{{ if $hasAuthors }}
+  {{ range $i, $a := $authors }}
+  {{- if $i -}}, {{ end }}
+    {{- partial "author-link.html" $a -}}
+  {{ end }}
+{{ end }}
 
-{{ if $hasContributors -}}
+{{ if $hasContributors }}
   with contributions from
-  {{ delimit $contributors ", " -}}
-{{- end -}}
+  {{ range $i, $a := $contributors }}
+  {{- if $i -}}, {{ end }}
+    {{- partial "author-link.html" $a -}}
+  {{ end -}}
+{{ end }}
+</span>

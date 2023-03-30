@@ -2,7 +2,7 @@
 taxon: lemma
 title: equivalence with Grothendieck's fibrations
 author:
-- Carlo Angiuli
+- carloangiuli
 macros:
 - include: frct-0000
 ---

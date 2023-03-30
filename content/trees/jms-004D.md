@@ -3,7 +3,7 @@ title: characterization of full associativity
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-26T00:31:42+01:00
 taxon: lemma
 macros:

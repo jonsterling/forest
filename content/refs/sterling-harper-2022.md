@@ -2,7 +2,7 @@
 title: Sheaf Semantics of Termination-Insensitive Noninterference
 taxon: reference
 author:
-- Jonathan Sterling
+- jonmsterling
 - Robert Harper
 journal: 7th International Conference on Formal Structures for Computation and Deduction (FSCD 2022)
 bookSeries: Leibniz International Proceedings in Informatics (LIPIcs)

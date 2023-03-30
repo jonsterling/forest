@@ -1,7 +1,7 @@
 ---
 title: evergreen notes in mathematics
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-05T10:40:19+01:00
 ---
 

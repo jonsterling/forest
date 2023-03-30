@@ -3,7 +3,7 @@ title: A cost-aware logical framework
 taxon: reference
 author:
 - Yue Niu
-- Jonathan Sterling
+- jonmsterling
 - Harrison Grodin
 - Robert Harper
 journal: Proceedings of the ACM on Programming Languages

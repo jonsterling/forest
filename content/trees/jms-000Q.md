@@ -1,7 +1,7 @@
 ---
 title: "dissertation overview: *first steps in synthetic tait computability*"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T13:14:06-05:00
 ---
 

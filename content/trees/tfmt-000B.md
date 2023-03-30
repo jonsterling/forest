@@ -1,7 +1,7 @@
 ---
 title: absolute vs. relative hierarchy in document markup languages
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2022-12-29T13:28:23+01:00
 ---
 

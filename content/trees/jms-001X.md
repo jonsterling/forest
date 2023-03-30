@@ -2,7 +2,7 @@
 title: bottom-preserving maps vs. algebra morphisms
 taxon: lemma
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-14T11:32:47Z
 macros:
 - include: jms-001E

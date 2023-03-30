@@ -4,7 +4,7 @@ taxon: corollary
 tags: 
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-21T13:19:01-05:00
 macros: 
 - include: jms-002P

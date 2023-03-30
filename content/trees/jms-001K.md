@@ -3,7 +3,7 @@ title: creation of colimits by the forgetful functor
 tags: 
 - uf 
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-12T11:24:34Z
 taxon: theorem
 macros:

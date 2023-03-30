@@ -4,7 +4,7 @@ taxon: definition
 tags:
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T10:36:14+01:00
 macros:
 - include: base-macros

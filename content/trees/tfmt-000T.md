@@ -2,7 +2,7 @@
 title: contributor to a tree
 taxon: definition
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-04T10:32:18+01:00
 ---
 

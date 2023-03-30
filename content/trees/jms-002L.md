@@ -3,7 +3,7 @@ title: when is a continuous pointed dcpo positively generated?
 tags: 
 - uf
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-02-16T18:07:12Z
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "part I: dependent dype theory"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-19T19:14:59-05:00
 ---
 

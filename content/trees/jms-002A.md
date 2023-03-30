@@ -4,9 +4,9 @@ tags:
 - uf
 taxon: lemma
 author:
-- Tom de Jong
-- Martín Escardó
-- Jonathan Sterling
+- tomdejong
+- martinescardo
+- jonmsterling
 date: 2023-02-16T15:32:41Z
 macros: 
 - include: jms-0021

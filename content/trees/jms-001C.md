@@ -1,7 +1,7 @@
 ---
 title: "§ 8.3: information-flow and noninterference"
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-20T07:32:39-05:00
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: mathematical expressions and diagrams are tightly coupled
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-01-07T14:59:30+01:00
 ---
 

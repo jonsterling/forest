@@ -1,7 +1,7 @@
 ---
 title: idempotents in wild categories
 author:
-- Jonathan Sterling
+- jonmsterling
 date: 2023-03-15T10:38:14+01:00
 ---
 

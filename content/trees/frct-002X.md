@@ -2,7 +2,7 @@
 taxon: example
 title: revisiting the fundamental self-indexing
 author:
-- Carlo Angiuli
+- carloangiuli
 macros:
 - include: frct-001X
 ---

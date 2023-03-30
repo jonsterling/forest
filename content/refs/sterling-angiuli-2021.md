@@ -2,8 +2,8 @@
 title: Normalization for Cubical Type Theory
 taxon: reference
 author:
-- Jonathan Sterling
-- Carlo Angiuli
+- jonmsterling
+- carloangiuli
 journal: 2021 36th Annual ACM/IEEE Symposium on Logic in Computer Science
 doi: 10.1109/LICS52264.2021.9470719
 date: 2021-07-07
