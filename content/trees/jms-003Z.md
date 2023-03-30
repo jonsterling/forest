@@ -19,4 +19,4 @@ By the contractibility of singletons and our [characterization of paths between 
   = \vartheta\Sub{u} \prn{f;g}
 ##}
 
-Our reason for choosing the more complex definition involving {#\prn{h,\phi}#} is that the extra flexibility comes in handy in our results, as suggested by Michael Shulman in private communication.
+Our reason for choosing the more complex definition involving {#\prn{h,\phi}#} is that the extra flexibility comes in handy in our results, as suggested by [Michael Shulman](mikeshulman) in private communication.
