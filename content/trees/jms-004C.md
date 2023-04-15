@@ -18,3 +18,12 @@ The most basic construct of duploid theory is a [deductive system](jms-0048), a 
 ![](jms-004B)
 
 ![](jms-004D)
+
+![](jms-004U)
+
+![](jms-004V)
+
+![](jms-004W)
+
+![](jms-004Y)
+
