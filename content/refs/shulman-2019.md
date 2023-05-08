@@ -1,5 +1,5 @@
 ---
-title: All (∞,1)-toposes have strict univalent universes)
+title: All (∞,1)-toposes have strict univalent universes
 taxon: reference
 author:
 - mikeshulman
