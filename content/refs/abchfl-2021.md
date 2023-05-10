@@ -6,7 +6,7 @@ author:
 - Guillaume Brunerie
 - Thierry Coquand
 - Robert Harper
-- Kuen-Bang Hou (Favonia)
+- favonia
 - Daniel R. Licata
 journal: Mathematical Structures in Computer Science
 date: 2021-04-01

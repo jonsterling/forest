@@ -3,7 +3,7 @@ title: "Cartesian Cubical Computational Type Theory: Constructive Reasoning with
 taxon: reference
 author:
 - carloangiuli
-- Kuen-Bang Hou (Favonia)
+- favonia
 - Robert Harper
 doi: 10.4230/LIPIcs.CSL.2018.6
 date: 2018-08-29
