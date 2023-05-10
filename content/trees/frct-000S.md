@@ -5,7 +5,7 @@ macros:
 - include: frct-0000
 ---
 
-The construction of [fibered opposite categories](frct-001Z) does appear quite involved, but it can be seen to be inevitable from the perspective of the fiber categories {#\OpCat{E}\Sub{x}#} ([](frct-0005)). Indeed, let {#u,v\in \OpCat{E}\Sub{x}#} and fix a *vertical* map {#h : u \to v\in \OpCat{E}\Sub{x}#}; by unfolding definitions, we see that the vertical map {#h : u \to v#} is uniquely determined by a morphism {#v\to u\in E\Sub{x}#}.
+The construction of [fibered opposite categories](frct-001Z) does appear quite involved, but it can be seen to be inevitable from the perspective of the [fiber categories](frct-0005) {#\OpCat{E}\Sub{x}#}. Indeed, let {#u,v\in \OpCat{E}\Sub{x}#} and fix a *vertical* map {#h : u \to v\in \OpCat{E}\Sub{x}#}; by unfolding definitions, we see that the vertical map {#h : u \to v#} is uniquely determined by a morphism {#v\to u\in E\Sub{x}#}.
 
 {{%proof%}}
 A displayed morphism {#u\DispTo{\Idn{x}} v\in \OpCat{E}#} is

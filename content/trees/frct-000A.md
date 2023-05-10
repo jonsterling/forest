@@ -1,6 +1,6 @@
 ---
 title: The total category and its projection
-date: 2022
+date: "2022"
 macros:
 - include: base-macros
 - include: frct-0000
