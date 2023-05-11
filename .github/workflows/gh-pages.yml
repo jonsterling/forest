@@ -15,10 +15,6 @@ jobs:
           submodules: true  
           fetch-depth: 1
       
-      - name: Setup tmate session
-        if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
-    
 
       - name: Set-up OCaml
         uses: ocaml/setup-ocaml@v2
@@ -52,6 +48,13 @@ jobs:
 
       - name: Build with Forester
         run: opam exec -- forester --root jms-0001 trees
+        
+
+    
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+    
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
