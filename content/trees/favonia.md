@@ -1,6 +1,6 @@
 ---
 title: Kuen-Bang Hou (Favonia)
 taxon: person
-link: https://www.favonia.org/
+external: https://www.favonia.org/
 ---
 
