@@ -9,7 +9,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-    steps:
+    steps:    
+      - name: Setup tmate session
+        if: success() || failure()
+        uses: mxschmitt/action-tmate@v3
+
       - uses: actions/checkout@v3
         with:
           submodules: true  
@@ -22,7 +26,7 @@ jobs:
           
       - name: Install Forester
         run: |
-          git clone https://github.com/jonsterling/ocaml-forester.git
+          git clone https://github.com/jonsterling/ocaml-forester.git#debug
           cd ocaml-forester
           opam pin add -y .
 
