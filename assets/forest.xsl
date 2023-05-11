@@ -29,6 +29,12 @@
           src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/contrib/auto-render.min.js"
           integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
           crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+        <script type="text/javascript">
+          <xsl:if test="/tree/frontmatter/abspath"> window.absolutePath = '<xsl:value-of
+              select="/tree/frontmatter/abspath" />' </xsl:if>
+        </script>
+
         <script type="module" src="ninja.js"></script>
         <title>
           <xsl:value-of select="/tree/frontmatter/title" />

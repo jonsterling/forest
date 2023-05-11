@@ -5,6 +5,19 @@ fetch("./forest.json")
   .then((res) => res.json())
   .then((data) => {
     const items = []
+
+    if (window.absolutePath) {
+      items.push({
+        id: 'edit',
+        title: 'Edit current tree in Visual Studio Code',
+        section: 'Commands',
+        hotkey: "cmd+e",
+        handler: () => {
+          window.location.href = `vscode://file/${window.absolutePath}`
+        }
+      })
+    }
+
     for (const addr in data) {
       const item = data[addr]
       const title = item.taxon ? `${item.taxon} (${item.title})` : item.title
