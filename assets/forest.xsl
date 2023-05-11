@@ -104,23 +104,21 @@
   </xsl:template>
 
   <xsl:template name="ResultFrontmatter">
-    <header>
-      <h1>
-        <xsl:attribute name="class">leaf</xsl:attribute>
-        <xsl:value-of select="../@taxon" />
-        <xsl:text> (</xsl:text>
-        <xsl:apply-templates select="title" />
-        <xsl:text>) </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
-      </h1>
-      <div class="metadata">
-        <xsl:apply-templates select="date" />
-        <xsl:if test="date and authors">
-          <xsl:text> · </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="authors" />
-      </div>
-    </header>
+    <h1>
+      <xsl:attribute name="class">leaf</xsl:attribute>
+      <xsl:value-of select="../@taxon" />
+      <xsl:text> (</xsl:text>
+      <xsl:apply-templates select="title" />
+      <xsl:text>) </xsl:text>
+      <xsl:call-template name="FrontmatterSlugLink" />
+    </h1>
+    <div class="metadata">
+      <xsl:apply-templates select="date" />
+      <xsl:if test="date and authors">
+        <xsl:text> · </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="authors" />
+    </div>
   </xsl:template>
 
   <xsl:template match="meta[@name='doi']">
@@ -166,14 +164,16 @@
   </xsl:template>
 
   <xsl:template match="tree[@taxon]/frontmatter">
-    <xsl:choose>
-      <xsl:when test="../@taxon='Reference'">
-        <xsl:call-template name="ReferenceFrontmatter" />
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:call-template name="ResultFrontmatter" />
-      </xsl:otherwise>
-    </xsl:choose>
+    <header>
+      <xsl:choose>
+        <xsl:when test="../@taxon='Reference'">
+          <xsl:call-template name="ReferenceFrontmatter" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="ResultFrontmatter" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </header>
   </xsl:template>
 
   <xsl:template match="tree[not(@taxon)]/frontmatter">
