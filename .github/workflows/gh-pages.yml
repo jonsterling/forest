@@ -35,12 +35,16 @@ jobs:
             dvisvgm
             pgf
             etoolbox
+            
+
+      - name: Install Forester
+        run: 
+          git clone https://git.sr.ht/~jonsterling/ocaml-forester.git
+          cd ocaml-forester
+          opam pin add -y .
 
       - name: Check `latex` version
         run: latex --version
-
-      - name: Install Forester
-        run: opam pin https://git.sr.ht/~jonsterling/ocaml-forester.git#main
 
       - name: Build with Forester
         run: forester --root jms-0001 trees
