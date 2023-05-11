@@ -19,6 +19,12 @@ jobs:
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: "5.0"
+          
+      - name: Install Forester
+        run: |
+          git clone https://git.sr.ht/~jonsterling/ocaml-forester.git
+          cd ocaml-forester
+          opam pin add -y .
 
       - name: Setup TeX Live
         uses: teatimeguest/setup-texlive-action@v2
@@ -35,13 +41,6 @@ jobs:
             dvisvgm
             pgf
             etoolbox
-            
-
-      - name: Install Forester
-        run: 
-          git clone https://git.sr.ht/~jonsterling/ocaml-forester.git
-          cd ocaml-forester
-          opam pin add -y .
 
       - name: Check `latex` version
         run: latex --version
