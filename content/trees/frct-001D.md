@@ -1,6 +1,0 @@
----
-title: global smallness
-taxon: definition
----
-
-An ordinary category is called *globally small* when it has a set of objects.

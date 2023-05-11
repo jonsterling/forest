@@ -1,0 +1,77 @@
+\title{characterization of cartesian maps}
+\taxon{lemma}
+
+\import{frct-0000}
+
+
+\p{A morphism #{\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}\in\OpCat{E}} is cartesian over #{\Mor{f}{x}{y}} if and only if the vertical leg of #{f} is an isomorphism.}
+
+\proof{
+  \p{Suppose that #{\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}} is represented by a span #{\brc{\bar{x}\leftarrow\bar{y}\Sub{x}\to\bar{y}}} in #{E} in which the vertical leg #{\bar{x}\leftarrow\bar{y}\Sub{x}} is an isomorphism. We must show that #{\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}} is cartesian in #{\OpCat{E}}. We fix a morphism #{\DispMor{\bar{h}}{m;f}{\bar{w}}{\bar{y}}\in \OpCat{E}} where #{\Mor{m}{w}{x}}, depicted below in terms of #{\OpCat{E}}:}
+
+  \tex{
+    \begin{tikzpicture}[diagram]
+      \SpliceDiagramSquare{
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw = \bar{x},
+        ne = \bar{y},
+        sw = x,
+        se = y,
+        south = f,
+        north = \bar{f},
+      }
+      \node (w) [left = of sw] {$w$};
+      \node (w') [left = of nw] {$\bar{w}$};
+      \draw[lies over] (w') to (w);
+      \draw[->] (w) to node [below] {$m$} (sw);
+      \draw[bend left=30] (w') to node [above] {$\bar{h}$} (ne);
+    \end{tikzpicture}
+  }
+
+  \p{We must define the unique intervening map #{\DispMor{}{m}{\bar{w}}{\bar{x}}} in #{\OpCat{E}}. We first translate the above into the language of #{E} by unfolding definitions:}
+
+  \tex{
+    \begin{tikzpicture}[diagram]
+      \SpliceDiagramSquare<0/>{
+        west/style = lies over,
+        east/style = lies over,
+        north/style = {<-},
+        south/style = double,
+        height = 1.5cm,
+        nw = \bar{w},
+        sw = w,
+        se = w,
+        ne = \bar{y}\Sub{w},
+        north = \bar{h},
+        ne/style = pullback,
+      }
+      \SpliceDiagramSquare<1/>{
+        glue = west,
+        glue target = 0/,
+        east/style = lies over,
+        height = 1.5cm,
+        ne/style = pullback,
+        se = x,
+        ne = \bar{y}\Sub{x}\cong \bar{x},
+        south = m,
+      }
+      \SpliceDiagramSquare<2/>{
+        glue = west,
+        glue target = 1/,
+        east/style = lies over,
+        height = 1.5cm,
+        se = y,
+        ne = \bar{y},
+        south = f,
+        north = \bar{f},
+      }
+    \end{tikzpicture}
+  }
+
+  \p{The desired intervening map #{\bar{w}\DispTo{m} \bar{x}\in \OpCat{E}} shakes out in the language of #{E} to be a span #{\brc{\bar{w}\xleftarrow[\Idn{w}]{} \bar{y}\Sub{w}\DispTo{m} \bar{x}}} in which the left-hand leg is vertical and the right-hand leg is cartesian over #{\Mor{m}{w}{x}}. But the left-hand span #{\brc{\bar{w}\xleftarrow[\Idn{w}]{}\bar{y}\Sub{w}\to \bar{y}\Sub{x}\cong \bar{x}}} in the diagram above is exactly what we need.}
+
+  \p{We leave the converse to the reader.}
+}

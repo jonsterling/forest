@@ -1,0 +1,55 @@
+\title{chapter 7: normalization for cubical type theory}
+\date{2023-01-19T19:53:05-05:00}
+\author{jonmsterling}
+
+\import{jms-0017}
+\def\FmtNe[arg1]{{\color{DarkRed}{\arg1}}}
+\def\FmtNf[arg1]{{\color{DarkBlue}{\arg1}}}
+\def\NeVar{\FmtNe{\Con{var}}}
+\def\NeApp[arg1][arg2]{{\arg1}\mathrel{\FmtNe{\bullet}}{\arg2}}
+\def\NePathApp[arg1][arg2]{{\arg1}\mathrel{\FmtNe{@}}{\arg2}}
+\def\NeFst[arg1]{{\arg1}\FmtNe{.1}}
+\def\NeSnd[arg1]{{\arg1}\FmtNe{.2}}
+\def\Frontier{\boldsymbol{\partial}}
+\def\Ne{\Con{ne}}
+\def\Nf{\Con{nf}}
+\def\TpBool{\Con{bool}}
+\def\TmTt{\Con{tt}}
+\def\NfTt{\FmtNf{\Con{tt}}}
+\def\NeEmb[arg1]{\FmtNf{\lfloor}{\arg1}\FmtNf{\rfloor}}
+
+
+\p{This chapter reports the main result of the dissertation, normalization for cubical type theory and its corollaries: injectivity of type constructors, and [decidability of equality & typing](jms-000T). These results were first obtained by [Sterling and Angiuli](sterling-angiuli-2021) for the fragment of cubical type theory \em{without} universes; the present chapter extends the results of \em{op. cit.} to support a cumulative hierarchy of universes.}
+
+\p{The central innovation of this chapter is to generalize the notion of neutral form to accommodate the computational behavior of terms that have free variables of type #{\II} discussed in our [synopsis of Chapter 6](jms-0017).  In the conventional account of neutral and normal forms, neutrals #{\FmtNe{e}} are built up inductively from
+#{x} for term variables #{x : A}, function applications to normal forms #{\NeApp{\FmtNe{e}}{\FmtNf{m}}}
+and projections from neutral pairs #{\NeFst{\FmtNe{e}}}, #{\NeSnd{\FmtNe{e}}}; our account of neutrals is much the same, except that each neutral form #{\FmtNe{e}} comes equipped with a \strong{“frontier
+  of instability”} #{\Frontier{\FmtNe{e}}}, a predicate on its free #{\II}-variables that indicates when it “needs to compute further”. We think of a neutral form for an #{n}-cube as being \em{undefined} on its frontier of instability; the process of restricting a neutral to its frontier of instability is then referred to as \em{destabilization}.}
+
+\p{When #{x : A} is a variable of an ordinary type, the frontier of instability #{\Frontier\,\prn{\NeVar\,{x}}} is empty because variables never need to compute further. Where something new happens is the path type: given a neutral form #{\FmtNe{e} : \Ne\,\prn{\TpPath{A}{u}{v}}}
+of path type, we have for each term #{r : \II} a neutral form #{\NePathApp{\FmtNe{e}}{r} : \Ne\,A} whose frontier of instability is defined like so:}
+
+##{  \Frontier\,\prn{\NePathApp{\FmtNe{e}}{r}}
+=
+\Frontier\FmtNe{e}
+\lor
+\prn{r=0}
+\lor
+\prn{r=1}
+}
+
+
+\p{In other words, the path neutral application #{\NePathApp{\FmtNe{e}}{r}} needs to compute as soon as e needs to compute, and as soon as the interval term #{r : \II} becomes equal to a constant. Prior to the introduction of the frontier of instability, the neutrals are embedded into the normals at base types unconditionally, i.e. for each neutral form #{\FmtNe{e} : \Ne\,\TpBool}, we have a normal form #{\NeEmb{e} : \Nf\,\TpBool}.}
+
+\p{Now that neutrals are equipped with frontiers of instability, a more refined notion of normal form is needed: when #{\FmtNe{e}} is a neutral form, the corresponding normal form should contain (recursively) normal forms for #{e} that are defined under the frontier of instability #{\Frontier\,\FmtNe{e}}. To be more concrete,
+let #{x : \TpPath{\TpBool}{\TmTt}{\TmTt}} be a variable of path type and #{r : \II} is a term; then #{\NePathApp{\NeVar\,x}{r}:\Ne\,\prn{\TpPath{\TpBool}{\TmTt}{\TmTt}}} is a neutral form for the term #{xr} whose frontier of instability is the boundary #{(r = 0) \lor (r = 1)}; the corresponding normal form must therefore glue onto #{\NePathApp{\NeVar\,x}{r}} additional normal forms for #{x0} and
+#{x1}. We refer to the process of completing a neutral with additional data defined on its frontier of instability as stabilization; the \em{stabilized} normal form of #{xr} is then written}
+
+##{ \NeEmb{\NePathApp{\NeVar\,x}{r} \mid r = 0 \hookrightarrow \NfTt, r = 1 \hookrightarrow\NfTt} }
+
+
+\p{where #{\NfTt} is the normal form representing the term #{\TmTt}}
+
+\p{Just as the embedding of neutrals into normals is “stabilized” by a com patible normal form defined on the neutral’s frontier of instability, so too must the Tait saturation yoga be adjusted. Conventionally one requires the computability predicate for a type #{A} to be equipped with a function that takes neutral forms #{\FmtNe{e}} of terms #{e : A} to computability witnesses for the same term. In the \strong{stabilized Tait saturation yoga}, we strengthen the induction hypothesis to require for each neutral form #{\FmtNe{e}} a function that extends a computability witness defined only on the frontier of instability #{\Frontier\FmtNe{e}} to a computability witnessed defined everywhere}
+
+\p{The twin innovations of \em{frontiers of instability} and \em{stabilization} then suffice to adapt the synthetic normalization argument of [Chapter 5](jms-0015) to a proof of normalization (and thus decidability) for cubical type theory.}

@@ -1,0 +1,47 @@
+\title{monoidal category}
+\date{2023-01-18T13:48:02-05:00}
+\taxon{definition}
+\author{jonmsterling}
+
+\import{base-macros}
+
+
+\p{A \em{monoidal category} is a category #{C} equipped with the following structure and axioms:}
+\ol{
+  \li{a functor #{C\times C\xrightarrow{\otimes}C} called the \em{tensor product};}
+  \li{an object #{I\in C} called the \em{tensor unit};}
+  \li{a natural isomorphism #{\prn{x\otimes y}\otimes z \xrightarrow{\alpha\Sub{x,y,z}} x\otimes\prn{y\otimes z}} called the \em{associator};}
+  \li{a natural isomorphism #{I\otimes x \xrightarrow{\lambda\Sub{x}}x} called the \em{left unitor};}
+  \li{a natural isomorphism #{x\otimes I \xrightarrow{\rho\Sub{x}}x} called the \em{right unitor};}
+  \li{
+    such that the triangle below commutes:
+    \tex{
+      \begin{tikzpicture}[diagram]
+        \node (nw) {$\prn{x\otimes I}\otimes y$};
+        \node[below right = 2.5cm of nw] (s) {$x\otimes y$};
+        \node[above right = 2.5cm of s] (ne) {$x\otimes\prn{I\otimes y}$};
+        \draw[->] (nw) to node[above] {$\alpha\Sub{x,I,y}$} (ne);
+        \draw[->] (nw) to node[sloped,below] {$\rho_x\otimes \Idn{y}$} (s);
+        \draw[->] (ne) to node[sloped,below] {$\Idn{x}\otimes \lambda\Sub{y}$} (s);
+      \end{tikzpicture}
+    }
+  }
+  
+  \li{
+    and the pentagon below commutes:
+    \tex{
+      \begin{tikzpicture}[diagram]
+        \node (nw) {$\prn{\prn{w\otimes x}\otimes y}\otimes z$};
+        \node[above right = 3cm of nw, xshift=1cm] (n) {$\prn{w\otimes x}\otimes\prn{y\otimes z}$};
+        \node[below right = 3cm of n, xshift=1cm] (ne) {$w\otimes\prn{x\otimes\prn{y\otimes z}}$};
+        \node[below = of nw] (sw) {$\prn{w\otimes\prn{x\otimes y}}\otimes z$};
+        \node[below = of ne] (se) {$w\otimes\prn{\prn{x\otimes y}\otimes z}$};
+        \draw[->] (nw) to node[left] {$\alpha\Sub{w,x,y}\otimes\Idn{z}$} (sw);
+        \draw[->] (sw) to node[below] {$\alpha\Sub{w,x\otimes y,z}$} (se);
+        \draw[->] (se) to node[right] {$\Idn{w}\otimes\alpha\Sub{x,y,z}$} (ne);
+        \draw[->] (nw) to node[sloped,above] {$\alpha\Sub{w\otimes x},y,z$} (n);
+        \draw[->] (n) to node[sloped,above] {$\alpha\Sub{w,x,y\otimes z}$} (ne);
+      \end{tikzpicture}
+    }
+  }
+}

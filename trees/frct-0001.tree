@@ -1,0 +1,37 @@
+\title{cartesian morphism}
+\taxon{definition}
+\author{jonmsterling}
+
+\import{base-macros}
+\import{frct-0000}
+
+
+\p{Let #{E} be displayed over #{B}, and let #{\Mor{f}{x}{y} \in B}; a morphism #{\DispMor{\bar{f}}{f}{\bar{x}}{\bar{y}}} in #{E} is called \em{cartesian} over #{f} when for any #{\Mor{m}{u}{x}} and #{\DispMor{\bar{h}}{m;f}{\bar{u}}{\bar{y}}} there exists a unique #{\DispMor{\bar{m}}{m}{\bar{u}}{\bar{x}}} with #{\bar{m};\bar{f} = \bar{h}}. We visualize this unique factorization of #{\bar{h}} through #{\bar{f}} over #{m} as follows:}
+
+\tex{
+  \begin{tikzpicture}[diagram]
+    \SpliceDiagramSquare{
+      west/style = lies over,
+      east/style = lies over,
+      north/node/style = upright desc,
+      height = 1.5cm,
+      nw = \bar{x},
+      ne = \bar{y},
+      sw = x,
+      north = \bar{f},
+      south = f,
+      se = y,
+      nw/style = pullback,
+    }
+    \node (u') [above left = 1.5cm of nw,xshift=-.5cm] {$\bar{u}$};
+    \node (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+    \draw[lies over] (u') to (u);
+    \draw[->,bend left=30] (u') to node [sloped,above] {$\bar{h}$} (ne);
+    \draw[->] (u) to node [sloped,below] {$m$} (sw);
+    \draw[->,exists] (u') to node [desc] {$\bar{m}$} (nw);
+  \end{tikzpicture}
+}
+
+\p{Above we have used the “pullback corner” to indicate #{\bar{x}\to\bar{y}} as a
+cartesian map. We return to this in our discussion of the [self-indexing](frct-0003)
+of a category.}
