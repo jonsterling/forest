@@ -2,7 +2,7 @@
 title: Idempotents in intensional type theory
 taxon: reference
 journal: Logical Methods in Computer Science
-doi: 10.2168/LMCS-12%283%3A9%292016
+doi: 10.2168/LMCS-12(3:9)2016
 author:
 - mikeshulman
 date: 2023-03-15T10:39:40+01:00
