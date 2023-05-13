@@ -157,10 +157,12 @@
   <xsl:template name="ResultFrontmatter">
     <h1>
       <xsl:attribute name="class">leaf</xsl:attribute>
-      <xsl:value-of select="../@taxon" />
-      <xsl:text> (</xsl:text>
+      <span class="taxon">
+        <xsl:value-of select="../@taxon" />
+        <xsl:text>. </xsl:text>
+      </span>
       <xsl:apply-templates select="title" />
-      <xsl:text>) </xsl:text>
+      <xsl:text> </xsl:text>
       <xsl:call-template name="FrontmatterSlugLink" />
     </h1>
     <div class="metadata">
