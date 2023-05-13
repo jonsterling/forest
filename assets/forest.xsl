@@ -8,6 +8,24 @@
    copied into the output. -->
   <xsl:template match="node()|@*">
     <xsl:copy>
+      <span style="background-color:red">
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="name(.)" />
+        <xsl:text>]</xsl:text>
+      </span>
+      <span style="background-color:red">
+        <xsl:apply-templates select="node()|@*" />
+      </span>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="date">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template
+    match="p | img | code | pre | a | em | b | strong | ol | ul | li | details | summary | section | center | blockquote">
+    <xsl:copy>
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
   </xsl:template>
