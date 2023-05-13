@@ -24,11 +24,38 @@
   </xsl:template>
 
   <xsl:template
-    match="p | img | code | pre | a | em | b | strong | ol | ul | li | details | summary | section | center | blockquote">
+    match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="headline">
+    <summary>
+      <xsl:apply-templates />
+    </summary>
+  </xsl:template>
+
+  <xsl:template match="block">
+    <section class="block">
+      <details open="open">
+        <xsl:apply-templates />
+      </details>
+    </section>
+  </xsl:template>
+
+  <xsl:template match="link">
+    <a>
+      <xsl:attribute name="class">
+        <xsl:value-of select="@type" />
+      </xsl:attribute>
+      <xsl:attribute name="href">
+        <xsl:value-of select="@href" />
+      </xsl:attribute>
+      <xsl:apply-templates />
+    </a>
+  </xsl:template>
+
 
   <xsl:template match="/">
     <html>
