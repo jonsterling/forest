@@ -20,7 +20,10 @@ fetch("./forest.json")
 
     for (const addr in data) {
       const item = data[addr]
-      const title = item.taxon ? `${item.taxon} (${item.title})` : item.title
+      const title =
+        item.taxon
+          ? (item.title ? `${item.taxon} (${item.title})` : item.taxon)
+          : (item.title ? item.title : "Untitled")
       const fullTitle = `${title} [${addr}]`
       items.push({
         id: addr,

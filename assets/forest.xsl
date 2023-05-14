@@ -56,6 +56,18 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="tex[@display='block']">
+    <xsl:text>\[</xsl:text>
+    <xsl:value-of select="." />
+    <xsl:text>\]</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="tex[not(@display='block')]">
+    <xsl:text>\(</xsl:text>
+    <xsl:value-of select="." />
+    <xsl:text>\)</xsl:text>
+  </xsl:template>
+
 
   <xsl:template match="/">
     <html>
@@ -104,6 +116,7 @@
       </body>
     </html>
   </xsl:template>
+
 
   <xsl:template match="frontmatter/title">
     <xsl:apply-templates />
