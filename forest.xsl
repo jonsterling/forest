@@ -4,7 +4,7 @@
   <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public=""
     doctype-system="" />
 
-  <!-- The following ensures that node not matched by a template will simply be 
+  <!-- The following ensures that node not matched by a template will simply be
    copied into the output. -->
   <xsl:template match="node()|@*">
     <xsl:copy>
