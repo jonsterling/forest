@@ -20,7 +20,9 @@
   </xsl:template>
 
   <xsl:template match="date">
-    <xsl:apply-templates />
+    <li class="meta-item">
+      <xsl:apply-templates />
+    </li>
   </xsl:template>
 
   <xsl:template
@@ -144,23 +146,25 @@
   </xsl:template>
 
   <xsl:template match="authors">
-    <address class="author">
-      <xsl:for-each select="author">
-        <xsl:apply-templates />
-        <xsl:if test="position()!=last()">
-          <xsl:text>, </xsl:text>
-        </xsl:if>
-      </xsl:for-each>
-      <xsl:if test="contributor">
-        <xsl:text> with contributions from </xsl:text>
-        <xsl:for-each select="contributor">
+    <li class="meta-item">
+      <address class="author">
+        <xsl:for-each select="author">
           <xsl:apply-templates />
           <xsl:if test="position()!=last()">
             <xsl:text>, </xsl:text>
           </xsl:if>
         </xsl:for-each>
-      </xsl:if>
-    </address>
+        <xsl:if test="contributor">
+          <xsl:text> with contributions from </xsl:text>
+          <xsl:for-each select="contributor">
+            <xsl:apply-templates />
+            <xsl:if test="position()!=last()">
+              <xsl:text>, </xsl:text>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:if>
+      </address>
+    </li>
   </xsl:template>
 
   <xsl:template match="mainmatter">
@@ -180,36 +184,6 @@
     </a>
   </xsl:template>
 
-  <xsl:template name="ResultFrontmatter">
-    <h1>
-      <xsl:attribute name="class">leaf</xsl:attribute>
-      <span class="taxon">
-        <xsl:value-of select="../@taxon" />
-        <xsl:if test="trail/crumb">
-          <xsl:text> </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="trail" />
-        <xsl:text>. </xsl:text>
-      </span>
-      <xsl:apply-templates select="title" />
-      <xsl:text> </xsl:text>
-      <xsl:call-template name="FrontmatterSlugLink" />
-    </h1>
-    <div class="metadata">
-      <xsl:apply-templates select="date" />
-      <xsl:if test="date and authors">
-        <xsl:text> · </xsl:text>
-      </xsl:if>
-      <xsl:apply-templates select="authors" />
-      <xsl:if test="(date or authors) and meta[@name='external']">
-        <xsl:text> · </xsl:text>
-      </xsl:if>
-      <xsl:if test="meta[@name='external']">
-        <xsl:apply-templates select="meta[@name='external']" />
-      </xsl:if>
-    </div>
-  </xsl:template>
-
   <xsl:template match="meta[@name='doi']">
     <a class="doi">
       <xsl:attribute name="href">
@@ -221,52 +195,46 @@
   </xsl:template>
 
   <xsl:template match="meta[@name='external']">
-    <a class="external">
-      <xsl:attribute name="href">
+    <li class="meta-item">
+      <a class="external">
+        <xsl:attribute name="href">
+          <xsl:value-of select="." />
+        </xsl:attribute>
         <xsl:value-of select="." />
-      </xsl:attribute>
-      <xsl:value-of select="." />
-    </a>
+      </a>
+    </li>
   </xsl:template>
 
-  <xsl:template name="ReferenceFrontmatter">
-    <xsl:for-each select="authors/author">
-      <xsl:apply-templates />
-      <xsl:if test="position()!=last()">
-        <xsl:text>, </xsl:text>
-      </xsl:if>
-    </xsl:for-each>
-    <xsl:text>. </xsl:text>
-    <b>
-      <xsl:apply-templates select="title" />
-    </b>
-    <xsl:text>. </xsl:text>
-    <xsl:if test="date">
-      <xsl:apply-templates select="date" />
-      <xsl:text>. </xsl:text>
-    </xsl:if>
-    <xsl:if test="meta[@name='doi']">
-      <xsl:apply-templates select="meta[@name='doi']" />
-      <xsl:text>. </xsl:text>
-    </xsl:if>
-    <xsl:if test="meta[@name='external']">
-      <xsl:apply-templates select="meta[@name='external']" />
-      <xsl:text>. </xsl:text>
-    </xsl:if>
-    <xsl:call-template name="FrontmatterSlugLink" />
-  </xsl:template>
 
   <xsl:template match="tree[@taxon]/frontmatter">
     <header>
-      <xsl:choose>
-        <xsl:when test="../@taxon='Reference'">
-          <xsl:call-template name="ReferenceFrontmatter" />
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="ResultFrontmatter" />
-        </xsl:otherwise>
-      </xsl:choose>
+      <h1>
+        <xsl:attribute name="class">leaf</xsl:attribute>
+        <span class="taxon">
+          <xsl:value-of select="../@taxon" />
+          <xsl:if test="trail/crumb">
+            <xsl:text> </xsl:text>
+          </xsl:if>
+          <xsl:apply-templates select="trail" />
+          <xsl:text>. </xsl:text>
+        </span>
+        <xsl:apply-templates select="title" />
+        <xsl:text> </xsl:text>
+        <xsl:call-template name="FrontmatterSlugLink" />
+      </h1>
+      <xsl:call-template name="Metadata" />
     </header>
+  </xsl:template>
+
+  <xsl:template name="Metadata">
+    <div class="metadata">
+      <ul>
+        <xsl:apply-templates select="date" />
+        <xsl:apply-templates select="authors" />
+        <xsl:apply-templates select="meta[@name='external']" />
+        <xsl:apply-templates select="meta[@name='doi']" />
+      </ul>
+    </div>
   </xsl:template>
 
   <xsl:template match="tree[not(@taxon)]/frontmatter">
@@ -283,19 +251,7 @@
         <xsl:text> </xsl:text>
         <xsl:call-template name="FrontmatterSlugLink" />
       </h1>
-      <div class="metadata">
-        <xsl:apply-templates select="date" />
-        <xsl:if test="date and authors">
-          <xsl:text> · </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="authors" />
-        <xsl:if test="(date or authors) and meta[@name='external']">
-          <xsl:text> · </xsl:text>
-        </xsl:if>
-        <xsl:if test="meta[@name='external']">
-          <xsl:apply-templates select="meta[@name='external']" />
-        </xsl:if>
-      </div>
+      <xsl:call-template name="Metadata" />
     </header>
   </xsl:template>
 
