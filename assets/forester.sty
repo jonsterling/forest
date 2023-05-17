@@ -5,6 +5,19 @@
 \RequirePackage{xspace}
 \RequirePackage{mparhack}
 
+\definecolor{Matterhorn}{RGB}{77,77,77}
+\definecolor{RegalBlue}{RGB}{3,69,117}
+\definecolor{DarkBlue}{RGB}{3,69,117}
+\definecolor{FunGreen}{RGB}{14,87,54}
+\definecolor{VerdunGreen}{RGB}{54,87,14}
+\definecolor{RedDevil}{RGB}{134,1,17}
+\definecolor{DarkRed}{RGB}{134,1,17}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor = Matterhorn,
+}
+
 \setcounter{secnumdepth}{5}
 
 \newcounter{forest}
@@ -31,7 +44,7 @@
 }
 
 \cs_new:Npn \forester_slug_url:n #1 {
-  \l__forester_site / \text_lowercase:n {#1}
+  \l__forester_site / #1.xml
 }
 
 \cs_new:Npn \forester_format_slug_link:n #1 {
@@ -89,11 +102,7 @@
   \cs_if_exist:cTF {r@#1} {
     \hyperref[#1]{#2}
   } {
-    \tl_if_empty:NTF \l__forester_site {
-      #2 (\textbf{???})
-    } {
-      \href{\forester_slug_url:n {#1}}{#2}
-    }
+    #2~\cite{#1}
   }
 }
 
