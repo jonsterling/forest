@@ -9,18 +9,20 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-    steps:    
+    steps:
       - uses: actions/checkout@v3
         with:
-          submodules: true  
+          submodules: true
           fetch-depth: 1
-      
+
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Set-up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: "5.0"
-          
+
       - name: Install Forester
         run: |
           git clone https://github.com/jonsterling/ocaml-forester.git
@@ -50,7 +52,7 @@ jobs:
 
       - name: Build with Forester
         run: opam exec -- forester --root jms-0001 trees
-        
+
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
