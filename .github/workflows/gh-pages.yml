@@ -15,9 +15,6 @@ jobs:
           submodules: true
           fetch-depth: 1
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-
       - name: Set-up OCaml
         uses: ocaml/setup-ocaml@v2
         with:
@@ -52,6 +49,10 @@ jobs:
 
       - name: Build with Forester
         run: opam exec -- forester --root jms-0001 trees
+
+      - name: Setup upterm session
+        if: failure()
+        uses: lhotari/action-upterm@v1
 
 
       - name: Deploy
