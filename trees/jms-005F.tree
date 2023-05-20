@@ -1,0 +1,29 @@
+\title{Coproducts of lift-algebras}
+\taxon{lemma}
+\date{2023-05-20}
+
+\texpackage{preamble}
+\import{base-macros}
+\import{jms-001E}
+
+\p{The Eilenberg-Moore category \LiftAlg for the lifting monad #{\LiftM=\prn{\Lift,\eta,\mu}} on dcpos has all small coproducts.}
+
+\p{This is the first part of Corollary 2 of Linton's [Coequalizers in categories of algebras](linton-1969-coequalizers).}
+
+\let\I{#{I}}
+\let\X[i]{#{X\Sub{\i}}}
+\let\Inj[i]{#{\Con{in}\Sub{i}}}
+
+\proof{
+  \p{The coproduct of lift-algebras is computed as a reflexive coequalizer, whose existence we have [already established](jms-001L) Given an index set \I and a diagram \Mor{\X{\bullet}}{\I}{\LiftAlg}, we consider that #{\FLiftM\Coprod{\I}\ULiftM\X{\bullet}} is the coproduct of the diagram \Mor{\FLiftM\ULiftM\X{\bullet}}{\I}{\LiftAlg}, and the colimit of the following reflexive pair is the coproduct of \Mor{\X{\bullet}}{\I}{\LiftAlg} as shown by [Linton](linton-1969-coequalizers):}
+  \tex{
+    \begin{tikzpicture}[diagram]
+      \node (0) {$\FLiftM\Coprod{\I}{\Lift\ULiftM\X{\bullet}}$};
+      \node[right = 4.5cm of 0] (1) {$\FLiftM\Lift\Coprod{\I}{\ULiftM\X{\bullet}}$};
+      \node[right = 3cm of 1] (2) {$\FLiftM\Coprod{\I}{\ULiftM\X{\bullet}}$};
+      \draw[->] (0) to node[above] {$\FLiftM\brk{i\mid \Lift\,\Inj{i}}$} (1);
+      \draw[->] (1) to node[above] {$\epsilon$} (2);
+      \draw[->,bend right=30] (0) to node[below] {$\FLiftM\Coprod{\I}{\alpha\Sub{X_\bullet}}$} (2);
+    \end{tikzpicture}
+  }
+}
