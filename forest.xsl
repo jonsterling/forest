@@ -125,11 +125,52 @@
             </nav>
           </header>
         </xsl:if>
-        <article class="container">
-          <xsl:apply-templates select="tree" />
-        </article>
+        <div id="grid-wrapper">
+          <article>
+            <xsl:apply-templates select="tree" />
+          </article>
+          <xsl:if
+            test="tree/mainmatter/tree and not(/tree/frontmatter/meta[@name = 'toc']/.='false')">
+            <nav id="toc">
+              <div class="block">
+                <h1>Table of Contents</h1>
+                <xsl:for-each select="tree/mainmatter">
+                  <xsl:call-template name="toc" />
+                </xsl:for-each>
+              </div>
+            </nav>
+          </xsl:if>
+        </div>
       </body>
     </html>
+  </xsl:template>
+
+  <xsl:template name="toc">
+    <ul class="block">
+      <xsl:for-each select="tree">
+        <li>
+          <a class="toc">
+            <xsl:for-each select="frontmatter">
+              <xsl:attribute name="href">
+                <xsl:value-of select="route" />
+              </xsl:attribute>
+              <span class="toc-item-label">
+                <xsl:if test="../@taxon">
+                  <xsl:value-of select="../@taxon" />
+                  <xsl:text> </xsl:text>
+                </xsl:if>
+                <xsl:apply-templates select="trail" />
+                <xsl:text>. </xsl:text>
+              </span>
+              <xsl:apply-templates select="title" />
+            </xsl:for-each>
+          </a>
+          <xsl:for-each select="./mainmatter">
+            <xsl:call-template name="toc" />
+          </xsl:for-each>
+        </li>
+      </xsl:for-each>
+    </ul>
   </xsl:template>
 
 
