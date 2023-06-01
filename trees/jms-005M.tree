@@ -1,0 +1,35 @@
+\title{dinatural transformation}
+\taxon{definition}
+\date{2023-05-31}
+
+\texpackage{preamble}
+
+\import{base-macros}
+\let\B{#{B}}
+\let\C{#{C}}
+\let\F{#{F}}
+\let\G{#{G}}
+
+\p{Let \Mor{\F,\G}{\OpCat{\B}\times\B}{\C} be two functors of mixed variance from \B to \C. A \em{dinatural transformation} #{\alpha} from \F to \G is given by the following data:}
+
+\ol{
+  \li{for each #{b\in\B}, an assigned morphism \Mor{\alpha_b}{\F\prn{b,b}}{\G\prn{b,b}};}
+  \li{such that for every \Mor{f}{b}{b'} in \B, the following hexagon commutes:
+    \tex{
+      \begin{tikzpicture}[diagram]
+        \node (nw) {$\F\prn{b,b}$};
+        \node[right = 2.5cm of nw] (ne) {$\G\prn{b,b}$};
+        \node[below right = 2.5cm of ne] (e) {$\G\prn{b,b'}$};
+        \node[below left = 2.5cm of e] (se) {$\G\prn{b',b'}$};
+        \node[below left = 2.5cm of nw] (w) {$\F\prn{b',b}$};
+        \node[below right = 2.5cm of w] (sw) {$\F\prn{b',b'}$};
+        \draw[->] (w) to node[sloped,above] {$\F\prn{f,b}$} (nw);
+        \draw[->] (nw) to node[above] {$\alpha_b$} (ne);
+        \draw[->] (sw) to node[below] {$\alpha_{b'}$} (se);
+        \draw[->] (ne) to node[sloped,above] {$\G\prn{b,f}$} (e);
+        \draw[->] (w) to node[sloped,below] {$\F\prn{b',f}$} (sw);
+        \draw[->] (se) to node[sloped,below] {$\G\prn{f,b'}$} (e);
+      \end{tikzpicture}
+    }
+  }
+}

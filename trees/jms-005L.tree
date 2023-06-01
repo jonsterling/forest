@@ -1,0 +1,41 @@
+\title{vertical dinatural transformation}
+\taxon{definition}
+\date{2023-05-31}
+
+\texpackage{preamble}
+\import{frct-0000}
+
+\let\X{#{X}}
+\let\Y{#{Y}}
+\let\B{#{B}}
+\let\C{#{C}}
+\let\F{#{F}}
+\let\G{#{G}}
+\let\gap[f]{\gamma\Sub{\f}}
+
+\p{Let \X and \Y be two [fibrations](frct-0002) over \B and let \Y, and let \DispMor{\F,\G}{\Idn{\B}}{\OpCat{\X}\times_{\B} \X}{\Y} be two vertical [fibered functors](jms-005J) over \B, recalling the theory of [opposite fibrations](frct-000Q). A \em{vertical dinatural transformation} #{\alpha} from #{\F} to #{\G} is defined by the following data:}
+
+\ol{
+  \li{for each displayed object #{x\in \X^b}, an assigned vertical morphism \DispMor{\alpha_x}{\Idn{b}}{\F_b\prn{x,x}}{\G_b\prn{x,x}};}
+  \li{such that for each displayed morphism \DispMor{\bar{f}}{f}{x}{y} over #{\Mor{f}{b}{c}\in\B}, the following hexagon commutes:
+    \tex{
+      \let\w{3.25cm}
+      \begin{tikzpicture}[diagram]
+        \node (nw) {$\F_b\prn{x,x}$};
+        \node[right = \w of nw] (ne) {$\G_b\prn{x,x}$};
+        \node[below right = \w of ne] (e) {$\G_b\prn{x,\InvImg{f}{y}}$};
+        \node[below left = \w of e] (se) {$\G_b\prn{\InvImg{f}y,\InvImg{f}y}$};
+        \node[below left = \w of nw] (w) {$\F_b\prn{\InvImg{f}y,x}$};
+        \node[below right = \w of w] (sw) {$\F_b\prn{\InvImg{f}y,\InvImg{f}y}$};
+        \draw[->] (w) to node[sloped,above] {$\F_b\prn{\gap{\bar{f}},x}$} (nw);
+        \draw[->] (nw) to node[above] {${\alpha}_x$} (ne);
+        \draw[->] (sw) to node[below] {${\alpha}\Sub{\InvImg{f}y}$} (se);
+        \draw[->] (ne) to node[sloped,above] {$\G_b\prn{x,\gap{\bar{f}}}$} (e);
+        \draw[->] (w) to node[sloped,below] {$\F_b\prn{\InvImg{f}{y},\gap{\bar{f}}}$} (sw);
+        \draw[->] (se) to node[sloped,below] {$\G_b\prn{\gap{\bar{f}},\InvImg{f}y}$} (e);
+      \end{tikzpicture}
+    }
+  }
+}
+
+\p{Above, we have written #{\DispMor{\gap{\bar{f}}}{\Idn{b}}{x}{\InvImg{f}{y}}\in X^b} for the \em{vertical gap map} factoring \DispMor{\bar{f}}{f}{x}{y} through the cartesian map \DispMor{\InvImg{y}f}{f}{\InvImg{f}{y}}{x}.}
