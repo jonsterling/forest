@@ -1,0 +1,39 @@
+\title{vertical dinatural transformation}
+\taxon{definition}
+\date{2023-05-31}
+
+\texpackage{preamble}
+\import{frct-0000}
+
+\let\X{#{X}}
+\let\Y{#{Y}}
+\let\B{#{B}}
+\let\C{#{C}}
+\let\F{#{F}}
+\let\G{#{G}}
+
+\p{Let \X and \Y be two [fibrations](frct-0002) over \B and let \Y, and let \DispMor{\F,\G}{\Idn{\B}}{\OpCat{\X}\times_{\B} \X}{\Y} be two vertical [displayed functors](jms-005I) over \B, recalling the theory of [opposite fibrations](frct-000Q). A \em{vertical dinatural transformation} #{\alpha} from #{\F} to #{\G} is defined by the following data:}
+
+\ol{
+  \li{for each displayed object #{x\in \X^b}, an assigned vertical morphism \DispMor{\alpha_x}{\Idn{b}}{\F\prn{x,x}}{\G\prn{x,x}};}
+  \li{such that for each vertical morphism \DispMor{f}{\Idn{b}}{x}{y} over #{b\in\B}, the following hexagon commutes:
+    \tex{
+      \begin{tikzpicture}[diagram]
+        \node (nw) {$\F\prn{x,x}$};
+        \node[right = 2.5cm of nw] (ne) {$\G\prn{x,x}$};
+        \node[below right = 2.5cm of ne] (e) {$\G\prn{x,y}$};
+        \node[below left = 2.5cm of e] (se) {$\G\prn{y,y}$};
+        \node[below left = 2.5cm of nw] (w) {$\F\prn{y,x}$};
+        \node[below right = 2.5cm of w] (sw) {$\F\prn{y,y}$};
+        \draw[->] (w) to node[sloped,above] {$\F\prn{{f},x}$} (nw);
+        \draw[->] (nw) to node[above] {${\alpha}_x$} (ne);
+        \draw[->] (sw) to node[below] {${\alpha}_y$} (se);
+        \draw[->] (ne) to node[sloped,above] {$\G\prn{x,{f}}$} (e);
+        \draw[->] (w) to node[sloped,below] {$\F\prn{y,{f}}$} (sw);
+        \draw[->] (se) to node[sloped,below] {$\G\prn{{f},y}$} (e);
+      \end{tikzpicture}
+    }
+  }
+}
+
+\b{TODO: I don't think that this definition is correct.}
