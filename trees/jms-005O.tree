@@ -1,0 +1,22 @@
+\title{forester 2.1}
+\taxon{changelog}
+\author{jonmsterling}
+\date{2023-06-01}
+
+\p{This is a major release that breaks compatibility of the XML format for trees; existing forests can be upgraded by copying \code{forest.xsl} and \code{style.css} into their \code{assets} directory.}
+
+\ul{
+  \li{\b{Development mode and edit button.} A \code{--dev} option has been added to the \code{forester} executable; when this option is enabled, absolute paths will be embedded into tree metadata and an \b{edit button} is added to the top of the command palette.}
+  
+  \li{\b{Your own TeX preamble.} There is no longer a hardcoded LaTeX preamble used for compiling graphics; instead, you can store your own \code{.sty} files in the \code{assets} directory and import them locally in a specific tree using the new \code{\startverb\texpackage{...}\stopverb} frontmatter command.}
+  
+  \li{\b{Fluid binding constructs.} Macros in the forester language have functional semantics, which means that they capture their environment at the time of definition; this differs from the stacks of dynamic scopes that are familiar from the TeX model. This release adds support for  \b{fluid bindings} via \code{\startverb\alloc, \put, \get\stopverb} in order to simulate this behavior of TeX where desired; a scope can be delimited using \code{\startverb\scope{...}\stopverb}. This can be useful for providing flexible configurations to macros.}
+  
+  \li{\b{Tables of contents.} Tables of contents are now rendered by the default \code{forest.xsl} stylesheet.}
+  
+  \li{\b{LaTeX output.} LaTeX output with full bibliography support is now available; this feature is still experimental, and may not work properly with some constructs (e.g. code blocks, etc.).}
+  
+  \li{\b{Name resolution.} The behavior of name resolution was highly erratic in the prior release, and this has been corrected by adopting the [Yuujinchou](https://redprl.org/yuujinchou/yuujinchou/index.html) library. This change may break trees that depended on the prior behavior.}
+  
+  \li{\b{Namespaces and hierarchical identifiers.} Identifiers in the forester language are now hierarchical, with components delimited by \code{/}. Namespaces can be created using \code{\startverb\namespace\foo{...}\stopverb}, outside which all exported identifiers are prefixed by \code{foo/}. Namespaces can be opened into the current scope using \code{\startverb\open\foo\stopverb}.}
+}
