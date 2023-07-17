@@ -152,7 +152,15 @@
           <a class="toc">
             <xsl:for-each select="frontmatter">
               <xsl:attribute name="href">
-                <xsl:value-of select="route" />
+                <xsl:choose>
+                  <xsl:when test="route">
+                    <xsl:value-of select="route" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>#</xsl:text>
+                    <xsl:value-of select="anchor" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:attribute>
               <span class="toc-item-label">
                 <xsl:if test="../@taxon">
@@ -237,13 +245,14 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="meta[@name='venue']">
-    <li class="meta-item">
-      <span class="venue">
-        <xsl:value-of select="." />
-      </span>
-    </li>
+  <xsl:template match="meta[@name='bibtex']">
+    <pre><xsl:value-of select="." /></pre>
+  </xsl:template>
 
+  <xsl:template match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']">
+    <li class="meta-item">
+      <xsl:value-of select="." />
+    </li>
   </xsl:template>
 
   <xsl:template match="meta[@name='external']">
@@ -325,7 +334,7 @@
   </xsl:template>
 
 
-  <xsl:template match="tree[not(@taxon)]/frontmatter">
+  <xsl:template match="tree[not(@taxon)]/frontmatter | tree[@taxon='Person']/frontmatter">
     <header>
       <h1>
         <xsl:attribute name="class">tree</xsl:attribute>
@@ -336,8 +345,10 @@
         </xsl:if>
 
         <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
+        <xsl:if test="not(../@root='true')">
+          <xsl:text> </xsl:text>
+          <xsl:call-template name="FrontmatterSlugLink" />
+        </xsl:if>
       </h1>
       <xsl:call-template name="Metadata" />
     </header>
@@ -345,19 +356,21 @@
 
 
   <xsl:template name="Metadata">
-    <xsl:if test="not(../@root = 'true')">
-      <div class="metadata">
-        <ul>
-          <xsl:apply-templates select="date" />
+    <div class="metadata">
+      <ul>
+        <xsl:apply-templates select="date" />
+        <xsl:if test="not(meta[@name = 'author']/.='false')">
           <xsl:apply-templates select="authors" />
-          <xsl:apply-templates select="meta[@name='venue']" />
-          <xsl:apply-templates select="meta[@name='external']" />
-          <xsl:apply-templates select="meta[@name='slides']" />
-          <xsl:apply-templates select="meta[@name='video']" />
-          <xsl:apply-templates select="meta[@name='doi']" />
-        </ul>
-      </div>
-    </xsl:if>
+        </xsl:if>
+        <xsl:apply-templates select="meta[@name='position']" />
+        <xsl:apply-templates select="meta[@name='institution']" />
+        <xsl:apply-templates select="meta[@name='venue']" />
+        <xsl:apply-templates select="meta[@name='external']" />
+        <xsl:apply-templates select="meta[@name='slides']" />
+        <xsl:apply-templates select="meta[@name='video']" />
+        <xsl:apply-templates select="meta[@name='doi']" />
+      </ul>
+    </div>
   </xsl:template>
 
 
@@ -415,6 +428,11 @@
 
   <xsl:template name="Tree">
     <section class="block">
+      <xsl:if test="frontmatter/anchor">
+        <xsl:attribute name="id">
+          <xsl:value-of select="frontmatter/anchor" />
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@taxon">
         <xsl:attribute name="data-taxon">
           <xsl:value-of select="@taxon" />
@@ -428,6 +446,8 @@
           <xsl:apply-templates select="frontmatter" />
         </summary>
         <xsl:apply-templates select="mainmatter" />
+
+        <xsl:apply-templates select="frontmatter/meta[@name='bibtex']" />
       </details>
     </section>
   </xsl:template>
