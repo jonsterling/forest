@@ -249,13 +249,10 @@
     <pre><xsl:value-of select="." /></pre>
   </xsl:template>
 
-  <xsl:template match="meta[@name='venue']">
+  <xsl:template match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']">
     <li class="meta-item">
-      <span class="venue">
-        <xsl:value-of select="." />
-      </span>
+      <xsl:value-of select="." />
     </li>
-
   </xsl:template>
 
   <xsl:template match="meta[@name='external']">
@@ -337,7 +334,7 @@
   </xsl:template>
 
 
-  <xsl:template match="tree[not(@taxon)]/frontmatter">
+  <xsl:template match="tree[not(@taxon)]/frontmatter | tree[@taxon='Person']/frontmatter">
     <header>
       <h1>
         <xsl:attribute name="class">tree</xsl:attribute>
@@ -365,6 +362,8 @@
         <xsl:if test="not(meta[@name = 'author']/.='false')">
           <xsl:apply-templates select="authors" />
         </xsl:if>
+        <xsl:apply-templates select="meta[@name='position']" />
+        <xsl:apply-templates select="meta[@name='institution']" />
         <xsl:apply-templates select="meta[@name='venue']" />
         <xsl:apply-templates select="meta[@name='external']" />
         <xsl:apply-templates select="meta[@name='slides']" />
