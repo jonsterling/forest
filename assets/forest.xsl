@@ -245,6 +245,10 @@
     </a>
   </xsl:template>
 
+  <xsl:template match="meta[@name='bibtex']">
+    <pre><xsl:value-of select="." /></pre>
+  </xsl:template>
+
   <xsl:template match="meta[@name='venue']">
     <li class="meta-item">
       <span class="venue">
@@ -344,8 +348,10 @@
         </xsl:if>
 
         <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
+        <xsl:if test="not(../@root='true')">
+          <xsl:text> </xsl:text>
+          <xsl:call-template name="FrontmatterSlugLink" />
+        </xsl:if>
       </h1>
       <xsl:call-template name="Metadata" />
     </header>
@@ -356,7 +362,9 @@
     <div class="metadata">
       <ul>
         <xsl:apply-templates select="date" />
-        <xsl:apply-templates select="authors" />
+        <xsl:if test="not(meta[@name = 'author']/.='false')">
+          <xsl:apply-templates select="authors" />
+        </xsl:if>
         <xsl:apply-templates select="meta[@name='venue']" />
         <xsl:apply-templates select="meta[@name='external']" />
         <xsl:apply-templates select="meta[@name='slides']" />
@@ -439,6 +447,8 @@
           <xsl:apply-templates select="frontmatter" />
         </summary>
         <xsl:apply-templates select="mainmatter" />
+
+        <xsl:apply-templates select="frontmatter/meta[@name='bibtex']" />
       </details>
     </section>
   </xsl:template>
