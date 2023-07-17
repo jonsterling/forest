@@ -257,6 +257,28 @@
     </li>
   </xsl:template>
 
+  <xsl:template match="meta[@name='slides']">
+    <li class="meta-item">
+      <a class="external">
+        <xsl:attribute name="href">
+          <xsl:value-of select="." />
+        </xsl:attribute>
+        <xsl:text>Slides</xsl:text>
+      </a>
+    </li>
+  </xsl:template>
+
+
+  <xsl:template match="meta[@name='video']">
+    <li class="meta-item">
+      <a class="external">
+        <xsl:attribute name="href">
+          <xsl:value-of select="." />
+        </xsl:attribute>
+        <xsl:text>Video</xsl:text>
+      </a>
+    </li>
+  </xsl:template>
 
   <xsl:template match="tree[@taxon]/frontmatter">
     <header>
@@ -329,6 +351,8 @@
           <xsl:apply-templates select="authors" />
           <xsl:apply-templates select="meta[@name='venue']" />
           <xsl:apply-templates select="meta[@name='external']" />
+          <xsl:apply-templates select="meta[@name='slides']" />
+          <xsl:apply-templates select="meta[@name='video']" />
           <xsl:apply-templates select="meta[@name='doi']" />
         </ul>
       </div>
