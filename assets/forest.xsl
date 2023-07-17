@@ -152,7 +152,15 @@
           <a class="toc">
             <xsl:for-each select="frontmatter">
               <xsl:attribute name="href">
-                <xsl:value-of select="route" />
+                <xsl:choose>
+                  <xsl:when test="route">
+                    <xsl:value-of select="route" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>#</xsl:text>
+                    <xsl:value-of select="anchor" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:attribute>
               <span class="toc-item-label">
                 <xsl:if test="../@taxon">
@@ -345,19 +353,17 @@
 
 
   <xsl:template name="Metadata">
-    <xsl:if test="not(../@root = 'true')">
-      <div class="metadata">
-        <ul>
-          <xsl:apply-templates select="date" />
-          <xsl:apply-templates select="authors" />
-          <xsl:apply-templates select="meta[@name='venue']" />
-          <xsl:apply-templates select="meta[@name='external']" />
-          <xsl:apply-templates select="meta[@name='slides']" />
-          <xsl:apply-templates select="meta[@name='video']" />
-          <xsl:apply-templates select="meta[@name='doi']" />
-        </ul>
-      </div>
-    </xsl:if>
+    <div class="metadata">
+      <ul>
+        <xsl:apply-templates select="date" />
+        <xsl:apply-templates select="authors" />
+        <xsl:apply-templates select="meta[@name='venue']" />
+        <xsl:apply-templates select="meta[@name='external']" />
+        <xsl:apply-templates select="meta[@name='slides']" />
+        <xsl:apply-templates select="meta[@name='video']" />
+        <xsl:apply-templates select="meta[@name='doi']" />
+      </ul>
+    </div>
   </xsl:template>
 
 
@@ -415,6 +421,11 @@
 
   <xsl:template name="Tree">
     <section class="block">
+      <xsl:if test="frontmatter/anchor">
+        <xsl:attribute name="id">
+          <xsl:value-of select="frontmatter/anchor" />
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="@taxon">
         <xsl:attribute name="data-taxon">
           <xsl:value-of select="@taxon" />
