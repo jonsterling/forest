@@ -215,14 +215,16 @@
   </xsl:template>
 
   <xsl:template name="FrontmatterSlugLink">
-    <a class="slug">
-      <xsl:attribute name="href">
-        <xsl:value-of select="route" />
-      </xsl:attribute>
-      <xsl:text>[</xsl:text>
-      <xsl:value-of select="addr" />
-      <xsl:text>]</xsl:text>
-    </a>
+    <xsl:if test="addr">
+      <a class="slug">
+        <xsl:attribute name="href">
+          <xsl:value-of select="route" />
+        </xsl:attribute>
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="addr" />
+        <xsl:text>]</xsl:text>
+      </a>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="meta[@name='doi']">
@@ -266,7 +268,7 @@
       <xsl:call-template name="Metadata" />
     </header>
   </xsl:template>
-  
+
   <xsl:template match="tree[@taxon='Reference']/frontmatter">
     <header>
       <h1>
@@ -278,8 +280,8 @@
       <xsl:call-template name="Metadata" />
     </header>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="tree[not(@taxon)]/frontmatter">
     <header>
       <h1>
