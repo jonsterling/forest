@@ -266,18 +266,20 @@
       <xsl:call-template name="Metadata" />
     </header>
   </xsl:template>
-
-  <xsl:template name="Metadata">
-    <div class="metadata">
-      <ul>
-        <xsl:apply-templates select="date" />
-        <xsl:apply-templates select="authors" />
-        <xsl:apply-templates select="meta[@name='external']" />
-        <xsl:apply-templates select="meta[@name='doi']" />
-      </ul>
-    </div>
+  
+  <xsl:template match="tree[@taxon='Reference']/frontmatter">
+    <header>
+      <h1>
+        <xsl:attribute name="class">leaf</xsl:attribute>
+        <xsl:apply-templates select="title" />
+        <xsl:text> </xsl:text>
+        <xsl:call-template name="FrontmatterSlugLink" />
+      </h1>
+      <xsl:call-template name="Metadata" />
+    </header>
   </xsl:template>
-
+  
+  
   <xsl:template match="tree[not(@taxon)]/frontmatter">
     <header>
       <h1>
@@ -294,6 +296,18 @@
       </h1>
       <xsl:call-template name="Metadata" />
     </header>
+  </xsl:template>
+
+
+  <xsl:template name="Metadata">
+    <div class="metadata">
+      <ul>
+        <xsl:apply-templates select="date" />
+        <xsl:apply-templates select="authors" />
+        <xsl:apply-templates select="meta[@name='external']" />
+        <xsl:apply-templates select="meta[@name='doi']" />
+      </ul>
+    </div>
   </xsl:template>
 
 
