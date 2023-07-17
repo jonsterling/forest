@@ -1,0 +1,23 @@
+\title{Forester 2.2}
+\taxon{changelog}
+\date{2023-07-17}
+
+\p{This major release adds support for generating subsections from transclusions obtained by a query; this can be used to produce topical bibliographies. For example, the following code will generate a subsection entitled “featured talks” containing the appropriate items as collapsed subtrees:}
+
+\code{\pre{\startverb%
+\query{featured talks}{
+  \query/and{
+    \query/author{jonmsterling}
+    \query/taxon{reference}
+    \query/tag{featured}
+  }
+}
+\stopverb}}
+
+There are a few known issues:
+
+\ul{
+  \li{Links to generated query-nodes in tables of contents do not currently work.}
+}
+
+As always, existing forests can be upgraded by copying \code{forest.xsl} and \code{style.css} into their \code{assets} directory. 
