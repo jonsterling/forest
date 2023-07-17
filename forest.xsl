@@ -26,7 +26,7 @@
   </xsl:template>
 
   <xsl:template
-    match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote">
+    match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote | table | tr | th | td ">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
