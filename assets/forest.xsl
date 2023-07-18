@@ -244,7 +244,7 @@
 
   <xsl:template match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']">
     <li class="meta-item">
-      <xsl:value-of select="." />
+      <xsl:apply-templates />
     </li>
   </xsl:template>
 
