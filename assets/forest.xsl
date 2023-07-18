@@ -152,15 +152,8 @@
           <a class="toc">
             <xsl:for-each select="frontmatter">
               <xsl:attribute name="href">
-                <xsl:choose>
-                  <xsl:when test="route">
-                    <xsl:value-of select="route" />
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:text>#</xsl:text>
-                    <xsl:value-of select="anchor" />
-                  </xsl:otherwise>
-                </xsl:choose>
+                <xsl:text>#</xsl:text>
+                <xsl:value-of select="anchor" />
               </xsl:attribute>
               <span class="toc-item-label">
                 <xsl:if test="../@taxon">
