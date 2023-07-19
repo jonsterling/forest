@@ -83,7 +83,6 @@
     <xsl:value-of select="." />
   </xsl:template>
 
-
   <xsl:template match="/">
     <html>
       <head>
@@ -296,18 +295,24 @@
     </li>
   </xsl:template>
 
-  <xsl:template match="tree[@taxon]/frontmatter">
+  <!-- To be applied in frontmatter -->
+  <xsl:template name="Taxon">
+    <span class="taxon">
+      <xsl:value-of select="../@taxon" />
+      <xsl:if test="trail/crumb">
+        <xsl:text> </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="trail" />
+      <xsl:text>. </xsl:text>
+    </span>
+  </xsl:template>
+
+  <!-- Formatting for the topmost tree -->
+  <xsl:template match="/tree[@taxon]/frontmatter">
     <header>
       <h1>
-        <xsl:attribute name="class">leaf</xsl:attribute>
-        <span class="taxon">
-          <xsl:value-of select="../@taxon" />
-          <xsl:if test="trail/crumb">
-            <xsl:text> </xsl:text>
-          </xsl:if>
-          <xsl:apply-templates select="trail" />
-          <xsl:text>. </xsl:text>
-        </span>
+        <xsl:attribute name="class">tree</xsl:attribute>
+        <xsl:call-template name="Taxon" />
         <xsl:apply-templates select="title" />
         <xsl:text> </xsl:text>
         <xsl:call-template name="FrontmatterSlugLink" />
@@ -316,10 +321,11 @@
     </header>
   </xsl:template>
 
-  <xsl:template match="tree[@taxon='Reference']/frontmatter">
+  <xsl:template match="*/tree[@taxon]/frontmatter">
     <header>
       <h1>
         <xsl:attribute name="class">leaf</xsl:attribute>
+        <xsl:call-template name="Taxon" />
         <xsl:apply-templates select="title" />
         <xsl:text> </xsl:text>
         <xsl:call-template name="FrontmatterSlugLink" />
@@ -328,20 +334,7 @@
     </header>
   </xsl:template>
 
-  <xsl:template match="tree[@taxon='Person']/frontmatter">
-    <header>
-      <h1>
-        <xsl:attribute name="class">leaf</xsl:attribute>
-        <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
-      </h1>
-      <xsl:call-template name="Metadata" />
-    </header>
-  </xsl:template>
-
-
-  <xsl:template match="tree[not(@taxon)]/frontmatter | tree[@taxon='Person']/frontmatter">
+  <xsl:template match="tree[not(@taxon)]/frontmatter">
     <header>
       <h1>
         <xsl:attribute name="class">tree</xsl:attribute>
@@ -458,7 +451,6 @@
           <xsl:apply-templates select="frontmatter" />
         </summary>
         <xsl:apply-templates select="mainmatter" />
-
         <xsl:apply-templates select="frontmatter/meta[@name='bibtex']" />
       </details>
     </section>
@@ -486,6 +478,12 @@
 
   <xsl:template match="backmatter/*/tree">
     <section class="block">
+      <xsl:if test="@taxon">
+        <xsl:attribute name="data-taxon">
+          <xsl:value-of select="@taxon" />
+        </xsl:attribute>
+      </xsl:if>
+
       <details>
         <summary>
           <xsl:apply-templates select="frontmatter" />
