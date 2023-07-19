@@ -229,13 +229,27 @@
   </xsl:template>
 
   <xsl:template match="meta[@name='doi']">
-    <a class="doi">
-      <xsl:attribute name="href">
-        <xsl:text>https://www.doi.org/</xsl:text>
+    <li class="meta-item">
+      <a class="doi">
+        <xsl:attribute name="href">
+          <xsl:text>https://www.doi.org/</xsl:text>
+          <xsl:value-of select="." />
+        </xsl:attribute>
         <xsl:value-of select="." />
-      </xsl:attribute>
-      <xsl:value-of select="." />
-    </a>
+      </a>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="meta[@name='orcid']">
+    <li class="meta-item">
+      <a class="orcid">
+        <xsl:attribute name="href">
+          <xsl:text>https://orcid.org/</xsl:text>
+          <xsl:value-of select="." />
+        </xsl:attribute>
+        <xsl:value-of select="." />
+      </a>
+    </li>
   </xsl:template>
 
   <xsl:template match="meta[@name='bibtex']">
@@ -358,10 +372,11 @@
         <xsl:apply-templates select="meta[@name='position']" />
         <xsl:apply-templates select="meta[@name='institution']" />
         <xsl:apply-templates select="meta[@name='venue']" />
+        <xsl:apply-templates select="meta[@name='doi']" />
+        <xsl:apply-templates select="meta[@name='orcid']" />
         <xsl:apply-templates select="meta[@name='external']" />
         <xsl:apply-templates select="meta[@name='slides']" />
         <xsl:apply-templates select="meta[@name='video']" />
-        <xsl:apply-templates select="meta[@name='doi']" />
       </ul>
     </div>
   </xsl:template>
