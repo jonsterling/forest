@@ -430,7 +430,11 @@
 
   <xsl:template match="/tree/backmatter">
     <footer>
-      <xsl:apply-templates select="context|backlinks|related|contributions|references" />
+      <xsl:apply-templates select="references" />
+      <xsl:apply-templates select="context" />
+      <xsl:apply-templates select="backlinks" />
+      <xsl:apply-templates select="related" />
+      <xsl:apply-templates select="contributions" />
     </footer>
   </xsl:template>
 
