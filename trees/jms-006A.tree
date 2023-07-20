@@ -6,13 +6,15 @@
 \p{The following code will generate a subsection entitled “featured talks” containing the appropriate items as collapsed subtrees:}
 
 \code{\pre{\startverb%
-\query{
-  \query/and{
-    \query/author{jonmsterling}
-    \query/taxon{reference}
-    \query/tag{featured}
+\scope{
+  \put\transclude/title{featured talks}
+  \query{
+    \query/and{
+      \query/author{jonmsterling}
+      \query/taxon{reference}
+      \query/tag{featured}
+    }
   }
-}
-\stopverb}}
+}\stopverb}}
 
 \p{Under the hood, a query node is an “anonymous transclusion” and can therefore be [configured using the same options as other transclusions](jms-0067).}
