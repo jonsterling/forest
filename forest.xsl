@@ -129,7 +129,7 @@
             <xsl:apply-templates select="tree" />
           </article>
           <xsl:if
-            test="tree/mainmatter/tree[frontmatter/trail/crumb] and not(/tree/frontmatter/meta[@name = 'toc']/.='false')">
+            test="tree/mainmatter/tree[@toc='true'] and not(/tree/frontmatter/meta[@name = 'toc']/.='false')">
             <nav id="toc">
               <div class="block">
                 <h1>Table of Contents</h1>
@@ -146,7 +146,7 @@
 
   <xsl:template name="toc">
     <ul class="block">
-      <xsl:for-each select="tree[frontmatter/trail/crumb]">
+      <xsl:for-each select="tree[@toc='true']">
         <li>
           <a class="toc">
             <xsl:for-each select="frontmatter">
@@ -157,10 +157,14 @@
               <span class="toc-item-label">
                 <xsl:if test="../@taxon">
                   <xsl:value-of select="../@taxon" />
-                  <xsl:text> </xsl:text>
+                  <xsl:if test="trail">
+                    <xsl:text> </xsl:text>
+                  </xsl:if>
                 </xsl:if>
-                <xsl:apply-templates select="trail" />
-                <xsl:text>. </xsl:text>
+                <xsl:if test="trail or ../@taxon">
+                  <xsl:apply-templates select="trail" />
+                  <xsl:text>. </xsl:text>
+                </xsl:if>
               </span>
               <xsl:apply-templates select="title" />
             </xsl:for-each>
@@ -432,7 +436,15 @@
   </xsl:template>
 
   <xsl:template name="Tree">
-    <section class="block">
+    <section>
+      <xsl:choose>
+        <xsl:when test="@show_metadata = 'false'">
+          <xsl:attribute name="class">block hide-metadata</xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:attribute name="class">block</xsl:attribute>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:if test="frontmatter/anchor">
         <xsl:attribute name="id">
           <xsl:value-of select="frontmatter/anchor" />
@@ -444,7 +456,7 @@
         </xsl:attribute>
       </xsl:if>
       <details>
-        <xsl:if test="@mode = 'full'">
+        <xsl:if test="@expanded = 'true'">
           <xsl:attribute name="open">open</xsl:attribute>
         </xsl:if>
         <summary>
@@ -456,16 +468,12 @@
     </section>
   </xsl:template>
 
-  <xsl:template name="TreeSpliced">
-    <section class="block">
-      <xsl:apply-templates select="mainmatter" />
-    </section>
-  </xsl:template>
-
   <xsl:template match="/tree|mainmatter/tree">
     <xsl:choose>
-      <xsl:when test="@mode = 'spliced'">
-        <xsl:call-template name="TreeSpliced" />
+      <xsl:when test="@show_heading = 'false'">
+        <section class="block">
+          <xsl:apply-templates select="mainmatter" />
+        </section>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="Tree" />
