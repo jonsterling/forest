@@ -1,31 +1,35 @@
 \title{Roladex}
 
 \def\personal-queries[name]{
-  \query{bachelor students (current and former)}{
-    \query/and{
-      \query/taxon{person}
-      \query/meta{bachelor-advisor}{\name}
+  \scope{
+    \put\transclude/title{bachelor students (current and former)}
+    \query{
+      \query/and{
+        \query/taxon{person}
+        \query/meta{bachelor-advisor}{\name}
+      }
     }
-  }
-  \query{PhD students (current and former)}{
-    \query/and{
-      \query/taxon{person}
-      \query/meta{phd-advisor}{\name}
+    
+    \put\transclude/title{PhD students (current and former)}
+    \query{
+      \query/and{
+        \query/taxon{person}
+        \query/meta{phd-advisor}{\name}
+      }
     }
-  }
-
-  \query{Postdocs (current and former)}{
-    \query/and{
-      \query/taxon{person}
-      \query/meta{postdoc-advisor}{\name}
+  
+    \put\transclude/title{Postdocs (current and former)}
+    \query{
+      \query/and{
+        \query/taxon{person}
+        \query/meta{postdoc-advisor}{\name}
+      }
     }
   }
 }
 
-
-
 \p{A list of all people with pages in my forest.}
 
-\query@{Roladex}{
+\query{
   \query/taxon{person}
 }

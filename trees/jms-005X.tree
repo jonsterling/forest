@@ -1,53 +1,62 @@
 \title{public bibliographies}
-
+\author{jonmsterling}
+\date{2023-07-18}
 
 \def\make-topic-bibliography[topic]{
-  \query{refereed papers}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{refereed}
-      \query/tag{\topic}
+  \scope{
+    \put\transclude/title{refereed papers}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{refereed}
+        \query/tag{\topic}
+      }
     }
-  }
 
-  \query{manuscripts}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{preprint}
-      \query/tag{\topic}
+    \put\transclude/title{manuscripts}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{preprint}
+        \query/tag{\topic}
+      }
     }
-  }
 
-  \query{dissertations}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{dissertation}
-      \query/tag{\topic}
+    \put\transclude/title{dissertations}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{dissertation}
+        \query/tag{\topic}
+      }
     }
-  }
 
-  \query{technical reports}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{techreport}
-      \query/tag{\topic}
+    \put\transclude/title{technical reports}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{techreport}
+        \query/tag{\topic}
+      }
     }
-  }
 
-  \query{presentations}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{workshop}
-      \query/tag{\topic}
+    \put\transclude/title{presentations}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{workshop}
+        \query/tag{\topic}
+      }
     }
-  }
 
 
-  \query{seminar talks}{
-    \query/and{
-      \query/taxon{reference}
-      \query/tag{seminar}
-      \query/tag{\topic}
+    \put\transclude/title{seminar talks}
+    \query{
+      \query/and{
+        \query/taxon{reference}
+        \query/tag{seminar}
+        \query/tag{\topic}
+      }
     }
   }
 }
