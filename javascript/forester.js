@@ -1,4 +1,12 @@
-import { NinjaKeys } from 'https://unpkg.com/ninja-keys?module';
+require('ninja-keys');
+require('katex');
+
+const autoRenderMath = require('katex/contrib/auto-render');
+
+window.addEventListener("load", (event) => {
+  autoRenderMath(document.body)
+});
+
 const ninja = document.querySelector('ninja-keys');
 
 fetch("./forest.json")
