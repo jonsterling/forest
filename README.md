@@ -1,6 +1,6 @@
 To build this forest, you need to have a working installation of the following software:
 
-- LaTeX, preferably the *full* [TeXLive distribution]A(https://tug.org/texlive/)
+- LaTeX, preferably the *full* [TeXLive distribution](https://tug.org/texlive/)
 
 - `forester`, which you can install using `opam install forester`; at times, you may need to build from [source](https://github.com/jonsterling/ocaml-forester) if I haven't released the latest version to opam
 
