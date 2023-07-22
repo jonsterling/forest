@@ -14,14 +14,14 @@ fetch("./forest.json")
   .then((data) => {
     const items = []
 
-    if (window.absolutePath) {
+    if (window.sourcePath) {
       items.push({
         id: 'edit',
         title: 'Edit current tree in Visual Studio Code',
         section: 'Commands',
         hotkey: "cmd+e",
         handler: () => {
-          window.location.href = `vscode://file/${window.absolutePath}`
+          window.location.href = `vscode://file/${window.sourcePath}`
         }
       })
     }

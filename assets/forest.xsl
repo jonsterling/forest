@@ -95,8 +95,8 @@
           crossorigin="anonymous" />
 
         <script type="text/javascript">
-          <xsl:if test="/tree/frontmatter/abspath"> window.absolutePath = '<xsl:value-of
-              select="/tree/frontmatter/abspath" />' </xsl:if>
+          <xsl:if test="/tree/frontmatter/sourcePath"> window.sourcePath = '<xsl:value-of
+              select="/tree/frontmatter/sourcePath" />' </xsl:if>
         </script>
 
         <script type="module" src="forester.js"></script>
