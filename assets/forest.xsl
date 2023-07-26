@@ -434,18 +434,19 @@
           <xsl:attribute name="class">block</xsl:attribute>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="frontmatter/anchor">
-        <xsl:attribute name="id">
-          <xsl:text>tree-</xsl:text>
-          <xsl:value-of select="frontmatter/anchor" />
-        </xsl:attribute>
-      </xsl:if>
       <xsl:if test="@taxon">
         <xsl:attribute name="data-taxon">
           <xsl:value-of select="@taxon" />
         </xsl:attribute>
       </xsl:if>
       <details>
+        <xsl:if test="frontmatter/anchor">
+          <xsl:attribute name="id">
+            <xsl:text>tree-</xsl:text>
+            <xsl:value-of select="frontmatter/anchor" />
+          </xsl:attribute>
+        </xsl:if>
+
         <xsl:if test="@expanded = 'true'">
           <xsl:attribute name="open">open</xsl:attribute>
         </xsl:if>

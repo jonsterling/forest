@@ -7,14 +7,12 @@ window.addEventListener("load", (event) => {
   autoRenderMath(document.body)
 
   const openAllDetailsAbove = elt => {
-    if (elt == null) return
-
-    while (elt.parentNode) {
-      const parent = elt.parentNode
-      if (parent.nodeName == 'DETAILS') {
-        parent.open = true
+    while (elt != null) {
+      if (elt.nodeName == 'DETAILS') {
+        elt.open = true
       }
-      elt = parent;
+
+      elt = elt.parentNode;
     }
   }
 
@@ -22,7 +20,7 @@ window.addEventListener("load", (event) => {
     const link = evt.target.closest('a')
     const selector = link.getAttribute('href')
     const target = document.querySelector(selector)
-    if (target == null || !!target.offsetHeight || target.getClientRects().length) return
+    // if (target == null || !!target.offsetHeight || target.getClientRects().length) return
     openAllDetailsAbove(target)
   }
 
