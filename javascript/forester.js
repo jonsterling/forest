@@ -20,7 +20,6 @@ window.addEventListener("load", (event) => {
     const link = evt.target.closest('a')
     const selector = link.getAttribute('href')
     const target = document.querySelector(selector)
-    // if (target == null || !!target.offsetHeight || target.getClientRects().length) return
     openAllDetailsAbove(target)
   }
 
