@@ -140,7 +140,7 @@
           <a class="toc">
             <xsl:for-each select="frontmatter">
               <xsl:attribute name="href">
-                <xsl:text>#</xsl:text>
+                <xsl:text>#tree-</xsl:text>
                 <xsl:value-of select="anchor" />
               </xsl:attribute>
               <span class="toc-item-label">
@@ -436,6 +436,7 @@
       </xsl:choose>
       <xsl:if test="frontmatter/anchor">
         <xsl:attribute name="id">
+          <xsl:text>tree-</xsl:text>
           <xsl:value-of select="frontmatter/anchor" />
         </xsl:attribute>
       </xsl:if>

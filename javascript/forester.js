@@ -5,6 +5,31 @@ const autoRenderMath = require('katex/contrib/auto-render');
 
 window.addEventListener("load", (event) => {
   autoRenderMath(document.body)
+
+  const openAllDetailsAbove = elt => {
+    if (elt == null) return
+
+    while (elt.parentNode) {
+      const parent = elt.parentNode
+      if (parent.nodeName == 'DETAILS') {
+        parent.open = true
+      }
+      elt = parent;
+    }
+  }
+
+  const openDetailsIfAnchorHidden = evt => {
+    const link = evt.target.closest('a')
+    const selector = link.getAttribute('href')
+    const target = document.querySelector(selector)
+    if (target == null || !!target.offsetHeight || target.getClientRects().length) return
+    openAllDetailsAbove(target)
+  }
+
+
+  [...document.querySelectorAll("[href^='#']")].forEach(
+    el => el.addEventListener("click", openDetailsIfAnchorHidden)
+  );
 });
 
 const ninja = document.querySelector('ninja-keys');
