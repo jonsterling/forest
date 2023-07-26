@@ -88,11 +88,7 @@
       <head>
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;amp;display=swap" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css"
-          integrity="sha384-mXD7x5S50Ko38scHSnD4egvoExgMPbrseZorkbE49evAfv9nNcbrXJ8LLNsDgh9d"
-          crossorigin="anonymous" />
+        <link rel="stylesheet" href="katex.min.css" />
 
         <script type="text/javascript">
           <xsl:if test="/tree/frontmatter/sourcePath"> window.sourcePath = '<xsl:value-of
