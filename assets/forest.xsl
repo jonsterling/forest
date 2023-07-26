@@ -89,8 +89,6 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="katex.min.css" />
-        <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;amp;display=swap" />
 
         <script type="text/javascript">
           <xsl:if test="/tree/frontmatter/sourcePath"> window.sourcePath = '<xsl:value-of
