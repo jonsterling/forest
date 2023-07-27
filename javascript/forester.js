@@ -1,7 +1,7 @@
-require('ninja-keys');
-require('katex');
+import 'ninja-keys';
+import 'katex';
 
-const autoRenderMath = require('katex/contrib/auto-render');
+import autoRenderMath from 'katex/contrib/auto-render';
 
 window.addEventListener("load", (event) => {
   autoRenderMath(document.body)
