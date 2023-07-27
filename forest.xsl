@@ -338,10 +338,8 @@
         </xsl:if>
 
         <xsl:apply-templates select="title" />
-        <xsl:if test="not(../@root='true')">
-          <xsl:text> </xsl:text>
-          <xsl:call-template name="FrontmatterSlugLink" />
-        </xsl:if>
+        <xsl:text> </xsl:text>
+        <xsl:call-template name="FrontmatterSlugLink" />
       </h1>
       <xsl:call-template name="Metadata" />
     </header>
