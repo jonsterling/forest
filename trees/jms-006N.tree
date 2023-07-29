@@ -1,0 +1,90 @@
+\import{jms-006I}
+\title{creation of independent sums in \Mono{\C}}
+\author{jonmsterling}
+\taxon{lemma}
+\date{2023-07-29}
+\texpackage{preamble}
+
+\p{Let \C be an adhesive category with a strict initial object, so that \C is also extensive. Then independent sums are created by the inclusion #{\Mono{\C}\hookrightarrow\C}.}
+
+\proof{
+  \p{Given a coproduct co-span \brc{u\hookrightarrow u+ v \hookleftarrow v} in \C along with an independent co-span \brc{u\hookrightarrow w \hookleftarrow v}, it suffices to check that the universal map #{u+ v\to w} is a monomorphism. Equivalently, we wish to check that the following square is cartesian:}
+  
+  \tex{
+    \DiagramSquare{
+      nw = u+v,
+      ne = u+v,
+      sw = u+v,
+      se = w,
+      north/style = {double},
+      west/style = {double},
+      nw/style = dotted pullback,
+    }
+  }
+  
+  By the \em{descent property} for binary coproducts in an extensive category, it suffices to check that each of the following restrictions of that square along the coproduct injections is cartsian:
+    
+  \tex{
+    \DiagramSquare{
+      nw = u,
+      ne = u+v,
+      sw = u,
+      se = w,
+      west/style = {double},
+      north/style = {embedding},
+      nw/style = dotted pullback,
+    }
+    \qquad 
+    \DiagramSquare{
+      nw = v,
+      ne = u+v,
+      sw = v,
+      se = w,
+      west/style = {double},
+      north/style = {embedding},
+      nw/style = dotted pullback,
+    }
+  }
+  
+  \p{We will consider only the first square, which we rotate ninety degrees.}
+  
+  \tex{
+    \DiagramSquare{
+      nw = u,
+      sw = u+v,
+      se = w,
+      ne = u,
+      west/style = {embedding},
+      east/style = {embedding},
+      north/style = {double},
+      nw/style = dotted pullback,
+    }
+  }
+
+  \p{We see that the square above can be composed as follows so that the left-hand square is cocartesian and the outer square is cartesian.}
+  
+  \tex{
+    \begin{tikzpicture}[diagram]
+      \SpliceDiagramSquare<l/>{
+        ne = u,
+        se = u+v,
+        west/style = {embedding},
+        east/style = {embedding},
+        ne/style = dotted pullback,
+        nw/style = pullback,
+        se/style = pushout,
+        nw = \ObjInit{\C},
+        sw = v,
+      }
+      \SpliceDiagramSquare<r/>{
+        glue = west, glue target = l/,
+        se = w,
+        ne = u,
+        east/style = {embedding},
+        north/style = {double},
+      }
+    \end{tikzpicture}
+  }
+
+  \p{Observing that all the vertical maps are monomoprhism, we use the [“special pullback-pushout property”](jms-006O) of [Lack and Sobociński](lack-sobocinski-2006) for adhesive categories to conclude that the right-hand component is cartesian. Thus it follows that #{u+v\to w} is a monomorphism, and so we may define the independent coproduct \brc{u\hookrightarrow u\oplus v\hookleftarrow v} in \Mono{\C} by the coproduct co-span \brc{u\hookrightarrow u+v\hookleftarrow v} in \C.}
+}

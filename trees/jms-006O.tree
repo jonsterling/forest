@@ -1,0 +1,34 @@
+\title{special pullback-pushout property}
+\author{Stephen Lack}
+\author{Paweł Sobociński}
+\taxon{theorem}
+\meta{venue}{excerpt from [Toposes are adhesive](lack-sobocinski-2006)}
+\texpackage{preamble}
+
+\p{Suppose that the illustrated commutative diagram in an adhesive category has #{m}, #{n}, and #{l} mono. Suppose that (1) is a pushout and (1)+(2) is a pullback; then (2) is a pullback.}
+
+\tex{
+  \begin{tikzpicture}[diagram]
+    \SpliceDiagramSquare<l/>{
+      nw = A,
+      ne = C,
+      sw = B,
+      se = D,
+      east = n,
+      east/node/style = upright desc,
+      west = m,
+      north = f,
+      south = g,
+    }
+    \SpliceDiagramSquare<r/>{
+      glue = west, glue target = l/,
+      ne = E,
+      se = F,
+      east = l,
+      south = q,
+      north = p,
+    }
+    \node[between = l/nw and l/se] {(1)};
+    \node[between = l/ne and r/se] {(2)};
+  \end{tikzpicture}
+}
