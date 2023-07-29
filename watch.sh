@@ -1,3 +1,9 @@
 #!/bin/bash
 
-watch -n 1 ./build.sh
+fswatch -o trees/ | while read num ; \
+  do \
+    echo "Rebuilding forest"
+    time ./build.sh
+    echo "Done"
+    echo
+  done
