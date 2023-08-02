@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- SPDX-License-Identifier: CC0-1.0 -->
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public=""
@@ -53,6 +54,9 @@
       </xsl:attribute>
       <xsl:attribute name="href">
         <xsl:value-of select="@href" />
+      </xsl:attribute>
+      <xsl:attribute name="title">
+        <xsl:value-of select="@title" />
       </xsl:attribute>
       <xsl:apply-templates />
     </a>
