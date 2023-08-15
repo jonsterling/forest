@@ -221,6 +221,17 @@
         <xsl:value-of select="addr" />
         <xsl:text>]</xsl:text>
       </a>
+      <xsl:if test="sourcePath">
+        <xsl:text> </xsl:text>
+        <a class="edit-button">
+          <xsl:attribute name="href">
+            <xsl:text>vscode://file/</xsl:text>
+            <xsl:value-of select="sourcePath" />
+          </xsl:attribute>
+          <xsl:text>[edit]</xsl:text>
+        </a>
+      </xsl:if>
+
     </xsl:if>
   </xsl:template>
 
