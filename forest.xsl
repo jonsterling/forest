@@ -20,9 +20,62 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="year">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="day">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="month[.='1']">
+    <xsl:text>January</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='2']">
+    <xsl:text>February</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='3']">
+    <xsl:text>March</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='4']">
+    <xsl:text>April</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='5']">
+    <xsl:text>May</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='6']">
+    <xsl:text>June</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='7']">
+    <xsl:text>July</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='8']">
+    <xsl:text>August</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='9']">
+    <xsl:text>September</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='10']">
+    <xsl:text>October</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='11']">
+    <xsl:text>November</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='12']">
+    <xsl:text>December</xsl:text>
+  </xsl:template>
+
   <xsl:template match="date">
     <li class="meta-item">
-      <xsl:apply-templates />
+      <xsl:apply-templates select="month" />
+      <xsl:if test="day">
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="day" />
+      </xsl:if>
+      <xsl:if test="month">
+        <xsl:text>, </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="year" />
     </li>
   </xsl:template>
 
@@ -48,16 +101,7 @@
   </xsl:template>
 
   <xsl:template match="link">
-    <a>
-      <xsl:attribute name="class">
-        <xsl:value-of select="@type" />
-      </xsl:attribute>
-      <xsl:attribute name="href">
-        <xsl:value-of select="@href" />
-      </xsl:attribute>
-      <xsl:attribute name="title">
-        <xsl:value-of select="@title" />
-      </xsl:attribute>
+    <a class="{@type}" href="{@href}" title="{@title}">
       <xsl:apply-templates />
     </a>
   </xsl:template>
@@ -74,19 +118,6 @@
     <xsl:text>\)</xsl:text>
   </xsl:template>
 
-  <xsl:template match="trail">
-    <xsl:for-each select="crumb">
-      <xsl:apply-templates />
-      <xsl:if test="position()!=last()">
-        <xsl:text>.</xsl:text>
-      </xsl:if>
-    </xsl:for-each>
-  </xsl:template>
-
-  <xsl:template match="crumb">
-    <xsl:value-of select="." />
-  </xsl:template>
-
   <xsl:template match="/">
     <html>
       <head>
@@ -95,8 +126,11 @@
         <link rel="stylesheet" href="katex.min.css" />
 
         <script type="text/javascript">
-          <xsl:if test="/tree/frontmatter/sourcePath"> window.sourcePath = '<xsl:value-of
-              select="/tree/frontmatter/sourcePath" />' </xsl:if>
+          <xsl:if test="/tree/frontmatter/source-path">
+            <xsl:text>window.sourcePath = '</xsl:text>
+            <xsl:value-of select="/tree/frontmatter/source-path" />
+            <xsl:text>'</xsl:text>
+          </xsl:if>
         </script>
 
         <script type="module" src="forester.js"></script>
@@ -126,9 +160,7 @@
             <nav id="toc">
               <div class="block">
                 <h1>Table of Contents</h1>
-                <xsl:for-each select="tree/mainmatter">
-                  <xsl:call-template name="toc" />
-                </xsl:for-each>
+                <xsl:apply-templates select="tree/mainmatter" mode="toc" />
               </div>
             </nav>
           </xsl:if>
@@ -137,49 +169,36 @@
     </html>
   </xsl:template>
 
-  <xsl:template name="toc">
+  <xsl:template match="tree" mode="toc">
+    <li>
+      <a class="toc">
+        <xsl:for-each select="frontmatter">
+          <xsl:attribute name="href">
+            <xsl:text>#tree-</xsl:text>
+            <xsl:value-of select="anchor" />
+          </xsl:attribute>
+          <span class="toc-item-label">
+            <xsl:apply-templates select="taxon" />
+            <xsl:apply-templates select="trail" />
+            <xsl:if test="trail/crumb">
+              <xsl:text>. </xsl:text>
+            </xsl:if>
+          </span>
+          <xsl:apply-templates select="title" />
+        </xsl:for-each>
+      </a>
+      <xsl:apply-templates select="mainmatter" mode="toc" />
+    </li>
+  </xsl:template>
+
+  <xsl:template match="mainmatter" mode="toc">
     <ul class="block">
-      <xsl:for-each select="tree[@toc='true']">
-        <li>
-          <a class="toc">
-            <xsl:for-each select="frontmatter">
-              <xsl:attribute name="href">
-                <xsl:text>#tree-</xsl:text>
-                <xsl:value-of select="anchor" />
-              </xsl:attribute>
-              <span class="toc-item-label">
-                <xsl:if test="../@taxon">
-                  <xsl:value-of select="../@taxon" />
-                  <xsl:if test="trail">
-                    <xsl:text> </xsl:text>
-                  </xsl:if>
-                </xsl:if>
-                <xsl:if test="trail or ../@taxon">
-                  <xsl:apply-templates select="trail" />
-                  <xsl:text>. </xsl:text>
-                </xsl:if>
-              </span>
-              <xsl:apply-templates select="title" />
-            </xsl:for-each>
-          </a>
-          <xsl:for-each select="./mainmatter">
-            <xsl:call-template name="toc" />
-          </xsl:for-each>
-        </li>
-      </xsl:for-each>
+      <xsl:apply-templates select="tree[@toc='true']" mode="toc" />
     </ul>
   </xsl:template>
 
 
   <xsl:template match="frontmatter/title">
-    <xsl:apply-templates />
-  </xsl:template>
-
-  <xsl:template match="frontmatter/taxon">
-    <xsl:value-of select="." />
-  </xsl:template>
-
-  <xsl:template match="frontmatters/authors">
     <xsl:apply-templates />
   </xsl:template>
 
@@ -211,37 +230,23 @@
     </div>
   </xsl:template>
 
-  <xsl:template name="FrontmatterSlugLink">
-    <xsl:if test="addr">
-      <a class="slug">
-        <xsl:attribute name="href">
-          <xsl:value-of select="route" />
-        </xsl:attribute>
-        <xsl:text>[</xsl:text>
-        <xsl:value-of select="addr" />
-        <xsl:text>]</xsl:text>
-      </a>
-      <xsl:if test="sourcePath">
-        <xsl:text> </xsl:text>
-        <a class="edit-button">
-          <xsl:attribute name="href">
-            <xsl:text>vscode://file/</xsl:text>
-            <xsl:value-of select="sourcePath" />
-          </xsl:attribute>
-          <xsl:text>[edit]</xsl:text>
-        </a>
-      </xsl:if>
+  <xsl:template match="tree/frontmatter/addr">
+    <a class="slug" href="{../route}">
+      <xsl:text>[</xsl:text>
+      <xsl:value-of select="." />
+      <xsl:text>]</xsl:text>
+    </a>
+  </xsl:template>
 
-    </xsl:if>
+  <xsl:template match="tree/frontmatter/source-path">
+    <a class="edit-button" href="{concat('vscode://file/', .)}">
+      <xsl:text>[edit]</xsl:text>
+    </a>
   </xsl:template>
 
   <xsl:template match="meta[@name='doi']">
     <li class="meta-item">
-      <a class="doi">
-        <xsl:attribute name="href">
-          <xsl:text>https://www.doi.org/</xsl:text>
-          <xsl:value-of select="." />
-        </xsl:attribute>
+      <a class="doi" href="{concat('https://www.doi.org/', .)}">
         <xsl:value-of select="." />
       </a>
     </li>
@@ -249,11 +254,7 @@
 
   <xsl:template match="meta[@name='orcid']">
     <li class="meta-item">
-      <a class="orcid">
-        <xsl:attribute name="href">
-          <xsl:text>https://orcid.org/</xsl:text>
-          <xsl:value-of select="." />
-        </xsl:attribute>
+      <a class="orcid" href="{concat('https://orcid.org/', .)}">
         <xsl:value-of select="." />
       </a>
     </li>
@@ -271,10 +272,7 @@
 
   <xsl:template match="meta[@name='external']">
     <li class="meta-item">
-      <a class="external">
-        <xsl:attribute name="href">
-          <xsl:value-of select="." />
-        </xsl:attribute>
+      <a class="external" href="{.}">
         <xsl:value-of select="." />
       </a>
     </li>
@@ -282,10 +280,7 @@
 
   <xsl:template match="meta[@name='slides']">
     <li class="meta-item">
-      <a class="external">
-        <xsl:attribute name="href">
-          <xsl:value-of select="." />
-        </xsl:attribute>
+      <a class="external" href="{.}">
         <xsl:text>Slides</xsl:text>
       </a>
     </li>
@@ -294,59 +289,53 @@
 
   <xsl:template match="meta[@name='video']">
     <li class="meta-item">
-      <a class="external">
-        <xsl:attribute name="href">
-          <xsl:value-of select="." />
-        </xsl:attribute>
+      <a class="external" href="{.}">
         <xsl:text>Video</xsl:text>
       </a>
     </li>
   </xsl:template>
 
   <!-- To be applied in frontmatter -->
-  <xsl:template name="Taxon">
-    <span class="taxon">
-      <xsl:value-of select="../@taxon" />
-      <xsl:if test="trail/crumb">
-        <xsl:text> </xsl:text>
-      </xsl:if>
-      <xsl:apply-templates select="trail" />
-      <xsl:text>. </xsl:text>
+
+  <xsl:template match="/tree/frontmatter/taxon">
+    <span class="taxon top">
+      <xsl:value-of select="." />
+      <xsl:text>.</xsl:text>
     </span>
   </xsl:template>
 
-  <!-- Formatting for the topmost tree -->
-  <xsl:template match="/tree[@taxon]/frontmatter">
-    <header>
-      <h1>
-        <xsl:attribute name="class">tree</xsl:attribute>
-        <xsl:call-template name="Taxon" />
-        <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
-      </h1>
-      <xsl:call-template name="Metadata" />
-    </header>
+  <xsl:template match="*/tree/frontmatter/taxon">
+    <span class="taxon">
+      <xsl:value-of select="." />
+      <xsl:if test="not(../trail/crumb)">
+        <xsl:text>. </xsl:text>
+      </xsl:if>
+    </span>
   </xsl:template>
 
-  <xsl:template match="*/tree[@taxon]/frontmatter">
-    <header>
-      <h1>
-        <xsl:attribute name="class">leaf</xsl:attribute>
-        <xsl:call-template name="Taxon" />
-        <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
-      </h1>
-      <xsl:call-template name="Metadata" />
-    </header>
+  <xsl:template match="backmatter/references/tree/frontmatter/taxon">
   </xsl:template>
 
-  <xsl:template match="tree[not(@taxon)]/frontmatter">
+  <xsl:template match="trail">
+    <xsl:text> </xsl:text>
+    <xsl:if test="crumb">
+      <xsl:for-each select="crumb">
+        <xsl:apply-templates />
+        <xsl:if test="position()!=last()">
+          <xsl:text>.</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="crumb">
+    <xsl:value-of select="." />
+  </xsl:template>
+
+  <xsl:template match="tree/frontmatter">
     <header>
       <h1>
-        <xsl:attribute name="class">tree</xsl:attribute>
-
+        <xsl:apply-templates select="taxon" />
         <xsl:apply-templates select="trail" />
         <xsl:if test="trail/crumb">
           <xsl:text>. </xsl:text>
@@ -354,32 +343,28 @@
 
         <xsl:apply-templates select="title" />
         <xsl:text> </xsl:text>
-        <xsl:call-template name="FrontmatterSlugLink" />
+        <xsl:apply-templates select="addr" />
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="source-path" />
       </h1>
-      <xsl:call-template name="Metadata" />
+      <div class="metadata">
+        <ul>
+          <xsl:apply-templates select="date" />
+          <xsl:if test="not(meta[@name = 'author']/.='false')">
+            <xsl:apply-templates select="authors" />
+          </xsl:if>
+          <xsl:apply-templates select="meta[@name='position']" />
+          <xsl:apply-templates select="meta[@name='institution']" />
+          <xsl:apply-templates select="meta[@name='venue']" />
+          <xsl:apply-templates select="meta[@name='doi']" />
+          <xsl:apply-templates select="meta[@name='orcid']" />
+          <xsl:apply-templates select="meta[@name='external']" />
+          <xsl:apply-templates select="meta[@name='slides']" />
+          <xsl:apply-templates select="meta[@name='video']" />
+        </ul>
+      </div>
     </header>
   </xsl:template>
-
-
-  <xsl:template name="Metadata">
-    <div class="metadata">
-      <ul>
-        <xsl:apply-templates select="date" />
-        <xsl:if test="not(meta[@name = 'author']/.='false')">
-          <xsl:apply-templates select="authors" />
-        </xsl:if>
-        <xsl:apply-templates select="meta[@name='position']" />
-        <xsl:apply-templates select="meta[@name='institution']" />
-        <xsl:apply-templates select="meta[@name='venue']" />
-        <xsl:apply-templates select="meta[@name='doi']" />
-        <xsl:apply-templates select="meta[@name='orcid']" />
-        <xsl:apply-templates select="meta[@name='external']" />
-        <xsl:apply-templates select="meta[@name='slides']" />
-        <xsl:apply-templates select="meta[@name='video']" />
-      </ul>
-    </div>
-  </xsl:template>
-
 
   <xsl:template match="backmatter/references">
     <xsl:if test="tree">
@@ -426,7 +411,6 @@
     </xsl:if>
   </xsl:template>
 
-
   <xsl:template match="/tree/backmatter">
     <footer>
       <xsl:apply-templates select="references" />
@@ -437,62 +421,49 @@
     </footer>
   </xsl:template>
 
-  <xsl:template name="Tree">
-    <section>
-      <xsl:choose>
-        <xsl:when test="@show_metadata = 'false'">
-          <xsl:attribute name="class">block hide-metadata</xsl:attribute>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="class">block</xsl:attribute>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:if test="@taxon">
-        <xsl:attribute name="data-taxon">
-          <xsl:value-of select="@taxon" />
-        </xsl:attribute>
-      </xsl:if>
-      <details>
-        <xsl:if test="frontmatter/anchor">
-          <xsl:attribute name="id">
-            <xsl:text>tree-</xsl:text>
-            <xsl:value-of select="frontmatter/anchor" />
-          </xsl:attribute>
-        </xsl:if>
-
-        <xsl:if test="@expanded = 'true'">
-          <xsl:attribute name="open">open</xsl:attribute>
-        </xsl:if>
-        <summary>
-          <xsl:apply-templates select="frontmatter" />
-        </summary>
-        <xsl:apply-templates select="mainmatter" />
-        <xsl:apply-templates select="frontmatter/meta[@name='bibtex']" />
-      </details>
-    </section>
-  </xsl:template>
-
   <xsl:template match="/tree|mainmatter/tree">
     <xsl:choose>
-      <xsl:when test="@show_heading = 'false'">
+      <xsl:when test="@show-heading = 'false'">
         <section class="block">
           <xsl:apply-templates select="mainmatter" />
         </section>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="Tree" />
+        <section>
+          <xsl:choose>
+            <xsl:when test="@show-metadata = 'false'">
+              <xsl:attribute name="class">block hide-metadata</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="class">block</xsl:attribute>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:if test="frontmatter/taxon">
+            <xsl:attribute name="data-taxon">
+              <xsl:value-of select="frontmatter/taxon" />
+            </xsl:attribute>
+          </xsl:if>
+          <details id="{concat('tree-',frontmatter/anchor)}">
+            <xsl:if test="@expanded = 'true'">
+              <xsl:attribute name="open">open</xsl:attribute>
+            </xsl:if>
+            <summary>
+              <xsl:apply-templates select="frontmatter" />
+            </summary>
+            <xsl:apply-templates select="mainmatter" />
+            <xsl:apply-templates select="frontmatter/meta[@name='bibtex']" />
+          </details>
+        </section>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:if test="not(@root = 'true')">
-      <xsl:apply-templates select="backmatter" />
-    </xsl:if>
+    <xsl:apply-templates select="self::*[@root != 'true']/backmatter" />
   </xsl:template>
 
   <xsl:template match="backmatter/*/tree">
     <section class="block">
-      <xsl:if test="@taxon">
+      <xsl:if test="frontmatter/taxon">
         <xsl:attribute name="data-taxon">
-          <xsl:value-of select="@taxon" />
+          <xsl:value-of select="frontmatter/taxon" />
         </xsl:attribute>
       </xsl:if>
 
