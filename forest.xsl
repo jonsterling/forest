@@ -295,25 +295,13 @@
     </li>
   </xsl:template>
 
-  <!-- To be applied in frontmatter -->
-
-  <xsl:template match="/tree/frontmatter/taxon">
-    <span class="taxon top">
-      <xsl:value-of select="." />
-      <xsl:text>.</xsl:text>
-    </span>
-  </xsl:template>
-
-  <xsl:template match="*/tree/frontmatter/taxon">
+  <xsl:template match="tree/frontmatter/taxon">
     <span class="taxon">
       <xsl:value-of select="." />
       <xsl:if test="not(../trail/crumb)">
         <xsl:text>. </xsl:text>
       </xsl:if>
     </span>
-  </xsl:template>
-
-  <xsl:template match="backmatter/references/tree/frontmatter/taxon">
   </xsl:template>
 
   <xsl:template match="trail">
