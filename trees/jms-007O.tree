@@ -1,0 +1,48 @@
+\import{jms-0052}
+\title{\Forester markup: mainmatter}
+\author{jonmsterling}
+\date{2023-08-16}
+
+\p{Below we summarize the concrete syntax of the \em{mainmatter} in a \Forester \tree.}
+
+\let\row[x][y]{\tr{\td{style}{white-space:nowrap}{\code{\x}}\td{\y}}}
+\table{
+  \tr{
+    \th{Function}
+    \th{Meaning}
+  }
+  \row{
+    \startverb\p{...}\stopverb
+  }{creates a paragraph containing \code{...}; unlike Markdown, it is mandatory to annotate paragraphs explicitly}
+  \row{
+    \startverb\em{...}\stopverb
+  }{typesets the content in italics}
+  \row{
+    \startverb\b{...}\stopverb
+  }{typesets the content in boldface}
+  \row{
+    \startverb#{...}\stopverb
+  }{typesets the content in (inline) math mode using #{\KaTeX}; note that math mode is idempotent in \Forester}
+  \row{
+    \startverb##{...}\stopverb
+  }{typesets the content in (display) math mode using #{\KaTeX}}
+  \row{
+    \startverb\transclude{xxx-NNNN}\stopverb
+  }{[transcludes](jms-007L) the \tree at address \code{xxx-NNNN} as a subsection}
+  \row{
+    \startverb[title](address)\stopverb
+  }{
+    formats the text \code{title} as a hyperlink to address \code{address}; if \code{address} is the address of a \tree, the link will point to that tree, and otherwise it is treated as a URL
+  }
+  \row{
+    \startverb\let\ident[x][y]{body}\stopverb
+  }{
+    defines a local function named \code{\startverb\ident\stopverb} with two arguments; subsequently, the expression \code{\startverb\ident{u}{v}\stopverb} would expand to \code{body} with the values of \code{u,v} substituted for \code{\startverb\x,\y\stopverb}.
+  }
+  \row{
+    \startverb\code{...}\stopverb
+  }{typesets the content in monospace}
+  \row{
+    \startverb\tex{...}\stopverb
+  }{typesets the \em{value} of the body externally using #{\LaTeX}, taking account of any \code{\startverb\texpackage{pkgname}\stopverb} declarations in the [frontmatter](jms-007P)}
+}
