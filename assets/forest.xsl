@@ -20,9 +20,62 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="year">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="day">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template match="month[.='1']">
+    <xsl:text>January</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='2']">
+    <xsl:text>February</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='3']">
+    <xsl:text>March</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='4']">
+    <xsl:text>April</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='5']">
+    <xsl:text>May</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='6']">
+    <xsl:text>June</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='7']">
+    <xsl:text>July</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='8']">
+    <xsl:text>August</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='9']">
+    <xsl:text>September</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='10']">
+    <xsl:text>October</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='11']">
+    <xsl:text>November</xsl:text>
+  </xsl:template>
+  <xsl:template match="month[.='12']">
+    <xsl:text>December</xsl:text>
+  </xsl:template>
+
   <xsl:template match="date">
     <li class="meta-item">
-      <xsl:apply-templates />
+      <xsl:apply-templates select="month" />
+      <xsl:if test="day">
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="day" />
+      </xsl:if>
+      <xsl:if test="month">
+        <xsl:text>, </xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="year" />
     </li>
   </xsl:template>
 
@@ -65,19 +118,6 @@
     <xsl:text>\)</xsl:text>
   </xsl:template>
 
-  <xsl:template match="trail">
-    <xsl:for-each select="crumb">
-      <xsl:apply-templates />
-      <xsl:if test="position()!=last()">
-        <xsl:text>.</xsl:text>
-      </xsl:if>
-    </xsl:for-each>
-  </xsl:template>
-
-  <xsl:template match="crumb">
-    <xsl:value-of select="." />
-  </xsl:template>
-
   <xsl:template match="/">
     <html>
       <head>
@@ -86,9 +126,9 @@
         <link rel="stylesheet" href="katex.min.css" />
 
         <script type="text/javascript">
-          <xsl:if test="/tree/frontmatter/sourcePath">
+          <xsl:if test="/tree/frontmatter/source-path">
             <xsl:text>window.sourcePath = '</xsl:text>
-            <xsl:value-of select="/tree/frontmatter/sourcePath" />
+            <xsl:value-of select="/tree/frontmatter/source-path" />
             <xsl:text>'</xsl:text>
           </xsl:if>
         </script>
@@ -138,14 +178,9 @@
             <xsl:value-of select="anchor" />
           </xsl:attribute>
           <span class="toc-item-label">
-            <xsl:if test="../@taxon">
-              <xsl:value-of select="../@taxon" />
-              <xsl:if test="trail">
-                <xsl:text> </xsl:text>
-              </xsl:if>
-            </xsl:if>
-            <xsl:if test="trail or ../@taxon">
-              <xsl:apply-templates select="trail" />
+            <xsl:apply-templates select="taxon" />
+            <xsl:apply-templates select="trail" />
+            <xsl:if test="trail/crumb">
               <xsl:text>. </xsl:text>
             </xsl:if>
           </span>
@@ -203,7 +238,7 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="tree/frontmatter/sourcePath">
+  <xsl:template match="tree/frontmatter/source-path">
     <a class="edit-button" href="{concat('vscode://file/', .)}">
       <xsl:text>[edit]</xsl:text>
     </a>
@@ -261,50 +296,46 @@
   </xsl:template>
 
   <!-- To be applied in frontmatter -->
-  <xsl:template name="Taxon">
-    <span class="taxon">
-      <xsl:value-of select="../@taxon" />
-      <xsl:if test="trail/crumb">
-        <xsl:text> </xsl:text>
-      </xsl:if>
-      <xsl:apply-templates select="trail" />
-      <xsl:text>. </xsl:text>
+
+  <xsl:template match="/tree/frontmatter/taxon">
+    <span class="taxon top">
+      <xsl:value-of select="." />
+      <xsl:text>.</xsl:text>
     </span>
   </xsl:template>
 
-
-  <!-- Formatting for the topmost tree -->
-  <xsl:template match="/tree[@taxon]/frontmatter">
-    <header>
-      <h1 class="tree">
-        <xsl:call-template name="Taxon" />
-        <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="addr" />
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="sourcePath" />
-      </h1>
-      <xsl:call-template name="Metadata" />
-    </header>
+  <xsl:template match="*/tree/frontmatter/taxon">
+    <span class="taxon">
+      <xsl:value-of select="." />
+      <xsl:if test="not(../trail/crumb)">
+        <xsl:text>. </xsl:text>
+      </xsl:if>
+    </span>
   </xsl:template>
 
-  <xsl:template match="*/tree[@taxon]/frontmatter">
-    <header>
-      <h1 class="leaf">
-        <xsl:call-template name="Taxon" />
-        <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="addr" />
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="sourcePath" />
-      </h1>
-      <xsl:call-template name="Metadata" />
-    </header>
+  <xsl:template match="backmatter/references/tree/frontmatter/taxon">
   </xsl:template>
 
-  <xsl:template match="tree[not(@taxon)]/frontmatter">
+  <xsl:template match="trail">
+    <xsl:text> </xsl:text>
+    <xsl:if test="crumb">
+      <xsl:for-each select="crumb">
+        <xsl:apply-templates />
+        <xsl:if test="position()!=last()">
+          <xsl:text>.</xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="crumb">
+    <xsl:value-of select="." />
+  </xsl:template>
+
+  <xsl:template match="tree/frontmatter">
     <header>
-      <h1 class="tree">
+      <h1>
+        <xsl:apply-templates select="taxon" />
         <xsl:apply-templates select="trail" />
         <xsl:if test="trail/crumb">
           <xsl:text>. </xsl:text>
@@ -314,30 +345,25 @@
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="addr" />
         <xsl:text> </xsl:text>
-        <xsl:apply-templates select="sourcePath" />
+        <xsl:apply-templates select="source-path" />
       </h1>
-      <xsl:call-template name="Metadata" />
+      <div class="metadata">
+        <ul>
+          <xsl:apply-templates select="date" />
+          <xsl:if test="not(meta[@name = 'author']/.='false')">
+            <xsl:apply-templates select="authors" />
+          </xsl:if>
+          <xsl:apply-templates select="meta[@name='position']" />
+          <xsl:apply-templates select="meta[@name='institution']" />
+          <xsl:apply-templates select="meta[@name='venue']" />
+          <xsl:apply-templates select="meta[@name='doi']" />
+          <xsl:apply-templates select="meta[@name='orcid']" />
+          <xsl:apply-templates select="meta[@name='external']" />
+          <xsl:apply-templates select="meta[@name='slides']" />
+          <xsl:apply-templates select="meta[@name='video']" />
+        </ul>
+      </div>
     </header>
-  </xsl:template>
-
-
-  <xsl:template name="Metadata">
-    <div class="metadata">
-      <ul>
-        <xsl:apply-templates select="date" />
-        <xsl:if test="not(meta[@name = 'author']/.='false')">
-          <xsl:apply-templates select="authors" />
-        </xsl:if>
-        <xsl:apply-templates select="meta[@name='position']" />
-        <xsl:apply-templates select="meta[@name='institution']" />
-        <xsl:apply-templates select="meta[@name='venue']" />
-        <xsl:apply-templates select="meta[@name='doi']" />
-        <xsl:apply-templates select="meta[@name='orcid']" />
-        <xsl:apply-templates select="meta[@name='external']" />
-        <xsl:apply-templates select="meta[@name='slides']" />
-        <xsl:apply-templates select="meta[@name='video']" />
-      </ul>
-    </div>
   </xsl:template>
 
   <xsl:template match="backmatter/references">
@@ -397,7 +423,7 @@
 
   <xsl:template match="/tree|mainmatter/tree">
     <xsl:choose>
-      <xsl:when test="@show_heading = 'false'">
+      <xsl:when test="@show-heading = 'false'">
         <section class="block">
           <xsl:apply-templates select="mainmatter" />
         </section>
@@ -405,16 +431,16 @@
       <xsl:otherwise>
         <section>
           <xsl:choose>
-            <xsl:when test="@show_metadata = 'false'">
+            <xsl:when test="@show-metadata = 'false'">
               <xsl:attribute name="class">block hide-metadata</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
               <xsl:attribute name="class">block</xsl:attribute>
             </xsl:otherwise>
           </xsl:choose>
-          <xsl:if test="@taxon">
+          <xsl:if test="frontmatter/taxon">
             <xsl:attribute name="data-taxon">
-              <xsl:value-of select="@taxon" />
+              <xsl:value-of select="frontmatter/taxon" />
             </xsl:attribute>
           </xsl:if>
           <details id="{concat('tree-',frontmatter/anchor)}">
@@ -435,9 +461,9 @@
 
   <xsl:template match="backmatter/*/tree">
     <section class="block">
-      <xsl:if test="@taxon">
+      <xsl:if test="frontmatter/taxon">
         <xsl:attribute name="data-taxon">
-          <xsl:value-of select="@taxon" />
+          <xsl:value-of select="frontmatter/taxon" />
         </xsl:attribute>
       </xsl:if>
 
