@@ -1,4 +1,4 @@
-\title{Forester 2.4 (unreleased)}
+\title{Forester 2.4 [unreleased]}
 \author{jonmsterling}
 \taxon{changelog}
 \date{2023-08-16}
@@ -6,7 +6,26 @@
 \p{This is a breaking release for the XML format.}
 
 \ol{
-  \li{Taxa used to be attributes of \code{tree}, but they are now child elements of \code{tree/frontmatter}.}
+  \li{Taxa used to be attributes of \code{tree}, but they are now child elements of \code{tree/frontmatter}. Therefore, what previously was written as
+    \pre{%
+<tree taxon="lemma">
+  <frontmatter>
+    <!-- ... -->
+  </frontmatter>
+  <!-- ... -->
+</tree>%
+    }
+    is now written as follows:
+    \pre{%
+<tree>
+  <frontmatter>
+    <taxon>lemma</taxon>
+    <!-- ... -->
+  </frontmatter>
+  <!-- ... -->
+</tree>
+    }
+  }
   \li{\p{Dates are now stored in machine-readable format. For example, what used to be written \code{<date>August 16, 2023</date>} is now written as follows:}
     \pre{%
 <date>
