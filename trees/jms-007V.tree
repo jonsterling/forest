@@ -1,0 +1,61 @@
+\title{set-truncation preserves and reflects surjections}
+\date{2023-08-18}
+\author{jonmsterling}
+\taxon{theorem}
+
+\import{base-macros}
+\import{jms-007T}
+
+\p{A function #{f:A\to B} is surjective (i.e. an effective epimorphism) if and only if its set-truncation #{\Trunc{0}{f}:\Trunc{0}{A}\to\Trunc{0}{B}} is surjective.}
+
+\proof{
+  \p{We deduce that #{\IsSurj\,\ToTrunc{0}{f}} is equivalent to #{\IsSurj\,f} as follows:}
+
+  \let\eqnrow[eqn][just]{
+    \tr{
+      \td{#{\eqn}}
+      \td{\just}
+    }
+  }
+
+  \table{
+    \tr{
+      \td{#{\IsSurj\,\ToTrunc{0}{f}}}
+      \td{}
+    }
+    \eqnrow{
+      \equiv \Prod{b:\Trunc{0}{B}}\Trunc{-1}{\Sum{a:\Trunc{0}{A}}\Trunc{0}{f}a=b}
+    }{by definition}
+    
+    \eqnrow{
+      \cong
+      \Prod{b:B}
+      \Trunc{-1}{\Sum{a:\Trunc{0}{A}}\Trunc{0}{f}a=\ToTrunc{0}{b}}
+    }{by induction}
+    
+    \eqnrow{
+      \cong    
+      \Prod{b:B}
+      \Trunc{-1}{\Sum{a:A}\ToTrunc{0}{fa}=\ToTrunc{0}{b}}
+    }{by [Lemma](jms-007U)}
+    
+    \eqnrow{
+      \cong
+      \Prod{b:B}
+      \Trunc{-1}{\Sum{a:A}\Trunc{-1}{fa=b}}
+    }{
+      by [HoTT Book, Theorem 7.3.12](hottbook)
+    }
+    
+    \eqnrow{
+      \cong
+      \Prod{b:B}
+      \Trunc{-1}{\Sum{a:A}fa=b}
+    }{by [HoTT Book, Theorem 7.3.9](hottbook)}
+    
+    \eqnrow{
+      \equiv
+      \IsSurj\,f
+    }{by definition}
+  }
+}

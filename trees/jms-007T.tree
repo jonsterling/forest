@@ -1,0 +1,31 @@
+\title{a synthetic proof of HTT 7.2.1.14}
+\author{jonmsterling}
+\date{2023-08-18}
+\tag{draft}
+
+\import{base-macros}
+
+\def\XTop{#{\mathcal{X}}}
+\def\HtpyCat{#{\mathrm{h}}}
+\def\IsSurj{#{\Con{isSurjective}}}
+\def\vrt[x]{#{\left\lvert\x\right\rvert}}
+\def\vvrt[x]{#{\left\lVert\x\right\rVert}}
+\def\Trunc[n][x]{#{\vvrt{\x}\Sub{\n}}}
+\def\ToTrunc[n][x]{#{\vrt{\x}\Sub{\n}}}
+
+\p{[Lurie](lurie-htt) states the following result as Proposition 7.2.1.14 of [Higher Topos Theory](lurie-htt):}
+
+\blockquote{
+  Let \XTop be an ∞-topos and let \Mor{\tau_{\leq 0}}{\XTop}{\tau_{\leq 0}\XTop} be the left adjoint to the inclusion. A morphism \Mor{\phi}{U}{X} in \XTop is an effective epimorphism if and only if in #{\tau_{\leq 0}\prn{\phi}} is an effective epimorphism in the ordinary topos #{\HtpyCat\prn{\tau_{\leq0}\XTop}}.
+}
+
+\p{[Several users of MathOverflow have noticed](https://mathoverflow.net/questions/452920/effective-epimorphisms-and-0-truncations-htt-7-2-1-14) that the proof of this result given by [Lurie](lurie-htt) is circular. The result is true and can be recovered in a variety of ways, as pointed out in the [MathOverflow discussion](https://mathoverflow.net/questions/452920/effective-epimorphisms-and-0-truncations-htt-7-2-1-14). For expository purposes, I would like to show how to prove this result directly in univalent foundations using standard results about #{n}-truncations from the [HoTT Book](hottbook).}
+
+\p{First we observe a trivial lemma about truncations.}
+
+\transclude{jms-007U}
+
+\p{It follows from [the above](jms-007U) that \Trunc{-1}{\Sum{x:A}B\ToTrunc{0}{x}} is equivalent to \Trunc{-1}{\Sum{x:\Trunc{0}{A}}Bx}. This is enough to deduce the main result.}
+
+\transclude{jms-007V}
+
