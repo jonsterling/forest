@@ -124,6 +124,7 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="katex.min.css" />
+        <xsl:apply-templates select="/tree/frontmatter/rss" />
 
         <script type="text/javascript">
           <xsl:if test="/tree/frontmatter/source-path">
@@ -228,6 +229,10 @@
     <div class="tree-content">
       <xsl:apply-templates />
     </div>
+  </xsl:template>
+
+  <xsl:template match="/tree/frontmatter/rss">
+    <link rel="alternate" type="application/rss+xml" href="{.}" title="{../title}" />
   </xsl:template>
 
   <xsl:template match="tree/frontmatter/addr">
