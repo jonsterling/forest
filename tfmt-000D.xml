@@ -54,7 +54,7 @@
 
   &lt;xsl:output method=&quot;xml&quot; version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; indent=&quot;yes&quot; /&gt;
   &lt;xsl:strip-space elements=&quot;*&quot; /&gt;
-</pre><p>We will allow several tags to be copied verbatim into the output, as <link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> uses these in the same way that standard HTML does.</p><pre>  &lt;xsl:template match=&quot;xhtml:html | xhtml:body | xhtml:code | xhtml:strong | xhtml:em | xhtml:mark&quot;&gt;
+</pre><p>We will allow several tags to be copied verbatim into the output, as <link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> uses these in the same way that idiomatic HTML does.</p><pre>  &lt;xsl:template match=&quot;xhtml:html | xhtml:body | xhtml:code | xhtml:strong | xhtml:em | xhtml:mark&quot;&gt;
     &lt;xsl:copy&gt;
       &lt;xsl:apply-templates select=&quot;node()|@*&quot; /&gt;
     &lt;/xsl:copy&gt;
@@ -91,7 +91,7 @@
       &lt;xsl:apply-templates /&gt;
     &lt;/li&gt;
   &lt;/xsl:template&gt;
-</pre><p><link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> has correctly adopted the optimal <link href="tfmt-000D.xml" type="local" title="Implicit vs. explicit hierarchy in document markup languages">explicit</link> and <link href="tfmt-000B.xml" type="local" title="Absolute vs. relative hierarchy in document markup languages">relative</link> model of hierarchy, in contrast to HTML; this means that the depth of a heading is not reflected in the element that introduces it, but is instead inferred from its actual position in the outline hierarchy. To convert <link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> outlines to standard HTML, we must flatten the hierarchy and introduce explicit heading levels; luckily, this is easy to accomplish in XSLT by counting the ancestors of <code>heading</code> type.</p><pre>  &lt;xsl:template match=&quot;xhtml:li[@data-type='heading']/xhtml:p&quot;&gt;
+</pre><p><link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> has correctly adopted the optimal <link href="tfmt-000D.xml" type="local" title="Implicit vs. explicit hierarchy in document markup languages">explicit</link> and <link href="tfmt-000B.xml" type="local" title="Absolute vs. relative hierarchy in document markup languages">relative</link> model of hierarchy, in contrast to HTML; this means that the depth of a heading is not reflected in the element that introduces it, but is instead inferred from its actual position in the outline hierarchy. To convert <link href="jms-0085.xml" type="local" title="Bike Outliner: Structured focused writing">Bike</link> outlines to idiomatic HTML, we must flatten the hierarchy and introduce explicit heading levels; luckily, this is easy to accomplish in XSLT by counting the ancestors of <code>heading</code> type.</p><pre>  &lt;xsl:template match=&quot;xhtml:li[@data-type='heading']/xhtml:p&quot;&gt;
     &lt;xsl:element
       name=&quot;h{count(ancestor::xhtml:li[@data-type='heading'])}&quot;&gt;
       &lt;xsl:apply-templates /&gt;
