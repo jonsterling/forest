@@ -1,0 +1,41 @@
+\title{classifying topoi and second-order abstract syntax}
+\date{2023-09-05}
+\tag{draft}
+
+\import{base-macros}
+
+\let\C{#{\mathscr{C}}}
+\let\E{#{\mathscr{E}}}
+\let\LEX{#{\operatorname{\mathbb{L}}}}
+\let\Psh{#{\operatorname{Pr}}}
+\let\Sh{#{\operatorname{Sh}}}
+\let\AffTop[C]{#{\mathbb{A}\Sup{\C}}}
+\let\TorTop{\operatorname{Tor}}
+\let\One{#{\mathbf{1}}}
+
+\p{For any small category \C, the [Fiore school](fiore-2008) treats #{\C}-sorted abstract syntax in the functor category #{\brk{\C,\Psh\prn{\LEX{\C}}}} where #{\LEX\C} is the free finite limit completion of \C. When \C is a set, this recovers the standard notions of second-order abstract syntax; in general, this gives a form of \em{dependently sorted} or \em{generalized} second-order abstract syntax.}
+
+\p{Our first step will be to understand the universal property of the \brk{\C,\Psh\prn{\LEX{\C}}} viewed as a \em{topos} or \em{logos} in the sense of [Anel and Joyal](anel-joyal-2021). It is instructive to \em{first} consider the universal property of #{\Psh\prn{\LEX{\C}}} as a logos. In particular, this is the \em{free} extension of the initial logos \SET by a diagram of shape \C; by this token, it is reasonable to write #{\SET\brk{\C}} for #{\Psh\prn{\LEX{\C}}}.}
+
+\proof{
+  \p{We will argue that the category of left exact cocontinuous functors #{\Psh\prn{\LEX{\C}}\to \E} is equivalent to the category of arbitrary functors #{\C\to \E}, naturally in \E.}
+  \ol{
+    \li{By Diaconescu’s theorem, left exact cocontinuous functors out of #{\Psh\prn{\LEX{\C}}} correspond to torsors on #{\LEX\C}, i.e. internally flat functors out of #{\LEX\C}.}
+    \li{A functor out of a finitely complete category is flat if and only if it is left exact.}
+    \li{A left exact functor from the free finite limit completion of \C is the same as an arbitrary functor out of \C.}
+  }
+}
+
+\p{Dually, the logos #{\SET\brk{\C}} corresponds to the classifying topos of a #{\C}-shaped diagram, which we shall write #{\AffTop{\C}}; when #{\C=\One} is the terminal category, we have #{\AffTop{\One}}, the classifying topos of an object. Thus we may write #{\SET\brk{\C} = \Sh{\AffTop{\C}}} in the notation of [Anel and Joyal](anel-joyal-2021).}
+
+\p{Next, we shall investigate \brk{\C,\SET\brk{\C}} as a logos and as a topos.}
+
+\ol{
+  \li{As a logos, \brk{\C,\SET\brk{\C}} is the \em{tensor product} #{\SET\brk{\C}\otimes\Psh{\OpCat{\C}}}; this tensor product is inherited from the 2-category of locally presentable categories.}
+  \li{The logos above corresponds to the cartesian product of topoi #{\AffTop{\C}\times\TorTop{\C}}} where #{\TorTop{\C}} is the \em{classifying topos of torsors} on \C.
+}
+
+\p{As such, [Fiore](fiore-2008)’s topos for #{\C}-sorted abstract syntax classifies pairs of a #{\C}-shaped diagram with a torsor on #{\C}, i.e. a flat #{\C}-shaped diagram.}
+
+\let\S{#{S}}
+\p{It is instructive to consider what happens when \C is a set \S, from the internal point of view. A #{\S}-shaped diagram is simply an #{\S}-indexed collection of types. On the other hand, a torsor #{T} on \S is the same as a \em{filter} on the discrete poset \S. Unraveling the definitions, this amounts to an \em{indicator} #{\gl{s}:\Omega} for each #{s\in\S} that is true for exactly one (undetermined) element of \S. \mark{The indicator #{\gl{s}} can be read as saying “the current sort is #{s}.”}}
