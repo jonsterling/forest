@@ -1,4 +1,5 @@
-\title{classifying topoi and second-order abstract syntax}
+\title{classifying topoi and generalized abstract syntax}
+\author{jonmsterling}
 \date{2023-09-05}
 \tag{draft}
 
@@ -11,31 +12,143 @@
 \let\Sh{#{\operatorname{Sh}}}
 \let\AffTop[C]{#{\mathbb{A}\Sup{\C}}}
 \let\TorTop{\operatorname{Tor}}
+\let\XTop{#{\mathcal{X}}}
 \let\One{#{\mathbf{1}}}
+\let\T{#{\operatorname{\mathbb{L}}}}
+\let\CAT{#{\mathbf{Cat}}}
+\let\Yo[B]{#{よ_{\B}}}
+\let\Gen[x]{#{\mathrm{G}_{\x}}}
 
-\p{For any small category \C, [Fiore](fiore-2008) treats #{\C}-sorted abstract syntax in the functor category #{\brk{\C,\Psh\prn{\LEX{\C}}}} where #{\LEX\C} is the free finite limit completion of \C. When \C is a set, this recovers the standard notions of second-order abstract syntax; in general, this gives a form of \em{dependently sorted} or \em{generalized} second-order abstract syntax.}
+\p{For any small category \C, [Fiore](fiore-2007-ct) [treats](fiore-2008) #{\C}-sorted abstract syntax in the functor category #{\brk{\C,\Psh\prn{\T{\C}}}} where \T is some 2-monad on \CAT; any such functor #{P} denotes a set that is indexed in sorts and contexts (where the 2-monad \T takes a category of sorts to the corresponding category of contexts). When \C is a set and \T is either finite limit or finite product completion, we recover the standard notions of many-sorted abstract syntax; in general, we get a variety of forms of \em{dependently sorted} or \em{generalized} abstract syntax.}
 
-\p{Our first step will be to understand the universal property of the \brk{\C,\Psh\prn{\LEX{\C}}} viewed as a \em{topos} or \em{logos} in the sense of [Anel and Joyal](anel-joyal-2021). It is instructive to \em{first} consider the universal property of #{\Psh\prn{\LEX{\C}}} as a logos. In particular, this is the \em{free} extension of the initial logos \SET by a diagram of shape \C; by this token, it is reasonable to write #{\SET\brk{\C}} for #{\Psh\prn{\LEX{\C}}}.}
+\p{We will assume here that \T is the free finite limit completion 2-monad; our goal is to study [Fiore](fiore-2008)’s general \em{substitution monoidal structure} from the point of view of classifying topoi, building on [Johnstone](peterjohnstone)’s analogous observations ([Elephant, D3.2](johnstone-2002)) on the non-symmetric monoidal structure of the \em{object classifier}. The topos theoretic viewpoint that we will explore is nothing more than a rephrasing of [Fiore](fiore-2007-ct)’s account in terms of the Kleisli composition in a 2-monad; nonetheless the perspective of classifying topoi is enlightening, as it provides an explanation for \em{precisely} what internal geometrical structure one expects in a given topos for abstract syntax, potentially leading to improved internal languages.}
 
-\proof{
-  \p{We will argue that the category of left exact cocontinuous functors #{\Psh\prn{\LEX{\C}}\to \E} is equivalent to the category of arbitrary functors #{\C\to \E}, naturally in \E.}
-  \ol{
-    \li{By Diaconescu’s theorem, left exact cocontinuous functors out of #{\Psh\prn{\LEX{\C}}} correspond to torsors on #{\LEX\C}, i.e. internally flat functors out of #{\LEX\C}.}
-    \li{A functor out of a finitely complete category is flat if and only if it is left exact.}
-    \li{A left exact functor from the free finite limit completion of \C is the same as an arbitrary functor out of \C.}
-  }
+\p{For any small category \C, the category of presheaves #{\Psh\prn{\T\C}} corresponds to the \em{classifying topos} of diagrams of shape \C. Following [Anel and Joyal](anel-joyal-2021), we shall write \AffTop{\C} for this “affine” classifying topos; under the conventions of \em{op. cit.}, we may then identify the category of sheaves #{\Sh{\AffTop{\C}}} with the presheaf category #{\Psh\prn{\T{\C}}}.}
+
+\p{The universal property of \AffTop{\C} as the classifying topos of #{\C}-diagrams means that for any topos \XTop, a diagram \Mor{P}{\C}{\Sh{\XTop}} corresponds essentially uniquely (by left Kan extension) to a morphism of topoi \Mor{\bar{P}}{\XTop}{\AffTop{\C}}. We have a \em{generic #{\C}-shaped diagram} \Mor{\Gen{\C}}{\C}{\Sh{\AffTop{\C}}} corresponding under this identification to the identity map on #{\AffTop{\C}}. More explicitly, the diagram \Gen{\C} is the following composite:}
+
+##{
+  \Gen{\C} :\equiv \C\xrightarrow{\eta_\C} \T\C\xrightarrow{\Yo{\C}} \Psh\prn{\T\C} = \Sh{\AffTop{\C}}
 }
 
-\p{Dually, the logos #{\SET\brk{\C}} corresponds to the classifying topos of a #{\C}-shaped diagram, which we shall write #{\AffTop{\C}}; when #{\C=\One} is the terminal category, we have #{\AffTop{\One}}, the classifying topos of an object. Thus we may write #{\SET\brk{\C} = \Sh{\AffTop{\C}}} in the notation of [Anel and Joyal](anel-joyal-2021).}
+\p{Given a morphism of topoi \Mor{f}{\XTop}{\AffTop{\C}}, we may recover the diagram #{\C\to{\Sh{\XTop}}} that it classifies as the composite #{\C\xrightarrow{\Gen{\C}}\Sh{\AffTop{\C}}\xrightarrow{\InvImg{f}}\Sh{\XTop}}.}
 
-\p{Next, we shall investigate \brk{\C,\SET\brk{\C}} as a logos and as a topos.}
+\p{In case #{\XTop\equiv\AffTop{\C}}, then, we have a correspondence between sheaves on \AffTop{\C} and endomorphisms of \AffTop{\C}; \mark{we are interested in representing the compositions of such endomorphisms as a \em{tensor product} on the functor category \brk{\C,\Sh{\AffTop{\C}}}}.}
 
-\ol{
-  \li{As a logos, \brk{\C,\SET\brk{\C}} is the \em{tensor product} #{\SET\brk{\C}\otimes\Psh{\OpCat{\C}}}; this tensor product is inherited from the 2-category of locally presentable categories.}
-  \li{The logos above corresponds to the cartesian product of topoi #{\AffTop{\C}\times\TorTop{\C}}} where #{\TorTop{\C}} is the \em{classifying topos of torsors} on \C.
+\p{In particular, let \Mor{P,Q}{\C}{\Sh{\AffTop{\C}}} be two diagrams; taking characteristic maps, we have endomorphisms of affine topoi \Mor{\bar{P},\bar{Q}}{\AffTop{\C}}{\AffTop{\C}}, which we may compose to obtain \Mor{\bar{Q}\circ\bar{P}}{\AffTop{\C}}{\AffTop{\C}}; then, we will define the tensor #{P\bullet Q} to be the diagram whose characteristic morphism of affine topoi is #{\bar{P}\circ\bar{Q}}. In other words:}
+
+##{
+  \begin{aligned}
+    P\bullet Q 
+    &:\equiv
+    \C\xrightarrow{\Gen{\C}}
+    \Sh{\AffTop{\C}}
+    \xrightarrow{\InvImg{\prn{\bar{P}\circ\bar{Q}}}}
+    \Sh{\AffTop{\C}}
+    \\
+    &=
+    \C\xrightarrow{\Gen{\C}}
+    \Sh{\AffTop{\C}}
+    \xrightarrow{\InvImg{\bar{P}}}
+    \Sh{\AffTop{\C}}
+    \xrightarrow{\InvImg{\bar{Q}}}
+    \Sh{\AffTop{\C}}
+  \end{aligned}
 }
 
-\p{As such, [Fiore](fiore-2008)’s topos for #{\C}-sorted abstract syntax classifies pairs of a #{\C}-shaped diagram with a torsor on #{\C}, i.e. a flat #{\C}-shaped diagram.}
 
-\let\S{#{S}}
-\p{It is instructive to consider what happens when \C is a set \S, from the internal point of view. An #{\S}-shaped diagram is simply an #{\S}-indexed collection of types, which we might write #{\prn{\Con{Var}_s}_{s\in S}}. On the other hand, a torsor #{T} on \S is the same as a \em{filter} on the discrete poset \S. Unraveling the definitions, this amounts to an \em{indicator} #{\gl{s}:\Omega} for each #{s\in\S} that is true for exactly one (undetermined) element of \S. \mark{The indicator #{\gl{s}} can be read as saying “the current sort is #{s}.”}}
+\p{To give an explicit computation of the tensor product, we first compute the inverse image of any \Mor{f}{\AffTop{\C}}{\AffTop{\C}} on representables #{\Yo{\C}\Gamma} for #{\Gamma\in\T\C}. As any left exact functor \Mor{H}{\T\C}{\E} is the right Kan extension of \Mor{H\circ\eta_\C}{\C}{\E} along \Mor{\eta_\C}{C}{\T\C}, we can conclude that #{H\Gamma \cong \Lim{\Gamma\to\eta_\C{d}}\eta_\C{d}}. We will use this in our calculation below, setting #{H:\equiv \InvImg{f}\circ\Yo{\C}}.}
+
+##{
+  \begin{aligned}
+    \InvImg{f}{\Yo{\C}\Gamma}
+    &\cong
+    \Lim{\Gamma\to\eta_\C{d}}
+    \InvImg{f}{
+      \Yo{\C}{\eta_\C{d}}
+    }
+    \\
+    &\cong
+    \Lim{\Gamma\to\eta_\C{d}}
+    \InvImg{f}{\Gen{\C}{d}}
+  \end{aligned}
+}
+
+\p{We are now prepared to compute the tensor product of any \Mor{P,Q}{\C}{\Sh{\AffTop{\C}}}.}
+
+##{
+  \begin{aligned}
+    \prn{P\bullet Q}c 
+    &= 
+    \InvImg{\bar{Q}}
+    \InvImg{\bar{P}}
+    \Gen{\C}{c}
+    \\
+    &\cong
+    \InvImg{\bar{Q}}
+    \prn{Pc}
+    \\ 
+    &\cong 
+    \InvImg{\bar{Q}}
+    \Colim{\Yo{\C}\Delta\to Pc}
+    \Yo{\C}\Delta
+    \\
+    &\cong 
+    \Colim{\Yo{\C}\Delta\to Pc}
+    \InvImg{\bar{Q}}\Yo{\C}\Delta
+    \\
+    &\cong 
+    \Colim{\Yo{\C}\Delta\to Pc}
+    \Lim{\Delta\to \eta_\C{d}}
+    \InvImg{\bar{Q}}\Gen{\C}d
+    \\
+    &\cong 
+    \Colim{\Yo{\C}\Delta\to Pc}
+    \Lim{\Delta\to \eta_\C{d}}
+    Qd
+  \end{aligned}
+}
+
+\p{Finally, we can relate the computation above to that of [Fiore](fiore-2008) in terms of coends.}
+
+##{
+  \begin{aligned}
+    \prn{P\bullet Q}\,c
+    &\cong 
+    \Colim{\Yo{\C}\Delta\to Pc}
+    \Lim{\Delta\to \eta_\C{d}}
+    Qd
+    \\
+    &\cong 
+    \int^{\Delta\in\T\C}
+    \brk{\Yo{\C}\Delta,Pc}
+    \cdot
+    \Lim{\Delta\to\eta_\C{d}} Qd
+    \\
+    &\cong 
+    \int^{\Delta\in\T\C}
+    P\,c\,\Delta
+    \cdot
+    \Lim{\Delta\to\eta_\C{d}} Qd
+    \\
+    &\cong 
+    \int^{\Delta\in\T\C}
+    P\,c\,\Delta
+    \cdot
+    \int_{c\in\C}
+    \brk{\Delta,\eta_\C{d}}\pitchfork Qd
+  \end{aligned}
+}
+
+\p{Above, we have written #{\prn{\cdot}} and #{\prn{\pitchfork}} for the tensoring and cotensoring of #{\Sh{\AffTop{\C}}} over \SET respectively. Thus, the fully pointwise computation is as follows:}
+
+##{
+  \prn{P\bullet Q}\,c\,\Gamma \cong 
+    \int^{\Delta\in\T\C}
+    P\,c\,\Delta
+    \times
+    \int_{c\in\C}
+    \brk{\Delta,\eta_\C{d}}\Rightarrow Q\,d\,\Gamma
+}
+
+\p{\em{Thanks to [Marcelo Fiore](marcelofiore) and [Daniel Gratzer](danielgratzer) for helpful discussions.}}
