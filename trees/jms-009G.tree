@@ -1,0 +1,56 @@
+\title{the “Day hom” of displayed categories}
+\author{jonmsterling}
+\taxon{definition}
+\date{2023-09-20}
+\import{base-macros}
+\import{frct-000A}
+
+\let\CAT{#{\mathbf{Cat}}}
+\let\E{#{E}}
+\let\F{#{F}}
+\let\B{#{B}}
+
+\p{Let \E and \F be two [displayed categories](frct-0000) over a semimonoidal category \prn{\B,\otimes,\alpha} such that \E is a [cartesian fibration](frct-0002). We may define the “Day hom” #{\E\multimap_\B \F} of \E and \F to be the following [displayed category](frct-0000) over \B:}
+
+##{
+  \E\multimap_\B\F :\equiv 
+  \prn{\pi_1}_*\prn{
+    \pi_2^*\E\Rightarrow_{\B\times\B} \otimes^*\F
+  }
+}
+
+\proof{
+  \p{First of all, we note that the pullback functor \Mor{\pi_1^*}{\Sl{\CAT}{\B}}{\Sl{\CAT}{\B\times\B}} has a right adjoint #{\pi_1^*\dashv \prn{\pi_1}_*}, as \Mor{\pi_1}{\B\times\B}{\B} is (as any cartesian fibration) a Conduché functor, i.e. an [exponentiable arrow](jms-0031) in \CAT. We have already assumed that \E is a Cartesian fibrations, and thus so is its restriction #{\pi_1^*E}; it therefore follows that #{\pi_1^*E} is exponentiable. With that out of the way, we may compute the hom by adjoint calisthenics:
+  }
+  
+  ##{
+    \begin{aligned}
+      &\Hom{\Sl{\CAT}{\B}}{X\otimes_B \E}{\F}
+      \\
+      &\quad\equiv
+      \Hom{\Sl{\CAT}{\B}}{
+        \otimes_!\prn{
+          \pi_1^*X\times_{B\times B}\pi_2^*\E
+        }
+      }{\F}
+      \\
+      &\quad\simeq
+      \Hom{
+        \Sl{\CAT}{\B\times\B}
+      }{\pi_1^*X\times_{B\times B}\pi_2^*\E}{\otimes^*\F}
+      \\ 
+      &\quad\simeq 
+      \Hom{\Sl{\CAT}{\B\times\B}}{
+        \pi_1^*X
+      }{\pi_2^*\E\Rightarrow \otimes^*\F}
+      \\
+      &\quad\simeq 
+      \Hom{\Sl{\CAT}{\B}}{X}{
+        \prn{\pi_1}_*\prn{
+          \pi_2^*\E\Rightarrow \otimes^*\F
+        }
+      }
+    \end{aligned}
+  }
+
+}
