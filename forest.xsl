@@ -213,7 +213,7 @@
           </xsl:if>
         </xsl:for-each>
         <xsl:if test="contributor">
-          <xsl:text> with contributions from </xsl:text>
+          <xsl:text> with transitive contributions from </xsl:text>
           <xsl:for-each select="contributor">
             <xsl:apply-templates />
             <xsl:if test="position()!=last()">
