@@ -1,11 +1,23 @@
 \title{basic macros}
 
 \def\proof[body]{
-  \block{\b{Proof}.}{\body}
+  \iftex{
+    \begin{proof}
+      \body
+    \end{proof}
+  }{
+    \block{\b{Proof}.}{\body}
+  }
 }
 
 \def\labeled-proof[lbl][body]{
-  \block{\b{Proof} (\lbl).}{\body}
+  \iftex{
+    \begin{proof}[\lbl]
+      \body
+    \end{proof}
+  }{
+    \block{\b{Proof} (\lbl).}{\body}
+  }
 }
 
 \def\Con[arg1]{#{\mathsf{\arg1}}}
