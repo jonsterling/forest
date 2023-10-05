@@ -1,0 +1,55 @@
+\title{structure identity principle for co-slice morphisms}
+\taxon{lemma}
+\date{2023-10-05}
+\author{jonmsterling}
+
+\import{base-macros}
+
+\let\Refl{#{\Con{refl}}}
+
+\p{Let #{A} be a type and let \Mor{f}{X}{Y} be a [homomorphism of #{A}-algebras](jms-009Y). Assuming function extensionality, the type #{\Sum{g\colon X\to Y}g\sim f} of homomorphisms homotopic to #{f} is contractible.}
+
+\proof{
+  \p{We expand the dependent sum #{\Sum{g\colon X\to Y}g\sim f} as a flat record telescope:}
+
+  ##{
+    \begin{bmatrix*}[l]
+      \vrt{g} &\colon &\vrt{X}\to \vrt{Y}\\
+      \alpha_g &\colon &\vrt{g}\circ\alpha_X \sim \alpha_Y\\
+      \vrt{H} &\colon &\vrt{f}\sim \vrt{g}\\
+      \alpha_H &\colon &\Prod{a:A} \vrt{H}\alpha_X a\cdot \alpha_g a = \alpha_f a
+    \end{bmatrix*}
+  }
+
+  \p{First we re-order the telescope:}
+
+  ##{
+    \begin{bmatrix*}[l]
+      \vrt{g} &\colon &\vrt{X}\to \vrt{Y}\\
+      \vrt{H} &\colon &\vrt{f}\sim \vrt{g}\\
+      \alpha_g &\colon &\vrt{g}\circ\alpha_X \sim \alpha_Y\\
+      \alpha_H &\colon &\Prod{a:A} \vrt{H}\alpha_X a\cdot \alpha_g a = \alpha_f a
+    \end{bmatrix*}
+  }
+
+  \p{By \em{homotopy induction} (function extensionality), the first two fields contract to a point with substitution \brk{\vrt{g}:\equiv \vrt{f}; \vrt{H}:\equiv \lambda\_.\Refl}. What remains of our telescope is the following:}
+
+  ##{
+    \begin{bmatrix*}[l]
+      \alpha_g &\colon &\vrt{f}\circ\alpha_X \sim \alpha_Y\\
+      \alpha_H &\colon &\Prod{a:A} \Refl \cdot \alpha_g a = \alpha_f a
+    \end{bmatrix*}
+  }
+
+  \p{Zooming into the #{\alpha_H} component, we simplify it and then zoom back out:}
+
+  ##{
+    \begin{bmatrix*}[l]
+      \alpha_g &\colon &\vrt{f}\circ\alpha_X \sim \alpha_Y\\
+      \alpha_H &\colon &\Prod{a:A} \alpha_g a = \alpha_f a
+    \end{bmatrix*}
+  }
+
+  \p{By \em{dependent homotopy induction} (also function extensionality), the remaining data collapse to a point with substitution \brk{\alpha_g :\equiv \alpha_f; \alpha_H :\equiv \lambda\_.\Refl}. The remaining telescope is empty, so we are done.}
+
+}
