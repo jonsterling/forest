@@ -2,5 +2,35 @@
 \author{jonmsterling}
 \date{2023-10-05}
 \taxon{meeting}
+\import{base-macros}
 
-\p{Meeting with [[foscoloregian]] and [[danielepalombi]].}
+\def\Obl[x]{#{\mathcal{O}_{\x}}}
+
+\p{Meeting with [[foscoloregian]] and [[danielepalombi]]. [[foscoloregian]] has suggested that we should tackle our question by thinking of duploids \em{as} adjunctions; then we are trying to find an adjunction-theoretic universal property for the “equalizing” completion #{\tilde{F}\dashv\tilde{G}} of an adjunction #{F\dashv G}.}
+
+\p{Let #{F\dashv G\colon D \to C} be an adjunction, and let #{T :\equiv GF \colon C\to C} and #{S :\equiv FG \colon D\to D} be the corresponding monad and comonad respectively. Then we have a new adjunction #{G' \dashv F' \colon C_T \to D_S} respectively.}
+
+\p{Let #{H} be the collage of the distributor #{\Obl{F\dashv G} \colon \OpCat{C}\times D \to \SET} of oblique maps specified as #{\Obl{F\dashv G}\prn{P,N} :\equiv C\prn{P,GN}}, so that we have:}
+
+##{
+  \begin{aligned}
+    H\prn{P,Q} &= C\prn{P,Q}\\
+    H\prn{M,N} &= D\prn{M,N}\\
+    H\prn{P,N} &= \Obl{F\dashv G}\prn{P,N} = C\prn{P,GN}\\
+    H\prn{N,P} &= \varnothing
+  \end{aligned}
+}
+
+\p{Let #{K} be the collage of the distributor #{\Obl{G'\dashv F'}\colon \OpCat{D_S}\times C_T \to \SET} specified as #{\Obl{G'\dashv F'}\prn{N,P} :\equiv D_S\prn{N,F'P}}, so that we have:}
+
+##{
+  \begin{aligned}
+    K\prn{M,N} &= D_S\prn{M,N} = D\prn{FGM,N}
+    \\ 
+    K\prn{P,Q} &= C_T\prn{P,Q} = C\prn{P,GFQ}
+    \\
+    K\prn{N,P} &= \Obl{G'\dashv G'}\prn{N,P} = D_S\prn{N,F'P} = D\prn{FGN,FP}
+    \\ 
+    K\prn{P,N} &= \varnothing
+  \end{aligned}
+}
