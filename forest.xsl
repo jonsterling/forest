@@ -65,17 +65,29 @@
     <xsl:text>December</xsl:text>
   </xsl:template>
 
-  <xsl:template match="date">
-    <li class="meta-item">
-      <xsl:apply-templates select="month" />
+  <xsl:template match="date" mode="date-inner">
+    <xsl:apply-templates select="month" />
       <xsl:if test="day">
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="day" />
-      </xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="day" />
+    </xsl:if>
       <xsl:if test="month">
-        <xsl:text>, </xsl:text>
-      </xsl:if>
-      <xsl:apply-templates select="year" />
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates select="year" />
+  </xsl:template>
+
+  <xsl:template match="date[@href]">
+    <li class="meta-item">
+      <a href="{@href}" class="local">
+        <xsl:apply-templates select="." mode="date-inner" />
+      </a>
+    </li>
+  </xsl:template>
+  
+  <xsl:template match="date[not(@href)]">
+    <li class="meta-item">
+      <xsl:apply-templates select="." mode="date-inner" />
     </li>
   </xsl:template>
 
@@ -178,14 +190,16 @@
             <xsl:text>#tree-</xsl:text>
             <xsl:value-of select="anchor" />
           </xsl:attribute>
-          <span class="toc-item-label">
+          <span
+            class="toc-item-label">
             <xsl:apply-templates select="taxon" />
             <xsl:apply-templates select="trail" />
             <xsl:if test="trail/crumb">
               <xsl:text>. </xsl:text>
             </xsl:if>
           </span>
-          <xsl:apply-templates select="title" />
+          <xsl:apply-templates
+            select="title" />
         </xsl:for-each>
       </a>
       <xsl:apply-templates select="mainmatter" mode="toc" />
@@ -244,7 +258,7 @@
   </xsl:template>
 
   <xsl:template match="tree/frontmatter/source-path">
-    <a class="edit-button" href="{concat('vscode://file/', .)}">
+    <a class="edit-button" href="{concat('vscode://file', .)}">
       <xsl:text>[edit]</xsl:text>
     </a>
   </xsl:template>
@@ -269,7 +283,8 @@
     <pre><xsl:value-of select="." /></pre>
   </xsl:template>
 
-  <xsl:template match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']|meta[@name='source']">
+  <xsl:template
+    match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']|meta[@name='source']">
     <li class="meta-item">
       <xsl:apply-templates />
     </li>
@@ -450,7 +465,8 @@
         </section>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates select="self::*[@root != 'true']/backmatter" />
+    <xsl:apply-templates
+      select="self::*[@root != 'true']/backmatter" />
   </xsl:template>
 
   <xsl:template match="backmatter/*/tree">
