@@ -1,0 +1,120 @@
+\RequirePackage{xparse}
+\RequirePackage{graphicx}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{hyperref}
+\RequirePackage{xspace}
+\RequirePackage{mparhack}
+\RequirePackage{newpxtext,newpxmath}
+
+\definecolor{Matterhorn}{RGB}{77,77,77}
+\definecolor{RegalBlue}{RGB}{3,69,117}
+\definecolor{DarkBlue}{RGB}{3,69,117}
+\definecolor{FunGreen}{RGB}{14,87,54}
+\definecolor{VerdunGreen}{RGB}{54,87,14}
+\definecolor{RedDevil}{RGB}{134,1,17}
+\definecolor{DarkRed}{RGB}{134,1,17}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor = Matterhorn,
+}
+
+\setcounter{secnumdepth}{5}
+
+\newcounter{forest}
+
+\ExplSyntaxOn
+
+\tl_new:N \l__forester_current_counter
+\clist_new:N \l__forester_counters
+\clist_set:Nn \l__forester_counters {section,subsection,subsubsection,paragraph,subparagraph}
+
+\keys_define:nn { forester } {
+  treeCommands .clist_set:N = \l__forester_counters,
+  forestSite .tl_set:N = \l__forester_site,
+}
+
+\keys_define:nn { forester_tree } {
+  title .tl_set:N = \l__forester_tree_title,
+  taxon .tl_set:N = \l__forester_tree_taxon,
+  slug .tl_set:N = \l__forester_tree_slug,
+}
+
+\cs_new:Npn \forester_format_slug:n #1 {
+  \textcolor{gray}{\texttt{#1}}
+}
+
+\cs_new:Npn \forester_slug_url:n #1 {
+  \l__forester_site / #1.xml
+}
+
+\cs_new:Npn \forester_format_slug_link:n #1 {
+  \tl_if_empty:NTF \l__forester_site {
+    \hyperref[#1]{\forester_format_slug:n {#1}}
+  } {
+    \href{\forester_slug_url:n {#1}}{
+      \forester_format_slug:n {#1}
+    }
+  }
+}
+
+\cs_new:Npn \forester_format_result: {
+  \medskip\par\noindent
+  \marginpar{\forester_format_slug_link:n {\l__forester_tree_slug}}
+  \textbf{\text_titlecase_first:n{\l__forester_tree_taxon}~\use:c{the\l__forester_current_counter}}
+  \tl_if_empty:NTF \l__forester_tree_title {} {~(\l__forester_tree_title)}
+  .\xspace
+}
+
+\cs_new:Npn \forester_format_section: {
+  \use:c{\l__forester_current_counter}[
+    \text_titlecase_first:n{\l__forester_tree_title}
+  ]{
+    \text_titlecase_first:n{\l__forester_tree_title}
+    \marginpar{\forester_format_slug_link:n {\l__forester_tree_slug}}
+  }
+}
+
+\NewDocumentEnvironment{tree}{m}{
+  \group_begin:
+  \keys_set:nn { forester_tree } {#1}
+  \clist_pop:NN \l__forester_counters \l__forester_current_counter
+  \tl_if_empty:NTF \l__forester_tree_taxon {
+    \forester_format_section:
+  } {
+    \refstepcounter{\l__forester_current_counter}
+    \addcontentsline{toc}{\l__forester_current_counter}{
+      \protect{\numberline{\use:c{the\l__forester_current_counter}}}
+      \textbf{\text_titlecase_first:n{\l__forester_tree_taxon}}
+      \tl_if_empty:NTF \l__forester_tree_title {} {~(\l__forester_tree_title)}
+    }
+    \forester_format_result:
+  }
+  \bool_if_exist:cTF {g__forester_slug_defined_\l__forester_tree_slug} {} {
+    \label{\l__forester_tree_slug}
+    \bool_gset_true:c {g__forester_slug_defined_\l__forester_tree_slug}
+  }
+}{
+  \medskip
+  \group_end:
+}
+
+\cs_new:Npn \forester_ref:nn #1 #2 {
+  \cs_if_exist:cTF {r@#1} {
+    \hyperref[#1]{#2}
+  } {
+    #2~\cite{#1}
+  }
+}
+
+\NewDocumentCommand\ForesterSetup{+m}{
+  \keys_set:nn { forester } { #1 }
+}
+
+\NewDocumentCommand\ForesterRef{mm}{
+  \forester_ref:nn {#1} {#2}
+}
+
+\ExplSyntaxOff
+
+
