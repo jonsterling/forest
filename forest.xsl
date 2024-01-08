@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public=""
-    doctype-system="" />
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public="" doctype-system="" />
 
   <!-- The following ensures that node not matched by a template will simply be
    copied into the output. -->
@@ -67,11 +67,11 @@
 
   <xsl:template match="date" mode="date-inner">
     <xsl:apply-templates select="month" />
-      <xsl:if test="day">
-      <xsl:text> </xsl:text>
+    <xsl:if test="day">
+      <xsl:text>&#160;</xsl:text>
       <xsl:apply-templates select="day" />
     </xsl:if>
-      <xsl:if test="month">
+    <xsl:if test="month">
       <xsl:text>, </xsl:text>
     </xsl:if>
     <xsl:apply-templates select="year" />
@@ -84,15 +84,14 @@
       </a>
     </li>
   </xsl:template>
-  
+
   <xsl:template match="date[not(@href)]">
     <li class="meta-item">
       <xsl:apply-templates select="." mode="date-inner" />
     </li>
   </xsl:template>
 
-  <xsl:template
-    match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote | table | tr | th | td | ruby | rb | rt | rp | span | figure | figcaption | mark | div | hr | abbr | sub | sup">
+  <xsl:template match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote | table | tr | th | td | ruby | rb | rt | rp | span | figure | figcaption | mark | div | hr | abbr | sub | sup">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
@@ -113,7 +112,22 @@
   </xsl:template>
 
   <xsl:template match="link">
-    <a class="{@type}" href="{@href}" title="{@title}">
+    <a class="{@type}" href="{@href}">
+      <xsl:choose>
+        <xsl:when test="@addr">
+          <xsl:attribute name="title">
+            <xsl:value-of select="@title" />
+            <xsl:text> [</xsl:text>
+            <xsl:value-of select="@addr" />
+            <xsl:text>]</xsl:text>
+          </xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:attribute name="title">
+            <xsl:value-of select="@title" />
+          </xsl:attribute>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates />
     </a>
   </xsl:template>
@@ -168,8 +182,7 @@
           <article>
             <xsl:apply-templates select="tree" />
           </article>
-          <xsl:if
-            test="tree/mainmatter/tree[@toc='true'] and not(/tree/frontmatter/meta[@name = 'toc']/.='false')">
+          <xsl:if test="tree/mainmatter/tree[@toc='true'] and not(/tree/frontmatter/meta[@name = 'toc']/.='false')">
             <nav id="toc">
               <div class="block">
                 <h1>Table of Contents</h1>
@@ -184,24 +197,23 @@
 
   <xsl:template match="tree" mode="toc">
     <li>
-      <a class="toc">
-        <xsl:for-each select="frontmatter">
+      <xsl:for-each select="frontmatter">
+        <a href="{route}" class="bullet" title="{title} [{addr}]">■</a>
+        <a>
           <xsl:attribute name="href">
             <xsl:text>#tree-</xsl:text>
             <xsl:value-of select="anchor" />
           </xsl:attribute>
-          <span
-            class="toc-item-label">
+          <span class="toc-item-label">
             <xsl:apply-templates select="taxon" />
             <xsl:apply-templates select="trail" />
             <xsl:if test="trail/crumb">
               <xsl:text>. </xsl:text>
             </xsl:if>
           </span>
-          <xsl:apply-templates
-            select="title" />
-        </xsl:for-each>
-      </a>
+          <xsl:apply-templates select="title" />
+        </a>
+      </xsl:for-each>
       <xsl:apply-templates select="mainmatter" mode="toc" />
     </li>
   </xsl:template>
@@ -280,11 +292,12 @@
   </xsl:template>
 
   <xsl:template match="meta[@name='bibtex']">
-    <pre><xsl:value-of select="." /></pre>
+    <pre>
+      <xsl:value-of select="." />
+    </pre>
   </xsl:template>
 
-  <xsl:template
-    match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']|meta[@name='source']">
+  <xsl:template match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']|meta[@name='source']">
     <li class="meta-item">
       <xsl:apply-templates />
     </li>
@@ -325,7 +338,7 @@
   </xsl:template>
 
   <xsl:template match="trail">
-    <xsl:text> </xsl:text>
+    <xsl:text>&#160;</xsl:text>
     <xsl:if test="crumb">
       <xsl:for-each select="crumb">
         <xsl:apply-templates />
@@ -350,9 +363,9 @@
         </xsl:if>
 
         <xsl:apply-templates select="title" />
-        <xsl:text> </xsl:text>
+        <xsl:text>&#032;</xsl:text>
         <xsl:apply-templates select="addr" />
-        <xsl:text> </xsl:text>
+        <xsl:text>&#032;</xsl:text>
         <xsl:apply-templates select="source-path" />
       </h1>
       <div class="metadata">
@@ -465,8 +478,7 @@
         </section>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates
-      select="self::*[@root != 'true']/backmatter" />
+    <xsl:apply-templates select="self::*[@root != 'true']/backmatter" />
   </xsl:template>
 
   <xsl:template match="backmatter/*/tree">
