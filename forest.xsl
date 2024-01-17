@@ -207,7 +207,8 @@
           <span class="taxon toc-item-label">
             <xsl:apply-templates select="taxon" />
             <xsl:if test="../@numbered='true' and ../@toc='true'">
-              <xsl:number format=" 1.1" count="tree[@toc='true' and @numbered='true']" level="multiple" />
+              <xsl:if test="taxon"><xsl:text>&#160;</xsl:text></xsl:if>
+              <xsl:number format="1.1" count="tree[@toc='true' and @numbered='true']" level="multiple" />
             </xsl:if>
             <xsl:if test="taxon or (../@numbered='true' and ../@toc='true')">
               <xsl:text>.&#160;</xsl:text>
@@ -241,7 +242,7 @@
           </xsl:if>
         </xsl:for-each>
         <xsl:if test="contributor">
-          <xsl:text> with transitive contributions from </xsl:text>
+          <xsl:text> with contributions from </xsl:text>
           <xsl:for-each select="contributor">
             <xsl:apply-templates />
             <xsl:if test="position()!=last()">
