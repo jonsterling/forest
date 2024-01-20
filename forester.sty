@@ -107,6 +107,14 @@
   }
 }
 
+\cs_new:Npn \forester_numbered_ref:n #1 {
+  \cs_if_exist:cTF {r@#1} {
+    \ref{#1}
+  } {
+    \forester_format_slug:n {#1} ~\cite{#1}
+  }
+}
+
 \NewDocumentCommand\ForesterSetup{+m}{
   \keys_set:nn { forester } { #1 }
 }
@@ -115,6 +123,9 @@
   \forester_ref:nn {#1} {#2}
 }
 
+\NewDocumentCommand\ForesterNumberedRef{m}{
+  \forester_numbered_ref:n {#1}
+}
+
+
 \ExplSyntaxOff
-
-
