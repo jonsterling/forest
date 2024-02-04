@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32705</anchor> <rss>frct-000Y.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000Y</addr>  <route>frct-000Y.xml</route>  <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Locally small externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is locally small.</p>
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32681</anchor> <rss>frct-000Y.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000Y</addr>  <route>frct-000Y.xml</route>  <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Locally small externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is locally small.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
 <p>Fix <tex>x \in  E</tex> and <tex>u,v \in   { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex>, we must exhibit a terminal object to the (total) category <tex>\widetilde { \mathbf {H}_{ { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x } }( u , v ) }</tex> of <link href="frct-000I.xml" type="local" addr="frct-000I" title="The definition of local smallness">“hom candidates”</link>. First we define <tex>{ \mathopen {} \left  [ u,v \right  ] \mathclose {}}</tex> to be the following pullback in <tex>E</tex>:</p>
@@ -9,7 +9,23 @@
  
   
   
-    <center><img src="resources/15295ba744c52a6bab282ac084d19216.svg"/></center>
+    <center><embedded-tex hash="15295ba744c52a6bab282ac084d19216"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \DiagramSquare {
+    nw/style = pullback,
+    ne = C _{ 1 } ,
+    se = C _{ 0 } \times  C _{ 0 } ,
+    east = {(s,t)},
+    south = {(u,v)},
+    sw = x,
+    nw =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+    west = p,
+    north = q,
+    west/style = {-&gt;,exists},
+    north/style = {-&gt;,exists},
+  }
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -21,7 +37,23 @@ the cartesian lift of <tex>u \in   { \mathopen {} \left  [ C \right  ] \mathclos
  
   
   
-    <center><img src="resources/2f02f19e2d6542c47669ff321dd060f1.svg"/></center>
+    <center><embedded-tex hash="2f02f19e2d6542c47669ff321dd060f1"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \DiagramSquare {
+    height = 1.5cm,
+    nw/style = pullback,
+    west/style = lies over,
+    east/style = lies over,
+    north/style = {-&gt;,exists},
+    ne = u,
+    nw =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } u,
+    sw =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+    se = x,
+    south = p,
+    north =  \overline {p},
+  }
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -34,7 +66,30 @@ morphism in the externalization of <tex>C</tex>, we choose the following diagram
  
   
   
-    <center><img src="resources/ea457bee534d25562351f6daa6e4a43c.svg"/></center>
+    <center><embedded-tex hash="ea457bee534d25562351f6daa6e4a43c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare {
+      ne = C _{ 1 } ,
+      se = C _{ 0 } ,
+      east = t,
+      nw =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+      sw = x,
+      west = p,
+      south = v,
+      north = q,
+      north/style = {magenta,-&gt;},
+      north/node/style = upright desc,
+    }
+     \node  (nne) [above = of ne] {$C _{ 0 } $};
+     \node  (nnw) [above = of nw] {$x$};
+     \draw [-&gt;] (ne) to node [right] {$s$} (nne);
+     \draw [-&gt;] (nw) to node [left] {$p$} (nnw);
+     \draw [-&gt;] (nnw) to node [above] {$u$} (nne);
+     \draw [-&gt;] (nw) to node [desc] {$ { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } {u}$} (nne);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -46,7 +101,37 @@ morphism in the externalization of <tex>C</tex>, we choose the following diagram
  
   
   
-    <center><img src="resources/d3231f5220a75a6fa411bf76db2afdbe.svg"/></center>
+    <center><embedded-tex hash="d3231f5220a75a6fa411bf76db2afdbe"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare &lt;l/&gt;{
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      north/style = &lt;-,
+      south/style = &lt;-,
+      ne/style = ne pullback,
+      ne =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } {u},
+      se =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+      sw = x,
+      nw = u,
+      south = p,
+      north =  \bar {p},
+    }
+     \SpliceDiagramSquare &lt;r/&gt;{
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      glue = west,
+      glue target = l/,
+      ne = v,
+      se = x,
+      north =  \epsilon ,
+      south = p,
+    }
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -57,7 +142,21 @@ morphism in the externalization of <tex>C</tex>, we choose the following diagram
  
   
   
-    <center><img src="resources/b49151a425530e5a8d3f1e25074969f1.svg"/></center>
+    <center><embedded-tex hash="b49151a425530e5a8d3f1e25074969f1"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \node  (u) {$u$};
+     \node  (h) [above right = 1.5cm of u,xshift=.5cm] {$ \bar {h}$};
+     \node  (hom) [below right = 1.5cm of u,xshift=.5cm] {$ { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } {u}$};
+     \node  (v) [below right = 1.5cm of h,xshift=.5cm] {$v$};
+     \draw [-&gt;] (hom) to node [sloped,below] {$ \bar {p}$} (u);
+     \draw [-&gt;] (h) to node [sloped,above] {$ \bar {p} _{ h } $} (u);
+     \draw [-&gt;] (hom) to node [sloped,below] {$ \epsilon $} (v);
+     \draw [-&gt;] (h) to node [sloped,above] {$ \epsilon _{ h } $} (v);
+     \draw [-&gt;] (h) to node [upright desc] {$ \bar \alpha $} (hom);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -71,7 +170,29 @@ the universal map using the universal property of the pullback that defines <tex
  
   
   
-    <center><img src="resources/087ae24d7525f0ed5eb9e3d3b89f2212.svg"/></center>
+    <center><embedded-tex hash="087ae24d7525f0ed5eb9e3d3b89f2212"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare {
+      nw/style = pullback,
+      ne = C _{ 1 } ,
+      se = C _{ 0 } \times  C _{ 0 } ,
+      east = {(s,t)},
+      south = {(u,v)},
+      sw = x,
+      nw =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+      west = p,
+      north = q,
+      north/node/style = upright desc,
+      west/node/style = upright desc,
+    }
+     \node  (h) [above left = of nw] {$h$};
+     \draw [-&gt;,bend right=30] (h) to node [left] {$p_h$} (sw);
+     \draw [-&gt;,bend left=30] (h) to node [sloped,above] {$ \epsilon _h$} (ne);
+     \draw [-&gt;,exists] (h) to node [desc] {$ \alpha $} (nw);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -86,7 +207,42 @@ exists. We define <tex>\bar \alpha</tex> using the universal property of the car
  
   
   
-    <center><img src="resources/b94cc3d8971715ea7cb2d110d35598ae.svg"/></center>
+    <center><embedded-tex hash="b94cc3d8971715ea7cb2d110d35598ae"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare &lt;l/&gt;{
+      ne/style = pullback,
+      nw/style = dotted pullback,
+      west/style = lies over,
+      east/style = lies over,
+      height = 1.5cm,
+      se =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ,
+      ne =  { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } u,
+      sw = h,
+      nw =  \bar {h},
+      south =  \alpha ,
+      north =  \bar \alpha ,
+      north/style = {-&gt;,exists},
+      north/node/style = upright desc,
+      south/node/style = upright desc,
+    }
+     \SpliceDiagramSquare &lt;r/&gt;{
+      glue = west,
+      glue target = l/,
+      east/style = lies over,
+      height = 1.5cm,
+      ne = u,
+      se = x,
+      south = p,
+      north =  \bar {p},
+      north/node/style = upright desc,
+      south/node/style = upright desc,
+    }
+     \draw [-&gt;,bend left=30] (l/nw) to node [above] {$ \bar {p} _{ h } $} (r/ne);
+     \draw [-&gt;,bend right=30] (l/sw) to node [below] {$p _{ h } $} (r/se);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -96,7 +252,7 @@ to observe that both <tex>\bar {p} _{ h } : \bar {h} \to  u</tex> and its second
 <tex>\bar {p}: { \mathopen {} \left  [ u,v \right  ] \mathclose {}} ^{ * } u \to  u</tex> are cartesian.</p>
 </block>
   
-</mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32706</anchor> <rss>frct-000V.rss.xml</rss>  <addr>frct-000V</addr>  <route>frct-000V.xml</route>  <authors> <contributor><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></contributor></authors> <title>The externalization of an internal category</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32707</anchor> <rss>frct-001R.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001R</addr>  <route>frct-001R.xml</route>   <title>Externalization</title> </frontmatter> <mainmatter><p>Let <tex>C</tex> be an internal category in <tex>E</tex>. We may define a fibered category <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}}</tex> over <tex>E</tex> called the <em>externalization</em> of <tex>C</tex>.</p><ol><li>Given <tex>x \in  E</tex>, an object of <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> is defined to be a morphism <tex>x \to  C _{ 0 }</tex> in <tex>E</tex>.</li>
+</mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32682</anchor> <rss>frct-000V.rss.xml</rss>  <addr>frct-000V</addr>  <route>frct-000V.xml</route>  <authors> <contributor><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></contributor></authors> <title>The externalization of an internal category</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32683</anchor> <rss>frct-001R.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001R</addr>  <route>frct-001R.xml</route>   <title>Externalization</title> </frontmatter> <mainmatter><p>Let <tex>C</tex> be an internal category in <tex>E</tex>. We may define a fibered category <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}}</tex> over <tex>E</tex> called the <em>externalization</em> of <tex>C</tex>.</p><ol><li>Given <tex>x \in  E</tex>, an object of <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> is defined to be a morphism <tex>x \to  C _{ 0 }</tex> in <tex>E</tex>.</li>
 
   <li><p>Given <tex>x,y \in  E</tex> and <tex>f:x \to  y</tex> and <tex>u  \in   { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> and <tex>v \in   { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ y }</tex>, a morphism <tex>u \xrightarrow [ f ]{}  v</tex> is defined to be a morphism <tex>h : x \to  C _{ 1 }</tex> in <tex>E</tex> such that the following diagram commutes:</p>
 
@@ -104,8 +260,24 @@ to observe that both <tex>\bar {p} _{ h } : \bar {h} \to  u</tex> and its second
  
   
   
-    <center><img src="resources/e72b3c42684eb2421fdb5c2135fa4d1f.svg"/></center>
-  </li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32708</anchor> <rss>frct-000W.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000W</addr>  <route>frct-000W.xml</route>   <title>Cartesian lifts in the externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is a cartesian fibration.</p>
+    <center><embedded-tex hash="e72b3c42684eb2421fdb5c2135fa4d1f"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (x) {$x$};
+         \node  (y) [below = of x] {$y$};
+         \node  (C/1) [right = of x] {$C _{ 1 } $};
+         \node  (C/0) [below = of C/1] {$C _{ 0 } $};
+         \node  (C/0') [above = of C/1] {$C _{ 0 } $};
+         \draw [-&gt;] (x) to node [upright desc] {$h$} (C/1);
+         \draw [-&gt;] (C/1) to node [right] {$t$} (C/0);
+         \draw [-&gt;] (C/1) to node [right] {$s$} (C/0');
+         \draw [-&gt;] (y) to node [below] {$v$} (C/0);
+         \draw [-&gt;] (x) to node [left] {$f$} (y);
+         \draw [-&gt;] (x) to node [sloped,above] {$u$} (C/0');
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32684</anchor> <rss>frct-000W.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000W</addr>  <route>frct-000W.xml</route>   <title>Cartesian lifts in the externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is a cartesian fibration.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>
@@ -113,7 +285,7 @@ to observe that both <tex>\bar {p} _{ h } : \bar {h} \to  u</tex> and its second
   </p>
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32709</anchor> <rss>frct-000X.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000X</addr>  <route>frct-000X.xml</route>   <title>Globally small externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is globally small</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32685</anchor> <rss>frct-000X.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-000X</addr>  <route>frct-000X.xml</route>   <title>Globally small externalization</title> </frontmatter> <mainmatter><p>The <link href="frct-001R.xml" type="local" addr="frct-001R" title="Externalization">externalization</link> is globally small</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>We may choose a <link href="frct-000K.xml" type="local" addr="frct-000K" title="Generic objects">generic object</link> for <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}}</tex>, namely the identity element <tex>(C _{ 0 } , 1 _{ C _{ 0 } } ) \in   \widetilde { { \mathopen {} \left  [ C \right  ] \mathclose {}} }</tex>. Given any object <tex>(x,u) \in   \widetilde { { \mathopen {} \left  [ C \right  ] \mathclose {}} }</tex> the cartesian map <tex>(x,u) \to  (C _{ 0 } , 1 _{ C _{ 0 } } )</tex> is given as follows:</p>
@@ -122,13 +294,29 @@ to observe that both <tex>\bar {p} _{ h } : \bar {h} \to  u</tex> and its second
  
   
   
-    <center><img src="resources/4ea662b943631230f59c7b78cde44b62.svg"/></center>
+    <center><embedded-tex hash="4ea662b943631230f59c7b78cde44b62"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \node  (x) {$x$};
+       \node  (y) [below = of x] {$C _{ 0 } $};
+       \node  (C/1) [right = of x] {$C _{ 1 } $};
+       \node  (C/0) [below = of C/1] {$C _{ 0 } $};
+       \node  (C/0') [above = of C/1] {$C _{ 0 } $};
+       \draw [-&gt;] (x) to node [upright desc] {$ \mathsf { idn } _{ u } $} (C/1);
+       \draw [-&gt;] (C/1) to node [right] {$t$} (C/0);
+       \draw [-&gt;] (C/1) to node [right] {$s$} (C/0');
+       \draw [-&gt;] (y) to node [below] {$ 1 _{ C _{ 0 } } $} (C/0);
+       \draw [-&gt;] (x) to node [left] {$u$} (y);
+       \draw [-&gt;] (x) to node [sloped,above] {$u$} (C/0');
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 
 </block>
   
-</mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32710</anchor> <rss>frct-001R.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001R</addr>  <route>frct-001R.xml</route>   <title>Externalization</title> </frontmatter> <mainmatter><p>Let <tex>C</tex> be an internal category in <tex>E</tex>. We may define a fibered category <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}}</tex> over <tex>E</tex> called the <em>externalization</em> of <tex>C</tex>.</p><ol><li>Given <tex>x \in  E</tex>, an object of <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> is defined to be a morphism <tex>x \to  C _{ 0 }</tex> in <tex>E</tex>.</li>
+</mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32686</anchor> <rss>frct-001R.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001R</addr>  <route>frct-001R.xml</route>   <title>Externalization</title> </frontmatter> <mainmatter><p>Let <tex>C</tex> be an internal category in <tex>E</tex>. We may define a fibered category <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}}</tex> over <tex>E</tex> called the <em>externalization</em> of <tex>C</tex>.</p><ol><li>Given <tex>x \in  E</tex>, an object of <tex>{ \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> is defined to be a morphism <tex>x \to  C _{ 0 }</tex> in <tex>E</tex>.</li>
 
   <li><p>Given <tex>x,y \in  E</tex> and <tex>f:x \to  y</tex> and <tex>u  \in   { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ x }</tex> and <tex>v \in   { \mathopen {} \left  [ C \right  ] \mathclose {}} _{ y }</tex>, a morphism <tex>u \xrightarrow [ f ]{}  v</tex> is defined to be a morphism <tex>h : x \to  C _{ 1 }</tex> in <tex>E</tex> such that the following diagram commutes:</p>
 
@@ -136,14 +324,60 @@ to observe that both <tex>\bar {p} _{ h } : \bar {h} \to  u</tex> and its second
  
   
   
-    <center><img src="resources/e72b3c42684eb2421fdb5c2135fa4d1f.svg"/></center>
-  </li></ol></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32711</anchor> <rss>frct-000I.rss.xml</rss>  <addr>frct-000I</addr>  <route>frct-000I.xml</route>   <title>The definition of local smallness</title> </frontmatter> <mainmatter><p>Based on our explorations above, we are now prepared to write down (and
-understand) the proper definition of local smallness for an arbitrary cartesian fibration <tex>E</tex> over <tex>B</tex>, which should be thought of as a (potentially large) category relative to <tex>B</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32712</anchor> <rss>frct-001C.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-001C</addr>  <route>frct-001C.xml</route>   <title>Hom candidates</title> </frontmatter> <mainmatter><p>For any <tex>x \in  B</tex> and displayed objects <tex>u,v \in  E _{ x }</tex>, we define a <em>hom
+    <center><embedded-tex hash="e72b3c42684eb2421fdb5c2135fa4d1f"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (x) {$x$};
+         \node  (y) [below = of x] {$y$};
+         \node  (C/1) [right = of x] {$C _{ 1 } $};
+         \node  (C/0) [below = of C/1] {$C _{ 0 } $};
+         \node  (C/0') [above = of C/1] {$C _{ 0 } $};
+         \draw [-&gt;] (x) to node [upright desc] {$h$} (C/1);
+         \draw [-&gt;] (C/1) to node [right] {$t$} (C/0);
+         \draw [-&gt;] (C/1) to node [right] {$s$} (C/0');
+         \draw [-&gt;] (y) to node [below] {$v$} (C/0);
+         \draw [-&gt;] (x) to node [left] {$f$} (y);
+         \draw [-&gt;] (x) to node [sloped,above] {$u$} (C/0');
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32687</anchor> <rss>frct-000I.rss.xml</rss>  <addr>frct-000I</addr>  <route>frct-000I.xml</route>   <title>The definition of local smallness</title> </frontmatter> <mainmatter><p>Based on our explorations above, we are now prepared to write down (and
+understand) the proper definition of local smallness for an arbitrary cartesian fibration <tex>E</tex> over <tex>B</tex>, which should be thought of as a (potentially large) category relative to <tex>B</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32688</anchor> <rss>frct-001C.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-001C</addr>  <route>frct-001C.xml</route>   <title>Hom candidates</title> </frontmatter> <mainmatter><p>For any <tex>x \in  B</tex> and displayed objects <tex>u,v \in  E _{ x }</tex>, we define a <em>hom
   candidate</em> for <tex>u,v</tex> to be a span <tex>u \leftarrow   \bar {h}  \rightarrow  v</tex> in <tex>E</tex> in which the left-hand leg is cartesian:</p>
  
   
   
-    <center><img src="resources/3a5b805c68d96064b5262626df951a36.svg"/></center>
+    <center><embedded-tex hash="3a5b805c68d96064b5262626df951a36"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare &lt;l/&gt;{
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      north/style = &lt;-,
+      south/style = &lt;-,
+      ne/style = ne pullback,
+      ne =  \bar {h},
+      se = h,
+      sw = x,
+      nw = u,
+      south = p _{ h } ,
+      north =  \bar {p} _{ h } 
+    }
+     \SpliceDiagramSquare &lt;r/&gt;{
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      glue = west,
+      glue target = l/,
+      ne = v,
+      se = x,
+      north =  \epsilon _{ h } ,
+      south = p _{ h } ,
+    }
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 <p>In the above, <tex>h</tex> should be thought of as a candidate for the “hom object” of <tex>u,v</tex>,
@@ -157,14 +391,50 @@ This structure can be rephrased in terms of a displayed category <tex>\mathbf {H
  
   
   
-    <center><img src="resources/71700b6ca0e7972a395b32a23c877a8c.svg"/></center>
-  </li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32713</anchor> <rss>frct-001B.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-001B</addr>  <route>frct-001B.xml</route>   <title>Locally small fibration</title> </frontmatter> <mainmatter><p>A cartesian fibration <tex>E</tex> over <tex>B</tex> is <em>locally small</em> if and only if for
+    <center><embedded-tex hash="71700b6ca0e7972a395b32a23c877a8c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (u) {$u$};
+         \node  (l) [above right = 1.5cm of u,xshift=.5cm] {$ \bar {l}$};
+         \node  (h) [below right = 1.5cm of u,xshift=.5cm] {$ \bar {h}$};
+         \node  (v) [below right = 1.5cm of l,xshift=.5cm] {$v$};
+         \draw [-&gt;] (h) to node [sloped,below] {$ \bar {p} _{ h } $} (u);
+         \draw [-&gt;] (l) to node [sloped,above] {$ \bar {p} _{ l } $} (u);
+         \draw [-&gt;] (h) to node [sloped,below] {$ \epsilon _{ h } $} (v);
+         \draw [-&gt;] (l) to node [sloped,above] {$ \epsilon _{ l } $} (v);
+         \draw [-&gt;] (l) to node [upright desc] {$ \bar \alpha $} (h);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32689</anchor> <rss>frct-001B.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-001B</addr>  <route>frct-001B.xml</route>   <title>Locally small fibration</title> </frontmatter> <mainmatter><p>A cartesian fibration <tex>E</tex> over <tex>B</tex> is <em>locally small</em> if and only if for
 each <tex>x \in  B</tex> and <tex>u,v \in  E _{ x }</tex>, the total category <tex>\widetilde { \mathbf {H}_{ E _{ x } }( u , v ) }</tex> of <link href="frct-001C.xml" type="local" addr="frct-001C" title="Hom candidates">hom candidates</link>
-has a terminal object. Viewed as a displayed object in <tex>E</tex>, we shall write <tex>\overline { \mathbf {hom}} _{ E _{ x } } ( u , v )</tex> lying over <tex>\mathbf {hom} _{ E _{ x } } { \mathopen {} \left ( u , v \right ) \mathclose {}}</tex> for the terminal hom candidate.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32714</anchor> <rss>frct-0014.rss.xml</rss>  <addr>frct-0014</addr>  <route>frct-0014.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The generalized pullback lemma</title> </frontmatter> <mainmatter><p>In light of our discussion of the <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">fundamental self-indexing</link>, the following result for displayed categories generalizes the ordinary “pullback lemma.”</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32715</anchor> <rss>frct-001H.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-001H</addr>  <route>frct-001H.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Generalized pullback lemma</title> </frontmatter> <mainmatter><p>Let <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</tex>, and suppose that <tex>{ \bar {y} } \xrightarrow [ g ]{ \bar {g} }{ \bar {z} }</tex> is cartesian over <tex>g</tex>. Then <tex>\bar {f}; \bar {g}</tex> is cartesian over <tex>f;g</tex> if and only if <tex>\bar {f}</tex> is cartesian over <tex>f</tex>.</p>
+has a terminal object. Viewed as a displayed object in <tex>E</tex>, we shall write <tex>\overline { \mathbf {hom}} _{ E _{ x } } ( u , v )</tex> lying over <tex>\mathbf {hom} _{ E _{ x } } { \mathopen {} \left ( u , v \right ) \mathclose {}}</tex> for the terminal hom candidate.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32690</anchor> <rss>frct-0014.rss.xml</rss>  <addr>frct-0014</addr>  <route>frct-0014.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The generalized pullback lemma</title> </frontmatter> <mainmatter><p>In light of our discussion of the <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">fundamental self-indexing</link>, the following result for displayed categories generalizes the ordinary “pullback lemma.”</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>32691</anchor> <rss>frct-001H.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-001H</addr>  <route>frct-001H.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Generalized pullback lemma</title> </frontmatter> <mainmatter><p>Let <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</tex>, and suppose that <tex>{ \bar {y} } \xrightarrow [ g ]{ \bar {g} }{ \bar {z} }</tex> is cartesian over <tex>g</tex>. Then <tex>\bar {f}; \bar {g}</tex> is cartesian over <tex>f;g</tex> if and only if <tex>\bar {f}</tex> is cartesian over <tex>f</tex>.</p>
  
   
   
-    <center><img src="resources/7509371ecf38f56b4b3aea88f54d03e4.svg"/></center>
+    <center><embedded-tex hash="7509371ecf38f56b4b3aea88f54d03e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare {
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      nw/style = pullback,
+      sw = y,
+      nw =  \bar {y},
+      se = z,
+      ne =  \bar {z},
+      south = g,
+      north =  \bar {g},
+    }
+     \node  (x*) [dotted pullback, left = of nw] {$ \bar {x}$};
+     \node  (x) [left = of sw] {$x$};
+     \draw [-&gt;] (x*) to node [above] {$ \bar {f}$} (nw);
+     \draw [lies over] (x*) to (x);
+     \draw [-&gt;] (x) to node [below] {$f$} (sw);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -176,7 +446,38 @@ has a terminal object. Viewed as a displayed object in <tex>E</tex>, we shall wr
  
   
   
-    <center><img src="resources/e56af41028fbef4145e8df0068ed7cde.svg"/></center>
+    <center><embedded-tex hash="e56af41028fbef4145e8df0068ed7cde"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        nw/style = pullback,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
+
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (z');
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -189,7 +490,37 @@ has a terminal object. Viewed as a displayed object in <tex>E</tex>, we shall wr
  
   
   
-    <center><img src="resources/4b324e83292ae14f9a8f05e2464699fd.svg"/></center>
+    <center><embedded-tex hash="4b324e83292ae14f9a8f05e2464699fd"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
+
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 

@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32302</anchor> <rss>frct-001H.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-001H</addr>  <route>frct-001H.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Generalized pullback lemma</title> </frontmatter> <mainmatter><p>Let <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</tex>, and suppose that <tex>{ \bar {y} } \xrightarrow [ g ]{ \bar {g} }{ \bar {z} }</tex> is cartesian over <tex>g</tex>. Then <tex>\bar {f}; \bar {g}</tex> is cartesian over <tex>f;g</tex> if and only if <tex>\bar {f}</tex> is cartesian over <tex>f</tex>.</p>
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32278</anchor> <rss>frct-001H.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-001H</addr>  <route>frct-001H.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Generalized pullback lemma</title> </frontmatter> <mainmatter><p>Let <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</tex>, and suppose that <tex>{ \bar {y} } \xrightarrow [ g ]{ \bar {g} }{ \bar {z} }</tex> is cartesian over <tex>g</tex>. Then <tex>\bar {f}; \bar {g}</tex> is cartesian over <tex>f;g</tex> if and only if <tex>\bar {f}</tex> is cartesian over <tex>f</tex>.</p>
  
   
   
-    <center><img src="resources/7509371ecf38f56b4b3aea88f54d03e4.svg"/></center>
+    <center><embedded-tex hash="7509371ecf38f56b4b3aea88f54d03e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare {
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      nw/style = pullback,
+      sw = y,
+      nw =  \bar {y},
+      se = z,
+      ne =  \bar {z},
+      south = g,
+      north =  \bar {g},
+    }
+     \node  (x*) [dotted pullback, left = of nw] {$ \bar {x}$};
+     \node  (x) [left = of sw] {$x$};
+     \draw [-&gt;] (x*) to node [above] {$ \bar {f}$} (nw);
+     \draw [lies over] (x*) to (x);
+     \draw [-&gt;] (x) to node [below] {$f$} (sw);
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
@@ -16,7 +38,38 @@
  
   
   
-    <center><img src="resources/e56af41028fbef4145e8df0068ed7cde.svg"/></center>
+    <center><embedded-tex hash="e56af41028fbef4145e8df0068ed7cde"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        nw/style = pullback,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
+
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (z');
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -29,7 +82,37 @@
  
   
   
-    <center><img src="resources/4b324e83292ae14f9a8f05e2464699fd.svg"/></center>
+    <center><embedded-tex hash="4b324e83292ae14f9a8f05e2464699fd"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
+
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -37,7 +120,7 @@
   <p>Because <tex>\bar {f}; \bar {g}</tex> is cartesian, we can factor <tex>\bar {h}; \bar {g} = i; \bar {f}; \bar {g}</tex> for a unique <tex>{ \bar {u} } \xrightarrow [ m ]{ i }{ \bar {x} }</tex>. On the other hand, because <tex>\bar {g}</tex> is cartesian, there is a unique <tex>{ \bar {u} } \xrightarrow [ m;f ]{ j }{ \bar {y} }</tex> for which <tex>\bar {h}; \bar {g} = j; \bar {g}</tex>; as both <tex>\bar {h}</tex> and <tex>i; \bar {f}</tex> satisfy this condition, we conclude <tex>\bar {h}=i; \bar {f}</tex>. Therefore, there is a unique <tex>{ \bar {u} } \xrightarrow [ m ]{ i }{ \bar {x} }</tex> for which <tex>\bar {h} = i; \bar {f}</tex>, as required.</p>
 </block>
   
-</mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32303</anchor> <rss>frct-0014.rss.xml</rss>  <addr>frct-0014</addr>  <route>frct-0014.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The generalized pullback lemma</title> </frontmatter> <mainmatter><p>In light of our discussion of the <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">fundamental self-indexing</link>, the following result for displayed categories generalizes the ordinary “pullback lemma.”</p></mainmatter> </tree></context> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32304</anchor> <rss>frct-002B.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-002B</addr>  <route>frct-002B.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Equivalence with Grothendieck's fibrations</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>. Then <tex>E</tex> is a <link href="frct-0002.xml" type="local" addr="frct-0002" title="Cartesian fibration">cartesian fibration</link> if and only if the following two conditions hold:</p><ol><li><em>Hypocartesian lifts.</em> For each <tex>f:x \to  y \in  B</tex> and <tex>\bar {y} \in  E _{ y }</tex> there exists a displayed object <tex>\bar {x} \in  E _{ x }</tex> and hypocartesian morphism <tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</tex>.</li>
+</mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32279</anchor> <rss>frct-0014.rss.xml</rss>  <addr>frct-0014</addr>  <route>frct-0014.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The generalized pullback lemma</title> </frontmatter> <mainmatter><p>In light of our discussion of the <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">fundamental self-indexing</link>, the following result for displayed categories generalizes the ordinary “pullback lemma.”</p></mainmatter> </tree></context> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>32280</anchor> <rss>frct-002B.rss.xml</rss> <taxon>Lemma</taxon> <addr>frct-002B</addr>  <route>frct-002B.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Equivalence with Grothendieck's fibrations</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>. Then <tex>E</tex> is a <link href="frct-0002.xml" type="local" addr="frct-0002" title="Cartesian fibration">cartesian fibration</link> if and only if the following two conditions hold:</p><ol><li><em>Hypocartesian lifts.</em> For each <tex>f:x \to  y \in  B</tex> and <tex>\bar {y} \in  E _{ y }</tex> there exists a displayed object <tex>\bar {x} \in  E _{ x }</tex> and hypocartesian morphism <tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</tex>.</li>
 
   <li><em>Closure under composition.</em> If <tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</tex> and <tex>\bar {g}: \bar {y} \xrightarrow [ g ]{} \bar {z}</tex> are hypocartesian, then <tex>\bar {f}; \bar {g}</tex> is hypocartesian.</li></ol>
   
@@ -51,7 +134,30 @@
  
   
   
-    <center><img src="resources/7f4b88d9a04e0dfb637e6659b4117980.svg"/></center>
+    <center><embedded-tex hash="7f4b88d9a04e0dfb637e6659b4117980"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -62,7 +168,30 @@
  
   
   
-    <center><img src="resources/837b74f9bc745e3522138ee187487d90.svg"/></center>
+    <center><embedded-tex hash="837b74f9bc745e3522138ee187487d90"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {u}',
+        ne =  \bar {y},
+        sw = u,
+        north =  \bar {m}; \bar {f},
+        south = m;f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [double] (u) to (sw);
+       \draw [-&gt;,exists] (u') to node [desc] {$i$} (nw);
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
   
  
 

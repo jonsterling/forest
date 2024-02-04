@@ -97,6 +97,12 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="embedded-tex">
+   <center>
+    <img src="resources/{@hash}.svg"/>
+   </center>
+  </xsl:template>
+
   <xsl:template match="headline">
     <summary>
       <xsl:apply-templates />

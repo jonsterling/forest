@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8595</anchor> <rss>jms-00E0.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00E0</addr>  <route>jms-00E0.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Mates between adjunctions</title> </frontmatter> <mainmatter><p>Let <tex>\mathcal {K}</tex> be a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link>, and let <tex>A  \equiv   { \mathopen {} \left ( l_A \dashv  r_A \colon  A_1 \to  A_0 \right ) \mathclose {}}</tex> and <tex>B  \equiv   { \mathopen {} \left ( l_B \dashv  r_B \colon  B_1 \to  B_0 \right ) \mathclose {}}</tex> be a pair of adjunctions in <tex>\mathcal {K}</tex>. Fix a pair of morphisms <tex>{ A_0 } \xrightarrow {{ f_0 }}{ B_0 }</tex> and <tex>{ A_1 } \xrightarrow {{ f_1 }}{ B_1 }</tex>.</p><ol><li>
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8569</anchor> <rss>jms-00E0.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00E0</addr>  <route>jms-00E0.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Mates between adjunctions</title> </frontmatter> <mainmatter><p>Let <tex>\mathcal {K}</tex> be a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link>, and let <tex>A  \equiv   { \mathopen {} \left ( l_A \dashv  r_A \colon  A_1 \to  A_0 \right ) \mathclose {}}</tex> and <tex>B  \equiv   { \mathopen {} \left ( l_B \dashv  r_B \colon  B_1 \to  B_0 \right ) \mathclose {}}</tex> be a pair of adjunctions in <tex>\mathcal {K}</tex>. Fix a pair of morphisms <tex>{ A_0 } \xrightarrow {{ f_0 }}{ B_0 }</tex> and <tex>{ A_1 } \xrightarrow {{ f_1 }}{ B_1 }</tex>.</p><ol><li>
     Given a 2-cell <tex>{ l_B \circ  f_0 } \xrightarrow {{ \lambda }}{ f_1 \circ  l_A }</tex> as depicted on the left below, its <em>right mate</em> <tex>{ f_0 \circ  r_A } \xrightarrow {{ \rho }}{ r_B \circ  f_1 }</tex> is obtained by bending with the unit of <tex>B</tex> and the counit of <tex>A</tex> as shown below on the right:
 
     
  
   
   
-    <center><img src="resources/4df0581fcd3618d015ca45b5702a74e0.svg"/></center>
+    <center><embedded-tex hash="4df0581fcd3618d015ca45b5702a74e0"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut f_0 $] (f0) at (spath cs:north 0.5)
+          coordinate[label=above:$ \strut l_B $] (lB) at (spath cs:north 0.75)
+          coordinate[label=below:$ \strut l_A $] (lA) at (spath cs:south 0.25)
+          coordinate[label=below:$ \strut f_1 $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \draw [spath/save = lBA] (lB) to[out=-90,in=90] (lA);
+         \path [name intersections={of=f01 and lBA}]
+          coordinate[dot, 
+      label=-10:$ \lambda $
+     ] (lambda) at (intersection-1)
+        ;
+         
+         \begin {scope}[on background layer]
+           \fill [ catc ] (nw) rectangle (se);
+           \tikzset {
+            spath/split at intersections={f01}{lBA},
+            spath/get components of={lBA} \lcpts ,
+          }
+           \fill [ cate ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ catd ] (lambda.center) to[spath/use={ \getComponentOf \lcpts2 ,weld}] (lA) to (f1) to cycle;
+           \fill [ catf ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f1) to (se) to (ne) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+ 
+      $ \mapsto $
+       
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut f_0 $] (f0) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut r_B $] (rB) at (spath cs:south 0.90)
+          coordinate[label=above:$ \strut r_A $] (rA) at (spath cs:north 0.1)
+          coordinate[label=below:$ \strut f_1 $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \path [spath/save = diagonal] (sw) to (ne);
+         \path 
+          coordinate[dot,label=above:$ \epsilon _A $] (counit) at (spath cs:diagonal 0.25)
+          coordinate[dot,label=below:$ \eta _B $] (unit) at (spath cs:diagonal 0.75)
+        ;
+         \draw [spath/save=swoosh] (rA) to[out=-90,in=180] (counit.center) to[out=0,in=180] (unit.center) to[out=0,in=90] (rB);
+         \path [name intersections={of=swoosh and f01}]
+          coordinate[dot, 
+      label=-10:$ \lambda $
+     ] (lambda) at (intersection-1)
+        ;
+         \begin {scope}[on background layer]
+           \tikzset {
+            spath/split at intersections={f01}{swoosh},
+            spath/get components of={swoosh} \cpts ,
+          }
+           \fill [ catd ] (nw) to (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f1) to (sw) to cycle;
+           \fill [ catc ] (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ cate ] (f0) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to (se) to (ne) to cycle;
+           \fill [ catf ] (f1) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+ 
+    </embedded-tex-body></embedded-tex></center>
   </li>
 
   <li>
@@ -17,17 +87,143 @@
  
   
   
-    <center><img src="resources/2047751a2d0375e188eaf3b8e0d2a10e.svg"/></center>
-  </li></ol></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8596</anchor> <rss>jms-00E1.rss.xml</rss>  <addr>jms-00E1</addr>  <route>jms-00E1.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Adjunctions in bicategories</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>8597</anchor> <rss>jms-00DY.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00DY</addr>  <route>jms-00DY.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Morphisms of adjunctions</title> </frontmatter> <mainmatter><p>Let <tex>\mathcal {K}</tex> be a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link>, and let <tex>A  \equiv   { \mathopen {} \left ( l_A \dashv  r_A \colon  A_1 \to  A_0 \right ) \mathclose {}}</tex> and <tex>B  \equiv   { \mathopen {} \left ( l_B \dashv  r_B \colon  B_1 \to  B_0 \right ) \mathclose {}}</tex> be a pair of adjunctions in <tex>\mathcal {K}</tex>. Then a <em>(left and right) lax morphism</em> <tex>{ A } \xrightarrow {{ f }}{ B }</tex> between the two adjunctions is given by a pair of maps <tex>{ A_0 } \xrightarrow {{ f_0 }}{ B_0 }</tex> and <tex>{ A_1 } \xrightarrow {{ f_1 }}{ B_1 }</tex> together with a pair of mates <tex>{ l_B \circ  f_0 } \xrightarrow {{ l_f }}{ f_1 \circ  l_A }</tex> and <tex>{ f_0 \circ  r_A } \xrightarrow {{ r_f }}{ r_B \circ  f_1 }</tex> as depicted below:</p>
+    <center><embedded-tex hash="2047751a2d0375e188eaf3b8e0d2a10e"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut f_0 $] (f0) at (spath cs:north 0.5)
+          coordinate[label=above:$ \strut l_B $] (lB) at (spath cs:north 0.90)
+          coordinate[label=below:$ \strut l_A $] (lA) at (spath cs:south 0.1)
+          coordinate[label=below:$ \strut f_1 $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \path [spath/save = diagonal] (se) to (nw);
+         \path 
+          coordinate[dot,label=below:$ \eta _A $] (unit) at (spath cs:diagonal 0.75)
+          coordinate[dot,label=above:$ \epsilon _B $] (counit) at (spath cs:diagonal 0.25)
+        ;
+         \draw [spath/save=swoosh] (lA) to[out=90,in=180] (unit.center) to[out=0,in=180] (counit.center) to[out=0,in=-90] (lB);
+         \path [name intersections={of=swoosh and f01}]
+          coordinate[dot, 
+      label=190:$ \rho $
+     ] (rho) at (intersection-1)
+        ;
+         \begin {scope}[on background layer]
+           \tikzset {
+            spath/split at intersections={f01}{swoosh},
+            spath/get components of={swoosh} \cpts ,
+          }
+           \fill [ catc ] (nw) to (sw) to (lA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (rho.center) to (f0) to cycle;
+           \fill [ catd ] (lA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (rho.center) to (f1) to (sw) to cycle;
+           \fill [ cate ] (f0) to (rho.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (lB) to cycle;
+           \fill [ catf ] (f1) to (rho.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (lB) to (ne) to (se) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+ 
+      $ \mapsfrom $
+       
+  
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut f_0 $] (f0) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut r_B $] (rB) at (spath cs:south 0.75)
+          coordinate[label=above:$ \strut r_A $] (rA) at (spath cs:north 0.25)
+          coordinate[label=below:$ \strut f_1 $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \draw [spath/save = rAB] (rA) to[out=-90,in=90] (rB);
+         \path [name intersections={of=f01 and rAB}]
+          coordinate[dot, 
+      label=190:$ \rho $
+     ] (rho) at (intersection-1)
+        ;
+         
+         \begin {scope}[on background layer]
+           \fill [ catd ] (nw) rectangle (se);
+           \tikzset {
+            spath/split at intersections={f01}{rAB},
+            spath/get components of={f01} \fcpts ,
+            spath/get components of={rAB} \rcpts ,
+          }
+           \fill [ catc ] (rA) to[spath/use={ \getComponentOf \rcpts1 ,weld}] (rho.center) to (f0) to cycle;
+           \fill [ cate ] (f0) to (rho.center) to[spath/use={ \getComponentOf \rcpts2 ,weld}] (rB) to (se) to (ne) to cycle;
+           \fill [ catf ] (rho.center) to[spath/use={ \getComponentOf \rcpts2 ,weld}] (rB) to (f1) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+ 
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8570</anchor> <rss>jms-00E1.rss.xml</rss>  <addr>jms-00E1</addr>  <route>jms-00E1.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Adjunctions in bicategories</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>8571</anchor> <rss>jms-00DY.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00DY</addr>  <route>jms-00DY.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Morphisms of adjunctions</title> </frontmatter> <mainmatter><p>Let <tex>\mathcal {K}</tex> be a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link>, and let <tex>A  \equiv   { \mathopen {} \left ( l_A \dashv  r_A \colon  A_1 \to  A_0 \right ) \mathclose {}}</tex> and <tex>B  \equiv   { \mathopen {} \left ( l_B \dashv  r_B \colon  B_1 \to  B_0 \right ) \mathclose {}}</tex> be a pair of adjunctions in <tex>\mathcal {K}</tex>. Then a <em>(left and right) lax morphism</em> <tex>{ A } \xrightarrow {{ f }}{ B }</tex> between the two adjunctions is given by a pair of maps <tex>{ A_0 } \xrightarrow {{ f_0 }}{ B_0 }</tex> and <tex>{ A_1 } \xrightarrow {{ f_1 }}{ B_1 }</tex> together with a pair of mates <tex>{ l_B \circ  f_0 } \xrightarrow {{ l_f }}{ f_1 \circ  l_A }</tex> and <tex>{ f_0 \circ  r_A } \xrightarrow {{ r_f }}{ r_B \circ  f_1 }</tex> as depicted below:</p>
  
   
   
-    <center><img src="resources/16883f089529fb75e6798eb6df6b42be.svg"/></center>
+    <center><embedded-tex hash="16883f089529fb75e6798eb6df6b42be"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \CreateRect {5}{3}
+     \path 
+      coordinate[label=above:$ \strut  f_0$] (f0) at (spath cs:north 0.5)
+      coordinate[label=above:$ \strut  l_B$] (lB) at (spath cs:north 0.75)
+      coordinate[label=below:$ \strut  l_A$] (lA) at (spath cs:south 0.25)
+      coordinate[label=below:$ \strut  f_1$] (f1) at (spath cs:south 0.5)
+    ;
+     \draw [spath/save = f01] (f0) to (f1);
+     \draw [spath/save = lBA] (lB) to[out=-90,in=90] (lA);
+     \path [name intersections={of=f01 and lBA}]
+      coordinate[dot,label=-10:$l_f$] (lf) at (intersection-1)
+    ;
+     \begin {scope}[on background layer]
+       \fill [ catc ] (nw) rectangle (se);
+       \tikzset {
+        spath/split at intersections={f01}{lBA},
+        spath/get components of={f01} \fcpts ,
+        spath/get components of={lBA} \lcpts ,
+      }
+       \fill [ cate ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lf.center) to (f0) to cycle;
+       \fill [ catd ] (lf.center) to[spath/use={ \getComponentOf \lcpts2 ,weld}] (lA) to (f1) to cycle;
+       \fill [ catf ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lf.center) to (f1) to (se) to (ne) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+   \quad 
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \CreateRect {5}{3}
+     \path 
+      coordinate[label=above:$ \strut  f_0$] (f0) at (spath cs:north 0.5)
+      coordinate[label=below:$ \strut  r_B$] (rB) at (spath cs:south 0.75)
+      coordinate[label=above:$ \strut  r_A$] (rA) at (spath cs:north 0.25)
+      coordinate[label=below:$ \strut  f_1$] (f1) at (spath cs:south 0.5)
+    ;
+     \draw [spath/save = f01] (f0) to (f1);
+     \draw [spath/save = rAB] (rA) to[out=-90,in=90] (rB);
+     \path [name intersections={of=f01 and rAB}]
+      coordinate[dot,label=190:$r_f$] (rf) at (intersection-1)
+    ;
+     \begin {scope}[on background layer]
+       \fill [ catd ] (nw) rectangle (se);
+       \tikzset {
+        spath/split at intersections={f01}{rAB},
+        spath/get components of={f01} \fcpts ,
+        spath/get components of={rAB} \rcpts ,
+      }
+       \fill [ catc ] (rA) to[spath/use={ \getComponentOf \rcpts1 ,weld}] (rf.center) to (f0) to cycle;
+       \fill [ cate ] (f0) to (rf.center) to[spath/use={ \getComponentOf \rcpts2 ,weld}] (rB) to (se) to (ne) to cycle;
+       \fill [ catf ] (rf.center) to[spath/use={ \getComponentOf \rcpts2 ,weld}] (rB) to (f1) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 <ol><li>When the left mate is invertible, we say that <tex>{ A } \xrightarrow {{ f }}{ B }</tex> is <em>(left strong) and right lax</em>.</li>
   <li>When the right mate is invertible, we say that <tex>{ A } \xrightarrow {{ f }}{ B }</tex> is <em>(right strong) and left lax</em>.</li>
-  <li>When both mates are invertible, we say that <tex>{ A } \xrightarrow {{ f }}{ B }</tex> is <em>strong</em>.</li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>8598</anchor> <rss>jms-00DZ.rss.xml</rss> <taxon>Remark</taxon> <addr>jms-00DZ</addr>  <route>jms-00DZ.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Strong morphisms of adjunctions and the Beck–Chevalley condition</title> </frontmatter> <mainmatter><p>The condition that a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions be <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">right strong</link> is sometimes referred to as the <em>Beck–Chevalley condition</em>, e.g. by <link href="uemura-2021-thesis.xml" type="local" addr="uemura-2021-thesis" title="Abstract and Concrete Type Theories">Uemura</link>. Indeed, the <link href="jms-00E0.xml" type="local" addr="jms-00E0" title="Mates between adjunctions">right-hand mates</link> in a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions are occasionally referred to as <em>Beck–Chevalley transformations</em>.</p></mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8599</anchor> <rss>jms-000E.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000E</addr>  <route>jms-000E.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Bicategory</title> </frontmatter> <mainmatter><p>A <em>bicategory</em> <tex>B</tex> is given by the following structure and axioms:</p><ol><li>a collection of <em>objects</em> <tex>x,y,z</tex> called <em>0-cells</em>;</li>
+  <li>When both mates are invertible, we say that <tex>{ A } \xrightarrow {{ f }}{ B }</tex> is <em>strong</em>.</li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>8572</anchor> <rss>jms-00DZ.rss.xml</rss> <taxon>Remark</taxon> <addr>jms-00DZ</addr>  <route>jms-00DZ.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Strong morphisms of adjunctions and the Beck–Chevalley condition</title> </frontmatter> <mainmatter><p>The condition that a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions be <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">right strong</link> is sometimes referred to as the <em>Beck–Chevalley condition</em>, e.g. by <link href="uemura-2021-thesis.xml" type="local" addr="uemura-2021-thesis" title="Abstract and Concrete Type Theories">Uemura</link>. Indeed, the <link href="jms-00E0.xml" type="local" addr="jms-00E0" title="Mates between adjunctions">right-hand mates</link> in a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions are occasionally referred to as <em>Beck–Chevalley transformations</em>.</p></mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8573</anchor> <rss>jms-000E.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000E</addr>  <route>jms-000E.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Bicategory</title> </frontmatter> <mainmatter><p>A <em>bicategory</em> <tex>B</tex> is given by the following structure and axioms:</p><ol><li>a collection of <em>objects</em> <tex>x,y,z</tex> called <em>0-cells</em>;</li>
   <li>for each pair of 0-cells <tex>x,y</tex> a category <tex>\mathbf {hom} _{ B } { \mathopen {} \left ( x , y \right ) \mathclose {}}</tex> of <em>morphisms</em> or <em>1-cells</em> <tex>x \xrightarrow {f}y</tex>;</li>
   <li>for each object <tex>x</tex>, a morphism <tex>x \xrightarrow { 1 _{ x } }x</tex> called the <em>identity morphism</em>;</li>
   <li>for all objects <tex>x,y,z</tex>, a functor <tex>\mathbf {hom} _{ B } { \mathopen {} \left ( x , y \right ) \mathclose {}} \times \mathbf {hom} _{ B } { \mathopen {} \left ( y , z \right ) \mathclose {}} \xrightarrow { { \mathopen {} \left ( \mathbin { \boldsymbol {;}} \right ) \mathclose {}} } \mathbf {hom} _{ B } { \mathopen {} \left ( x , z \right ) \mathclose {}}</tex> called <em>horizontal composition</em>;</li>
@@ -40,7 +236,18 @@
  
   
   
-    <center><img src="resources/47bb5986eb18a4ef1c3bd710bb237a07.svg"/></center>
+    <center><embedded-tex hash="47bb5986eb18a4ef1c3bd710bb237a07"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$ { \mathopen {} \left ( f \mathbin { \boldsymbol {;}} 1 _{ y } \right ) \mathclose {}} \mathbin { \boldsymbol {;}}  g$};
+         \node [below right = 2.5cm of nw] (s) {$f \mathbin { \boldsymbol {;}}  g$};
+         \node [above right = 2.5cm of s] (ne) {$f \mathbin { \boldsymbol {;}} { \mathopen {} \left ( 1 _{ y } \mathbin { \boldsymbol {;}}  g \right ) \mathclose {}} $};
+         \draw [-&gt;] (nw) to node[above] {$ \alpha _{ f, 1 _{ y } ,g } $} (ne);
+         \draw [-&gt;] (nw) to node[sloped,below] {$ \rho _{ f } \mathbin { \boldsymbol {;}}   1 _{ g } $} (s);
+         \draw [-&gt;] (ne) to node[sloped,below] {$ 1 _{ f } \mathbin { \boldsymbol {;}}   \lambda _{ g } $} (s);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
   </li>
 
   <li>
@@ -50,33 +257,315 @@
  
   
   
-    <center><img src="resources/825e468d3505fc001394db03930759fb.svg"/></center>
-  </li></ol></mainmatter> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8600</anchor> <rss>jms-00E5.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00E5</addr>  <route>jms-00E5.xml</route> <date><year>2023</year> <month>11</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Homomorphisms of <link href="jms-00E4.xml" type="local" addr="jms-00E4" title="Algebraic description of natural models">natural models</link></title> </frontmatter> <mainmatter><p>Let <tex>M</tex> and <tex>N</tex> be <link href="jms-00E4.xml" type="local" addr="jms-00E4" title="Algebraic description of natural models">natural models</link>, as depicted schematically below:</p>
+    <center><embedded-tex hash="825e468d3505fc001394db03930759fb"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$ { \mathopen {} \left ( { \mathopen {} \left ( e \mathbin { \boldsymbol {;}}  f \right ) \mathclose {}} \mathbin { \boldsymbol {;}}  y \right ) \mathclose {}} \mathbin { \boldsymbol {;}}  z$};
+         \node [above right = 3cm of nw, xshift=1cm] (n) {$ { \mathopen {} \left ( e \mathbin { \boldsymbol {;}}  f \right ) \mathclose {}} \mathbin { \boldsymbol {;}} { \mathopen {} \left ( y \mathbin { \boldsymbol {;}}  z \right ) \mathclose {}} $};
+         \node [below right = 3cm of n, xshift=1cm] (ne) {$e \mathbin { \boldsymbol {;}} { \mathopen {} \left ( f \mathbin { \boldsymbol {;}} { \mathopen {} \left ( g \mathbin { \boldsymbol {;}}  h \right ) \mathclose {}} \right ) \mathclose {}} $};
+         \node [below = of nw] (sw) {$ { \mathopen {} \left ( e \mathbin { \boldsymbol {;}} { \mathopen {} \left ( f \mathbin { \boldsymbol {;}}  g \right ) \mathclose {}} \right ) \mathclose {}} \mathbin { \boldsymbol {;}}  h$};
+         \node [below = of ne] (se) {$e \mathbin { \boldsymbol {;}} { \mathopen {} \left ( { \mathopen {} \left ( f \mathbin { \boldsymbol {;}}  g \right ) \mathclose {}} \mathbin { \boldsymbol {;}}  h \right ) \mathclose {}} $};
+         \draw [-&gt;] (nw) to node[left] {$ \alpha _{ e,f,g } \mathbin { \boldsymbol {;}} 1 _{ h } $} (sw);
+         \draw [-&gt;] (sw) to node[below] {$ \alpha _{ e,f \mathbin { \boldsymbol {;}}  g,h } $} (se);
+         \draw [-&gt;] (se) to node[right] {$ 1 _{ e } \mathbin { \boldsymbol {;}} \alpha _{ f,g,h } $} (ne);
+         \draw [-&gt;] (nw) to node[sloped,above] {$ \alpha _{ e \mathbin { \boldsymbol {;}}  f } ,g,h$} (n);
+         \draw [-&gt;] (n) to node[sloped,above] {$ \alpha _{ e,f,g \mathbin { \boldsymbol {;}}  h } $} (ne);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8574</anchor> <rss>jms-00E5.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00E5</addr>  <route>jms-00E5.xml</route> <date><year>2023</year> <month>11</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Homomorphisms of <link href="jms-00E4.xml" type="local" addr="jms-00E4" title="Algebraic description of natural models">natural models</link></title> </frontmatter> <mainmatter><p>Let <tex>M</tex> and <tex>N</tex> be <link href="jms-00E4.xml" type="local" addr="jms-00E4" title="Algebraic description of natural models">natural models</link>, as depicted schematically below:</p>
  
   
   
-    <center><img src="resources/5095b10973a70de4c7374caf1d54b4f0.svg"/></center>
+    <center><embedded-tex hash="5095b10973a70de4c7374caf1d54b4f0"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 2 }
+         \path 
+          coordinate[label=above:$ \strut p _{ M } $] (n/p) at (spath cs:north 0.33)
+          coordinate[label=below:$ \strut p _{ M } $] (s/p) at (spath cs:south 0.33)
+          coordinate[label=above:$ \strut c _{ M } $] (n/c) at (spath cs:north 0.66)
+          coordinate[label=below:$ \strut c _{ M } $] (s/c) at (spath cs:south 0.66)
+        ;
+
+         \node [between = nw and s/p, opacity=0.6] {$ E _{ M } $};
+         \node [between = n/p and s/c, opacity=0.6] {$ U _{ M } $};
+         \node [between = n/c and se, opacity=0.6] {$ \mathcal {C} _{ M } $};
+
+         \draw  (n/p) to (s/p);
+         \draw  (n/c) to (s/c);
+
+         \begin {scope}[on background layer]
+           \fill [ catd ] (nw) rectangle (s/p);
+           \fill [ catc ] (n/p) rectangle (s/c);
+           \fill [ catf ] (n/c) rectangle (se);
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 2 }
+         \path 
+          coordinate[label=above:$ \strut p _{ N } $] (n/p) at (spath cs:north 0.33)
+          coordinate[label=below:$ \strut p _{ N } $] (s/p) at (spath cs:south 0.33)
+          coordinate[label=above:$ \strut c _{ N } $] (n/c) at (spath cs:north 0.66)
+          coordinate[label=below:$ \strut c _{ N } $] (s/c) at (spath cs:south 0.66)
+        ;
+
+         \node [between = nw and s/p, opacity=0.6] {$ E _{ N } $};
+         \node [between = n/p and s/c, opacity=0.6] {$ U _{ N } $};
+         \node [between = n/c and se, opacity=0.6] {$ \mathcal {C} _{ N } $};
+
+         \draw  (n/p) to (s/p);
+         \draw  (n/c) to (s/c);
+
+         \begin {scope}[on background layer]
+           \fill [ cate ] (nw) rectangle (s/p);
+           \fill [ violet!40 ] (n/p) rectangle (s/c);
+           \fill [ brown!40 ] (n/c) rectangle (se);
+         \end {scope}
+       \end {tikzpicture}
+     
+</embedded-tex-body></embedded-tex></center>
   
  
 <p>A <em>lax homomorphism</em> <tex>{ M } \xrightarrow {{ \Phi }}{ N }</tex> of <link href="jms-00E4.xml" type="local" addr="jms-00E4" title="Algebraic description of natural models">natural models</link> is given by the following data:</p>
  
   
   
-    <center><img src="resources/113bd0e77d50797ca795fa93634efa9d.svg"/></center>
+    <center><embedded-tex hash="113bd0e77d50797ca795fa93634efa9d"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 3 }{ 2 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ E } $] (n) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut \Phi _{ E } $] (s) at (spath cs:south 0.5)
+        ;
+         \draw  (n) to (s);
+         \node [between = nw and s, opacity=0.6] {$ E _{ M } $};
+         \node [between = n and se, opacity=0.6] {$ E _{ N } $};
+         \begin {scope}[on background layer]
+           \fill [ catd ] (nw) rectangle (s);
+           \fill [ cate ] (n) rectangle (se);
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 3 }{ 2 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ U } $] (n) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut \Phi _{ U } $] (s) at (spath cs:south 0.5)
+        ;
+         \draw  (n) to (s);
+         \node [between = nw and s, opacity=0.6] {$ U _{ M } $};
+         \node [between = n and se, opacity=0.6] {$ U _{ N } $};
+         \begin {scope}[on background layer]
+           \fill [ catc ] (nw) rectangle (s);
+           \fill [ violet!40 ] (n) rectangle (se);
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 3 }{ 2 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ \mathcal {C} } $] (n) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut \Phi _{ \mathcal {C} } $] (s) at (spath cs:south 0.5)
+        ;
+         \draw  (n) to (s);
+         \node [between = nw and s, opacity=0.6] {$ \mathcal {C} _{ M } $};
+         \node [between = n and se, opacity=0.6] {$ \mathcal {C} _{ N } $};
+         \begin {scope}[on background layer]
+           \fill [ catf ] (nw) rectangle (s);
+           \fill [ brown!40 ] (n) rectangle (se);
+         \end {scope}
+       \end {tikzpicture}
+     
+</embedded-tex-body></embedded-tex></center>
   
  
 
  
   
   
-    <center><img src="resources/4c4c97add3e6bd44c4ee0f1354d2abf0.svg"/></center>
+    <center><embedded-tex hash="4c4c97add3e6bd44c4ee0f1354d2abf0"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ E } $] (f0) at (spath cs:north 0.5)
+          coordinate[label=above:$ \strut p _{ N } $] (lB) at (spath cs:north 0.75)
+          coordinate[label=below:$ \strut p _{ M } $] (lA) at (spath cs:south 0.25)
+          coordinate[label=below:$ \strut \Phi _{ U } $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \draw [spath/save = lBA] (lB) to[out=-90,in=90] (lA);
+         \path [name intersections={of=f01 and lBA}]
+          coordinate[dot, 
+      label=-10:$ \Phi _{ p } $
+     ] (lambda) at (intersection-1)
+        ;
+         
+         \begin {scope}[on background layer]
+           \fill [ catd ] (nw) rectangle (se);
+           \tikzset {
+            spath/split at intersections={f01}{lBA},
+            spath/get components of={lBA} \lcpts ,
+          }
+           \fill [ cate ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ catc ] (lambda.center) to[spath/use={ \getComponentOf \lcpts2 ,weld}] (lA) to (f1) to cycle;
+           \fill [ violet!40 ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f1) to (se) to (ne) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ U } $] (f0) at (spath cs:north 0.5)
+          coordinate[label=above:$ \strut c _{ N } $] (lB) at (spath cs:north 0.75)
+          coordinate[label=below:$ \strut c _{ M } $] (lA) at (spath cs:south 0.25)
+          coordinate[label=below:$ \strut \Phi _{ \mathcal {C} } $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \draw [spath/save = lBA] (lB) to[out=-90,in=90] (lA);
+         \path [name intersections={of=f01 and lBA}]
+          coordinate[dot, 
+      label=-10:$ \Phi _{ c } $
+     ] (lambda) at (intersection-1)
+        ;
+         
+         \begin {scope}[on background layer]
+           \fill [ catc ] (nw) rectangle (se);
+           \tikzset {
+            spath/split at intersections={f01}{lBA},
+            spath/get components of={lBA} \lcpts ,
+          }
+           \fill [ violet!40 ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ catf ] (lambda.center) to[spath/use={ \getComponentOf \lcpts2 ,weld}] (lA) to (f1) to cycle;
+           \fill [ brown!40 ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f1) to (se) to (ne) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ \mathcal {C} } $] (f0) at (spath cs:north 0.5)
+          coordinate[label=above:$ \strut * _{ N } $] (lB) at (spath cs:north 0.75)
+          coordinate[label=below:$ \strut * _{ M } $] (lA) at (spath cs:south 0.25)
+          coordinate[label=below:$ \strut 1 _{ \mathbf {1} } $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \draw [spath/save = lBA] (lB) to[out=-90,in=90] (lA);
+         \path [name intersections={of=f01 and lBA}]
+          coordinate[dot, 
+      label=-10:$ \Phi _{ * } $
+     ] (lambda) at (intersection-1)
+        ;
+         
+         \begin {scope}[on background layer]
+           \fill [ catf ] (nw) rectangle (se);
+           \tikzset {
+            spath/split at intersections={f01}{lBA},
+            spath/get components of={lBA} \lcpts ,
+          }
+           \fill [ brown!40 ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ gray!10 ] (lambda.center) to[spath/use={ \getComponentOf \lcpts2 ,weld}] (lA) to (f1) to cycle;
+           \fill [ gray!10 ] (lB) to[spath/use={ \getComponentOf \lcpts1 ,weld}] (lambda.center) to (f1) to (se) to (ne) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+</embedded-tex-body></embedded-tex></center>
   
  
 <p>The last cell <tex>{ * _{ N } \circ \Phi _{ \mathcal {C} } } \xrightarrow {{ \Phi _{ * } }}{ * _{ M } }</tex> always exists canonically and is invertible, but we include it as it plays a role in further definitions.</p><p>A lax homomorphism <tex>{ M } \xrightarrow {{ \Phi }}{ N }</tex> is called <em>strong</em> when the 2-cells <tex>\Phi _{ p }</tex> and <tex>\Phi _{ c }</tex> are invertible, and the <link href="jms-00E0.xml" type="local" addr="jms-00E0" title="Mates between adjunctions">right mates</link> <tex>\Phi _{ q } , \Phi _{ \diamond }</tex> of <tex>\Phi _{ p } , \Phi _{ * }</tex> depicted below are invertible, ensuring that context extension and the empty contexts are preserved respectively:</p>
  
   
   
-    <center><img src="resources/44352c9410e489e5a49121cd5144f79a.svg"/></center>
+    <center><embedded-tex hash="44352c9410e489e5a49121cd5144f79a"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ E } $] (f0) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut q _{ N } $] (rB) at (spath cs:south 0.90)
+          coordinate[label=above:$ \strut q _{ M } $] (rA) at (spath cs:north 0.1)
+          coordinate[label=below:$ \strut \Phi _{ U } $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \path [spath/save = diagonal] (sw) to (ne);
+         \path 
+          coordinate[dot,label=above:$ \epsilon $] (counit) at (spath cs:diagonal 0.25)
+          coordinate[dot,label=below:$ \eta $] (unit) at (spath cs:diagonal 0.75)
+        ;
+         \draw [spath/save=swoosh] (rA) to[out=-90,in=180] (counit.center) to[out=0,in=180] (unit.center) to[out=0,in=90] (rB);
+         \path [name intersections={of=swoosh and f01}]
+          coordinate[dot, 
+      label=-10:$ \Phi _{ p } $
+     ] (lambda) at (intersection-1)
+        ;
+         \begin {scope}[on background layer]
+           \tikzset {
+            spath/split at intersections={f01}{swoosh},
+            spath/get components of={swoosh} \cpts ,
+          }
+           \fill [ catc ] (nw) to (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f1) to (sw) to cycle;
+           \fill [ catd ] (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ cate ] (f0) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to (se) to (ne) to cycle;
+           \fill [ violet!40 ] (f1) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+   \quad 
+   
+       \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+         \CreateRect { 5 }{ 3 }
+         \path 
+          coordinate[label=above:$ \strut \Phi _{ \mathcal {C} } $] (f0) at (spath cs:north 0.5)
+          coordinate[label=below:$ \strut \diamond _{ N } $] (rB) at (spath cs:south 0.90)
+          coordinate[label=above:$ \strut \diamond _{ M } $] (rA) at (spath cs:north 0.1)
+          coordinate[label=below:$ \strut 1 _{ \mathbf {1} } $] (f1) at (spath cs:south 0.5)
+        ;
+         \draw [spath/save = f01] (f0) to (f1);
+         \path [spath/save = diagonal] (sw) to (ne);
+         \path 
+          coordinate[dot,label=above:$ \epsilon $] (counit) at (spath cs:diagonal 0.25)
+          coordinate[dot,label=below:$ \eta $] (unit) at (spath cs:diagonal 0.75)
+        ;
+         \draw [spath/save=swoosh] (rA) to[out=-90,in=180] (counit.center) to[out=0,in=180] (unit.center) to[out=0,in=90] (rB);
+         \path [name intersections={of=swoosh and f01}]
+          coordinate[dot, 
+      label=-10:$ \Phi _{ * } $
+     ] (lambda) at (intersection-1)
+        ;
+         \begin {scope}[on background layer]
+           \tikzset {
+            spath/split at intersections={f01}{swoosh},
+            spath/get components of={swoosh} \cpts ,
+          }
+           \fill [ gray!10 ] (nw) to (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f1) to (sw) to cycle;
+           \fill [ catf ] (rA) to[spath/use={ \getComponentOf \cpts1 ,weld}] (lambda.center) to (f0) to cycle;
+           \fill [ brown!40 ] (f0) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to (se) to (ne) to cycle;
+           \fill [ gray!10 ] (f1) to (lambda.center) to[spath/use={ \getComponentOf \cpts2 ,weld}] (rB) to cycle;
+         \end {scope}
+       \end {tikzpicture}
+     
+</embedded-tex-body></embedded-tex></center>
   
  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8601</anchor> <rss>jms-00DZ.rss.xml</rss> <taxon>Remark</taxon> <addr>jms-00DZ</addr>  <route>jms-00DZ.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Strong morphisms of adjunctions and the Beck–Chevalley condition</title> </frontmatter> <mainmatter><p>The condition that a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions be <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">right strong</link> is sometimes referred to as the <em>Beck–Chevalley condition</em>, e.g. by <link href="uemura-2021-thesis.xml" type="local" addr="uemura-2021-thesis" title="Abstract and Concrete Type Theories">Uemura</link>. Indeed, the <link href="jms-00E0.xml" type="local" addr="jms-00E0" title="Mates between adjunctions">right-hand mates</link> in a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions are occasionally referred to as <em>Beck–Chevalley transformations</em>.</p></mainmatter> </tree></backlinks> <references/></backmatter></tree>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>8575</anchor> <rss>jms-00DZ.rss.xml</rss> <taxon>Remark</taxon> <addr>jms-00DZ</addr>  <route>jms-00DZ.xml</route> <date><year>2023</year> <month>11</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Strong morphisms of adjunctions and the Beck–Chevalley condition</title> </frontmatter> <mainmatter><p>The condition that a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions be <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">right strong</link> is sometimes referred to as the <em>Beck–Chevalley condition</em>, e.g. by <link href="uemura-2021-thesis.xml" type="local" addr="uemura-2021-thesis" title="Abstract and Concrete Type Theories">Uemura</link>. Indeed, the <link href="jms-00E0.xml" type="local" addr="jms-00E0" title="Mates between adjunctions">right-hand mates</link> in a <link href="jms-00DY.xml" type="local" addr="jms-00DY" title="Morphisms of adjunctions">lax morphism</link> of adjunctions are occasionally referred to as <em>Beck–Chevalley transformations</em>.</p></mainmatter> </tree></backlinks> <references/></backmatter></tree>

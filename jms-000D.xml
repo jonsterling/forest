@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19202</anchor> <rss>jms-000D.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000D</addr>  <route>jms-000D.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Monoidal category</title> </frontmatter> <mainmatter><p>A <em>monoidal category</em> is a category <tex>C</tex> equipped with the following structure and axioms:</p><ol><li>a functor <tex>C \times  C \xrightarrow { \otimes }C</tex> called the <em>tensor product</em>;</li>
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19176</anchor> <rss>jms-000D.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000D</addr>  <route>jms-000D.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Monoidal category</title> </frontmatter> <mainmatter><p>A <em>monoidal category</em> is a category <tex>C</tex> equipped with the following structure and axioms:</p><ol><li>a functor <tex>C \times  C \xrightarrow { \otimes }C</tex> called the <em>tensor product</em>;</li>
   <li>an object <tex>I \in  C</tex> called the <em>tensor unit</em>;</li>
   <li>a natural isomorphism <tex>{ \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \otimes  z  \xrightarrow { \alpha _{ x,y,z } } x \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}}</tex> called the <em>associator</em>;</li>
   <li>a natural isomorphism <tex>I \otimes  x  \xrightarrow { \lambda _{ x } }x</tex> called the <em>left unitor</em>;</li>
@@ -11,7 +11,18 @@
  
   
   
-    <center><img src="resources/ea10b88ac0e42eb059c77ae9efc0e716.svg"/></center>
+    <center><embedded-tex hash="ea10b88ac0e42eb059c77ae9efc0e716"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$ { \mathopen {} \left ( x \otimes  I \right ) \mathclose {}} \otimes  y$};
+         \node [below right = 2.5cm of nw] (s) {$x \otimes  y$};
+         \node [above right = 2.5cm of s] (ne) {$x \otimes { \mathopen {} \left ( I \otimes  y \right ) \mathclose {}} $};
+         \draw [-&gt;] (nw) to node[above] {$ \alpha _{ x,I,y } $} (ne);
+         \draw [-&gt;] (nw) to node[sloped,below] {$ \rho _x \otimes   1 _{ y } $} (s);
+         \draw [-&gt;] (ne) to node[sloped,below] {$ 1 _{ x } \otimes   \lambda _{ y } $} (s);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
   </li>
 
   <li>
@@ -20,8 +31,23 @@
  
   
   
-    <center><img src="resources/197d2b3a85a83b954ff979168b24d079.svg"/></center>
-  </li></ol></mainmatter> <backmatter><contributions/> <context/> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19203</anchor> <rss>jms-000H.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000H</addr>  <route>jms-000H.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Enriched category</title> </frontmatter> <mainmatter><p>Let <tex>{ \mathopen {} \left ( V,I, \otimes , \alpha , \lambda , \rho \right ) \mathclose {}}</tex> be a <link href="jms-000D.xml" type="local" addr="jms-000D" title="Monoidal category">monoidal category</link>. A <em>category <tex>C</tex> enriched in <tex>V</tex></em> is defined by the following structure and axioms:</p><ol><li>a collection <tex>\mathbf {ob} _{ C }</tex> of <em>objects</em>;</li>
+    <center><embedded-tex hash="197d2b3a85a83b954ff979168b24d079"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$ { \mathopen {} \left ( { \mathopen {} \left ( w \otimes  x \right ) \mathclose {}} \otimes  y \right ) \mathclose {}} \otimes  z$};
+         \node [above right = 3cm of nw, xshift=1cm] (n) {$ { \mathopen {} \left ( w \otimes  x \right ) \mathclose {}} \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}} $};
+         \node [below right = 3cm of n, xshift=1cm] (ne) {$w \otimes { \mathopen {} \left ( x \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}} \right ) \mathclose {}} $};
+         \node [below = of nw] (sw) {$ { \mathopen {} \left ( w \otimes { \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \right ) \mathclose {}} \otimes  z$};
+         \node [below = of ne] (se) {$w \otimes { \mathopen {} \left ( { \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \otimes  z \right ) \mathclose {}} $};
+         \draw [-&gt;] (nw) to node[left] {$ \alpha _{ w,x,y } \otimes 1 _{ z } $} (sw);
+         \draw [-&gt;] (sw) to node[below] {$ \alpha _{ w,x \otimes  y,z } $} (se);
+         \draw [-&gt;] (se) to node[right] {$ 1 _{ w } \otimes \alpha _{ x,y,z } $} (ne);
+         \draw [-&gt;] (nw) to node[sloped,above] {$ \alpha _{ w \otimes  x } ,y,z$} (n);
+         \draw [-&gt;] (n) to node[sloped,above] {$ \alpha _{ w,x,y \otimes  z } $} (ne);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> <backmatter><contributions/> <context/> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19177</anchor> <rss>jms-000H.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-000H</addr>  <route>jms-000H.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Enriched category</title> </frontmatter> <mainmatter><p>Let <tex>{ \mathopen {} \left ( V,I, \otimes , \alpha , \lambda , \rho \right ) \mathclose {}}</tex> be a <link href="jms-000D.xml" type="local" addr="jms-000D" title="Monoidal category">monoidal category</link>. A <em>category <tex>C</tex> enriched in <tex>V</tex></em> is defined by the following structure and axioms:</p><ol><li>a collection <tex>\mathbf {ob} _{ C }</tex> of <em>objects</em>;</li>
   <li>for any two objects <tex>x,y</tex>, an object <tex>\mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \in  V</tex>;</li>
   <li>for every object <tex>x</tex>, a morphism <tex>I \xrightarrow {i _{ x } } \mathbf {hom} _{ C } { \mathopen {} \left ( x , x \right ) \mathclose {}}</tex> in <tex>V</tex>;</li>
   <li>for all objects <tex>x,y,z</tex>, a morphism <tex>\mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} \xrightarrow {c _{ x,y,z } } \mathbf {hom} _{ C } { \mathopen {} \left ( x , z \right ) \mathclose {}}</tex> in <tex>V</tex>.</li>
@@ -32,7 +58,22 @@
  
   
   
-    <center><img src="resources/d077164670dd03ff547143cd76002bcc.svg"/></center>
+    <center><embedded-tex hash="d077164670dd03ff547143cd76002bcc"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$ { \mathopen {} \left ( \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $};
+         \node [right = 9cm of nw] (ne) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes { \mathopen {} \left ( \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} \right ) \mathclose {}} $};
+         \node [below = of nw] (sw) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $};
+         \node [below = of ne] (se) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( x , z \right ) \mathclose {}} $};
+         \node [between = sw and se,yshift=-1cm] (s) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , z \right ) \mathclose {}} $};
+         \draw [-&gt;] (nw) to node[left] {$c _{ w,x,y } \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $} (sw);
+         \draw [-&gt;] (sw) to node[sloped,below] {$c _{ w,y,z } $} (s);
+         \draw [-&gt;] (se) to node[sloped,below] {$c _{ w,x,z } $} (s);
+         \draw [-&gt;] (ne) to node[right] {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes  c _{ x,y,z } $} (se);
+         \draw [-&gt;] (nw) to node[above] {$ \alpha _{ w,x,y,z } $} (ne);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -41,5 +82,21 @@
  
   
   
-    <center><img src="resources/27889f9f903b2dfae6d64317abc8ac8e.svg"/></center>
-  </li></ol></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19204</anchor> <rss>jms-000G.rss.xml</rss> <taxon>Observation</taxon> <addr>jms-000G</addr>  <route>jms-000G.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Monoidal categories are bicategories with a single object</title> </frontmatter> <mainmatter><p>A <link href="jms-000D.xml" type="local" addr="jms-000D" title="Monoidal category">monoidal category</link> is nothing more than a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link> with only a single object; to be more precise, given a such a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link> <tex>B</tex> with just one object <tex>\bullet \in  B</tex>, the hom category <tex>\mathbf {hom} _{ B } { \mathopen {} \left ( \bullet , \bullet \right ) \mathclose {}}</tex> is monoidal, with the tensor product given by horizontal composition, the tensor unit given by the horizontal identity, and unitors and associators given by those of <tex>B</tex>.</p></mainmatter> </tree></backlinks> <references/></backmatter></tree>
+    <center><embedded-tex hash="27889f9f903b2dfae6d64317abc8ac8e"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (nw) {$I \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
+         \node [below = of nw] (sw) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , x \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
+         \node [right = 4.5cm of nw] (ne) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
+         \node [right = 4.5cm of ne] (nee) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes  I$};
+         \node [below = of nee] (see) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes   \mathbf {hom} _{ c } { \mathopen {} \left ( y , y \right ) \mathclose {}} $};
+         \draw [-&gt;] (nee) to node[right] {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes  i _{ y } $} (see);
+         \draw [-&gt;] (nee) to node[above] {$ \rho _{ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} } $} (ne);
+         \draw [-&gt;] (nw) to node[above] {$ \lambda _{ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} } $} (ne);
+         \draw [-&gt;] (nw) to node[left] {$i _{ x } \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $} (sw);
+         \draw [-&gt;] (sw) to node[sloped,below] {$c _{ x,x,y } $} (ne);
+         \draw [-&gt;] (see) to node[sloped,below] {$c _{ x,y,y } $} (ne);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></center>
+  </li></ol></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>19178</anchor> <rss>jms-000G.rss.xml</rss> <taxon>Observation</taxon> <addr>jms-000G</addr>  <route>jms-000G.xml</route> <date><year>2023</year> <month>1</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Monoidal categories are bicategories with a single object</title> </frontmatter> <mainmatter><p>A <link href="jms-000D.xml" type="local" addr="jms-000D" title="Monoidal category">monoidal category</link> is nothing more than a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link> with only a single object; to be more precise, given a such a <link href="jms-000E.xml" type="local" addr="jms-000E" title="Bicategory">bicategory</link> <tex>B</tex> with just one object <tex>\bullet \in  B</tex>, the hom category <tex>\mathbf {hom} _{ B } { \mathopen {} \left ( \bullet , \bullet \right ) \mathclose {}}</tex> is monoidal, with the tensor product given by horizontal composition, the tensor unit given by the horizontal identity, and unitors and associators given by those of <tex>B</tex>.</p></mainmatter> </tree></backlinks> <references/></backmatter></tree>

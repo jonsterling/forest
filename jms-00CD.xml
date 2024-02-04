@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9263</anchor> <rss>jms-00CD.rss.xml</rss> <taxon>Construction</taxon> <addr>jms-00CD</addr>  <route>jms-00CD.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> that is a fixed point, i.e. the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. We may define the <em>induced <tex>\mathbb {T}</tex>-algebra</em> <tex>\bar { X }</tex> to have the same carrier object as <tex>X</tex> and with the algebra map <tex>{ T X } \xrightarrow {{ \alpha _{ \bar { X } } }}{ X }</tex> defined as follows:
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9237</anchor> <rss>jms-00CD.rss.xml</rss> <taxon>Construction</taxon> <addr>jms-00CD</addr>  <route>jms-00CD.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> that is a fixed point, i.e. the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. We may define the <em>induced <tex>\mathbb {T}</tex>-algebra</em> <tex>\bar { X }</tex> to have the same carrier object as <tex>X</tex> and with the algebra map <tex>{ T X } \xrightarrow {{ \alpha _{ \bar { X } } }}{ X }</tex> defined as follows:
 
   
  
   
   
-    <center><img src="resources/de2a8c68e6f961d45acdef0194c58333.svg"/></center>
-  </p></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9264</anchor> <rss>jms-00CF.rss.xml</rss>  <addr>jms-00CF</addr>  <route>jms-00CF.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced monad algebra on a fixed point</title> </frontmatter> <mainmatter><p>We must show that our <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">construction</link> in fact gives rise to a monad algebra.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9265</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
+    <center><embedded-tex hash="de2a8c68e6f961d45acdef0194c58333"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     \begin {tikzpicture}[scale=0.5]
+       \path 
+        coordinate (nw)
+        ++(1,0) coordinate[label=above:$ X $] (n/X)
+        ++(5,-4) coordinate[label=below:$ X $] (s/X)
+        ++(1,0) coordinate (se);
+       \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+       \path 
+        coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.15)
+        coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.8)
+        coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+      ;
+       \draw [spath/save=vert] (alg) to (n/T);
+       \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+       \draw  (pi.center) to (mu.center);
+       \begin {scope}[on background layer]
+         \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       \end {scope}
+     \end {tikzpicture}
+  </embedded-tex-body></embedded-tex></center>
+  </p></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9238</anchor> <rss>jms-00CF.rss.xml</rss>  <addr>jms-00CF</addr>  <route>jms-00CF.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced monad algebra on a fixed point</title> </frontmatter> <mainmatter><p>We must show that our <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">construction</link> in fact gives rise to a monad algebra.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9239</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
 
@@ -16,7 +38,28 @@
  
   
   
-    <center><img src="resources/2a359c9040a55f2ef4f614d97cbf7314.svg"/></center>
+    <center><embedded-tex hash="2a359c9040a55f2ef4f614d97cbf7314"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -26,7 +69,55 @@
  
   
   
-    <center><img src="resources/0f87c35b39a00d8f85fac9c9d009616f.svg"/></center>
+    <center><embedded-tex hash="0f87c35b39a00d8f85fac9c9d009616f"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+           \node [blue halo, fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(pi)(alg)(mu)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -36,7 +127,54 @@
  
   
   
-    <center><img src="resources/c2c5003ba3cca14ae6a4d87de68ead02.svg"/></center>
+    <center><embedded-tex hash="c2c5003ba3cca14ae6a4d87de68ead02"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(mu)(unit)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -46,11 +184,48 @@
  
   
   
-    <center><img src="resources/3938e2c26a9da32e674402dd41484644.svg"/></center>
+    <center><embedded-tex hash="3938e2c26a9da32e674402dd41484644"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
+     \begin {scope}[on background layer]
+       \fill [catc] (t) to (b) to (br) to (tl -| br);
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9266</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9240</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>We are trying to check that the following identity holds:</p>
@@ -59,7 +234,52 @@
  
   
   
-    <center><img src="resources/1f1193a3eab173c1a6ba3385d30010ea.svg"/></center>
+    <center><embedded-tex hash="1f1193a3eab173c1a6ba3385d30010ea"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+    $=$
+     
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -71,7 +291,71 @@
  
   
   
-    <center><img src="resources/8b1fad34eae4715b0df99cba362094b4.svg"/></center>
+    <center><embedded-tex hash="8b1fad34eae4715b0df99cba362094b4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg1)]{};
+           \node [blue halo,fit=(alg2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
+           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -81,7 +365,72 @@
  
   
   
-    <center><img src="resources/9502b0606db0133dc439ec822ac5db1d.svg"/></center>
+    <center><embedded-tex hash="9502b0606db0133dc439ec822ac5db1d"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(pi/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -90,7 +439,67 @@
  
   
   
-    <center><img src="resources/3b4c0f7ae50ffa5b83242c06e08a5b2e.svg"/></center>
+    <center><embedded-tex hash="3b4c0f7ae50ffa5b83242c06e08a5b2e"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -100,17 +509,71 @@
  
   
   
-    <center><img src="resources/b6f160505cc15ff67459b461d8abf0e4.svg"/></center>
+    <center><embedded-tex hash="b6f160505cc15ff67459b461d8abf0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9267</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9241</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   Because it is <link href="jms-00CE.xml" type="local" addr="jms-00CE" title="Unitality of the induced monad algebra">unital</link> and <link href="jms-00CG.xml" type="local" addr="jms-00CG" title="Associativity of the induced monad algebra">associative</link>.
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9268</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9242</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>Suppose that <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> is a homomorphism; we must check that the same map tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>.</p>
@@ -122,7 +585,59 @@
  
   
   
-    <center><img src="resources/bc269cb2ec0b1d077366e80a44b818e8.svg"/></center>
+    <center><embedded-tex hash="bc269cb2ec0b1d077366e80a44b818e8"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -132,7 +647,63 @@
  
   
   
-    <center><img src="resources/afd46c27ca53f440080d78aee24ba545.svg"/></center>
+    <center><embedded-tex hash="afd46c27ca53f440080d78aee24ba545"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -142,7 +713,64 @@
  
   
   
-    <center><img src="resources/e198e860c983e3e629de635ffcd4b0e4.svg"/></center>
+    <center><embedded-tex hash="e198e860c983e3e629de635ffcd4b0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(x)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -152,7 +780,64 @@
  
   
   
-    <center><img src="resources/23a621442644a6cbec62549d761a3500.svg"/></center>
+    <center><embedded-tex hash="23a621442644a6cbec62549d761a3500"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -162,7 +847,62 @@
  
   
   
-    <center><img src="resources/6756b4da5a94eef73873cb1e82e4b9df.svg"/></center>
+    <center><embedded-tex hash="6756b4da5a94eef73873cb1e82e4b9df"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(x)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -171,25 +911,142 @@
  
   
   
-    <center><img src="resources/a4ddb2c7d2a706f3b88c896f34bd146c.svg"/></center>
+    <center><embedded-tex hash="a4ddb2c7d2a706f3b88c896f34bd146c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.5)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9269</anchor> <rss>jms-00C5.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00C5</addr>  <route>jms-00C5.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Algebra for a monad</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv   { \mathopen {} \left ( T, \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex>. An <em>algebra</em> for <tex>\mathbb {T}</tex> is defined to be a <link href="jms-00C6.xml" type="local" addr="jms-00C6" title="Algebra for an endofunctor"><tex>T</tex>-algebra</link> <tex>X</tex> satisfying the following unit and associativity laws:</p>
+</mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9243</anchor> <rss>jms-00C5.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00C5</addr>  <route>jms-00C5.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Algebra for a monad</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv   { \mathopen {} \left ( T, \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex>. An <em>algebra</em> for <tex>\mathbb {T}</tex> is defined to be a <link href="jms-00C6.xml" type="local" addr="jms-00C6" title="Algebra for an endofunctor"><tex>T</tex>-algebra</link> <tex>X</tex> satisfying the following unit and associativity laws:</p>
  
   
   
-    <center><img src="resources/ec6a76ddc3435d02090d7de7c24b35de.svg"/></center>
+    <center><embedded-tex hash="ec6a76ddc3435d02090d7de7c24b35de"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+  $=$
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
+     \begin {scope}[on background layer]
+       \fill [catc] (t) to (b) to (br) to (t -| br) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
 
  
   
   
-    <center><img src="resources/0bd66da8e0c8dcb5cb15460a8ef974d8.svg"/></center>
+    <center><embedded-tex hash="0bd66da8e0c8dcb5cb15460a8ef974d8"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _X$] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+  $=$
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _X$}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _X$}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9270</anchor> <rss>jms-00C8.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00C8</addr>  <route>jms-00C8.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Weak algebra for a monad</title> </frontmatter> <mainmatter><p>We shall refer to an <link href="jms-00C6.xml" type="local" addr="jms-00C6" title="Algebra for an endofunctor">algebra</link> for the underlying endofunctor of a monad as a <em>weak algebra</em>, following <link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">Joyal and Moerdijk</link>.</p></mainmatter> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9271</anchor> <rss>jms-00D9.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00D9</addr>  <route>jms-00D9.xml</route> <date><year>2023</year> <month>11</month> <day>5</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="jms-00CA.xml" type="local" addr="jms-00CA" title="Homomorphism of successor algebras">successor algebra</link> homomorphisms to <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link>. Then a <link href="jms-00CA.xml" type="local" addr="jms-00CA" title="Homomorphism of successor algebras">successor algebra homomorphism</link> <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex> also tracks a weak algebra homomorphism <tex>{ I } \xrightarrow {{ j }}{ s \cdot  X }</tex>,  where <tex>\bar { I }</tex> is the <link href="jms-00CN.xml" type="local" addr="jms-00CN" title="The induced successor algebra on a fixed point">induced successor algebra</link> of <tex>I</tex> and <tex>s \cdot X</tex> is the <link href="jms-00CC.xml" type="local" addr="jms-00CC" title="The successor restriction of a successor algebra">successor restriction</link> of <tex>X</tex>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9244</anchor> <rss>jms-00C8.rss.xml</rss> <taxon>Definition</taxon> <addr>jms-00C8</addr>  <route>jms-00C8.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Weak algebra for a monad</title> </frontmatter> <mainmatter><p>We shall refer to an <link href="jms-00C6.xml" type="local" addr="jms-00C6" title="Algebra for an endofunctor">algebra</link> for the underlying endofunctor of a monad as a <em>weak algebra</em>, following <link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">Joyal and Moerdijk</link>.</p></mainmatter> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9245</anchor> <rss>jms-00D9.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00D9</addr>  <route>jms-00D9.xml</route> <date><year>2023</year> <month>11</month> <day>5</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="jms-00CA.xml" type="local" addr="jms-00CA" title="Homomorphism of successor algebras">successor algebra</link> homomorphisms to <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link>. Then a <link href="jms-00CA.xml" type="local" addr="jms-00CA" title="Homomorphism of successor algebras">successor algebra homomorphism</link> <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex> also tracks a weak algebra homomorphism <tex>{ I } \xrightarrow {{ j }}{ s \cdot  X }</tex>,  where <tex>\bar { I }</tex> is the <link href="jms-00CN.xml" type="local" addr="jms-00CN" title="The induced successor algebra on a fixed point">induced successor algebra</link> of <tex>I</tex> and <tex>s \cdot X</tex> is the <link href="jms-00CC.xml" type="local" addr="jms-00CC" title="The successor restriction of a successor algebra">successor restriction</link> of <tex>X</tex>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>We work backwards.</p>
@@ -201,7 +1058,58 @@
  
   
   
-    <center><img src="resources/4ee7eb58f0e5a95bad335dd39bc1076d.svg"/></center>
+    <center><embedded-tex hash="4ee7eb58f0e5a95bad335dd39bc1076d"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=right:$ \alpha _{ s \cdot X } $] (alg) at (spath cs:wire 0.6)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.4)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(s)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -211,7 +1119,59 @@
  
   
   
-    <center><img src="resources/fbf0fd45682f8b0d19870cbf674376c0.svg"/></center>
+    <center><embedded-tex hash="fbf0fd45682f8b0d19870cbf674376c0"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(s)(j)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(s)(j)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -221,7 +1181,59 @@
  
   
   
-    <center><img src="resources/7aafc8995d6c3d4bb7b9e70188a2aeb3.svg"/></center>
+    <center><embedded-tex hash="7aafc8995d6c3d4bb7b9e70188a2aeb3"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(j)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(j)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -231,7 +1243,62 @@
  
   
   
-    <center><img src="resources/5c41ffc567bce43e2c4f02ad058e9522.svg"/></center>
+    <center><embedded-tex hash="5c41ffc567bce43e2c4f02ad058e9522"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
+      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
+      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
+    ;
+     \draw  (n/T) to (alg.center);
+     \draw  (pi.center) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(mul)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -241,7 +1308,67 @@
  
   
   
-    <center><img src="resources/411d5e4f4a8e601294dd86c4cc8ac6d2.svg"/></center>
+    <center><embedded-tex hash="411d5e4f4a8e601294dd86c4cc8ac6d2"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
+      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
+      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
+    ;
+     \draw  (n/T) to (alg.center);
+     \draw  (pi.center) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(s)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
+      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
+      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
+      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
+      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
+      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
+    ;
+     \draw  (n/T) to (alg1.center);
+     \draw  (unit.center) to (alg0.center);
+     \draw  (pi.center) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg0)(unit)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -251,7 +1378,66 @@
  
   
   
-    <center><img src="resources/3c664e20119c1f06bb19c4aa73b2023c.svg"/></center>
+    <center><embedded-tex hash="3c664e20119c1f06bb19c4aa73b2023c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
+      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
+      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
+      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
+      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
+      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
+    ;
+     \draw  (n/T) to (alg1.center);
+     \draw  (unit.center) to (alg0.center);
+     \draw  (pi.center) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg0)(pi)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
+      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
+      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
+      + (1,1) coordinate (ne-of-mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
+    ;
+    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
+     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -261,24 +1447,95 @@
  
   
   
-    <center><img src="resources/f7ea0d87c91375db68dc3b992938e5a1.svg"/></center>
+    <center><embedded-tex hash="f7ea0d87c91375db68dc3b992938e5a1"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
+      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
+      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
+      + (1,1) coordinate (ne-of-mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
+    ;
+    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
+     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul)(unit)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++ (1,0) coordinate[label=above:$ I $] (n/I)
+      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
+      ++ (1,0) coordinate (se)
+    ;
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.4)
+      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.6)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9272</anchor> <rss>jms-00D8.rss.xml</rss> <taxon>Theorem</taxon> <addr>jms-00D8</addr>  <route>jms-00D8.xml</route> <date><year>2023</year> <month>11</month> <day>5</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From initial <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">weak algebras</link> to initial <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebras</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>I</tex> be the initial weak algebra for a monad <tex>\mathbb {T}</tex> on a category <tex>\mathcal {C}</tex>. Then the <link href="jms-00CN.xml" type="local" addr="jms-00CN" title="The induced successor algebra on a fixed point">induced successor algebra</link> <tex>\bar { I }</tex> is the <em>initial</em> <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> for <tex>\mathbb {T}</tex>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9246</anchor> <rss>jms-00D8.rss.xml</rss> <taxon>Theorem</taxon> <addr>jms-00D8</addr>  <route>jms-00D8.xml</route> <date><year>2023</year> <month>11</month> <day>5</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From initial <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">weak algebras</link> to initial <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebras</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>I</tex> be the initial weak algebra for a monad <tex>\mathbb {T}</tex> on a category <tex>\mathcal {C}</tex>. Then the <link href="jms-00CN.xml" type="local" addr="jms-00CN" title="The induced successor algebra on a fixed point">induced successor algebra</link> <tex>\bar { I }</tex> is the <em>initial</em> <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> for <tex>\mathbb {T}</tex>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>Let <tex>X</tex> be a successor algebra; <link href="jms-00CR.xml" type="local" addr="jms-00CR" title="Lifting homomorphisms to the induced successor algebra">we have shown</link> that weak algebra homomorphism <tex>{ I } \xrightarrow {{ \iota }}{ s \cdot X }</tex> from <tex>I</tex> to the <link href="jms-00CC.xml" type="local" addr="jms-00CC" title="The successor restriction of a successor algebra">successor restriction</link> of <tex>X</tex> also tracks a successor algebra homomorphism <tex>{ \bar { I } } \xrightarrow {{ \iota }}{ X }</tex>. To see that this homomorphism is <em>unique</em>, fix any <link href="jms-00CA.xml" type="local" addr="jms-00CA" title="Homomorphism of successor algebras">successor algebra homomorphism</link> <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>; we <link href="jms-00D9.xml" type="local" addr="jms-00D9" title="From successor algebra homomorphisms to weak algebra homomorphisms">have also shown</link> that such a homomorphism also tracks a (<link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link>) homomorphism <tex>{ I } \xrightarrow {{ j }}{ s \cdot X }</tex>. But <tex>{ I } \xrightarrow {{ \iota }}{ s \cdot X }</tex> is the such weak algebra homomorphism, so we have <tex>\iota  = j</tex>.</p>
 </block>
   
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9273</anchor> <rss>jms-00CN.rss.xml</rss> <taxon>Construction</taxon> <addr>jms-00CN</addr>  <route>jms-00CN.xml</route> <date><year>2023</year> <month>11</month> <day>1</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> on a fixed point</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T} \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex>. The <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link> <tex>\bar { X }</tex> <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced by</link> <tex>X</tex> can be equipped with the structure of a <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> by defining <tex>{ X } \xrightarrow {{ s _{ \bar { X } } }}{ X }</tex> to be the following map:</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9247</anchor> <rss>jms-00CN.rss.xml</rss> <taxon>Construction</taxon> <addr>jms-00CN</addr>  <route>jms-00CN.xml</route> <date><year>2023</year> <month>11</month> <day>1</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> on a fixed point</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T} \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex>. The <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link> <tex>\bar { X }</tex> <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced by</link> <tex>X</tex> can be equipped with the structure of a <link href="jms-00C9.xml" type="local" addr="jms-00C9" title="Successor algebra">successor algebra</link> by defining <tex>{ X } \xrightarrow {{ s _{ \bar { X } } }}{ X }</tex> to be the following map:</p>
  
   
   
-    <center><img src="resources/9a89b76b4a13a2dbaebe3bc60586d0b1.svg"/></center>
+    <center><embedded-tex hash="9a89b76b4a13a2dbaebe3bc60586d0b1"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+   \begin {tikzpicture}[scale=0.5]
+     \path  coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se)
+      ;
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw  (unit.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+     \end {scope}
+   \end {tikzpicture}
+</embedded-tex-body></embedded-tex></center>
   
  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9274</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9248</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>Suppose that <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> is a homomorphism; we must check that the same map tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>.</p>
@@ -290,7 +1547,59 @@
  
   
   
-    <center><img src="resources/bc269cb2ec0b1d077366e80a44b818e8.svg"/></center>
+    <center><embedded-tex hash="bc269cb2ec0b1d077366e80a44b818e8"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -300,7 +1609,63 @@
  
   
   
-    <center><img src="resources/afd46c27ca53f440080d78aee24ba545.svg"/></center>
+    <center><embedded-tex hash="afd46c27ca53f440080d78aee24ba545"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -310,7 +1675,64 @@
  
   
   
-    <center><img src="resources/e198e860c983e3e629de635ffcd4b0e4.svg"/></center>
+    <center><embedded-tex hash="e198e860c983e3e629de635ffcd4b0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(x)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -320,7 +1742,64 @@
  
   
   
-    <center><img src="resources/23a621442644a6cbec62549d761a3500.svg"/></center>
+    <center><embedded-tex hash="23a621442644a6cbec62549d761a3500"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -330,7 +1809,62 @@
  
   
   
-    <center><img src="resources/6756b4da5a94eef73873cb1e82e4b9df.svg"/></center>
+    <center><embedded-tex hash="6756b4da5a94eef73873cb1e82e4b9df"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(x)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -339,17 +1873,66 @@
  
   
   
-    <center><img src="resources/a4ddb2c7d2a706f3b88c896f34bd146c.svg"/></center>
+    <center><embedded-tex hash="a4ddb2c7d2a706f3b88c896f34bd146c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.5)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9275</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9249</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   Because it is <link href="jms-00CE.xml" type="local" addr="jms-00CE" title="Unitality of the induced monad algebra">unital</link> and <link href="jms-00CG.xml" type="local" addr="jms-00CG" title="Associativity of the induced monad algebra">associative</link>.
 </block>
   
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9276</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9250</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>We are trying to check that the following identity holds:</p>
@@ -358,7 +1941,52 @@
  
   
   
-    <center><img src="resources/1f1193a3eab173c1a6ba3385d30010ea.svg"/></center>
+    <center><embedded-tex hash="1f1193a3eab173c1a6ba3385d30010ea"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+    $=$
+     
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -370,7 +1998,71 @@
  
   
   
-    <center><img src="resources/8b1fad34eae4715b0df99cba362094b4.svg"/></center>
+    <center><embedded-tex hash="8b1fad34eae4715b0df99cba362094b4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg1)]{};
+           \node [blue halo,fit=(alg2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
+           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -380,7 +2072,72 @@
  
   
   
-    <center><img src="resources/9502b0606db0133dc439ec822ac5db1d.svg"/></center>
+    <center><embedded-tex hash="9502b0606db0133dc439ec822ac5db1d"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(pi/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -389,7 +2146,67 @@
  
   
   
-    <center><img src="resources/3b4c0f7ae50ffa5b83242c06e08a5b2e.svg"/></center>
+    <center><embedded-tex hash="3b4c0f7ae50ffa5b83242c06e08a5b2e"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -399,11 +2216,65 @@
  
   
   
-    <center><img src="resources/b6f160505cc15ff67459b461d8abf0e4.svg"/></center>
+    <center><embedded-tex hash="b6f160505cc15ff67459b461d8abf0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9277</anchor> <rss>jms-00CF.rss.xml</rss>  <addr>jms-00CF</addr>  <route>jms-00CF.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced monad algebra on a fixed point</title> </frontmatter> <mainmatter><p>We must show that our <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">construction</link> in fact gives rise to a monad algebra.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9278</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
+</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9251</anchor> <rss>jms-00CF.rss.xml</rss>  <addr>jms-00CF</addr>  <route>jms-00CF.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The induced monad algebra on a fixed point</title> </frontmatter> <mainmatter><p>We must show that our <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">construction</link> in fact gives rise to a monad algebra.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9252</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
 
@@ -412,7 +2283,28 @@
  
   
   
-    <center><img src="resources/2a359c9040a55f2ef4f614d97cbf7314.svg"/></center>
+    <center><embedded-tex hash="2a359c9040a55f2ef4f614d97cbf7314"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -422,7 +2314,55 @@
  
   
   
-    <center><img src="resources/0f87c35b39a00d8f85fac9c9d009616f.svg"/></center>
+    <center><embedded-tex hash="0f87c35b39a00d8f85fac9c9d009616f"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+           \node [blue halo, fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(pi)(alg)(mu)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -432,7 +2372,54 @@
  
   
   
-    <center><img src="resources/c2c5003ba3cca14ae6a4d87de68ead02.svg"/></center>
+    <center><embedded-tex hash="c2c5003ba3cca14ae6a4d87de68ead02"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(mu)(unit)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -442,11 +2429,48 @@
  
   
   
-    <center><img src="resources/3938e2c26a9da32e674402dd41484644.svg"/></center>
+    <center><embedded-tex hash="3938e2c26a9da32e674402dd41484644"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
+     \begin {scope}[on background layer]
+       \fill [catc] (t) to (b) to (br) to (tl -| br);
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9279</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9253</anchor> <rss>jms-00CG.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CG</addr>  <route>jms-00CG.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Associativity of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">associative</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>We are trying to check that the following identity holds:</p>
@@ -455,7 +2479,52 @@
  
   
   
-    <center><img src="resources/1f1193a3eab173c1a6ba3385d30010ea.svg"/></center>
+    <center><embedded-tex hash="1f1193a3eab173c1a6ba3385d30010ea"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+    $=$
+     
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -467,7 +2536,71 @@
  
   
   
-    <center><img src="resources/8b1fad34eae4715b0df99cba362094b4.svg"/></center>
+    <center><embedded-tex hash="8b1fad34eae4715b0df99cba362094b4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      ++(1,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [spath/save=vert1] (t2) to (b2 -| t2);
+     \path [spath/save=vert2] (t3) to (b2 -| t3);
+     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
+     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
+     \draw  (t2) to (alg1);
+     \draw  (t3) to (alg2);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg1)]{};
+           \node [blue halo,fit=(alg2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
+           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -477,7 +2610,72 @@
  
   
   
-    <center><img src="resources/9502b0606db0133dc439ec822ac5db1d.svg"/></center>
+    <center><embedded-tex hash="9502b0606db0133dc439ec822ac5db1d"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate (center)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    ;
+
+     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
+     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+
+     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
+     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(pi/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -486,7 +2684,67 @@
  
   
   
-    <center><img src="resources/3b4c0f7ae50ffa5b83242c06e08a5b2e.svg"/></center>
+    <center><embedded-tex hash="3b4c0f7ae50ffa5b83242c06e08a5b2e"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    ;
+     \draw [spath/save=vert2] (alg) to (n/T/2);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
+     \draw [spath/save=diag] (pi) to (mul/2);
+     \path 
+      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
+     \draw  (mul/1) to (n/T/1);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(mul/1)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -496,17 +2754,71 @@
  
   
   
-    <center><img src="resources/b6f160505cc15ff67459b461d8abf0e4.svg"/></center>
+    <center><embedded-tex hash="b6f160505cc15ff67459b461d8abf0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
+     \draw [spath/save=vert] (alg) to (mul/1);
+     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+
+     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
+     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+
+     \draw  (pi.center) to (mul/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+     \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$ X $] (t1)
+      ++(1,0) coordinate[label=above:$ T $] (t2)
+      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
+      ++(2,0) coordinate[label=above:$ T $] (t3)
+      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,0) coordinate (b2);
+     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+     \draw  (mu.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9280</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9254</anchor> <rss>jms-00CH.rss.xml</rss> <taxon>Corollary</taxon> <addr>jms-00CH</addr>  <route>jms-00CH.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> is a monad algebra</title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is in fact a <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">monad algebra</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   Because it is <link href="jms-00CE.xml" type="local" addr="jms-00CE" title="Unitality of the induced monad algebra">unital</link> and <link href="jms-00CG.xml" type="local" addr="jms-00CG" title="Associativity of the induced monad algebra">associative</link>.
 </block>
   
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9281</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>9255</anchor> <rss>jms-00CK.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CK</addr>  <route>jms-00CK.xml</route> <date><year>2023</year> <month>10</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Lifting <link href="jms-00C7.xml" type="local" addr="jms-00C7" title="Homomorphism of algebras">homomorphisms</link> to the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> <meta name="source"><link href="joyal-moerdijk-1995.xml" type="local" addr="joyal-moerdijk-1995" title="Algebraic set theory">[joyal-moerdijk-1995]</link></meta></frontmatter> <mainmatter><p>Let <tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</tex> be a monad on a category <tex>\mathcal {C}</tex> and let <tex>I</tex> be an invertible <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad"><em>weak</em> algebra</link> for <tex>\mathbb {T}</tex>; let <tex>X</tex> be an arbitrary <tex>\mathbb {T}</tex>-algebra equipped with an endomap <tex>{ X } \xrightarrow {{ x }}{ X } \in \mathcal {C}</tex>. Then a homomorphism <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> also tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>, where <tex>\bar { I }</tex> is the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> of <tex>I</tex> and <tex>x \cdot X</tex> is the <link href="jms-00CQ.xml" type="local" addr="jms-00CQ" title="Restricting endofunctor algebras along endomorphisms">restriction</link> of <tex>X</tex> along <tex>x</tex>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
   <p>Suppose that <tex>{ I } \xrightarrow {{ j }}{ x \cdot X }</tex> is a homomorphism; we must check that the same map tracks a homomorphism <tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</tex>.</p>
@@ -518,7 +2830,59 @@
  
   
   
-    <center><img src="resources/bc269cb2ec0b1d077366e80a44b818e8.svg"/></center>
+    <center><embedded-tex hash="bc269cb2ec0b1d077366e80a44b818e8"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -528,7 +2892,63 @@
  
   
   
-    <center><img src="resources/afd46c27ca53f440080d78aee24ba545.svg"/></center>
+    <center><embedded-tex hash="afd46c27ca53f440080d78aee24ba545"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.5)
+      coordinate[dot,label=10:$j$] (inj) at (spath cs:wire 0.75)
+      (alg) ++(0,.6) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(inj)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -538,7 +2958,64 @@
  
   
   
-    <center><img src="resources/e198e860c983e3e629de635ffcd4b0e4.svg"/></center>
+    <center><embedded-tex hash="e198e860c983e3e629de635ffcd4b0e4"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=right:$ \alpha _{ x \cdot X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(x)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -548,7 +3025,64 @@
  
   
   
-    <center><img src="resources/23a621442644a6cbec62549d761a3500.svg"/></center>
+    <center><embedded-tex hash="23a621442644a6cbec62549d761a3500"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(2,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.62)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      (alg) ++(0,1) coordinate[dot,label=right:$ \mu $] (mul)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (pi.center) to (mul.center);
+     \draw  (mul.center) to (alg.center);
+     \draw  (n/T) to (mul.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg)(mul)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(alg/1)(alg/2)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -558,7 +3092,62 @@
  
   
   
-    <center><img src="resources/6756b4da5a94eef73873cb1e82e4b9df.svg"/></center>
+    <center><embedded-tex hash="6756b4da5a94eef73873cb1e82e4b9df"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=below:$ x $] (x) at (spath cs:wire 0.45)
+      coordinate[dot,label=below:$ \alpha _{ X } $] (alg/1) at (spath cs:wire 0.6)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.7)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(x)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(inj)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -567,11 +3156,60 @@
  
   
   
-    <center><img src="resources/a4ddb2c7d2a706f3b88c896f34bd146c.svg"/></center>
+    <center><embedded-tex hash="a4ddb2c7d2a706f3b88c896f34bd146c"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=-135:$ \pi _{ I } $] (pi) at (spath cs:wire 0.1)
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.5)
+      coordinate[dot,label=below:$ \alpha _{ I } $] (alg/1) at (spath cs:wire 0.27)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg/2) at (spath cs:wire 0.75)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg/2)
+    ;
+     \draw  (pi.center) to[out=0,in=90] (alg/1.center);
+     \draw  (n/T) to (alg/2.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg/1)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ I $] (n/I)
+      ++(3,-3) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=below:$j$] (inj) at (spath cs:wire 0.3)
+      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.5)
+      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
+    ;
+     \draw  (n/T) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9282</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
+</mainmatter> </tree></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9256</anchor> <rss>jms-00CE.rss.xml</rss> <taxon>Lemma</taxon> <addr>jms-00CE</addr>  <route>jms-00CE.xml</route> <date><year>2023</year> <month>10</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Unitality of the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link></title> </frontmatter> <mainmatter><p>Let <tex>\mathbb {T}</tex> be a monad on a category <tex>\mathcal {C}</tex>, and let <tex>X</tex> be a <link href="jms-00C8.xml" type="local" addr="jms-00C8" title="Weak algebra for a monad">weak algebra</link> for <tex>\mathbb {T}</tex> for which the algebra map is invertible by <tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</tex>. Then the <link href="jms-00CD.xml" type="local" addr="jms-00CD" title="The induced monad algebra">induced monad algebra</link> <tex>\bar { X }</tex> is <link href="jms-00C5.xml" type="local" addr="jms-00C5" title="Algebra for a monad">unital</link>.</p>
   
     <block open="open"><headline><strong>Proof</strong>.</headline> 
 
@@ -580,7 +3218,28 @@
  
   
   
-    <center><img src="resources/2a359c9040a55f2ef4f614d97cbf7314.svg"/></center>
+    <center><embedded-tex hash="2a359c9040a55f2ef4f614d97cbf7314"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+     
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+  </embedded-tex-body></embedded-tex></center>
   
  
 
@@ -590,7 +3249,55 @@
  
   
   
-    <center><img src="resources/0f87c35b39a00d8f85fac9c9d009616f.svg"/></center>
+    <center><embedded-tex hash="0f87c35b39a00d8f85fac9c9d009616f"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
+       
+           \node [blue halo, fit=(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $ \equiv $
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(pi)(alg)(mu)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -600,7 +3307,54 @@
  
   
   
-    <center><img src="resources/c2c5003ba3cca14ae6a4d87de68ead02.svg"/></center>
+    <center><embedded-tex hash="c2c5003ba3cca14ae6a4d87de68ead02"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo, fit=(mu)(unit)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li>
 
     <li>
@@ -610,11 +3364,48 @@
  
   
   
-    <center><img src="resources/3938e2c26a9da32e674402dd41484644.svg"/></center>
+    <center><embedded-tex hash="3938e2c26a9da32e674402dd41484644"><embedded-tex-preamble>
+    \usepackage {string-diagrams,preamble}
+  </embedded-tex-preamble> <embedded-tex-body>
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+     \path 
+      coordinate (nw)
+      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate (se);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+     \path 
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    ;
+     \draw  (pi) to[out=0,in=70] (alg);
+     \begin {scope}[on background layer]
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       
+           \node [blue halo,fit=(pi)(alg)]{};
+         
+     \end {scope}
+   \end {tikzpicture}
+ 
+        $=$
+         
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
+     \begin {scope}[on background layer]
+       \fill [catc] (t) to (b) to (br) to (tl -| br);
+     \end {scope}
+   \end {tikzpicture}
+ 
+      </embedded-tex-body></embedded-tex></center>
   </li></ol>
 </block>
   
-</mainmatter> </tree></backlinks> <references><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9283</anchor> <rss>joyal-moerdijk-1995.rss.xml</rss> <taxon>Reference</taxon> <addr>joyal-moerdijk-1995</addr>  <route>joyal-moerdijk-1995.xml</route> <date><year>1995</year>  </date> <authors><author><link href="andréjoyal.xml" type="local" andréjoyal="addr">André Joyal</link></author><author><link href="iekemoerdijk.xml" type="local" iekemoerdijk="addr">Ieke Moerdijk</link></author> </authors> <title>Algebraic set theory</title> <meta name="venue">Cambridge University Press</meta><meta name="doi">10.1017/CBO9780511752483</meta><meta name="bibtex">@book{joyal-moerdijk-1995,
+</mainmatter> </tree></backlinks> <references><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>9257</anchor> <rss>joyal-moerdijk-1995.rss.xml</rss> <taxon>Reference</taxon> <addr>joyal-moerdijk-1995</addr>  <route>joyal-moerdijk-1995.xml</route> <date><year>1995</year>  </date> <authors><author><link href="andréjoyal.xml" type="local" andréjoyal="addr">André Joyal</link></author><author><link href="iekemoerdijk.xml" type="local" iekemoerdijk="addr">Ieke Moerdijk</link></author> </authors> <title>Algebraic set theory</title> <meta name="venue">Cambridge University Press</meta><meta name="doi">10.1017/CBO9780511752483</meta><meta name="bibtex">@book{joyal-moerdijk-1995,
   author = {Joyal, Andr\'{e} and Moerdijk, Ieke},
   publisher = {Cambridge University Press},
   year = {1995},

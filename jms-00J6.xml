@@ -20,9 +20,33 @@
    { \mathopen {} \left ( 2,1 \right ) \mathclose {}} 
   \right \} \mathclose {}} 
 </tex><p>We can depict <tex>R</tex> by the following internal diagram:</p>
-  
-    <center><img src="resources/f38ef7a7ce641b19da5b8986b8b5a2e8.svg"/></center>
-  
+ <embedded-tex hash="f38ef7a7ce641b19da5b8986b8b5a2e8"><embedded-tex-preamble>\usepackage {preamble}</embedded-tex-preamble> <embedded-tex-body>
+  \begin {tikzpicture}
+    \begin {scope}
+     \node (l/0) {$0$};
+     \node [below = .5cm of l/0] (l/1) {$1$};
+     \node [below = .5cm of l/1] (l/2) {$2$};
+    \end {scope}
+    \begin {scope}[shift={(1.5cm,0)}]
+     \node (r/-1) {$-1$};
+     \node [below = .5cm of r/-1] (r/0) {$0$};
+     \node [below = .5cm of r/0] (r/1) {$1$};
+     \node [below = .5cm of r/1] (r/2) {$2$};
+    \end {scope}
+
+    \draw [thick] (l/0) to (r/0);
+    \draw [thick] (l/1) to (r/-1);
+    \draw [thick] (l/0) to (r/1);
+    \draw [thick] (l/1) to (r/2);
+    \draw [thick] (l/1) to (r/1);
+    \draw [thick] (l/2) to (r/1);
+
+    \begin {scope}[on background layer]
+     \node [rectangle, rounded corners=10pt, fill=yellow!20,thick,fit=(l/0)(l/2),inner sep=5pt] {};
+     \node [rectangle, rounded corners=10pt, fill=red!20,thick,fit=(r/-1)(r/2),inner sep=5pt] {};
+    \end {scope}
+  \end {tikzpicture}
+</embedded-tex-body></embedded-tex>
 </mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>3434</anchor> <rss>jms-00IL.rss.xml</rss> <taxon>Exercise</taxon> <addr>jms-00IL</addr>  <route>jms-00IL.xml</route> <date><year>2024</year> <month>1</month> <day>17</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> <contributor><link href="marcelofiore.xml" type="local" marcelofiore="addr">Marcelo Fiore</link></contributor></authors> <title>An internal diagram</title> </frontmatter> <mainmatter><p>Draw the <link href="jms-00IK.xml" type="local" addr="jms-00IK" title="Internal diagrams of relations">internal diagram</link> corresponding to the following <link href="jms-00I7.xml" type="local" addr="jms-00I7" title="Relation">relation</link>:</p><tex display="block">
   \begin {aligned}
    S&amp; \colon \mathbb {Z} \mathbin { \nrightarrow } \mathbb {Z} \\ 
