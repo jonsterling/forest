@@ -1,14 +1,290 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>30879</anchor> <rss>frct-0016.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-0016</addr>  <route>frct-0016.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Cocartesian morphism</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>, and let <tex>f:x \to  y  \in  B</tex>; a morphism
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35101</anchor> <rss>frct-0016.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-0016</addr>  <route>frct-0016.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Cocartesian morphism</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>, and let <tex>f:x \to  y  \in  B</tex>; a morphism
 <tex>\bar {f}: \bar {x} \xrightarrow [ f ]{}   \bar {y}</tex> in <tex>E</tex> is called <em>cocartesian</em> over <tex>f</tex> when for
 any <tex>m:y \to  u</tex> and <tex>\bar {h}: \bar {x} \xrightarrow [ f;m ]{}   \bar {u}</tex> there exists a unique
 <tex>\bar {m} :  \bar {y} \xrightarrow [ m ]{}   \bar {u}</tex> with <tex>\bar {f}; \bar {m} =  \bar {h}</tex>:</p>
  
   
   
-    <center><embedded-tex hash="7af0458e457099f2e3396ce0af55cfdd"><embedded-tex-preamble>
-    \usepackage {string-diagrams,preamble}
+    <center><embedded-tex hash="2aa95ef2392f3f1b6a5971b8118412d4"><embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+ 
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+ 
+ 
   </embedded-tex-preamble> <embedded-tex-body>
    \begin {tikzpicture}[diagram]
      \SpliceDiagramSquare {
@@ -34,18 +310,294 @@ any <tex>m:y \to  u</tex> and <tex>\bar {h}: \bar {x} \xrightarrow [ f;m ]{}   \
 </embedded-tex-body></embedded-tex></center>
   
  
-<p>We use a “pushout corner” to indicate <tex>\bar {x} \to \bar {y}</tex> as a cocartesian morphism, a notation justified by our discussion of <link href="frct-0019.xml" type="local" addr="frct-0019" title="The dual self-indexing">the dual self-indexing</link>.</p></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>30880</anchor> <rss>frct-0015.rss.xml</rss>  <addr>frct-0015</addr>  <route>frct-0015.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Cocartesian fibrations</title> </frontmatter> <mainmatter><p>Cocartesian fibrations are a dual notion to cartesian fibrations, in which the variance of indexing is reversed.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30881</anchor> <rss>frct-0017.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-0017</addr>  <route>frct-0017.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Cocartesian fibration</title> </frontmatter> <mainmatter><p>A displayed category <tex>E</tex> over <tex>B</tex> is a <em>cocartesian fibration</em> when for each <tex>f : x  \to  y \in  B</tex> and <tex>\bar {x} \in  E _{ x }</tex>, there exists a displayed object <tex>\bar {y} \in  E _{ y }</tex> and a <em>cocartesian</em> morphism <tex>\bar {f} :  \bar {x} \xrightarrow [ f ]{}   \bar {y}</tex>.</p><p>Cocartesian fibrations are also known as <em>opfibrations</em>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30882</anchor> <rss>frct-0018.rss.xml</rss>  <addr>frct-0018</addr>  <route>frct-0018.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The total opposite of a displayed category</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30883</anchor> <rss>frct-001I.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001I</addr>  <route>frct-001I.xml</route>   <title>Total opposite category</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>; we define its <em>total opposite</em> <tex>E ^{ \tilde { \mathsf {o}} }</tex> displayed over <tex>B ^{ \mathsf {o} }</tex> as follows:</p><ol><li>An object of <tex>E ^{ \tilde { \mathsf {o}} } _{ x }</tex> is given by an object of <tex>E _{ x }</tex>.</li>
-  <li>Given <tex>f : x  \to  y \in   B ^{ \mathsf {o} }</tex>, a displayed morphism <tex>\bar {x} \xrightarrow [ f ]{}   \bar {y}</tex> in <tex>E ^{ \tilde { \mathsf {o}} }</tex> is given by a displayed morphism <tex>\bar {y} \xrightarrow [ f ]{}   \bar {x}</tex> in <tex>E</tex>.</li></ol><p><strong>Warning.</strong> Do not confuse this construction with the <link href="frct-001Z.xml" type="local" addr="frct-001Z" title="The opposite of an uncloven fibration">opposite fibered category</link>, which produces a displayed category over <tex>B</tex> and not <tex>B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30884</anchor> <rss>frct-001J.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001J</addr>  <route>frct-001J.xml</route>    </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>. Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link>
+<p>We use a “pushout corner” to indicate <tex>\bar {x} \to \bar {y}</tex> as a cocartesian morphism, a notation justified by our discussion of <link href="frct-0019.xml" type="local" addr="frct-0019" title="The dual self-indexing">the dual self-indexing</link>.</p></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35102</anchor> <rss>frct-0015.rss.xml</rss>  <addr>frct-0015</addr>  <route>frct-0015.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Cocartesian fibrations</title> </frontmatter> <mainmatter><p>Cocartesian fibrations are a dual notion to cartesian fibrations, in which the variance of indexing is reversed.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35103</anchor> <rss>frct-0017.rss.xml</rss> <taxon>Definition</taxon> <addr>frct-0017</addr>  <route>frct-0017.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Cocartesian fibration</title> </frontmatter> <mainmatter><p>A displayed category <tex>E</tex> over <tex>B</tex> is a <em>cocartesian fibration</em> when for each <tex>f : x  \to  y \in  B</tex> and <tex>\bar {x} \in  E _{ x }</tex>, there exists a displayed object <tex>\bar {y} \in  E _{ y }</tex> and a <em>cocartesian</em> morphism <tex>\bar {f} :  \bar {x} \xrightarrow [ f ]{}   \bar {y}</tex>.</p><p>Cocartesian fibrations are also known as <em>opfibrations</em>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35104</anchor> <rss>frct-0018.rss.xml</rss>  <addr>frct-0018</addr>  <route>frct-0018.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The total opposite of a displayed category</title> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35105</anchor> <rss>frct-001I.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-001I</addr>  <route>frct-001I.xml</route>   <title>Total opposite category</title> </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>; we define its <em>total opposite</em> <tex>E ^{ \tilde { \mathsf {o}} }</tex> displayed over <tex>B ^{ \mathsf {o} }</tex> as follows:</p><ol><li>An object of <tex>E ^{ \tilde { \mathsf {o}} } _{ x }</tex> is given by an object of <tex>E _{ x }</tex>.</li>
+  <li>Given <tex>f : x  \to  y \in   B ^{ \mathsf {o} }</tex>, a displayed morphism <tex>\bar {x} \xrightarrow [ f ]{}   \bar {y}</tex> in <tex>E ^{ \tilde { \mathsf {o}} }</tex> is given by a displayed morphism <tex>\bar {y} \xrightarrow [ f ]{}   \bar {x}</tex> in <tex>E</tex>.</li></ol><p><strong>Warning.</strong> Do not confuse this construction with the <link href="frct-001Z.xml" type="local" addr="frct-001Z" title="The opposite of an uncloven fibration">opposite fibered category</link>, which produces a displayed category over <tex>B</tex> and not <tex>B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35106</anchor> <rss>frct-001J.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001J</addr>  <route>frct-001J.xml</route>    </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>. Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link>
 <tex>\widetilde { E ^{ \tilde { \mathsf {o}} } }</tex> is <tex>{ \mathopen {} \left ( \widetilde { E } \right ) \mathclose {}} ^{ \mathsf {o} }</tex>, and its projection functor is
-<tex>{ \mathopen {} \left ( p _{ E } \right ) \mathclose {}} ^{ \mathsf {o} }  :  \widetilde { E } ^{ \mathsf {o} } \to B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30885</anchor> <rss>frct-001K.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001K</addr>  <route>frct-001K.xml</route>    </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>, and let <tex>f:x \to  y \in  B</tex>. Prove that a
+<tex>{ \mathopen {} \left ( p _{ E } \right ) \mathclose {}} ^{ \mathsf {o} }  :  \widetilde { E } ^{ \mathsf {o} } \to B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35107</anchor> <rss>frct-001K.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001K</addr>  <route>frct-001K.xml</route>    </frontmatter> <mainmatter><p>Let <tex>E</tex> be displayed over <tex>B</tex>, and let <tex>f:x \to  y \in  B</tex>. Prove that a
 morphism <tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</tex> is cartesian over <tex>f</tex> in <tex>E</tex> if and only
-if <tex>\bar {f}: \bar {y} \xrightarrow [ f ]{} \bar {x}</tex> is cocartesian over <tex>f</tex> in <tex>E ^{ \tilde { \mathsf {o}} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30886</anchor> <rss>frct-001L.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001L</addr>  <route>frct-001L.xml</route>    </frontmatter> <mainmatter><p>Prove that a displayed category <tex>E</tex> is a cartesian fibration over <tex>B</tex> if and only if <tex>E ^{ \tilde { \mathsf {o}} }</tex> is a cocartesian fibration over <tex>B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30887</anchor> <rss>frct-002X.rss.xml</rss> <taxon>Example</taxon> <addr>frct-002X</addr>  <route>frct-002X.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Revisiting the fundamental self-indexing</title> </frontmatter> <mainmatter><p>Recall that the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link> <tex>\underline { B }</tex> of a category <tex>B</tex> is a displayed category with <tex>\underline { B } _{ x }  =  { B } _{ / x }</tex>. Recall that <link href="frct-001Y.xml" type="local" addr="frct-001Y" title="Pullbacks and cartesian maps"><tex>\underline { B }</tex> is a cartesian fibration over <tex>B</tex> if and only if <tex>B</tex> has pullbacks</link>. However, <tex>\underline { B }</tex> is unconditionally a <em>cocartesian</em> fibration.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30888</anchor> <rss>frct-002Y.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-002Y</addr>  <route>frct-002Y.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">the fundamental self-indexing</link> <tex>\underline { B }</tex> is a cocartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30889</anchor> <rss>frct-0019.rss.xml</rss> <taxon>Example</taxon> <addr>frct-0019</addr>  <route>frct-0019.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Dually to the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link>, every category <tex>B</tex> can also be displayed over itself via its <em>coslices</em> <tex>B ^{ \setminus   x }</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30890</anchor> <rss>frct-002Z.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-002Z</addr>  <route>frct-002Z.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Let <tex>B</tex> be a category. Define the displayed category <tex>\overline { B }</tex> over <tex>B</tex> as follows:</p><ol><li>For <tex>x \in  B</tex>, define <tex>\overline { B } _{ x }</tex> as the collection of pairs <tex>( \bar {x} \in  B,p _{ x } :x \to \bar {x})</tex>.</li>
+if <tex>\bar {f}: \bar {y} \xrightarrow [ f ]{} \bar {x}</tex> is cocartesian over <tex>f</tex> in <tex>E ^{ \tilde { \mathsf {o}} }</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35108</anchor> <rss>frct-001L.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001L</addr>  <route>frct-001L.xml</route>    </frontmatter> <mainmatter><p>Prove that a displayed category <tex>E</tex> is a cartesian fibration over <tex>B</tex> if and only if <tex>E ^{ \tilde { \mathsf {o}} }</tex> is a cocartesian fibration over <tex>B ^{ \mathsf {o} }</tex>.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35109</anchor> <rss>frct-002X.rss.xml</rss> <taxon>Example</taxon> <addr>frct-002X</addr>  <route>frct-002X.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>Revisiting the fundamental self-indexing</title> </frontmatter> <mainmatter><p>Recall that the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link> <tex>\underline { B }</tex> of a category <tex>B</tex> is a displayed category with <tex>\underline { B } _{ x }  =  { B } _{ / x }</tex>. Recall that <link href="frct-001Y.xml" type="local" addr="frct-001Y" title="Pullbacks and cartesian maps"><tex>\underline { B }</tex> is a cartesian fibration over <tex>B</tex> if and only if <tex>B</tex> has pullbacks</link>. However, <tex>\underline { B }</tex> is unconditionally a <em>cocartesian</em> fibration.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35110</anchor> <rss>frct-002Y.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-002Y</addr>  <route>frct-002Y.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">the fundamental self-indexing</link> <tex>\underline { B }</tex> is a cocartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35111</anchor> <rss>frct-0019.rss.xml</rss> <taxon>Example</taxon> <addr>frct-0019</addr>  <route>frct-0019.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Dually to the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link>, every category <tex>B</tex> can also be displayed over itself via its <em>coslices</em> <tex>B ^{ \setminus   x }</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35112</anchor> <rss>frct-002Z.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-002Z</addr>  <route>frct-002Z.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Let <tex>B</tex> be a category. Define the displayed category <tex>\overline { B }</tex> over <tex>B</tex> as follows:</p><ol><li>For <tex>x \in  B</tex>, define <tex>\overline { B } _{ x }</tex> as the collection of pairs <tex>( \bar {x} \in  B,p _{ x } :x \to \bar {x})</tex>.</li>
 <li>For <tex>f : x \to  y \in  B</tex>, define <tex>\overline { B } _{ f }</tex> to be the collection of commuting squares in the following configuration:</li></ol>
  
   
   
-    <center><embedded-tex hash="55b2caa204fe722b6eb0acba35b626c6"><embedded-tex-preamble>
-    \usepackage {string-diagrams,preamble}
+    <center><embedded-tex hash="e3078e5606bb939094dac1529e20e080"><embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+ 
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+ 
+ 
   </embedded-tex-preamble> <embedded-tex-body>
    \DiagramSquare {
     height = 1.7cm,
@@ -64,15 +616,291 @@ if <tex>\bar {f}: \bar {y} \xrightarrow [ f ]{} \bar {x}</tex> is cocartesian ov
 </embedded-tex-body></embedded-tex></center>
   
  
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30891</anchor> <rss>frct-001M.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001M</addr>  <route>frct-001M.xml</route>    </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cocartesian fibration if and only if
-<tex>B</tex> has pushouts.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30892</anchor> <rss>frct-001N.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001N</addr>  <route>frct-001N.xml</route>    </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> of <tex>\overline { B }</tex> is the
-arrow category <tex>B ^{ \to }</tex>, and the projection is the <em>domain</em> functor.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30893</anchor> <rss>frct-0030.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-0030</addr>  <route>frct-0030.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>30894</anchor> <rss>frct-0019.rss.xml</rss> <taxon>Example</taxon> <addr>frct-0019</addr>  <route>frct-0019.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Dually to the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link>, every category <tex>B</tex> can also be displayed over itself via its <em>coslices</em> <tex>B ^{ \setminus   x }</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30895</anchor> <rss>frct-002Z.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-002Z</addr>  <route>frct-002Z.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Let <tex>B</tex> be a category. Define the displayed category <tex>\overline { B }</tex> over <tex>B</tex> as follows:</p><ol><li>For <tex>x \in  B</tex>, define <tex>\overline { B } _{ x }</tex> as the collection of pairs <tex>( \bar {x} \in  B,p _{ x } :x \to \bar {x})</tex>.</li>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35113</anchor> <rss>frct-001M.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001M</addr>  <route>frct-001M.xml</route>    </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cocartesian fibration if and only if
+<tex>B</tex> has pushouts.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35114</anchor> <rss>frct-001N.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001N</addr>  <route>frct-001N.xml</route>    </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> of <tex>\overline { B }</tex> is the
+arrow category <tex>B ^{ \to }</tex>, and the projection is the <em>domain</em> functor.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35115</anchor> <rss>frct-0030.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-0030</addr>  <route>frct-0030.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35116</anchor> <rss>frct-0019.rss.xml</rss> <taxon>Example</taxon> <addr>frct-0019</addr>  <route>frct-0019.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Dually to the <link href="frct-001X.xml" type="local" addr="frct-001X" title="The fundamental self-indexing">fundamental self-indexing</link>, every category <tex>B</tex> can also be displayed over itself via its <em>coslices</em> <tex>B ^{ \setminus   x }</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35117</anchor> <rss>frct-002Z.rss.xml</rss> <taxon>Construction</taxon> <addr>frct-002Z</addr>  <route>frct-002Z.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors> <title>The dual self-indexing</title> </frontmatter> <mainmatter><p>Let <tex>B</tex> be a category. Define the displayed category <tex>\overline { B }</tex> over <tex>B</tex> as follows:</p><ol><li>For <tex>x \in  B</tex>, define <tex>\overline { B } _{ x }</tex> as the collection of pairs <tex>( \bar {x} \in  B,p _{ x } :x \to \bar {x})</tex>.</li>
 <li>For <tex>f : x \to  y \in  B</tex>, define <tex>\overline { B } _{ f }</tex> to be the collection of commuting squares in the following configuration:</li></ol>
  
   
   
-    <center><embedded-tex hash="55b2caa204fe722b6eb0acba35b626c6"><embedded-tex-preamble>
-    \usepackage {string-diagrams,preamble}
+    <center><embedded-tex hash="e3078e5606bb939094dac1529e20e080"><embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+ 
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+ 
+ 
   </embedded-tex-preamble> <embedded-tex-body>
    \DiagramSquare {
     height = 1.7cm,
@@ -91,6 +919,6 @@ arrow category <tex>B ^{ \to }</tex>, and the projection is the <em>domain</em> 
 </embedded-tex-body></embedded-tex></center>
   
  
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30896</anchor> <rss>frct-001M.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001M</addr>  <route>frct-001M.xml</route>    </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cocartesian fibration if and only if
-<tex>B</tex> has pushouts.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30897</anchor> <rss>frct-001N.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001N</addr>  <route>frct-001N.xml</route>    </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> of <tex>\overline { B }</tex> is the
-arrow category <tex>B ^{ \to }</tex>, and the projection is the <em>domain</em> functor.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>30898</anchor> <rss>frct-0030.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-0030</addr>  <route>frct-0030.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree></related> <backlinks/> <references/></backmatter></tree>
+</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35118</anchor> <rss>frct-001M.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001M</addr>  <route>frct-001M.xml</route>    </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cocartesian fibration if and only if
+<tex>B</tex> has pushouts.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35119</anchor> <rss>frct-001N.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001N</addr>  <route>frct-001N.xml</route>    </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> of <tex>\overline { B }</tex> is the
+arrow category <tex>B ^{ \to }</tex>, and the projection is the <em>domain</em> functor.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35120</anchor> <rss>frct-0030.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-0030</addr>  <route>frct-0030.xml</route>  <authors><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author> </authors>  </frontmatter> <mainmatter><p>Prove that <tex>\overline { B }</tex> is a cartesian fibration for any category <tex>B</tex>.</p></mainmatter> </tree></mainmatter> </tree></related> <backlinks/> <references/></backmatter></tree>
