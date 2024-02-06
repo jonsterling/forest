@@ -103,20 +103,6 @@
    </center>
   </xsl:template>
 
-  <xsl:template match="headline">
-    <summary>
-      <xsl:apply-templates />
-    </summary>
-  </xsl:template>
-
-  <xsl:template match="block">
-    <section class="block">
-      <details open="open">
-        <xsl:apply-templates />
-      </details>
-    </section>
-  </xsl:template>
-
   <xsl:template match="link">
     <a class="{@type}" href="{@href}">
       <xsl:choose>
