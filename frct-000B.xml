@@ -1,619 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41665</anchor> <rss>frct-000B.rss.xml</rss>  <addr>frct-000B</addr>  <route>frct-000B.xml</route>   <title>Displayed categories from functors</title>  </frontmatter> <mainmatter><p>In many cases, one starts with a functor <tex>P:E \to  B</tex>; if it were meaningful to speak of <em>equality</em> of objects in an arbitrary category then there would be an obvious construction of a displayed category <tex>P _{ \bullet }</tex> from <tex>P</tex>; we would simply set <tex>P _{ x }</tex> to be the collection of objects <tex>u \in  E</tex> such that <tex>Pu=x</tex>. As it stands there is a more subtle version that will coincide up to categorical
-equivalence with the naïve one in all cases that the latter is meaningful.</p><ol><li>
-    We define an object of <tex>P _{ x }</tex> to be a pair <tex>(u, \phi _{ u } )</tex> where <tex>u \in  E</tex> and  <tex>\phi _{ u }  : Pu \cong  x</tex>. It is good to visualize such a pair as a “crooked
-  leg” like so:
-    
- 
-  
-  <embedded-tex hash="a257668d6aa52a4303ed8bb0b163434e"><embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
- 
- \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
- 
-  </embedded-tex-preamble> <embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (u) {$u$};
-         \node  (Pu) [below = 1cm of u] {$Pu$};
-         \node  (x) [right = 1.5cm of Pu] {$x$};
-         \draw [lies over] (u) to (Pu);
-         \draw [-&gt;] (Pu) to node [below] {$ \phi _{ u } $} (x);
-       \end {tikzpicture}
-    </embedded-tex-body></embedded-tex></li>
-
-  <li>
-    A morphism <tex>(u, \phi _{ u } ) \xrightarrow [ f ]{}  (v, \phi _{ v } )</tex> over <tex>f : x  \to  y</tex> is given by a morphism <tex>h : u \to  v</tex> that lies over <tex>f</tex> modulo the isomorphisms <tex>\phi _{ u } , \phi _{ v }</tex> in sense depicted below:
-
-
-    
- 
-  
-  <embedded-tex hash="c1c1ba5176b422899b71c1db7190942c"><embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
- 
- \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
- 
-  </embedded-tex-preamble> <embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (pu) {$Pu$};
-         \node  (pv) [right = of pu] {$Pv$};
-         \node  (x) [below left = 1.5cm of pu] {$x$};
-         \node  (y) [below right = 1.5cm of pv] {$y$};
-         \node  (u) [above = 1.5cm of pu] {$u$};
-         \node  (v) [above = 1.5cm of pv] {$v$};
-         \draw [lies over] (u) to (pu);
-         \draw [lies over] (v) to (pv);
-         \draw [-&gt;] (u) to node [above] {$h$} (v);
-         \draw [-&gt;] (x) to node [sloped,above] {$ \phi _{ u } ^{ -1 } $} (pu);
-         \draw [-&gt;] (pu) to node [upright desc] {$Ph$} (pv);
-         \draw [-&gt;] (pv) to node [sloped,above] {$ \phi _{ v } $} (y);
-         \draw [-&gt;,bend right=30] (x) to node [below] {$f$} (y);
-       \end {tikzpicture}
-    </embedded-tex-body></embedded-tex></li></ol><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41666</anchor> <rss>frct-001U.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001U</addr>  <route>frct-001U.xml</route>     </frontmatter> <mainmatter><p>Suppose that <tex>B</tex> is an internal category in <tex>\mathbf {Set}</tex>, i.e.
-it has a set of objects. Exhibit an equivalence of displayed categories between
-<tex>P _{ \bullet }</tex> as described above, and the naïve definition which <tex>E _{ x }</tex> is the
-collection of objects <tex>u \in  E</tex> such that <tex>Pu = x</tex>.</p></mainmatter> </tree><p>We have a functor <tex>\widetilde { P _{ \bullet } } \to  E</tex> taking a pair <tex>(x,(u, \phi _{ u } ))</tex> to <tex>u</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41667</anchor> <rss>frct-001V.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001V</addr>  <route>frct-001V.xml</route>     </frontmatter> <mainmatter><p>Explicitly construct the functorial action of <tex>\widetilde { P _{ \bullet } } \to  E</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41668</anchor> <rss>frct-001W.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001W</addr>  <route>frct-001W.xml</route>     </frontmatter> <mainmatter><p>Verify that <tex>\widetilde { P _{ \bullet } } \to  E</tex> is a categorical equivalence.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41669</anchor> <rss>frct-000C.rss.xml</rss>  <addr>frct-000C</addr>  <route>frct-000C.xml</route>   <title>Relationship to Street's fibrations</title>  </frontmatter> <mainmatter><p>In classical category theory, cartesian fibrations are defined by
-  <link href="sga-1.xml" type="local" addr="sga-1" title="Revêtements étales et groupe fondamental (SGA 1)">Grothendieck</link> to be certain functors <tex>E \to  B</tex> such that any morphism <tex>f:x \to  Pv</tex>
-in <tex>B</tex> lies strictly underneath a cartesian morphism in <tex>E</tex>. As we have
-discussed, this condition cannot be formulated unless equality is meaningful
-for the collection of objects of <tex>B</tex>.</p><p>There is an alternative definition of cartesian fibration due to <link href="street-1980.xml" type="local" addr="street-1980" title="Fibrations in bicategories">Street</link> that avoids
-equality of objects; here we require for each <tex>f:x \to  Pv</tex> a cartesian morphism
-<tex>h: f ^{ * } v  \to  v</tex> together with an isomorphism <tex>\phi  : P( f ^{ * } v) \cong  x</tex>
-such that <tex>\phi ^{-1};Ph = f</tex>.</p><p>By unrolling definitions, it is not difficult to see that the displayed
-category <tex>P _{ \bullet }</tex> is a cartesian fibration in our sense if and only if the functor
-<tex>P:E \to  B</tex> was a fibration in Street’s sense. Moreover, it can be seen that the
-Grothendieck construction yields a <em>Grothendieck</em> fibration
-<tex>\widetilde { P _{ \bullet } } \to  B</tex>; hence we have introduced by accident a convenient
-destription of the <em>strictification</em> of Street fibrations into equivalent
-Grothendieck fibrations.</p></mainmatter> </tree></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41670</anchor> <rss>frct-0009.rss.xml</rss>  <addr>frct-0009</addr>  <route>frct-0009.xml</route>   <title>The Grothendieck construction</title>  </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41671</anchor> <rss>frct-000A.rss.xml</rss>  <addr>frct-000A</addr>  <route>frct-000A.xml</route> <date><year>2022</year>  </date>  <title>The total category and its projection</title>  </frontmatter> <mainmatter><p>Note that any displayed category <tex>E</tex> over <tex>B</tex> can be viewed as an undisplayed category <tex>\widetilde { E }</tex> equipped with a projection functor <tex>p _{ E } :  \widetilde { E } \to  B</tex>; in this case <tex>\widetilde { E }</tex> is called the <em>total category</em> of <tex>E</tex>.</p><ol><li>An object of <tex>\widetilde { E }</tex> is given by a pair <tex>(x, \bar {x})</tex> where <tex>x \in  B</tex> and <tex>\bar {x} \in  E _{ x }</tex>.</li>
-<li>A morphism <tex>{ (x, \bar {x}) } \xrightarrow {{ }}{ (y, \bar {y}) }</tex> in <tex>\widetilde { E }</tex> is given by a pair <tex>(f, \bar {f})</tex> where <tex>{ x } \xrightarrow {{ f }}{ y }</tex> and <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} } : \bar {x}</tex>.</li></ol><p>The construction of the total category of a displayed category is called the <em>Grothendieck construction.</em></p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41672</anchor> <rss>frct-001T.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001T</addr>  <route>frct-001T.xml</route>     </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> <tex>\widetilde { \underline { B } }</tex> of <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">the fundamental self-indexing</link> is the arrow category <tex>B^{ \to }</tex>, and the projection is the codomain functor.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41673</anchor> <rss>frct-000B.rss.xml</rss>  <addr>frct-000B</addr>  <route>frct-000B.xml</route>   <title>Displayed categories from functors</title>  </frontmatter> <mainmatter><p>In many cases, one starts with a functor <tex>P:E \to  B</tex>; if it were meaningful to speak of <em>equality</em> of objects in an arbitrary category then there would be an obvious construction of a displayed category <tex>P _{ \bullet }</tex> from <tex>P</tex>; we would simply set <tex>P _{ x }</tex> to be the collection of objects <tex>u \in  E</tex> such that <tex>Pu=x</tex>. As it stands there is a more subtle version that will coincide up to categorical
+<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41673</anchor> <rss>frct-000B.rss.xml</rss>  <addr>frct-000B</addr>  <route>frct-000B.xml</route>   <title>Displayed categories from functors</title>  </frontmatter> <mainmatter><p>In many cases, one starts with a functor <tex>P:E \to  B</tex>; if it were meaningful to speak of <em>equality</em> of objects in an arbitrary category then there would be an obvious construction of a displayed category <tex>P _{ \bullet }</tex> from <tex>P</tex>; we would simply set <tex>P _{ x }</tex> to be the collection of objects <tex>u \in  E</tex> such that <tex>Pu=x</tex>. As it stands there is a more subtle version that will coincide up to categorical
 equivalence with the naïve one in all cases that the latter is meaningful.</p><ol><li>
     We define an object of <tex>P _{ x }</tex> to be a pair <tex>(u, \phi _{ u } )</tex> where <tex>u \in  E</tex> and  <tex>\phi _{ u }  : Pu \cong  x</tex>. It is good to visualize such a pair as a “crooked
   leg” like so:
@@ -1225,7 +612,620 @@ category <tex>P _{ \bullet }</tex> is a cartesian fibration in our sense if and 
 Grothendieck construction yields a <em>Grothendieck</em> fibration
 <tex>\widetilde { P _{ \bullet } } \to  B</tex>; hence we have introduced by accident a convenient
 destription of the <em>strictification</em> of Street fibrations into equivalent
-Grothendieck fibrations.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41678</anchor> <rss>frct-000D.rss.xml</rss>  <addr>frct-000D</addr>  <route>frct-000D.xml</route>   <title>Iteration and pushforward</title>  </frontmatter> <mainmatter><p>It also makes sense to speak of categories displayed over other displayed
+Grothendieck fibrations.</p></mainmatter> </tree></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41678</anchor> <rss>frct-0009.rss.xml</rss>  <addr>frct-0009</addr>  <route>frct-0009.xml</route>   <title>The Grothendieck construction</title>  </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41679</anchor> <rss>frct-000A.rss.xml</rss>  <addr>frct-000A</addr>  <route>frct-000A.xml</route> <date><year>2022</year>  </date>  <title>The total category and its projection</title>  </frontmatter> <mainmatter><p>Note that any displayed category <tex>E</tex> over <tex>B</tex> can be viewed as an undisplayed category <tex>\widetilde { E }</tex> equipped with a projection functor <tex>p _{ E } :  \widetilde { E } \to  B</tex>; in this case <tex>\widetilde { E }</tex> is called the <em>total category</em> of <tex>E</tex>.</p><ol><li>An object of <tex>\widetilde { E }</tex> is given by a pair <tex>(x, \bar {x})</tex> where <tex>x \in  B</tex> and <tex>\bar {x} \in  E _{ x }</tex>.</li>
+<li>A morphism <tex>{ (x, \bar {x}) } \xrightarrow {{ }}{ (y, \bar {y}) }</tex> in <tex>\widetilde { E }</tex> is given by a pair <tex>(f, \bar {f})</tex> where <tex>{ x } \xrightarrow {{ f }}{ y }</tex> and <tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} } : \bar {x}</tex>.</li></ol><p>The construction of the total category of a displayed category is called the <em>Grothendieck construction.</em></p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41680</anchor> <rss>frct-001T.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001T</addr>  <route>frct-001T.xml</route>     </frontmatter> <mainmatter><p>Prove that the <link href="frct-000A.xml" type="local" addr="frct-000A" title="The total category and its projection">total category</link> <tex>\widetilde { \underline { B } }</tex> of <link href="frct-0003.xml" type="local" addr="frct-0003" title="The fundamental self-indexing">the fundamental self-indexing</link> is the arrow category <tex>B^{ \to }</tex>, and the projection is the codomain functor.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41681</anchor> <rss>frct-000B.rss.xml</rss>  <addr>frct-000B</addr>  <route>frct-000B.xml</route>   <title>Displayed categories from functors</title>  </frontmatter> <mainmatter><p>In many cases, one starts with a functor <tex>P:E \to  B</tex>; if it were meaningful to speak of <em>equality</em> of objects in an arbitrary category then there would be an obvious construction of a displayed category <tex>P _{ \bullet }</tex> from <tex>P</tex>; we would simply set <tex>P _{ x }</tex> to be the collection of objects <tex>u \in  E</tex> such that <tex>Pu=x</tex>. As it stands there is a more subtle version that will coincide up to categorical
+equivalence with the naïve one in all cases that the latter is meaningful.</p><ol><li>
+    We define an object of <tex>P _{ x }</tex> to be a pair <tex>(u, \phi _{ u } )</tex> where <tex>u \in  E</tex> and  <tex>\phi _{ u }  : Pu \cong  x</tex>. It is good to visualize such a pair as a “crooked
+  leg” like so:
+    
+ 
+  
+  <embedded-tex hash="a257668d6aa52a4303ed8bb0b163434e"><embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+ 
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+ 
+ 
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (u) {$u$};
+         \node  (Pu) [below = 1cm of u] {$Pu$};
+         \node  (x) [right = 1.5cm of Pu] {$x$};
+         \draw [lies over] (u) to (Pu);
+         \draw [-&gt;] (Pu) to node [below] {$ \phi _{ u } $} (x);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></li>
+
+  <li>
+    A morphism <tex>(u, \phi _{ u } ) \xrightarrow [ f ]{}  (v, \phi _{ v } )</tex> over <tex>f : x  \to  y</tex> is given by a morphism <tex>h : u \to  v</tex> that lies over <tex>f</tex> modulo the isomorphisms <tex>\phi _{ u } , \phi _{ v }</tex> in sense depicted below:
+
+
+    
+ 
+  
+  <embedded-tex hash="c1c1ba5176b422899b71c1db7190942c"><embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+ 
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+ 
+ 
+  </embedded-tex-preamble> <embedded-tex-body>
+       \begin {tikzpicture}[diagram]
+         \node  (pu) {$Pu$};
+         \node  (pv) [right = of pu] {$Pv$};
+         \node  (x) [below left = 1.5cm of pu] {$x$};
+         \node  (y) [below right = 1.5cm of pv] {$y$};
+         \node  (u) [above = 1.5cm of pu] {$u$};
+         \node  (v) [above = 1.5cm of pv] {$v$};
+         \draw [lies over] (u) to (pu);
+         \draw [lies over] (v) to (pv);
+         \draw [-&gt;] (u) to node [above] {$h$} (v);
+         \draw [-&gt;] (x) to node [sloped,above] {$ \phi _{ u } ^{ -1 } $} (pu);
+         \draw [-&gt;] (pu) to node [upright desc] {$Ph$} (pv);
+         \draw [-&gt;] (pv) to node [sloped,above] {$ \phi _{ v } $} (y);
+         \draw [-&gt;,bend right=30] (x) to node [below] {$f$} (y);
+       \end {tikzpicture}
+    </embedded-tex-body></embedded-tex></li></ol><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41682</anchor> <rss>frct-001U.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001U</addr>  <route>frct-001U.xml</route>     </frontmatter> <mainmatter><p>Suppose that <tex>B</tex> is an internal category in <tex>\mathbf {Set}</tex>, i.e.
+it has a set of objects. Exhibit an equivalence of displayed categories between
+<tex>P _{ \bullet }</tex> as described above, and the naïve definition which <tex>E _{ x }</tex> is the
+collection of objects <tex>u \in  E</tex> such that <tex>Pu = x</tex>.</p></mainmatter> </tree><p>We have a functor <tex>\widetilde { P _{ \bullet } } \to  E</tex> taking a pair <tex>(x,(u, \phi _{ u } ))</tex> to <tex>u</tex>.</p><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41683</anchor> <rss>frct-001V.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001V</addr>  <route>frct-001V.xml</route>     </frontmatter> <mainmatter><p>Explicitly construct the functorial action of <tex>\widetilde { P _{ \bullet } } \to  E</tex>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41684</anchor> <rss>frct-001W.rss.xml</rss> <taxon>Exercise</taxon> <addr>frct-001W</addr>  <route>frct-001W.xml</route>     </frontmatter> <mainmatter><p>Verify that <tex>\widetilde { P _{ \bullet } } \to  E</tex> is a categorical equivalence.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41685</anchor> <rss>frct-000C.rss.xml</rss>  <addr>frct-000C</addr>  <route>frct-000C.xml</route>   <title>Relationship to Street's fibrations</title>  </frontmatter> <mainmatter><p>In classical category theory, cartesian fibrations are defined by
+  <link href="sga-1.xml" type="local" addr="sga-1" title="Revêtements étales et groupe fondamental (SGA 1)">Grothendieck</link> to be certain functors <tex>E \to  B</tex> such that any morphism <tex>f:x \to  Pv</tex>
+in <tex>B</tex> lies strictly underneath a cartesian morphism in <tex>E</tex>. As we have
+discussed, this condition cannot be formulated unless equality is meaningful
+for the collection of objects of <tex>B</tex>.</p><p>There is an alternative definition of cartesian fibration due to <link href="street-1980.xml" type="local" addr="street-1980" title="Fibrations in bicategories">Street</link> that avoids
+equality of objects; here we require for each <tex>f:x \to  Pv</tex> a cartesian morphism
+<tex>h: f ^{ * } v  \to  v</tex> together with an isomorphism <tex>\phi  : P( f ^{ * } v) \cong  x</tex>
+such that <tex>\phi ^{-1};Ph = f</tex>.</p><p>By unrolling definitions, it is not difficult to see that the displayed
+category <tex>P _{ \bullet }</tex> is a cartesian fibration in our sense if and only if the functor
+<tex>P:E \to  B</tex> was a fibration in Street’s sense. Moreover, it can be seen that the
+Grothendieck construction yields a <em>Grothendieck</em> fibration
+<tex>\widetilde { P _{ \bullet } } \to  B</tex>; hence we have introduced by accident a convenient
+destription of the <em>strictification</em> of Street fibrations into equivalent
+Grothendieck fibrations.</p></mainmatter> </tree></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>41686</anchor> <rss>frct-000D.rss.xml</rss>  <addr>frct-000D</addr>  <route>frct-000D.xml</route>   <title>Iteration and pushforward</title>  </frontmatter> <mainmatter><p>It also makes sense to speak of categories displayed over other displayed
 categories; one way to formalize this notion is as follows. Let <tex>E</tex> be
 displayed over <tex>B</tex>; we define a category displayed over <tex>E</tex> to be simply a
 category displayed over the total category <tex>\widetilde { E }</tex>.</p><p>Now let <tex>F</tex> be displayed over <tex>E</tex> over <tex>B</tex>. Then we may regard <tex>F</tex> as a
@@ -1239,7 +1239,7 @@ functor <tex>U:B  \to  C</tex>.</li>
 <li>Because <tex>E</tex> is displayed over <tex>B</tex>, we may regard it as displayed over the
 equivalent total category <tex>\widetilde { U _{ \bullet } }</tex> by
   <link href="frct-0007.xml" type="local" addr="frct-0007" title="Change of base of displayed categories">change of base</link>.</li>
-<li>Hence we may define the pushforward <tex>U _{ ! } E</tex> to be the displayed category <tex>(U _{ \bullet } ) _{ ! } E</tex> as defined above.</li></ol></mainmatter> </tree></mainmatter> </tree></context> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41679</anchor> <rss>frct-000D.rss.xml</rss>  <addr>frct-000D</addr>  <route>frct-000D.xml</route>   <title>Iteration and pushforward</title>  </frontmatter> <mainmatter><p>It also makes sense to speak of categories displayed over other displayed
+<li>Hence we may define the pushforward <tex>U _{ ! } E</tex> to be the displayed category <tex>(U _{ \bullet } ) _{ ! } E</tex> as defined above.</li></ol></mainmatter> </tree></mainmatter> </tree></context> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41687</anchor> <rss>frct-000D.rss.xml</rss>  <addr>frct-000D</addr>  <route>frct-000D.xml</route>   <title>Iteration and pushforward</title>  </frontmatter> <mainmatter><p>It also makes sense to speak of categories displayed over other displayed
 categories; one way to formalize this notion is as follows. Let <tex>E</tex> be
 displayed over <tex>B</tex>; we define a category displayed over <tex>E</tex> to be simply a
 category displayed over the total category <tex>\widetilde { E }</tex>.</p><p>Now let <tex>F</tex> be displayed over <tex>E</tex> over <tex>B</tex>. Then we may regard <tex>F</tex> as a
@@ -1253,4 +1253,4 @@ functor <tex>U:B  \to  C</tex>.</li>
 <li>Because <tex>E</tex> is displayed over <tex>B</tex>, we may regard it as displayed over the
 equivalent total category <tex>\widetilde { U _{ \bullet } }</tex> by
   <link href="frct-0007.xml" type="local" addr="frct-0007" title="Change of base of displayed categories">change of base</link>.</li>
-<li>Hence we may define the pushforward <tex>U _{ ! } E</tex> to be the displayed category <tex>(U _{ \bullet } ) _{ ! } E</tex> as defined above.</li></ol></mainmatter> </tree></backlinks> <references><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41680</anchor> <rss>street-1980.rss.xml</rss> <taxon>Reference</taxon> <addr>street-1980</addr>  <route>street-1980.xml</route>  <authors><author>Ross Street</author> </authors> <title>Fibrations in bicategories</title>  </frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41681</anchor> <rss>sga-1.rss.xml</rss> <taxon>Reference</taxon> <addr>sga-1</addr>  <route>sga-1.xml</route>  <authors><author><link href="alexandergrothendieck.xml" type="local" alexandergrothendieck="addr">Alexander Grothendieck</link></author><author>Michele Raynaud</author> </authors> <title>Revêtements étales et groupe fondamental (SGA 1)</title>  <meta name="doi">10.48550/ARXIV.MATH/0206203</meta></frontmatter> <mainmatter><p>Le texte présente les fondements d’une théorie du groupe fondamental en Géométrie Algébrique, dans le point de vue “kroneckerien” permettant de traiter sur le même pied le cas d’une variété algébrique au sens habituel, et celui d’un anneau des entiers d’un corps de nombres, par exemple.</p><p>The text presents the foundations of a theory of the fundamental group in Algebraic Geometry from the Kronecker point of view, allowing one to treat on an equal footing the case of an algebraic variety in the usual sense, and that of the ring of integers in a number field, for instance.</p></mainmatter> </tree></references></backmatter></tree>
+<li>Hence we may define the pushforward <tex>U _{ ! } E</tex> to be the displayed category <tex>(U _{ \bullet } ) _{ ! } E</tex> as defined above.</li></ol></mainmatter> </tree></backlinks> <references><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41688</anchor> <rss>street-1980.rss.xml</rss> <taxon>Reference</taxon> <addr>street-1980</addr>  <route>street-1980.xml</route>  <authors><author>Ross Street</author> </authors> <title>Fibrations in bicategories</title>  </frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>41689</anchor> <rss>sga-1.rss.xml</rss> <taxon>Reference</taxon> <addr>sga-1</addr>  <route>sga-1.xml</route>  <authors><author><link href="alexandergrothendieck.xml" type="local" alexandergrothendieck="addr">Alexander Grothendieck</link></author><author>Michele Raynaud</author> </authors> <title>Revêtements étales et groupe fondamental (SGA 1)</title>  <meta name="doi">10.48550/ARXIV.MATH/0206203</meta></frontmatter> <mainmatter><p>Le texte présente les fondements d’une théorie du groupe fondamental en Géométrie Algébrique, dans le point de vue “kroneckerien” permettant de traiter sur le même pied le cas d’une variété algébrique au sens habituel, et celui d’un anneau des entiers d’un corps de nombres, par exemple.</p><p>The text presents the foundations of a theory of the fundamental group in Algebraic Geometry from the Kronecker point of view, allowing one to treat on an equal footing the case of an algebraic variety in the usual sense, and that of the ring of integers in a number field, for instance.</p></mainmatter> </tree></references></backmatter></tree>
