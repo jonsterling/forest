@@ -72,11 +72,9 @@
   </xsl:template>
   <xsl:template match="date[@href]">
     <li class="meta-item">
-      <span class="link local">
-        <a href="{@href}">
-          <xsl:apply-templates select="." mode="date-inner" />
-        </a>
-      </span>
+      <a class="link local" href="{@href}">
+        <xsl:apply-templates select="." mode="date-inner" />
+      </a>
     </li>
   </xsl:template>
   <xsl:template match="date[not(@href)]">
@@ -186,7 +184,7 @@
     <li>
       <xsl:for-each select="frontmatter">
         <a href="{route}" class="bullet" title="{title} [{addr}]">■</a>
-        <span class="link internal" data-target="#tree-{anchor}">
+        <span class="link local" data-target="#tree-{anchor}">
           <span class="taxon toc-item-label">
             <xsl:apply-templates select="taxon" />
             <xsl:if test="../@numbered='true' and ../@toc='true' and count(../../tree) > 1">
@@ -257,7 +255,7 @@
   </xsl:template>
   <xsl:template match="meta[@name='doi']">
     <li class="meta-item">
-      <a class="doi" href="{concat('https://www.doi.org/', .)}">
+      <a class="doi link" href="{concat('https://www.doi.org/', .)}">
         <xsl:value-of select="." />
       </a>
     </li>
@@ -281,29 +279,23 @@
   </xsl:template>
   <xsl:template match="meta[@name='external']">
     <li class="meta-item">
-      <span class="link external">
-        <a href="{.}">
-          <xsl:value-of select="." />
-        </a>
-      </span>
+      <a class="link external" href="{.}">
+        <xsl:value-of select="." />
+      </a>
     </li>
   </xsl:template>
   <xsl:template match="meta[@name='slides']">
     <li class="meta-item">
-      <span class="link external">
-        <a href="{.}">
-          <xsl:text>Slides</xsl:text>
-        </a>
-      </span>
+      <a class="link external" href="{.}">
+        <xsl:text>Slides</xsl:text>
+      </a>
     </li>
   </xsl:template>
   <xsl:template match="meta[@name='video']">
     <li class="meta-item">
-      <span class="link external">
-        <a href="{.}">
-          <xsl:text>Video</xsl:text>
-        </a>
-      </span>
+      <a class="link external" href="{.}">
+        <xsl:text>Video</xsl:text>
+      </a>
     </li>
   </xsl:template>
   <xsl:template match="tree/frontmatter/taxon">
@@ -350,38 +342,36 @@
     <xsl:number format="1.1" count="tree[@toc='true' and @numbered='true']" level="multiple" />
   </xsl:template>
   <xsl:template match="ref">
-    <span class="link local">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:choose>
-            <xsl:when test="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr]">
-              <xsl:text>#tree-</xsl:text>
-              <xsl:value-of select="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr]/frontmatter/anchor" />
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="@href" />
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:attribute>
+    <a class="link local">
+      <xsl:attribute name="href">
         <xsl:choose>
-          <xsl:when test="@taxon">
-            <xsl:value-of select="@taxon" />
-          </xsl:when>
-          <xsl:otherwise>§</xsl:otherwise>
-        </xsl:choose>
-        <xsl:text>&#160;</xsl:text>
-        <xsl:choose>
-          <xsl:when test="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr and @numbered='true' and @toc='true']">
-            <xsl:apply-templates select="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr][1]" mode="tree-number" />
+          <xsl:when test="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr]">
+            <xsl:text>#tree-</xsl:text>
+            <xsl:value-of select="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr]/frontmatter/anchor" />
           </xsl:when>
           <xsl:otherwise>
-            <xsl:text>[</xsl:text>
-            <xsl:value-of select="@addr" />
-            <xsl:text>]</xsl:text>
+            <xsl:value-of select="@href" />
           </xsl:otherwise>
         </xsl:choose>
-      </a>
-    </span>
+      </xsl:attribute>
+      <xsl:choose>
+        <xsl:when test="@taxon">
+          <xsl:value-of select="@taxon" />
+        </xsl:when>
+        <xsl:otherwise>§</xsl:otherwise>
+      </xsl:choose>
+      <xsl:text>&#160;</xsl:text>
+      <xsl:choose>
+        <xsl:when test="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr and @numbered='true' and @toc='true']">
+          <xsl:apply-templates select="/tree/mainmatter//tree[frontmatter/addr/text()=current()/@addr][1]" mode="tree-number" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>[</xsl:text>
+          <xsl:value-of select="@addr" />
+          <xsl:text>]</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </a>
   </xsl:template>
   <xsl:template match="backmatter/references">
     <xsl:if test="tree">
