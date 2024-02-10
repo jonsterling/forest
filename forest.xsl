@@ -87,6 +87,8 @@
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
   </xsl:template>
+  <xsl:template match="pause">
+  </xsl:template>
   <xsl:template match="embedded-tex">
     <center>
       <img src="resources/{@hash}.svg" />
