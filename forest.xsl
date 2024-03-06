@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:mml="http://www.w3.org/1998/Math/MathML">
   <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public="" doctype-system="" />
   <!-- The following ensures that node not matched by a template will simply be
    copied into the output. -->
@@ -82,13 +83,17 @@
       <xsl:apply-templates select="." mode="date-inner" />
     </li>
   </xsl:template>
+  <xsl:template match="mml:*">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*" />
+    </xsl:copy>
+  </xsl:template>
   <xsl:template match="p | img | code | pre | a | em | b | strong | ol | ul | li | center | blockquote | table | tr | th | td | ruby | rb | rt | rp | span | figure | figcaption | mark | div | hr | abbr | sub | sup">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*" />
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="pause">
-  </xsl:template>
+  <xsl:template match="pause"></xsl:template>
   <xsl:template match="embedded-tex">
     <center>
       <img src="resources/{@hash}.svg" />
