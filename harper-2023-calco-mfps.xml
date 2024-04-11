@@ -1,20 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24915</anchor> <taxon>Reference</taxon> <addr>harper-2023-calco-mfps</addr><route>harper-2023-calco-mfps.xml</route>  <date><year>2023</year> <month>6</month> <day>21</day></date> <authors><author><link href="robertharper.xml" type="local" robertharper="addr">Robert Harper</link></author> </authors> <title>Integrating cost and behavior in type theory</title>   <meta name="slides">http://www.cs.cmu.edu/~rwh/talks/calco-mfps-2023.pdf</meta><meta name="venue"> Plenary invited lecture for CALCO/MFPS 2023</meta></frontmatter> <mainmatter><p>Joint work with <link href="harrisongrodin.xml" type="local" addr="harrisongrodin" title="Harrison Grodin">Harrison Grodin</link> (Carnegie Mellon), <link href="yueniu.xml" type="local" addr="yueniu" title="Yue Niu">Yue Niu</link> (Carnegie Mellon), and <link href="jonmsterling.xml" type="local" addr="jonmsterling" title="Jon Sterling">Jon Sterling</link> (Cambridge).</p><p>The computational view of intuitionistic dependent type theory is as an intrinsic logic of (functional) programs in which types are viewed as specifications of their behavior. Equational reasoning is particularly relevant in the functional case, where correctness can be formulated as equality between two implementations of the same behavior. Besides behavior, it is also important to specify and verify the cost of programs, measured in terms of their resource usage, with respect to both sequential and parallel evaluation. Although program cost can—and has been—verified in type theory using an extrinsic formulation of programs as data objects, what we seek here is, instead, an intrinsic account within type theory itself.</p><p>In this talk we discuss Calf, the <link href="niu-sterling-grodin-harper-2022.xml" type="local" addr="niu-sterling-grodin-harper-2022" title="A cost-aware logical framework">Cost-Aware Logical Framework</link>, which is an extension of dependent call-by-push-value type theory that provides an intrinsic account of both parallel and sequential resource usage for a variety of problem-specific measures of cost. Thus, for example, it is possible to prove that insertion sort and merge sort are equal as regards behavior, but differ in terms of the number of comparisons required to achieve the same results. But how can equal functions have different cost? To provide an intrinsic account of both intensional and extensional properties of programs, we make use of <link href="sterling-2021-thesis.xml" type="local" addr="sterling-2021-thesis" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory">Sterling's notion of Synthetic Tait Computability</link>, a generalization of Tait's method originally developed for the study of higher type theory. In STC the concept of a “phase” plays a central role: originally as the distinction between the syntactic and semantic aspects of a computability structure, but more recently applied to the formulation of type theories for program modules and for information flow properties of programs. In Calf we distinguish two phases, the intensional and extensional, which differ as regards the significance of cost accounting—extensionally it is neglected, intensionally it is of paramount importance. Thus, in the extensional phase insertion sort and merge sort are equal, but in the intensional phase they are distinct, and indeed one is proved to have optimal behavior as regards comparisons, and the other not. Importantly, both phases are needed in a cost verification—the proof of the complexity of an algorithm usually relies on aspects of its correctness.</p><p>We will provide an overview of Calf itself, and of its application in the verification of the cost and behavior of a variety of programs. So far we have been able to verify cost bounds on Euclid's Algorithm, amortized bounds on batched queues, parallel cost bounds on a joinable form of red-black trees, and the equivalence and cost of the aforementioned sorting methods. In a <link href="grodin-harper-2023-calco.xml" type="local" addr="grodin-harper-2023-calco" title="Amortized analysis via coinduction">companion paper</link> at this meeting <link href="harrisongrodin.xml" type="local" addr="harrisongrodin" title="Harrison Grodin">Grodin</link> and I develop an account of amortization that relates the standard inductive view of instruction sequences with the coinductive view of data structures characterized by the same operations. In ongoing work we are extending the base of verified deterministic algorithms to those taught in the undergraduate parallel algorithms course at Carnegie Mellon, and are extending Calf itself to account for probabilistic methods, which are also used in that course. </p></mainmatter> <backmatter><contributions/> <context/> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24916</anchor> <taxon>Person</taxon> <addr>harrisongrodin</addr><route>harrisongrodin.xml</route>    <title>Harrison Grodin</title>   <meta name="external">https://www.harrisongrodin.com/</meta><meta name="position">PhD Student</meta><meta name="institution"><link href="cmu.xml" type="local" addr="cmu" title="Carnegie Mellon University">Carnegie Mellon University</link></meta><meta name="phd-advisor">robertharper</meta><meta name="orcid">0000-0002-0947-3520</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24917</anchor> <taxon>Person</taxon> <addr>jonmsterling</addr><route>jonmsterling.xml</route>    <title>Jon Sterling</title>   <meta name="external">https://www.jonmsterling.com/</meta><meta name="institution"><link href="camcl.xml" type="local" addr="camcl" title="Cambridge Computer Laboratory">Cambridge Computer Laboratory</link></meta><meta name="orcid">0000-0002-0585-5564</meta><meta name="position">Associate Professor</meta><meta name="phd-advisor">robertharper</meta><meta name="postdoc-advisor">larsbirkedal</meta></frontmatter> <mainmatter><p>Associate Professor in Logical Foundations and Formal Methods at University of Cambridge. Formerly a <link href="jms-0061.xml" type="local" addr="jms-0061" title="TypeSynth: synthetic methods in program verification">Marie Skłodowska-Curie Postdoctoral Fellow</link> hosted at <link href="jms-00GC.xml" type="local" addr="jms-00GC" title="Aarhus University">Aarhus University</link> by <link href="larsbirkedal.xml" type="local" addr="larsbirkedal" title="Lars Birkedal">Lars Birkedal</link>, and before this a PhD student of <link href="robertharper.xml" type="local" addr="robertharper" title="Robert Harper">Robert Harper</link>.</p>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11624</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>harper-2023-calco-mfps</fr:addr><fr:route>harper-2023-calco-mfps.xml</fr:route><fr:title>Integrating cost and behavior in type theory</fr:title><fr:date><fr:year>2023</fr:year><fr:month>6</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link></fr:author></fr:authors><fr:meta
+name="slides">http://www.cs.cmu.edu/~rwh/talks/calco-mfps-2023.pdf</fr:meta><fr:meta
+name="venue"> Plenary invited lecture for CALCO/MFPS 2023</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Joint work with <fr:link
+href="harrisongrodin.xml"
+type="local"
+addr="harrisongrodin">Harrison Grodin</fr:link> (Carnegie Mellon), <fr:link
+href="yueniu.xml"
+type="local"
+addr="yueniu">Yue Niu</fr:link> (Carnegie Mellon), and <fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link> (Cambridge).</fr:p><fr:p>The computational view of intuitionistic dependent type theory is as an intrinsic logic of (functional) programs in which types are viewed as specifications of their behavior. Equational reasoning is particularly relevant in the functional case, where correctness can be formulated as equality between two implementations of the same behavior. Besides behavior, it is also important to specify and verify the cost of programs, measured in terms of their resource usage, with respect to both sequential and parallel evaluation. Although program cost can—and has been—verified in type theory using an extrinsic formulation of programs as data objects, what we seek here is, instead, an intrinsic account within type theory itself.</fr:p><fr:p>In this talk we discuss Calf, the <fr:link
+href="niu-sterling-grodin-harper-2022.xml"
+type="local"
+addr="niu-sterling-grodin-harper-2022">Cost-Aware Logical Framework</fr:link>, which is an extension of dependent call-by-push-value type theory that provides an intrinsic account of both parallel and sequential resource usage for a variety of problem-specific measures of cost. Thus, for example, it is possible to prove that insertion sort and merge sort are equal as regards behavior, but differ in terms of the number of comparisons required to achieve the same results. But how can equal functions have different cost? To provide an intrinsic account of both intensional and extensional properties of programs, we make use of <fr:link
+href="sterling-2021-thesis.xml"
+type="local"
+addr="sterling-2021-thesis">Sterling's notion of Synthetic Tait Computability</fr:link>, a generalization of Tait's method originally developed for the study of higher type theory. In STC the concept of a “phase” plays a central role: originally as the distinction between the syntactic and semantic aspects of a computability structure, but more recently applied to the formulation of type theories for program modules and for information flow properties of programs. In Calf we distinguish two phases, the intensional and extensional, which differ as regards the significance of cost accounting—extensionally it is neglected, intensionally it is of paramount importance. Thus, in the extensional phase insertion sort and merge sort are equal, but in the intensional phase they are distinct, and indeed one is proved to have optimal behavior as regards comparisons, and the other not. Importantly, both phases are needed in a cost verification—the proof of the complexity of an algorithm usually relies on aspects of its correctness.</fr:p><fr:p>We will provide an overview of Calf itself, and of its application in the verification of the cost and behavior of a variety of programs. So far we have been able to verify cost bounds on Euclid's Algorithm, amortized bounds on batched queues, parallel cost bounds on a joinable form of red-black trees, and the equivalence and cost of the aforementioned sorting methods. In a <fr:link
+href="grodin-harper-2023-calco.xml"
+type="local"
+addr="grodin-harper-2023-calco">companion paper</fr:link> at this meeting <fr:link
+href="harrisongrodin.xml"
+type="local"
+addr="harrisongrodin">Grodin</fr:link> and I develop an account of amortization that relates the standard inductive view of instruction sequences with the coinductive view of data structures characterized by the same operations. In ongoing work we are extending the base of verified deterministic algorithms to those taught in the undergraduate parallel algorithms course at Carnegie Mellon, and are extending Calf itself to account for probabilistic methods, which are also used in that course. </fr:p></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context></fr:context><fr:related><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11621</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>harrisongrodin</fr:addr><fr:route>harrisongrodin.xml</fr:route><fr:title>Harrison Grodin</fr:title><fr:meta
+name="external">https://www.harrisongrodin.com/</fr:meta><fr:meta
+name="position">PhD Student</fr:meta><fr:meta
+name="institution"><fr:link
+href="cmu.xml"
+type="local"
+addr="cmu">Carnegie Mellon University</fr:link></fr:meta><fr:meta
+name="phd-advisor">robertharper</fr:meta><fr:meta
+name="orcid">0000-0002-0947-3520</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11622</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>jonmsterling</fr:addr><fr:route>jonmsterling.xml</fr:route><fr:title>Jon Sterling</fr:title><fr:meta
+name="external">https://www.jonmsterling.com/</fr:meta><fr:meta
+name="institution"><fr:link
+href="camcl.xml"
+type="local"
+addr="camcl">Cambridge Computer Laboratory</fr:link></fr:meta><fr:meta
+name="orcid">0000-0002-0585-5564</fr:meta><fr:meta
+name="position">Associate Professor</fr:meta><fr:meta
+name="phd-advisor">robertharper</fr:meta><fr:meta
+name="postdoc-advisor">larsbirkedal</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Associate Professor in Logical Foundations and Formal Methods at University of Cambridge. Formerly a <fr:link
+href="jms-0061.xml"
+type="local"
+addr="jms-0061">Marie Skłodowska-Curie Postdoctoral Fellow</fr:link> hosted at <fr:link
+href="jms-00GC.xml"
+type="local"
+addr="jms-00GC">Aarhus University</fr:link> by <fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link>, and before this a PhD student of <fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link>.</fr:p>
+  
+    
+    <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>4309</fr:anchor><fr:title>Bachelor students (current and former)</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"><fr:frontmatter><fr:anchor>4307</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>aoyangyu</fr:addr><fr:route>aoyangyu.xml</fr:route><fr:title>Aoyang Yu</fr:title><fr:meta
+name="bachelor-advisor">jonmsterling</fr:meta><fr:meta
+name="external">https://permui.github.io</fr:meta><fr:meta
+name="institution">Zhejiang University</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"><fr:frontmatter><fr:anchor>4308</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>danielepalombi</fr:addr><fr:route>danielepalombi.xml</fr:route><fr:title>Daniele Palombi</fr:title><fr:meta
+name="external">https://dpl0a.github.io/</fr:meta><fr:meta
+name="bachelor-advisor">jonmsterling</fr:meta><fr:meta
+name="institution">Sapienza University of Rome, <fr:link
+href="https://20squares.xyz/"
+type="external">20[ ]</fr:link></fr:meta><fr:meta
+name="orcid">0000-0002-8107-5439</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree>
+    
+    
+    <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>4311</fr:anchor><fr:title>Masters students (current and former)</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"><fr:frontmatter><fr:anchor>4310</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>leonipugh</fr:addr><fr:route>leonipugh.xml</fr:route><fr:title>Leoni Pugh</fr:title><fr:meta
+name="position">Part III Student</fr:meta><fr:meta
+name="institution"><fr:link
+href="ucam.xml"
+type="local"
+addr="ucam">University of Cambridge</fr:link></fr:meta><fr:meta
+name="masters-advisor">jonmsterling</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree>
+    
+    
+    
   
     
     
-    
-    
-    
-    
-    
-    
   
-    
-    
-  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24918</anchor> <taxon>Person</taxon> <addr>yueniu</addr><route>yueniu.xml</route>    <title>Yue Niu</title>   <meta name="position">PhD Student</meta><meta name="phd-advisor">robertharper</meta><meta name="institution"><link href="cmu.xml" type="local" addr="cmu" title="Carnegie Mellon University">Carnegie Mellon University</link></meta><meta name="orcid">0000-0003-4888-6042</meta></frontmatter> <mainmatter><p>PhD student of <link href="robertharper.xml" type="local" addr="robertharper" title="Robert Harper">Robert Harper</link>.</p></mainmatter> </tree></related> <backlinks/> <references><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24919</anchor> <taxon>Reference</taxon> <addr>grodin-harper-2023-calco</addr><route>grodin-harper-2023-calco.xml</route>  <date><year>2023</year> <month>6</month> <day>19</day></date> <authors><author><link href="harrisongrodin.xml" type="local" harrisongrodin="addr">Harrison Grodin</link></author><author><link href="robertharper.xml" type="local" robertharper="addr">Robert Harper</link></author> </authors> <title>Amortized analysis via coinduction</title>   <meta name="slides">https://coalg.org/calco-mfps-2023/slides/grodin-slides-calco23.pdf</meta><meta name="venue">CALCO 2023</meta><meta name="doi">10.48550/arXiv.2303.16048</meta></frontmatter> <mainmatter><p>Amortized analysis is a program cost analysis technique for data structures in which the cost of operations is specified in aggregate, under the assumption of continued sequential use. Typically, amortized analyses are done inductively, in terms of finite sequences of operations; we demonstrate that coinduction provides a more natural description. We describe a classic amortized data structure, the batched queue, and describe its amortized analysis in <link href="niu-sterling-grodin-harper-2022.xml" type="local" addr="niu-sterling-grodin-harper-2022" title="A cost-aware logical framework">calf</link>, a type theory for amortized analysis.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24920</anchor> <taxon>Reference</taxon> <addr>niu-sterling-grodin-harper-2022</addr><route>niu-sterling-grodin-harper-2022.xml</route>  <date><year>2022</year> <month>1</month> <day>1</day></date> <authors><author><link href="yueniu.xml" type="local" yueniu="addr">Yue Niu</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="harrisongrodin.xml" type="local" harrisongrodin="addr">Harrison Grodin</link></author><author><link href="robertharper.xml" type="local" robertharper="addr">Robert Harper</link></author> </authors> <title>A cost-aware logical framework</title>   <meta name="venue"><link href="pacmpl.xml" type="local" addr="pacmpl" title="Proceedings of the ACM on Programming Languages">Proceedings of the ACM on Programming Languages</link>, Volume 6, Issue POPL</meta><meta name="doi">10.1145/3498670</meta></frontmatter> <mainmatter><p>We present calf, a cost-aware logical framework for studying quantitative aspects of functional programs. Taking inspiration from recent work that reconstructs traditional aspects of programming languages in terms of a modal account of phase distinctions, we argue that the cost structure of programs motivates a phase distinction between intension and extension. Armed with this technology, we contribute a synthetic account of cost structure as a computational effect in which cost-aware programs enjoy an internal noninterference property: input/output behavior cannot depend on cost. As a full-spectrum dependent type theory, calf presents a unified language for programming and specification of both cost and behavior that can be integrated smoothly with existing mathematical libraries available in type theoretic proof assistants.</p><p>We evaluate calf as a general framework for cost analysis by implementing two fundamental techniques for algorithm analysis: the method of recurrence relations and physicist’s method for amortized analysis. We deploy these techniques on a variety of case studies: we prove a tight, closed bound for Euclid’s algorithm, verify the amortized complexity of batched queues, and derive tight, closed bounds for the sequential and parallel complexity of merge sort, all fully mechanized in the Agda proof assistant. Lastly we substantiate the soundness of quantitative reasoning in calf by means of a model construction.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>24921</anchor> <taxon>Reference</taxon> <addr>sterling-2021-thesis</addr><route>sterling-2021-thesis.xml</route>  <date><year>2021</year> <month>9</month> <day>13</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>First steps in synthetic Tait computability: the objective metatheory of cubical type theory</title>   <meta name="venue">Doctoral dissertation, <link href="cmu.xml" type="local" addr="cmu" title="Carnegie Mellon University">Carnegie Mellon University</link></meta><meta name="external">papers/sterling-2021-thesis.pdf</meta><meta name="bibtex">@phdthesis{sterling-2021-thesis,
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11623</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>yueniu</fr:addr><fr:route>yueniu.xml</fr:route><fr:title>Yue Niu</fr:title><fr:meta
+name="position">PhD Student</fr:meta><fr:meta
+name="phd-advisor">robertharper</fr:meta><fr:meta
+name="institution"><fr:link
+href="cmu.xml"
+type="local"
+addr="cmu">Carnegie Mellon University</fr:link></fr:meta><fr:meta
+name="orcid">0000-0003-4888-6042</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>PhD student of <fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link>.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11611</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>grodin-harper-2023-calco</fr:addr><fr:route>grodin-harper-2023-calco.xml</fr:route><fr:title>Amortized analysis via coinduction</fr:title><fr:date><fr:year>2023</fr:year><fr:month>6</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="harrisongrodin.xml"
+type="local"
+addr="harrisongrodin">Harrison Grodin</fr:link></fr:author><fr:author><fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link></fr:author></fr:authors><fr:meta
+name="slides">https://coalg.org/calco-mfps-2023/slides/grodin-slides-calco23.pdf</fr:meta><fr:meta
+name="venue">CALCO 2023</fr:meta><fr:meta
+name="doi">10.48550/arXiv.2303.16048</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Amortized analysis is a program cost analysis technique for data structures in which the cost of operations is specified in aggregate, under the assumption of continued sequential use. Typically, amortized analyses are done inductively, in terms of finite sequences of operations; we demonstrate that coinduction provides a more natural description. We describe a classic amortized data structure, the batched queue, and describe its amortized analysis in <fr:link
+href="niu-sterling-grodin-harper-2022.xml"
+type="local"
+addr="niu-sterling-grodin-harper-2022">calf</fr:link>, a type theory for amortized analysis.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11614</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>niu-sterling-grodin-harper-2022</fr:addr><fr:route>niu-sterling-grodin-harper-2022.xml</fr:route><fr:title>A cost-aware logical framework</fr:title><fr:date><fr:year>2022</fr:year><fr:month>1</fr:month><fr:day>1</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="yueniu.xml"
+type="local"
+addr="yueniu">Yue Niu</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="harrisongrodin.xml"
+type="local"
+addr="harrisongrodin">Harrison Grodin</fr:link></fr:author><fr:author><fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link></fr:author></fr:authors><fr:meta
+name="venue"><fr:link
+href="pacmpl.xml"
+type="local"
+addr="pacmpl">Proceedings of the ACM on Programming Languages</fr:link>, Volume 6, Issue POPL</fr:meta><fr:meta
+name="doi">10.1145/3498670</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We present calf, a cost-aware logical framework for studying quantitative aspects of functional programs. Taking inspiration from recent work that reconstructs traditional aspects of programming languages in terms of a modal account of phase distinctions, we argue that the cost structure of programs motivates a phase distinction between intension and extension. Armed with this technology, we contribute a synthetic account of cost structure as a computational effect in which cost-aware programs enjoy an internal noninterference property: input/output behavior cannot depend on cost. As a full-spectrum dependent type theory, calf presents a unified language for programming and specification of both cost and behavior that can be integrated smoothly with existing mathematical libraries available in type theoretic proof assistants.</fr:p><fr:p>We evaluate calf as a general framework for cost analysis by implementing two fundamental techniques for algorithm analysis: the method of recurrence relations and physicist’s method for amortized analysis. We deploy these techniques on a variety of case studies: we prove a tight, closed bound for Euclid’s algorithm, verify the amortized complexity of batched queues, and derive tight, closed bounds for the sequential and parallel complexity of merge sort, all fully mechanized in the Agda proof assistant. Lastly we substantiate the soundness of quantitative reasoning in calf by means of a model construction.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>11619</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-2021-thesis</fr:addr><fr:route>sterling-2021-thesis.xml</fr:route><fr:title>First steps in synthetic Tait computability: the objective metatheory of cubical type theory</fr:title><fr:date><fr:year>2021</fr:year><fr:month>9</fr:month><fr:day>13</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="venue">Doctoral dissertation, <fr:link
+href="cmu.xml"
+type="local"
+addr="cmu">Carnegie Mellon University</fr:link></fr:meta><fr:meta
+name="external">papers/sterling-2021-thesis.pdf</fr:meta><fr:meta
+name="bibtex">@phdthesis{sterling-2021-thesis,
   author = {Sterling, Jonathan},
   school = {Carnegie Mellon University},
   year = {2021},
@@ -22,4 +212,8 @@
   note = {Version 1.1, revised May 2022},
   number = {CMU-CS-21-142},
   title = {First Steps in Synthetic {Tait} Computability: The Objective Metatheory of Cubical Type Theory},
-}</meta><meta name="doi">10.5281/zenodo.6990769</meta></frontmatter> <mainmatter><p>The implementation and semantics of dependent type theories can be studied in a syntax-independent way: the objective metatheory of dependent type theories exploits the universal properties of their syntactic categories to endow them with computational content, mathematical meaning, and practical implementation (normalization, type checking, elaboration). The semantic methods of the objective metatheory inform the design and implementation of correct-by-construction elaboration algorithms, promising a principled interface between real proof assistants and ideal mathematics.</p><p>In this dissertation, I add synthetic Tait computability to the arsenal of the objective metatheorist. Synthetic Tait computability is a mathematical machine to reduce difficult problems of type theory and programming languages to trivial theorems of topos theory. First employed by <link href="sterling-harper-2021.xml" type="local" addr="sterling-harper-2021" title="Logical relations as types: proof-relevant parametricity for program modules">Sterling and Harper</link> to reconstruct the theory of program modules and their phase separated parametricity, synthetic Tait computability is deployed here to resolve the last major open question in the syntactic metatheory of cubical type theory: normalization of open terms.</p></mainmatter> </tree></references></backmatter></tree>
+}</fr:meta><fr:meta
+name="doi">10.5281/zenodo.6990769</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>The implementation and semantics of dependent type theories can be studied in a syntax-independent way: the objective metatheory of dependent type theories exploits the universal properties of their syntactic categories to endow them with computational content, mathematical meaning, and practical implementation (normalization, type checking, elaboration). The semantic methods of the objective metatheory inform the design and implementation of correct-by-construction elaboration algorithms, promising a principled interface between real proof assistants and ideal mathematics.</fr:p><fr:p>In this dissertation, I add synthetic Tait computability to the arsenal of the objective metatheorist. Synthetic Tait computability is a mathematical machine to reduce difficult problems of type theory and programming languages to trivial theorems of topos theory. First employed by <fr:link
+href="sterling-harper-2021.xml"
+type="local"
+addr="sterling-harper-2021">Sterling and Harper</fr:link> to reconstruct the theory of program modules and their phase separated parametricity, synthetic Tait computability is deployed here to resolve the last major open question in the syntactic metatheory of cubical type theory: normalization of open terms.</fr:p></fr:mainmatter></fr:tree></fr:references></fr:backmatter></fr:tree>

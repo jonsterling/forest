@@ -1,76 +1,76 @@
 <?xml version="1.0"?>
 <!-- SPDX-License-Identifier: CC0-1.0 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:f="http://www.jonmsterling.com/jms-005P.xml">
 
- <xsl:template match="month[.='1']">
+ <xsl:template match="f:month[.='1']">
   <xsl:text>January</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='2']">
+ <xsl:template match="f:month[.='2']">
   <xsl:text>February</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='3']">
+ <xsl:template match="f:month[.='3']">
   <xsl:text>March</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='4']">
+ <xsl:template match="f:month[.='4']">
   <xsl:text>April</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='5']">
+ <xsl:template match="f:month[.='5']">
   <xsl:text>May</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='6']">
+ <xsl:template match="f:month[.='6']">
   <xsl:text>June</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='7']">
+ <xsl:template match="f:month[.='7']">
   <xsl:text>July</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='8']">
+ <xsl:template match="f:month[.='8']">
   <xsl:text>August</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='9']">
+ <xsl:template match="f:month[.='9']">
   <xsl:text>September</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='10']">
+ <xsl:template match="f:month[.='10']">
   <xsl:text>October</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='11']">
+ <xsl:template match="f:month[.='11']">
   <xsl:text>November</xsl:text>
  </xsl:template>
 
- <xsl:template match="month[.='12']">
+ <xsl:template match="f:month[.='12']">
   <xsl:text>December</xsl:text>
  </xsl:template>
 
- <xsl:template match="year">
+ <xsl:template match="f:year">
   <xsl:apply-templates />
  </xsl:template>
 
- <xsl:template match="day">
+ <xsl:template match="f:day">
   <xsl:apply-templates />
  </xsl:template>
 
- <xsl:template match="date" mode="date-inner">
-  <xsl:apply-templates select="month" />
-  <xsl:if test="day">
+ <xsl:template match="f:date" mode="date-inner">
+  <xsl:apply-templates select="f:month" />
+  <xsl:if test="f:day">
    <xsl:text>&#160;</xsl:text>
-   <xsl:apply-templates select="day" />
+   <xsl:apply-templates select="f:day" />
   </xsl:if>
-  <xsl:if test="month">
+  <xsl:if test="f:month">
    <xsl:text>,&#160;</xsl:text>
   </xsl:if>
-  <xsl:apply-templates select="year" />
+  <xsl:apply-templates select="f:year" />
  </xsl:template>
 
- <xsl:template match="date[@href]">
+ <xsl:template match="f:date[@href]">
   <li class="meta-item">
    <a class="link local" href="{@href}">
     <xsl:apply-templates select="." mode="date-inner" />
@@ -78,24 +78,24 @@
   </li>
  </xsl:template>
 
- <xsl:template match="date[not(@href)]">
+ <xsl:template match="f:date[not(@href)]">
   <li class="meta-item">
    <xsl:apply-templates select="." mode="date-inner" />
   </li>
  </xsl:template>
 
- <xsl:template match="authors">
+ <xsl:template match="f:authors">
   <li class="meta-item">
    <address class="author">
-    <xsl:for-each select="author">
+    <xsl:for-each select="f:author">
      <xsl:apply-templates />
      <xsl:if test="position()!=last()">
       <xsl:text>, &#x20;</xsl:text>
      </xsl:if>
     </xsl:for-each>
-    <xsl:if test="contributor">
+    <xsl:if test="f:contributor">
      <xsl:text>&#x20;with contributions from&#x20;</xsl:text>
-     <xsl:for-each select="contributor">
+     <xsl:for-each select="f:contributor">
       <xsl:apply-templates />
       <xsl:if test="position()!=last()">
        <xsl:text>,&#x20;</xsl:text>
@@ -106,7 +106,7 @@
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='doi']">
+ <xsl:template match="f:meta[@name='doi']">
   <li class="meta-item">
    <a class="doi link" href="{concat('https://www.doi.org/', .)}">
     <xsl:value-of select="." />
@@ -114,7 +114,7 @@
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='orcid']">
+ <xsl:template match="f:meta[@name='orcid']">
   <li class="meta-item">
    <a class="orcid" href="{concat('https://orcid.org/', .)}">
     <xsl:value-of select="." />
@@ -122,20 +122,20 @@
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='bibtex']">
+ <xsl:template match="f:meta[@name='bibtex']">
   <pre>
    <xsl:value-of select="." />
   </pre>
  </xsl:template>
 
  <xsl:template
-  match="meta[@name='venue']|meta[@name='position']|meta[@name='institution']|meta[@name='source']">
+  match="f:meta[@name='venue']|f:meta[@name='position']|f:meta[@name='institution']|f:meta[@name='source']">
   <li class="meta-item">
    <xsl:apply-templates />
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='external']">
+ <xsl:template match="f:meta[@name='external']">
   <li class="meta-item">
    <a class="link external" href="{.}">
     <xsl:value-of select="." />
@@ -143,7 +143,7 @@
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='slides']">
+ <xsl:template match="f:meta[@name='slides']">
   <li class="meta-item">
    <a class="link external" href="{.}">
     <xsl:text>Slides</xsl:text>
@@ -151,7 +151,7 @@
   </li>
  </xsl:template>
 
- <xsl:template match="meta[@name='video']">
+ <xsl:template match="f:meta[@name='video']">
   <li class="meta-item">
    <a class="link external" href="{.}">
     <xsl:text>Video</xsl:text>

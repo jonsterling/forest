@@ -1,121 +1,543 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10906</anchor> <taxon>Lemma</taxon> <addr>erct-002C</addr><route>erct-002C.xml</route>  <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverses</link> to coherent <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">inverses</link></title>   <meta name="source">
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5963</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-002C</fr:addr><fr:route>erct-002C.xml</fr:route><fr:title>From <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverses</fr:link> to coherent <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">inverses</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002C.agda" type="external">erct-002C.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>f  \colon  A  \to  B</tex> have a <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> <tex>g \colon  B \to  A</tex> with incoherent counit <tex>\epsilon \colon  f \circ  g \sim   1_{ B }</tex> and unit <tex>\eta \colon  g \circ  f \sim   1_{ A }</tex>. We can <em>correct</em> the counit to obtain a coherent <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">inverse</link> to <tex>f \colon  A \to  B</tex>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002C.agda"
+type="external">erct-002C.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>f  \colon  A  \to  B</fr:tex> have a <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> <fr:tex>g \colon  B \to  A</fr:tex> with incoherent counit <fr:tex>\epsilon \colon  f \circ  g \sim   1_{ B }</fr:tex> and unit <fr:tex>\eta \colon  g \circ  f \sim   1_{ A }</fr:tex>. We can <fr:em>correct</fr:em> the counit to obtain a coherent <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">inverse</fr:link> to <fr:tex>f \colon  A \to  B</fr:tex>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10907</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>    </frontmatter> <mainmatter>
- <p>The corrected counit <tex>\epsilon '  \colon  g \circ  f \sim   1_{ A }</tex> is defined like so:</p>
- <tex display="block">    \epsilon ' x : \equiv     \epsilon \mathopen {} \left ( f \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {} ^{-1}   \cdot   \mathsf {act}_{ f } \mathopen {} \left ( \eta \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {}   \cdot   \epsilon  x  </tex>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1325</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002C</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>The corrected counit <fr:tex>\epsilon '  \colon  g \circ  f \sim   1_{ A }</fr:tex> is defined like so:</fr:p>
+ <fr:tex
+display="block">    \epsilon ' x : \equiv     \epsilon \mathopen {} \left ( f \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {} ^{-1}   \cdot   \mathsf {act}_{ f } \mathopen {} \left ( \eta \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {}   \cdot   \epsilon  x  </fr:tex>
 
- <p>The coherence <tex>\chi \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon ' \circ  f</tex> can be constructed using our two naturality lemmas <ref addr="erct-001V" href="erct-001V.xml" taxon="Lemma"/> and <ref addr="erct-001W" href="erct-001W.xml" taxon="Lemma"/>.</p>
-</mainmatter> </tree>
+ <fr:p>The coherence <fr:tex>\chi \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon ' \circ  f</fr:tex> can be constructed using our two naturality lemmas <fr:ref
+addr="erct-001V"
+href="erct-001V.xml"
+taxon="Lemma"></fr:ref> and <fr:ref
+addr="erct-001W"
+href="erct-001W.xml"
+taxon="Lemma"></fr:ref>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10908</anchor>  <addr>erct-003M</addr><route>erct-003M.xml</route>  <date><year>2023</year> <month>12</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="erct-000Z.xml" type="local" addr="erct-000Z" title="Functions and inverses">Functions and inverses</link> › conversion lemmas</title>  <parent>erct-000Z</parent> </frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>10909</anchor> <taxon>Lemma</taxon> <addr>erct-003C</addr><route>erct-003C.xml</route>  <date><year>2024</year> <month>1</month> <day>3</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverses</link> to <link href="erct-000U.xml" type="local" addr="erct-000U" title="Biinverse">biinverses</link></title>   <meta name="source">
+</fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5961</fr:anchor><fr:addr>erct-003M</fr:addr><fr:route>erct-003M.xml</fr:route><fr:title><fr:link
+href="erct-000Z.xml"
+type="local"
+addr="erct-000Z">Functions and inverses</fr:link> › conversion lemmas</fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-000Z</fr:parent></fr:frontmatter><fr:mainmatter><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5396</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-003C</fr:addr><fr:route>erct-003C.xml</fr:route><fr:title>From <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverses</fr:link> to <fr:link
+href="erct-000U.xml"
+type="local"
+addr="erct-000U">biinverses</fr:link></fr:title><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>3</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-003C.agda" type="external">erct-003C.agda</link>
-</meta></frontmatter> <mainmatter><p>Any <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-invertible</link> map <tex>f \colon  A \to  B</tex> is <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">biinvertible</link>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-003C.agda"
+type="external">erct-003C.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Any <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-invertible</fr:link> map <fr:tex>f \colon  A \to  B</fr:tex> is <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">biinvertible</fr:link>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10910</anchor> <taxon>Proof</taxon>   <date><year>2024</year> <month>1</month> <day>3</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>    </frontmatter> <mainmatter>
- <p>The <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> to <tex>f</tex> is simultaneously a <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">section</link> and a <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">retraction</link>.</p>
-</mainmatter> </tree>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5394</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>3</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-003C</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>The <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> to <fr:tex>f</fr:tex> is simultaneously a <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">section</fr:link> and a <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">retraction</fr:link>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>10911</anchor> <taxon>Lemma</taxon> <addr>erct-002C</addr><route>erct-002C.xml</route>  <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverses</link> to coherent <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">inverses</link></title>   <meta name="source">
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5398</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-002C</fr:addr><fr:route>erct-002C.xml</fr:route><fr:title>From <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverses</fr:link> to coherent <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">inverses</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002C.agda" type="external">erct-002C.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>f  \colon  A  \to  B</tex> have a <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> <tex>g \colon  B \to  A</tex> with incoherent counit <tex>\epsilon \colon  f \circ  g \sim   1_{ B }</tex> and unit <tex>\eta \colon  g \circ  f \sim   1_{ A }</tex>. We can <em>correct</em> the counit to obtain a coherent <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">inverse</link> to <tex>f \colon  A \to  B</tex>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002C.agda"
+type="external">erct-002C.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>f  \colon  A  \to  B</fr:tex> have a <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> <fr:tex>g \colon  B \to  A</fr:tex> with incoherent counit <fr:tex>\epsilon \colon  f \circ  g \sim   1_{ B }</fr:tex> and unit <fr:tex>\eta \colon  g \circ  f \sim   1_{ A }</fr:tex>. We can <fr:em>correct</fr:em> the counit to obtain a coherent <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">inverse</fr:link> to <fr:tex>f \colon  A \to  B</fr:tex>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10912</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>    </frontmatter> <mainmatter>
- <p>The corrected counit <tex>\epsilon '  \colon  g \circ  f \sim   1_{ A }</tex> is defined like so:</p>
- <tex display="block">    \epsilon ' x : \equiv     \epsilon \mathopen {} \left ( f \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {} ^{-1}   \cdot   \mathsf {act}_{ f } \mathopen {} \left ( \eta \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {}   \cdot   \epsilon  x  </tex>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1325</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002C</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>The corrected counit <fr:tex>\epsilon '  \colon  g \circ  f \sim   1_{ A }</fr:tex> is defined like so:</fr:p>
+ <fr:tex
+display="block">    \epsilon ' x : \equiv     \epsilon \mathopen {} \left ( f \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {} ^{-1}   \cdot   \mathsf {act}_{ f } \mathopen {} \left ( \eta \mathopen {} \left ( f ^{-1}  x \right ) \mathclose {} \right ) \mathclose {}   \cdot   \epsilon  x  </fr:tex>
 
- <p>The coherence <tex>\chi \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon ' \circ  f</tex> can be constructed using our two naturality lemmas <ref addr="erct-001V" href="erct-001V.xml" taxon="Lemma"/> and <ref addr="erct-001W" href="erct-001W.xml" taxon="Lemma"/>.</p>
-</mainmatter> </tree>
+ <fr:p>The coherence <fr:tex>\chi \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon ' \circ  f</fr:tex> can be constructed using our two naturality lemmas <fr:ref
+addr="erct-001V"
+href="erct-001V.xml"
+taxon="Lemma"></fr:ref> and <fr:ref
+addr="erct-001W"
+href="erct-001W.xml"
+taxon="Lemma"></fr:ref>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>10913</anchor> <taxon>Lemma</taxon> <addr>erct-002D</addr><route>erct-002D.xml</route>  <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>From <link href="erct-000U.xml" type="local" addr="erct-000U" title="Biinverse">biinverses</link> to <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverses</link></title>   <meta name="source">
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5400</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-002D</fr:addr><fr:route>erct-002D.xml</fr:route><fr:title>From <fr:link
+href="erct-000U.xml"
+type="local"
+addr="erct-000U">biinverses</fr:link> to <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverses</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002D.agda" type="external">erct-002D.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>f \colon  A \to  B</tex> be <link href="erct-000U.xml" type="local" addr="erct-000U" title="Biinverse">biinvertible</link> with <tex>s,r \colon  B \to  A</tex> and <tex>h_s \colon  f  \circ  s  \sim   1_{ B }</tex> and <tex>h_r \colon  r \circ  f =  1_{ A }</tex>. Then we may define a homotopy <tex>h'  \colon  s \circ  f  \sim   1_{ A }</tex> exhibiting <tex>s \colon  B \to  A</tex> as a retraction of <tex>f \colon  A \to  B</tex>. Therefore, we may define a <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> to <tex>f</tex> tracked by <tex>s \colon  B \to  A</tex>.</p>
- 
-   
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10914</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>30</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>    </frontmatter> <mainmatter>
- <p>We have <tex>s \circ  f  \sim  r \circ  f  \circ  s \circ  f</tex> by <tex>h_r</tex> and <tex>r \circ  f  \circ  s \circ  f \sim  r  \circ  f</tex> by <tex>h_s</tex> and <tex>r \circ  f  \sim   1_{ A }</tex> by <tex>h_r</tex>.</p>
-</mainmatter> </tree>
- 
-</mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10915</anchor> <taxon>Lemma</taxon> <addr>erct-001V</addr><route>erct-001V.xml</route>  <date><year>2023</year> <month>12</month> <day>21</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Naturality of <link href="erct-0014.xml" type="local" addr="erct-0014" title="Homotopy">homotopies</link></title>   <meta name="source">
-  
-  
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-001V.agda" type="external">erct-001V.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>H  \colon  f  \sim  g</tex> be a <link href="erct-0014.xml" type="local" addr="erct-0014" title="Homotopy">homotopy</link> between two functions <tex>f,g \colon  A  \to  B</tex>. For any identification <tex>p \colon  x =y</tex> in <tex>A</tex>, we have an identification <tex>H x  \cdot   \mathsf {act}_{ g } \, p =  \mathsf {act}_{ f } \, p \cdot  Hy</tex>.</p>
- 
-   
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10916</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>21</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>   <parent>erct-001V</parent> </frontmatter> <mainmatter>
- <p>By identification induction on <tex>p</tex>, it suffices to show that <tex>Hx \cdot \mathsf {refl}  =  \mathsf {refl} \cdot  Hx</tex>.</p>
-</mainmatter> </tree>
- 
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10917</anchor> <taxon>Lemma</taxon> <addr>erct-001W</addr><route>erct-001W.xml</route>  <date><year>2023</year> <month>12</month> <day>21</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Naturality of <link href="erct-0014.xml" type="local" addr="erct-0014" title="Homotopy">homotopies</link> onto the identity</title>   <meta name="source">
-  
-  
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-001W.agda" type="external">erct-001W.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>H  \colon  f  \sim   1_{ A }</tex> be a <link href="erct-0014.xml" type="local" addr="erct-0014" title="Homotopy">homotopy</link> from <tex>f \colon  A  \to  A</tex> onto the identity function. Then we may construct a higher homotopy from <tex>H \circ  f</tex> to <tex>\mathsf {act}_{ f } \circ  H</tex>.</p>
- 
-   
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10918</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>21</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>   <parent>erct-001W</parent> </frontmatter> <mainmatter>
- <p>Fixing <tex>x:A</tex>, we must construct an identification from <tex>H \mathopen {} \left ( f x \right ) \mathclose {}</tex> to <tex>\mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {}</tex>. By the naturality (<ref addr="erct-001V" href="erct-001V.xml" taxon="Lemma"/>) of <tex>H</tex> at the identification <tex>H x \colon  f x = x</tex>, we have an identification <tex>H \mathopen {} \left ( f x \right ) \mathclose {}   \cdot   \mathsf {act}_{ 1_{ A } } \mathopen {} \left ( H x \right ) \mathclose {}  =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {} \cdot  H x</tex>.</p>
- <p>Simplifying, we have <tex>H \mathopen {} \left ( f x \right ) \mathclose {} \cdot  H x =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {} \cdot  H x</tex>; canceling <tex>H x</tex> on either side, we therefore have the desired identification <tex>H \mathopen {} \left ( f x \right ) \mathclose {}  =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {}</tex>.</p>
-</mainmatter> </tree>
- 
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10919</anchor> <taxon>Definition</taxon> <addr>erct-000W</addr><route>erct-000W.xml</route>  <date><year>2023</year> <month>12</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Inverse</title>   <meta name="source">
-  
-  
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-000W.agda" type="external">erct-000W.agda</link>
-</meta></frontmatter> <mainmatter><p>An <em><strong>inverse</strong></em> to a function <tex>f \colon  A  \to  B</tex> is defined to be a <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> equipped with an additional higher coherence <tex>\chi   \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon \circ  f</tex> in <tex>f \circ  g  \circ  f  \sim  f</tex> relating the (<em>a priori</em> incoherent) unit and the counit of the quasi-inverse. We will refer to a function <tex>f \colon  A \to  B</tex> equipped with an inverse as an <em><strong>invertible function</strong></em>.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10920</anchor> <taxon>Definition</taxon> <addr>erct-000X</addr><route>erct-000X.xml</route>  <date><year>2023</year> <month>12</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Quasi-inverse</title>   <meta name="source">
-  
-  
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-000X.agda" type="external">erct-000X.agda</link>
-</meta></frontmatter> <mainmatter><p>A <em><strong>quasi-inverse</strong></em> to a function <tex>f  \colon  A  \to  B</tex> is a function <tex>g  \colon  B  \to  A</tex> equipped with homotopies <tex>\epsilon \colon  f  \circ  g  \sim   1_{ B }</tex> and <tex>\eta \colon  g  \circ  f  \sim 1_{ A }</tex>, rendering <tex>g</tex> simultaneously a <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">section</link> and a <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">retraction</link> of <tex>f</tex>.</p><p>Although no coherence laws are assumed for <tex>\eta</tex> and <tex>\epsilon</tex>, we shall refer to them respectively as the <em>unit</em> and <em>counit</em> of the quasi-inverse.</p></mainmatter> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10921</anchor> <taxon>Lemma</taxon> <addr>erct-0049</addr><route>erct-0049.xml</route>  <date><year>2024</year> <month>2</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">Propositional maps</link> are <link href="erct-003K.xml" type="local" addr="erct-003K" title="Embedding">embeddings</link></title>   <meta name="source">
-  
-  
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-0049.agda" type="external">erct-0049.agda</link>
-</meta></frontmatter> <mainmatter><p>Any <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">propositional map</link> <tex>f \colon  A \to  B</tex> is an <link href="erct-003K.xml" type="local" addr="erct-003K" title="Embedding">embedding</link>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002D.agda"
+type="external">erct-002D.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>f \colon  A \to  B</fr:tex> be <fr:link
+href="erct-000U.xml"
+type="local"
+addr="erct-000U">biinvertible</fr:link> with <fr:tex>s,r \colon  B \to  A</fr:tex> and <fr:tex>h_s \colon  f  \circ  s  \sim   1_{ B }</fr:tex> and <fr:tex>h_r \colon  r \circ  f =  1_{ A }</fr:tex>. Then we may define a homotopy <fr:tex>h'  \colon  s \circ  f  \sim   1_{ A }</fr:tex> exhibiting <fr:tex>s \colon  B \to  A</fr:tex> as a retraction of <fr:tex>f \colon  A \to  B</fr:tex>. Therefore, we may define a <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> to <fr:tex>f</fr:tex> tracked by <fr:tex>s \colon  B \to  A</fr:tex>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10922</anchor> <taxon>Proof</taxon>   <date><year>2024</year> <month>2</month> <day>18</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>   <parent>erct-0049</parent> </frontmatter> <mainmatter>
- <p>Fixing <tex>x,y:A</tex> we must show that <tex>\mathsf {act}_{ f } \colon  x = y  \to  fx=fy</tex> is <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">invertible</link>. By <ref addr="erct-002C" href="erct-002C.xml" taxon="Lemma"/> and <ref addr="erct-002D" href="erct-002D.xml" taxon="Lemma"/>, it suffices to exhibit a <link href="erct-000U.xml" type="local" addr="erct-000U" title="Biinverse">biinverse</link> to <tex>\mathsf {act}_{ f }</tex> (it is convenient that the underlying maps of the <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">section</link> and <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">retraction</link> need not be identical).</p>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1329</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002D</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>We have <fr:tex>s \circ  f  \sim  r \circ  f  \circ  s \circ  f</fr:tex> by <fr:tex>h_r</fr:tex> and <fr:tex>r \circ  f  \circ  s \circ  f \sim  r  \circ  f</fr:tex> by <fr:tex>h_s</fr:tex> and <fr:tex>r \circ  f  \sim   1_{ A }</fr:tex> by <fr:tex>h_r</fr:tex>.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5951</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-001V</fr:addr><fr:route>erct-001V.xml</fr:route><fr:title>Naturality of <fr:link
+href="erct-0014.xml"
+type="local"
+addr="erct-0014">homotopies</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
+  
+  
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-001V.agda"
+type="external">erct-001V.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>H  \colon  f  \sim  g</fr:tex> be a <fr:link
+href="erct-0014.xml"
+type="local"
+addr="erct-0014">homotopy</fr:link> between two functions <fr:tex>f,g \colon  A  \to  B</fr:tex>. For any identification <fr:tex>p \colon  x =y</fr:tex> in <fr:tex>A</fr:tex>, we have an identification <fr:tex>H x  \cdot   \mathsf {act}_{ g } \, p =  \mathsf {act}_{ f } \, p \cdot  Hy</fr:tex>.</fr:p>
+ 
+   
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5843</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-001V</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>By identification induction on <fr:tex>p</fr:tex>, it suffices to show that <fr:tex>Hx \cdot \mathsf {refl}  =  \mathsf {refl} \cdot  Hx</fr:tex>.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5955</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-001W</fr:addr><fr:route>erct-001W.xml</fr:route><fr:title>Naturality of <fr:link
+href="erct-0014.xml"
+type="local"
+addr="erct-0014">homotopies</fr:link> onto the identity</fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
+  
+  
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-001W.agda"
+type="external">erct-001W.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>H  \colon  f  \sim   1_{ A }</fr:tex> be a <fr:link
+href="erct-0014.xml"
+type="local"
+addr="erct-0014">homotopy</fr:link> from <fr:tex>f \colon  A  \to  A</fr:tex> onto the identity function. Then we may construct a higher homotopy from <fr:tex>H \circ  f</fr:tex> to <fr:tex>\mathsf {act}_{ f } \circ  H</fr:tex>.</fr:p>
+ 
+   
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>5953</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-001W</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>Fixing <fr:tex>x:A</fr:tex>, we must construct an identification from <fr:tex>H \mathopen {} \left ( f x \right ) \mathclose {}</fr:tex> to <fr:tex>\mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {}</fr:tex>. By the naturality (<fr:ref
+addr="erct-001V"
+href="erct-001V.xml"
+taxon="Lemma"></fr:ref>) of <fr:tex>H</fr:tex> at the identification <fr:tex>H x \colon  f x = x</fr:tex>, we have an identification <fr:tex>H \mathopen {} \left ( f x \right ) \mathclose {}   \cdot   \mathsf {act}_{ 1_{ A } } \mathopen {} \left ( H x \right ) \mathclose {}  =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {} \cdot  H x</fr:tex>.</fr:p>
+ <fr:p>Simplifying, we have <fr:tex>H \mathopen {} \left ( f x \right ) \mathclose {} \cdot  H x =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {} \cdot  H x</fr:tex>; canceling <fr:tex>H x</fr:tex> on either side, we therefore have the desired identification <fr:tex>H \mathopen {} \left ( f x \right ) \mathclose {}  =  \mathsf {act}_{ f } \mathopen {} \left ( H x \right ) \mathclose {}</fr:tex>.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5957</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>erct-000W</fr:addr><fr:route>erct-000W.xml</fr:route><fr:title>Inverse</fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
+  
+  
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-000W.agda"
+type="external">erct-000W.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>An <fr:em><fr:strong>inverse</fr:strong></fr:em> to a function <fr:tex>f \colon  A  \to  B</fr:tex> is defined to be a <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> equipped with an additional higher coherence <fr:tex>\chi   \colon   \mathsf {act}_{ f } \circ   \eta   \sim   \epsilon \circ  f</fr:tex> in <fr:tex>f \circ  g  \circ  f  \sim  f</fr:tex> relating the (<fr:em>a priori</fr:em> incoherent) unit and the counit of the quasi-inverse. We will refer to a function <fr:tex>f \colon  A \to  B</fr:tex> equipped with an inverse as an <fr:em><fr:strong>invertible function</fr:strong></fr:em>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5959</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>erct-000X</fr:addr><fr:route>erct-000X.xml</fr:route><fr:title>Quasi-inverse</fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
+  
+  
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-000X.agda"
+type="external">erct-000X.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em><fr:strong>quasi-inverse</fr:strong></fr:em> to a function <fr:tex>f  \colon  A  \to  B</fr:tex> is a function <fr:tex>g  \colon  B  \to  A</fr:tex> equipped with homotopies <fr:tex>\epsilon \colon  f  \circ  g  \sim   1_{ B }</fr:tex> and <fr:tex>\eta \colon  g  \circ  f  \sim 1_{ A }</fr:tex>, rendering <fr:tex>g</fr:tex> simultaneously a <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">section</fr:link> and a <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">retraction</fr:link> of <fr:tex>f</fr:tex>.</fr:p><fr:p>Although no coherence laws are assumed for <fr:tex>\eta</fr:tex> and <fr:tex>\epsilon</fr:tex>, we shall refer to them respectively as the <fr:em>unit</fr:em> and <fr:em>counit</fr:em> of the quasi-inverse.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5945</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-0049</fr:addr><fr:route>erct-0049.xml</fr:route><fr:title><fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">Propositional maps</fr:link> are <fr:link
+href="erct-003K.xml"
+type="local"
+addr="erct-003K">embeddings</fr:link></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>18</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
+  
+  
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-0049.agda"
+type="external">erct-0049.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Any <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">propositional map</fr:link> <fr:tex>f \colon  A \to  B</fr:tex> is an <fr:link
+href="erct-003K.xml"
+type="local"
+addr="erct-003K">embedding</fr:link>.</fr:p>
+ 
+   
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1184</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>18</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-0049</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>Fixing <fr:tex>x,y:A</fr:tex> we must show that <fr:tex>\mathsf {act}_{ f } \colon  x = y  \to  fx=fy</fr:tex> is <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">invertible</fr:link>. By <fr:ref
+addr="erct-002C"
+href="erct-002C.xml"
+taxon="Lemma"></fr:ref> and <fr:ref
+addr="erct-002D"
+href="erct-002D.xml"
+taxon="Lemma"></fr:ref>, it suffices to exhibit a <fr:link
+href="erct-000U.xml"
+type="local"
+addr="erct-000U">biinverse</fr:link> to <fr:tex>\mathsf {act}_{ f }</fr:tex> (it is convenient that the underlying maps of the <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">section</fr:link> and <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">retraction</fr:link> need not be identical).</fr:p>
 
- <p>We first define the <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">sections</link> <tex>s_{x,y} \colon  fx = fy  \to  x = y</tex>. Because <tex>f</tex> is assumed to be <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">propositional</link>, we have by <ref addr="erct-001R" href="erct-001R.xml" taxon="Example"/> an assignment <tex>\phi _{x,y}:  \mathchoice { \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptscriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }   \mathopen {} \left ( x, \mathsf {refl} \right ) \mathclose {} \cong _{ \mathsf {fiber} \, f \, \mathopen {} \left ( fx \right ) \mathclose {} } \mathopen {} \left ( y,h ^{-1} \right ) \mathclose {}</tex>. We therefore define <tex>s_{x,y}h : \equiv   \mathopen {} \left ( \phi _{x,y}h \right ) \mathclose {} .1</tex>; the witness of <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">sectionhood</link> can be constructed using <tex>\mathopen {} \left ( \phi _{x,y}h \right ) \mathclose {} .2</tex> modulo some identification algebra.</p>
+ <fr:p>We first define the <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">sections</fr:link> <fr:tex>s_{x,y} \colon  fx = fy  \to  x = y</fr:tex>. Because <fr:tex>f</fr:tex> is assumed to be <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">propositional</fr:link>, we have by <fr:ref
+addr="erct-001R"
+href="erct-001R.xml"
+taxon="Example"></fr:ref> an assignment <fr:tex>\phi _{x,y}:  \mathchoice { \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptscriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }   \mathopen {} \left ( x, \mathsf {refl} \right ) \mathclose {} \cong _{ \mathsf {fiber} \, f \, \mathopen {} \left ( fx \right ) \mathclose {} } \mathopen {} \left ( y,h ^{-1} \right ) \mathclose {}</fr:tex>. We therefore define <fr:tex>s_{x,y}h : \equiv   \mathopen {} \left ( \phi _{x,y}h \right ) \mathclose {} .1</fr:tex>; the witness of <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">sectionhood</fr:link> can be constructed using <fr:tex>\mathopen {} \left ( \phi _{x,y}h \right ) \mathclose {} .2</fr:tex> modulo some identification algebra.</fr:p>
 
- <p>To construct the <link href="erct-000Y.xml" type="local" addr="erct-000Y" title="Section-retraction pair">retractions</link> <tex>r_{x,y} \colon  fx=fy \to  x = y</tex>, we note by our assumption that we have an assignment <tex>\psi _{x,y}: \mathchoice { \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptscriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }   \mathopen {} \left ( x, \mathsf {refl} \right ) \mathclose {}  =_{ \mathsf {fiber} \, f \, \mathopen {} \left ( fx \right ) \mathclose {} }  \mathopen {} \left ( y,h ^{-1} \right ) \mathclose {}</tex>, and we define <tex>r_{x,y}h : \equiv   \mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,y}h \right ) \mathclose {}</tex>. It remains to show that for all <tex>x,y:A</tex> and <tex>h \colon  x =y</tex>, we have <tex>\mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,y}h \right ) \mathclose {} =h</tex>. By induction on <tex>h</tex> it suffices to show that for all <tex>x:A</tex> we have <tex>\mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,x} \mathsf {refl} \right ) \mathclose {}  =  \mathsf {refl}</tex>. We will deduce that <tex>\psi _{x,x} \mathsf {refl}  =  \mathsf {refl}</tex> from our assumption that <tex>f \colon  A \to  B</tex> is <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">propositional</link> and thus <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">fibred in sets</link> via <ref addr="erct-001L" href="erct-001L.xml" taxon="Lemma"/>.</p>
-</mainmatter> </tree>
+ <fr:p>To construct the <fr:link
+href="erct-000Y.xml"
+type="local"
+addr="erct-000Y">retractions</fr:link> <fr:tex>r_{x,y} \colon  fx=fy \to  x = y</fr:tex>, we note by our assumption that we have an assignment <fr:tex>\psi _{x,y}: \mathchoice { \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \textstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }{ \scriptscriptstyle \prod _{ \mathopen {} \left ( h:fx=fy \right ) \mathclose {} } }   \mathopen {} \left ( x, \mathsf {refl} \right ) \mathclose {}  =_{ \mathsf {fiber} \, f \, \mathopen {} \left ( fx \right ) \mathclose {} }  \mathopen {} \left ( y,h ^{-1} \right ) \mathclose {}</fr:tex>, and we define <fr:tex>r_{x,y}h : \equiv   \mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,y}h \right ) \mathclose {}</fr:tex>. It remains to show that for all <fr:tex>x,y:A</fr:tex> and <fr:tex>h \colon  x =y</fr:tex>, we have <fr:tex>\mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,y}h \right ) \mathclose {} =h</fr:tex>. By induction on <fr:tex>h</fr:tex> it suffices to show that for all <fr:tex>x:A</fr:tex> we have <fr:tex>\mathsf {act}_{ -.1 } \mathopen {} \left ( \psi _{x,x} \mathsf {refl} \right ) \mathclose {}  =  \mathsf {refl}</fr:tex>. We will deduce that <fr:tex>\psi _{x,x} \mathsf {refl}  =  \mathsf {refl}</fr:tex> from our assumption that <fr:tex>f \colon  A \to  B</fr:tex> is <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">propositional</fr:link> and thus <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">fibred in sets</fr:link> via <fr:ref
+addr="erct-001L"
+href="erct-001L.xml"
+taxon="Lemma"></fr:ref>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10923</anchor> <taxon>Construction</taxon> <addr>erct-003J</addr><route>erct-003J.xml</route>  <date><year>2024</year> <month>2</month> <day>11</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Composition of <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">invertible</link> maps</title>   <meta name="source">
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5947</fr:anchor><fr:taxon>Construction</fr:taxon><fr:addr>erct-003J</fr:addr><fr:route>erct-003J.xml</fr:route><fr:title>Composition of <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">invertible</fr:link> maps</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>11</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-003J.agda" type="external">erct-003J.agda</link>
-</meta></frontmatter> <mainmatter><p>Let <tex>f \colon  A \to  B</tex> and <tex>g \colon  B \to  C</tex> be <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">invertible</link> maps. Then the composite <tex>g \circ  f \colon  A \to  C</tex> is <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">invertible</link>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-003J.agda"
+type="external">erct-003J.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>f \colon  A \to  B</fr:tex> and <fr:tex>g \colon  B \to  C</fr:tex> be <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">invertible</fr:link> maps. Then the composite <fr:tex>g \circ  f \colon  A \to  C</fr:tex> is <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">invertible</fr:link>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10924</anchor> <taxon>Proof</taxon>   <date><year>2024</year> <month>2</month> <day>11</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>   <parent>erct-003J</parent> </frontmatter> <mainmatter>
- <p>By <ref addr="erct-002C" href="erct-002C.xml" taxon="Lemma"/>, it suffices to find a <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> to the composite <tex>g \circ  f</tex>; we take this to be the composite (<ref addr="erct-002L" href="erct-002L.xml" taxon="Construction"/>) of the underlying <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverses</link> of <tex>f</tex> and <tex>g</tex>.</p>
-</mainmatter> </tree>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1793</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>11</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-003J</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>By <fr:ref
+addr="erct-002C"
+href="erct-002C.xml"
+taxon="Lemma"></fr:ref>, it suffices to find a <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> to the composite <fr:tex>g \circ  f</fr:tex>; we take this to be the composite (<fr:ref
+addr="erct-002L"
+href="erct-002L.xml"
+taxon="Construction"></fr:ref>) of the underlying <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverses</fr:link> of <fr:tex>f</fr:tex> and <fr:tex>g</fr:tex>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>10925</anchor> <taxon>Corollary</taxon> <addr>erct-002M</addr><route>erct-002M.xml</route>  <date><year>2023</year> <month>12</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">Quasi-invertible</link> maps are <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">contractible</link></title>   <meta name="source">
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>5949</fr:anchor><fr:taxon>Corollary</fr:taxon><fr:addr>erct-002M</fr:addr><fr:route>erct-002M.xml</fr:route><fr:title><fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">Quasi-invertible</fr:link> maps are <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">contractible</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="source">
   
   
-  <link href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002M.agda" type="external">erct-002M.agda</link>
-</meta></frontmatter> <mainmatter><p>Any <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-invertible</link> map <tex>f \colon  A \to  B</tex> is <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">contractible</link>.</p>
+  <fr:link
+href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002M.agda"
+type="external">erct-002M.agda</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Any <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-invertible</fr:link> map <fr:tex>f \colon  A \to  B</fr:tex> is <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">contractible</fr:link>.</fr:p>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>10926</anchor> <taxon>Proof</taxon>   <date><year>2023</year> <month>12</month> <day>31</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors>   <parent>erct-002M</parent> </frontmatter> <mainmatter>
- <p>Any <link href="erct-000X.xml" type="local" addr="erct-000X" title="Quasi-inverse">quasi-inverse</link> <link href="erct-002C.xml" type="local" addr="erct-002C" title="From quasi-inverses to coherent inverses">can be improved</link> to a <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">coherent inverse</link>, and <link href="erct-000W.xml" type="local" addr="erct-000W" title="Inverse">any coherently invertible map</link> is <link href="erct-001T.xml" type="local" addr="erct-001T" title="N-truncated map">contractible</link>.</p>
-</mainmatter> </tree>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1212</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002M</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>Any <fr:link
+href="erct-000X.xml"
+type="local"
+addr="erct-000X">quasi-inverse</fr:link> <fr:link
+href="erct-002C.xml"
+type="local"
+addr="erct-002C">can be improved</fr:link> to a <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">coherent inverse</fr:link>, and <fr:link
+href="erct-000W.xml"
+type="local"
+addr="erct-000W">any coherently invertible map</fr:link> is <fr:link
+href="erct-001T.xml"
+type="local"
+addr="erct-001T">contractible</fr:link>.</fr:p>
+</fr:mainmatter></fr:tree>
  
-</mainmatter> </tree></backlinks> <references/></backmatter></tree>
+</fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

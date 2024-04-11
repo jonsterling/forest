@@ -1,10 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44647</anchor> <taxon>Institution</taxon> <addr>toposinstitute</addr><route>toposinstitute.xml</route>    <title>Topos Institute</title>   <meta name="external">https://topos.institute/</meta></frontmatter> <mainmatter><blockquote><p>We shape technology for public benefit by advancing sciences of connection and integration.</p>
-  <p>Our goal is a world where the systems that surround us benefit us all.</p></blockquote></mainmatter> <backmatter><contributions/> <context/> <related/> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44648</anchor> <taxon>Feature</taxon> <addr>jms-00O4</addr><route>jms-00O4.xml</route>  <date><year>2024</year> <month>3</month> <day>9</day></date><date><year>2024</year> <month>2</month> <day>8</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-00HY.xml" type="local" addr="jms-00HY" title="Forester 3.1">Forester 3.1</link> › inline subtrees</title>  <parent>jms-00HY</parent> </frontmatter> <mainmatter><p>Previously, there was a one-to-one mapping between trees and files. After discussion on the mailing list with <link href="kristopherbrown.xml" type="local" addr="kristopherbrown" title="Kristopher Brown">Kristopher Brown</link> of <link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link>, I have added support for defining new subtrees <em>inline</em> to an existing tree. The current behavior is that an inline subtree has its <link href="jms-00O3.xml" type="local" addr="jms-00O3" title="Forester 3.1 › designated parents">designated parent</link> automatically assigned; author and date metadata is inherited (this may change in the future).</p><p>To emit (and transclude) a subtree at address <code>xxx-NNNN</code>, you can write the following:</p><pre>\subtree[xxx-NNNN]{
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22058</fr:anchor><fr:taxon>Institution</fr:taxon><fr:addr>toposinstitute</fr:addr><fr:route>toposinstitute.xml</fr:route><fr:title>Topos Institute</fr:title><fr:meta
+name="external">https://topos.institute/</fr:meta></fr:frontmatter><fr:mainmatter><fr:blockquote><fr:p>We shape technology for public benefit by advancing sciences of connection and integration.</fr:p>
+  <fr:p>Our goal is a world where the systems that surround us benefit us all.</fr:p></fr:blockquote></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context></fr:context><fr:related></fr:related><fr:backlinks><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22049</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-00O4</fr:addr><fr:route>jms-00O4.xml</fr:route><fr:title><fr:link
+href="jms-00HY.xml"
+type="local"
+addr="jms-00HY">Forester 3.1</fr:link> › inline subtrees</fr:title><fr:date><fr:year>2024</fr:year><fr:month>3</fr:month><fr:day>9</fr:day></fr:date><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00HY</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Previously, there was a one-to-one mapping between trees and files. After discussion on the mailing list with <fr:link
+href="kristopherbrown.xml"
+type="local"
+addr="kristopherbrown">Kristopher Brown</fr:link> of <fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link>, I have added support for defining new subtrees <fr:em>inline</fr:em> to an existing tree. The current behavior is that an inline subtree has its <fr:link
+href="jms-00O3.xml"
+type="local"
+addr="jms-00O3">designated parent</fr:link> automatically assigned; author and date metadata is inherited (this may change in the future).</fr:p><fr:p>To emit (and transclude) a subtree at address <fr:code>xxx-NNNN</fr:code>, you can write the following:</fr:p><fr:pre>\subtree[xxx-NNNN]{
   \title{my title}
   \p{my body}
-}</pre><p>It is also possible to have an <em>anonymous</em> inline subtree, one that has no address of its own. In this case, write:</p><pre>\subtree{
+}</fr:pre><fr:p>It is also possible to have an <fr:em>anonymous</fr:em> inline subtree, one that has no address of its own. In this case, write:</fr:p><fr:pre>\subtree{
   \title{my title}
   \p{my body}
-}</pre><p>An anonymous inline subtree will, naturally, not have its own page emitted and cannot be linked to. In the graph analysis (for computing backlinks, etc.), an anonymous inline subtree will be identified with its parent.</p><p>Inline subtrees should not be overrused; but they may make the process of daily journalling and other activities more lightweight.</p><p>One consequence of breaking the one-to-one relationship between trees and files is that commands like <code>forester new</code> need to actually fully evaluate the forest, whereas in the past it was possible to merely scan the file system. This is a trade-off: if your forest contains fatal errors, you cannot use <code>forester new</code> or related querying commands. You should never leave your forest with fatal errors long enough to notice this.</p><p><mark>This feature is experimental and its behaviour may change. Use it at your own risk.</mark></p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44649</anchor> <taxon>Reference</taxon> <addr>sterling-2023-topos-colloquium</addr><route>sterling-2023-topos-colloquium.xml</route>  <date><year>2023</year> <month>9</month> <day>28</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Synthetic domains in the 21st century</title>   <meta name="external">https://topos.site/topos-colloquium/</meta><meta name="venue"><link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link> Colloquium</meta></frontmatter> <mainmatter><p>It is easy to teach a student how to give a naïve denotational semantics to a typed lambda calculus without recursion, and then use it to reason about the equational theory: a type might as well be a set, and a program might as well be a function, and equational adequacy at base type is established using a logical relation between the initial model and the category of sets. Adding any non-trivial feature to this language (e.g. general recursion, polymorphism, state, etc.) immediately increases the difficulty beyond the facility of a beginner: to add recursion, one must replace sets and functions with domains and continuous maps, and to accommodate polymorphism and state, one must pass to increasingly inaccessible variations on this basic picture.</p><p>The dream of the 1990s was to find a category that behaves like SET in which even general recursive and effectful programming languages could be given naïve denotational semantics, where types are interpreted as “sets” and programs are interpreted as a “functions”, without needing to check any arduous technical conditions like continuity. The benefit of this synthetic domain theory is not only that it looks “easy” for beginners, as more expert-level constructions like powerdomains or even domain equations for recursively defined semantic worlds become simple and direct. Although there have been starts and stops, the dream of synthetic domain theory is alive and well in the 21st Century. Today’s synthetic domain theory is, however, both more modular and more powerful than ever before, and has yielded significant results in programming language semantics including <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">simple denotational semantics</link> for an state of the art programming language with higher-order polymorphism, dependent types, recursive types, general reference types, and first-class module packages that can be stored in the heap.</p><p>In this talk, I will explain some important classical results in synthetic domain theory as well as more recent results that illustrate the potential impact of “naïve denotational semantics” on the life of a workaday computer scientist.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44650</anchor> <taxon>Reference</taxon> <addr>harper-2021-topos-institute</addr><route>harper-2021-topos-institute.xml</route>  <date><year>2021</year> <month>12</month> <day>9</day></date> <authors><author><link href="robertharper.xml" type="local" robertharper="addr">Robert Harper</link></author> </authors> <title>Phase distinctions in type theory</title>   <meta name="video">https://www.youtube.com/watch?v=7DYkyB1Rm3I</meta><meta name="venue"><link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link> Colloquium</meta></frontmatter> <mainmatter><p>(Joint work with <link href="jonmsterling.xml" type="local" addr="jonmsterling" title="Jon Sterling">Jon Sterling</link> and <link href="yueniu.xml" type="local" addr="yueniu" title="Yue Niu">Yue Niu</link>)</p><p>The informal phase distinction between compile-time and run-time in programming languages is formally manifested by the distinction between kinds, which classify types, and types, which classify code. The distinction underpins standard programming methodology whereby code is first type-checked for consistency before being compiled for execution. When used effectively, types help eliminate bugs before they occur.</p><p>Program modules, in even the most rudimentary form, threaten the distinction, comprising as they do both types and programs in a single unit. Matters worsen when considerating “open” modules, with free module variables standing for its imports. To maintain the separation in their presence it is necessary to limit the dependency of types, the static parts of a module, to their imported types. Such restrictions are fundamental for using dependent types to express modular structure, as originally suggested by MacQueen.</p><p>To address this question <link href="moggi-1989.xml" type="local" addr="moggi-1989" title="A category-theoretic account of program modules">Moggi</link> gave an “analytic” formulation of program modules in which modules are explicitly separated into their static and dynamic components using tools from category theory. Recent work by Dreyer, Rossberg, and Russo develops this approach fully in their account of ML-like module systems. In this talk we consider instead a “synthetic” formulation using a proposition to segregate the static from the dynamic, in particular to define static equivalence to manage type sharing and type dependency.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44651</anchor> <taxon>Person</taxon> <addr>kristopherbrown</addr><route>kristopherbrown.xml</route>    <title>Kristopher Brown</title>   <meta name="institution"><link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link></meta><meta name="position">Research Software Engineer</meta><meta name="external">https://www.krisb.org/</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44652</anchor> <taxon>Person</taxon> <addr>owenlynch</addr><route>owenlynch.xml</route>    <title>Owen Lynch</title>   <meta name="institution"><link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link></meta><meta name="position">Research Software Engineer</meta><meta name="external">https://owenlynch.org/</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>44653</anchor> <taxon>Person</taxon> <addr>timhosgood</addr><route>timhosgood.xml</route>    <title>Tim Hosgood</title>   <meta name="institution"><link href="toposinstitute.xml" type="local" addr="toposinstitute" title="Topos Institute">Topos Institute</link></meta><meta name="position">Director of Operations</meta><meta name="external">https://thosgood.com/</meta></frontmatter> <mainmatter/> </tree></backlinks> <references/></backmatter></tree>
+}</fr:pre><fr:p>An anonymous inline subtree will, naturally, not have its own page emitted and cannot be linked to. In the graph analysis (for computing backlinks, etc.), an anonymous inline subtree will be identified with its parent.</fr:p><fr:p>Inline subtrees should not be overrused; but they may make the process of daily journalling and other activities more lightweight.</fr:p><fr:p>One consequence of breaking the one-to-one relationship between trees and files is that commands like <fr:code>forester new</fr:code> need to actually fully evaluate the forest, whereas in the past it was possible to merely scan the file system. This is a trade-off: if your forest contains fatal errors, you cannot use <fr:code>forester new</fr:code> or related querying commands. You should never leave your forest with fatal errors long enough to notice this.</fr:p><fr:p><html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">This feature is experimental and its behaviour may change. Use it at your own risk.</html:mark></fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22051</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-2023-topos-colloquium</fr:addr><fr:route>sterling-2023-topos-colloquium.xml</fr:route><fr:title>Synthetic domains in the 21st century</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>28</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="external">https://topos.site/topos-colloquium/</fr:meta><fr:meta
+name="venue"><fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link> Colloquium</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>It is easy to teach a student how to give a naïve denotational semantics to a typed lambda calculus without recursion, and then use it to reason about the equational theory: a type might as well be a set, and a program might as well be a function, and equational adequacy at base type is established using a logical relation between the initial model and the category of sets. Adding any non-trivial feature to this language (e.g. general recursion, polymorphism, state, etc.) immediately increases the difficulty beyond the facility of a beginner: to add recursion, one must replace sets and functions with domains and continuous maps, and to accommodate polymorphism and state, one must pass to increasingly inaccessible variations on this basic picture.</fr:p><fr:p>The dream of the 1990s was to find a category that behaves like SET in which even general recursive and effectful programming languages could be given naïve denotational semantics, where types are interpreted as “sets” and programs are interpreted as a “functions”, without needing to check any arduous technical conditions like continuity. The benefit of this synthetic domain theory is not only that it looks “easy” for beginners, as more expert-level constructions like powerdomains or even domain equations for recursively defined semantic worlds become simple and direct. Although there have been starts and stops, the dream of synthetic domain theory is alive and well in the 21st Century. Today’s synthetic domain theory is, however, both more modular and more powerful than ever before, and has yielded significant results in programming language semantics including <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">simple denotational semantics</fr:link> for an state of the art programming language with higher-order polymorphism, dependent types, recursive types, general reference types, and first-class module packages that can be stored in the heap.</fr:p><fr:p>In this talk, I will explain some important classical results in synthetic domain theory as well as more recent results that illustrate the potential impact of “naïve denotational semantics” on the life of a workaday computer scientist.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22053</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>harper-2021-topos-institute</fr:addr><fr:route>harper-2021-topos-institute.xml</fr:route><fr:title>Phase distinctions in type theory</fr:title><fr:date><fr:year>2021</fr:year><fr:month>12</fr:month><fr:day>9</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="robertharper.xml"
+type="local"
+addr="robertharper">Robert Harper</fr:link></fr:author></fr:authors><fr:meta
+name="video">https://www.youtube.com/watch?v=7DYkyB1Rm3I</fr:meta><fr:meta
+name="venue"><fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link> Colloquium</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>(Joint work with <fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link> and <fr:link
+href="yueniu.xml"
+type="local"
+addr="yueniu">Yue Niu</fr:link>)</fr:p><fr:p>The informal phase distinction between compile-time and run-time in programming languages is formally manifested by the distinction between kinds, which classify types, and types, which classify code. The distinction underpins standard programming methodology whereby code is first type-checked for consistency before being compiled for execution. When used effectively, types help eliminate bugs before they occur.</fr:p><fr:p>Program modules, in even the most rudimentary form, threaten the distinction, comprising as they do both types and programs in a single unit. Matters worsen when considerating “open” modules, with free module variables standing for its imports. To maintain the separation in their presence it is necessary to limit the dependency of types, the static parts of a module, to their imported types. Such restrictions are fundamental for using dependent types to express modular structure, as originally suggested by MacQueen.</fr:p><fr:p>To address this question <fr:link
+href="moggi-1989.xml"
+type="local"
+addr="moggi-1989">Moggi</fr:link> gave an “analytic” formulation of program modules in which modules are explicitly separated into their static and dynamic components using tools from category theory. Recent work by Dreyer, Rossberg, and Russo develops this approach fully in their account of ML-like module systems. In this talk we consider instead a “synthetic” formulation using a proposition to segregate the static from the dynamic, in particular to define static equivalence to manage type sharing and type dependency.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22055</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>kristopherbrown</fr:addr><fr:route>kristopherbrown.xml</fr:route><fr:title>Kristopher Brown</fr:title><fr:meta
+name="institution"><fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link></fr:meta><fr:meta
+name="position">Research Software Engineer</fr:meta><fr:meta
+name="external">https://www.krisb.org/</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22056</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>owenlynch</fr:addr><fr:route>owenlynch.xml</fr:route><fr:title>Owen Lynch</fr:title><fr:meta
+name="institution"><fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link></fr:meta><fr:meta
+name="position">Research Software Engineer</fr:meta><fr:meta
+name="external">https://owenlynch.org/</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>22057</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>timhosgood</fr:addr><fr:route>timhosgood.xml</fr:route><fr:title>Tim Hosgood</fr:title><fr:meta
+name="institution"><fr:link
+href="toposinstitute.xml"
+type="local"
+addr="toposinstitute">Topos Institute</fr:link></fr:meta><fr:meta
+name="position">Director of Operations</fr:meta><fr:meta
+name="external">https://thosgood.com/</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

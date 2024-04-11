@@ -1,51 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>21649</anchor> <taxon>Feature</taxon> <addr>jms-007Y</addr><route>jms-007Y.xml</route>  <date><year>2023</year> <month>8</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › rudimentary support for RSS feeds</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <code>xxx-NNNN.xml</code>, then the corresponding RSS file will be located at <code>xxx-NNNN.rss.xml</code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Feedback on this feature is welcome</link>.</p></mainmatter> <backmatter><contributions/> <context><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>21650</anchor> <taxon>Changelog</taxon> <addr>jms-007M</addr><route>jms-007M.xml</route>  <date><year>2023</year> <month>9</month> <day>22</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Forester 2.4</title>   </frontmatter> <mainmatter><p>Thanks to <link href="masanoriogino.xml" type="local" addr="masanoriogino" title="Masanori Ogino">Masanori Ogino</link> and <link href="haroldcarr.xml" type="local" addr="haroldcarr" title="Harold Carr">Harold Carr</link> for their suggestions which have influenced this release. In addition to the major changes detailed below, there are a few minor improvements:</p><ul><li>The evaluator for Markdown-style links <code>[title](destination)</code> now allows <code>destination</code> to contain expressions other than text, so long as they <em>evaluate</em> to text.</li>
-  <li>The <link href="jms-0072.xml" type="local" addr="jms-0072" title="Forester 2.3 › rudimentary support for XML attributes">XML attribute support</link> introduced in <link href="jms-006Z.xml" type="local" addr="jms-006Z" title="Forester 2.3">Forester 2.3</link> has been amended so that attributes appear in square brackets, e.g. <code>\p[class]{myclass}{body}</code></li>
-  <li>The <code>forester new</code> command now has a <code>--dest</code> option, which is used to specify the directory in which to deposit the new tree (independently of the <code>--dir</code> option, which specifies the directory to scan for existing trees). Please run  <code>forester new --help</code> for details.</li></ul><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21651</anchor> <taxon>Feature</taxon> <addr>jms-007Y</addr><route>jms-007Y.xml</route>  <date><year>2023</year> <month>8</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › rudimentary support for RSS feeds</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <code>xxx-NNNN.xml</code>, then the corresponding RSS file will be located at <code>xxx-NNNN.rss.xml</code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Feedback on this feature is welcome</link>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21652</anchor> <taxon>Feature</taxon> <addr>jms-008Z</addr><route>jms-008Z.xml</route>  <date><year>2023</year> <month>9</month> <day>13</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › wikilinks support</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>This release adds support for “wikilinks” in the form <code>[[destination]]</code>; this will be rendered as a link whose title is given by the title of the tree at address <code>destination</code>. Users are discouraged from using wikilinks heavily, as it is better for your mind to “work a link into a sentence” naturally; but this can be very useful for linking to <link href="jms-007K.xml" type="local" addr="jms-007K" title="Creating your personal biographical tree">biographical trees</link> or daily notes.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21653</anchor> <taxon>Change</taxon> <addr>jms-007X</addr><route>jms-007X.xml</route>  <date><year>2023</year> <month>8</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › breaking changes to XML format</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</p><ol><li>Taxa used to be attributes of <code>tree</code>, but they are now child elements of <code>tree/frontmatter</code>. Therefore, what previously was written as
-    <pre>&lt;tree taxon=&quot;lemma&quot;&gt;
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>10315</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-007Y</fr:addr><fr:route>jms-007Y.xml</fr:route><fr:title><fr:link
+href="jms-007M.xml"
+type="local"
+addr="jms-007M">Forester 2.4</fr:link> › rudimentary support for RSS feeds</fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <fr:code>xxx-NNNN.xml</fr:code>, then the corresponding RSS file will be located at <fr:code>xxx-NNNN.rss.xml</fr:code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <fr:link
+href="https://lists.sr.ht/~jonsterling/forester-discuss"
+type="external">Feedback on this feature is welcome</fr:link>.</fr:p></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>10313</fr:anchor><fr:taxon>Changelog</fr:taxon><fr:addr>jms-007M</fr:addr><fr:route>jms-007M.xml</fr:route><fr:title>Forester 2.4</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>22</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Thanks to <fr:link
+href="masanoriogino.xml"
+type="local"
+addr="masanoriogino">Masanori Ogino</fr:link> and <fr:link
+href="haroldcarr.xml"
+type="local"
+addr="haroldcarr">Harold Carr</fr:link> for their suggestions which have influenced this release. In addition to the major changes detailed below, there are a few minor improvements:</fr:p><fr:ul><fr:li>The evaluator for Markdown-style links <fr:code>[title](destination)</fr:code> now allows <fr:code>destination</fr:code> to contain expressions other than text, so long as they <fr:em>evaluate</fr:em> to text.</fr:li>
+  <fr:li>The <fr:link
+href="jms-0072.xml"
+type="local"
+addr="jms-0072">XML attribute support</fr:link> introduced in <fr:link
+href="jms-006Z.xml"
+type="local"
+addr="jms-006Z">Forester 2.3</fr:link> has been amended so that attributes appear in square brackets, e.g. <fr:code>\p[class]{myclass}{body}</fr:code></fr:li>
+  <fr:li>The <fr:code>forester new</fr:code> command now has a <fr:code>--dest</fr:code> option, which is used to specify the directory in which to deposit the new tree (independently of the <fr:code>--dir</fr:code> option, which specifies the directory to scan for existing trees). Please run  <fr:code>forester new --help</fr:code> for details.</fr:li></fr:ul><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>356</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-007Y</fr:addr><fr:route>jms-007Y.xml</fr:route><fr:title>Rudimentary support for RSS feeds</fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <fr:code>xxx-NNNN.xml</fr:code>, then the corresponding RSS file will be located at <fr:code>xxx-NNNN.rss.xml</fr:code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <fr:link
+href="https://lists.sr.ht/~jonsterling/forester-discuss"
+type="external">Feedback on this feature is welcome</fr:link>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>358</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-008Z</fr:addr><fr:route>jms-008Z.xml</fr:route><fr:title>Wikilinks support</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>13</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release adds support for “wikilinks” in the form <fr:code>[[destination]]</fr:code>; this will be rendered as a link whose title is given by the title of the tree at address <fr:code>destination</fr:code>. Users are discouraged from using wikilinks heavily, as it is better for your mind to “work a link into a sentence” naturally; but this can be very useful for linking to <fr:link
+href="jms-007K.xml"
+type="local"
+addr="jms-007K">biographical trees</fr:link> or daily notes.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>360</fr:anchor><fr:taxon>Change</fr:taxon><fr:addr>jms-007X</fr:addr><fr:route>jms-007X.xml</fr:route><fr:title>Breaking changes to XML format</fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</fr:p><fr:ol><fr:li>Taxa used to be attributes of <fr:code>tree</fr:code>, but they are now child elements of <fr:code>tree/frontmatter</fr:code>. Therefore, what previously was written as
+    <fr:pre>&lt;tree taxon="lemma"&gt;
   &lt;frontmatter&gt;
     &lt;!-- ... --&gt;
   &lt;/frontmatter&gt;
   &lt;!-- ... --&gt;
-&lt;/tree&gt;    </pre>
+&lt;/tree&gt;    </fr:pre>
     is now written as follows:
-    <pre>&lt;tree&gt;
+    <fr:pre>&lt;tree&gt;
   &lt;frontmatter&gt;
     &lt;taxon&gt;lemma&lt;/taxon&gt;
     &lt;!-- ... --&gt;
   &lt;/frontmatter&gt;
   &lt;!-- ... --&gt;
-&lt;/tree&gt;    </pre></li>
-  <li><p>Dates are now stored in machine-readable format. For example, what used to be written <code>&lt;date&gt;August 16, 2023&lt;/date&gt;</code> is now written as follows:</p>
-    <pre>&lt;date&gt;
+&lt;/tree&gt;    </fr:pre></fr:li>
+  <fr:li><fr:p>Dates are now stored in machine-readable format. For example, what used to be written <fr:code>&lt;date&gt;August 16, 2023&lt;/date&gt;</fr:code> is now written as follows:</fr:p>
+    <fr:pre>&lt;date&gt;
   &lt;year&gt;2023&lt;/year&gt;
   &lt;month&gt;8&lt;/month&gt;
   &lt;day&gt;16&lt;/day&gt;
-&lt;/date&gt;    </pre>
-    <p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <link href="masanoriogino.xml" type="local" addr="masanoriogino" title="Masanori Ogino">Masanori Ogino</link> for suggesting this change.</p></li>
-  <li>All identifiers in the XML format have been regularized to use snake-case; for instance, <code>sourcePath</code> is now <code>source-path</code> and <code>show_heading</code> is now <code>show-heading</code>.</li></ol></mainmatter> </tree></mainmatter> </tree></context> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>21654</anchor> <taxon>Changelog</taxon> <addr>jms-007M</addr><route>jms-007M.xml</route>  <date><year>2023</year> <month>9</month> <day>22</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Forester 2.4</title>   </frontmatter> <mainmatter><p>Thanks to <link href="masanoriogino.xml" type="local" addr="masanoriogino" title="Masanori Ogino">Masanori Ogino</link> and <link href="haroldcarr.xml" type="local" addr="haroldcarr" title="Harold Carr">Harold Carr</link> for their suggestions which have influenced this release. In addition to the major changes detailed below, there are a few minor improvements:</p><ul><li>The evaluator for Markdown-style links <code>[title](destination)</code> now allows <code>destination</code> to contain expressions other than text, so long as they <em>evaluate</em> to text.</li>
-  <li>The <link href="jms-0072.xml" type="local" addr="jms-0072" title="Forester 2.3 › rudimentary support for XML attributes">XML attribute support</link> introduced in <link href="jms-006Z.xml" type="local" addr="jms-006Z" title="Forester 2.3">Forester 2.3</link> has been amended so that attributes appear in square brackets, e.g. <code>\p[class]{myclass}{body}</code></li>
-  <li>The <code>forester new</code> command now has a <code>--dest</code> option, which is used to specify the directory in which to deposit the new tree (independently of the <code>--dir</code> option, which specifies the directory to scan for existing trees). Please run  <code>forester new --help</code> for details.</li></ul><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21655</anchor> <taxon>Feature</taxon> <addr>jms-007Y</addr><route>jms-007Y.xml</route>  <date><year>2023</year> <month>8</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › rudimentary support for RSS feeds</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <code>xxx-NNNN.xml</code>, then the corresponding RSS file will be located at <code>xxx-NNNN.rss.xml</code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Feedback on this feature is welcome</link>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21656</anchor> <taxon>Feature</taxon> <addr>jms-008Z</addr><route>jms-008Z.xml</route>  <date><year>2023</year> <month>9</month> <day>13</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › wikilinks support</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>This release adds support for “wikilinks” in the form <code>[[destination]]</code>; this will be rendered as a link whose title is given by the title of the tree at address <code>destination</code>. Users are discouraged from using wikilinks heavily, as it is better for your mind to “work a link into a sentence” naturally; but this can be very useful for linking to <link href="jms-007K.xml" type="local" addr="jms-007K" title="Creating your personal biographical tree">biographical trees</link> or daily notes.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>21657</anchor> <taxon>Change</taxon> <addr>jms-007X</addr><route>jms-007X.xml</route>  <date><year>2023</year> <month>8</month> <day>19</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title><link href="jms-007M.xml" type="local" addr="jms-007M" title="Forester 2.4">Forester 2.4</link> › breaking changes to XML format</title>  <parent>jms-007M</parent> </frontmatter> <mainmatter><p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</p><ol><li>Taxa used to be attributes of <code>tree</code>, but they are now child elements of <code>tree/frontmatter</code>. Therefore, what previously was written as
-    <pre>&lt;tree taxon=&quot;lemma&quot;&gt;
+&lt;/date&gt;    </fr:pre>
+    <fr:p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <fr:link
+href="masanoriogino.xml"
+type="local"
+addr="masanoriogino">Masanori Ogino</fr:link> for suggesting this change.</fr:p></fr:li>
+  <fr:li>All identifiers in the XML format have been regularized to use snake-case; for instance, <fr:code>sourcePath</fr:code> is now <fr:code>source-path</fr:code> and <fr:code>show_heading</fr:code> is now <fr:code>show-heading</fr:code>.</fr:li></fr:ol></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>10311</fr:anchor><fr:taxon>Changelog</fr:taxon><fr:addr>jms-007M</fr:addr><fr:route>jms-007M.xml</fr:route><fr:title>Forester 2.4</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>22</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Thanks to <fr:link
+href="masanoriogino.xml"
+type="local"
+addr="masanoriogino">Masanori Ogino</fr:link> and <fr:link
+href="haroldcarr.xml"
+type="local"
+addr="haroldcarr">Harold Carr</fr:link> for their suggestions which have influenced this release. In addition to the major changes detailed below, there are a few minor improvements:</fr:p><fr:ul><fr:li>The evaluator for Markdown-style links <fr:code>[title](destination)</fr:code> now allows <fr:code>destination</fr:code> to contain expressions other than text, so long as they <fr:em>evaluate</fr:em> to text.</fr:li>
+  <fr:li>The <fr:link
+href="jms-0072.xml"
+type="local"
+addr="jms-0072">XML attribute support</fr:link> introduced in <fr:link
+href="jms-006Z.xml"
+type="local"
+addr="jms-006Z">Forester 2.3</fr:link> has been amended so that attributes appear in square brackets, e.g. <fr:code>\p[class]{myclass}{body}</fr:code></fr:li>
+  <fr:li>The <fr:code>forester new</fr:code> command now has a <fr:code>--dest</fr:code> option, which is used to specify the directory in which to deposit the new tree (independently of the <fr:code>--dir</fr:code> option, which specifies the directory to scan for existing trees). Please run  <fr:code>forester new --help</fr:code> for details.</fr:li></fr:ul><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>356</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-007Y</fr:addr><fr:route>jms-007Y.xml</fr:route><fr:title>Rudimentary support for RSS feeds</fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <fr:code>xxx-NNNN.xml</fr:code>, then the corresponding RSS file will be located at <fr:code>xxx-NNNN.rss.xml</fr:code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <fr:link
+href="https://lists.sr.ht/~jonsterling/forester-discuss"
+type="external">Feedback on this feature is welcome</fr:link>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>358</fr:anchor><fr:taxon>Feature</fr:taxon><fr:addr>jms-008Z</fr:addr><fr:route>jms-008Z.xml</fr:route><fr:title>Wikilinks support</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>13</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release adds support for “wikilinks” in the form <fr:code>[[destination]]</fr:code>; this will be rendered as a link whose title is given by the title of the tree at address <fr:code>destination</fr:code>. Users are discouraged from using wikilinks heavily, as it is better for your mind to “work a link into a sentence” naturally; but this can be very useful for linking to <fr:link
+href="jms-007K.xml"
+type="local"
+addr="jms-007K">biographical trees</fr:link> or daily notes.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>360</fr:anchor><fr:taxon>Change</fr:taxon><fr:addr>jms-007X</fr:addr><fr:route>jms-007X.xml</fr:route><fr:title>Breaking changes to XML format</fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>19</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-007M</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</fr:p><fr:ol><fr:li>Taxa used to be attributes of <fr:code>tree</fr:code>, but they are now child elements of <fr:code>tree/frontmatter</fr:code>. Therefore, what previously was written as
+    <fr:pre>&lt;tree taxon="lemma"&gt;
   &lt;frontmatter&gt;
     &lt;!-- ... --&gt;
   &lt;/frontmatter&gt;
   &lt;!-- ... --&gt;
-&lt;/tree&gt;    </pre>
+&lt;/tree&gt;    </fr:pre>
     is now written as follows:
-    <pre>&lt;tree&gt;
+    <fr:pre>&lt;tree&gt;
   &lt;frontmatter&gt;
     &lt;taxon&gt;lemma&lt;/taxon&gt;
     &lt;!-- ... --&gt;
   &lt;/frontmatter&gt;
   &lt;!-- ... --&gt;
-&lt;/tree&gt;    </pre></li>
-  <li><p>Dates are now stored in machine-readable format. For example, what used to be written <code>&lt;date&gt;August 16, 2023&lt;/date&gt;</code> is now written as follows:</p>
-    <pre>&lt;date&gt;
+&lt;/tree&gt;    </fr:pre></fr:li>
+  <fr:li><fr:p>Dates are now stored in machine-readable format. For example, what used to be written <fr:code>&lt;date&gt;August 16, 2023&lt;/date&gt;</fr:code> is now written as follows:</fr:p>
+    <fr:pre>&lt;date&gt;
   &lt;year&gt;2023&lt;/year&gt;
   &lt;month&gt;8&lt;/month&gt;
   &lt;day&gt;16&lt;/day&gt;
-&lt;/date&gt;    </pre>
-    <p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <link href="masanoriogino.xml" type="local" addr="masanoriogino" title="Masanori Ogino">Masanori Ogino</link> for suggesting this change.</p></li>
-  <li>All identifiers in the XML format have been regularized to use snake-case; for instance, <code>sourcePath</code> is now <code>source-path</code> and <code>show_heading</code> is now <code>show-heading</code>.</li></ol></mainmatter> </tree></mainmatter> </tree></related> <backlinks/> <references/></backmatter></tree>
+&lt;/date&gt;    </fr:pre>
+    <fr:p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <fr:link
+href="masanoriogino.xml"
+type="local"
+addr="masanoriogino">Masanori Ogino</fr:link> for suggesting this change.</fr:p></fr:li>
+  <fr:li>All identifiers in the XML format have been regularized to use snake-case; for instance, <fr:code>sourcePath</fr:code> is now <fr:code>source-path</fr:code> and <fr:code>show_heading</fr:code> is now <fr:code>show-heading</fr:code>.</fr:li></fr:ol></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

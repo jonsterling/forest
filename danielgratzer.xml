@@ -1,33 +1,695 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="forest.xsl"?>
-<tree expanded="true" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35869</anchor> <taxon>Person</taxon> <addr>danielgratzer</addr><route>danielgratzer.xml</route>    <title>Daniel Gratzer</title>   <meta name="external">https://jozefg.github.io/</meta><meta name="institution"><link href="jms-00GC.xml" type="local" addr="jms-00GC" title="Aarhus University">Aarhus University</link></meta><meta name="position">PhD Student</meta><meta name="phd-advisor">larsbirkedal</meta><meta name="orcid">0000-0003-1944-0789</meta></frontmatter> <mainmatter><blockquote>I study programming languages, type theories, and logics. I am particularly interested in applying semantic methods to prove syntactic properties of modal type theories and programming languages. I am also involved in the development of program logics for concurrent programming languages through the <link href="https://iris-project.org/" type="external">Iris project</link>.</blockquote></mainmatter> <backmatter><contributions><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35870</anchor> <taxon>Presentation</taxon> <addr>jms-00OI</addr><route>jms-00OI.xml</route>  <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></title>   <meta name="venue"><link href="csl-2024.xml" type="local" addr="csl-2024" title="CSL ’24: 32nd EACSL Annual Conference on Computer Science Logic 2024"><em>CSL ’24</em>: 32nd EACSL Annual Conference on Computer Science Logic 2024</link></meta><meta name="nocite">
- <link href="birkedal-støvring-thamsborg-2010-realisability.xml" type="local" addr="birkedal-støvring-thamsborg-2010-realisability" title="Realisability semantics of parametric polymorphism, general references and recursive types">Realisability semantics of parametric polymorphism, general references and recursive types</link>,
- <link href="ahmed-2004.xml" type="local" addr="ahmed-2004" title="Semantics of Types for Mutable State">Semantics of Types for Mutable State</link>
-</meta></frontmatter> <mainmatter><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35871</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › side effects in programming languages</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Most practical programming languages have <strong><em>side effects</em></strong>: state, input-output, errors, etc.</p><pause/><p><strong><em>Monads</em></strong> capture the structure of side effects (<link href="moggi-1991.xml" type="local" addr="moggi-1991" title="Notions of computation and monads">Moggi</link>, <link href="philipwadler.xml" type="local" addr="philipwadler" title="Philip Wadler">Wadler</link>). </p>  <tex display="block">     \begin {array}{l}          \mathsf {T} \colon   \mathbf {type} \to \mathbf {type} \\     \mathsf {ret} \colon   \mathsf {T} \, {A} \to \mathsf {T} \, {A} \\     \mathsf {bind} \colon   \mathsf {T} \, B \to   { \mathopen {} \left ( A \to \mathsf {T} \, B \right ) \mathclose {}} \to   \mathsf {T} \, B         \end {array}  </tex></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35872</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › state as a side effect</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p><strong><em>State</em></strong> means being able to interact with the computer’s memory; <strong><em>references</em></strong> or <strong><em>pointers</em></strong> govern access to a location in memory.</p><pause/><p>The <em>syntax</em> of state varies along three axes:</p><ol><li><p><em>What kind of things can be stored in memory cells?</em></p><pause/>
-   <p>(numbers? pointers?? procedures???)</p>
-   <pause/>
-   <p>(<em>first-order</em> <tex>\Rightarrow</tex> <em>ground</em> <tex>\Rightarrow</tex> <em>higher-order</em>)</p></li>
-  <pause/>
-  <li><p><em>When can these memory cells be allocated?</em></p><pause/>
-   <p>(statically? dynamically??)</p></li>
-  <pause/>
-  <li><p><em>What equations hold of stateful computations?</em></p><pause/>
-   <p>(garbage collection??, representation independence??)</p></li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35873</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › first-order dynamic allocation</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Storing only integers or other first-order data.</p>  <tex display="block">     \begin {array}{l}          \mathsf {intref} \colon   \mathbf {type} \\     \mathsf {new} \colon   \mathsf {Integer}   \to   \mathsf {T} \, \mathsf {intref} \\     \mathsf {get} \colon   \mathsf {intref} \to \mathsf {T} \, \mathsf {Integer} \\     \mathsf {set} \colon   \mathsf {intref}   \times   \mathsf {Integer} \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}}          \end {array}  </tex><p>Models of very extensional equational theory including “garbage collection” found by Plotkin, Power; Staton. Adapted to “full ground store” (storage of pointers) by Kammar, Levy, Moss, and Staton.</p><p>Extensionality of models lost when moving to <em>higher-order</em> storage.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35874</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › higher-order dynamic allocation</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>An extreme point in the design space...</p>  <tex display="block">     \begin {array}{l}          \mathsf {ref} \colon   \mathbf {type} \to \mathbf {type} \\     \mathsf {new} \colon  A \to   \mathsf {T} \, { \mathopen {} \left ( \mathsf {ref} \, A \right ) \mathclose {}} \\     \mathsf {get} \colon   \mathsf {ref} \, A \to \mathsf {T} \, A \\     \mathsf {set} \colon  { \mathsf {ref}   \, A} \times  A \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}}          \end {array}  </tex><p><strong>Deeply impredicative:</strong> heap contains elements of <em>arbitrary</em> types.</p><p><tex>\Longrightarrow</tex> guarded recursion (step-indexing) used to break the circularity.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35875</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › Guarded higher-order dynamic allocation</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>An equational theory of higher-order store in which reads to the heap leave behind “breadcrumbs”.</p>  <tex display="block">     \begin {array}{l}          \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ;  \mathsf {get} \, e_1    \\     \quad \mathrel { \equiv }   { \color {red} \mathsf {step} }; \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ;  \mathsf {ret} \,  e_2    \\     { \mathopen {} \left ( \_ \gets \mathsf {get} \, e_1; e_2 \right ) \mathclose {}} \\     \quad \mathrel { \equiv }   { \color {red} \mathsf {step} };e_2    \\     { \mathopen {} \left ( x \gets   \mathsf {new} \, e_1;  \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ; \mathsf {ret} \, x \right ) \mathclose {}}     \\     \quad \mathrel { \equiv }  \mathsf {new} \, e_2    \\     \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ; \mathsf {set} \, { \mathopen {} \left ( e_1,e_3 \right ) \mathclose {}} \\     \quad \mathrel { \equiv }  \mathsf {set} \, { \mathopen {} \left ( e_1,e_3 \right ) \mathclose {}}     \\     { \mathopen {} \left ( x \gets   \mathsf {get} \, e_1; y \gets   \mathsf {get} \, e_2;  \mathsf {ret} \, { \mathopen {} \left ( x,y \right ) \mathclose {}} \right ) \mathclose {}} \\     \quad \mathrel { \equiv } { \mathopen {} \left ( y \gets   \mathsf {get} \, e_2; x \gets   \mathsf {get} \, e_1;  \mathsf {ret} \, { \mathopen {} \left ( x,y \right ) \mathclose {}} \right ) \mathclose {}}     \\     { \mathopen {} \left ( x \gets   \mathsf {get} \, e;  \mathsf {set} , { \mathopen {} \left ( e,x \right ) \mathclose {}} ;  \mathsf {ret} \,  x \right ) \mathclose {}} \\     \quad \mathrel { \equiv }  \mathsf {get} \, e         \end {array}  </tex></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35876</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › representation independence in the heap</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Consider two implementations of an “counter” object:</p>  <tex display="block">     \begin {array}{l}          \mathsf {Counter}  : \equiv   { \mathopen {} \left \{      \mathsf {incr} \colon   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}} ;     \mathsf {read} \colon   \mathsf {T} \, \mathsf {Integer}     \right \} \mathclose {}} \\ \\     \mathsf {posCounter}  : \equiv \\             \begin {array}{l}           \ell \gets \mathsf {new} \, 0; \\      \mathsf {ret} \, \{ \\               \begin {array}{l}             \mathsf {incr} \hookrightarrow  i \gets \mathsf {get} \, \ell ;  \mathsf {set} \, { \mathopen {} \left ( \ell ,i+1 \right ) \mathclose {}} ; \\        \mathsf {read} \hookrightarrow   \mathsf {get} \, \ell             \end {array}         \\      \}           \end {array}       \\ \\     \mathsf {negCounter}  : \equiv \\             \begin {array}{l}           \ell \gets \mathsf {new} \, 0; \\      \mathsf {ret} \, \{ \\               \begin {array}{l}             \mathsf {incr} \hookrightarrow  i \gets \mathsf {get} \, \ell ;  \mathsf {set} \, { \mathopen {} \left ( \ell ,i-1 \right ) \mathclose {}} ; \\        \mathsf {read} \hookrightarrow   \mathsf {map} \, \mathsf {neg} \, { \mathopen {} \left ( \mathsf {get} \, \ell \right ) \mathclose {}}             \end {array}         \\      \}           \end {array}            \end {array}  </tex></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35877</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › representation independence in the heap (II)</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p><em>What is the relationship between <tex>\mathsf {posCounter}</tex> and <tex>\mathsf {negCounter}</tex>?</em></p><pause/><p>They appear to be indistinguishable. <mark>Indeed, they are “observationally equivalent”!</mark></p><tex display="block">    \forall   \mathcal {C} { \mathopen {} \left  [ - \right  ] \mathclose {}} \colon   \mathsf {Counter} \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}} \mathpunct {.}    \mathcal {C} { \mathopen {} \left  [ \mathsf {posCounter} \right  ] \mathclose {}}   \mathord { \downarrow }    \Leftrightarrow     \mathcal {C} { \mathopen {} \left  [ \mathsf {negCounter} \right  ] \mathclose {}}   \mathord { \downarrow }  </tex><pause/><p><strong>Observational equivalence is an extremely weak property:</strong> indistinguishability under observations of ground type only.<pause/>
- It would be great if we could instead deduce an absolute equation: <tex display="block">\color {red} \vdash   \mathsf {posCounter}   \equiv   \mathsf {negCounter}   \colon   \mathsf {Counter}</tex> (No cheating: we want “standard” models <em>without</em> extensional collapse or logical relation.)</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35878</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › univalent reference types</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</p><pause/><p><strong>LAYOUT UNIVALENCE.</strong></p>  <tex display="block">     \begin {array}{l}          { \mathopen {} \left (      \ell _1 \gets \mathsf {new} \, e_1;     \ell _2 \gets \mathsf {new} \, e_2;     \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}     \right ) \mathclose {}}     \\     \quad \mathrel { \equiv }    { \mathopen {} \left (      \ell _{ \color {red}2} \gets \mathsf {new} \, e_{ \color {red}2};     \ell _{ \color {red}1} \gets \mathsf {new} \, e_{ \color {red}1};     \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}     \right ) \mathclose {}}          \end {array}  </tex><pause/><p><strong>CELL UNIVALENCE.</strong> For <tex>f^+ \colon  A \to  B</tex> and <tex>f^- \colon  B \to  A</tex> with <tex>x:B \vdash  f^+ { \mathopen {} \left ( f^- { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}} \equiv  x</tex> and <tex>x \colon  A \vdash  f^- { \mathopen {} \left ( f^+ { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}}   \equiv  x</tex> we have:</p>  <tex display="block">     \begin {array}{l}          { \mathopen {} \left (      \ell \gets \mathsf {new} \, e;     \mathsf {ret} \, { \mathopen {} \left ( \mathsf {get} \, \ell ,  \mathsf {set} \, { \mathopen {} \left ( \ell ,- \right ) \mathclose {}} \right ) \mathclose {}}     \right ) \mathclose {}}     \\     \quad \mathrel { \equiv }    { \mathopen {} \left (      \ell \gets \mathsf {new} \, { \mathopen {} \left ( { \color {red}f^+} { \mathopen {} \left ( e \right ) \mathclose {}} \right ) \mathclose {}} ;     \mathsf {ret} \, { \mathopen {} \left (      { \color {red} \mathsf {map} \, f^-} \, { \mathopen {} \left ( \mathsf {get} \, \ell \right ) \mathclose {}} ,      \mathsf {set} { \mathopen {} \left ( \ell , { \color {red}f^+} { \mathopen {} \left ( - \right ) \mathclose {}} \right ) \mathclose {}}      \right ) \mathclose {}}     \right ) \mathclose {}}          \end {array}  </tex></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35879</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › representation independence in the heap (III)</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>The theory of univalent reference types derives <tex>\vdash   \mathsf {posCounter}   \equiv   \mathsf {negCounter}</tex>.</p><pause/>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17632</fr:anchor><fr:taxon>Person</fr:taxon><fr:addr>danielgratzer</fr:addr><fr:route>danielgratzer.xml</fr:route><fr:title>Daniel Gratzer</fr:title><fr:meta
+name="external">https://jozefg.github.io/</fr:meta><fr:meta
+name="institution"><fr:link
+href="jms-00GC.xml"
+type="local"
+addr="jms-00GC">Aarhus University</fr:link></fr:meta><fr:meta
+name="position">PhD Student</fr:meta><fr:meta
+name="phd-advisor">larsbirkedal</fr:meta><fr:meta
+name="orcid">0000-0003-1944-0789</fr:meta></fr:frontmatter><fr:mainmatter><fr:blockquote>I study programming languages, type theories, and logics. I am particularly interested in applying semantic methods to prove syntactic properties of modal type theories and programming languages. I am also involved in the development of program logics for concurrent programming languages through the <fr:link
+href="https://iris-project.org/"
+type="external">Iris project</fr:link>.</fr:blockquote></fr:mainmatter><fr:backmatter><fr:contributions><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17567</fr:anchor><fr:taxon>Presentation</fr:taxon><fr:addr>jms-00OI</fr:addr><fr:route>jms-00OI.xml</fr:route><fr:title><fr:em><fr:link
+href="sterling-gratzer-birkedal-2024-univalent.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2024-univalent">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="venue"><fr:link
+href="csl-2024.xml"
+type="local"
+addr="csl-2024"><fr:em>CSL ’24</fr:em>: 32nd EACSL Annual Conference on Computer Science Logic 2024</fr:link></fr:meta><fr:meta
+name="nocite">
+ <fr:link
+href="birkedal-st%C3%B8vring-thamsborg-2010-realisability.xml"
+type="local"
+addr="birkedal-støvring-thamsborg-2010-realisability">Realisability semantics of parametric polymorphism, general references and recursive types</fr:link>,
+ <fr:link
+href="ahmed-2004.xml"
+type="local"
+addr="ahmed-2004">Semantics of Types for Mutable State</fr:link>
+</fr:meta></fr:frontmatter><fr:mainmatter><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1018</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Side effects in programming languages</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Most practical programming languages have <fr:strong><fr:em>side effects</fr:em></fr:strong>: state, input-output, errors, etc.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong><fr:em>Monads</fr:em></fr:strong> capture the structure of side effects (<fr:link
+href="moggi-1991.xml"
+type="local"
+addr="moggi-1991">Moggi</fr:link>, <fr:link
+href="philipwadler.xml"
+type="local"
+addr="philipwadler">Wadler</fr:link>). </fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {T} \colon   \mathbf {type} \to \mathbf {type}</fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {ret} \colon   \mathsf {T} \, {A} \to \mathsf {T} \, {A}</fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {bind} \colon   \mathsf {T} \, B \to   { \mathopen {} \left ( A \to \mathsf {T} \, B \right ) \mathclose {}} \to   \mathsf {T} \, B</fr:tex>
+  </jms-indent:row>
+
+ </jms-indent:block>
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1029</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>State as a side effect</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:strong><fr:em>State</fr:em></fr:strong> means being able to interact with the computer’s memory; <fr:strong><fr:em>references</fr:em></fr:strong> or <fr:strong><fr:em>pointers</fr:em></fr:strong> govern access to a location in memory.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p>The <fr:em>syntax</fr:em> of state varies along three axes:</fr:p><fr:ol><fr:li><fr:p><fr:em>What kind of things can be stored in memory cells?</fr:em></fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+   <fr:p>(numbers? pointers?? procedures???)</fr:p>
+   <beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+   <fr:p>(<fr:em>first-order</fr:em> <fr:tex>\Rightarrow</fr:tex> <fr:em>ground</fr:em> <fr:tex>\Rightarrow</fr:tex> <fr:em>higher-order</fr:em>)</fr:p></fr:li>
+  <beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+  <fr:li><fr:p><fr:em>When can these memory cells be allocated?</fr:em></fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+   <fr:p>(statically? dynamically??)</fr:p></fr:li>
+  <beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+  <fr:li><fr:p><fr:em>What equations hold of stateful computations?</fr:em></fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+   <fr:p>(garbage collection??, representation independence??)</fr:p></fr:li></fr:ol></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1038</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>First-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Storing only integers or other first-order data.</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {intref} \colon   \mathbf {type}</fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {new} \colon   \mathsf {Integer}   \to   \mathsf {T} \, \mathsf {intref}</fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {get} \colon   \mathsf {intref} \to \mathsf {T} \, \mathsf {Integer}</fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>\mathsf {set} \colon   \mathsf {intref}   \times   \mathsf {Integer} \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}}</fr:tex>
+  </jms-indent:row>
+
+ </jms-indent:block>
+<fr:p>Models of very extensional equational theory including “garbage collection” found by Plotkin, Power; Staton. Adapted to “full ground store” (storage of pointers) by Kammar, Levy, Moss, and Staton.</fr:p><fr:p>Extensionality of models lost when moving to <fr:em>higher-order</fr:em> storage.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1047</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>An extreme point in the design space...</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row><fr:tex>\mathsf {ref} \colon   \mathbf {type} \to \mathbf {type}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row><fr:tex>\mathsf {new} \colon  A \to   \mathsf {T} \, { \mathopen {} \left ( \mathsf {ref} \, A \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row><fr:tex>\mathsf {get} \colon   \mathsf {ref} \, A \to \mathsf {T} \, A</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row><fr:tex>\mathsf {set} \colon  { \mathsf {ref}   \, A} \times  A \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+ </jms-indent:block>
+<fr:p><fr:strong>Deeply impredicative:</fr:strong> heap contains elements of <fr:em>arbitrary</fr:em> types.</fr:p><fr:p><fr:tex>\Longrightarrow</fr:tex> guarded recursion (step-indexing) used to break the circularity.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1064</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Guarded higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>An equational theory of higher-order store in which reads to the heap leave behind “breadcrumbs”.</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row><fr:tex>\mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ;  \mathsf {get} \, e_1</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block>
+   <fr:tex>      \mathrel { \equiv }     { \color {red} \mathsf {step} }; \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ;  \mathsf {ret} \,  e_2    </fr:tex>
+  </jms-indent:block>
+
+
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \left ( \_ \gets \mathsf {get} \, e_1; e_2 \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block><fr:tex>\mathrel { \equiv }{ \color {red} \mathsf {step} };e_2</fr:tex></jms-indent:block>
+
+
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \left ( x \gets   \mathsf {new} \, e_1;  \mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ; \mathsf {ret} \, x \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block><fr:tex>\mathrel { \equiv }  \mathsf {new} \, e_2</fr:tex></jms-indent:block>
+
+
+  
+ <jms-indent:row><fr:tex>\mathsf {set} \, { \mathopen {} \left ( e_1,e_2 \right ) \mathclose {}} ; \mathsf {set} \, { \mathopen {} \left ( e_1,e_3 \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block><fr:tex>\mathrel { \equiv }  \mathsf {set} \, { \mathopen {} \left ( e_1,e_3 \right ) \mathclose {}}</fr:tex></jms-indent:block>
+
+
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \left ( x \gets   \mathsf {get} \, e_1; y \gets   \mathsf {get} \, e_2;  \mathsf {ret} \, { \mathopen {} \left ( x,y \right ) \mathclose {}} \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block><fr:tex>\mathrel { \equiv } { \mathopen {} \left ( y \gets   \mathsf {get} \, e_2; x \gets   \mathsf {get} \, e_1;  \mathsf {ret} \, { \mathopen {} \left ( x,y \right ) \mathclose {}} \right ) \mathclose {}}</fr:tex></jms-indent:block>
+
+
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \left ( x \gets   \mathsf {get} \, e;  \mathsf {set} \, { \mathopen {} \left ( e,x \right ) \mathclose {}} ;  \mathsf {ret} \,  x \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block><fr:tex>\mathrel { \equiv }  \mathsf {get} \, e</fr:tex></jms-indent:block>
+
+ </jms-indent:block>
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1088</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Representation independence in the heap</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Consider two implementations of an “counter” object:</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>      \mathsf {Counter}  : \equiv   { \mathopen {} \left \{        \mathsf {incr} \colon   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}} ;       \mathsf {read} \colon   \mathsf {T} \, \mathsf {Integer}       \right \} \mathclose {}}     </fr:tex>
+  </jms-indent:row>
+
+
+  
+ <jms-indent:row></jms-indent:row>
+
+
+  
+ <jms-indent:row><fr:tex>\mathsf {posCounter}  : \equiv</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block>
+   
+ <jms-indent:row><fr:tex>\ell \gets \mathsf {new} \, 0;</fr:tex></jms-indent:row>
+
+   
+ <jms-indent:row><fr:tex>\mathsf {ret} \, \lbrace</fr:tex></jms-indent:row>
+
+   
+ <jms-indent:block>
+    
+ <jms-indent:row><fr:tex>\mathsf {incr} \hookrightarrow  i \gets \mathsf {get} \, \ell ;  \mathsf {set} \, { \mathopen {} \left ( \ell ,i+1 \right ) \mathclose {}} ;</fr:tex></jms-indent:row>
+
+    
+ <jms-indent:row><fr:tex>\mathsf {read} \hookrightarrow   \mathsf {get} \, \ell</fr:tex></jms-indent:row>
+
+   </jms-indent:block>
+
+   
+ <jms-indent:row><fr:tex>\rbrace</fr:tex></jms-indent:row>
+
+  </jms-indent:block>
+
+
+  
+ <jms-indent:row></jms-indent:row>
+
+
+  
+ <jms-indent:row><fr:tex>\mathsf {negCounter}  : \equiv</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block>
+   
+ <jms-indent:row><fr:tex>\ell \gets \mathsf {new} \, 0;</fr:tex></jms-indent:row>
+
+   
+ <jms-indent:row><fr:tex>\mathsf {ret} \, \lbrace</fr:tex></jms-indent:row>
+
+   
+ <jms-indent:block>
+    
+ <jms-indent:row><fr:tex>\mathsf {incr} \hookrightarrow  i \gets \mathsf {get} \, \ell ;  \mathsf {set} \, { \mathopen {} \left ( \ell ,i-1 \right ) \mathclose {}} ;</fr:tex></jms-indent:row>
+
+    
+ <jms-indent:row><fr:tex>\mathsf {read} \hookrightarrow   \mathsf {map} \, \mathsf {neg} \, { \mathopen {} \left ( \mathsf {get} \, \ell \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+   </jms-indent:block>
+
+   
+ <jms-indent:row><fr:tex>\rbrace</fr:tex></jms-indent:row>
+
+  </jms-indent:block>
+
+ </jms-indent:block>
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1096</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Representation independence in the heap (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:em>What is the relationship between <fr:tex>\mathsf {posCounter}</fr:tex> and <fr:tex>\mathsf {negCounter}</fr:tex>?</fr:em></fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p>They appear to be indistinguishable. <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">Indeed, they are “observationally equivalent”!</html:mark></fr:p><fr:tex
+display="block">    \forall   \mathcal {C} { \mathopen {} \left  [ - \right  ] \mathclose {}} \colon   \mathsf {Counter} \to   \mathsf {T} \, { \mathopen {} \left ( \right ) \mathclose {}} \mathpunct {.}    \mathcal {C} { \mathopen {} \left  [ \mathsf {posCounter} \right  ] \mathclose {}}   \mathord { \downarrow }    \Leftrightarrow     \mathcal {C} { \mathopen {} \left  [ \mathsf {negCounter} \right  ] \mathclose {}}   \mathord { \downarrow }  </fr:tex><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>Observational equivalence is an extremely weak property:</fr:strong> indistinguishability under observations of ground type only.<beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
+ It would be great if we could instead deduce an absolute equation: <fr:tex
+display="block">\color {red} \vdash   \mathsf {posCounter}   \equiv   \mathsf {negCounter}   \colon   \mathsf {Counter}</fr:tex> (No cheating: we want “standard” models <fr:em>without</fr:em> extensional collapse or logical relation.)</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1108</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>LAYOUT UNIVALENCE.</fr:strong></fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>      { \mathopen {} \left (        \ell _1 \gets \mathsf {new} \, e_1;       \ell _2 \gets \mathsf {new} \, e_2;       \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:block>
+   <fr:tex>      \mathrel { \equiv }      { \mathopen {} \left (        \ell _{ \color {red}2} \gets \mathsf {new} \, e_{ \color {red}2};       \ell _{ \color {red}1} \gets \mathsf {new} \, e_{ \color {red}1};       \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:block>
+
+ </jms-indent:block>
+<beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>CELL UNIVALENCE.</fr:strong> For <fr:tex>f^+ \colon  A \to  B</fr:tex> and <fr:tex>f^- \colon  B \to  A</fr:tex> with <fr:tex>x:B \vdash  f^+ { \mathopen {} \left ( f^- { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}} \equiv  x</fr:tex> and <fr:tex>x \colon  A \vdash  f^- { \mathopen {} \left ( f^+ { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}}   \equiv  x</fr:tex> we have:</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>      { \mathopen {} \left (        \ell \gets \mathsf {new} \, e;       \mathsf {ret} \, { \mathopen {} \left ( \mathsf {get} \, \ell ,  \mathsf {set} \, { \mathopen {} \left ( \ell ,- \right ) \mathclose {}} \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:block>
+   <fr:tex>      \mathrel { \equiv }      { \mathopen {} \left (        \ell \gets \mathsf {new} \, { \mathopen {} \left ( { \color {red}f^+} { \mathopen {} \left ( e \right ) \mathclose {}} \right ) \mathclose {}} ;       \mathsf {ret} \, { \mathopen {} \left (        { \color {red} \mathsf {map} \, f^-} \, { \mathopen {} \left ( \mathsf {get} \, \ell \right ) \mathclose {}} ,        \mathsf {set} { \mathopen {} \left ( \ell , { \color {red}f^+} { \mathopen {} \left ( - \right ) \mathclose {}} \right ) \mathclose {}}        \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:block>
+
+ </jms-indent:block>
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1117</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Representation independence in the heap (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The theory of univalent reference types derives <fr:tex>\vdash   \mathsf {posCounter}   \equiv   \mathsf {negCounter}</fr:tex>.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause>
  
    
-   <tree expanded="true" show-heading="true" show-metadata="false" toc="false" numbered="true" root="false"><frontmatter><anchor>35880</anchor> <taxon>Proof</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors>    </frontmatter> <mainmatter>
-  <p>The function <tex>\mathsf {neg}  \colon \mathsf {Integer} \to \mathsf {Integer}</tex> is inverse to itself; therefore, apply <strong>CELL UNIVALENCE</strong> with <tex>f^+  \equiv  f^-  \equiv   \mathsf {neg}</tex> and simplify.</p>
- </mainmatter> </tree>
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1113</fr:anchor><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter>
+  <fr:p>The function <fr:tex>\mathsf {neg}  \colon \mathsf {Integer} \to \mathsf {Integer}</fr:tex> is inverse to itself; therefore, apply <fr:strong>CELL UNIVALENCE</fr:strong> with <fr:tex>f^+  \equiv  f^-  \equiv   \mathsf {neg}</fr:tex> and simplify.</fr:p>
+ </fr:mainmatter></fr:tree>
  
-</mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35881</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › Can we find a reasonable model of this theory???</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Let’s start with the non-univalent fragment (“guarded higher-order dynamic allocation”).</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35882</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › models of guarded higher order dynamic allocation</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p><link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">S., Gratzer, and Birkedal (2022)</link> found synthetic denotational semantics for guarded higher-order dynamic allocation in an impredicative version of guarded dependent type theory (<strong>iGDTT</strong>).</p>  <tex display="block">     \begin {array}{l}          { \mathopen {} \llbracket \mathbf {type} \rrbracket \mathclose {}}  =  \mathsf {Fun} { \mathopen {} \left ( \mathsf {World} ,{ \mathbf {Set} } \right ) \mathclose {}} \\     \mathsf {World}  =  \mathchoice { \textstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \textstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \scriptstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \scriptscriptstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } } { \mathopen {} \left ( L \to  { \color {red} \mathord { \blacktriangleright } } { \mathopen {} \llbracket \mathbf {type} \rrbracket \mathclose {}} \right ) \mathclose {}} \\     \mathsf {Heap}  =    \mathchoice { \textstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \textstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \scriptstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \scriptscriptstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }     \mathchoice { \textstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \textstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \scriptstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \scriptscriptstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }    { \color {red} \mathord { \blacktriangleright } { \mathopen {} \left  [ A \leftarrow   \pi _2wl \right  ] \mathclose {}} }   Aw    \\     { \mathopen {} \llbracket \mathsf {T} \rrbracket \mathclose {}} \, A \, w = \\     \quad    {     \color {blue}     \forall { \mathopen {} \left ( H_1: \mathsf {Heap} \right ) \mathclose {}} \mathpunct {.}   }    \mathsf {World} { \mathopen {} \left ( w, \pi _1{H_1} \right ) \mathclose {}} \to     \\     \quad    { \color {red} \mathsf {Lift}} { \mathopen {} \left (     {      \color {blue}      \exists { \mathopen {} \left ( H_2: \mathsf {Heap} \right ) \mathclose {}} \mathpunct {.}    }     \mathsf {World} { \mathopen {} \left ( \pi _1{H_1}, \pi _1{H_2} \right ) \mathclose {}} \times     A { \mathopen {} \left ( \pi _1{H'} \right ) \mathclose {}}     \right ) \mathclose {}}          \end {array}  </tex><p>Guarded recursion needed to solve the domain equation; impredicativity needed to define the monad (b/c <tex>\mathsf {Heap}</tex> is large).</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35883</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › models of univalent reference types</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Our main observation is that a slight variation on <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> suffices to model univalent reference types, <mark>so long as both <tex>\mathbf {FinSet}</tex> and <tex>\mathbf {Set}</tex> are both univalent universes</mark> in the sense of Voevodsky.</p><ol><li>Univalence of <tex>\mathbf {FinSet}</tex> implies the <strong>LAYOUT UNIVALENCE</strong> rule.</li>
-  <li>Univalence of <tex>\mathbf {Set}</tex> implies the <strong>CELL UNIVALENCE</strong> rule.</li></ol><p>We therefore need an impredicative version of <strong><em>guarded <link href="hottbook.xml" type="local" addr="hottbook" title="Homotopy Type Theory: univalent foundations of mathematics"><mark>homotopy</mark> type theory</link></em></strong>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35884</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › Impredicative Guarded Homotopy Type Theory</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>We define <strong>iGHoTT</strong> to be the extension of Martin-Löf’s intensional type theory by the following additional features:</p><ol><li>homotopy type theory: the univalence axiom</li>
-  <li>guarded recursion: later modality <tex>\mathord { \blacktriangleright }</tex> and solutions to guarded fixed points</li>
-  <li>a univalent impredicative universe, <em>i.e.</em> a universe <tex>\mathcal {S} \in \mathcal {U}</tex> closed under families of <tex>\mathcal {S}</tex>-small types indexed in a <tex>\mathcal {U}</tex>-small type.</li></ol><pause/><p>In <strong>iGHoTT</strong>, we can define a model of univalent reference types. The real question is whether we can find a model of <strong>iGHoTT</strong>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35885</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › models of <strong>iGDTT</strong></title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p><link href="palombi-sterling-2023.xml" type="local" addr="palombi-sterling-2023" title="Classifying topoi in synthetic guarded domain theory: the universal property of multi-clock guarded recursion">Palombi and S. (2023)</link> have contributed a modular method for building models of (non-univalent) guarded dependent type theory over an arbitrary base topos. As applied by <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link>:</p><ol><li>Any realisability topos <tex>\mathcal {E}</tex> contains an impredicative universe <tex>\mathbb {M}_{ \mathcal {E}}</tex>.</li>
-  <li>Pick any <em>internal</em> well-founded order <tex>\mathbb {O} \in \mathbb {M}_{ \mathcal {E}}</tex>.</li>
-  <li>Then the <em>relative</em> presheaf topos <tex>\mathcal {F} : \equiv   { \mathopen {} \left  [ \mathbb {O} ^{ \mathsf {op} } , \mathcal {E} \right  ] \mathclose {}}</tex> is a model of guarded recursion and contains an impredicative universe <tex>\mathbb {M}_{ \mathcal {F}}</tex> defined from <tex>\mathbb {M}_{ \mathcal {E}}</tex> by <link href="hofmann-streicher-1997.xml" type="local" addr="hofmann-streicher-1997" title="Lifting Grothendieck universes">Hofmann--Streicher lifting</link>.</li></ol></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35886</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › towards models of <strong>iGHoTT</strong></title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>We have not gotten around to adapting the <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> model of <strong>iGDTT</strong> to obtain a model of <strong>iGHoTT</strong>, which is much more complicated.</p><ol><li>Let <tex>\mathbb {A}</tex> be a partial combinatory algebra.</li>
-  <li>Let <tex>\square</tex> be a suitable <em>internal cube category</em> in <tex>\mathbf {PER} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}}</tex>, and let <tex>\mathbb {O}</tex> be an internal well-founded order in the same.</li>
-  <li>Then the category of internal presheaves of assemblies <tex>{ \mathopen {} \left  [ { \mathopen {} \left ( \square \times \mathbb {O} \right ) \mathclose {}} ^{ \mathsf {op} } , \mathbf {Asm} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}} \right  ] \mathclose {}}</tex> is expected to form a model of <strong>iGHoTT</strong>{}.</li></ol><p>Impredicative <strong>HoTT</strong> via cubical assemblies due to <link href="awodey-frey-speight-2018.xml" type="local" addr="awodey-frey-speight-2018" title="Impredicative encodings of (higher) inductive types">Awodey et al.</link> and studied by <link href="uemura-2019-types.xml" type="local" addr="uemura-2019-types" title="Cubical assemblies, a univalent and impredicative universe and a failure of propositional resizing">Uemura</link>, <link href="swan-uemura-2022.xml" type="local" addr="swan-uemura-2022" title="On Church’s thesis in cubical assemblies">Swan</link>.</p><p>Guarded <strong>HoTT</strong> via <tex>\square \times \mathbb {O}</tex> due to <link href="bbcgsv-2019.xml" type="local" addr="bbcgsv-2019" title="Guarded cubical type theory">Birkedal et al. (2019)</link>.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35887</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › a more canonical model of <strong>iGHoTT</strong>?</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Even if internal presheaves of assemblies on <tex>\square \times \mathbb {O}</tex> works, the resulting model will be uncanonical from the <tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</tex>-categorical standpoint.</p><p>For example, if <tex>\mathbb {O}= \omega</tex>, we shall not have defined the “internal (pre)-<tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</tex>-topos of trees” in cubical assemblies.</p><p>More canonical approach would be to take internal presheaves on any <tex>\mathcal {S}</tex>-small well-founded order <tex>\mathbb {O}</tex> internal to the <tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</tex>-category <tex>\mathcal {E}</tex> presented by <tex>{ \mathopen {} \left  [ \square ^{ \mathsf {op} } , \mathbf {Asm} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}} \right  ] \mathclose {}}</tex>. This may introduce coherence problems that we are currently unprepared for.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35888</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title><link href="jms-00OI.xml" type="local" addr="jms-00OI" title="Towards univalent reference types"><em><link href="sterling-gratzer-birkedal-2024-univalent.xml" type="local" addr="sterling-gratzer-birkedal-2024-univalent" title="Towards univalent reference types">Towards <strong>univalent</strong> reference types</link></em></link> › comparing with other realisability models of state</title>  <parent>jms-00OI</parent> </frontmatter> <mainmatter><p><link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> were not the first to combine guarded recursion with realisability to model higher-order dynamic allocation; see <link href="birkedal-støvring-thamsborg-2010-realisability.xml" type="local" addr="birkedal-støvring-thamsborg-2010-realisability" title="Realisability semantics of parametric polymorphism, general references and recursive types">Birkedal, Støvring, and Thamsborg (2010)</link>.</p><p>However, <em>op.cit.</em> relied on a <em>specific</em> realisability model based on an untyped domain model of a stateful language; in contrast, the model construction of <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> applies uniformly for any pair <tex>{ \mathopen {} \left ( \mathcal {E}, \mathbb {O} \right ) \mathclose {}}</tex>.</p><p>Thus <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> showed that realisability is inessential: if we find any other viable source of impredicative universes besides realisability, <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">SGB’22</link> would apply there too.</p></mainmatter> </tree><tree expanded="true" show-heading="true" show-metadata="false" toc="true" numbered="true" root="false"><frontmatter><anchor>35889</anchor> <taxon>Slide</taxon>   <date><year>2024</year> <month>2</month> <day>10</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors>   <parent>jms-00OI</parent> </frontmatter> <mainmatter><p>Thanks!</p></mainmatter> </tree></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35890</anchor> <taxon>Reference</taxon> <addr>sterling-gratzer-birkedal-2024-univalent</addr><route>sterling-gratzer-birkedal-2024-univalent.xml</route>  <date><year>2024</year> <month>2</month> <day>7</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Towards univalent reference types</title>   <meta name="doi">10.4230/LIPIcs.CSL.2024.47</meta><meta name="venue"><link href="csl-2024.xml" type="local" addr="csl-2024" title="CSL ’24: 32nd EACSL Annual Conference on Computer Science Logic 2024"><em>CSL ’24</em>: 32nd EACSL Annual Conference on Computer Science Logic 2024</link></meta><meta name="bibtex">@inproceedings{sterling-gratzer-birkedal-2024-univalent,
+</fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1121</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Can we find a reasonable model of this theory???</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Let’s start with the non-univalent fragment (“guarded higher-order dynamic allocation”).</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1133</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Models of guarded higher order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">S., Gratzer, and Birkedal (2022)</fr:link> found synthetic denotational semantics for guarded higher-order dynamic allocation in an impredicative version of guarded dependent type theory (<fr:strong>iGDTT</fr:strong>).</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \llbracket \mathbf {type} \rrbracket \mathclose {}}  =  \mathsf {Fun} { \mathopen {} \left ( \mathsf {World} ,{ \mathbf {Set} } \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row><fr:tex>\mathsf {World}  =  \mathchoice { \textstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \textstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \scriptstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } }{ \scriptscriptstyle \sum _{ { \mathopen {} \left ( L: \mathbf {FinSet} \right ) \mathclose {}} } } { \mathopen {} \left ( L \to  { \color {red} \mathord { \blacktriangleright } } { \mathopen {} \llbracket \mathbf {type} \rrbracket \mathclose {}} \right ) \mathclose {}}</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row>
+   <fr:tex>      \mathsf {Heap}  =      \mathchoice { \textstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \textstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \scriptstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }{ \scriptscriptstyle \sum _{ { \mathopen {} \left ( w: \mathsf {World} \right ) \mathclose {}} } }       \mathchoice { \textstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \textstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \scriptstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }{ \scriptscriptstyle \prod _{ { \mathopen {} \left ( l: \pi _1w \right ) \mathclose {}} } }      { \color {red} \mathord { \blacktriangleright } { \mathopen {} \left  [ A \leftarrow   \pi _2wl \right  ] \mathclose {}} }     Aw    </fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row><fr:tex>{ \mathopen {} \llbracket \mathsf {T} \rrbracket \mathclose {}} \, A \, w =</fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block>
+   
+ <jms-indent:row>
+    <fr:tex>      { \color {blue} \forall { \mathopen {} \left ( H_1: \mathsf {Heap} \right ) \mathclose {}} \mathpunct {.}}       \mathsf {World} { \mathopen {} \left ( w, \pi _1{H_1} \right ) \mathclose {}} \to      </fr:tex>
+   </jms-indent:row>
+
+   
+ <jms-indent:row>
+    <fr:tex>       { \color {red} \mathsf {Lift}} { \mathopen {} \left (        {         \color {blue}         \exists { \mathopen {} \left ( H_2: \mathsf {Heap} \right ) \mathclose {}} \mathpunct {.}       }        \mathsf {World} { \mathopen {} \left ( \pi _1{H_1}, \pi _1{H_2} \right ) \mathclose {}} \times        A { \mathopen {} \left ( \pi _1{H'} \right ) \mathclose {}}        \right ) \mathclose {}}      </fr:tex>
+   </jms-indent:row>
+
+  </jms-indent:block>
+
+ </jms-indent:block>
+<fr:p>Guarded recursion needed to solve the domain equation; impredicativity needed to define the monad (b/c <fr:tex>\mathsf {Heap}</fr:tex> is large).</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1139</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Models of univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Our main observation is that a slight variation on <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> suffices to model univalent reference types, <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">so long as both <fr:tex>\mathbf {FinSet}</fr:tex> and <fr:tex>\mathbf {Set}</fr:tex> are both univalent universes</html:mark> in the sense of Voevodsky.</fr:p><fr:ol><fr:li>Univalence of <fr:tex>\mathbf {FinSet}</fr:tex> implies the <fr:strong>LAYOUT UNIVALENCE</fr:strong> rule.</fr:li>
+  <fr:li>Univalence of <fr:tex>\mathbf {Set}</fr:tex> implies the <fr:strong>CELL UNIVALENCE</fr:strong> rule.</fr:li></fr:ol><fr:p>We therefore need an impredicative version of <fr:strong><fr:em>guarded <fr:link
+href="hottbook.xml"
+type="local"
+addr="hottbook"><html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">homotopy</html:mark> type theory</fr:link></fr:em></fr:strong>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1144</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Impredicative Guarded Homotopy Type Theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We define <fr:strong>iGHoTT</fr:strong> to be the extension of Martin-Löf’s intensional type theory by the following additional features:</fr:p><fr:ol><fr:li>homotopy type theory: the univalence axiom</fr:li>
+  <fr:li>guarded recursion: later modality <fr:tex>\mathord { \blacktriangleright }</fr:tex> and solutions to guarded fixed points</fr:li>
+  <fr:li>a univalent impredicative universe, <fr:em>i.e.</fr:em> a universe <fr:tex>\mathcal {S} \in \mathcal {U}</fr:tex> closed under families of <fr:tex>\mathcal {S}</fr:tex>-small types indexed in a <fr:tex>\mathcal {U}</fr:tex>-small type.</fr:li></fr:ol><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p>In <fr:strong>iGHoTT</fr:strong>, we can define a model of univalent reference types. The real question is whether we can find a model of <fr:strong>iGHoTT</fr:strong>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1148</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Models of <fr:strong>iGDTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+href="palombi-sterling-2023.xml"
+type="local"
+addr="palombi-sterling-2023">Palombi and S. (2023)</fr:link> have contributed a modular method for building models of (non-univalent) guarded dependent type theory over an arbitrary base topos. As applied by <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link>:</fr:p><fr:ol><fr:li>Any realisability topos <fr:tex>\mathcal {E}</fr:tex> contains an impredicative universe <fr:tex>\mathbb {M}_{ \mathcal {E}}</fr:tex>.</fr:li>
+  <fr:li>Pick any <fr:em>internal</fr:em> well-founded order <fr:tex>\mathbb {O} \in \mathbb {M}_{ \mathcal {E}}</fr:tex>.</fr:li>
+  <fr:li>Then the <fr:em>relative</fr:em> presheaf topos <fr:tex>\mathcal {F} : \equiv   { \mathopen {} \left  [ \mathbb {O} ^{ \mathsf {op} } , \mathcal {E} \right  ] \mathclose {}}</fr:tex> is a model of guarded recursion and contains an impredicative universe <fr:tex>\mathbb {M}_{ \mathcal {F}}</fr:tex> defined from <fr:tex>\mathbb {M}_{ \mathcal {E}}</fr:tex> by <fr:link
+href="hofmann-streicher-1997.xml"
+type="local"
+addr="hofmann-streicher-1997">Hofmann—Streicher lifting</fr:link>.</fr:li></fr:ol></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1152</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Towards models of <fr:strong>iGHoTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We have not gotten around to adapting the <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> model of <fr:strong>iGDTT</fr:strong> to obtain a model of <fr:strong>iGHoTT</fr:strong>, which is much more complicated.</fr:p><fr:ol><fr:li>Let <fr:tex>\mathbb {A}</fr:tex> be a partial combinatory algebra.</fr:li>
+  <fr:li>Let <fr:tex>\square</fr:tex> be a suitable <fr:em>internal cube category</fr:em> in <fr:tex>\mathbf {PER} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}}</fr:tex>, and let <fr:tex>\mathbb {O}</fr:tex> be an internal well-founded order in the same.</fr:li>
+  <fr:li>Then the category of internal presheaves of assemblies <fr:tex>{ \mathopen {} \left  [ { \mathopen {} \left ( \square \times \mathbb {O} \right ) \mathclose {}} ^{ \mathsf {op} } , \mathbf {Asm} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}} \right  ] \mathclose {}}</fr:tex> is expected to form a model of <fr:strong>iGHoTT</fr:strong>{}.</fr:li></fr:ol><fr:p>Impredicative <fr:strong>HoTT</fr:strong> via cubical assemblies due to <fr:link
+href="awodey-frey-speight-2018.xml"
+type="local"
+addr="awodey-frey-speight-2018">Awodey et al.</fr:link> and studied by <fr:link
+href="uemura-2019-types.xml"
+type="local"
+addr="uemura-2019-types">Uemura</fr:link>, <fr:link
+href="swan-uemura-2022.xml"
+type="local"
+addr="swan-uemura-2022">Swan</fr:link>.</fr:p><fr:p>Guarded <fr:strong>HoTT</fr:strong> via <fr:tex>\square \times \mathbb {O}</fr:tex> due to <fr:link
+href="bbcgsv-2019.xml"
+type="local"
+addr="bbcgsv-2019">Birkedal et al. (2019)</fr:link>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1156</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Even if internal presheaves of assemblies on <fr:tex>\square \times \mathbb {O}</fr:tex> works, the resulting model will be uncanonical from the <fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-categorical standpoint.</fr:p><fr:p>For example, if <fr:tex>\mathbb {O}= \omega</fr:tex>, we shall not have defined the “internal (pre)-<fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-topos of trees” in cubical assemblies.</fr:p><fr:p>More canonical approach would be to take internal presheaves on any <fr:tex>\mathcal {S}</fr:tex>-small well-founded order <fr:tex>\mathbb {O}</fr:tex> internal to the <fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-category <fr:tex>\mathcal {E}</fr:tex> presented by <fr:tex>{ \mathopen {} \left  [ \square ^{ \mathsf {op} } , \mathbf {Asm} { \mathopen {} \left ( \mathbb {A} \right ) \mathclose {}} \right  ] \mathclose {}}</fr:tex>. This may introduce coherence problems that we are currently unprepared for.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1160</fr:anchor><fr:taxon>Slide</fr:taxon><fr:title>Comparing with other realisability models of state</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> were not the first to combine guarded recursion with realisability to model higher-order dynamic allocation; see <fr:link
+href="birkedal-st%C3%B8vring-thamsborg-2010-realisability.xml"
+type="local"
+addr="birkedal-støvring-thamsborg-2010-realisability">Birkedal, Støvring, and Thamsborg (2010)</fr:link>.</fr:p><fr:p>However, <fr:em>op.cit.</fr:em> relied on a <fr:em>specific</fr:em> realisability model based on an untyped domain model of a stateful language; in contrast, the model construction of <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> applies uniformly for any pair <fr:tex>{ \mathopen {} \left ( \mathcal {E}, \mathbb {O} \right ) \mathclose {}}</fr:tex>.</fr:p><fr:p>Thus <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> showed that realisability is inessential: if we find any other viable source of impredicative universes besides realisability, <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link> would apply there too.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"><fr:frontmatter><fr:anchor>1164</fr:anchor><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17571</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-gratzer-birkedal-2024-univalent</fr:addr><fr:route>sterling-gratzer-birkedal-2024-univalent.xml</fr:route><fr:title>Towards univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>7</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="doi">10.4230/LIPIcs.CSL.2024.47</fr:meta><fr:meta
+name="venue"><fr:link
+href="csl-2024.xml"
+type="local"
+addr="csl-2024"><fr:em>CSL ’24</fr:em>: 32nd EACSL Annual Conference on Computer Science Logic 2024</fr:link></fr:meta><fr:meta
+name="bibtex">@inproceedings{sterling-gratzer-birkedal-2024-univalent,
   author = {Sterling, Jonathan and Gratzer, Daniel and Birkedal, Lars},
   title = {{Towards Univalent Reference Types: The Impact of Univalence on Denotational Semantics}},
   booktitle = {32nd EACSL Annual Conference on Computer Science Logic (CSL 2024)},
@@ -38,47 +700,153 @@
   year = {2024},
   volume = {288},
   editor = {Murano, Aniello and Silva, Alexandra},
-  publisher = {Schloss Dagstuhl -- Leibniz-Zentrum f{\&quot;u}r Informatik},
+  publisher = {Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik},
   address = {Dagstuhl, Germany},
   doi =  {10.4230/LIPIcs.CSL.2024.47},
-}</meta></frontmatter> <mainmatter><p>We develop a denotational semantics for general reference types in an <link href="awodey-frey-speight-2018.xml" type="local" addr="awodey-frey-speight-2018" title="Impredicative encodings of (higher) inductive types">impredicative version</link> of <link href="bbcgsv-2019.xml" type="local" addr="bbcgsv-2019" title="Guarded cubical type theory"><strong><em>guarded homotopy type theory</em></strong></link>, an adaptation of <link href="bmss-2011.xml" type="local" addr="bmss-2011" title="First steps in synthetic guarded domain theory: step-indexing in the topos of trees">synthetic guarded domain theory</link> to Voevodsky’s <link href="hottbook.xml" type="local" addr="hottbook" title="Homotopy Type Theory: univalent foundations of mathematics">univalent foundations</link>. We observe for the first time the profound impact of univalence on the <link href="sterling-gratzer-birkedal-2022.xml" type="local" addr="sterling-gratzer-birkedal-2022" title="Denotational semantics of general store and polymorphism">denotational semantics of mutable state</link>. Univalence automatically ensures that all computations are invariant under symmetries of the heap—a bountiful source of program equivalences. In particular, even the most simplistic univalent model enjoys many new program equivalences that do not hold when the same constructions are carried out in the universes of traditional set-level (extensional) type theory.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35891</anchor> <taxon>Reference</taxon> <addr>sterling-gratzer-birkedal-2023-fics</addr><route>sterling-gratzer-birkedal-2023-fics.xml</route>  <date><year>2023</year> <month>2</month> <day>17</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Denotational semantics of general store and polymorphism</title>   <meta name="slides">slides/sterling-gratzer-birkedal-2023-fics.pdf</meta><meta name="venue">Fixed Points in Computer Science 2023</meta></frontmatter> <mainmatter><p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an
+}</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We develop a denotational semantics for general reference types in an <fr:link
+href="awodey-frey-speight-2018.xml"
+type="local"
+addr="awodey-frey-speight-2018">impredicative version</fr:link> of <fr:link
+href="bbcgsv-2019.xml"
+type="local"
+addr="bbcgsv-2019"><fr:strong><fr:em>guarded homotopy type theory</fr:em></fr:strong></fr:link>, an adaptation of <fr:link
+href="bmss-2011.xml"
+type="local"
+addr="bmss-2011">synthetic guarded domain theory</fr:link> to Voevodsky’s <fr:link
+href="hottbook.xml"
+type="local"
+addr="hottbook">univalent foundations</fr:link>. We observe for the first time the profound impact of univalence on the <fr:link
+href="sterling-gratzer-birkedal-2022.xml"
+type="local"
+addr="sterling-gratzer-birkedal-2022">denotational semantics of mutable state</fr:link>. Univalence automatically ensures that all computations are invariant under symmetries of the heap—a bountiful source of program equivalences. In particular, even the most simplistic univalent model enjoys many new program equivalences that do not hold when the same constructions are carried out in the universes of traditional set-level (extensional) type theory.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17575</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-gratzer-birkedal-2023-fics</fr:addr><fr:route>sterling-gratzer-birkedal-2023-fics.xml</fr:route><fr:title>Denotational semantics of general store and polymorphism</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>17</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="slides">slides/sterling-gratzer-birkedal-2023-fics.pdf</fr:meta><fr:meta
+name="venue">Fixed Points in Computer Science 2023</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an
 equational theory for general (higher-order) reference types and recursive types, based on a
 combination of guarded recursion and impredicative polymorphism; because our model is based on
-<em>recursively defined semantic worlds</em>, it is compatible with polymorphism and relational reasoning
+<fr:em>recursively defined semantic worlds</fr:em>, it is compatible with polymorphism and relational reasoning
 about stateful abstract datatypes. What is new in relation to prior typed denotational models of
 higher-order store is that our Kripke worlds need not be syntactically definable, and are thus
 compatible with relational reasoning in the heap. Our work combines recent advances in the
-operational semantics of state with the purely denotational viewpoint of <em>synthetic guarded domain theory</em>.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35892</anchor> <taxon>Reference</taxon> <addr>gratzer-sterling-angiuli-coquand-birkedal-2022</addr><route>gratzer-sterling-angiuli-coquand-birkedal-2022.xml</route>  <date><year>2022</year> <month>10</month> <day>10</day></date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="thierrycoquand.xml" type="local" thierrycoquand="addr">Thierry Coquand</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Controlling unfolding in type theory</title>   <meta name="doi">10.48550/arXiv.2210.05420</meta><meta name="bibtex">@unpublished{gratzer-sterling-angiuli-coquand-birkedal-2022,
+operational semantics of state with the purely denotational viewpoint of <fr:em>synthetic guarded domain theory</fr:em>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17579</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-sterling-angiuli-coquand-birkedal-2022</fr:addr><fr:route>gratzer-sterling-angiuli-coquand-birkedal-2022.xml</fr:route><fr:title>Controlling unfolding in type theory</fr:title><fr:date><fr:year>2022</fr:year><fr:month>10</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="carloangiuli.xml"
+type="local"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author><fr:author><fr:link
+href="thierrycoquand.xml"
+type="local"
+addr="thierrycoquand">Thierry Coquand</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="doi">10.48550/arXiv.2210.05420</fr:meta><fr:meta
+name="bibtex">@unpublished{gratzer-sterling-angiuli-coquand-birkedal-2022,
   doi = {10.48550/ARXIV.2210.05420},
   author = {Gratzer, Daniel and Sterling, Jonathan and Angiuli, Carlo and Coquand, Thierry and Birkedal, Lars},
   title = {Controlling unfolding in type theory},
   year = {2022},
   note = {Unpublished manuscript}
-}</meta></frontmatter> <mainmatter><p>We present a novel mechanism for controlling the unfolding of definitions in
+}</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We present a novel mechanism for controlling the unfolding of definitions in
 dependent type theory. Traditionally, proof assistants let users specify
 whether each definition can or cannot be unfolded in the remainder of a
 development; unfolding definitions is often necessary in order to reason about
 them, but an excess of unfolding can result in brittle proofs and intractably
 large proof goals. In our system, definitions are by default not unfolded, but
 users can selectively unfold them in a local manner. We justify our mechanism
-by means of elaboration to a core type theory with <em>extension types</em>, a
+by means of elaboration to a core type theory with <fr:em>extension types</fr:em>, a
 connective first introduced in the context of homotopy type theory.  We prove a
 normalization theorem for our core calculus and have implemented our system in
 the cooltt proof assistant, providing both theoretical and practical evidence
-for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35893</anchor> <taxon>Reference</taxon> <addr>sterling-gratzer-birkedal-2022</addr><route>sterling-gratzer-birkedal-2022.xml</route>  <date><year>2022</year> <month>10</month> <day>6</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Denotational semantics of general store and polymorphism</title>   <meta name="doi">10.48550/arXiv.2210.02169</meta><meta name="bibtex">@unpublished{sterling-gratzer-birkedal-2022,
+for it.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17585</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-gratzer-birkedal-2022</fr:addr><fr:route>sterling-gratzer-birkedal-2022.xml</fr:route><fr:title>Denotational semantics of general store and polymorphism</fr:title><fr:date><fr:year>2022</fr:year><fr:month>10</fr:month><fr:day>6</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="doi">10.48550/arXiv.2210.02169</fr:meta><fr:meta
+name="bibtex">@unpublished{sterling-gratzer-birkedal-2022,
   author = {Sterling, Jonathan and Gratzer, Daniel and Birkedal, Lars},
   year = {2022},
   month = jul,
   note = {Unpublished manuscript},
   title = {Denotational semantics of general store and polymorphism},
-}</meta></frontmatter> <mainmatter><p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an equational theory for general (higher-order) reference types and recursive types, based on a combination of guarded recursion and impredicative polymorphism; because our model is based on <em>recursively defined semantic worlds</em>, it is compatible with polymorphism and relational reasoning about stateful abstract datatypes. We then extend our language with modal constructs for proof-relevant relational reasoning based on the <em>logical relations as types</em> principle, in which equivalences between imperative abstract datatypes can be established synthetically. Finally we develop a decomposition of the store model as a general construction that extends an arbitrary polymorphic call-by-push-value adjunction with higher-order store, improving on <link href="paulblainlevy.xml" type="local" addr="paulblainlevy" title="Paul Blain Levy">Levy</link>'s possible worlds model construction; what is new in relation to prior typed denotational models of higher-order store is that our Kripke worlds need not be syntactically definable, and are thus compatible with relational reasoning in the heap. Our work combines recent advances in the operational semantics of state with the purely denotational viewpoint of <em>synthetic guarded domain theory</em>.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35894</anchor> <taxon>Reference</taxon> <addr>akgb-2022</addr><route>akgb-2022.xml</route>  <date><year>2022</year> <month>6</month> </date> <authors><author><link href="flaagaard.xml" type="local" flaagaard="addr">Frederik Lerbjerg Aagaard</link></author><author>Magnus Baunsgaard Kristensen</author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Unifying cubical and multimodal type theory</title>   <meta name="bibtex">@unpublished{akgb-2022,
+}</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an equational theory for general (higher-order) reference types and recursive types, based on a combination of guarded recursion and impredicative polymorphism; because our model is based on <fr:em>recursively defined semantic worlds</fr:em>, it is compatible with polymorphism and relational reasoning about stateful abstract datatypes. We then extend our language with modal constructs for proof-relevant relational reasoning based on the <fr:em>logical relations as types</fr:em> principle, in which equivalences between imperative abstract datatypes can be established synthetically. Finally we develop a decomposition of the store model as a general construction that extends an arbitrary polymorphic call-by-push-value adjunction with higher-order store, improving on <fr:link
+href="paulblainlevy.xml"
+type="local"
+addr="paulblainlevy">Levy</fr:link>'s possible worlds model construction; what is new in relation to prior typed denotational models of higher-order store is that our Kripke worlds need not be syntactically definable, and are thus compatible with relational reasoning in the heap. Our work combines recent advances in the operational semantics of state with the purely denotational viewpoint of <fr:em>synthetic guarded domain theory</fr:em>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17589</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>akgb-2022</fr:addr><fr:route>akgb-2022.xml</fr:route><fr:title>Unifying cubical and multimodal type theory</fr:title><fr:date><fr:year>2022</fr:year><fr:month>6</fr:month></fr:date><fr:authors><fr:author><fr:link
+href="flaagaard.xml"
+type="local"
+addr="flaagaard">Frederik Lerbjerg Aagaard</fr:link></fr:author><fr:author>Magnus Baunsgaard Kristensen</fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@unpublished{akgb-2022,
   author = {Aagaard, Frederik Lerbjerg and Kristensen, Magnus Baunsgaard and Gratzer, Daniel and Birkedal, Lars},
   publisher = {arXiv},
   year = {2022},
   doi = {10.48550/ARXIV.2203.13000},
   note = {Unpublished manuscript},
   title = {Unifying cubical and multimodal type theory},
-}</meta><meta name="doi">10.48550/ARXIV.2203.13000</meta><meta name="venue">28th International Conference on Types for Proofs and Programs</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35895</anchor> <taxon>Reference</taxon> <addr>gratzer-birkedal-2022</addr><route>gratzer-birkedal-2022.xml</route>  <date><year>2022</year> <month>4</month> </date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>A stratified approach to Löb induction</title>   <meta name="bibtex">@inproceedings{gratzer-birkedal-2022,
+}</fr:meta><fr:meta
+name="doi">10.48550/ARXIV.2203.13000</fr:meta><fr:meta
+name="venue">28th International Conference on Types for Proofs and Programs</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17594</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-birkedal-2022</fr:addr><fr:route>gratzer-birkedal-2022.xml</fr:route><fr:title>A stratified approach to Löb induction</fr:title><fr:date><fr:year>2022</fr:year><fr:month>4</fr:month></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@inproceedings{gratzer-birkedal-2022,
   author = {Gratzer, Daniel and Birkedal, Lars},
   editor = {Felty, Amy},
   address = {Dagstuhl, Germany},
@@ -89,9 +857,21 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   month = aug,
   doi = {10.4230/LIPIcs.FSCD.2022.23},
   series = {Leibniz International Proceedings in Informatics (LIPIcs)},
-  title = {A Stratified Approach to {L\&quot;{o}b} Induction},
+  title = {A Stratified Approach to {L\"{o}b} Induction},
   volume = {228},
-}</meta><meta name="doi">10.4230/LIPIcs.FSCD.2022.23</meta><meta name="venue">International Conference on Formal Structures for Computation and Deduction (FSCD)</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35896</anchor> <taxon>Reference</taxon> <addr>gratzer-2022</addr><route>gratzer-2022.xml</route>  <date><year>2022</year> <month>4</month> </date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>Normalization for multimodal type theory</title>   <meta name="bibtex">@inproceedings{gratzer-2022,
+}</fr:meta><fr:meta
+name="doi">10.4230/LIPIcs.FSCD.2022.23</fr:meta><fr:meta
+name="venue">International Conference on Formal Structures for Computation and Deduction (FSCD)</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17597</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-2022</fr:addr><fr:route>gratzer-2022.xml</fr:route><fr:title>Normalization for multimodal type theory</fr:title><fr:date><fr:year>2022</fr:year><fr:month>4</fr:month></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@inproceedings{gratzer-2022,
   title = {Normalization for Multimodal Type Theory},
   author = {Gratzer, Daniel},
   address = {New York, NY, USA},
@@ -100,7 +880,25 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   year = {2022},
   doi = {10.1145/3531130.3532398},
   url = {https://jozefg.github.io/papers/2022-normalization-for-multimodal-type-theory-short.pdf},
-}</meta><meta name="doi">10.1145/3531130.3532398</meta><meta name="venue">Symposium on Logic and Computer Science (LICS)</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35897</anchor> <taxon>Reference</taxon> <addr>gratzer-shulman-sterling-2022-universes</addr><route>gratzer-shulman-sterling-2022-universes.xml</route>  <date><year>2022</year> <month>2</month> <day>24</day></date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="mikeshulman.xml" type="local" mikeshulman="addr">Mike Shulman</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Strict universes for Grothendieck topoi</title>   <meta name="bibtex">@unpublished{gratzer-shulman-sterling-2022-universes,
+}</fr:meta><fr:meta
+name="doi">10.1145/3531130.3532398</fr:meta><fr:meta
+name="venue">Symposium on Logic and Computer Science (LICS)</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17599</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-shulman-sterling-2022-universes</fr:addr><fr:route>gratzer-shulman-sterling-2022-universes.xml</fr:route><fr:title>Strict universes for Grothendieck topoi</fr:title><fr:date><fr:year>2022</fr:year><fr:month>2</fr:month><fr:day>24</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="mikeshulman.xml"
+type="local"
+addr="mikeshulman">Mike Shulman</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@unpublished{gratzer-shulman-sterling-2022-universes,
   author = {Gratzer, Daniel and Shulman, Michael and Sterling, Jonathan},
   year = {2022},
   month = feb,
@@ -110,7 +908,39 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   eprinttype = {arXiv},
   note = {Unpublished manuscript},
   title = {Strict universes for Grothendieck topoi},
-}</meta><meta name="doi">10.48550/arXiv.2202.12012</meta></frontmatter> <mainmatter><p><link href="hofmann-streicher-1997.xml" type="local" addr="hofmann-streicher-1997" title="Lifting Grothendieck universes">Hofmann and Streicher</link> famously showed how to lift Grothendieck universes into presheaf topoi, and <link href="streicher-2005.xml" type="local" addr="streicher-2005" title="Universes in toposes">Streicher</link> has extended their result to the case of sheaf topoi by sheafification. In parallel, <link href="van-den-berg-moerdijk-2012.xml" type="local" addr="van-den-berg-moerdijk-2012" title="Aspects of predicative algebraic set theory III: sheaves">van den Berg and Moerdijk</link> have shown in the context of algebraic set theory that similar constructions continue to apply even in weaker metatheories. Unfortunately, sheafification seems not to preserve an important <em>realignment</em> property enjoyed by the presheaf universes that plays a critical role in models of univalent type theory as well as <link href="jms-005T.xml" type="local" addr="jms-005T" title="Synthetic Tait computability">synthetic Tait computability</link>, a recent technique to establish syntactic properties of type theories and programming languages. In the context of <em>multiple</em> universes, the realignment property also implies a <em>coherent</em> choice of codes for connectives at each universe level, thereby interpreting the cumulativity laws present in popular formulations of Martin-Löf type theory.</p><p>We observe that a slight adjustment to an argument of <link href="shulman-2015-elegant.xml" type="local" addr="shulman-2015-elegant" title="The univalence axiom for elegant Reedy presheaves">Shulman</link> constructs a cumulative universe hierarchy satisfying the realignment property at every level in any Grothendieck topos. Hence one has direct-style interpretations of Martin-Löf type theory with cumulative universes into all Grothendieck topoi. A further implication is to extend the reach of recent synthetic methods in the semantics of cubical type theory and the syntactic metatheory of type theory and programming languages to all Grothendieck topoi.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35898</anchor> <taxon>Reference</taxon> <addr>gratzer-shulman-sterling-2022-plump</addr><route>gratzer-shulman-sterling-2022-plump.xml</route>  <date><year>2022</year> <month>2</month> <day>15</day></date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="mikeshulman.xml" type="local" mikeshulman="addr">Mike Shulman</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>The directed plump ordering</title>   <meta name="bibtex">@unpublished{gratzer-shulman-sterling-2022-plump,
+}</fr:meta><fr:meta
+name="doi">10.48550/arXiv.2202.12012</fr:meta></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+href="hofmann-streicher-1997.xml"
+type="local"
+addr="hofmann-streicher-1997">Hofmann and Streicher</fr:link> famously showed how to lift Grothendieck universes into presheaf topoi, and <fr:link
+href="streicher-2005.xml"
+type="local"
+addr="streicher-2005">Streicher</fr:link> has extended their result to the case of sheaf topoi by sheafification. In parallel, <fr:link
+href="van-den-berg-moerdijk-2012.xml"
+type="local"
+addr="van-den-berg-moerdijk-2012">van den Berg and Moerdijk</fr:link> have shown in the context of algebraic set theory that similar constructions continue to apply even in weaker metatheories. Unfortunately, sheafification seems not to preserve an important <fr:em>realignment</fr:em> property enjoyed by the presheaf universes that plays a critical role in models of univalent type theory as well as <fr:link
+href="jms-005T.xml"
+type="local"
+addr="jms-005T">synthetic Tait computability</fr:link>, a recent technique to establish syntactic properties of type theories and programming languages. In the context of <fr:em>multiple</fr:em> universes, the realignment property also implies a <fr:em>coherent</fr:em> choice of codes for connectives at each universe level, thereby interpreting the cumulativity laws present in popular formulations of Martin-Löf type theory.</fr:p><fr:p>We observe that a slight adjustment to an argument of <fr:link
+href="shulman-2015-elegant.xml"
+type="local"
+addr="shulman-2015-elegant">Shulman</fr:link> constructs a cumulative universe hierarchy satisfying the realignment property at every level in any Grothendieck topos. Hence one has direct-style interpretations of Martin-Löf type theory with cumulative universes into all Grothendieck topoi. A further implication is to extend the reach of recent synthetic methods in the semantics of cubical type theory and the syntactic metatheory of type theory and programming languages to all Grothendieck topoi.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17603</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-shulman-sterling-2022-plump</fr:addr><fr:route>gratzer-shulman-sterling-2022-plump.xml</fr:route><fr:title>The directed plump ordering</fr:title><fr:date><fr:year>2022</fr:year><fr:month>2</fr:month><fr:day>15</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="mikeshulman.xml"
+type="local"
+addr="mikeshulman">Mike Shulman</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@unpublished{gratzer-shulman-sterling-2022-plump,
   author = {Gratzer, Daniel and Shulman, Michael and Sterling, Jonathan},
   year = {2022},
   doi = {10.48550/arXiv.2202.07329},
@@ -118,7 +948,25 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   eprintclass = {cs.LO},
   eprinttype = {arXiv},
   title = {The directed plump ordering},
-}</meta><meta name="artifact">http://www.jonmsterling.com/agda-directed-plump-ordering/</meta><meta name="doi">10.48550/arXiv.2202.07329</meta></frontmatter> <mainmatter><p>Based on Taylor's hereditarily directed plump ordinals, we define the <em>directed plump ordering</em> on W-types in Martin-Löf type theory. This ordering is similar to the plump ordering but comes equipped with non-empty finite joins in additional to the usual properties of the plump ordering.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35899</anchor> <taxon>Reference</taxon> <addr>sterling-angiuli-gratzer-2022</addr><route>sterling-angiuli-gratzer-2022.xml</route>  <date><year>2022</year> <month>2</month> <day>9</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>A cubical language for Bishop sets</title>   <meta name="bibtex">@article{sterling-angiuli-gratzer-2022,
+}</fr:meta><fr:meta
+name="artifact">http://www.jonmsterling.com/agda-directed-plump-ordering/</fr:meta><fr:meta
+name="doi">10.48550/arXiv.2202.07329</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Based on Taylor's hereditarily directed plump ordinals, we define the <fr:em>directed plump ordering</fr:em> on W-types in Martin-Löf type theory. This ordering is similar to the plump ordering but comes equipped with non-empty finite joins in additional to the usual properties of the plump ordering.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17607</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-angiuli-gratzer-2022</fr:addr><fr:route>sterling-angiuli-gratzer-2022.xml</fr:route><fr:title>A cubical language for Bishop sets</fr:title><fr:date><fr:year>2022</fr:year><fr:month>2</fr:month><fr:day>9</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="carloangiuli.xml"
+type="local"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@article{sterling-angiuli-gratzer-2022,
   author = {Sterling, Jonathan and Angiuli, Carlo and Gratzer, Daniel},
   year = {2022},
   month = mar,
@@ -130,20 +978,111 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   journal = {Logical Methods in Computer Science},
   title = {{A Cubical Language for Bishop Sets}},
   volume = {18},
-}</meta><meta name="doi">10.46298/lmcs-18(1:43)2022</meta><meta name="venue"><link href="lmcs.xml" type="local" addr="lmcs" title="Logical Methods in Computer Science">Logical Methods in Computer Science</link></meta></frontmatter> <mainmatter><p>We present XTT, a version of Cartesian cubical type theory specialized for Bishop sets à la <link href="thierrycoquand.xml" type="local" addr="thierrycoquand" title="Thierry Coquand">Coquand</link>, in which every type enjoys a definitional version of the uniqueness of identity proofs. Using cubical notions, XTT reconstructs many of the ideas underlying Observational Type Theory, a version of intensional type theory that supports function extensionality. We prove the canonicity property of XTT (that every closed boolean is definitionally equal to a constant) by Artin gluing.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35900</anchor> <taxon>Reference</taxon> <addr>gratzer-2021-crisp-induction</addr><route>gratzer-2021-crisp-induction.xml</route>  <date><year>2021</year>  </date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>Crisp induction for intensional identity types</title>   <meta name="external">https://jozefg.github.io/papers/crisp-induction-for-intensional-identity-types.pdf</meta><meta name="bibtex">@unpublished{gratzer-2021-crisp-induction,
+}</fr:meta><fr:meta
+name="doi">10.46298/lmcs-18(1:43)2022</fr:meta><fr:meta
+name="venue"><fr:link
+href="lmcs.xml"
+type="local"
+addr="lmcs">Logical Methods in Computer Science</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We present XTT, a version of Cartesian cubical type theory specialized for Bishop sets à la <fr:link
+href="thierrycoquand.xml"
+type="local"
+addr="thierrycoquand">Coquand</fr:link>, in which every type enjoys a definitional version of the uniqueness of identity proofs. Using cubical notions, XTT reconstructs many of the ideas underlying Observational Type Theory, a version of intensional type theory that supports function extensionality. We prove the canonicity property of XTT (that every closed boolean is definitionally equal to a constant) by Artin gluing.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17611</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-2021-crisp-induction</fr:addr><fr:route>gratzer-2021-crisp-induction.xml</fr:route><fr:title>Crisp induction for intensional identity types</fr:title><fr:date><fr:year>2021</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="external">https://jozefg.github.io/papers/crisp-induction-for-intensional-identity-types.pdf</fr:meta><fr:meta
+name="bibtex">@unpublished{gratzer-2021-crisp-induction,
   author = {Gratzer, Daniel},
   url = {https://jozefg.github.io/papers/crisp-induction-for-intensional-identity-types.pdf},
   year = {2021},
   note = {Unpublished manuscript},
   title = {Crisp induction for intensional identity types},
-}</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35901</anchor> <taxon>Reference</taxon> <addr>gratzer-sterling-2020</addr><route>gratzer-sterling-2020.xml</route>  <date><year>2020</year> <month>12</month> </date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Syntactic categories for dependent type theory: sketching and adequacy</title>   <meta name="bibtex">@unpublished{gratzer-sterling-2020,
+}</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17613</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-sterling-2020</fr:addr><fr:route>gratzer-sterling-2020.xml</fr:route><fr:title>Syntactic categories for dependent type theory: sketching and adequacy</fr:title><fr:date><fr:year>2020</fr:year><fr:month>12</fr:month></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@unpublished{gratzer-sterling-2020,
   author = {Gratzer, Daniel and Sterling, Jonathan},
   year = {2020},
   eprint = {2012.10783},
   eprintclass = {cs.LO},
   eprinttype = {arXiv},
   title = {Syntactic categories for dependent type theory: sketching and adequacy},
-}</meta></frontmatter> <mainmatter><p>We argue that locally Cartesian closed categories form a suitable doctrine for defining dependent type theories, including non-extensional ones. Using the theory of sketches, one may define syntactic categories for type theories in a style that resembles the use of Martin-Löf's Logical Framework, following the &quot;judgments as types&quot; principle. The concentration of type theories into their locally Cartesian closed categories of judgments is particularly convenient for proving syntactic metatheorems by semantic means (canonicity, normalization, etc.). Perhaps surprisingly, the notion of a context plays no role in the definitions of type theories in this sense, but the structure of a class of display maps can be imposed on a theory post facto wherever needed, as advocated by the Edinburgh school and realized by the <code>worlds</code> declarations of the Twelf proof assistant.</p><p>Uemura has proposed representable map categories together with a stratified logical framework for similar purposes. The stratification in Uemura's framework restricts the use of dependent products to be strictly positive, in contrast to the tradition of Martin-Löf's logical framework and Schroeder-Heister's analysis of higher-level deductions. We prove a semantic adequacy result for locally Cartesian closed categories relative to Uemura's representable map categories: if a theory is definable in the framework of Uemura, the locally Cartesian closed category that it generates is a conservative (fully faithful) extension of its syntactic representable map category. On this basis, we argue for the use of locally Cartesian closed categories as a simpler alternative to Uemura's representable map categories.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35902</anchor> <taxon>Reference</taxon> <addr>sterling-angiuli-gratzer-2019-types</addr><route>sterling-angiuli-gratzer-2019-types.xml</route>  <date><year>2019</year>  </date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>XTT: cubical syntax for extensional equality (without equality reflection)</title>   <meta name="slides">slides/sterling-angiuli-gratzer-2019-types.pdf</meta><meta name="venue">TYPES 2019</meta></frontmatter> <mainmatter/> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35903</anchor> <taxon>Reference</taxon> <addr>sterling-angiuli-gratzer-2019-hott</addr><route>sterling-angiuli-gratzer-2019-hott.xml</route>  <date><year>2019</year>  </date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>Cubical exact equality and categorical gluing</title>   <meta name="slides">slides/sterling-angiuli-gratzer-2019-hott.pdf</meta><meta name="venue">International Conference on Homotopy Type Theory, 2019</meta></frontmatter> <mainmatter><p>We contribute XTT, a cubical reconstruction of Observational Type Theory which extends intensional type theory with a dependent equality type that enjoys function extensionality and judgmental unicity of identity proofs. XTT employs a variant of the Cartesian cubical Kan operations satisfying regularity (i.e., transport in constant type families is judgmentally constant), allowing its equality type to model Martin-Lof’s identity type judgmentally. We prove canonicity for the initial model of XTT (i.e., any closed term of boolean type is equal to either true or false) using a novel cubical extension (independently proposed by <link href="steveawodey.xml" type="local" addr="steveawodey" title="Steve Awodey">Awodey</link>) of the categorical gluing technique inspired by <link href="thierrycoquand.xml" type="local" addr="thierrycoquand" title="Thierry Coquand">Coquand</link> and <link href="mikeshulman.xml" type="local" addr="mikeshulman" title="Mike Shulman">Shulman</link>, in which we glue the fundamental fibration of a category of augmented Cartesian cubical sets along a cubical nerve. We conjecture that our methods will extend to open terms, allowing us to establish normalization and decidability of the typing relation.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35904</anchor> <taxon>Reference</taxon> <addr>sterling-angiuli-gratzer-2019</addr><route>sterling-angiuli-gratzer-2019.xml</route>  <date><year>2019</year>  </date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="carloangiuli.xml" type="local" carloangiuli="addr">Carlo Angiuli</link></author><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author> </authors> <title>Cubical syntax for reflection-free extensional equality</title>   <meta name="bibtex">@inproceedings{sterling-angiuli-gratzer-2019,
+}</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We argue that locally Cartesian closed categories form a suitable doctrine for defining dependent type theories, including non-extensional ones. Using the theory of sketches, one may define syntactic categories for type theories in a style that resembles the use of Martin-Löf's Logical Framework, following the "judgments as types" principle. The concentration of type theories into their locally Cartesian closed categories of judgments is particularly convenient for proving syntactic metatheorems by semantic means (canonicity, normalization, etc.). Perhaps surprisingly, the notion of a context plays no role in the definitions of type theories in this sense, but the structure of a class of display maps can be imposed on a theory post facto wherever needed, as advocated by the Edinburgh school and realized by the <fr:code>worlds</fr:code> declarations of the Twelf proof assistant.</fr:p><fr:p>Uemura has proposed representable map categories together with a stratified logical framework for similar purposes. The stratification in Uemura's framework restricts the use of dependent products to be strictly positive, in contrast to the tradition of Martin-Löf's logical framework and Schroeder-Heister's analysis of higher-level deductions. We prove a semantic adequacy result for locally Cartesian closed categories relative to Uemura's representable map categories: if a theory is definable in the framework of Uemura, the locally Cartesian closed category that it generates is a conservative (fully faithful) extension of its syntactic representable map category. On this basis, we argue for the use of locally Cartesian closed categories as a simpler alternative to Uemura's representable map categories.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17616</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-angiuli-gratzer-2019-types</fr:addr><fr:route>sterling-angiuli-gratzer-2019-types.xml</fr:route><fr:title>XTT: cubical syntax for extensional equality (without equality reflection)</fr:title><fr:date><fr:year>2019</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="carloangiuli.xml"
+type="local"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="slides">slides/sterling-angiuli-gratzer-2019-types.pdf</fr:meta><fr:meta
+name="venue">TYPES 2019</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17620</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-angiuli-gratzer-2019-hott</fr:addr><fr:route>sterling-angiuli-gratzer-2019-hott.xml</fr:route><fr:title>Cubical exact equality and categorical gluing</fr:title><fr:date><fr:year>2019</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="carloangiuli.xml"
+type="local"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="slides">slides/sterling-angiuli-gratzer-2019-hott.pdf</fr:meta><fr:meta
+name="venue">International Conference on Homotopy Type Theory, 2019</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We contribute XTT, a cubical reconstruction of Observational Type Theory which extends intensional type theory with a dependent equality type that enjoys function extensionality and judgmental unicity of identity proofs. XTT employs a variant of the Cartesian cubical Kan operations satisfying regularity (i.e., transport in constant type families is judgmentally constant), allowing its equality type to model Martin-Lof’s identity type judgmentally. We prove canonicity for the initial model of XTT (i.e., any closed term of boolean type is equal to either true or false) using a novel cubical extension (independently proposed by <fr:link
+href="steveawodey.xml"
+type="local"
+addr="steveawodey">Awodey</fr:link>) of the categorical gluing technique inspired by <fr:link
+href="thierrycoquand.xml"
+type="local"
+addr="thierrycoquand">Coquand</fr:link> and <fr:link
+href="mikeshulman.xml"
+type="local"
+addr="mikeshulman">Shulman</fr:link>, in which we glue the fundamental fibration of a category of augmented Cartesian cubical sets along a cubical nerve. We conjecture that our methods will extend to open terms, allowing us to establish normalization and decidability of the typing relation.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17624</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-angiuli-gratzer-2019</fr:addr><fr:route>sterling-angiuli-gratzer-2019.xml</fr:route><fr:title>Cubical syntax for reflection-free extensional equality</fr:title><fr:date><fr:year>2019</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="carloangiuli.xml"
+type="local"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@inproceedings{sterling-angiuli-gratzer-2019,
   author = {Sterling, Jonathan and Angiuli, Carlo and Gratzer, Daniel},
   editor = {Geuvers, Herman},
   location = {Dagstuhl, Germany},
@@ -160,7 +1099,35 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   series = {Leibniz International Proceedings in Informatics (LIPIcs)},
   title = {Cubical Syntax for Reflection-Free Extensional Equality},
   volume = {131},
-}</meta><meta name="slides">slides/sterling-angiuli-gratzer-2019.pdf</meta><meta name="doi">10.4230/LIPIcs.FSCD.2019.31</meta><meta name="venue"><link href="fscd-2019.xml" type="local" addr="fscd-2019" title="FSCD ’19: International Conference on Formal Structures for Computation and Deduction"><em>FSCD ’19</em>: International Conference on Formal Structures for Computation and Deduction</link></meta></frontmatter> <mainmatter><p>We contribute XTT, a cubical reconstruction of Observational Type Theory [Altenkirch et al., 2007] which extends Martin-Löf's intensional type theory with a dependent equality type that enjoys function extensionality and a judgmental version of the unicity of identity proofs principle (UIP): any two elements of the same equality type are judgmentally equal. Moreover, we conjecture that the typing relation can be decided in a practical way. In this paper, we establish an algebraic canonicity theorem using a novel extension of the logical families or categorical gluing argument inspired by <link href="coquand-2019.xml" type="local" addr="coquand-2019" title="Canonicity and normalization for dependent type theory">Coquand</link> and <link href="shulman-2015-elegant.xml" type="local" addr="shulman-2015-elegant" title="The univalence axiom for elegant Reedy presheaves">Shulman</link>: every closed element of boolean type is derivably equal to either true or false.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35905</anchor> <taxon>Reference</taxon> <addr>gratzer-sterling-birkedal-2019</addr><route>gratzer-sterling-birkedal-2019.xml</route>  <date><year>2019</year>  </date> <authors><author><link href="danielgratzer.xml" type="local" danielgratzer="addr">Daniel Gratzer</link></author><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author><author><link href="larsbirkedal.xml" type="local" larsbirkedal="addr">Lars Birkedal</link></author> </authors> <title>Implementing a modal dependent type theory</title>   <meta name="bibtex">@article{gratzer-sterling-birkedal-2019,
+}</fr:meta><fr:meta
+name="slides">slides/sterling-angiuli-gratzer-2019.pdf</fr:meta><fr:meta
+name="doi">10.4230/LIPIcs.FSCD.2019.31</fr:meta><fr:meta
+name="venue"><fr:link
+href="fscd-2019.xml"
+type="local"
+addr="fscd-2019"><fr:em>FSCD ’19</fr:em>: International Conference on Formal Structures for Computation and Deduction</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We contribute XTT, a cubical reconstruction of Observational Type Theory [Altenkirch et al., 2007] which extends Martin-Löf's intensional type theory with a dependent equality type that enjoys function extensionality and a judgmental version of the unicity of identity proofs principle (UIP): any two elements of the same equality type are judgmentally equal. Moreover, we conjecture that the typing relation can be decided in a practical way. In this paper, we establish an algebraic canonicity theorem using a novel extension of the logical families or categorical gluing argument inspired by <fr:link
+href="coquand-2019.xml"
+type="local"
+addr="coquand-2019">Coquand</fr:link> and <fr:link
+href="shulman-2015-elegant.xml"
+type="local"
+addr="shulman-2015-elegant">Shulman</fr:link>: every closed element of boolean type is derivably equal to either true or false.</fr:p></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17628</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>gratzer-sterling-birkedal-2019</fr:addr><fr:route>gratzer-sterling-birkedal-2019.xml</fr:route><fr:title>Implementing a modal dependent type theory</fr:title><fr:date><fr:year>2019</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
+href="larsbirkedal.xml"
+type="local"
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
+name="bibtex">@article{gratzer-sterling-birkedal-2019,
   author = {Gratzer, Daniel and Sterling, Jonathan and Birkedal, Lars},
   location = {New York, NY, USA},
   publisher = {ACM},
@@ -173,4 +1140,62 @@ for it.</p></mainmatter> </tree><tree expanded="false" show-heading="true" show-
   pages = {107:1--107:29},
   title = {Implementing a Modal Dependent Type Theory},
   volume = {3},
-}</meta><meta name="doi">10.1145/3341711</meta><meta name="venue"><link href="icfp-2019.xml" type="local" addr="icfp-2019" title="ICFP ’19: The 24th ACM SIGPLAN International Conference on Functional Programming"><em>ICFP ’19</em>: The 24th ACM SIGPLAN International Conference on Functional Programming</link></meta></frontmatter> <mainmatter><p>Modalities are everywhere in programming and mathematics! Despite this, however, there are still significant technical challenges in formulating a core dependent type theory with modalities. We present a dependent type theory MLTT🔒 supporting the connectives of standard Martin-Löf Type Theory as well as an S4-style necessity operator. MLTT🔒 supports a smooth interaction between modal and dependent types and provides a common basis for the use of modalities in programming and in synthetic mathematics. We design and prove the soundness and completeness of a type checking algorithm for MLTT🔒, using a novel extension of normalization by evaluation. We have also implemented our algorithm in a prototype proof assistant for MLTT🔒, demonstrating the ease of applying our techniques.</p></mainmatter> </tree></contributions> <context/> <related><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35906</anchor> <taxon>Institution</taxon> <addr>jms-00GC</addr><route>jms-00GC.xml</route>    <title>Aarhus University</title>   <meta name="external">https://www.au.dk/</meta></frontmatter> <mainmatter/> </tree></related> <backlinks><tree expanded="false" show-heading="true" show-metadata="true" toc="false" numbered="false" root="false"><frontmatter><anchor>35907</anchor>  <addr>jms-008J</addr><route>jms-008J.xml</route>  <date><year>2023</year> <month>9</month> <day>5</day></date> <authors><author><link href="jonmsterling.xml" type="local" jonmsterling="addr">Jon Sterling</link></author> </authors> <title>Classifying topoi and generalised abstract syntax</title>   </frontmatter> <mainmatter><p>For any small category <tex>\mathscr {C}</tex>, <link href="fiore-2007-ct.xml" type="local" addr="fiore-2007-ct" title="Towards a mathematical theory of substitution">Fiore</link> <link href="fiore-2008.xml" type="local" addr="fiore-2008" title="Second-order and dependently-sorted abstract syntax">treats</link> <tex>\mathscr {C}</tex>-sorted abstract syntax in the functor category <tex>{ \mathopen {} \left  [ \mathscr {C} , \operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} { \mathscr {C} } \right ) \mathclose {}} \right  ] \mathclose {}}</tex> where <tex>\operatorname { \mathbb {L}}</tex> is some 2-monad on <tex>\mathbf {Cat}</tex>; any such functor <tex>P</tex> denotes a set that is indexed in sorts and contexts (where the 2-monad <tex>\operatorname { \mathbb {L}}</tex> takes a category of sorts to the corresponding category of contexts). When <tex>\mathscr {C}</tex> is a set and <tex>\operatorname { \mathbb {L}}</tex> is either finite limit or finite product completion, we recover the standard notions of many-sorted abstract syntax; in general, we get a variety of forms of <em>dependently sorted</em> or <em>generalised</em> abstract syntax.</p><p>We will assume here that <tex>\operatorname { \mathbb {L}}</tex> is the free finite limit completion 2-monad; our goal is to study <link href="fiore-2008.xml" type="local" addr="fiore-2008" title="Second-order and dependently-sorted abstract syntax">Fiore</link>’s general <em>substitution monoidal structure</em> from the point of view of classifying topoi, building on <link href="peterjohnstone.xml" type="local" addr="peterjohnstone" title="Peter T. Johnstone">Johnstone</link>’s analogous observations (<link href="johnstone-2002.xml" type="local" addr="johnstone-2002" title="Sketches of an elephant: a topos theory compendium">Elephant, D3.2</link>) on the non-symmetric monoidal structure of the <em>object classifier</em>. The topos theoretic viewpoint that we will explore is nothing more than a rephrasing of <link href="fiore-2007-ct.xml" type="local" addr="fiore-2007-ct" title="Towards a mathematical theory of substitution">Fiore</link>’s account in terms of the Kleisli composition in a 2-monad; nonetheless the perspective of classifying topoi is enlightening, as it provides an explanation for <em>precisely</em> what internal geometrical structure one expects in a given topos for abstract syntax, potentially leading to improved internal languages.</p><p>For any small category <tex>\mathscr {C}</tex>, the category of presheaves <tex>\operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} \mathscr {C} \right ) \mathclose {}}</tex> corresponds to the <em>classifying topos</em> of diagrams of shape <tex>\mathscr {C}</tex>. Following <link href="anel-joyal-2021.xml" type="local" addr="anel-joyal-2021" title="Topo-logie">Anel and Joyal</link>, we shall write <tex>\mathbb {A} ^{ \mathscr {C} }</tex> for this “affine” classifying topos; under the conventions of <em>op. cit.</em>, we may then identify the category of sheaves <tex>\operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }</tex> with the presheaf category <tex>\operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} { \mathscr {C} } \right ) \mathclose {}}</tex>.</p><p>The universal property of <tex>\mathbb {A} ^{ \mathscr {C} }</tex> as the classifying topos of <tex>\mathscr {C}</tex>-diagrams means that for any topos <tex>\mathcal {X}</tex>, a diagram <tex>{ \mathscr {C} } \xrightarrow {{ P }}{ \operatorname {Sh} { \mathcal {X} } }</tex> corresponds essentially uniquely (by left Kan extension) to a morphism of topoi <tex>{ \mathcal {X} } \xrightarrow {{ \bar {P} }}{ \mathbb {A} ^{ \mathscr {C} } }</tex>. We have a <em>generic <tex>\mathscr {C}</tex>-shaped diagram</em> <tex>{ \mathscr {C} } \xrightarrow {{ \mathrm {G}_{ \mathscr {C} } }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</tex> corresponding under this identification to the identity map on <tex>\mathbb {A} ^{ \mathscr {C} }</tex>. More explicitly, the diagram <tex>\mathrm {G}_{ \mathscr {C} }</tex> is the following composite:</p><tex display="block">    \mathrm {G}_{ \mathscr {C} }  : \equiv   \mathscr {C} \xrightarrow { \eta _ \mathscr {C} }  \operatorname { \mathbb {L}} \mathscr {C} \xrightarrow { よ_{ \mathscr {C} } }  \operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} \mathscr {C} \right ) \mathclose {}}  =  \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } </tex><p>Given a morphism of topoi <tex>{ \mathcal {X} } \xrightarrow {{ f }}{ \mathbb {A} ^{ \mathscr {C} } }</tex>, we may recover the diagram <tex>\mathscr {C} \to { \operatorname {Sh} { \mathcal {X} }}</tex> that it classifies as the composite <tex>\mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } } \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } \xrightarrow { f ^{ * } } \operatorname {Sh} { \mathcal {X} }</tex>.</p><p>In case <tex>\mathcal {X} \equiv \mathbb {A} ^{ \mathscr {C} }</tex>, then, we have a correspondence between <tex>\mathscr {C}</tex>-shaped diagrams of sheaves on <tex>\mathbb {A} ^{ \mathscr {C} }</tex> and endomorphisms of <tex>\mathbb {A} ^{ \mathscr {C} }</tex>; <mark>we are interested in representing the compositions of such endomorphisms as a <em>tensor product</em> on the functor category <tex>{ \mathopen {} \left  [ \mathscr {C} , \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } \right  ] \mathclose {}}</tex></mark>.</p><p>In particular, let <tex>{ \mathscr {C} } \xrightarrow {{ P,Q }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</tex> be two diagrams; taking characteristic maps, we have endomorphisms of affine topoi <tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ \bar {P}, \bar {Q} }}{ \mathbb {A} ^{ \mathscr {C} } }</tex>, which we may compose to obtain <tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ \bar {Q} \circ \bar {P} }}{ \mathbb {A} ^{ \mathscr {C} } }</tex>; then, we will define the tensor <tex>P \bullet  Q</tex> to be the diagram whose characteristic morphism of affine topoi is <tex>\bar {P} \circ \bar {Q}</tex>. In other words:</p><tex display="block">    \begin {aligned}     P \bullet  Q     &amp;: \equiv       \mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { { \mathopen {} \left ( \bar {P} \circ \bar {Q} \right ) \mathclose {}} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \\      &amp;=      \mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { \bar {P} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { \bar {Q} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }    \end {aligned} </tex><p>To give an explicit computation of the tensor product, we first compute the inverse image of any <tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ f }}{ \mathbb {A} ^{ \mathscr {C} } }</tex> on representables <tex>よ_{ \mathscr {C} } \Gamma</tex> for <tex>\Gamma \in \operatorname { \mathbb {L}} \mathscr {C}</tex>. As any left exact functor <tex>{ \operatorname { \mathbb {L}} \mathscr {C} } \xrightarrow {{ H }}{ \mathscr {E} }</tex> is the right Kan extension of <tex>{ \mathscr {C} } \xrightarrow {{ H \circ \eta _ \mathscr {C} }}{ \mathscr {E} }</tex> along <tex>{ C } \xrightarrow {{ \eta _ \mathscr {C} }}{ \operatorname { \mathbb {L}} \mathscr {C} }</tex>, we can conclude that <tex>H \Gamma   \cong   \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} } H { \mathopen {} \left ( \eta _ \mathscr {C} {d} \right ) \mathclose {}}</tex>. We will use this in our calculation below, setting <tex>H: \equiv   f ^{ * } \circ よ_{ \mathscr {C} }</tex>.</p><tex display="block">    \begin {aligned}      f ^{ * } { よ_{ \mathscr {C} } \Gamma }     &amp; \cong       \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} }       f ^{ * } {        よ_{ \mathscr {C} } { \eta _ \mathscr {C} {d}}     }      \\      &amp; \cong       \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} }       f ^{ * } { \mathrm {G}_{ \mathscr {C} } {d}}    \end {aligned} </tex><p>We are now prepared to compute the tensor product of any <tex>{ \mathscr {C} } \xrightarrow {{ P,Q }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</tex>.</p><tex display="block">    \begin {aligned}      { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} c     &amp;=      \bar {Q} ^{ * }       \bar {P} ^{ * }       \mathrm {G}_{ \mathscr {C} } {c}      \\      &amp; \cong       \bar {Q} ^{ * }       { \mathopen {} \left ( Pc \right ) \mathclose {}}       \\      &amp; \cong       \bar {Q} ^{ * }       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       よ_{ \mathscr {C} } \Delta       \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \bar {Q} ^{ * } よ_{ \mathscr {C} } \Delta       \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }       \bar {Q} ^{ * } \mathrm {G}_{ \mathscr {C} } d      \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }      Qd    \end {aligned} </tex><p>Finally, we can relate the computation above to that of <link href="fiore-2008.xml" type="local" addr="fiore-2008" title="Second-order and dependently-sorted abstract syntax">Fiore</link> in terms of coends.</p><tex display="block">    \begin {aligned}      { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} \, c     &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }      Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }      { \mathopen {} \left  [ よ_{ \mathscr {C} } \Delta ,Pc \right  ] \mathclose {}}       \cdot       \operatorname {lim}_{ \Delta \to \eta _ \mathscr {C} {d} }  Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \cdot       \operatorname {lim}_{ \Delta \to \eta _ \mathscr {C} {d} }  Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \cdot       \int _{c \in \mathscr {C} }      { \mathopen {} \left  [ \Delta , \eta _ \mathscr {C} {d} \right  ] \mathclose {}} \pitchfork  Qd    \end {aligned} </tex><p>Above, we have written <tex>{ \mathopen {} \left ( \cdot \right ) \mathclose {}}</tex> and <tex>{ \mathopen {} \left ( \pitchfork \right ) \mathclose {}}</tex> for the tensoring and cotensoring of <tex>\operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }</tex> over <tex>\mathbf {Set}</tex> respectively. Thus, the fully pointwise computation is as follows:</p><tex display="block">    { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} \, c \, \Gamma   \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \times       \int _{c \in \mathscr {C} }      { \mathopen {} \left  [ \Delta , \eta _ \mathscr {C} {d} \right  ] \mathclose {}} \Rightarrow  Q \, d \, \Gamma  </tex><p><em>Thanks to <link href="marcelofiore.xml" type="local" addr="marcelofiore" title="Marcelo Fiore">Marcelo Fiore</link> and <link href="danielgratzer.xml" type="local" addr="danielgratzer" title="Daniel Gratzer">Daniel Gratzer</link> for helpful discussions.</em></p></mainmatter> </tree></backlinks> <references/></backmatter></tree>
+}</fr:meta><fr:meta
+name="doi">10.1145/3341711</fr:meta><fr:meta
+name="venue"><fr:link
+href="icfp-2019.xml"
+type="local"
+addr="icfp-2019"><fr:em>ICFP ’19</fr:em>: The 24th ACM SIGPLAN International Conference on Functional Programming</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Modalities are everywhere in programming and mathematics! Despite this, however, there are still significant technical challenges in formulating a core dependent type theory with modalities. We present a dependent type theory MLTT🔒 supporting the connectives of standard Martin-Löf Type Theory as well as an S4-style necessity operator. MLTT🔒 supports a smooth interaction between modal and dependent types and provides a common basis for the use of modalities in programming and in synthetic mathematics. We design and prove the soundness and completeness of a type checking algorithm for MLTT🔒, using a novel extension of normalization by evaluation. We have also implemented our algorithm in a prototype proof assistant for MLTT🔒, demonstrating the ease of applying our techniques.</fr:p></fr:mainmatter></fr:tree></fr:contributions><fr:context></fr:context><fr:related><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17566</fr:anchor><fr:taxon>Institution</fr:taxon><fr:addr>jms-00GC</fr:addr><fr:route>jms-00GC.xml</fr:route><fr:title>Aarhus University</fr:title><fr:meta
+name="external">https://www.au.dk/</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree></fr:related><fr:backlinks><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"><fr:frontmatter><fr:anchor>17564</fr:anchor><fr:addr>jms-008J</fr:addr><fr:route>jms-008J.xml</fr:route><fr:title>Classifying topoi and generalised abstract syntax</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>For any small category <fr:tex>\mathscr {C}</fr:tex>, <fr:link
+href="fiore-2007-ct.xml"
+type="local"
+addr="fiore-2007-ct">Fiore</fr:link> <fr:link
+href="fiore-2008.xml"
+type="local"
+addr="fiore-2008">treats</fr:link> <fr:tex>\mathscr {C}</fr:tex>-sorted abstract syntax in the functor category <fr:tex>{ \mathopen {} \left  [ \mathscr {C} , \operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} { \mathscr {C} } \right ) \mathclose {}} \right  ] \mathclose {}}</fr:tex> where <fr:tex>\operatorname { \mathbb {L}}</fr:tex> is some 2-monad on <fr:tex>\mathbf {Cat}</fr:tex>; any such functor <fr:tex>P</fr:tex> denotes a set that is indexed in sorts and contexts (where the 2-monad <fr:tex>\operatorname { \mathbb {L}}</fr:tex> takes a category of sorts to the corresponding category of contexts). When <fr:tex>\mathscr {C}</fr:tex> is a set and <fr:tex>\operatorname { \mathbb {L}}</fr:tex> is either finite limit or finite product completion, we recover the standard notions of many-sorted abstract syntax; in general, we get a variety of forms of <fr:em>dependently sorted</fr:em> or <fr:em>generalised</fr:em> abstract syntax.</fr:p><fr:p>We will assume here that <fr:tex>\operatorname { \mathbb {L}}</fr:tex> is the free finite limit completion 2-monad; our goal is to study <fr:link
+href="fiore-2008.xml"
+type="local"
+addr="fiore-2008">Fiore</fr:link>’s general <fr:em>substitution monoidal structure</fr:em> from the point of view of classifying topoi, building on <fr:link
+href="peterjohnstone.xml"
+type="local"
+addr="peterjohnstone">Johnstone</fr:link>’s analogous observations (<fr:link
+href="johnstone-2002.xml"
+type="local"
+addr="johnstone-2002">Elephant, D3.2</fr:link>) on the non-symmetric monoidal structure of the <fr:em>object classifier</fr:em>. The topos theoretic viewpoint that we will explore is nothing more than a rephrasing of <fr:link
+href="fiore-2007-ct.xml"
+type="local"
+addr="fiore-2007-ct">Fiore</fr:link>’s account in terms of the Kleisli composition in a 2-monad; nonetheless the perspective of classifying topoi is enlightening, as it provides an explanation for <fr:em>precisely</fr:em> what internal geometrical structure one expects in a given topos for abstract syntax, potentially leading to improved internal languages.</fr:p><fr:p>For any small category <fr:tex>\mathscr {C}</fr:tex>, the category of presheaves <fr:tex>\operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} \mathscr {C} \right ) \mathclose {}}</fr:tex> corresponds to the <fr:em>classifying topos</fr:em> of diagrams of shape <fr:tex>\mathscr {C}</fr:tex>. Following <fr:link
+href="anel-joyal-2021.xml"
+type="local"
+addr="anel-joyal-2021">Anel and Joyal</fr:link>, we shall write <fr:tex>\mathbb {A} ^{ \mathscr {C} }</fr:tex> for this “affine” classifying topos; under the conventions of <fr:em>op. cit.</fr:em>, we may then identify the category of sheaves <fr:tex>\operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }</fr:tex> with the presheaf category <fr:tex>\operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} { \mathscr {C} } \right ) \mathclose {}}</fr:tex>.</fr:p><fr:p>The universal property of <fr:tex>\mathbb {A} ^{ \mathscr {C} }</fr:tex> as the classifying topos of <fr:tex>\mathscr {C}</fr:tex>-diagrams means that for any topos <fr:tex>\mathcal {X}</fr:tex>, a diagram <fr:tex>{ \mathscr {C} } \xrightarrow {{ P }}{ \operatorname {Sh} { \mathcal {X} } }</fr:tex> corresponds essentially uniquely (by left Kan extension) to a morphism of topoi <fr:tex>{ \mathcal {X} } \xrightarrow {{ \bar {P} }}{ \mathbb {A} ^{ \mathscr {C} } }</fr:tex>. We have a <fr:em>generic <fr:tex>\mathscr {C}</fr:tex>-shaped diagram</fr:em> <fr:tex>{ \mathscr {C} } \xrightarrow {{ \mathrm {G}_{ \mathscr {C} } }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</fr:tex> corresponding under this identification to the identity map on <fr:tex>\mathbb {A} ^{ \mathscr {C} }</fr:tex>. More explicitly, the diagram <fr:tex>\mathrm {G}_{ \mathscr {C} }</fr:tex> is the following composite:</fr:p><fr:tex
+display="block">    \mathrm {G}_{ \mathscr {C} }  : \equiv   \mathscr {C} \xrightarrow { \eta _ \mathscr {C} }  \operatorname { \mathbb {L}} \mathscr {C} \xrightarrow { よ_{ \mathscr {C} } }  \operatorname {Pr} { \mathopen {} \left ( \operatorname { \mathbb {L}} \mathscr {C} \right ) \mathclose {}}  =  \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } </fr:tex><fr:p>Given a morphism of topoi <fr:tex>{ \mathcal {X} } \xrightarrow {{ f }}{ \mathbb {A} ^{ \mathscr {C} } }</fr:tex>, we may recover the diagram <fr:tex>\mathscr {C} \to { \operatorname {Sh} { \mathcal {X} }}</fr:tex> that it classifies as the composite <fr:tex>\mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } } \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } \xrightarrow { f ^{ * } } \operatorname {Sh} { \mathcal {X} }</fr:tex>.</fr:p><fr:p>In case <fr:tex>\mathcal {X} \equiv \mathbb {A} ^{ \mathscr {C} }</fr:tex>, then, we have a correspondence between <fr:tex>\mathscr {C}</fr:tex>-shaped diagrams of sheaves on <fr:tex>\mathbb {A} ^{ \mathscr {C} }</fr:tex> and endomorphisms of <fr:tex>\mathbb {A} ^{ \mathscr {C} }</fr:tex>; <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">we are interested in representing the compositions of such endomorphisms as a <fr:em>tensor product</fr:em> on the functor category <fr:tex>{ \mathopen {} \left  [ \mathscr {C} , \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } \right  ] \mathclose {}}</fr:tex></html:mark>.</fr:p><fr:p>In particular, let <fr:tex>{ \mathscr {C} } \xrightarrow {{ P,Q }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</fr:tex> be two diagrams; taking characteristic maps, we have endomorphisms of affine topoi <fr:tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ \bar {P}, \bar {Q} }}{ \mathbb {A} ^{ \mathscr {C} } }</fr:tex>, which we may compose to obtain <fr:tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ \bar {Q} \circ \bar {P} }}{ \mathbb {A} ^{ \mathscr {C} } }</fr:tex>; then, we will define the tensor <fr:tex>P \bullet  Q</fr:tex> to be the diagram whose characteristic morphism of affine topoi is <fr:tex>\bar {P} \circ \bar {Q}</fr:tex>. In other words:</fr:p><fr:tex
+display="block">    \begin {aligned}     P \bullet  Q     &amp;: \equiv       \mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { { \mathopen {} \left ( \bar {P} \circ \bar {Q} \right ) \mathclose {}} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \\      &amp;=      \mathscr {C} \xrightarrow { \mathrm {G}_{ \mathscr {C} } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { \bar {P} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }      \xrightarrow { \bar {Q} ^{ * } }      \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }    \end {aligned} </fr:tex><fr:p>To give an explicit computation of the tensor product, we first compute the inverse image of any <fr:tex>{ \mathbb {A} ^{ \mathscr {C} } } \xrightarrow {{ f }}{ \mathbb {A} ^{ \mathscr {C} } }</fr:tex> on representables <fr:tex>よ_{ \mathscr {C} } \Gamma</fr:tex> for <fr:tex>\Gamma \in \operatorname { \mathbb {L}} \mathscr {C}</fr:tex>. As any left exact functor <fr:tex>{ \operatorname { \mathbb {L}} \mathscr {C} } \xrightarrow {{ H }}{ \mathscr {E} }</fr:tex> is the right Kan extension of <fr:tex>{ \mathscr {C} } \xrightarrow {{ H \circ \eta _ \mathscr {C} }}{ \mathscr {E} }</fr:tex> along <fr:tex>{ C } \xrightarrow {{ \eta _ \mathscr {C} }}{ \operatorname { \mathbb {L}} \mathscr {C} }</fr:tex>, we can conclude that <fr:tex>H \Gamma   \cong   \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} } H { \mathopen {} \left ( \eta _ \mathscr {C} {d} \right ) \mathclose {}}</fr:tex>. We will use this in our calculation below, setting <fr:tex>H: \equiv   f ^{ * } \circ よ_{ \mathscr {C} }</fr:tex>.</fr:p><fr:tex
+display="block">    \begin {aligned}      f ^{ * } { よ_{ \mathscr {C} } \Gamma }     &amp; \cong       \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} }       f ^{ * } {        よ_{ \mathscr {C} } { \eta _ \mathscr {C} {d}}     }      \\      &amp; \cong       \operatorname {lim}_{ \Gamma \to \eta _ \mathscr {C} {d} }       f ^{ * } { \mathrm {G}_{ \mathscr {C} } {d}}    \end {aligned} </fr:tex><fr:p>We are now prepared to compute the tensor product of any <fr:tex>{ \mathscr {C} } \xrightarrow {{ P,Q }}{ \operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } } }</fr:tex>.</fr:p><fr:tex
+display="block">    \begin {aligned}      { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} c     &amp;=      \bar {Q} ^{ * }       \bar {P} ^{ * }       \mathrm {G}_{ \mathscr {C} } {c}      \\      &amp; \cong       \bar {Q} ^{ * }       { \mathopen {} \left ( Pc \right ) \mathclose {}}       \\      &amp; \cong       \bar {Q} ^{ * }       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       よ_{ \mathscr {C} } \Delta       \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \bar {Q} ^{ * } よ_{ \mathscr {C} } \Delta       \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }       \bar {Q} ^{ * } \mathrm {G}_{ \mathscr {C} } d      \\      &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }      Qd    \end {aligned} </fr:tex><fr:p>Finally, we can relate the computation above to that of <fr:link
+href="fiore-2008.xml"
+type="local"
+addr="fiore-2008">Fiore</fr:link> in terms of coends.</fr:p><fr:tex
+display="block">    \begin {aligned}      { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} \, c     &amp; \cong       \operatorname {colim}_{ よ_{ \mathscr {C} } \Delta \to  Pc }       \operatorname {lim}_{ \Delta \to   \eta _ \mathscr {C} {d} }      Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }      { \mathopen {} \left  [ よ_{ \mathscr {C} } \Delta ,Pc \right  ] \mathclose {}}       \cdot       \operatorname {lim}_{ \Delta \to \eta _ \mathscr {C} {d} }  Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \cdot       \operatorname {lim}_{ \Delta \to \eta _ \mathscr {C} {d} }  Qd      \\      &amp; \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \cdot       \int _{c \in \mathscr {C} }      { \mathopen {} \left  [ \Delta , \eta _ \mathscr {C} {d} \right  ] \mathclose {}} \pitchfork  Qd    \end {aligned} </fr:tex><fr:p>Above, we have written <fr:tex>{ \mathopen {} \left ( \cdot \right ) \mathclose {}}</fr:tex> and <fr:tex>{ \mathopen {} \left ( \pitchfork \right ) \mathclose {}}</fr:tex> for the tensoring and cotensoring of <fr:tex>\operatorname {Sh} { \mathbb {A} ^{ \mathscr {C} } }</fr:tex> over <fr:tex>\mathbf {Set}</fr:tex> respectively. Thus, the fully pointwise computation is as follows:</fr:p><fr:tex
+display="block">    { \mathopen {} \left ( P \bullet  Q \right ) \mathclose {}} \, c \, \Gamma   \cong       \int ^{ \Delta \in \operatorname { \mathbb {L}} \mathscr {C} }     P \, c \, \Delta       \times       \int _{c \in \mathscr {C} }      { \mathopen {} \left  [ \Delta , \eta _ \mathscr {C} {d} \right  ] \mathclose {}} \Rightarrow  Q \, d \, \Gamma  </fr:tex><fr:p><fr:em>Thanks to <fr:link
+href="marcelofiore.xml"
+type="local"
+addr="marcelofiore">Marcelo Fiore</fr:link> and <fr:link
+href="danielgratzer.xml"
+type="local"
+addr="danielgratzer">Daniel Gratzer</fr:link> for helpful discussions.</fr:em></fr:p></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
