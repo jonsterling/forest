@@ -57,7 +57,7 @@
   <xsl:template name="numbered-taxon">
     <span class="taxon">
       <xsl:apply-templates select="f:taxon" />
-      <xsl:if test="(not(../@numbered='false') and not(../@toc='false') and count(../../f:tree) > 1) or f:number">
+      <xsl:if test="(not(ancestor-or-self::f:tree[@numbered='false' or ../@toc='false']) and count(../../f:tree) > 1) or f:number">
         <xsl:if test="f:taxon">
           <xsl:text>&#160;</xsl:text>
         </xsl:if>
@@ -70,7 +70,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
-      <xsl:if test="f:taxon or (not(../@numbered='false') and not(../@toc='false') and count(../../f:tree) > 1) or f:number">
+      <xsl:if test="f:taxon or (not(ancestor-or-self::f:tree[@numbered='false' or ../@toc='false']) and count(../../f:tree) > 1) or f:number">
         <xsl:text>.&#160;</xsl:text>
       </xsl:if>
     </span>
@@ -79,7 +79,31 @@
   <xsl:template match="f:tree" mode="toc">
     <li>
       <xsl:for-each select="f:frontmatter">
-        <a href="{f:route}" class="bullet" title="{f:title} [{f:addr}]">■</a>
+        <a class="bullet">
+          <xsl:choose>
+            <xsl:when test="f:addr and f:route">
+              <xsl:attribute name="href">
+                <xsl:value-of select="f:route" />
+              </xsl:attribute>
+              <xsl:attribute name="title">
+                <xsl:value-of select="f:title" />
+                <xsl:text>[</xsl:text>
+                <xsl:value-of select="f:addr" />
+                <xsl:text>]</xsl:text>
+              </xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="href">
+                <xsl:text>#tree-</xsl:text>
+                <xsl:value-of select="f:anchor"/>
+              </xsl:attribute>
+              <xsl:attribute name="title">
+                <xsl:value-of select="f:title" />
+              </xsl:attribute>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>■</xsl:text>
+        </a>
         <span class="link local" data-target="#tree-{f:anchor}">
           <xsl:call-template name="numbered-taxon" />
           <xsl:apply-templates select="f:title" />
@@ -159,7 +183,7 @@
         <xsl:value-of select="f:frontmatter/f:number" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:number format="1.1" count="f:tree[ancestor::f:tree and not(@toc='false') and not(@numbered='false')]" level="multiple" />
+        <xsl:number format="1.1" count="f:tree[ancestor::f:tree and not(@toc='false' or @numbered='false')]" level="multiple" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -189,7 +213,7 @@
         <xsl:when test="@number">
           <xsl:value-of select="@number" />
         </xsl:when>
-        <xsl:when test="key('tree-with-addr',current()/@addr)[not(@numbered='false') and not(@toc='false')]">
+        <xsl:when test="key('tree-with-addr',current()/@addr)[not(@numbered='false' or @toc='false')]">
           <xsl:apply-templates select="key('tree-with-addr',current()/@addr)[1]" mode="tree-number" />
         </xsl:when>
         <xsl:otherwise>
