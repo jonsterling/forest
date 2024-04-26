@@ -7,17 +7,17 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10215</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#527</fr:addr><fr:route>unstable-527.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>10667</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#527</fr:addr><fr:route>unstable-527.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00CG</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>We are trying to check that the following identity holds:</fr:p>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00CE</fr:parent></fr:frontmatter><fr:mainmatter>
 
+  <fr:p>We are trying to check that the following morphism is an identity:</fr:p>
   
  
   
   <fr:embedded-tex
-hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
+hash="29ba5a580563f334299fd62cfbf02ec5"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -295,43 +295,19 @@ hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
      
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
      \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-    $=$
-     
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$T$] (t2)
-      ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
        
      \end {scope}
    \end {tikzpicture}
@@ -340,14 +316,12 @@ hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
  
 
 
-  <fr:ol><fr:li>
-      We will start on the right-hand side. We first unfold the definition of the algebra map.
-
+  <fr:ol><fr:li>We unfold the definition of the algebra map <fr:tex>\alpha _{ \bar { X } }</fr:tex>.
       
  
   
   <fr:embedded-tex
-hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
+hash="69aed4dda590b73ee7b90481430fc84e"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -625,25 +599,21 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
          
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$T$] (t2)
-      ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
      \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
        
-           \node [blue halo,fit=(alg1)]{};
-           \node [blue halo,fit=(alg2)]{};
+           \node [blue halo, fit=(alg)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -654,33 +624,21 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-4) coordinate (center)
       ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
     ;
-
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
-
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
-
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
-           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+           \node [blue halo, fit=(pi)(alg)(mu)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -688,13 +646,13 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the fact that <fr:tex>\pi _{ X }</fr:tex> inverts <fr:tex>\alpha _{ X }</fr:tex>.
+      We use the unit law for <fr:tex>\mathbb {T}</fr:tex>.
 
       
  
   
   <fr:embedded-tex
-hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
+hash="7a350f6edba06c13ae4b588960adf26e"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -976,32 +934,21 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-4) coordinate (center)
       ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
     ;
-
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
-
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
-
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(alg/1)(pi/2)]{};
+           \node [blue halo, fit=(mu)(unit)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -1012,21 +959,14 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
      \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
       coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
       coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
+     \draw  (pi) to[out=0,in=70] (alg);
      \begin {scope}[on background layer]
        \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
@@ -1036,12 +976,13 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the associativity of the monad <fr:tex>\mathbb {T}</fr:tex>.
+      Finally, we use the fact that <fr:tex>\pi _{ X }</fr:tex> is inverse to <fr:tex>\alpha _{ X }</fr:tex>.
+
       
  
   
   <fr:embedded-tex
-hash="1f7d99ad5ce0ab4417c35492b656b299"><fr:embedded-tex-preamble>
+hash="dc6190aa9ffc5e41b863d19bbe64984b"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -1323,392 +1264,32 @@ hash="1f7d99ad5ce0ab4417c35492b656b299"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
      \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
       coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
       coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
+     \draw  (pi) to[out=0,in=70] (alg);
      \begin {scope}[on background layer]
        \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
+           \node [blue halo,fit=(pi)(alg)]{};
          
      \end {scope}
    \end {tikzpicture}
  
         $=$
          
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
-      ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-    ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
-
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
-
-     \draw  (pi.center) to (mul/2.center);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      Folding the definition of the algebra map, we have the desired cell.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="83ea7c3760f45441261b202767ac1b9c"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
-      ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-    ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
-
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
-
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
+       \fill [catc] (t) to (b) to (br) to (tl -| br);
      \end {scope}
    \end {tikzpicture}
  
@@ -1720,7 +1301,7 @@ numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10213</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-00CG</fr:addr><fr:route>jms-00CG.xml</fr:route><fr:title>Associativity of the <fr:link
+root="false"><fr:frontmatter><fr:anchor>10665</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-00CE</fr:addr><fr:route>jms-00CE.xml</fr:route><fr:title>Unitality of the <fr:link
 href="jms-00CD.xml"
 type="local"
 addr="jms-00CD">induced monad algebra</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
@@ -1735,7 +1316,7 @@ type="local"
 addr="jms-00CD">induced monad algebra</fr:link> <fr:tex>\bar { X }</fr:tex> is <fr:link
 href="jms-00C5.xml"
 type="local"
-addr="jms-00C5">associative</fr:link>.</fr:p>
+addr="jms-00C5">unital</fr:link>.</fr:p>
  
    
    <fr:tree
@@ -1745,17 +1326,17 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10120</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#527</fr:addr><fr:route>unstable-527.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>10568</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#527</fr:addr><fr:route>unstable-527.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00CG</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>We are trying to check that the following identity holds:</fr:p>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00CE</fr:parent></fr:frontmatter><fr:mainmatter>
 
+  <fr:p>We are trying to check that the following morphism is an identity:</fr:p>
   
  
   
   <fr:embedded-tex
-hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
+hash="29ba5a580563f334299fd62cfbf02ec5"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -2033,43 +1614,19 @@ hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
      
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
      \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-    $=$
-     
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$T$] (t2)
-      ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
        
      \end {scope}
    \end {tikzpicture}
@@ -2078,14 +1635,12 @@ hash="e8cff846faf9d05004125b5884e438ec"><fr:embedded-tex-preamble>
  
 
 
-  <fr:ol><fr:li>
-      We will start on the right-hand side. We first unfold the definition of the algebra map.
-
+  <fr:ol><fr:li>We unfold the definition of the algebra map <fr:tex>\alpha _{ \bar { X } }</fr:tex>.
       
  
   
   <fr:embedded-tex
-hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
+hash="69aed4dda590b73ee7b90481430fc84e"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -2363,25 +1918,21 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
          
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$T$] (t2)
-      ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tll)!0.5!(brr)$)]
+     \path  coordinate (tll)
+      ++(1,0) coordinate[label=above:$ X $] (tl)
+      +(2,-.5) coordinate[dot,label=right:$ \eta $] (eta)
+      ++(2,-3) coordinate (bl)
+      ++(1,0) coordinate[label=below:$ X $] (br)
+      ++(1,0) coordinate (brr);
+     \path [spath/save=vert] (eta) to (bl);
+     \draw [spath/save=swoosh] (tl) to[out=-90,in=90] (br);
+     \draw [name intersections={of=vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
+     \draw  (eta.center) to (alg.center);
      \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+       \fill [catc] (tl) to[spath/use={swoosh,weld}] (br) to (brr) to (tl -| brr) to cycle;
        
-           \node [blue halo,fit=(alg1)]{};
-           \node [blue halo,fit=(alg2)]{};
+           \node [blue halo, fit=(alg)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -2392,33 +1943,21 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-4) coordinate (center)
       ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
     ;
-
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
-
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
-
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
-           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+           \node [blue halo, fit=(pi)(alg)(mu)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -2426,13 +1965,13 @@ hash="29cc5a5a2c5579b5a11909a80e2dd58a"><fr:embedded-tex-preamble>
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the fact that <fr:tex>\pi _{ X }</fr:tex> inverts <fr:tex>\alpha _{ X }</fr:tex>.
+      We use the unit law for <fr:tex>\mathbb {T}</fr:tex>.
 
       
  
   
   <fr:embedded-tex
-hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
+hash="7a350f6edba06c13ae4b588960adf26e"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -2714,32 +2253,21 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-4) coordinate (center)
       ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
     ;
-
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
-
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
-
+     \path  (pi -| alg) ++(0,.5) coordinate[dot,label=right:$ \eta $] (unit);
+     \draw [spath/save=vert] (alg) to (unit);
+     \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
+     \draw  (pi.center) to (mu.center);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(alg/1)(pi/2)]{};
+           \node [blue halo, fit=(mu)(unit)]{};
          
      \end {scope}
    \end {tikzpicture}
@@ -2750,21 +2278,14 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
      \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
       coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
       coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
+     \draw  (pi) to[out=0,in=70] (alg);
      \begin {scope}[on background layer]
        \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
@@ -2774,12 +2295,13 @@ hash="c57794bbc3ccd5df32ca4b544035aba3"><fr:embedded-tex-preamble>
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the associativity of the monad <fr:tex>\mathbb {T}</fr:tex>.
+      Finally, we use the fact that <fr:tex>\pi _{ X }</fr:tex> is inverse to <fr:tex>\alpha _{ X }</fr:tex>.
+
       
  
   
   <fr:embedded-tex
-hash="1f7d99ad5ce0ab4417c35492b656b299"><fr:embedded-tex-preamble>
+hash="dc6190aa9ffc5e41b863d19bbe64984b"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -3061,392 +2583,32 @@ hash="1f7d99ad5ce0ab4417c35492b656b299"><fr:embedded-tex-preamble>
      \path 
       coordinate (nw)
       ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$ X $] (s/X)
       ++(1,0) coordinate (se);
      \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
      \path 
       coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
       coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
+     \draw  (pi) to[out=0,in=70] (alg);
      \begin {scope}[on background layer]
        \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
        
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
+           \node [blue halo,fit=(pi)(alg)]{};
          
      \end {scope}
    \end {tikzpicture}
  
         $=$
          
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
-      ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-    ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
-
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
-
-     \draw  (pi.center) to (mul/2.center);
+   \begin {tikzpicture}[scale=0.5,baseline=($(tl)!0.5!(br)$)]
+     \path  coordinate (tl)
+      ++(1,0) coordinate[label=above:$X$] (t)
+      ++(0,-3) coordinate[label=below:$X$] (b)
+      ++(1,0) coordinate (br);
+     \draw  (t) to (b);
      \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      Folding the definition of the algebra map, we have the desired cell.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="83ea7c3760f45441261b202767ac1b9c"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
-      ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-    ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
-
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
-
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
-      ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
+       \fill [catc] (t) to (b) to (br) to (tl -| br);
      \end {scope}
    \end {tikzpicture}
  

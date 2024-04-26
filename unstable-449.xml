@@ -7,310 +7,32 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>881</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#449</fr:addr><fr:route>unstable-449.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>989</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#449</fr:addr><fr:route>unstable-449.xml</fr:route><fr:title><fr:link
+href="jms-00RN.xml"
+type="local"
+addr="jms-00RN">Baby steps in higher domain theory</fr:link> › analytic <fr:em>vs.</fr:em> synthetic domain theory (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Extending along <fr:tex>\omega \hookrightarrow \bar \omega</fr:tex> means: equip an “<fr:tex>\omega</fr:tex>-chain” with a “colimit”, given by evaluation of the extension at <fr:tex>\infty</fr:tex>.</fr:p>
- 
-  
-  <fr:embedded-tex
-hash="c67898f9401d8ff5e8e05669fcfbfd26"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \begin {tikzpicture}[diagram]
-    \node (nw) {$ \omega $};
-    \node [below = of nw] (sw) {$ \bar \omega $};
-    \node [right = of nw] (ne) {$X$};
-    \draw [embedding] (nw) to (sw);
-    \draw [-&gt;] (nw) to node[above] {$x_ \bullet $} (ne);
-    \draw [exists,-&gt;] (sw) to node[sloped,below] {$ \hat {x}_ \bullet $} (ne);
-    \node [left = of sw] (pt) {$ \mathbf {1}$};
-    \draw [-&gt;] (pt) to node[below] {$ \infty $} (sw);
-   \end {tikzpicture}
- </fr:embedded-tex-body></fr:embedded-tex>
- 
-<fr:p>Stability of the left class under open immersions <fr:tex>U \hookrightarrow   \bar \omega</fr:tex> implies that if <fr:tex>X</fr:tex> is a predomain, so is <fr:tex>L { \mathopen {} \left ( X \right ) \mathclose {}}</fr:tex>.</fr:p></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In the 1990s, <fr:link
+href="fiore-rosolini-1997-mfps.xml"
+type="local"
+addr="fiore-rosolini-1997-mfps">Fiore and Rosolini</fr:link> and <fr:link
+href="fiore-plotkin-1997.xml"
+type="local"
+addr="fiore-plotkin-1997">Fiore and Plotkin</fr:link> studied the representation of analytic categories of domains in toposes of synthetic domains by taking sheaves, building on prior work of Scott.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>We hope</fr:strong> that we can also take <fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-sheaves on a dense generator of the category of <fr:tex>\omega</fr:tex>-cpos to obtain a model of <fr:strong>higher synthetic domain theory</fr:strong>. Our existing work on lifting should apply.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>Open question.</fr:strong> We must get a better understanding of models of SDT as classifying toposes in order to continue to synthetic quasicoherence.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p>Related to our current efforts, we hope also to investigate whether the <fr:em>formally (co)complete cuboidal sets</fr:em> of <fr:link
+href="fiore-plotkin-power-1997.xml"
+type="local"
+addr="fiore-plotkin-power-1997">Fiore, Plotkin, and Power (1997)</fr:link> have a synthetic counterpart.</fr:p></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>878</fr:anchor><fr:taxon>Presentation</fr:taxon><fr:addr>jms-00RN</fr:addr><fr:route>jms-00RN.xml</fr:route><fr:title>Baby steps in higher domain theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>986</fr:anchor><fr:taxon>Presentation</fr:taxon><fr:addr>jms-00RN</fr:addr><fr:route>jms-00RN.xml</fr:route><fr:title>Baby steps in higher domain theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
@@ -346,7 +68,7 @@ numbered="true"
 show-heading="false"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>564</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#427</fr:addr><fr:route>unstable-427.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>554</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#426</fr:addr><fr:route>unstable-426.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This is joint work with my masters/Part III student <fr:strong><fr:link
@@ -360,7 +82,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>568</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title>What is domain theory?</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>558</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#427</fr:addr><fr:route>unstable-427.xml</fr:route><fr:title>What is domain theory?</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Domain theory is “topology with an attitude”...</fr:p><beamer:pause
@@ -378,7 +100,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>571</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:title>Domains for computer science</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>561</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title>Domains for computer science</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A domain is a space in which computation happens.</fr:p><fr:p>The (generalised) points of a domain correspond to specific programs.</fr:p><fr:p>Points of a domain <fr:tex>X</fr:tex> are equipped with an information order <fr:tex>u \sqsubseteq _X v</fr:tex> that can be thought of in two ways:</fr:p><fr:ol><fr:li><fr:strong>Logic:</fr:strong> “Any observably true property of <fr:tex>u</fr:tex> is also true of <fr:tex>v</fr:tex>.”</fr:li>
@@ -391,7 +113,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>573</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#430</fr:addr><fr:route>unstable-430.xml</fr:route><fr:title>Recursion as passage to the (co)limit</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>563</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:title>Recursion as passage to the (co)limit</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>With the information order, domains are naturally arranged into a (locally posetal) bicategory. Recursion is interpreted as <fr:em>sequential colimit</fr:em>, both at the “type level” and the “program level”.</fr:p><fr:ol><fr:li>A recursively defined domain is obtained as the pseudo-colimit of an <fr:tex>\omega</fr:tex>-chain of internal adjunctions (<fr:link
@@ -405,7 +127,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>575</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#431</fr:addr><fr:route>unstable-431.xml</fr:route><fr:title>Denotational semantics in domains</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>565</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#430</fr:addr><fr:route>unstable-430.xml</fr:route><fr:title>Denotational semantics in domains</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Domains have served as the computational substrate for the <fr:em>denotational semantics of programming languages</fr:em> to enable computational reasoning about recursive processes.</fr:p><fr:p>The simplest kinds of domains, <fr:tex>\omega</fr:tex>-cpos and dcpos, have had the widest applicability for “working computer scientists”.</fr:p><fr:p>Some computational effects (<fr:em>e.g.</fr:em> exceptions, first-order store, non-determinism, <fr:em>etc.</fr:em>) dealt with elegantly in terms of these simple domains. <fr:em>Concurrency is another story.</fr:em></fr:p></fr:mainmatter></fr:tree><fr:tree
@@ -415,7 +137,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>578</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#432</fr:addr><fr:route>unstable-432.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>568</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#431</fr:addr><fr:route>unstable-431.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In classical domain theory, observations are “propositional”: there is at most one way for an observation to happen (<fr:em>e.g.</fr:em> termination). Early attempts at concurrency semantics used domains of <fr:em>sets of traces</fr:em>.</fr:p><beamer:pause
@@ -426,7 +148,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>583</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#433</fr:addr><fr:route>unstable-433.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>573</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#432</fr:addr><fr:route>unstable-432.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\alpha</fr:tex> be an “action”, and consider the two processes <fr:tex>\alpha \star</fr:tex> and <fr:tex>\alpha . \varnothing  +  \alpha \star</fr:tex>.</fr:p><beamer:pause
@@ -445,7 +167,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>586</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#434</fr:addr><fr:route>unstable-434.xml</fr:route><fr:title>Towards <fr:tex>\infty</fr:tex>-bicategories of domains</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>576</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#433</fr:addr><fr:route>unstable-433.xml</fr:route><fr:title>Towards <fr:tex>\infty</fr:tex>-bicategories of domains</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Bicategories of concurrent domains abound (most examples arising from distributors, spans, or the like).</fr:p><beamer:pause
@@ -459,7 +181,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>588</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#435</fr:addr><fr:route>unstable-435.xml</fr:route><fr:title>Simplicial homotopy type theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>578</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#434</fr:addr><fr:route>unstable-434.xml</fr:route><fr:title>Simplicial homotopy type theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
@@ -473,7 +195,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>590</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#436</fr:addr><fr:route>unstable-436.xml</fr:route><fr:title>Lifting and partial map classifiers</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>580</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#435</fr:addr><fr:route>unstable-435.xml</fr:route><fr:title>Lifting and partial map classifiers</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Domains are usually defined as the <fr:em>algebras</fr:em> for a partial map classifier (pseudo-)monad, where <fr:tex>\mathcal {O}</fr:tex> is a <fr:link
@@ -490,7 +212,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>592</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#437</fr:addr><fr:route>unstable-437.xml</fr:route><fr:title>Right-handed universal property of partial map classifiers</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>582</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#436</fr:addr><fr:route>unstable-436.xml</fr:route><fr:title>Right-handed universal property of partial map classifiers</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Maps <fr:tex>X \to  L { \mathopen {} \left ( A \right ) \mathclose {}}</fr:tex> uniquely determine spans <fr:tex>X \hookleftarrow  U \to  A</fr:tex> whose left components are <fr:em><fr:strong>open</fr:strong></fr:em>, i.e. classified by <fr:tex>{ \mathopen {} \left \{ 1 \right \} \mathclose {}} \subseteq \mathbb {I}</fr:tex>, as follows:</fr:p>
@@ -802,7 +524,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>594</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#438</fr:addr><fr:route>unstable-438.xml</fr:route><fr:title><fr:link
+root="false"><fr:frontmatter><fr:anchor>584</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#437</fr:addr><fr:route>unstable-437.xml</fr:route><fr:title><fr:link
 href="phoa-1991.xml"
 type="local"
 addr="phoa-1991">Phoa’s principle</fr:link> in higher domain theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
@@ -819,7 +541,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>596</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#439</fr:addr><fr:route>unstable-439.xml</fr:route><fr:title>The higher Phoa principle (<fr:link
+root="false"><fr:frontmatter><fr:anchor>586</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#438</fr:addr><fr:route>unstable-438.xml</fr:route><fr:title>The higher Phoa principle (<fr:link
 href="leonipugh.xml"
 type="local"
 addr="leonipugh">Leoni Pugh</fr:link>)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
@@ -837,7 +559,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>598</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#440</fr:addr><fr:route>unstable-440.xml</fr:route><fr:title>The Phoa principle <fr:em>vs.</fr:em> synthetic quasicoherence</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>588</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#439</fr:addr><fr:route>unstable-439.xml</fr:route><fr:title>The Phoa principle <fr:em>vs.</fr:em> synthetic quasicoherence</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The higher Phoa principle is a Kock–Lawvere / <fr:em><fr:link
@@ -853,7 +575,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>600</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#441</fr:addr><fr:route>unstable-441.xml</fr:route><fr:title>The partial map classifier of a synthetic <fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-category</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>590</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#440</fr:addr><fr:route>unstable-440.xml</fr:route><fr:title>The partial map classifier of a synthetic <fr:tex>{ \mathopen {} \left ( \infty ,1 \right ) \mathclose {}}</fr:tex>-category</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Assuming the higher Phoa principle, <fr:link
@@ -872,7 +594,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>602</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#442</fr:addr><fr:route>unstable-442.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>592</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#441</fr:addr><fr:route>unstable-441.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In traditional domain theory, the partial map classifier has an additional <fr:em>left</fr:em>-handed universal property: the Sierpiński cone.</fr:p>
@@ -1178,7 +900,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>604</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#443</fr:addr><fr:route>unstable-443.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>594</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#442</fr:addr><fr:route>unstable-442.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The scone’s universal property allows “case analysis” on whether a partial element is defined, <fr:em>even</fr:em> in constructive domain theory. When <fr:tex>c_ \bot   \sqsubseteq _C c_ \eta  x</fr:tex>, we may define:</fr:p>
@@ -1490,7 +1212,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>608</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#444</fr:addr><fr:route>unstable-444.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>598</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#443</fr:addr><fr:route>unstable-443.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can actually compute the scone <fr:tex>\bot { \mathopen {} \left ( A \right ) \mathclose {}}</fr:tex> in simplicial type theory.</fr:p><fr:ol><fr:li>
@@ -1802,7 +1524,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>611</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#445</fr:addr><fr:route>unstable-445.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (IV)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>601</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#444</fr:addr><fr:route>unstable-444.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (IV)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>When <fr:tex>A</fr:tex> is Rezk, we have a comparison map <fr:tex>\bot { \mathopen {} \left ( A \right ) \mathclose {}}   \to  L { \mathopen {} \left ( A \right ) \mathclose {}}</fr:tex>. <fr:link
@@ -2120,7 +1842,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>615</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#446</fr:addr><fr:route>unstable-446.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (V)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>605</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#445</fr:addr><fr:route>unstable-445.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (V)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In the case of dcpos, unique extensions of <fr:tex>f \colon   \bot { \mathopen {} \left ( A \right ) \mathclose {}} \to  C</fr:tex> along the comparison map <fr:tex>\bot { \mathopen {} \left ( A \right ) \mathclose {}} \to  L { \mathopen {} \left ( A \right ) \mathclose {}}</fr:tex> are obtained by taking the <fr:em>colimits</fr:em> of diagrams <fr:tex>\bot { \mathopen {} \left ( i=1 \right ) \mathclose {}} \to  C</fr:tex>:</fr:p><fr:tex
@@ -2136,7 +1858,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>617</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#447</fr:addr><fr:route>unstable-447.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>607</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#446</fr:addr><fr:route>unstable-446.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (I)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Complete Segal spaces would provide a model of <fr:em>higher analytic domain theory</fr:em>, where cocontinuity conditions are explicit:</fr:p><fr:ol><fr:li>Recursion is implemented by sequential colimits.</fr:li>
@@ -2148,7 +1870,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>621</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#448</fr:addr><fr:route>unstable-448.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>611</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#447</fr:addr><fr:route>unstable-447.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In <fr:em>synthetic</fr:em> domain theory, we expect a topos equipped with a <fr:em><fr:strong>full reflective subfibration</fr:strong></fr:em> of suitable “cocomplete” objects. This is, by definition, an orthogonality condition! “Cocontinuity” is thus automatic.</fr:p><beamer:pause
@@ -2160,7 +1882,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>623</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#449</fr:addr><fr:route>unstable-449.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>613</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#448</fr:addr><fr:route>unstable-448.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Extending along <fr:tex>\omega \hookrightarrow \bar \omega</fr:tex> means: equip an “<fr:tex>\omega</fr:tex>-chain” with a “colimit”, given by evaluation of the extension at <fr:tex>\infty</fr:tex>.</fr:p>
@@ -2463,7 +2185,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>625</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#450</fr:addr><fr:route>unstable-450.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>618</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#449</fr:addr><fr:route>unstable-449.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>In the 1990s, <fr:link
@@ -2485,7 +2207,66 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>627</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#451</fr:addr><fr:route>unstable-451.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>620</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#450</fr:addr><fr:route>unstable-450.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"><fr:frontmatter><fr:anchor>976</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>fiore-plotkin-power-1997</fr:addr><fr:route>fiore-plotkin-power-1997.xml</fr:route><fr:title>Complete cuboidal sets in axiomatic domain theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="marcelofiore.xml"
+type="local"
+addr="marcelofiore">Marcelo Fiore</fr:link></fr:author><fr:author>Gordon D. Plotkin</fr:author><fr:author>John Power</fr:author></fr:authors><fr:meta
+name="doi">10.1109/LICS.1997.614954</fr:meta><fr:meta
+name="venue">LICS 1997</fr:meta><fr:meta
+name="bibtex">@inproceedings{fiore-plotkin-power-1997,
+  author = {Fiore, Marcelo P. and Plotkin, Gordon D. and Power, John},
+  address = {Los Alamitos, CA, USA},
+  publisher = {IEEE Computer Society},
+  booktitle = {Symposium on Logic in Computer Science},
+  year = {1997},
+  month = jul,
+  doi = {10.1109/LICS.1997.614954},
+  issn = {1043-6871},
+  pages = {268},
+  title = {Complete Cuboidal Sets in Axiomatic Domain Theory},
+}</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"><fr:frontmatter><fr:anchor>980</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>fiore-rosolini-1997-mfps</fr:addr><fr:route>fiore-rosolini-1997-mfps.xml</fr:route><fr:title>The category of cpos from a synthetic viewpoint</fr:title><fr:date><fr:year>1997</fr:year></fr:date><fr:authors><fr:author><fr:link
+href="marcelofiore.xml"
+type="local"
+addr="marcelofiore">Marcelo Fiore</fr:link></fr:author><fr:author><fr:link
+href="pinorosolini.xml"
+type="local"
+addr="pinorosolini">Guiseppe Rosolini</fr:link></fr:author></fr:authors><fr:meta
+name="venue"><fr:em>MFPS ’97</fr:em>: Thirteenth Annual Conference on Mathematical Foundations of Progamming Semantics</fr:meta><fr:meta
+name="doi">10.1016/S1571-0661(05)80165-3</fr:meta><fr:meta
+name="bibtex">@inproceedings{fiore-rosolini-1997-mfps,
+  author = {Fiore, Marcelo P. and Rosolini, Giuseppe},
+  editor = {Brookes, Stephen D. and Mislove, Michael W.},
+  publisher = {Elsevier},
+  booktitle = {Thirteenth Annual Conference on Mathematical Foundations of Progamming Semantics, {MFPS} 1997, Carnegie Mellon University, Pittsburgh, PA, USA, March 23-26, 1997},
+  year = {1997},
+  doi = {10.1016/S1571-0661(05)80165-3},
+  pages = {133--150},
+  series = {Electronic Notes on Theoretical Computer Sciecnce},
+  title = {The category of cpos from a synthetic viewpoint},
+  volume = {6},
+}</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree><fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"><fr:frontmatter><fr:anchor>983</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>fiore-plotkin-1997</fr:addr><fr:route>fiore-plotkin-1997.xml</fr:route><fr:title>An extension of models of Axiomatic Domain Theory to models of Synthetic Domain Theory</fr:title><fr:date><fr:year>1996</fr:year><fr:month>1</fr:month><fr:day>1</fr:day></fr:date><fr:authors><fr:author>Marcelo P. Fiore</fr:author><fr:author>Gordon D. Plotkin</fr:author></fr:authors><fr:meta
+name="doi">10.1007/3-540-63172-0_36</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We relate certain models of Axiomatic Domain Theory (ADT) and Synthetic Domain Theory (SDT). On the one hand, we introduce a class of non-elementary models of SDT and show that the domains in them yield models of ADT. On the other hand, for each model of ADT in a wide class we construct a model of SDT such that the domains in it provide a model of ADT which conservatively extends the original model.</fr:p></fr:mainmatter></fr:tree></fr:references></fr:backmatter></fr:tree>
