@@ -57,7 +57,7 @@
   <xsl:template name="numbered-taxon">
     <span class="taxon">
       <xsl:apply-templates select="f:taxon" />
-      <xsl:if test="(not(ancestor-or-self::f:tree[@numbered='false' or ../@toc='false']) and count(../../f:tree) > 1) or f:number">
+      <xsl:if test="(not(ancestor-or-self::f:tree[@numbered='false' or @toc='false']) and count(../../f:tree) > 1) or f:number">
         <xsl:if test="f:taxon">
           <xsl:text>&#160;</xsl:text>
         </xsl:if>
