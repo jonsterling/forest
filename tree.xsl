@@ -288,9 +288,9 @@
           <xsl:attribute name="class">block</xsl:attribute>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:if test="f:frontmatter/taxon">
+      <xsl:if test="f:frontmatter/f:taxon">
         <xsl:attribute name="data-taxon">
-          <xsl:value-of select="f:frontmatter/taxon" />
+          <xsl:value-of select="f:frontmatter/f:taxon" />
         </xsl:attribute>
       </xsl:if>
 
