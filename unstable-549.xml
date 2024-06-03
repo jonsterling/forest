@@ -7,14 +7,17 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>20000</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#549</fr:addr><fr:route>unstable-549.xml</fr:route><fr:parent>frct-000L</fr:parent></fr:frontmatter><fr:mainmatter>
-<fr:p>To see that this is the case, suppose that <fr:tex>C</fr:tex> has a set of objects. Then <fr:tex>C \in \mathbf {Set}</fr:tex> and we define <fr:tex>\lfloor {C} \rfloor</fr:tex> to be the displayed object <fr:tex>{ \mathopen {} \left \{ x \right \} \mathclose {}} _{ x \in  C } \in   \boldsymbol { \mathcal {F}} _{ C } [C]</fr:tex>. Fixing <fr:tex>I \in   \mathbf {Set}</fr:tex> and <fr:tex>z \in  C^I</fr:tex>, we consider the cartesian map displayed over <fr:tex>z : I  \to  C</fr:tex>:</fr:p>
+root="false"><fr:frontmatter><fr:anchor>17806</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#549</fr:addr><fr:route>unstable-549.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-0004</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>By exactness at <fr:tex>B</fr:tex> we may assume <fr:tex>\operatorname {ker} {g}= \operatorname {im} {f}</fr:tex>; we must show that <fr:tex>f;g=0</fr:tex>. Based on our assumption, we see that <fr:tex>f;g</fr:tex> factors through the zero morphism as follows:</fr:p>
 
-
+  
  
   
   <fr:embedded-tex
-hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
+hash="077c33ae6b65d444e66bf5a7149025a7"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -47,7 +50,7 @@ hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -288,28 +291,25 @@ hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \DiagramSquare {
-    height = 1.5cm,
-    width = 3cm,
-    west/style = lies over,
-    east/style = lies over,
-    sw = I,
-    se = C,
-    south = z,
-    ne =  { \mathopen {} \left \{ x \right \} \mathclose {}} _{ x \in  C } ,
-    nw = {z =  { \mathopen {} \left \{ z \, i \right \} \mathclose {}} _{ i \in  I } }
-  }
-</fr:embedded-tex-body></fr:embedded-tex>
+     \begin {tikzpicture}[diagram]
+       \node  (A) {$A$};
+       \node [right = of A] (ker/g) {$ \operatorname {ker} {g}$};
+       \node [right = of ker/g] (B) {$B$};
+       \node [right = of B] (C) {$C$};
+       \draw [-&gt;&gt;] (A) to (ker/g);
+       \draw [&gt;-&gt;] (ker/g) to (B);
+       \draw [-&gt;] (B) to node[below] {$g$} (C);
+       \draw [-&gt;,bend right=30] (A) to node[below] {$f$} (B);
+       \draw [-&gt;, bend left=30] (ker/g) to node[above] {$0$} (C);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
 
 
-<fr:p>Conversely assume that <fr:tex>\boldsymbol { \mathcal {F}} _{ C }</fr:tex> has a generic object <fr:tex>\bar {u} \in \boldsymbol { \mathcal {F}} _{ C } [U]</fr:tex> for some <fr:tex>U \in   \mathbf {Set}</fr:tex>; then we may equip <fr:tex>U</fr:tex> with the structure of a globally small category such that <fr:tex>U</fr:tex> is equivalent to <fr:tex>C</fr:tex>, using the canonical <fr:link
-href="frct-003V.xml"
-type="local"
-addr="frct-003V">cleaving of the family fibration</fr:link>. In particular, given <fr:tex>{ 1 } \xrightarrow {{ x,y }}{ U }</fr:tex> we define a morphism from <fr:tex>x</fr:tex> to <fr:tex>y</fr:tex> to be given by a vertical map <fr:tex>{ x ^{ * } { \bar {u}} } \xrightarrow {{ h }}{ y ^{ * } { \bar {u}} }</fr:tex> in <fr:tex>\boldsymbol { \mathcal {F}} _{ C } { \mathopen {} \left  [ 1 \right  ] \mathclose {}} \simeq  C</fr:tex>.</fr:p>
+  <fr:p>Any morphism factoring through zero must be zero.</fr:p>
 </fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
@@ -317,13 +317,16 @@ numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>19999</fr:anchor><fr:taxon>Theorem</fr:taxon><fr:addr>frct-000L</fr:addr><fr:route>frct-000L.xml</fr:route><fr:title>Globally small categories</fr:title></fr:frontmatter><fr:mainmatter><fr:p>An ordinary category <fr:tex>C</fr:tex> is equivalent to a globally small category if and only if the <fr:link
-href="frct-0006.xml"
+root="false"><fr:frontmatter><fr:anchor>17804</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-0004</fr:addr><fr:route>jms-0004.xml</fr:route><fr:title>Exact terms are complex</fr:title><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
 type="local"
-addr="frct-0006">family fibration</fr:link> <fr:tex>\boldsymbol { \mathcal {F}} _{ C }</fr:tex> has a <fr:link
-href="frct-001E.xml"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>If a sequence <fr:tex>\cdots \xrightarrow {}{ A } \xrightarrow { f }{ B } \xrightarrow { g }{ C } \xrightarrow {} \cdots</fr:tex> in an abelian category is <fr:link
+href="jms-0002.xml"
 type="local"
-addr="frct-001E">generic object</fr:link>.</fr:p>
+addr="jms-0002">exact</fr:link> at <fr:tex>B</fr:tex>, then it is <fr:link
+href="jms-0002.xml"
+type="local"
+addr="jms-0002">complex</fr:link>.</fr:p>
  
    
    <fr:tree
@@ -333,14 +336,17 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>9526</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#549</fr:addr><fr:route>unstable-549.xml</fr:route><fr:parent>frct-000L</fr:parent></fr:frontmatter><fr:mainmatter>
-<fr:p>To see that this is the case, suppose that <fr:tex>C</fr:tex> has a set of objects. Then <fr:tex>C \in \mathbf {Set}</fr:tex> and we define <fr:tex>\lfloor {C} \rfloor</fr:tex> to be the displayed object <fr:tex>{ \mathopen {} \left \{ x \right \} \mathclose {}} _{ x \in  C } \in   \boldsymbol { \mathcal {F}} _{ C } [C]</fr:tex>. Fixing <fr:tex>I \in   \mathbf {Set}</fr:tex> and <fr:tex>z \in  C^I</fr:tex>, we consider the cartesian map displayed over <fr:tex>z : I  \to  C</fr:tex>:</fr:p>
+root="false"><fr:frontmatter><fr:anchor>14207</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#549</fr:addr><fr:route>unstable-549.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+type="local"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-0004</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>By exactness at <fr:tex>B</fr:tex> we may assume <fr:tex>\operatorname {ker} {g}= \operatorname {im} {f}</fr:tex>; we must show that <fr:tex>f;g=0</fr:tex>. Based on our assumption, we see that <fr:tex>f;g</fr:tex> factors through the zero morphism as follows:</fr:p>
 
-
+  
  
   
   <fr:embedded-tex
-hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
+hash="077c33ae6b65d444e66bf5a7149025a7"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -373,7 +379,7 @@ hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -614,50 +620,25 @@ hash="76e9b7dadfc3b58c20963971c0987c82"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \DiagramSquare {
-    height = 1.5cm,
-    width = 3cm,
-    west/style = lies over,
-    east/style = lies over,
-    sw = I,
-    se = C,
-    south = z,
-    ne =  { \mathopen {} \left \{ x \right \} \mathclose {}} _{ x \in  C } ,
-    nw = {z =  { \mathopen {} \left \{ z \, i \right \} \mathclose {}} _{ i \in  I } }
-  }
-</fr:embedded-tex-body></fr:embedded-tex>
+     \begin {tikzpicture}[diagram]
+       \node  (A) {$A$};
+       \node [right = of A] (ker/g) {$ \operatorname {ker} {g}$};
+       \node [right = of ker/g] (B) {$B$};
+       \node [right = of B] (C) {$C$};
+       \draw [-&gt;&gt;] (A) to (ker/g);
+       \draw [&gt;-&gt;] (ker/g) to (B);
+       \draw [-&gt;] (B) to node[below] {$g$} (C);
+       \draw [-&gt;,bend right=30] (A) to node[below] {$f$} (B);
+       \draw [-&gt;, bend left=30] (ker/g) to node[above] {$0$} (C);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
 
 
-<fr:p>Conversely assume that <fr:tex>\boldsymbol { \mathcal {F}} _{ C }</fr:tex> has a generic object <fr:tex>\bar {u} \in \boldsymbol { \mathcal {F}} _{ C } [U]</fr:tex> for some <fr:tex>U \in   \mathbf {Set}</fr:tex>; then we may equip <fr:tex>U</fr:tex> with the structure of a globally small category such that <fr:tex>U</fr:tex> is equivalent to <fr:tex>C</fr:tex>, using the canonical <fr:link
-href="frct-003V.xml"
-type="local"
-addr="frct-003V">cleaving of the family fibration</fr:link>. In particular, given <fr:tex>{ 1 } \xrightarrow {{ x,y }}{ U }</fr:tex> we define a morphism from <fr:tex>x</fr:tex> to <fr:tex>y</fr:tex> to be given by a vertical map <fr:tex>{ x ^{ * } { \bar {u}} } \xrightarrow {{ h }}{ y ^{ * } { \bar {u}} }</fr:tex> in <fr:tex>\boldsymbol { \mathcal {F}} _{ C } { \mathopen {} \left  [ 1 \right  ] \mathclose {}} \simeq  C</fr:tex>.</fr:p>
+  <fr:p>Any morphism factoring through zero must be zero.</fr:p>
 </fr:mainmatter></fr:tree>
  
-</fr:mainmatter></fr:tree></fr:context><fr:related><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>19997</fr:anchor><fr:taxon>Construction</fr:taxon><fr:addr>frct-003V</fr:addr><fr:route>frct-003V.xml</fr:route><fr:title>Cleaving the family fibration</fr:title><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>11</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The <fr:link
-href="frct-0006.xml"
-type="local"
-addr="frct-0006">family fibration</fr:link> can be <fr:link
-href="frct-003T.xml"
-type="local"
-addr="frct-003T">cloven</fr:link>, constructively. In particular, let <fr:tex>C</fr:tex> be a category and consider the <fr:link
-href="frct-0006.xml"
-type="local"
-addr="frct-0006">family fibration</fr:link> <fr:tex>\boldsymbol { \mathcal {F}} _{ C }</fr:tex> over <fr:tex>\mathbf {Set}</fr:tex>; let <fr:tex>{ T } \xrightarrow {{ f }}{ S }</fr:tex> be a function between sets and let <fr:tex>u \in  C^S</fr:tex> be an <fr:tex>S</fr:tex>-indexed family of objects of <fr:tex>C</fr:tex>. The family <fr:tex>f ^{ * } u = f;u \in  C^T</fr:tex> is the object part of a cartesian lift for <fr:tex>u</fr:tex> along <fr:tex>f</fr:tex>. The <fr:link
-href="frct-0001.xml"
-type="local"
-addr="frct-0001">cartesian morphism</fr:link> <fr:tex>{ f ^{ * } u } \xrightarrow [ f ]{ \bar {f} }{ u } \in \boldsymbol { \mathcal {F}} _{ C }</fr:tex> is given by the identity map <fr:tex>{ f ^{ * } u } \xrightarrow {{ 1 _{ f ^{ * } u } }}{ f ^{ * } u } \in  C^T</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+</fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

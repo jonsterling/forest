@@ -7,360 +7,26 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10654</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#521</fr:addr><fr:route>unstable-521.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>11</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"><fr:frontmatter><fr:anchor>19968</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#521</fr:addr><fr:route>unstable-521.xml</fr:route><fr:authors><fr:author><fr:link
+href="carloangiuli.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00D9</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>We work backwards.</fr:p>
-
-  <fr:ol><fr:li>
-      First, we unfold the algebra structure of the <fr:link
-href="jms-00CC.xml"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author></fr:authors><fr:parent>frct-002B</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Suppose first that <fr:tex>E</fr:tex> is a cartesian fibration in our sense. Then
+  <fr:tex>E</fr:tex> has hypocartesian lifts because it has cartesian lifts. For closure under composition, fix hypocartesian <fr:tex>\bar {f}, \bar {g}</fr:tex>; because <fr:link
+href="frct-002C.xml"
 type="local"
-addr="jms-00CC">successor restriction</fr:link>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="7f6843a4e6004e184e927e9ad9572994"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ s \cdot X } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.4)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
-      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We then use the <fr:link
-href="jms-00CA.xml"
+addr="frct-002C">hypocartesian and cartesian maps coincide in a cartesian fibration</fr:link> we know that <fr:tex>\bar {f}, \bar {g}</fr:tex> are also cartesian and hence by the <fr:link
+href="frct-001H.xml"
 type="local"
-addr="jms-00CA">successor algebra homomorphism</fr:link> property of <fr:tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</fr:tex>.
+addr="frct-001H">generalized pullback lemma</fr:link> so is the composite <fr:tex>\bar {f}; \bar {g}</fr:tex>; therefore it follows that <fr:tex>\bar {f}; \bar {g}</fr:tex> is also hypocartesian.</fr:p>
 
-      
+  <fr:p>Conversely, suppose that <fr:tex>E</fr:tex> is a cartesian fibration in the sense of Grothendieck, and let <fr:tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</fr:tex> be the hypocartesian lift of <fr:tex>f:x \to  y</fr:tex> at <fr:tex>\bar {y} \in  E _{ y }</fr:tex>; we shall see that <fr:tex>\bar {f}</fr:tex> is also a <fr:em>cartesian</fr:em> lift of <fr:tex>f</fr:tex> at <fr:tex>\bar {y}</fr:tex> by constructing a unique factorization as follows:</fr:p>
+
+  
  
   
   <fr:embedded-tex
-hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
+hash="4ea60c51b1e75c3f53bd3c18f55691e8"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -393,7 +59,7 @@ hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -634,71 +300,40 @@ hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
-      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(j)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(j)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
-    <fr:li>
-      Next we use the <fr:link
-href="jms-00C7.xml"
-type="local"
-addr="jms-00C7">algebra homomorphism</fr:link> property of <fr:tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</fr:tex>.
 
-      
+  <fr:p>Let <fr:tex>\bar {m}: \bar {u} ' \xrightarrow [ m ]{} \bar {x}</fr:tex> be the hypocartesian lift of <fr:tex>m</fr:tex> at <fr:tex>\bar {x}</fr:tex>, where <fr:tex>\bar {u} ' \in  E _{ u }</fr:tex>. By hypothesis, the composite <fr:tex>\bar {m}; \bar {f} :  \bar {u} ' \xrightarrow [ m;f ]{} \bar {y}</fr:tex> is hypocartesian, so <fr:tex>\bar {h}</fr:tex> factors uniquely through <fr:tex>\bar {m}; \bar {f}</fr:tex> over <fr:tex>1 _{ u }</fr:tex>:</fr:p>
+
+  
  
   
   <fr:embedded-tex
-hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
+hash="6a5578aa5f989445522948abe20316d8"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -731,7 +366,7 @@ hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -972,1424 +607,34 @@ hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(j)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {u}',
+        ne =  \bar {y},
+        sw = u,
+        north =  \bar {m}; \bar {f},
+        south = m;f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [double] (u) to (sw);
+       \draw [-&gt;,exists] (u') to node [desc] {$i$} (nw);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(j)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
-    <fr:li>
-      We unfold the definition of the <fr:link
-href="jms-00CD.xml"
-type="local"
-addr="jms-00CD">induced monad algebra</fr:link>.
 
-      
- 
-  
-  <fr:embedded-tex
-hash="105ff3188284b30070524444fae4c294"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
-      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-    ;
-     \draw  (n/T) to (alg.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(pi)(mul)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We unfold the successor map on the <fr:link
-href="jms-00CN.xml"
-type="local"
-addr="jms-00CN">induced successor algebra</fr:link>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="6f4216c08715612bcaeed8dbade4c4af"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
-      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-    ;
-     \draw  (n/T) to (alg.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
-      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
-      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
-    ;
-     \draw  (n/T) to (alg1.center);
-     \draw  (unit.center) to (alg0.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg0)(unit)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We contract the composition of the initial (weak) algebra map with its inverse.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="c54c74fbf3a13055e71d3ca226c7c570"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
-      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
-      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
-    ;
-     \draw  (n/T) to (alg1.center);
-     \draw  (unit.center) to (alg0.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg0)(pi)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $=$
-         
-    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
-      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
-      + (1,1) coordinate (ne-of-mul)
-      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
-    ;
-    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
-     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
-     \draw  (mul.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      Finally, we use the unit law of the monad <fr:tex>\mathbb {T}</fr:tex>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="f8d747872e9c3cdb3044ea3abeb37c72"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
-      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
-      + (1,1) coordinate (ne-of-mul)
-      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
-    ;
-    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
-     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
-     \draw  (mul.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul)(unit)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.4)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.6)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol>
+  <fr:p>The composite <fr:tex>i; \bar {m} :  \bar {u} \xrightarrow [ m ]{} \bar {x}</fr:tex> is the required (cartesian) factorization of <fr:tex>\bar {h}</fr:tex> through <fr:tex>\bar {f}</fr:tex> over <fr:tex>m</fr:tex>. To see that <fr:tex>i; \bar {m}</fr:tex> is the unique such map, we observe that all morphisms <fr:tex>\bar {u} \xrightarrow [ m ]{} \bar {x}</fr:tex> factor uniquely through <fr:tex>\bar {m}</fr:tex> over <fr:tex>1 _{ u }</fr:tex> as a consequence of <fr:tex>\bar {m}</fr:tex> being hypocartesian.</fr:p>
 </fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
@@ -2397,38 +642,15 @@ numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10652</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-00D9</fr:addr><fr:route>jms-00D9.xml</fr:route><fr:title>From <fr:link
-href="jms-00CA.xml"
+root="false"><fr:frontmatter><fr:anchor>19966</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>frct-002B</fr:addr><fr:route>frct-002B.xml</fr:route><fr:title>Equivalence with Grothendieck's fibrations</fr:title><fr:authors><fr:author><fr:link
+href="carloangiuli.xml"
 type="local"
-addr="jms-00CA">successor algebra</fr:link> homomorphisms to <fr:link
-href="jms-00C8.xml"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>E</fr:tex> be displayed over <fr:tex>B</fr:tex>. Then <fr:tex>E</fr:tex> is a <fr:link
+href="frct-0002.xml"
 type="local"
-addr="jms-00C8">weak algebra</fr:link> <fr:link
-href="jms-00C7.xml"
-type="local"
-addr="jms-00C7">homomorphisms</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>11</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source"><fr:link
-href="joyal-moerdijk-1995.xml"
-type="local"
-addr="joyal-moerdijk-1995">[joyal-moerdijk-1995]</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {T}   \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</fr:tex> be a monad on a category <fr:tex>\mathcal {C}</fr:tex> and let <fr:tex>I</fr:tex> be an invertible <fr:link
-href="jms-00C8.xml"
-type="local"
-addr="jms-00C8"><fr:em>weak</fr:em> algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex>; let <fr:tex>X</fr:tex> be an arbitrary <fr:link
-href="jms-00C9.xml"
-type="local"
-addr="jms-00C9">successor algebra</fr:link>. Then a <fr:link
-href="jms-00CA.xml"
-type="local"
-addr="jms-00CA">successor algebra homomorphism</fr:link> <fr:tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</fr:tex> also tracks a weak algebra homomorphism <fr:tex>{ I } \xrightarrow {{ j }}{ s \cdot  X }</fr:tex>,  where <fr:tex>\bar { I }</fr:tex> is the <fr:link
-href="jms-00CN.xml"
-type="local"
-addr="jms-00CN">induced successor algebra</fr:link> of <fr:tex>I</fr:tex> and <fr:tex>s \cdot X</fr:tex> is the <fr:link
-href="jms-00CC.xml"
-type="local"
-addr="jms-00CC">successor restriction</fr:link> of <fr:tex>X</fr:tex>.</fr:p>
+addr="frct-0002">cartesian fibration</fr:link> if and only if the following two conditions hold:</fr:p><fr:ol><fr:li><fr:em>Hypocartesian lifts.</fr:em> For each <fr:tex>f:x \to  y \in  B</fr:tex> and <fr:tex>\bar {y} \in  E _{ y }</fr:tex> there exists a displayed object <fr:tex>\bar {x} \in  E _{ x }</fr:tex> and hypocartesian morphism <fr:tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</fr:tex>.</fr:li>
+
+  <fr:li><fr:em>Closure under composition.</fr:em> If <fr:tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</fr:tex> and <fr:tex>\bar {g}: \bar {y} \xrightarrow [ g ]{} \bar {z}</fr:tex> are hypocartesian, then <fr:tex>\bar {f}; \bar {g}</fr:tex> is hypocartesian.</fr:li></fr:ol>
  
    
    <fr:tree
@@ -2438,360 +660,26 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10628</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#521</fr:addr><fr:route>unstable-521.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>11</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"><fr:frontmatter><fr:anchor>9468</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#521</fr:addr><fr:route>unstable-521.xml</fr:route><fr:authors><fr:author><fr:link
+href="carloangiuli.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00D9</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>We work backwards.</fr:p>
-
-  <fr:ol><fr:li>
-      First, we unfold the algebra structure of the <fr:link
-href="jms-00CC.xml"
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author></fr:authors><fr:parent>frct-002B</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Suppose first that <fr:tex>E</fr:tex> is a cartesian fibration in our sense. Then
+  <fr:tex>E</fr:tex> has hypocartesian lifts because it has cartesian lifts. For closure under composition, fix hypocartesian <fr:tex>\bar {f}, \bar {g}</fr:tex>; because <fr:link
+href="frct-002C.xml"
 type="local"
-addr="jms-00CC">successor restriction</fr:link>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="7f6843a4e6004e184e927e9ad9572994"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ s \cdot X } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.4)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
-      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We then use the <fr:link
-href="jms-00CA.xml"
+addr="frct-002C">hypocartesian and cartesian maps coincide in a cartesian fibration</fr:link> we know that <fr:tex>\bar {f}, \bar {g}</fr:tex> are also cartesian and hence by the <fr:link
+href="frct-001H.xml"
 type="local"
-addr="jms-00CA">successor algebra homomorphism</fr:link> property of <fr:tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</fr:tex>.
+addr="frct-001H">generalized pullback lemma</fr:link> so is the composite <fr:tex>\bar {f}; \bar {g}</fr:tex>; therefore it follows that <fr:tex>\bar {f}; \bar {g}</fr:tex> is also hypocartesian.</fr:p>
 
-      
+  <fr:p>Conversely, suppose that <fr:tex>E</fr:tex> is a cartesian fibration in the sense of Grothendieck, and let <fr:tex>\bar {f}: \bar {x} \xrightarrow [ f ]{} \bar {y}</fr:tex> be the hypocartesian lift of <fr:tex>f:x \to  y</fr:tex> at <fr:tex>\bar {y} \in  E _{ y }</fr:tex>; we shall see that <fr:tex>\bar {f}</fr:tex> is also a <fr:em>cartesian</fr:em> lift of <fr:tex>f</fr:tex> at <fr:tex>\bar {y}</fr:tex> by constructing a unique factorization as follows:</fr:p>
+
+  
  
   
   <fr:embedded-tex
-hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
+hash="4ea60c51b1e75c3f53bd3c18f55691e8"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -2824,7 +712,7 @@ hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -3065,71 +953,40 @@ hash="b182a2cecfc989be091402f257348415"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.3)
-      coordinate[dot,label=below:$ s _{ X } $] (s) at (spath cs:wire 0.5)
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(j)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)(j)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
-    <fr:li>
-      Next we use the <fr:link
-href="jms-00C7.xml"
-type="local"
-addr="jms-00C7">algebra homomorphism</fr:link> property of <fr:tex>{ \bar { I } } \xrightarrow {{ j }}{ X }</fr:tex>.
 
-      
+  <fr:p>Let <fr:tex>\bar {m}: \bar {u} ' \xrightarrow [ m ]{} \bar {x}</fr:tex> be the hypocartesian lift of <fr:tex>m</fr:tex> at <fr:tex>\bar {x}</fr:tex>, where <fr:tex>\bar {u} ' \in  E _{ u }</fr:tex>. By hypothesis, the composite <fr:tex>\bar {m}; \bar {f} :  \bar {u} ' \xrightarrow [ m;f ]{} \bar {y}</fr:tex> is hypocartesian, so <fr:tex>\bar {h}</fr:tex> factors uniquely through <fr:tex>\bar {m}; \bar {f}</fr:tex> over <fr:tex>1 _{ u }</fr:tex>:</fr:p>
+
+  
  
   
   <fr:embedded-tex
-hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
+hash="6a5578aa5f989445522948abe20316d8"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -3162,7 +1019,7 @@ hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -3403,1424 +1260,34 @@ hash="f42d12ee74ca9e4f385d1e7ef2d0015c"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=right:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(j)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {u}',
+        ne =  \bar {y},
+        sw = u,
+        north =  \bar {m}; \bar {f},
+        south = m;f,
+        se = y,
+      }
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [double] (u) to (sw);
+       \draw [-&gt;,exists] (u') to node [desc] {$i$} (nw);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
  
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(j)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
-    <fr:li>
-      We unfold the definition of the <fr:link
-href="jms-00CD.xml"
-type="local"
-addr="jms-00CD">induced monad algebra</fr:link>.
 
-      
- 
-  
-  <fr:embedded-tex
-hash="105ff3188284b30070524444fae4c294"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ \bar { I } } $] (alg) at (spath cs:wire 0.5)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      coordinate[dot,label=below:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.3)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
-      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-    ;
-     \draw  (n/T) to (alg.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(pi)(mul)(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We unfold the successor map on the <fr:link
-href="jms-00CN.xml"
-type="local"
-addr="jms-00CN">induced successor algebra</fr:link>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="6f4216c08715612bcaeed8dbade4c4af"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ s _{ \bar { I } } $] (s) at (spath cs:wire 0.2)
-      coordinate[dot,label=left:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-      (alg) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-    ;
-     \draw  (n/T) to (alg.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(s)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
-      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
-      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
-    ;
-     \draw  (n/T) to (alg1.center);
-     \draw  (unit.center) to (alg0.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg0)(unit)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      We contract the composition of the initial (weak) algebra map with its inverse.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="c54c74fbf3a13055e71d3ca226c7c570"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (5,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg0) at (spath cs:wire 0.25)
-      coordinate[dot,label=below:$ \pi _{ I } $] (pi) at level (spath cs:wire 0.4)
-      coordinate[dot,label=right:$ \alpha _{ I } $] (alg1) at (spath cs:wire 0.75)
-      coordinate[dot,label=right:$j$] (j) at (spath cs:wire 0.9)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg1)
-      (alg1) ++ (0,.75) coordinate[dot,label=right:$ \mu $] (mul)
-      (alg0) ++(0,0.75) coordinate[dot,label=right:$ \eta $] (unit)
-    ;
-     \draw  (n/T) to (alg1.center);
-     \draw  (unit.center) to (alg0.center);
-     \draw  (pi.center) to (mul.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg0)(pi)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $=$
-         
-    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
-      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
-      + (1,1) coordinate (ne-of-mul)
-      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
-    ;
-    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
-     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
-     \draw  (mul.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
-
-    <fr:li>
-      Finally, we use the unit law of the monad <fr:tex>\mathbb {T}</fr:tex>.
-
-      
- 
-  
-  <fr:embedded-tex
-hash="f8d747872e9c3cdb3044ea3abeb37c72"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-    \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (4,-5) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.6)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.75)
-      (alg) ++ (0,.75) coordinate[dot,label=above:$ \mu $] (mul)
-      + (-1,1) coordinate[dot,label=above:$ \eta $] (unit)
-      + (1,1) coordinate (ne-of-mul)
-      coordinate[label=above:$ T $] (n/T) at (nw -| ne-of-mul)
-    ;
-    \draw  (n/T) to (ne-of-mul.center) to[out=270,in=0] (mul.center);
-     \draw  (unit.center) to[out=-90,in=-180] (mul.center);
-     \draw  (mul.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul)(unit)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
-      coordinate (nw)
-      ++ (1,0) coordinate[label=above:$ I $] (n/I)
-      ++ (3,-3) coordinate[label=below:$ X $] (s/X)
-      ++ (1,0) coordinate (se)
-    ;
-     \draw [spath/save=wire] (n/I) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ I } $] (alg) at (spath cs:wire 0.4)
-      coordinate[dot,label=below:$j$] (j) at (spath cs:wire 0.6)
-      coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-    ;
-     \draw  (n/T) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/I) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol>
+  <fr:p>The composite <fr:tex>i; \bar {m} :  \bar {u} \xrightarrow [ m ]{} \bar {x}</fr:tex> is the required (cartesian) factorization of <fr:tex>\bar {h}</fr:tex> through <fr:tex>\bar {f}</fr:tex> over <fr:tex>m</fr:tex>. To see that <fr:tex>i; \bar {m}</fr:tex> is the unique such map, we observe that all morphisms <fr:tex>\bar {u} \xrightarrow [ m ]{} \bar {x}</fr:tex> factor uniquely through <fr:tex>\bar {m}</fr:tex> over <fr:tex>1 _{ u }</fr:tex> as a consequence of <fr:tex>\bar {m}</fr:tex> being hypocartesian.</fr:p>
 </fr:mainmatter></fr:tree>
  
 </fr:mainmatter></fr:tree></fr:context><fr:related><fr:tree
@@ -4830,29 +1297,14 @@ numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10642</fr:anchor><fr:taxon>Construction</fr:taxon><fr:addr>jms-00CN</fr:addr><fr:route>jms-00CN.xml</fr:route><fr:title>The induced <fr:link
-href="jms-00C9.xml"
+root="false"><fr:frontmatter><fr:anchor>19963</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>frct-001H</fr:addr><fr:route>frct-001H.xml</fr:route><fr:title>Generalized pullback lemma</fr:title><fr:authors><fr:author><fr:link
+href="carloangiuli.xml"
 type="local"
-addr="jms-00C9">successor algebra</fr:link> on a fixed point</fr:title><fr:date><fr:year>2023</fr:year><fr:month>11</fr:month><fr:day>1</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {T} \equiv { \mathopen {} \left ( T , \eta , \mu \right ) \mathclose {}}</fr:tex> be a monad on a category <fr:tex>\mathcal {C}</fr:tex>, and let <fr:tex>X</fr:tex> be a <fr:link
-href="jms-00C8.xml"
-type="local"
-addr="jms-00C8">weak algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex>. The <fr:link
-href="jms-00C5.xml"
-type="local"
-addr="jms-00C5">monad algebra</fr:link> <fr:tex>\bar { X }</fr:tex> <fr:link
-href="jms-00CD.xml"
-type="local"
-addr="jms-00CD">induced by</fr:link> <fr:tex>X</fr:tex> can be equipped with the structure of a <fr:link
-href="jms-00C9.xml"
-type="local"
-addr="jms-00C9">successor algebra</fr:link> by defining <fr:tex>{ X } \xrightarrow {{ s _{ \bar { X } } }}{ X }</fr:tex> to be the following map:</fr:p>
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</fr:tex>, and suppose that <fr:tex>{ \bar {y} } \xrightarrow [ g ]{ \bar {g} }{ \bar {z} }</fr:tex> is cartesian over <fr:tex>g</fr:tex>. Then <fr:tex>\bar {f}; \bar {g}</fr:tex> is cartesian over <fr:tex>f;g</fr:tex> if and only if <fr:tex>\bar {f}</fr:tex> is cartesian over <fr:tex>f</fr:tex>.</fr:p>
  
   
   <fr:embedded-tex
-hash="bda7619773395a538627bd0d7820a6ef"><fr:embedded-tex-preamble>
+hash="1f13f46ace69516548a703232ee0706b"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -4885,7 +1337,7 @@ hash="bda7619773395a538627bd0d7820a6ef"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -5126,44 +1578,51 @@ hash="bda7619773395a538627bd0d7820a6ef"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \begin {tikzpicture}[scale=0.5]
-     \path  coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(3,-3) coordinate[label=below:$ X $] (s/X)
-      ++(1,0) coordinate (se)
-      ;
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.5)
-      (alg) ++(0,1) coordinate[dot,label=right:$ \eta $] (unit);
-     \draw  (unit.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-     \end {scope}
+   \begin {tikzpicture}[diagram]
+     \SpliceDiagramSquare {
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      nw/style = pullback,
+      sw = y,
+      nw =  \bar {y},
+      se = z,
+      ne =  \bar {z},
+      south = g,
+      north =  \bar {g},
+    }
+     \node  (x*) [dotted pullback, left = of nw] {$ \bar {x}$};
+     \node  (x) [left = of sw] {$x$};
+     \draw [-&gt;] (x*) to node [above] {$ \bar {f}$} (nw);
+     \draw [lies over] (x*) to (x);
+     \draw [-&gt;] (x) to node [below] {$f$} (sw);
    \end {tikzpicture}
 </fr:embedded-tex-body></fr:embedded-tex>
  
-</fr:mainmatter></fr:tree><fr:tree
+
+ 
+   
+   <fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
+toc="false"
+numbered="true"
 show-heading="true"
-show-metadata="true"
+show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10644</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-00C7</fr:addr><fr:route>jms-00C7.xml</fr:route><fr:title>Homomorphism of algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"><fr:frontmatter><fr:anchor>9454</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#525</fr:addr><fr:route>unstable-525.xml</fr:route><fr:authors><fr:author><fr:link
+href="carloangiuli.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>F</fr:tex> be an endofunctor on a category <fr:tex>\mathcal {C}</fr:tex> and let <fr:tex>X , Y</fr:tex> be a pair of <fr:link
-href="jms-00C6.xml"
-type="local"
-addr="jms-00C6">algebras for <fr:tex>F</fr:tex></fr:link>; a <fr:em>homomorphism</fr:em> of algebras from <fr:tex>X</fr:tex> to <fr:tex>Y</fr:tex> is given by a morphism <fr:tex>{ X } \xrightarrow {{ h }}{ Y }</fr:tex> in <fr:tex>\mathcal {C}</fr:tex> that preserves the algebra structure in the following sense:</fr:p>
+addr="carloangiuli">Carlo Angiuli</fr:link></fr:author></fr:authors><fr:parent>frct-001H</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Suppose first that <fr:tex>\bar {f}</fr:tex> is cartesian. To see that <fr:tex>\bar {f}; \bar {g}</fr:tex> is cartesian, we must construct a unique factorization as follows:</fr:p>
+
+  
  
   
   <fr:embedded-tex
-hash="e39fda819abb9eba0ba04e49d71f12ea"><fr:embedded-tex-preamble>
+hash="6ec9944b8edd32d6bbb3071ecfece8f9"><fr:embedded-tex-preamble>
     
   \RequirePackage {tikz}
   \RequirePackage {amsmath}
@@ -5196,7 +1655,7 @@ hash="e39fda819abb9eba0ba04e49d71f12ea"><fr:embedded-tex-preamble>
  }
  
     
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -5437,717 +1896,688 @@ hash="e39fda819abb9eba0ba04e49d71f12ea"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff
+ \ExplSyntaxOff 
  
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path  coordinate (nw)
-      ++ (1,0) coordinate[label=above:$X$] (n/X)
-      ++ (3,-3) coordinate[label=below:$Y$] (s/Y)
-      ++ (1,0) coordinate (se);
-     \draw [spath/save=swoosh] (n/X) to[out=-90,in=90] (s/Y);
-     \path 
-      coordinate[dot,label=below:$ \alpha _{ X } $] (alg) at (spath cs:swoosh 0.4)
-      coordinate[dot,label=above:$h$] (h) at (spath cs:swoosh 0.7)
-      coordinate[label=above:$F$] (n/F) at (nw -| alg);
-     \draw  (n/F) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={swoosh,weld}] (s/Y) to (se) to (nw -| se) to cycle;
-     \end {scope}
-   \end {tikzpicture}
-  $=$
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path  coordinate (nw)
-      ++ (1,0) coordinate[label=above:$X$] (n/X)
-      ++ (3,-3) coordinate[label=below:$Y$] (s/Y)
-      ++ (1,0) coordinate (se);
-     \draw [spath/save=swoosh] (n/X) to[out=-90,in=90] (s/Y);
-     \path 
-      coordinate[dot,label=5:$ \alpha _{ Y } $] (alg) at (spath cs:swoosh 0.7)
-      coordinate[dot,label=-90:$h$] (h) at (spath cs:swoosh 0.4)
-      coordinate[label=above:$F$] (n/F) at (nw -| alg);
-     \draw  (n/F) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={swoosh,weld}] (s/Y) to (se) to (nw -| se) to cycle;
-     \end {scope}
-   \end {tikzpicture}
-</fr:embedded-tex-body></fr:embedded-tex>
- 
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10646</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-00CA</fr:addr><fr:route>jms-00CA.xml</fr:route><fr:title>Homomorphism of successor algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source"><fr:link
-href="joyal-moerdijk-1995.xml"
-type="local"
-addr="joyal-moerdijk-1995">[joyal-moerdijk-1995]</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>A homomorphism of <fr:link
-href="jms-00C9.xml"
-type="local"
-addr="jms-00C9">successor algebras</fr:link> is a <fr:link
-href="jms-00C7.xml"
-type="local"
-addr="jms-00C7">monad algebra homomorphism</fr:link> <fr:tex>{ X } \xrightarrow {{ h }}{ Y }</fr:tex> that preserves the successor operation:</fr:p>
- 
-  
-  <fr:embedded-tex
-hash="946c3ec16c267041be482bfc3342a05e"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        nw/style = pullback,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path  coordinate (nw)
-      ++(1.5,0) coordinate[label=above:$ X $] (n/X)
-      ++(0,-2) coordinate[label=below:$ Y $] (s/Y)
-      ++(1.5,0) coordinate (se)
-      ;
-     \draw [spath/save=line] (n/X) to (s/Y);
-     \path 
-      coordinate[dot,label=left:$ s _{ X } $] (suc) at (spath cs:line 0.33)
-      coordinate[dot,label=left:$h$] (h) at (spath cs:line 0.66);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to (s/Y) to (se) to (nw -| se) to cycle;
-     \end {scope}
-   \end {tikzpicture}
-  $=$
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path  coordinate (nw)
-      ++(1.5,0) coordinate[label=above:$ X $] (n/X)
-      ++(0,-2) coordinate[label=below:$ Y $] (s/Y)
-      ++(1.5,0) coordinate (se)
-      ;
-     \draw [spath/save=line] (n/X) to (s/Y);
-     \path 
-      coordinate[dot,label=right:$ s _{ X } $] (suc) at (spath cs:line 0.66)
-      coordinate[dot,label=right:$h$] (h) at (spath cs:line 0.33);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to (s/Y) to (se) to (nw -| se) to cycle;
-     \end {scope}
-   \end {tikzpicture}
-</fr:embedded-tex-body></fr:embedded-tex>
- 
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10648</fr:anchor><fr:taxon>Construction</fr:taxon><fr:addr>jms-00CD</fr:addr><fr:route>jms-00CD.xml</fr:route><fr:title>The induced <fr:link
-href="jms-00C5.xml"
-type="local"
-addr="jms-00C5">monad algebra</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source"><fr:link
-href="joyal-moerdijk-1995.xml"
-type="local"
-addr="joyal-moerdijk-1995">[joyal-moerdijk-1995]</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {T}</fr:tex> be a monad on a category <fr:tex>\mathcal {C}</fr:tex>, and let <fr:tex>X</fr:tex> be a <fr:link
-href="jms-00C8.xml"
-type="local"
-addr="jms-00C8">weak algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex> that is a fixed point, i.e. the algebra map is invertible by <fr:tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</fr:tex>. We may define the <fr:em>induced <fr:tex>\mathbb {T}</fr:tex>-algebra</fr:em> <fr:tex>\bar { X }</fr:tex> to have the same carrier object as <fr:tex>X</fr:tex> and with the algebra map <fr:tex>{ T X } \xrightarrow {{ \alpha _{ \bar { X } } }}{ X }</fr:tex> defined as follows:
-
-  
- 
-  
-  <fr:embedded-tex
-hash="30eb55372483e6fe2699114f2dbbc396"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
-
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
-
-
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
-
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
-     coordinate (#1nw)
-     ++(#2,-#3) coordinate (#1se)
-     coordinate (#1sw) at (#1se -| #1nw)
-     coordinate (#1ne) at (#1nw -| #1se)
-   ;
-
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
- }
- 
-    
-  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
- \usetikzlibrary{matrix,arrows}
- \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
- \usetikzlibrary{decorations.pathreplacing}
- \usetikzlibrary{decorations.pathmorphing}
- \usetikzlibrary{decorations.markings}
-
- \tikzset{
-   desc/.style={sloped, fill=white,inner sep=2pt},
-   upright desc/.style={fill=white,inner sep=2pt},
-   pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pullback 45/.style = {
-     append after command={
-       \pgfextra{
-         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   ne pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   sw pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   dotted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   muted pullback/.style = {
-     append after command={
-       \pgfextra{
-         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
-       }
-     }
-   },
-   pushout/.style = {
-     append after command={
-       \pgfextra{
-         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
-       }
-     }
-   },
-   between/.style args={#1 and #2}{
-     at = ($(#1)!0.5!(#2)$)
-   },
-   diagram/.style = {
-     on grid,
-     node distance=2cm,
-     commutative diagrams/every diagram,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-     }
-   },
-   fibration/.style = {
-     -{Triangle[open]}
-   },
-   etale/.style = {
-     -{Triangle[open]}
-   },
-   etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
-   },
-   opfibration/.style = {
-     -{Triangle}
-   },
-   lies over/.style = {
-     |-{Triangle[open]}
-   },
-   op lies over/.style = {
-     |-{Triangle}
-   },
-   embedding/.style = {
-     {right hook}-&gt;
-   },
-   open immersion/.style = {
-     {right hook}-{Triangle[open]}
-   },
-   closed immersion/.style = {
-     {right hook}-{Triangle}
-   },
-   closed immersion*/.style = {
-     {left hook}-{Triangle}
-   },
-   embedding*/.style = {
-     {left hook}-&gt;
-   },
-   open immersion*/.style = {
-     {left hook}-{Triangle[open]}
-   },
-   exists/.style = {
-     densely dashed
-   },
- }
-
- \newlength{\dontworryaboutit}
-
- \tikzset{
-   inline diagram/.style = {
-     commutative diagrams/every diagram,
-     commutative diagrams/cramped,
-     line width = .5pt,
-     every node/.append style = {
-       commutative diagrams/every cell,
-       anchor = base,
-       inner sep = 0pt
-     },
-     every path/.append style = {
-       outer xsep = 2pt
-     }
-   }
- }
-
- \tikzset{
-   square/nw/.style = {},
-   square/ne/.style = {},
-   square/se/.style = {},
-   square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
-   square/north/node/.style = {above},
-   square/south/node/.style = {below},
-   square/west/node/.style = {left},
-   square/east/node/.style = {right},
- }
-
- \ExplSyntaxOn
-
- \bool_new:N \l_jon_glue_west
-
- \keys_define:nn { jon-tikz/diagram } {
-   nw .tl_set:N = \l_jon_tikz_diagram_nw,
-   sw .tl_set:N = \l_jon_tikz_diagram_sw,
-   ne .tl_set:N = \l_jon_tikz_diagram_ne,
-   se .tl_set:N = \l_jon_tikz_diagram_se,
-
-   width .tl_set:N = \l_jon_tikz_diagram_width,
-   height .tl_set:N = \l_jon_tikz_diagram_height,
-
-   north .tl_set:N = \l_jon_tikz_diagram_north,
-   south .tl_set:N = \l_jon_tikz_diagram_south,
-   west .tl_set:N = \l_jon_tikz_diagram_west,
-   east .tl_set:N = \l_jon_tikz_diagram_east,
-
-   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
-   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
-   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
-   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
-
-   glue .choice:,
-   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
-
-   glue~target .tl_set:N = \l_jon_tikz_glue_target,
-
-   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
-   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
-   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
-   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
-   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
-   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
-   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
-   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
-
-   draft .meta:n = {
-     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
-     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
-     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
-     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
-     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
-     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
-     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
-     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
-   }
- }
-
- \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
- \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
-
-
- \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
-   \texttt{\textcolor{red}{#1}}
- }
-
- \keys_set:nn { jon-tikz/diagram } {
-   glue~target = {},
- }
-
-
- \cs_new:Nn \__jon_tikz_render_square:nn {
-   \group_begin:
-   \keys_set:nn {jon-tikz/diagram} {#2}
-   \bool_if:nTF \l_jon_glue_west {
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   } {
-     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
-     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
-     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
-
-     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
-     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
-     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
-     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
-     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
-   }
-   \group_end:
- }
-
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
-   \__jon_tikz_render_square:nn {#1} {#2}
- }
-
-
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
-   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
-     \__jon_tikz_render_square:nn {#1} {#3}
-   \end{tikzpicture}
- }
-
- \ExplSyntaxOff
- 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
-     \begin {tikzpicture}[scale=0.5]
-       \path 
-        coordinate (nw)
-        ++(1,0) coordinate[label=above:$ X $] (n/X)
-        ++(5,-4) coordinate[label=below:$ X $] (s/X)
-        ++(1,0) coordinate (se);
-       \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-       \path 
-        coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.15)
-        coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.8)
-        coordinate[label=above:$ T $] (n/T) at (nw -| alg)
-      ;
-       \draw [spath/save=vert] (alg) to (n/T);
-       \path  coordinate[dot,label=right:$ \mu $] (mu) at (spath cs:vert 0.4);
-       \draw  (pi.center) to (mu.center);
-       \begin {scope}[on background layer]
-         \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       \end {scope}
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (z');
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
      \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex></fr:p></fr:mainmatter></fr:tree><fr:tree
+  </fr:embedded-tex-body></fr:embedded-tex>
+ 
+
+
+  <fr:p>Because <fr:tex>\bar {g}</fr:tex> is cartesian, we can factor <fr:tex>\bar {h} = i; \bar {g}</fr:tex> for a unique <fr:tex>{ \bar {u} } \xrightarrow [ m;f ]{ i }{ \bar {y} }</fr:tex>. Then, because <fr:tex>\bar {f}</fr:tex> is cartesian, we can further factor <fr:tex>i = j; \bar {f}</fr:tex> for a unique <fr:tex>{ \bar {u} } \xrightarrow [ m ]{ j }{ \bar {x} }</fr:tex>. We conclude that there is a unique <fr:tex>{ \bar {u} } \xrightarrow [ m ]{ j }{ \bar {x} }</fr:tex> for which <fr:tex>\bar {h} = j; \bar {f}; \bar {g}</fr:tex>, as required.</fr:p>
+
+  <fr:p>Conversely, suppose that <fr:tex>\bar {f}; \bar {g}</fr:tex> is cartesian. To see that <fr:tex>\bar {f}</fr:tex> is cartesian, we must construct a unique factorization as follows:</fr:p>
+
+  
+ 
+  
+  <fr:embedded-tex
+hash="b2c129dea2bba9ebd4d276b4f2071779"><fr:embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff 
+ 
+  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+     \begin {tikzpicture}[diagram]
+       \SpliceDiagramSquare {
+        west/style = lies over,
+        east/style = lies over,
+        north/node/style = upright desc,
+        height = 1.5cm,
+        nw =  \bar {x},
+        ne =  \bar {y},
+        sw = x,
+        north =  \bar {f},
+        south = f,
+        se = y,
+        ne/style = pullback,
+      }
+       \node  (z') [right = 2cm of ne] {$ \bar {z}$};
+       \node  (z) [right = 2cm of se] {$z$};
+       \draw [lies over] (z') to (z);
+       \draw [-&gt;] (se) to node [below] {$g$} (z);
+       \draw [-&gt;] (ne) to node [desc] {$ \bar {g}$} (z');
+
+       \node  (u') [above left = 1.5cm of nw,xshift=-.5cm] {$ \bar {u}$};
+       \node  (u) [above left = 1.5cm of sw,xshift=-.5cm] {$u$};
+       \draw [lies over] (u') to (u);
+       \draw [-&gt;,bend left=30] (u') to node [sloped,above] {$ \bar {h}$} (ne);
+       \draw [-&gt;] (u) to node [sloped,below] {$m$} (sw);
+       \draw [-&gt;,exists] (u') to (nw);
+     \end {tikzpicture}
+  </fr:embedded-tex-body></fr:embedded-tex>
+ 
+
+
+  <fr:p>Because <fr:tex>\bar {f}; \bar {g}</fr:tex> is cartesian, we can factor <fr:tex>\bar {h}; \bar {g} = i; \bar {f}; \bar {g}</fr:tex> for a unique <fr:tex>{ \bar {u} } \xrightarrow [ m ]{ i }{ \bar {x} }</fr:tex>. On the other hand, because <fr:tex>\bar {g}</fr:tex> is cartesian, there is a unique <fr:tex>{ \bar {u} } \xrightarrow [ m;f ]{ j }{ \bar {y} }</fr:tex> for which <fr:tex>\bar {h}; \bar {g} = j; \bar {g}</fr:tex>; as both <fr:tex>\bar {h}</fr:tex> and <fr:tex>i; \bar {f}</fr:tex> satisfy this condition, we conclude <fr:tex>\bar {h}=i; \bar {f}</fr:tex>. Therefore, there is a unique <fr:tex>{ \bar {u} } \xrightarrow [ m ]{ i }{ \bar {x} }</fr:tex> for which <fr:tex>\bar {h} = i; \bar {f}</fr:tex>, as required.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>10650</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-00CC</fr:addr><fr:route>jms-00CC.xml</fr:route><fr:title>The successor restriction of a successor algebra</fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"><fr:frontmatter><fr:anchor>19965</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>frct-002C</fr:addr><fr:route>frct-002C.xml</fr:route><fr:title>Hypocartesian = cartesian in a cartesian fibration</fr:title></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>E</fr:tex> be a <fr:link
+href="frct-0002.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source"><fr:link
-href="joyal-moerdijk-1995.xml"
+addr="frct-0002">cartesian fibration</fr:link>, and let <fr:tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</fr:tex> be displayed over <fr:tex>{ x } \xrightarrow {{ f }}{ y }</fr:tex>. The displayed morphism <fr:tex>\bar {f}</fr:tex> is <fr:link
+href="frct-0001.xml"
 type="local"
-addr="joyal-moerdijk-1995">[joyal-moerdijk-1995]</fr:link></fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {T}</fr:tex> be a monad on a category <fr:tex>\mathcal {C}</fr:tex>, and let <fr:tex>X</fr:tex> be an <fr:link
-href="jms-00C9.xml"
+addr="frct-0001">cartesian</fr:link> if and only if it is <fr:link
+href="frct-002A.xml"
 type="local"
-addr="jms-00C9">successor algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex>. We define the <fr:em>successor restriction</fr:em> of <fr:tex>X</fr:tex> to be the <fr:link
-href="jms-00C8.xml"
-type="local"
-addr="jms-00C8"><fr:em>weak</fr:em> algebra</fr:link> <fr:tex>s \cdot X  : \equiv   s _{ X } \cdot  X</fr:tex> defined by <fr:link
-href="jms-00CQ.xml"
-type="local"
-addr="jms-00CQ">restricting</fr:link> <fr:tex>X</fr:tex> along its successor map.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+addr="frct-002A">hypocartesian</fr:link>.</fr:p>
+ 
+   
+   <fr:tree
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+toc="false"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"><fr:frontmatter><fr:anchor>9466</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#520</fr:addr><fr:route>unstable-520.xml</fr:route><fr:parent>frct-002C</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Any cartesian map is clearly hypocartesian. To see that a hypocartesian map <fr:tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</fr:tex> in a cartesian fibration is cartesian, we consider the cartesian lift of <fr:tex>{ x } \xrightarrow {{ f }}{ y }</fr:tex> under <fr:tex>\bar {y}</fr:tex>:</fr:p>
+
+  
+ 
+  
+  <fr:embedded-tex
+hash="8bd5d25bd3c86ad0f5bd851c9f184f3e"><fr:embedded-tex-preamble>
+    
+  \RequirePackage {tikz}
+  \RequirePackage {amsmath}
+  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+  \definecolor {catccolor}{RGB}{255,244,138}
+  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+  \tikzstyle {catc}=[catccolor!60]
+  \tikzstyle {catd}=[orange!40]
+  \tikzstyle {cate}=[red!40]
+  \tikzstyle {catf}=[blue!10]
+  \tikzstyle {catg}=[green!25]
+
+
+  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+    \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+    \path [spath/save = #1north] (#1nw) to (#1ne);
+    \path [spath/save = #1west] (#1nw) to (#1sw);
+    \path [spath/save = #1east] (#1ne) to (#1se);
+    \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+ 
+    
+   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     &gt;={Triangle[open]},-&gt;.&gt;
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}-&gt;
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}-&gt;
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {-&gt;},
+   square/south/.style = {-&gt;},
+   square/west/.style = {-&gt;},
+   square/east/.style = {-&gt;},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff 
+ 
+  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+     \DiagramSquare {
+      height = 1.5cm,
+      west/style = lies over,
+      east/style = lies over,
+      nw/style = pullback,
+      nw =  \bar {x} ' ,
+      ne =  \bar {y},
+      se = y,
+      sw = x,
+      south = f,
+      north =  \bar {f} ' ,
+      north/style = {-&gt;,exists},
+    }
+  </fr:embedded-tex-body></fr:embedded-tex>
+ 
+
+
+  <fr:p>As the cartesian lift <fr:tex>\bar {x} ' \to   \bar {y}</fr:tex> is also hypocartesian, it follows that there is a unique vertical isomorphism identifying <fr:tex>\bar {x}</fr:tex> with <fr:tex>\bar {x} '</fr:tex> factoring <fr:tex>{ \bar {x} } \xrightarrow [ f ]{ \bar {f} }{ \bar {y} }</fr:tex> through <fr:tex>{ \bar {x} ' } \xrightarrow [ f ]{ \bar {f} ' }{ \bar {y} }</fr:tex>. Being cartesian over <fr:tex>f</fr:tex> is clearly stable under isomorphism, hence we conclude that <fr:tex>\bar {f}</fr:tex> is cartesian from the fact that <fr:tex>\bar {f} '</fr:tex> is cartesian.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

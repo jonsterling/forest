@@ -7,13 +7,13 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>3123</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#465</fr:addr><fr:route>unstable-465.xml</fr:route><fr:title><fr:link
+root="false"><fr:frontmatter><fr:anchor>3235</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#465</fr:addr><fr:route>unstable-465.xml</fr:route><fr:title><fr:link
 href="jms-00OI.xml"
 type="local"
 addr="jms-00OI"><fr:em><fr:link
 href="sterling-gratzer-birkedal-2024-univalent.xml"
 type="local"
-addr="sterling-gratzer-birkedal-2024-univalent">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › models of <fr:strong>iGDTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+addr="sterling-gratzer-birkedal-2024-univalent">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -22,25 +22,44 @@ type="local"
 addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 type="local"
-addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
-href="palombi-sterling-2023.xml"
-type="local"
-addr="palombi-sterling-2023">Palombi and S. (2023)</fr:link> have contributed a modular method for building models of (non-univalent) guarded dependent type theory over an arbitrary base topos. As applied by <fr:link
-href="sterling-gratzer-birkedal-2022.xml"
-type="local"
-addr="sterling-gratzer-birkedal-2022">SGB’22</fr:link>:</fr:p><fr:ol><fr:li>Any realisability topos <fr:tex>\mathcal {E}</fr:tex> contains an impredicative universe <fr:tex>\mathbb {M}_{ \mathcal {E}}</fr:tex>.</fr:li>
-  <fr:li>Pick any <fr:em>internal</fr:em> well-founded order <fr:tex>\mathbb {O} \in \mathbb {M}_{ \mathcal {E}}</fr:tex>.</fr:li>
-  <fr:li>Then the <fr:em>relative</fr:em> presheaf topos <fr:tex>\mathcal {F} : \equiv   { \mathopen {} \left  [ \mathbb {O} ^{ \mathsf {op} } , \mathcal {E} \right  ] \mathclose {}}</fr:tex> is a model of guarded recursion and contains an impredicative universe <fr:tex>\mathbb {M}_{ \mathcal {F}}</fr:tex> defined from <fr:tex>\mathbb {M}_{ \mathcal {E}}</fr:tex> by <fr:link
-href="hofmann-streicher-1997.xml"
-type="local"
-addr="hofmann-streicher-1997">Hofmann—Streicher lifting</fr:link>.</fr:li></fr:ol></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>LAYOUT UNIVALENCE.</fr:strong></fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>      { \mathopen {} \left (        \ell _1 \gets \mathsf {new} \, e_1;       \ell _2 \gets \mathsf {new} \, e_2;       \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:block>
+   <fr:tex>      \mathrel { \equiv }      { \mathopen {} \left (        \ell _{ \color {red}2} \gets \mathsf {new} \, e_{ \color {red}2};       \ell _{ \color {red}1} \gets \mathsf {new} \, e_{ \color {red}1};       \mathsf {ret} \, { \mathopen {} \left ( \ell _1, \ell _2 \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:block>
+
+ </jms-indent:block>
+<beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer"></beamer:pause><fr:p><fr:strong>CELL UNIVALENCE.</fr:strong> For <fr:tex>f^+ \colon  A \to  B</fr:tex> and <fr:tex>f^- \colon  B \to  A</fr:tex> with <fr:tex>x:B \vdash  f^+ { \mathopen {} \left ( f^- { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}} \equiv  x</fr:tex> and <fr:tex>x \colon  A \vdash  f^- { \mathopen {} \left ( f^+ { \mathopen {} \left ( x \right ) \mathclose {}} \right ) \mathclose {}}   \equiv  x</fr:tex> we have:</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row>
+   <fr:tex>      { \mathopen {} \left (        \ell \gets \mathsf {new} \, e;       \mathsf {ret} \, { \mathopen {} \left ( \mathsf {get} \, \ell ,  \mathsf {set} \, { \mathopen {} \left ( \ell ,- \right ) \mathclose {}} \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:block>
+   <fr:tex>      \mathrel { \equiv }      { \mathopen {} \left (        \ell \gets \mathsf {new} \, { \mathopen {} \left ( { \color {red}f^+} { \mathopen {} \left ( e \right ) \mathclose {}} \right ) \mathclose {}} ;       \mathsf {ret} \, { \mathopen {} \left (        { \color {red} \mathsf {map} \, f^-} \, { \mathopen {} \left ( \mathsf {get} \, \ell \right ) \mathclose {}} ,        \mathsf {set} { \mathopen {} \left ( \ell , { \color {red}f^+} { \mathopen {} \left ( - \right ) \mathclose {}} \right ) \mathclose {}}        \right ) \mathclose {}}       \right ) \mathclose {}}     </fr:tex>
+  </jms-indent:block>
+
+ </jms-indent:block>
+</fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>3119</fr:anchor><fr:taxon>Presentation</fr:taxon><fr:addr>jms-00OI</fr:addr><fr:route>jms-00OI.xml</fr:route><fr:title><fr:em><fr:link
+root="false"><fr:frontmatter><fr:anchor>3231</fr:anchor><fr:taxon>Presentation</fr:taxon><fr:addr>jms-00OI</fr:addr><fr:route>jms-00OI.xml</fr:route><fr:title><fr:em><fr:link
 href="sterling-gratzer-birkedal-2024-univalent.xml"
 type="local"
 addr="sterling-gratzer-birkedal-2024-univalent">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
@@ -73,7 +92,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1879</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#451</fr:addr><fr:route>unstable-451.xml</fr:route><fr:title>Side effects in programming languages</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1886</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#458</fr:addr><fr:route>unstable-458.xml</fr:route><fr:title>Side effects in programming languages</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -115,7 +134,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1890</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#452</fr:addr><fr:route>unstable-452.xml</fr:route><fr:title>State as a side effect</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1897</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#459</fr:addr><fr:route>unstable-459.xml</fr:route><fr:title>State as a side effect</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -147,7 +166,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1899</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#453</fr:addr><fr:route>unstable-453.xml</fr:route><fr:title>First-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1906</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#460</fr:addr><fr:route>unstable-460.xml</fr:route><fr:title>First-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -187,7 +206,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1908</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#454</fr:addr><fr:route>unstable-454.xml</fr:route><fr:title>Higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1915</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#461</fr:addr><fr:route>unstable-461.xml</fr:route><fr:title>Higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -219,7 +238,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1925</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#455</fr:addr><fr:route>unstable-455.xml</fr:route><fr:title>Guarded higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1932</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#462</fr:addr><fr:route>unstable-462.xml</fr:route><fr:title>Guarded higher-order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -282,7 +301,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1949</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#456</fr:addr><fr:route>unstable-456.xml</fr:route><fr:title>Representation independence in the heap</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1956</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#463</fr:addr><fr:route>unstable-463.xml</fr:route><fr:title>Representation independence in the heap</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -369,7 +388,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1957</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#457</fr:addr><fr:route>unstable-457.xml</fr:route><fr:title>Representation independence in the heap (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1964</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#464</fr:addr><fr:route>unstable-464.xml</fr:route><fr:title>Representation independence in the heap (II)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -392,7 +411,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1969</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#458</fr:addr><fr:route>unstable-458.xml</fr:route><fr:title>Univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1976</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#465</fr:addr><fr:route>unstable-465.xml</fr:route><fr:title>Univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -438,7 +457,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1978</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#459</fr:addr><fr:route>unstable-459.xml</fr:route><fr:title>Representation independence in the heap (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1985</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#466</fr:addr><fr:route>unstable-466.xml</fr:route><fr:title>Representation independence in the heap (III)</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -458,7 +477,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1974</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#460</fr:addr><fr:route>unstable-460.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1981</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#467</fr:addr><fr:route>unstable-467.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -467,7 +486,7 @@ type="local"
 addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 type="local"
-addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>#459</fr:parent></fr:frontmatter><fr:mainmatter>
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>#466</fr:parent></fr:frontmatter><fr:mainmatter>
   <fr:p>The function <fr:tex>\mathsf {neg}  \colon \mathsf {Integer} \to \mathsf {Integer}</fr:tex> is inverse to itself; therefore, apply <fr:strong>CELL UNIVALENCE</fr:strong> with <fr:tex>f^+  \equiv  f^-  \equiv   \mathsf {neg}</fr:tex> and simplify.</fr:p>
  </fr:mainmatter></fr:tree>
  
@@ -478,7 +497,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1982</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#461</fr:addr><fr:route>unstable-461.xml</fr:route><fr:title>Can we find a reasonable model of this theory???</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>1989</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#468</fr:addr><fr:route>unstable-468.xml</fr:route><fr:title>Can we find a reasonable model of this theory???</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -494,7 +513,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>1994</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#462</fr:addr><fr:route>unstable-462.xml</fr:route><fr:title>Models of guarded higher order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2001</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#469</fr:addr><fr:route>unstable-469.xml</fr:route><fr:title>Models of guarded higher order dynamic allocation</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -545,7 +564,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2000</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#463</fr:addr><fr:route>unstable-463.xml</fr:route><fr:title>Models of univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2007</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#470</fr:addr><fr:route>unstable-470.xml</fr:route><fr:title>Models of univalent reference types</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -570,7 +589,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2005</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#464</fr:addr><fr:route>unstable-464.xml</fr:route><fr:title>Impredicative Guarded Homotopy Type Theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2012</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#471</fr:addr><fr:route>unstable-471.xml</fr:route><fr:title>Impredicative Guarded Homotopy Type Theory</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -589,7 +608,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2009</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#465</fr:addr><fr:route>unstable-465.xml</fr:route><fr:title>Models of <fr:strong>iGDTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2016</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#472</fr:addr><fr:route>unstable-472.xml</fr:route><fr:title>Models of <fr:strong>iGDTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -616,7 +635,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2013</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#466</fr:addr><fr:route>unstable-466.xml</fr:route><fr:title>Towards models of <fr:strong>iGHoTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2020</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#473</fr:addr><fr:route>unstable-473.xml</fr:route><fr:title>Towards models of <fr:strong>iGHoTT</fr:strong></fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -649,7 +668,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2017</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#467</fr:addr><fr:route>unstable-467.xml</fr:route><fr:title>A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2024</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#474</fr:addr><fr:route>unstable-474.xml</fr:route><fr:title>A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -665,7 +684,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2021</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#468</fr:addr><fr:route>unstable-468.xml</fr:route><fr:title>Comparing with other realisability models of state</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2028</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#475</fr:addr><fr:route>unstable-475.xml</fr:route><fr:title>Comparing with other realisability models of state</fr:title><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -696,7 +715,7 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2025</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#469</fr:addr><fr:route>unstable-469.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>2032</fr:anchor><fr:taxon>Slide</fr:taxon><fr:addr>#476</fr:addr><fr:route>unstable-476.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
@@ -705,90 +724,4 @@ type="local"
 addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 type="local"
-addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>3109</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>palombi-sterling-2023</fr:addr><fr:route>palombi-sterling-2023.xml</fr:route><fr:title>Classifying topoi in synthetic guarded domain theory: the universal property of multi-clock guarded recursion</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>22</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="danielepalombi.xml"
-type="local"
-addr="danielepalombi">Daniele Palombi</fr:link></fr:author><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="bibtex">@inproceedings{palombi-sterling-2023,
-  author = {Palombi, Daniele and Sterling, Jonathan},
-  booktitle = {Proceedings 38th Conference on Mathematical Foundations of Programming Semantics, {MFPS} 2022},
-  year = {2023},
-  month = feb,
-  title = {Classifying topoi in synthetic guarded domain theory},
-  doi = {10.46298/entics.10323},
-}</fr:meta><fr:meta
-name="doi">10.46298/entics.10323</fr:meta><fr:meta
-name="venue">38th International Conference on Mathematical Foundations of Programming Semantics</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Several different topoi have played an important role in the development and applications of <fr:em><fr:link
-href="bmss-2011.xml"
-type="local"
-addr="bmss-2011">synthetic guarded domain theory</fr:link></fr:em> (SGDT), a new kind of synthetic domain theory that abstracts the concept of <fr:em>guarded recursion</fr:em> frequently employed in the semantics of programming languages. In order to unify the accounts of guarded recursion and coinduction, <fr:link
-href="atkey-mcbride-2013.xml"
-type="local"
-addr="atkey-mcbride-2013">several</fr:link> <fr:link
-href="bizjak-mogelberg-2020.xml"
-type="local"
-addr="bizjak-mogelberg-2020">authors</fr:link> have enriched SGDT with multiple “clocks” parameterizing different time-streams, leading to more complex and difficult to understand topos models. Until now these topoi have been understood very concretely <fr:em>qua</fr:em> categories of presheaves, and the logico-geometrical question of what theories these topoi classify has remained open. We show that several important topos models of SGDT classify very simple geometric theories, and that the passage to various forms of multi-clock guarded recursion can be rephrased more compositionally in terms of the lower bagtopos construction of <fr:link
-href="vickers-1992.xml"
-type="local"
-addr="vickers-1992">Vickers</fr:link> and variations thereon due to <fr:link
-href="johnstone-1994.xml"
-type="local"
-addr="johnstone-1994">Johnstone</fr:link>. We contribute to the consolidation of SGDT by isolating the universal property of multi-clock guarded recursion as a modular construction that applies to any topos model of single-clock guarded recursion.</fr:p></fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>3112</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>sterling-gratzer-birkedal-2022</fr:addr><fr:route>sterling-gratzer-birkedal-2022.xml</fr:route><fr:title>Denotational semantics of general store and polymorphism</fr:title><fr:date><fr:year>2022</fr:year><fr:month>10</fr:month><fr:day>6</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:author><fr:link
-href="danielgratzer.xml"
-type="local"
-addr="danielgratzer">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
-href="larsbirkedal.xml"
-type="local"
-addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:meta
-name="doi">10.48550/arXiv.2210.02169</fr:meta><fr:meta
-name="bibtex">@unpublished{sterling-gratzer-birkedal-2022,
-  author = {Sterling, Jonathan and Gratzer, Daniel and Birkedal, Lars},
-  year = {2022},
-  month = jul,
-  note = {Unpublished manuscript},
-  title = {Denotational semantics of general store and polymorphism},
-}</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an equational theory for general (higher-order) reference types and recursive types, based on a combination of guarded recursion and impredicative polymorphism; because our model is based on <fr:em>recursively defined semantic worlds</fr:em>, it is compatible with polymorphism and relational reasoning about stateful abstract datatypes. We then extend our language with modal constructs for proof-relevant relational reasoning based on the <fr:em>logical relations as types</fr:em> principle, in which equivalences between imperative abstract datatypes can be established synthetically. Finally we develop a decomposition of the store model as a general construction that extends an arbitrary polymorphic call-by-push-value adjunction with higher-order store, improving on <fr:link
-href="paulblainlevy.xml"
-type="local"
-addr="paulblainlevy">Levy</fr:link>'s possible worlds model construction; what is new in relation to prior typed denotational models of higher-order store is that our Kripke worlds need not be syntactically definable, and are thus compatible with relational reasoning in the heap. Our work combines recent advances in the operational semantics of state with the purely denotational viewpoint of <fr:em>synthetic guarded domain theory</fr:em>.</fr:p></fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>3116</fr:anchor><fr:taxon>Reference</fr:taxon><fr:addr>hofmann-streicher-1997</fr:addr><fr:route>hofmann-streicher-1997.xml</fr:route><fr:title>Lifting Grothendieck universes</fr:title><fr:date><fr:year>1997</fr:year></fr:date><fr:authors><fr:author><fr:link
-href="martinhofmann.xml"
-type="local"
-addr="martinhofmann">Martin Hofmann</fr:link></fr:author><fr:author><fr:link
-href="thomasstreicher.xml"
-type="local"
-addr="thomasstreicher">Thomas Streicher</fr:link></fr:author></fr:authors><fr:meta
-name="bibtex">@unpublished{hofmann-streicher-1997,
-  author = {Hofmann, Martin and Streicher, Thomas},
-  url = {https://www2.mathematik.tu-darmstadt.de/~streicher/NOTES/lift.pdf},
-  year = {1997},
-  note = {Unpublished note},
-  title = {Lifting {G}rothendieck Universes},
-}</fr:meta><fr:meta
-name="external">https://www2.mathematik.tu-darmstadt.de/~streicher/NOTES/lift.pdf</fr:meta></fr:frontmatter><fr:mainmatter></fr:mainmatter></fr:tree></fr:references></fr:backmatter></fr:tree>
+addr="larsbirkedal">Lars Birkedal</fr:link></fr:author></fr:authors><fr:parent>jms-00OI</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
