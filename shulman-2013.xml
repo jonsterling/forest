@@ -57,8 +57,8 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> be two <fr:link
 href="frct-0002.xml"
 type="local"
-addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{ \mathopen {} \left ( B , \otimes , \alpha \right ) \mathclose {}}</fr:tex>. We may define the “Day tensor” product <fr:tex>E \otimes _ B   F</fr:tex> of <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> to be the following fibered category over <fr:tex>B</fr:tex>:</fr:p><fr:tex
-display="block">    E \otimes _ B F  : \equiv   \otimes _! { \mathopen {} \left ( \pi _1^* E \times _{ B \times B }  \pi _2^* F \right ) \mathclose {}}  </fr:tex><fr:p>Note that <fr:tex>f_!</fr:tex> refers to the left adjoint of base change <fr:tex>f^*</fr:tex> for <fr:link
+addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{\mathopen {}\left (B,\otimes ,\alpha \right )\mathclose {}}</fr:tex>. We may define the “Day tensor” product <fr:tex>E\otimes _B F</fr:tex> of <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> to be the following fibered category over <fr:tex>B</fr:tex>:</fr:p><fr:tex
+display="block">   E\otimes _BF :\equiv  \otimes _!{\mathopen {}\left (\pi _1^*E\times _{B\times B} \pi _2^*F\right )\mathclose {}} </fr:tex><fr:p>Note that <fr:tex>f_!</fr:tex> refers to the left adjoint of base change <fr:tex>f^*</fr:tex> for <fr:link
 href="frct-0002.xml"
 type="local"
 addr="frct-0002">fibered categories</fr:link>, <fr:link
@@ -83,8 +83,8 @@ type="local"
 addr="jms-009A">Day tensor</fr:link>, we will go through it step-by-step. Let <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> be two <fr:link
 href="frct-0002.xml"
 type="local"
-addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{ \mathopen {} \left ( B , \otimes , \alpha \right ) \mathclose {}}</fr:tex>.</fr:p><fr:ol><fr:li>
-    Given that <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are displayed over <fr:tex>B</fr:tex>, we may restrict them to lie the two disjoint regions of <fr:tex>B \times   B</fr:tex> by <fr:link
+addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{\mathopen {}\left (B,\otimes ,\alpha \right )\mathclose {}}</fr:tex>.</fr:p><fr:ol><fr:li>
+    Given that <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are displayed over <fr:tex>B</fr:tex>, we may restrict them to lie the two disjoint regions of <fr:tex>B\times B</fr:tex> by <fr:link
 href="frct-0007.xml"
 type="local"
 addr="frct-0007">base change</fr:link> along the two projections:
@@ -92,40 +92,40 @@ addr="frct-0007">base change</fr:link> along the two projections:
  
   
   <fr:embedded-tex
-hash="226254380a4e1c3b08502be951a1859e"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="40432bcd69d05eb4967252536661d709"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -366,30 +366,30 @@ hash="226254380a4e1c3b08502be951a1859e"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \DiagramSquare {
-        nw =  \pi _1^* E ,
-        sw =  B \times B ,
-        se =  B ,
-        ne =  E ,
+      \DiagramSquare {
+        nw = \pi _1^*E,
+        sw = B\times B,
+        se = B,
+        ne = E,
         east/style = {|-&gt;},
         west/style = {|-&gt;,exists},
         north/style = {-&gt;,exists},
-        south =  \pi _1,
+        south = \pi _1,
         height = 1.5cm,
       }
-       \qquad 
-       \DiagramSquare {
-        nw =  \pi _2^* F ,
-        sw =  B \times B ,
-        se =  B ,
-        ne =  F ,
+      \qquad 
+      \DiagramSquare {
+        nw = \pi _2^*F,
+        sw = B\times B,
+        se = B,
+        ne = F,
         east/style = {|-&gt;},
         west/style = {|-&gt;,exists},
         north/style = {-&gt;,exists},
-        south =  \pi _2,
+        south = \pi _2,
         height = 1.5cm,
       }
     </fr:embedded-tex-body></fr:embedded-tex>
@@ -400,14 +400,14 @@ hash="226254380a4e1c3b08502be951a1859e"><fr:embedded-tex-preamble>
 
   <fr:li>Next, we took the fiber product of fibered categories, giving a vertical span over <fr:tex>B</fr:tex>:
     <fr:tex
-display="block">        \pi _1^* E   \leftarrow   \pi _1^* E \times _{ B \times   B }  \pi _2^* F   \rightarrow   \pi _2^* F      </fr:tex>
-    Of course, this corresponds to pullback in <fr:tex>\mathbf {Cat}</fr:tex> or cartesian product in <fr:tex>{ \mathbf {Cat} } _{ / B }</fr:tex>.
+display="block">       \pi _1^*E \leftarrow  \pi _1^*E\times _{B\times B} \pi _2^*F \rightarrow  \pi _2^*F     </fr:tex>
+    Of course, this corresponds to pullback in <fr:tex>\mathbf {Cat}</fr:tex> or cartesian product in <fr:tex>{\mathbf {Cat}}_{/B}</fr:tex>.
   </fr:li>
 
   <fr:li>Finally, we take a <fr:em><fr:link
 href="frct-0017.xml"
 type="local"
-addr="frct-0017">cocartesian lift</fr:link></fr:em> along the tensor functor <fr:tex>{ B \times B } \xrightarrow {{ \otimes }}{ B }</fr:tex> to obtain the <fr:link
+addr="frct-0017">cocartesian lift</fr:link></fr:em> along the tensor functor <fr:tex>{B\times B}\xrightarrow {{\otimes }}{B}</fr:tex> to obtain the <fr:link
 href="jms-009A.xml"
 type="local"
 addr="jms-009A">Day tensor</fr:link>:
@@ -415,40 +415,40 @@ addr="jms-009A">Day tensor</fr:link>:
  
   
   <fr:embedded-tex
-hash="f096d308525912947b641d9915c751be"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="ffdd5d7a1cacb8f1142e01c38933b9d7"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -689,14 +689,14 @@ hash="f096d308525912947b641d9915c751be"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \DiagramSquare {
-        nw =  \pi _1^* E \times _{ B \times B } \pi _2^* F ,
-        sw =  B \times B ,
-        south =  \otimes ,
-        ne =  E \otimes _{ B } F ,
+      \DiagramSquare {
+        nw = \pi _1^*E\times _{B\times B}\pi _2^*F,
+        sw = B\times B,
+        south = \otimes ,
+        ne = E\otimes _{B}F,
         se = B,
         north/style = {-&gt;,exists},
         east/style = {|-&gt;,exists},
@@ -727,11 +727,11 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> be two <fr:link
 href="frct-0002.xml"
 type="local"
-addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{ \mathopen {} \left ( B , \otimes , \alpha \right ) \mathclose {}}</fr:tex>. We may define the “Day hom” <fr:tex>E \multimap _ B   F</fr:tex> of <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> to be the following <fr:link
+addr="frct-0002">fibered categories</fr:link> over a semimonoidal category <fr:tex>{\mathopen {}\left (B,\otimes ,\alpha \right )\mathclose {}}</fr:tex>. We may define the “Day hom” <fr:tex>E\multimap _B F</fr:tex> of <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> to be the following <fr:link
 href="frct-0002.xml"
 type="local"
 addr="frct-0002">fibered category</fr:link> over <fr:tex>B</fr:tex>:</fr:p><fr:tex
-display="block">    E \multimap _ B F  : \equiv      { \mathopen {} \left ( \pi _1 \right ) \mathclose {}} _* { \mathopen {} \left (       \pi _2^* E \Rightarrow _{ B \times B }  \otimes ^* F     \right ) \mathclose {}}  </fr:tex>
+display="block">   E\multimap _BF :\equiv     {\mathopen {}\left (\pi _1\right )\mathclose {}}_*{\mathopen {}\left (     \pi _2^*E\Rightarrow _{B\times B} \otimes ^*F   \right )\mathclose {}} </fr:tex>
  
    
    <fr:tree
@@ -745,7 +745,7 @@ root="false"><fr:frontmatter><fr:anchor>959</fr:anchor><fr:taxon>Proof</fr:taxon
 href="jonmsterling.xml"
 type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-009G</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>First of all, we note that the pullback functor <fr:tex>{ { \mathbf {Cat} } _{ / B } } \xrightarrow {{ \pi _1^* }}{ { \mathbf {Cat} } _{ / B \times B } }</fr:tex> has a right adjoint <fr:tex>\pi _1^* \dashv   { \mathopen {} \left ( \pi _1 \right ) \mathclose {}} _*</fr:tex>, as <fr:tex>{ B \times B } \xrightarrow {{ \pi _1 }}{ B }</fr:tex> is (as any cartesian fibration) a Conduché functor, i.e. an <fr:link
+  <fr:p>First of all, we note that the pullback functor <fr:tex>{{\mathbf {Cat}}_{/B}}\xrightarrow {{\pi _1^*}}{{\mathbf {Cat}}_{/B\times B}}</fr:tex> has a right adjoint <fr:tex>\pi _1^*\dashv  {\mathopen {}\left (\pi _1\right )\mathclose {}}_*</fr:tex>, as <fr:tex>{B\times B}\xrightarrow {{\pi _1}}{B}</fr:tex> is (as any cartesian fibration) a Conduché functor, i.e. an <fr:link
 href="jms-0031.xml"
 type="local"
 addr="jms-0031">exponentiable arrow</fr:link> in <fr:tex>\mathbf {Cat}</fr:tex>. We have already assumed that <fr:tex>E</fr:tex> is a Cartesian fibration, and thus so is its <fr:link
@@ -757,7 +757,7 @@ type="local"
 addr="jms-0031">exponentiable</fr:link>. With that out of the way, we may compute the hom by adjoint calisthenics:</fr:p>
   
   <fr:tex
-display="block">      \begin {aligned}       &amp; \mathbf {hom} _{ { \mathbf {Cat} } _{ / B } } { \mathopen {} \left ( X \otimes _B  E , F \right ) \mathclose {}}         \\        &amp; \quad \equiv         \mathbf {hom} _{ { \mathbf {Cat} } _{ / B } } { \mathopen {} \left (           \otimes _! { \mathopen {} \left (             \pi _1^*X \times _{B \times  B} \pi _2^* E           \right ) \mathclose {}}         , F \right ) \mathclose {}}         \\        &amp; \quad \simeq         \mathbf {hom} _{           { \mathbf {Cat} } _{ / B \times B }         } { \mathopen {} \left ( \pi _1^*X \times _{B \times  B} \pi _2^* E , \otimes ^* F \right ) \mathclose {}}         \\         &amp; \quad \simeq          \mathbf {hom} _{ { \mathbf {Cat} } _{ / B \times B } } { \mathopen {} \left (           \pi _1^*X        , \pi _2^* E \Rightarrow   \otimes ^* F \right ) \mathclose {}}         \\        &amp; \quad \simeq          \mathbf {hom} _{ { \mathbf {Cat} } _{ / B } } { \mathopen {} \left ( X ,           { \mathopen {} \left ( \pi _1 \right ) \mathclose {}} _* { \mathopen {} \left (             \pi _2^* E \Rightarrow   \otimes ^* F           \right ) \mathclose {}}         \right ) \mathclose {}}       \end {aligned}   </fr:tex>
+display="block">     \begin {aligned}       &amp;\mathbf {hom}_{{\mathbf {Cat}}_{/B}}{\mathopen {}\left (X\otimes _B E,F\right )\mathclose {}}       \\       &amp;\quad \equiv        \mathbf {hom}_{{\mathbf {Cat}}_{/B}}{\mathopen {}\left (         \otimes _!{\mathopen {}\left (           \pi _1^*X\times _{B\times  B}\pi _2^*E         \right )\mathclose {}}       ,F\right )\mathclose {}}       \\       &amp;\quad \simeq        \mathbf {hom}_{         {\mathbf {Cat}}_{/B\times B}       }{\mathopen {}\left (\pi _1^*X\times _{B\times  B}\pi _2^*E,\otimes ^*F\right )\mathclose {}}       \\        &amp;\quad \simeq         \mathbf {hom}_{{\mathbf {Cat}}_{/B\times B}}{\mathopen {}\left (         \pi _1^*X       ,\pi _2^*E\Rightarrow  \otimes ^*F\right )\mathclose {}}       \\       &amp;\quad \simeq         \mathbf {hom}_{{\mathbf {Cat}}_{/B}}{\mathopen {}\left (X,         {\mathopen {}\left (\pi _1\right )\mathclose {}}_*{\mathopen {}\left (           \pi _2^*E\Rightarrow  \otimes ^*F         \right )\mathclose {}}       \right )\mathclose {}}     \end {aligned}   </fr:tex>
 </fr:mainmatter></fr:tree>
  
 </fr:mainmatter></fr:tree><fr:tree
@@ -770,10 +770,10 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>963</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-009B</fr:addr><fr:route>jms-009B.xml</fr:route><fr:title>The “Day unit” of fibered categories</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{ \mathopen {} \left ( B , \otimes ,I, \alpha , \lambda , \rho \right ) \mathclose {}}</fr:tex> be a monoidal category. We may define a “Day unit” for <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{\mathopen {}\left (B,\otimes ,I,\alpha ,\lambda ,\rho \right )\mathclose {}}</fr:tex> be a monoidal category. We may define a “Day unit” for <fr:link
 href="frct-0002.xml"
 type="local"
-addr="frct-0002">fibered categories</fr:link> over <fr:tex>B</fr:tex> to be given by the discrete fibration <fr:tex>{ B } _{ / I } \to   B</fr:tex>, which corresponds under the Grothendieck construction to the presheaf represented by <fr:tex>I</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+addr="frct-0002">fibered categories</fr:link> over <fr:tex>B</fr:tex> to be given by the discrete fibration <fr:tex>{B}_{/I}\to  B</fr:tex>, which corresponds under the Grothendieck construction to the presheaf represented by <fr:tex>I</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="true"
@@ -786,24 +786,24 @@ type="local"
 addr="jms-009C">Day tensor</fr:link> preserves cartesian fibrations</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>If <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are cartesian fibrations over a semimonoidal category <fr:tex>{ \mathopen {} \left ( B , \otimes , \alpha \right ) \mathclose {}}</fr:tex>, then the <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>If <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are cartesian fibrations over a semimonoidal category <fr:tex>{\mathopen {}\left (B,\otimes ,\alpha \right )\mathclose {}}</fr:tex>, then the <fr:link
 href="jms-009C.xml"
 type="local"
-addr="jms-009C">Day tensor</fr:link> <fr:tex>E \otimes _ B F</fr:tex> is also a cartesian fibration.</fr:p></fr:mainmatter></fr:tree><fr:p>I believe, but did not check carefully, that when <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are <fr:em>discrete</fr:em> fibrations over a semimonoidal category <fr:tex>{ \mathopen {} \left ( B , \otimes , \alpha \right ) \mathclose {}}</fr:tex> then the <fr:link
+addr="jms-009C">Day tensor</fr:link> <fr:tex>E\otimes _BF</fr:tex> is also a cartesian fibration.</fr:p></fr:mainmatter></fr:tree><fr:p>I believe, but did not check carefully, that when <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex> are <fr:em>discrete</fr:em> fibrations over a semimonoidal category <fr:tex>{\mathopen {}\left (B,\otimes ,\alpha \right )\mathclose {}}</fr:tex> then the <fr:link
 href="jms-009A.xml"
 type="local"
-addr="jms-009A">Day tensor</fr:link> is precisely the discrete fibration corresponding to the (contravariant) Day convolution of the presheaves corresponding to <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex>. Likewise when <fr:tex>{ \mathopen {} \left ( B , \otimes ,I, \alpha , \lambda , \rho \right ) \mathclose {}}</fr:tex> is monoidal, it appears that the <fr:link
+addr="jms-009A">Day tensor</fr:link> is precisely the discrete fibration corresponding to the (contravariant) Day convolution of the presheaves corresponding to <fr:tex>E</fr:tex> and <fr:tex>F</fr:tex>. Likewise when <fr:tex>{\mathopen {}\left (B,\otimes ,I,\alpha ,\lambda ,\rho \right )\mathclose {}}</fr:tex> is monoidal, it appears that the <fr:link
 href="jms-009B.xml"
 type="local"
 addr="jms-009B">Day unit</fr:link> corresponds precisely to the traditional one.</fr:p><fr:p>There remain some interesting directions to explore. First of all, the claims above would obviously lead to a new construction of the Day convolution monoidal structure on the 1-category of discrete fibrations on <fr:tex>B</fr:tex> that coincides with the traditional one up to the Grothendieck construction. <html:mark
-xmlns:html="http://www.w3.org/1999/xhtml">But in general, we should expect to exhibit both <fr:tex>{ \mathbf {Cat} } _{ / B }</fr:tex> and <fr:tex>\mathbf {Fib}_{ B }</fr:tex> as <fr:strong>monoidal bicategories</fr:strong>, a result that I have not seen before.</html:mark></fr:p><fr:tree
+xmlns:html="http://www.w3.org/1999/xhtml">But in general, we should expect to exhibit both <fr:tex>{\mathbf {Cat}}_{/B}</fr:tex> and <fr:tex>\mathbf {Fib}_{B}</fr:tex> as <fr:strong>monoidal bicategories</fr:strong>, a result that I have not seen before.</html:mark></fr:p><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>968</fr:anchor><fr:taxon>Conjecture</fr:taxon><fr:addr>jms-009E</fr:addr><fr:route>jms-009E.xml</fr:route><fr:title>A monoidal bicategory of fibered categories</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>20</fr:day></fr:date></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{ \mathopen {} \left ( B , \otimes ,I, \alpha , \lambda , \rho \right ) \mathclose {}}</fr:tex> be a fibered category. Then the <fr:link
+root="false"><fr:frontmatter><fr:anchor>968</fr:anchor><fr:taxon>Conjecture</fr:taxon><fr:addr>jms-009E</fr:addr><fr:route>jms-009E.xml</fr:route><fr:title>A monoidal bicategory of fibered categories</fr:title><fr:date><fr:year>2023</fr:year><fr:month>9</fr:month><fr:day>20</fr:day></fr:date></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{\mathopen {}\left (B,\otimes ,I,\alpha ,\lambda ,\rho \right )\mathclose {}}</fr:tex> be a fibered category. Then the <fr:link
 href="jms-009B.xml"
 type="local"
 addr="jms-009B">Day tensor</fr:link> and <fr:link

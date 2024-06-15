@@ -10,13 +10,13 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>17772</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-000H</fr:addr><fr:route>jms-000H.xml</fr:route><fr:title>Enriched category</fr:title><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{ \mathopen {} \left ( V,I, \otimes , \alpha , \lambda , \rho \right ) \mathclose {}}</fr:tex> be a <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>{\mathopen {}\left (V,I,\otimes ,\alpha ,\lambda ,\rho \right )\mathclose {}}</fr:tex> be a <fr:link
 href="jms-000D.xml"
 type="local"
-addr="jms-000D">monoidal category</fr:link>. A <fr:em>category <fr:tex>C</fr:tex> enriched in <fr:tex>V</fr:tex></fr:em> is defined by the following structure and axioms:</fr:p><fr:ol><fr:li>a collection <fr:tex>\mathbf {ob} _{ C }</fr:tex> of <fr:em>objects</fr:em>;</fr:li>
-  <fr:li>for any two objects <fr:tex>x,y</fr:tex>, an object <fr:tex>\mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \in  V</fr:tex>;</fr:li>
-  <fr:li>for every object <fr:tex>x</fr:tex>, a morphism <fr:tex>I \xrightarrow {i _{ x } } \mathbf {hom} _{ C } { \mathopen {} \left ( x , x \right ) \mathclose {}}</fr:tex> in <fr:tex>V</fr:tex>;</fr:li>
-  <fr:li>for all objects <fr:tex>x,y,z</fr:tex>, a morphism <fr:tex>\mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} \xrightarrow {c _{ x,y,z } } \mathbf {hom} _{ C } { \mathopen {} \left ( x , z \right ) \mathclose {}}</fr:tex> in <fr:tex>V</fr:tex>.</fr:li>
+addr="jms-000D">monoidal category</fr:link>. A <fr:em>category <fr:tex>C</fr:tex> enriched in <fr:tex>V</fr:tex></fr:em> is defined by the following structure and axioms:</fr:p><fr:ol><fr:li>a collection <fr:tex>\mathbf {ob}_{C}</fr:tex> of <fr:em>objects</fr:em>;</fr:li>
+  <fr:li>for any two objects <fr:tex>x,y</fr:tex>, an object <fr:tex>\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\in  V</fr:tex>;</fr:li>
+  <fr:li>for every object <fr:tex>x</fr:tex>, a morphism <fr:tex>I\xrightarrow {i_{x}}\mathbf {hom}_{C}{\mathopen {}\left (x,x\right )\mathclose {}}</fr:tex> in <fr:tex>V</fr:tex>;</fr:li>
+  <fr:li>for all objects <fr:tex>x,y,z</fr:tex>, a morphism <fr:tex>\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\otimes \mathbf {hom}_{C}{\mathopen {}\left (y,z\right )\mathclose {}}\xrightarrow {c_{x,y,z}}\mathbf {hom}_{C}{\mathopen {}\left (x,z\right )\mathclose {}}</fr:tex> in <fr:tex>V</fr:tex>.</fr:li>
   <fr:li>
     such that the following diagrams commute in <fr:tex>V</fr:tex>:
 
@@ -24,40 +24,40 @@ addr="jms-000D">monoidal category</fr:link>. A <fr:em>category <fr:tex>C</fr:tex
  
   
   <fr:embedded-tex
-hash="b6320aa42f9b0c5254fb4657ba2db439"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="c9c79063147c24967e797720150fb9ab"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -298,21 +298,21 @@ hash="b6320aa42f9b0c5254fb4657ba2db439"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (nw) {$ { \mathopen {} \left ( \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $};
-         \node [right = 9cm of nw] (ne) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes { \mathopen {} \left ( \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} \right ) \mathclose {}} $};
-         \node [below = of nw] (sw) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , y \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $};
-         \node [below = of ne] (se) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes \mathbf {hom} _{ C } { \mathopen {} \left ( x , z \right ) \mathclose {}} $};
-         \node [between = sw and se,yshift=-1cm] (s) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , z \right ) \mathclose {}} $};
-         \draw [-&gt;] (nw) to node[left] {$c _{ w,x,y } \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( y , z \right ) \mathclose {}} $} (sw);
-         \draw [-&gt;] (sw) to node[sloped,below] {$c _{ w,y,z } $} (s);
-         \draw [-&gt;] (se) to node[sloped,below] {$c _{ w,x,z } $} (s);
-         \draw [-&gt;] (ne) to node[right] {$ \mathbf {hom} _{ C } { \mathopen {} \left ( w , x \right ) \mathclose {}} \otimes  c _{ x,y,z } $} (se);
-         \draw [-&gt;] (nw) to node[above] {$ \alpha _{ w,x,y,z } $} (ne);
-       \end {tikzpicture}
+      \begin {tikzpicture}[diagram]
+        \node  (nw) {${\mathopen {}\left (\mathbf {hom}_{C}{\mathopen {}\left (w,x\right )\mathclose {}}\otimes  \mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\right )\mathclose {}}\otimes  \mathbf {hom}_{C}{\mathopen {}\left (y,z\right )\mathclose {}}$};
+        \node [right = 9cm of nw] (ne) {$\mathbf {hom}_{C}{\mathopen {}\left (w,x\right )\mathclose {}}\otimes {\mathopen {}\left (\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\otimes \mathbf {hom}_{C}{\mathopen {}\left (y,z\right )\mathclose {}}\right )\mathclose {}}$};
+        \node [below = of nw] (sw) {$\mathbf {hom}_{C}{\mathopen {}\left (w,y\right )\mathclose {}}\otimes \mathbf {hom}_{C}{\mathopen {}\left (y,z\right )\mathclose {}}$};
+        \node [below = of ne] (se) {$\mathbf {hom}_{C}{\mathopen {}\left (w,x\right )\mathclose {}}\otimes \mathbf {hom}_{C}{\mathopen {}\left (x,z\right )\mathclose {}}$};
+        \node [between = sw and se,yshift=-1cm] (s) {$\mathbf {hom}_{C}{\mathopen {}\left (w,z\right )\mathclose {}}$};
+        \draw [-&gt;] (nw) to node[left] {$c_{w,x,y}\otimes  \mathbf {hom}_{C}{\mathopen {}\left (y,z\right )\mathclose {}}$} (sw);
+        \draw [-&gt;] (sw) to node[sloped,below] {$c_{w,y,z}$} (s);
+        \draw [-&gt;] (se) to node[sloped,below] {$c_{w,x,z}$} (s);
+        \draw [-&gt;] (ne) to node[right] {$\mathbf {hom}_{C}{\mathopen {}\left (w,x\right )\mathclose {}}\otimes  c_{x,y,z}$} (se);
+        \draw [-&gt;] (nw) to node[above] {$\alpha _{w,x,y,z}$} (ne);
+      \end {tikzpicture}
     </fr:embedded-tex-body></fr:embedded-tex>
  
 
@@ -321,40 +321,40 @@ hash="b6320aa42f9b0c5254fb4657ba2db439"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="139a48a8d25126f4d7fce2ca24663f7f"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="37ea74aaeaf8507729a60b7e8170e142"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -595,22 +595,22 @@ hash="139a48a8d25126f4d7fce2ca24663f7f"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (nw) {$I \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
-         \node [below = of nw] (sw) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , x \right ) \mathclose {}} \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
-         \node [right = 4.5cm of nw] (ne) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $};
-         \node [right = 4.5cm of ne] (nee) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes  I$};
-         \node [below = of nee] (see) {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes   \mathbf {hom} _{ c } { \mathopen {} \left ( y , y \right ) \mathclose {}} $};
-         \draw [-&gt;] (nee) to node[right] {$ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} \otimes  i _{ y } $} (see);
-         \draw [-&gt;] (nee) to node[above] {$ \rho _{ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} } $} (ne);
-         \draw [-&gt;] (nw) to node[above] {$ \lambda _{ \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} } $} (ne);
-         \draw [-&gt;] (nw) to node[left] {$i _{ x } \otimes   \mathbf {hom} _{ C } { \mathopen {} \left ( x , y \right ) \mathclose {}} $} (sw);
-         \draw [-&gt;] (sw) to node[sloped,below] {$c _{ x,x,y } $} (ne);
-         \draw [-&gt;] (see) to node[sloped,below] {$c _{ x,y,y } $} (ne);
-       \end {tikzpicture}
+      \begin {tikzpicture}[diagram]
+        \node  (nw) {$I\otimes  \mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}$};
+        \node [below = of nw] (sw) {$\mathbf {hom}_{C}{\mathopen {}\left (x,x\right )\mathclose {}}\otimes  \mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}$};
+        \node [right = 4.5cm of nw] (ne) {$\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}$};
+        \node [right = 4.5cm of ne] (nee) {$\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\otimes  I$};
+        \node [below = of nee] (see) {$\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\otimes  \mathbf {hom}_{c}{\mathopen {}\left (y,y\right )\mathclose {}}$};
+        \draw [-&gt;] (nee) to node[right] {$\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}\otimes  i_{y}$} (see);
+        \draw [-&gt;] (nee) to node[above] {$\rho _{\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}}$} (ne);
+        \draw [-&gt;] (nw) to node[above] {$\lambda _{\mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}}$} (ne);
+        \draw [-&gt;] (nw) to node[left] {$i_{x}\otimes  \mathbf {hom}_{C}{\mathopen {}\left (x,y\right )\mathclose {}}$} (sw);
+        \draw [-&gt;] (sw) to node[sloped,below] {$c_{x,x,y}$} (ne);
+        \draw [-&gt;] (see) to node[sloped,below] {$c_{x,y,y}$} (ne);
+      \end {tikzpicture}
     </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol></fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context></fr:context><fr:related><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
@@ -621,51 +621,51 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>17770</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-000D</fr:addr><fr:route>jms-000D.xml</fr:route><fr:title>Monoidal category</fr:title><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em>monoidal category</fr:em> is a category <fr:tex>C</fr:tex> equipped with the following structure and axioms:</fr:p><fr:ol><fr:li>a functor <fr:tex>C \times  C \xrightarrow { \otimes }C</fr:tex> called the <fr:em>tensor product</fr:em>;</fr:li>
-  <fr:li>an object <fr:tex>I \in  C</fr:tex> called the <fr:em>tensor unit</fr:em>;</fr:li>
-  <fr:li>a natural isomorphism <fr:tex>{ \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \otimes  z  \xrightarrow { \alpha _{ x,y,z } } x \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}}</fr:tex> called the <fr:em>associator</fr:em>;</fr:li>
-  <fr:li>a natural isomorphism <fr:tex>I \otimes  x  \xrightarrow { \lambda _{ x } }x</fr:tex> called the <fr:em>left unitor</fr:em>;</fr:li>
-  <fr:li>a natural isomorphism <fr:tex>x \otimes  I  \xrightarrow { \rho _{ x } }x</fr:tex> called the <fr:em>right unitor</fr:em>;</fr:li>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em>monoidal category</fr:em> is a category <fr:tex>C</fr:tex> equipped with the following structure and axioms:</fr:p><fr:ol><fr:li>a functor <fr:tex>C\times  C\xrightarrow {\otimes }C</fr:tex> called the <fr:em>tensor product</fr:em>;</fr:li>
+  <fr:li>an object <fr:tex>I\in  C</fr:tex> called the <fr:em>tensor unit</fr:em>;</fr:li>
+  <fr:li>a natural isomorphism <fr:tex>{\mathopen {}\left (x\otimes  y\right )\mathclose {}}\otimes  z \xrightarrow {\alpha _{x,y,z}} x\otimes {\mathopen {}\left (y\otimes  z\right )\mathclose {}}</fr:tex> called the <fr:em>associator</fr:em>;</fr:li>
+  <fr:li>a natural isomorphism <fr:tex>I\otimes  x \xrightarrow {\lambda _{x}}x</fr:tex> called the <fr:em>left unitor</fr:em>;</fr:li>
+  <fr:li>a natural isomorphism <fr:tex>x\otimes  I \xrightarrow {\rho _{x}}x</fr:tex> called the <fr:em>right unitor</fr:em>;</fr:li>
   <fr:li>
     such that the triangle below commutes:
     
  
   
   <fr:embedded-tex
-hash="9d855400b29e82c58d99a5ed0e54e22c"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="83e7ec7212a9562fa35de003c6a5833d"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -906,17 +906,17 @@ hash="9d855400b29e82c58d99a5ed0e54e22c"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (nw) {$ { \mathopen {} \left ( x \otimes  I \right ) \mathclose {}} \otimes  y$};
-         \node [below right = 2.5cm of nw] (s) {$x \otimes  y$};
-         \node [above right = 2.5cm of s] (ne) {$x \otimes { \mathopen {} \left ( I \otimes  y \right ) \mathclose {}} $};
-         \draw [-&gt;] (nw) to node[above] {$ \alpha _{ x,I,y } $} (ne);
-         \draw [-&gt;] (nw) to node[sloped,below] {$ \rho _x \otimes   1 _{ y } $} (s);
-         \draw [-&gt;] (ne) to node[sloped,below] {$ 1 _{ x } \otimes   \lambda _{ y } $} (s);
-       \end {tikzpicture}
+      \begin {tikzpicture}[diagram]
+        \node  (nw) {${\mathopen {}\left (x\otimes  I\right )\mathclose {}}\otimes  y$};
+        \node [below right = 2.5cm of nw] (s) {$x\otimes  y$};
+        \node [above right = 2.5cm of s] (ne) {$x\otimes {\mathopen {}\left (I\otimes  y\right )\mathclose {}}$};
+        \draw [-&gt;] (nw) to node[above] {$\alpha _{x,I,y}$} (ne);
+        \draw [-&gt;] (nw) to node[sloped,below] {$\rho _x\otimes  1_{y}$} (s);
+        \draw [-&gt;] (ne) to node[sloped,below] {$1_{x}\otimes  \lambda _{y}$} (s);
+      \end {tikzpicture}
     </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
   <fr:li>
@@ -925,40 +925,40 @@ hash="9d855400b29e82c58d99a5ed0e54e22c"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="b457bfd7eb36c9b1ead09588dd246714"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="28d0880284720ac86f2fdde287546c5f"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -1199,21 +1199,21 @@ hash="b457bfd7eb36c9b1ead09588dd246714"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-       \begin {tikzpicture}[diagram]
-         \node  (nw) {$ { \mathopen {} \left ( { \mathopen {} \left ( w \otimes  x \right ) \mathclose {}} \otimes  y \right ) \mathclose {}} \otimes  z$};
-         \node [above right = 3cm of nw, xshift=1cm] (n) {$ { \mathopen {} \left ( w \otimes  x \right ) \mathclose {}} \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}} $};
-         \node [below right = 3cm of n, xshift=1cm] (ne) {$w \otimes { \mathopen {} \left ( x \otimes { \mathopen {} \left ( y \otimes  z \right ) \mathclose {}} \right ) \mathclose {}} $};
-         \node [below = of nw] (sw) {$ { \mathopen {} \left ( w \otimes { \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \right ) \mathclose {}} \otimes  z$};
-         \node [below = of ne] (se) {$w \otimes { \mathopen {} \left ( { \mathopen {} \left ( x \otimes  y \right ) \mathclose {}} \otimes  z \right ) \mathclose {}} $};
-         \draw [-&gt;] (nw) to node[left] {$ \alpha _{ w,x,y } \otimes 1 _{ z } $} (sw);
-         \draw [-&gt;] (sw) to node[below] {$ \alpha _{ w,x \otimes  y,z } $} (se);
-         \draw [-&gt;] (se) to node[right] {$ 1 _{ w } \otimes \alpha _{ x,y,z } $} (ne);
-         \draw [-&gt;] (nw) to node[sloped,above] {$ \alpha _{ w \otimes  x } ,y,z$} (n);
-         \draw [-&gt;] (n) to node[sloped,above] {$ \alpha _{ w,x,y \otimes  z } $} (ne);
-       \end {tikzpicture}
+      \begin {tikzpicture}[diagram]
+        \node  (nw) {${\mathopen {}\left ({\mathopen {}\left (w\otimes  x\right )\mathclose {}}\otimes  y\right )\mathclose {}}\otimes  z$};
+        \node [above right = 3cm of nw, xshift=1cm] (n) {${\mathopen {}\left (w\otimes  x\right )\mathclose {}}\otimes {\mathopen {}\left (y\otimes  z\right )\mathclose {}}$};
+        \node [below right = 3cm of n, xshift=1cm] (ne) {$w\otimes {\mathopen {}\left (x\otimes {\mathopen {}\left (y\otimes  z\right )\mathclose {}}\right )\mathclose {}}$};
+        \node [below = of nw] (sw) {${\mathopen {}\left (w\otimes {\mathopen {}\left (x\otimes  y\right )\mathclose {}}\right )\mathclose {}}\otimes  z$};
+        \node [below = of ne] (se) {$w\otimes {\mathopen {}\left ({\mathopen {}\left (x\otimes  y\right )\mathclose {}}\otimes  z\right )\mathclose {}}$};
+        \draw [-&gt;] (nw) to node[left] {$\alpha _{w,x,y}\otimes 1_{z}$} (sw);
+        \draw [-&gt;] (sw) to node[below] {$\alpha _{w,x\otimes  y,z}$} (se);
+        \draw [-&gt;] (se) to node[right] {$1_{w}\otimes \alpha _{x,y,z}$} (ne);
+        \draw [-&gt;] (nw) to node[sloped,above] {$\alpha _{w\otimes  x},y,z$} (n);
+        \draw [-&gt;] (n) to node[sloped,above] {$\alpha _{w,x,y\otimes  z}$} (ne);
+      \end {tikzpicture}
     </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol></fr:mainmatter></fr:tree></fr:related><fr:backlinks><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
@@ -1224,7 +1224,7 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>17766</fr:anchor><fr:taxon>Project idea</fr:taxon><fr:addr>jms-00AC</fr:addr><fr:route>jms-00AC.xml</fr:route><fr:title>The 2-dimensional Phoa principle</fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>11</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>There is a common thread in modern approaches to <fr:em>domain theory</fr:em>, <fr:em>theory of computation</fr:em>, and <fr:em>topology</fr:em>: one has an object <fr:tex>\Sigma</fr:tex> with two points <fr:tex>\bot , \top : \Sigma</fr:tex> that behave like the Sierpiński space, and it induces a binary “order” relation on any other object by serving as an interval: in particular, for a space <fr:tex>X</fr:tex> and points <fr:tex>x,y:X</fr:tex> we may say that <fr:tex>x \sqsubseteq  y</fr:tex> when there exists a mapping <fr:tex>H \colon   \Sigma \to  X</fr:tex> such that <fr:tex>H \bot  = x</fr:tex> and <fr:tex>H \top  = y</fr:tex>. This is called the <fr:em>path order</fr:em>.</fr:p><fr:p>In addition to the path order described above, the Sierpiński space has its own intrinsic order: for <fr:tex>p,q: \Sigma</fr:tex> we say that <fr:tex>p \leq  q</fr:tex> when <fr:tex>p= \top</fr:tex> implies <fr:tex>q= \top</fr:tex>. The <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>There is a common thread in modern approaches to <fr:em>domain theory</fr:em>, <fr:em>theory of computation</fr:em>, and <fr:em>topology</fr:em>: one has an object <fr:tex>\Sigma </fr:tex> with two points <fr:tex>\bot ,\top :\Sigma </fr:tex> that behave like the Sierpiński space, and it induces a binary “order” relation on any other object by serving as an interval: in particular, for a space <fr:tex>X</fr:tex> and points <fr:tex>x,y:X</fr:tex> we may say that <fr:tex>x\sqsubseteq  y</fr:tex> when there exists a mapping <fr:tex>H\colon  \Sigma \to  X</fr:tex> such that <fr:tex>H\bot  = x</fr:tex> and <fr:tex>H\top  = y</fr:tex>. This is called the <fr:em>path order</fr:em>.</fr:p><fr:p>In addition to the path order described above, the Sierpiński space has its own intrinsic order: for <fr:tex>p,q:\Sigma </fr:tex> we say that <fr:tex>p\leq  q</fr:tex> when <fr:tex>p=\top </fr:tex> implies <fr:tex>q=\top </fr:tex>. The <fr:link
 href="jms-00AD.xml"
 type="local"
 addr="jms-00AD">Phoa principle</fr:link> is an important law governing the Sierpiński space ensuring that the path order and the intrinsic order coincide.</fr:p><fr:tree
@@ -1240,7 +1240,7 @@ type="local"
 addr="wesleyphoa">Phoa</fr:link>’s principle</fr:title><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>11</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The map <fr:tex>\Sigma ^ \Sigma \to   \Sigma \times \Sigma</fr:tex> sending <fr:tex>f</fr:tex> to the pair <fr:tex>{ \mathopen {} \left ( f \bot ,f \top \right ) \mathclose {}}</fr:tex> is an embedding and its image is the subset of <fr:tex>\Sigma \times \Sigma</fr:tex> spanned by pairs <fr:tex>{ \mathopen {} \left ( p,q \right ) \mathclose {}}</fr:tex> such that <fr:tex>p= \top</fr:tex> implies <fr:tex>q= \top</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:p>A concrete model of domain theory (like cpos) is always a poset-<fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The map <fr:tex>\Sigma ^\Sigma \to  \Sigma \times \Sigma </fr:tex> sending <fr:tex>f</fr:tex> to the pair <fr:tex>{\mathopen {}\left (f\bot ,f\top \right )\mathclose {}}</fr:tex> is an embedding and its image is the subset of <fr:tex>\Sigma \times \Sigma </fr:tex> spanned by pairs <fr:tex>{\mathopen {}\left (p,q\right )\mathclose {}}</fr:tex> such that <fr:tex>p=\top </fr:tex> implies <fr:tex>q=\top </fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:p>A concrete model of domain theory (like cpos) is always a poset-<fr:link
 href="jms-000H.xml"
 type="local"
 addr="jms-000H">enriched category</fr:link>, which can also be thought of as a (locally posetal) 2-category. I have discovered that it is possible to re-formulate <fr:link
@@ -1269,4 +1269,4 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em>category with zero morphisms</fr:em> is defined to be a category <fr:link
 href="jms-000H.xml"
 type="local"
-addr="jms-000H">enriched</fr:link> in the category of pointed sets and strict maps. The distinguished point of <fr:tex>\mathbf {hom} _{ \mathcal {A} } { \mathopen {} \left ( A , B \right ) \mathclose {}}</fr:tex> shall be written <fr:tex>0</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+addr="jms-000H">enriched</fr:link> in the category of pointed sets and strict maps. The distinguished point of <fr:tex>\mathbf {hom}_{\mathcal {A}}{\mathopen {}\left (A,B\right )\mathclose {}}</fr:tex> shall be written <fr:tex>0</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>

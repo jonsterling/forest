@@ -17,40 +17,40 @@ addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jm
  
   
   <fr:embedded-tex
-hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="125a101087d9d308a8df17cce97f280e"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -291,51 +291,51 @@ hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-     
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+    
+  \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      +(1,-1) coordinate[dot,label=90:$\mu $] (mu)
+      ++(2,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$\alpha _{\bar {X}}$] (alg) at (intersection-1);
+    \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+    \draw  (mu.center) to (alg.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
     $=$
-     
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
+    
+  \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
       ++(1,0) coordinate[label=above:$T$] (t2)
       ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [spath/save=vert1] (t2) to (b2 -| t2);
+    \path [spath/save=vert2] (t3) to (b2 -| t3);
+    \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg1) at (intersection-1);
+    \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg2) at (intersection-1);
+    \draw  (t2) to (alg1);
+    \draw  (t3) to (alg2);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
   </fr:embedded-tex-body></fr:embedded-tex>
  
 
@@ -347,40 +347,40 @@ hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="df30b1654290ec623931af1d1e51307f"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="b48465a5050755dcb54f79ed69eb49fa"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -621,113 +621,113 @@ hash="df30b1654290ec623931af1d1e51307f"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
+        
+  \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
       ++(1,0) coordinate[label=above:$T$] (t2)
       ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg1)]{};
-           \node [blue halo,fit=(alg2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [spath/save=vert1] (t2) to (b2 -| t2);
+    \path [spath/save=vert2] (t3) to (b2 -| t3);
+    \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg1) at (intersection-1);
+    \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg2) at (intersection-1);
+    \draw  (t2) to (alg1);
+    \draw  (t3) to (alg2);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+          \node [blue halo,fit=(alg1)]{};
+          \node [blue halo,fit=(alg2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
+        $\equiv $
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
       ++(4,-4) coordinate (center)
-      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+    \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$\pi _{X}$] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg/2)
     ;
 
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+    \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/1) at (spath cs:vert1 0.3);
+    \draw [spath/save=diag/1] (pi/1) to (mul/1);
 
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+    \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.15);
+    \draw [spath/save=diag/2] (pi/2) to (mul/2);
 
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
-           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
+          \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the fact that <fr:tex>\pi _{ X }</fr:tex> inverts <fr:tex>\alpha _{ X }</fr:tex>.
+      We use the fact that <fr:tex>\pi _{X}</fr:tex> inverts <fr:tex>\alpha _{X}</fr:tex>.
 
       
  
   
   <fr:embedded-tex
-hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="5c58f5fe800c2fe5ad2814910e7f3c94"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -968,71 +968,71 @@ hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
       ++(4,-4) coordinate (center)
-      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+    \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$\pi _{X}$] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg/2)
     ;
 
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+    \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/1) at (spath cs:vert1 0.3);
+    \draw [spath/save=diag/1] (pi/1) to (mul/1);
 
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+    \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.15);
+    \draw [spath/save=diag/2] (pi/2) to (mul/2);
 
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg/1)(pi/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(alg/1)(pi/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
         $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=vert2] (alg) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.25);
+    \draw [spath/save=diag] (pi) to (mul/2);
+    \path 
+      coordinate[dot,label=35:$\mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| mul/1);
+    \draw  (mul/1) to (n/T/1);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
@@ -1041,40 +1041,40 @@ hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="371f9274d74bd1b0277dac844f1087d1"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -1315,66 +1315,66 @@ hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=vert2] (alg) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.25);
+    \draw [spath/save=diag] (pi) to (mul/2);
+    \path 
+      coordinate[dot,label=35:$\mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| mul/1);
+    \draw  (mul/1) to (n/T/1);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(mul/1)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
         $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
     ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+    \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$\mu $] (mul/1);
+    \draw [spath/save=vert] (alg) to (mul/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert 0.4);
 
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+    \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$T$] (n/T/1) +(1,0) coordinate[label=above:$T$] (n/T/2);
+    \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
 
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw  (pi.center) to (mul/2.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(mul/1)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
@@ -1384,40 +1384,40 @@ hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="7722c5ea51670ec52af541a6e09fd043"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="ca9173e080361dbb3c68f7916f37f9c3"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -1658,60 +1658,60 @@ hash="7722c5ea51670ec52af541a6e09fd043"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
     ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+    \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$\mu $] (mul/1);
+    \draw [spath/save=vert] (alg) to (mul/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert 0.4);
 
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+    \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$T$] (n/T/1) +(1,0) coordinate[label=above:$T$] (n/T/2);
+    \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
 
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+    \draw  (pi.center) to (mul/2.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(alg)(pi)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
+        $\equiv $
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      +(1,-1) coordinate[dot,label=90:$\mu $] (mu)
+      ++(2,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$\alpha _{\bar {X}}$] (alg) at (intersection-1);
+    \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+    \draw  (mu.center) to (alg.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+          \node [blue halo,fit=(alg)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol>
 </fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
@@ -1729,10 +1729,10 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {T}</fr:tex> be a monad on a category <fr:tex>\mathcal {C}</fr:tex>, and let <fr:tex>X</fr:tex> be a <fr:link
 href="jms-00C8.xml"
 type="local"
-addr="jms-00C8">weak algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex> for which the algebra map is invertible by <fr:tex>{ X } \xrightarrow {{ \pi _{ X } }}{ T X }</fr:tex>. Then the <fr:link
+addr="jms-00C8">weak algebra</fr:link> for <fr:tex>\mathbb {T}</fr:tex> for which the algebra map is invertible by <fr:tex>{X}\xrightarrow {{\pi _{X}}}{TX}</fr:tex>. Then the <fr:link
 href="jms-00CD.xml"
 type="local"
-addr="jms-00CD">induced monad algebra</fr:link> <fr:tex>\bar { X }</fr:tex> is <fr:link
+addr="jms-00CD">induced monad algebra</fr:link> <fr:tex>\bar {X}</fr:tex> is <fr:link
 href="jms-00C5.xml"
 type="local"
 addr="jms-00C5">associative</fr:link>.</fr:p>
@@ -1755,40 +1755,40 @@ addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jm
  
   
   <fr:embedded-tex
-hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="125a101087d9d308a8df17cce97f280e"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -2029,51 +2029,51 @@ hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-     
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+    
+  \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      +(1,-1) coordinate[dot,label=90:$\mu $] (mu)
+      ++(2,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$\alpha _{\bar {X}}$] (alg) at (intersection-1);
+    \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+    \draw  (mu.center) to (alg.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
     $=$
-     
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
+    
+  \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
       ++(1,0) coordinate[label=above:$T$] (t2)
       ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [spath/save=vert1] (t2) to (b2 -| t2);
+    \path [spath/save=vert2] (t3) to (b2 -| t3);
+    \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg1) at (intersection-1);
+    \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg2) at (intersection-1);
+    \draw  (t2) to (alg1);
+    \draw  (t3) to (alg2);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
   </fr:embedded-tex-body></fr:embedded-tex>
  
 
@@ -2085,40 +2085,40 @@ hash="85c4c2ec7b49125edd9a05b661fcf2a8"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="df30b1654290ec623931af1d1e51307f"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="b48465a5050755dcb54f79ed69eb49fa"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -2359,113 +2359,113 @@ hash="df30b1654290ec623931af1d1e51307f"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
+        
+  \begin {tikzpicture}[scale=0.5, baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
       ++(1,0) coordinate[label=above:$T$] (t2)
       ++(1,0) coordinate[label=above:$T$] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [spath/save=vert1] (t2) to (b2 -| t2);
-     \path [spath/save=vert2] (t3) to (b2 -| t3);
-     \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg1) at (intersection-1);
-     \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$ \alpha _{ \bar { X } } $}] (alg2) at (intersection-1);
-     \draw  (t2) to (alg1);
-     \draw  (t3) to (alg2);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg1)]{};
-           \node [blue halo,fit=(alg2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [spath/save=vert1] (t2) to (b2 -| t2);
+    \path [spath/save=vert2] (t3) to (b2 -| t3);
+    \path [name intersections={of=swoosh and vert1}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg1) at (intersection-1);
+    \path [name intersections={of=swoosh and vert2}] coordinate[dot, label={[yshift=1ex]-100:$\alpha _{\bar {X}}$}] (alg2) at (intersection-1);
+    \draw  (t2) to (alg1);
+    \draw  (t3) to (alg2);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+          \node [blue halo,fit=(alg1)]{};
+          \node [blue halo,fit=(alg2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
+        $\equiv $
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
       ++(4,-4) coordinate (center)
-      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+    \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$\pi _{X}$] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg/2)
     ;
 
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+    \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/1) at (spath cs:vert1 0.3);
+    \draw [spath/save=diag/1] (pi/1) to (mul/1);
 
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+    \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.15);
+    \draw [spath/save=diag/2] (pi/2) to (mul/2);
 
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
-           \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(pi/1)(mul/1)(alg/1)]{};
+          \node [blue halo,fit=(pi/2)(mul/2)(alg/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
-      We use the fact that <fr:tex>\pi _{ X }</fr:tex> inverts <fr:tex>\alpha _{ X }</fr:tex>.
+      We use the fact that <fr:tex>\pi _{X}</fr:tex> inverts <fr:tex>\alpha _{X}</fr:tex>.
 
       
  
   
   <fr:embedded-tex
-hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="5c58f5fe800c2fe5ad2814910e7f3c94"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -2706,71 +2706,71 @@ hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
       ++(4,-4) coordinate (center)
-      ++(4,-4) coordinate[label=below:$ X $] (s/X)
+      ++(4,-4) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
-     \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/1) at (spath cs:wire1 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/1) at (spath cs:wire1 0.7)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| alg/1)
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi/2) at (spath cs:wire2 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg/2) at (spath cs:wire2 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg/2)
+    \draw [spath/save=wire1] (n/X) to[out=-90,in=90] (center);
+    \draw [spath/save=wire2] (center) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi/1) at (spath cs:wire1 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/1) at (spath cs:wire1 0.7)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| alg/1)
+      coordinate[dot,label=left:$\pi _{X}$] (pi/2) at (spath cs:wire2 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg/2) at (spath cs:wire2 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg/2)
     ;
 
-     \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/1) at (spath cs:vert1 0.3);
-     \draw [spath/save=diag/1] (pi/1) to (mul/1);
+    \draw [spath/save=vert1] (alg/1.center) to (n/T/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/1) at (spath cs:vert1 0.3);
+    \draw [spath/save=diag/1] (pi/1) to (mul/1);
 
-     \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.15);
-     \draw [spath/save=diag/2] (pi/2) to (mul/2);
+    \draw [spath/save=vert2] (alg/2.center) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.15);
+    \draw [spath/save=diag/2] (pi/2) to (mul/2);
 
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg/1)(pi/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire1,weld}] (center) to[spath/use={wire2,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(alg/1)(pi/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
         $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=vert2] (alg) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.25);
+    \draw [spath/save=diag] (pi) to (mul/2);
+    \path 
+      coordinate[dot,label=35:$\mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| mul/1);
+    \draw  (mul/1) to (n/T/1);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
@@ -2779,40 +2779,40 @@ hash="698701d8206c038ac47d0b6f1b132c1e"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="371f9274d74bd1b0277dac844f1087d1"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -3053,66 +3053,66 @@ hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.2)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
-      coordinate[label=above:$ T $] (n/T/2) at (nw -| alg)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.2)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
+      coordinate[label=above:$T$] (n/T/2) at (nw -| alg)
     ;
-     \draw [spath/save=vert2] (alg) to (n/T/2);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert2 0.25);
-     \draw [spath/save=diag] (pi) to (mul/2);
-     \path 
-      coordinate[dot,label=35:$ \mu $] (mul/1) at (spath cs:diag 0.5)
-      coordinate[label=above:$ T $] (n/T/1) at (nw -| mul/1);
-     \draw  (mul/1) to (n/T/1);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw [spath/save=vert2] (alg) to (n/T/2);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert2 0.25);
+    \draw [spath/save=diag] (pi) to (mul/2);
+    \path 
+      coordinate[dot,label=35:$\mu $] (mul/1) at (spath cs:diag 0.5)
+      coordinate[label=above:$T$] (n/T/1) at (nw -| mul/1);
+    \draw  (mul/1) to (n/T/1);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(mul/1)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
         $=$
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
     ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+    \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$\mu $] (mul/1);
+    \draw [spath/save=vert] (alg) to (mul/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert 0.4);
 
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+    \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$T$] (n/T/1) +(1,0) coordinate[label=above:$T$] (n/T/2);
+    \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
 
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(mul/1)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \draw  (pi.center) to (mul/2.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(mul/1)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li>
 
     <fr:li>
@@ -3122,40 +3122,40 @@ hash="b6ccf10eeed112dc7509001b78c5be26"><fr:embedded-tex-preamble>
  
   
   <fr:embedded-tex
-hash="7722c5ea51670ec52af541a6e09fd043"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="ca9173e080361dbb3c68f7916f37f9c3"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -3396,60 +3396,60 @@ hash="7722c5ea51670ec52af541a6e09fd043"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
-     \path 
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(nw)!0.5!(se)$)]
+    \path 
       coordinate (nw)
-      ++(1,0) coordinate[label=above:$ X $] (n/X)
-      ++(4,-5) coordinate[label=below:$ X $] (s/X)
+      ++(1,0) coordinate[label=above:$X$] (n/X)
+      ++(4,-5) coordinate[label=below:$X$] (s/X)
       ++(1,0) coordinate (se);
-     \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
-     \path 
-      coordinate[dot,label=left:$ \pi _{ X } $] (pi) at (spath cs:wire 0.4)
-      coordinate[dot,label=-135:$ \alpha _{ X } $] (alg) at (spath cs:wire 0.7)
+    \draw [spath/save=wire] (n/X) to[out=-90,in=90] (s/X);
+    \path 
+      coordinate[dot,label=left:$\pi _{X}$] (pi) at (spath cs:wire 0.4)
+      coordinate[dot,label=-135:$\alpha _{X}$] (alg) at (spath cs:wire 0.7)
     ;
-     \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$ \mu $] (mul/1);
-     \draw [spath/save=vert] (alg) to (mul/1);
-     \path  coordinate[dot,label=right:$ \mu $] (mul/2) at (spath cs:vert 0.4);
+    \path  (pi -| alg) ++(0,.7) coordinate[dot,label=above:$\mu $] (mul/1);
+    \draw [spath/save=vert] (alg) to (mul/1);
+    \path  coordinate[dot,label=right:$\mu $] (mul/2) at (spath cs:vert 0.4);
 
-     \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$ T $] (n/T/1) +(1,0) coordinate[label=above:$ T $] (n/T/2);
-     \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
+    \path  (nw -| mul/1) +(-1,0) coordinate[label=above:$T$] (n/T/1) +(1,0) coordinate[label=above:$T$] (n/T/2);
+    \draw [spath/save=cup] (n/T/1) to[out=-90,in=180] (mul/1) to[out=0,in=-90] (n/T/2);
 
-     \draw  (pi.center) to (mul/2.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
-       
-           \node [blue halo,fit=(alg)(pi)(mul/2)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
-        $ \equiv $
-         
-   \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
-     \path  coordinate (t0)
-      ++(1,0) coordinate[label=above:$ X $] (t1)
-      ++(1,0) coordinate[label=above:$ T $] (t2)
-      +(1,-1) coordinate[dot,label=90:$ \mu $] (mu)
-      ++(2,0) coordinate[label=above:$ T $] (t3)
-      ++(1,-4) coordinate[label=below:$ X $] (b1)
+    \draw  (pi.center) to (mul/2.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (n/X) to[spath/use={wire,weld}] (s/X) to (se) to (nw -| se) to cycle;
+      
+          \node [blue halo,fit=(alg)(pi)(mul/2)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
+        $\equiv $
+        
+  \begin {tikzpicture}[scale=0.5,baseline=($(t0)!0.5!(b2)$)]
+    \path  coordinate (t0)
+      ++(1,0) coordinate[label=above:$X$] (t1)
+      ++(1,0) coordinate[label=above:$T$] (t2)
+      +(1,-1) coordinate[dot,label=90:$\mu $] (mu)
+      ++(2,0) coordinate[label=above:$T$] (t3)
+      ++(1,-4) coordinate[label=below:$X$] (b1)
       ++(1,0) coordinate (b2);
-     \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
-     \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
-     \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$ \alpha _{ \bar { X } } $] (alg) at (intersection-1);
-     \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
-     \draw  (mu.center) to (alg.center);
-     \begin {scope}[on background layer]
-       \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
-       
-           \node [blue halo,fit=(alg)]{};
-         
-     \end {scope}
-   \end {tikzpicture}
- 
+    \path [spath/save=mu/vert] (mu.center) to (b2 -| mu);
+    \draw [spath/save=swoosh] (t1) to[out=-90,in=90] (b1);
+    \path [name intersections={of=mu/vert and swoosh}] coordinate[dot,label=-135:$\alpha _{\bar {X}}$] (alg) at (intersection-1);
+    \draw [spath/save=cup] (t2) to[out=-90,in=180] (mu) to[out=0,in=-90] (t3);
+    \draw  (mu.center) to (alg.center);
+    \begin {scope}[on background layer]
+      \fill [catc] (t1) to[spath/use={swoosh,weld}] (b1) to (b2) to (t1 -| b2) to cycle;
+      
+          \node [blue halo,fit=(alg)]{};
+        
+    \end {scope}
+  \end {tikzpicture}
+
       </fr:embedded-tex-body></fr:embedded-tex></fr:li></fr:ol>
 </fr:mainmatter></fr:tree>
  

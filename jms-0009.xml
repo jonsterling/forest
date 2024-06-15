@@ -13,45 +13,45 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathcal {A}</fr:tex> be a <fr:link
 href="jms-000B.xml"
 type="local"
-addr="jms-000B">category with zero morphisms</fr:link>. Then the <fr:em>kernel</fr:em> of a morphism <fr:tex>A \xrightarrow {f} B</fr:tex> in <fr:tex>\mathcal {A}</fr:tex> is defined to be a morphism <fr:tex>K \xrightarrow {k}{A}</fr:tex> such that for any <fr:tex>X \xrightarrow {h}A</fr:tex> with <fr:tex>h;f=0</fr:tex>, there exists a unique map <fr:tex>X \xrightarrow {}K</fr:tex>
-factoring <fr:tex>X \xrightarrow {h}A</fr:tex> through <fr:tex>K \xrightarrow {k}{A}</fr:tex> in the sense of the diagram below:</fr:p>
+addr="jms-000B">category with zero morphisms</fr:link>. Then the <fr:em>kernel</fr:em> of a morphism <fr:tex>A\xrightarrow {f} B</fr:tex> in <fr:tex>\mathcal {A}</fr:tex> is defined to be a morphism <fr:tex>K\xrightarrow {k}{A}</fr:tex> such that for any <fr:tex>X\xrightarrow {h}A</fr:tex> with <fr:tex>h;f=0</fr:tex>, there exists a unique map <fr:tex>X\xrightarrow {}K</fr:tex>
+factoring <fr:tex>X\xrightarrow {h}A</fr:tex> through <fr:tex>K\xrightarrow {k}{A}</fr:tex> in the sense of the diagram below:</fr:p>
  
   
   <fr:embedded-tex
-hash="a0ecadbdb34b5ffc994078202c51ecf6"><fr:embedded-tex-preamble>
-    
-  \RequirePackage {tikz}
-  \RequirePackage {amsmath}
-  \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+hash="05b0481d7cf9bd291ac1d203bdbd882d"><fr:embedded-tex-preamble>
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
 
-  \definecolor {catccolor}{RGB}{255,244,138}
-  \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
-  \tikzstyle {catc}=[catccolor!60]
-  \tikzstyle {catd}=[orange!40]
-  \tikzstyle {cate}=[red!40]
-  \tikzstyle {catf}=[blue!10]
-  \tikzstyle {catg}=[green!25]
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
 
 
-  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
-  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
-  \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
-    \path 
+ \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+   \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
      coordinate (#1sw) at (#1se -| #1nw)
      coordinate (#1ne) at (#1nw -| #1se)
    ;
 
-    \path [spath/save = #1north] (#1nw) to (#1ne);
-    \path [spath/save = #1west] (#1nw) to (#1sw);
-    \path [spath/save = #1east] (#1ne) to (#1se);
-    \path [spath/save = #1south] (#1sw) to (#1se);
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
  }
- 
-    
-   \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
  \usetikzlibrary{matrix,arrows}
  \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
  \usetikzlibrary{decorations.pathreplacing}
@@ -292,20 +292,20 @@ hash="a0ecadbdb34b5ffc994078202c51ecf6"><fr:embedded-tex-preamble>
    \end{tikzpicture}
  }
 
- \ExplSyntaxOff 
- 
+ \ExplSyntaxOff
+
   </fr:embedded-tex-preamble><fr:embedded-tex-body>
-   \begin {tikzpicture}[diagram]
-     \node  (ker/f) {$K$};
-     \node [right = of ker/f] (A) {$A$};
-     \node [right = of A] (B) {$B$};
-     \node [below = of A] (X) {$X$};
-     \draw [-&gt;] (A) to node[above] {$f$} (B);
-     \draw [-&gt;] (ker/f) to node[above] {$k$} (A);
-     \draw [-&gt;] (X) to node[upright desc] {$h$} (A);
-     \draw [-&gt;] (X) to node[sloped,below] {$0$} (B);
-     \draw [-&gt;,exists] (X) to node[sloped,below] {$ \exists !$} (ker/f);
-   \end {tikzpicture}
+  \begin {tikzpicture}[diagram]
+    \node  (ker/f) {$K$};
+    \node [right = of ker/f] (A) {$A$};
+    \node [right = of A] (B) {$B$};
+    \node [below = of A] (X) {$X$};
+    \draw [-&gt;] (A) to node[above] {$f$} (B);
+    \draw [-&gt;] (ker/f) to node[above] {$k$} (A);
+    \draw [-&gt;] (X) to node[upright desc] {$h$} (A);
+    \draw [-&gt;] (X) to node[sloped,below] {$0$} (B);
+    \draw [-&gt;,exists] (X) to node[sloped,below] {$\exists !$} (ker/f);
+  \end {tikzpicture}
 </fr:embedded-tex-body></fr:embedded-tex>
  
 </fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context></fr:context><fr:related><fr:tree
@@ -321,7 +321,7 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em>category with zero morphisms</fr:em> is defined to be a category <fr:link
 href="jms-000H.xml"
 type="local"
-addr="jms-000H">enriched</fr:link> in the category of pointed sets and strict maps. The distinguished point of <fr:tex>\mathbf {hom} _{ \mathcal {A} } { \mathopen {} \left ( A , B \right ) \mathclose {}}</fr:tex> shall be written <fr:tex>0</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks><fr:tree
+addr="jms-000H">enriched</fr:link> in the category of pointed sets and strict maps. The distinguished point of <fr:tex>\mathbf {hom}_{\mathcal {A}}{\mathopen {}\left (A,B\right )\mathclose {}}</fr:tex> shall be written <fr:tex>0</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:related><fr:backlinks><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="false"
@@ -331,10 +331,10 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>17774</fr:anchor><fr:taxon>Notation</fr:taxon><fr:addr>jms-000A</fr:addr><fr:route>jms-000A.xml</fr:route><fr:title>Kernel</fr:title><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>We will often write <fr:tex>\operatorname {ker} {f} \xrightarrow { i _{ \operatorname {ker} { f } } }A</fr:tex> for the <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>We will often write <fr:tex>\operatorname {ker}{f}\xrightarrow {i_{\operatorname {ker}{f}}}A</fr:tex> for the <fr:link
 href="jms-0009.xml"
 type="local"
-addr="jms-0009">kernel</fr:link> of a map <fr:tex>A \xrightarrow {f}B</fr:tex> in a <fr:link
+addr="jms-0009">kernel</fr:link> of a map <fr:tex>A\xrightarrow {f}B</fr:tex> in a <fr:link
 href="jms-000B.xml"
 type="local"
 addr="jms-000B">category with zero morphisms</fr:link> <fr:tex>\mathcal {A}</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
@@ -350,10 +350,10 @@ type="local"
 addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Evidently, the <fr:link
 href="jms-0009.xml"
 type="local"
-addr="jms-0009">kernel</fr:link> of a morphism <fr:tex>A \xrightarrow {f} B</fr:tex> in a <fr:link
+addr="jms-0009">kernel</fr:link> of a morphism <fr:tex>A\xrightarrow {f} B</fr:tex> in a <fr:link
 href="jms-000B.xml"
 type="local"
-addr="jms-000B">category with zero morphisms</fr:link> is the <fr:em>equalizer</fr:em> of  <fr:tex>A \xrightarrow {f} B</fr:tex> with the zero morphism <fr:tex>A \xrightarrow {0} B</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+addr="jms-000B">category with zero morphisms</fr:link> is the <fr:em>equalizer</fr:em> of  <fr:tex>A\xrightarrow {f} B</fr:tex> with the zero morphism <fr:tex>A\xrightarrow {0} B</fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="false"
@@ -363,7 +363,7 @@ expanded="true"
 root="false"><fr:frontmatter><fr:anchor>17778</fr:anchor><fr:taxon>Definition</fr:taxon><fr:addr>jms-0002</fr:addr><fr:route>jms-0002.xml</fr:route><fr:title>Exact terms and complex terms</fr:title><fr:date><fr:year>2023</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\cdots \xrightarrow {}{ A } \xrightarrow { f }{ B } \xrightarrow { g }{ C } \xrightarrow {} \cdots</fr:tex> be a sequence in an abelian category <fr:tex>\mathcal {A}</fr:tex>. The term <fr:tex>B</fr:tex> is called <fr:em>complex</fr:em> when <fr:tex>f;g=0</fr:tex>, and <fr:em>exact</fr:em> when the <fr:link
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\cdots \xrightarrow {}{A}\xrightarrow {f}{B}\xrightarrow {g}{C}\xrightarrow {}\cdots </fr:tex> be a sequence in an abelian category <fr:tex>\mathcal {A}</fr:tex>. The term <fr:tex>B</fr:tex> is called <fr:em>complex</fr:em> when <fr:tex>f;g=0</fr:tex>, and <fr:em>exact</fr:em> when the <fr:link
 href="jms-0009.xml"
 type="local"
-addr="jms-0009">kernel</fr:link> of <fr:tex>g</fr:tex> is isomorphic to the image of <fr:tex>f</fr:tex>, in other words <fr:tex>\operatorname {ker} {g}= \operatorname {im} {f}</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+addr="jms-0009">kernel</fr:link> of <fr:tex>g</fr:tex> is isomorphic to the image of <fr:tex>f</fr:tex>, in other words <fr:tex>\operatorname {ker}{g}=\operatorname {im}{f}</fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
