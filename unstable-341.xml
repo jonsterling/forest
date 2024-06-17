@@ -7,17 +7,25 @@ numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>7818</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#341</fr:addr><fr:route>unstable-341.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>6017</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#341</fr:addr><fr:route>unstable-341.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002N</fr:parent></fr:frontmatter><fr:mainmatter>
- <fr:p>As <fr:link
-href="erct-002D.xml"
-type="local"
-addr="erct-002D">biinvertible maps are quasi-invertible</fr:link> and <fr:link
-href="erct-002M.xml"
-type="local"
-addr="erct-002M">quasi-invertible maps are contractible</fr:link>.</fr:p>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00JZ</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>To show that <fr:tex>R^{\circ *}=\bigcap \mathcal {F}_R</fr:tex>, it suffices to check that <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex> and <fr:tex>R^{\circ *}\subseteq  \bigcap \mathcal {F}_R</fr:tex>.</fr:p>
+
+ <fr:ol><fr:li><fr:p>We first note that <fr:tex>R\in \mathcal {F}_R</fr:tex> — which holds by almost by definition:</fr:p>
+   <fr:ol><fr:li>We first need to show that <fr:tex>R\subseteq  R^{\circ *}</fr:tex>, i.e. that when <fr:tex>a\mathrel {R}b</fr:tex> we have <fr:tex>a\mathrel {R}^{\circ *}b</fr:tex>. This is evident, as <fr:tex>b\mathrel {R}b</fr:tex> is a path of length <fr:tex>1</fr:tex> in <fr:tex>R</fr:tex> and <fr:tex>R^{\circ *}</fr:tex> contains all finite paths in <fr:tex>R</fr:tex>.</fr:li>
+    <fr:li>Next, we need to show that <fr:tex>R^{\circ *}</fr:tex> is a preorder. But this holds because <fr:tex>R^{\circ *}</fr:tex> contains the empty path from an element to itself, and because a path of length <fr:tex>m</fr:tex> from <fr:tex>a</fr:tex> to <fr:tex>b</fr:tex> can be concatenated with a path of length <fr:tex>n</fr:tex> from <fr:tex>b</fr:tex> to <fr:tex>c</fr:tex> to obtain a path (of length <fr:tex>m+n</fr:tex>) from <fr:tex>a</fr:tex> to <fr:tex>c</fr:tex>.</fr:li></fr:ol>
+
+   <fr:p>It follows from <fr:tex>R\in \mathcal {F}_R</fr:tex> that <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex>. Indeed:
+   <fr:tex
+display="block">a\mathrel {{\mathopen {}\left (\bigcap \mathcal {F}_R\right )\mathclose {}}}b \Longleftrightarrow  \forall  Q\in \mathcal {F}_R\mathpunct {.} a\mathrel {Q}b</fr:tex>
+   So if <fr:tex>a\mathrel {{\mathopen {}\left (\bigcap \mathcal {F}_R\right )\mathclose {}}}b</fr:tex> and <fr:tex>R^{\circ *}\in \mathcal {F}_R</fr:tex>, we may choose <fr:tex>Q := R^{\circ *}</fr:tex> to deduce <fr:tex>a\mathrel {R^{\circ *}}b</fr:tex>. Therefore, <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex>.</fr:p></fr:li>
+  <fr:li><fr:p>Our second goal is to prove <fr:tex>R^{\circ *}\subseteq  \bigcap \mathcal {F}_R</fr:tex>; by the definition of intersections, this holds if and only if <fr:tex>\forall  Q\in \mathcal {F}_R\mathpunct {.} R^{\circ *}\subseteq  Q</fr:tex>.</fr:p>
+   <fr:p>Fixing such a preorder <fr:tex>Q</fr:tex> over <fr:tex>A</fr:tex> containing <fr:tex>R</fr:tex> as a subrelation, we must prove that <fr:tex>R^{\circ *}\subseteq  Q</fr:tex>. Recalling that <fr:tex>R^{\circ *}</fr:tex> is the union <fr:tex>\bigcup _{n \in \mathbb {N}}R^{\circ  n}</fr:tex>, we see by the definition of unions that that <fr:tex>R^{\circ *}\subseteq  Q</fr:tex> if and only if for each <fr:tex>n\in \mathbb {N}</fr:tex>, we have <fr:tex>R^{\circ  n} \subseteq  Q</fr:tex>. This we prove by induction on <fr:tex>n\in \mathbb {N}</fr:tex>.</fr:p>
+   <fr:ol><fr:li>In the base case, we must show that <fr:tex>R^{\circ 0} = \mathsf {id}_{A}</fr:tex> is a subrelation of <fr:tex>Q</fr:tex>. This is equivalent to <fr:tex>Q</fr:tex> being reflexive, which we deduce from our assumption that <fr:tex>Q</fr:tex> is a preorder.</fr:li>
+    <fr:li>In the inductive step, we may assume <fr:tex>R^{\circ  n}\subseteq  Q</fr:tex> and we must prove that <fr:tex>R^{\circ {\mathopen {}\left (n+1\right )\mathclose {}}}=R\circ  R^{\circ  n}</fr:tex> is a subrelation of <fr:tex>Q</fr:tex>. For any <fr:tex>a,b\in  A</fr:tex>, we have <fr:tex>a\mathrel {{\mathopen {}\left (R\circ  R^{\circ  n}\right )\mathclose {}}} b</fr:tex> if and only if there exists some <fr:tex>c\in  A</fr:tex> such that <fr:tex>a\mathrel {R}c</fr:tex> and <fr:tex>c\mathrel {R^{\circ  n}} b</fr:tex>. Because we have assumed that <fr:tex>R\subseteq  Q</fr:tex>, we have <fr:tex>a\mathrel {Q}c</fr:tex>; by our inductive hypothesis, we have <fr:tex>c\mathrel {Q}b</fr:tex>. Becuase <fr:tex>Q</fr:tex> is a preorder and therefore transitive, we therefore have <fr:tex>a\mathrel {Q}b</fr:tex>.</fr:li></fr:ol></fr:li></fr:ol>
+ <fr:p>Therefore, <fr:tex>R^{\circ *}</fr:tex> is indeed the intersection of <fr:tex>\mathcal {F}_R</fr:tex>.</fr:p>
 </fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
@@ -25,29 +33,32 @@ numbered="false"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>7816</fr:anchor><fr:taxon>Corollary</fr:taxon><fr:addr>erct-002N</fr:addr><fr:route>erct-002N.xml</fr:route><fr:title><fr:link
-href="erct-000U.xml"
+root="false"><fr:frontmatter><fr:anchor>6014</fr:anchor><fr:taxon>Theorem</fr:taxon><fr:addr>jms-00JZ</fr:addr><fr:route>jms-00JZ.xml</fr:route><fr:title><fr:link
+href="jms-00JX.xml"
 type="local"
-addr="erct-000U">Biinvertible</fr:link> maps are <fr:link
-href="erct-001T.xml"
+addr="jms-00JX">Preorders</fr:link> and <fr:link
+href="jms-00JH.xml"
 type="local"
-addr="erct-001T">contractible</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
+addr="jms-00JH">reflexive-transitive closure</fr:link></fr:title><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source">
-  
-  
-  <fr:link
-href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002N.agda"
-type="external">erct-002N.agda</fr:link>
-</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Any <fr:link
-href="erct-000X.xml"
+addr="jonmsterling">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+href="marcelofiore.xml"
 type="local"
-addr="erct-000X">biinvertible</fr:link> map <fr:tex>f\colon  A\to  B</fr:tex> is <fr:link
-href="erct-001T.xml"
+addr="marcelofiore">Marcelo Fiore</fr:link></fr:contributor></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The <fr:link
+href="jms-00JH.xml"
 type="local"
-addr="erct-001T">contractible</fr:link>.</fr:p>
+addr="jms-00JH">reflexive-transitive closure</fr:link> <fr:tex>R^{\circ *}</fr:tex> of an <fr:link
+href="jms-00JC.xml"
+type="local"
+addr="jms-00JC">endo-relation</fr:link> <fr:tex>R\colon  A\mathbin {\nrightarrow } A</fr:tex> is, by definition, a preorder. We will show that <fr:tex>R^{\circ *}</fr:tex> enjoys a <fr:em>universal property</fr:em> as the <fr:em>smallest preorder</fr:em> containing <fr:tex>R</fr:tex> as a subrelation.</fr:p><fr:p>To be more precise, let <fr:tex>\mathcal {F}_R</fr:tex> be the set of <fr:link
+href="jms-00JX.xml"
+type="local"
+addr="jms-00JX">preorders</fr:link> on <fr:tex>A</fr:tex> that contain <fr:tex>R</fr:tex> as a subrelation:</fr:p><fr:tex
+display="block">  \mathcal {F}_R =  {\mathopen {}\left \{Q\colon  A\mathbin {\nrightarrow } A\,\middle \vert \,R\subseteq  Q \land  \text {Q is a preorder}\right \}\mathclose {}} </fr:tex><fr:p>Then we have <fr:tex>R^{\circ *}=\bigcap \mathcal {F}_R</fr:tex>, and so the <fr:link
+href="jms-00JH.xml"
+type="local"
+addr="jms-00JH">reflexive-transitive closure</fr:link> is the smallest preorder containing <fr:tex>R</fr:tex> as a subrelation. (Indeed, recall that the intersection of an intersection-closed class of relations is the <fr:em>smallest</fr:em> relation in that class.)</fr:p>
  
    
    <fr:tree
@@ -57,124 +68,25 @@ numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2092</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#341</fr:addr><fr:route>unstable-341.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"><fr:frontmatter><fr:anchor>3518</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#341</fr:addr><fr:route>unstable-341.xml</fr:route><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>21</fr:day></fr:date><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002N</fr:parent></fr:frontmatter><fr:mainmatter>
- <fr:p>As <fr:link
-href="erct-002D.xml"
-type="local"
-addr="erct-002D">biinvertible maps are quasi-invertible</fr:link> and <fr:link
-href="erct-002M.xml"
-type="local"
-addr="erct-002M">quasi-invertible maps are contractible</fr:link>.</fr:p>
+addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00JZ</fr:parent></fr:frontmatter><fr:mainmatter>
+ <fr:p>To show that <fr:tex>R^{\circ *}=\bigcap \mathcal {F}_R</fr:tex>, it suffices to check that <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex> and <fr:tex>R^{\circ *}\subseteq  \bigcap \mathcal {F}_R</fr:tex>.</fr:p>
+
+ <fr:ol><fr:li><fr:p>We first note that <fr:tex>R\in \mathcal {F}_R</fr:tex> — which holds by almost by definition:</fr:p>
+   <fr:ol><fr:li>We first need to show that <fr:tex>R\subseteq  R^{\circ *}</fr:tex>, i.e. that when <fr:tex>a\mathrel {R}b</fr:tex> we have <fr:tex>a\mathrel {R}^{\circ *}b</fr:tex>. This is evident, as <fr:tex>b\mathrel {R}b</fr:tex> is a path of length <fr:tex>1</fr:tex> in <fr:tex>R</fr:tex> and <fr:tex>R^{\circ *}</fr:tex> contains all finite paths in <fr:tex>R</fr:tex>.</fr:li>
+    <fr:li>Next, we need to show that <fr:tex>R^{\circ *}</fr:tex> is a preorder. But this holds because <fr:tex>R^{\circ *}</fr:tex> contains the empty path from an element to itself, and because a path of length <fr:tex>m</fr:tex> from <fr:tex>a</fr:tex> to <fr:tex>b</fr:tex> can be concatenated with a path of length <fr:tex>n</fr:tex> from <fr:tex>b</fr:tex> to <fr:tex>c</fr:tex> to obtain a path (of length <fr:tex>m+n</fr:tex>) from <fr:tex>a</fr:tex> to <fr:tex>c</fr:tex>.</fr:li></fr:ol>
+
+   <fr:p>It follows from <fr:tex>R\in \mathcal {F}_R</fr:tex> that <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex>. Indeed:
+   <fr:tex
+display="block">a\mathrel {{\mathopen {}\left (\bigcap \mathcal {F}_R\right )\mathclose {}}}b \Longleftrightarrow  \forall  Q\in \mathcal {F}_R\mathpunct {.} a\mathrel {Q}b</fr:tex>
+   So if <fr:tex>a\mathrel {{\mathopen {}\left (\bigcap \mathcal {F}_R\right )\mathclose {}}}b</fr:tex> and <fr:tex>R^{\circ *}\in \mathcal {F}_R</fr:tex>, we may choose <fr:tex>Q := R^{\circ *}</fr:tex> to deduce <fr:tex>a\mathrel {R^{\circ *}}b</fr:tex>. Therefore, <fr:tex>\bigcap \mathcal {F}_R\subseteq  R^{\circ *}</fr:tex>.</fr:p></fr:li>
+  <fr:li><fr:p>Our second goal is to prove <fr:tex>R^{\circ *}\subseteq  \bigcap \mathcal {F}_R</fr:tex>; by the definition of intersections, this holds if and only if <fr:tex>\forall  Q\in \mathcal {F}_R\mathpunct {.} R^{\circ *}\subseteq  Q</fr:tex>.</fr:p>
+   <fr:p>Fixing such a preorder <fr:tex>Q</fr:tex> over <fr:tex>A</fr:tex> containing <fr:tex>R</fr:tex> as a subrelation, we must prove that <fr:tex>R^{\circ *}\subseteq  Q</fr:tex>. Recalling that <fr:tex>R^{\circ *}</fr:tex> is the union <fr:tex>\bigcup _{n \in \mathbb {N}}R^{\circ  n}</fr:tex>, we see by the definition of unions that that <fr:tex>R^{\circ *}\subseteq  Q</fr:tex> if and only if for each <fr:tex>n\in \mathbb {N}</fr:tex>, we have <fr:tex>R^{\circ  n} \subseteq  Q</fr:tex>. This we prove by induction on <fr:tex>n\in \mathbb {N}</fr:tex>.</fr:p>
+   <fr:ol><fr:li>In the base case, we must show that <fr:tex>R^{\circ 0} = \mathsf {id}_{A}</fr:tex> is a subrelation of <fr:tex>Q</fr:tex>. This is equivalent to <fr:tex>Q</fr:tex> being reflexive, which we deduce from our assumption that <fr:tex>Q</fr:tex> is a preorder.</fr:li>
+    <fr:li>In the inductive step, we may assume <fr:tex>R^{\circ  n}\subseteq  Q</fr:tex> and we must prove that <fr:tex>R^{\circ {\mathopen {}\left (n+1\right )\mathclose {}}}=R\circ  R^{\circ  n}</fr:tex> is a subrelation of <fr:tex>Q</fr:tex>. For any <fr:tex>a,b\in  A</fr:tex>, we have <fr:tex>a\mathrel {{\mathopen {}\left (R\circ  R^{\circ  n}\right )\mathclose {}}} b</fr:tex> if and only if there exists some <fr:tex>c\in  A</fr:tex> such that <fr:tex>a\mathrel {R}c</fr:tex> and <fr:tex>c\mathrel {R^{\circ  n}} b</fr:tex>. Because we have assumed that <fr:tex>R\subseteq  Q</fr:tex>, we have <fr:tex>a\mathrel {Q}c</fr:tex>; by our inductive hypothesis, we have <fr:tex>c\mathrel {Q}b</fr:tex>. Becuase <fr:tex>Q</fr:tex> is a preorder and therefore transitive, we therefore have <fr:tex>a\mathrel {Q}b</fr:tex>.</fr:li></fr:ol></fr:li></fr:ol>
+ <fr:p>Therefore, <fr:tex>R^{\circ *}</fr:tex> is indeed the intersection of <fr:tex>\mathcal {F}_R</fr:tex>.</fr:p>
 </fr:mainmatter></fr:tree>
  
-</fr:mainmatter></fr:tree></fr:context><fr:related><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>7812</fr:anchor><fr:taxon>Corollary</fr:taxon><fr:addr>erct-002M</fr:addr><fr:route>erct-002M.xml</fr:route><fr:title><fr:link
-href="erct-000X.xml"
-type="local"
-addr="erct-000X">Quasi-invertible</fr:link> maps are <fr:link
-href="erct-001T.xml"
-type="local"
-addr="erct-001T">contractible</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source">
-  
-  
-  <fr:link
-href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002M.agda"
-type="external">erct-002M.agda</fr:link>
-</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Any <fr:link
-href="erct-000X.xml"
-type="local"
-addr="erct-000X">quasi-invertible</fr:link> map <fr:tex>f\colon  A\to  B</fr:tex> is <fr:link
-href="erct-001T.xml"
-type="local"
-addr="erct-001T">contractible</fr:link>.</fr:p>
- 
-   
-   <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="false"
-numbered="true"
-show-heading="true"
-show-metadata="false"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2088</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#342</fr:addr><fr:route>unstable-342.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>31</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002M</fr:parent></fr:frontmatter><fr:mainmatter>
- <fr:p>Any <fr:link
-href="erct-000X.xml"
-type="local"
-addr="erct-000X">quasi-inverse</fr:link> <fr:link
-href="erct-002C.xml"
-type="local"
-addr="erct-002C">can be improved</fr:link> to a <fr:link
-href="erct-000W.xml"
-type="local"
-addr="erct-000W">coherent inverse</fr:link>, and <fr:link
-href="erct-000W.xml"
-type="local"
-addr="erct-000W">any coherently invertible map</fr:link> is <fr:link
-href="erct-001T.xml"
-type="local"
-addr="erct-001T">contractible</fr:link>.</fr:p>
-</fr:mainmatter></fr:tree>
- 
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="true"
-numbered="false"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>7814</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>erct-002D</fr:addr><fr:route>erct-002D.xml</fr:route><fr:title>From <fr:link
-href="erct-000U.xml"
-type="local"
-addr="erct-000U">biinverses</fr:link> to <fr:link
-href="erct-000X.xml"
-type="local"
-addr="erct-000X">quasi-inverses</fr:link></fr:title><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
-name="source">
-  
-  
-  <fr:link
-href="https://git.sr.ht/~jonsterling/agda-erct/tree/main/item/agda/erct-002D.agda"
-type="external">erct-002D.agda</fr:link>
-</fr:meta></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>f\colon  A\to  B</fr:tex> be <fr:link
-href="erct-000U.xml"
-type="local"
-addr="erct-000U">biinvertible</fr:link> with <fr:tex>s,r\colon  B\to  A</fr:tex> and <fr:tex>h_s\colon  f \circ  s \sim  1_{B}</fr:tex> and <fr:tex>h_r\colon  r\circ  f = 1_{A}</fr:tex>. Then we may define a homotopy <fr:tex>h' \colon  s\circ  f \sim  1_{A}</fr:tex> exhibiting <fr:tex>s\colon  B\to  A</fr:tex> as a retraction of <fr:tex>f\colon  A\to  B</fr:tex>. Therefore, we may define a <fr:link
-href="erct-000X.xml"
-type="local"
-addr="erct-000X">quasi-inverse</fr:link> to <fr:tex>f</fr:tex> tracked by <fr:tex>s\colon  B\to  A</fr:tex>.</fr:p>
- 
-   
-   <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
-toc="false"
-numbered="true"
-show-heading="true"
-show-metadata="false"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>2213</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#349</fr:addr><fr:route>unstable-349.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>12</fr:month><fr:day>30</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>erct-002D</fr:parent></fr:frontmatter><fr:mainmatter>
- <fr:p>We have <fr:tex>s\circ  f \sim  r\circ  f \circ  s\circ  f</fr:tex> by <fr:tex>h_r</fr:tex> and <fr:tex>r\circ  f \circ  s\circ  f\sim  r \circ  f</fr:tex> by <fr:tex>h_s</fr:tex> and <fr:tex>r\circ  f \sim  1_{A}</fr:tex> by <fr:tex>h_r</fr:tex>.</fr:p>
-</fr:mainmatter></fr:tree>
- 
-</fr:mainmatter></fr:tree></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+</fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
