@@ -263,48 +263,16 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="f:backmatter/f:references" mode="title">
-    <xsl:text>References</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/f:context" mode="title">
-    <xsl:text>Context</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/f:contributions" mode="title">
-    <xsl:text>Contributions</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/f:related" mode="title">
-    <xsl:text>Related</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/f:backlinks" mode="title">
-    <xsl:text>Backlinks</xsl:text>
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/f:references|f:backmatter/f:context|f:backmatter/f:contributions|f:backmatter/f:related|f:backmatter/f:backlinks">
-    <xsl:if test="f:tree">
-      <section class="block link-list">
-        <h2>
-          <xsl:apply-templates select="." mode="title" />
-        </h2>
-        <xsl:apply-templates select="f:tree" />
-      </section>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="/f:tree[not(@root='true')]/f:backmatter">
+  <xsl:template match="/f:tree/f:backmatter">
     <footer>
-      <xsl:apply-templates select="f:references" />
-      <xsl:apply-templates select="f:context" />
-      <xsl:apply-templates select="f:backlinks" />
-      <xsl:apply-templates select="f:related" />
-      <xsl:apply-templates select="f:contributions" />
+      <xsl:apply-templates />
     </footer>
   </xsl:template>
 
-  <xsl:template match="/f:tree[@root='true']/f:backmatter">
+  <xsl:template match="f:mainmatter//f:backmatter">
+  </xsl:template>
+
+  <xsl:template match="f:backmatter//f:backmatter">
   </xsl:template>
 
   <xsl:template match="f:tree">
@@ -352,22 +320,6 @@
     </section>
 
     <xsl:apply-templates select="f:backmatter" />
-  </xsl:template>
-
-  <xsl:template match="f:backmatter/*/f:tree">
-    <section class="block">
-      <xsl:if test="f:frontmatter/f:taxon">
-        <xsl:attribute name="data-taxon">
-          <xsl:value-of select="f:frontmatter/f:taxon" />
-        </xsl:attribute>
-      </xsl:if>
-      <details>
-        <summary>
-          <xsl:apply-templates select="f:frontmatter" />
-        </summary>
-        <xsl:apply-templates select="f:mainmatter" />
-      </details>
-    </section>
   </xsl:template>
 
 </xsl:stylesheet>

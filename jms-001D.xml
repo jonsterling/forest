@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
 <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="true"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>17072</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-001D</fr:addr><fr:route>jms-001D.xml</fr:route><fr:title>Lifting as a co-comma construction</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>15584</fr:anchor><fr:addr>jms-001D</fr:addr><fr:route>jms-001D.xml</fr:route><fr:title>Lifting as a co-comma construction</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>For any dcpo <fr:tex>A</fr:tex>, the following is a co-comma square in the posetal 2-category of dcpos, where <fr:tex>\mathsf {L}</fr:tex> takes a dcpo to its <fr:em>lift</fr:em> or <fr:em>Scott-open partial map classifier</fr:em>.</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>For any dcpo <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, the following is a co-comma square in the posetal 2-category of dcpos, where <fr:tex
+display="inline"><![CDATA[\mathsf {L}]]></fr:tex> takes a dcpo to its <fr:em>lift</fr:em> or <fr:em>Scott-open partial map classifier</fr:em>.</fr:p>
  
   
-  <fr:embedded-tex
-hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -32,7 +35,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -125,7 +128,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -137,7 +140,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -149,7 +152,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -182,10 +185,10 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -277,12 +280,12 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -290,7 +293,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
   \begin {tikzpicture}[diagram]
     \SpliceDiagramSquare {
       nw = A,
@@ -306,29 +309,30 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
     }
     \node  [between = nw and se] {$\sqsupseteq $};
   \end {tikzpicture}
-</fr:embedded-tex-body></fr:embedded-tex>
+]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14425</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#442</fr:addr><fr:route>unstable-442.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13210</fr:anchor><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001D</fr:parent></fr:frontmatter><fr:mainmatter>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001D</fr:parent></fr:frontmatter><fr:mainmatter>
   <fr:p>We fix another lax square of the following form:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -346,7 +350,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -439,7 +443,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -451,7 +455,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -463,7 +467,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -496,10 +500,10 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -591,12 +595,12 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -604,7 +608,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \SpliceDiagramSquare {
         nw = A,
@@ -618,17 +622,19 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
       }
       \node  [between = nw and se] {$\sqsupseteq $};
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>We must show that there exists a <fr:em>unique</fr:em> morphism <fr:tex>\mathsf {L}{A}\xrightarrow {d}D</fr:tex> factoring the square above through <fr:tex>{\mathopen {}\left \{d_\bot \sqsubseteq  d_A\right \}\mathclose {}}</fr:tex> as follows:</fr:p>
+  <fr:p>We must show that there exists a <fr:em>unique</fr:em> morphism <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d}D]]></fr:tex> factoring the square above through <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{d_\bot \sqsubseteq  d_A\right \}\mathclose {}}]]></fr:tex> as follows:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -646,7 +652,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -739,7 +745,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -751,7 +757,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -763,7 +769,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -796,10 +802,10 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -891,12 +897,12 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -904,9 +910,9 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A,
         sw = A,
         ne = \mathbf {1}_{},
@@ -922,64 +928,88 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
       }
       \node  [between = sq/nw and sq/se] {$\sqsupseteq $};
       \node  (se) [below right = of sq/se] {$D$};
-      \draw [-&gt;,bend left=30] (sq/ne) to node[right] {$d_\bot $} (se);
-      \draw [-&gt;,bend right=30] (sq/sw) to node[sloped,below] {$d_A$} (se);
-      \draw [-&gt;,exists] (sq/se) to node[desc] {$\exists !d$} (se);
+      \draw [->,bend left=30] (sq/ne) to node[right] {$d_\bot $} (se);
+      \draw [->,bend right=30] (sq/sw) to node[sloped,below] {$d_A$} (se);
+      \draw [->,exists] (sq/se) to node[desc] {$\exists !d$} (se);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>We will define <fr:tex>\mathsf {L}{A}\xrightarrow {d}D</fr:tex> to take <fr:tex>a^{?}:\mathsf {L}{A}</fr:tex> to the least upper bound of the directed subset <fr:tex>U = {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{d_A a\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\subseteq  D</fr:tex>. As this assignment evidently has the correct factorization property, it remains just to check that it is continuous. Letting <fr:tex>V</fr:tex> be a directed subset of <fr:tex>\mathsf {L}{A}</fr:tex>, we compute:</fr:p>
+  <fr:p>We will define <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d}D]]></fr:tex> to take <fr:tex
+display="inline"><![CDATA[a^{?}:\mathsf {L}{A}]]></fr:tex> to the least upper bound of the directed subset <fr:tex
+display="inline"><![CDATA[U = {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{d_A a\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\subseteq  D]]></fr:tex>. As this assignment evidently has the correct factorization property, it remains just to check that it is continuous. Letting <fr:tex
+display="inline"><![CDATA[V]]></fr:tex> be a directed subset of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}]]></fr:tex>, we compute:</fr:p>
 
   <fr:tex
-display="block">\begin {aligned}     d\bigsqcup  V &amp; = \bigsqcup \,{\mathopen {}\left (       {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup        {\mathopen {}\left \{d_Aa\mid  \bigsqcup  V = \eta _A a\right \}\mathclose {}}     \right )\mathclose {}}     \\                 &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  \eta _Aa\in  V\right \}\mathclose {}}\right )\mathclose {}}     \\                 &amp; = \bigsqcup {\mathopen {}\left \{\bigsqcup  {\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}} \mid  a^{?}\in  V\right \}\mathclose {}}     \\                 &amp; = \bigsqcup {\mathopen {}\left \{da^{?}\mid  a^{?}\in  V\right \}\mathclose {}}   \end {aligned}   </fr:tex>
+display="block"><![CDATA[\begin {aligned}     d\bigsqcup  V & = \bigsqcup \,{\mathopen {}\left (       {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup        {\mathopen {}\left \{d_Aa\mid  \bigsqcup  V = \eta _A a\right \}\mathclose {}}     \right )\mathclose {}}     \\                 & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  \eta _Aa\in  V\right \}\mathclose {}}\right )\mathclose {}}     \\                 & = \bigsqcup {\mathopen {}\left \{\bigsqcup  {\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}} \mid  a^{?}\in  V\right \}\mathclose {}}     \\                 & = \bigsqcup {\mathopen {}\left \{da^{?}\mid  a^{?}\in  V\right \}\mathclose {}}   \end {aligned}   ]]></fr:tex>
 
 
-  <fr:p>For uniqueness, suppose that we have two morphisms <fr:tex>\mathsf {L}{A}\xrightarrow {d,d'}D</fr:tex> factoring our square in the sense described above and fix <fr:tex>a^{?}:\mathsf {L}{A}</fr:tex>:</fr:p>
+  <fr:p>For uniqueness, suppose that we have two morphisms <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d,d'}D]]></fr:tex> factoring our square in the sense described above and fix <fr:tex
+display="inline"><![CDATA[a^{?}:\mathsf {L}{A}]]></fr:tex>:</fr:p>
 
   <fr:tex
-display="block">\begin {aligned}     d a^{?} &amp; = d\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d'\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d'\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = d'\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = d'a^{?}   \end {aligned}   </fr:tex>
-</fr:mainmatter></fr:tree>
+display="block"><![CDATA[\begin {aligned}     d a^{?} & = d\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d'\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d'\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = d'\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = d'a^{?}   \end {aligned}   ]]></fr:tex>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter><fr:backmatter><fr:contributions></fr:contributions><fr:context><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Context</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
 toc="true"
 numbered="false"
 show-heading="true"
 show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>17070</fr:anchor><fr:addr>jms-001R</fr:addr><fr:route>jms-001R.xml</fr:route><fr:title>Cocompleteness of lift-algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>14</fr:day></fr:date><fr:authors><fr:author><fr:link
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>15586</fr:anchor><fr:addr>jms-001R</fr:addr><fr:route>jms-001R.xml</fr:route><fr:title>Cocompleteness of lift-algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>14</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
 href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>We will deduce the closure of <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex> under connected colimits using <fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>We will deduce the closure of <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex> under connected colimits using <fr:link
 href="jms-002U.xml"
+addr="jms-002U"
+title="Results in constructive monad theory">general results about monads</fr:link>. Then we use the results of <fr:link
 type="local"
-addr="jms-002U">general results about monads</fr:link>. Then we use the results of <fr:link
 href="linton-1969-coequalizers.xml"
+addr="linton-1969-coequalizers"
+title="Coequalizers in categories of algebras">Linton</fr:link> to <fr:link
 type="local"
-addr="linton-1969-coequalizers">Linton</fr:link> to <fr:link
 href="jms-005G.xml"
-type="local"
-addr="jms-005G">deduce</fr:link> the cocompleteness of <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex>. <html:mark
+addr="jms-005G"
+title="The category of lift-algebras is cocomplete">deduce</fr:link> the cocompleteness of <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex>. <html:mark
 xmlns:html="http://www.w3.org/1999/xhtml">Note that the proof establishing that the lift monad preserves connected colimits has an error in it. I have a fix for it, suggested by <fr:link
-href="ohadkammar.xml"
 type="local"
-addr="ohadkammar">Ohad Kammar</fr:link>, but I haven't written it down yet here.</html:mark></fr:p><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+href="ohadkammar.xml"
+addr="ohadkammar"
+title="Ohad Kammar">Ohad Kammar</fr:link>, but I haven't written it down yet here.</html:mark></fr:p><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14427</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-001D</fr:addr><fr:route>jms-001D.xml</fr:route><fr:title>Lifting as a co-comma construction</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13208</fr:anchor><fr:addr>jms-001D</fr:addr><fr:route>jms-001D.xml</fr:route><fr:title>Lifting as a co-comma construction</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>For any dcpo <fr:tex>A</fr:tex>, the following is a co-comma square in the posetal 2-category of dcpos, where <fr:tex>\mathsf {L}</fr:tex> takes a dcpo to its <fr:em>lift</fr:em> or <fr:em>Scott-open partial map classifier</fr:em>.</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>For any dcpo <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, the following is a co-comma square in the posetal 2-category of dcpos, where <fr:tex
+display="inline"><![CDATA[\mathsf {L}]]></fr:tex> takes a dcpo to its <fr:em>lift</fr:em> or <fr:em>Scott-open partial map classifier</fr:em>.</fr:p>
  
   
-  <fr:embedded-tex
-hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -997,7 +1027,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -1090,7 +1120,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -1102,7 +1132,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -1114,7 +1144,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -1147,10 +1177,10 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -1242,12 +1272,12 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -1255,7 +1285,7 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
   \begin {tikzpicture}[diagram]
     \SpliceDiagramSquare {
       nw = A,
@@ -1271,29 +1301,30 @@ hash="53b7758d5b74ae6f56578beb34f50a48"><fr:embedded-tex-preamble>
     }
     \node  [between = nw and se] {$\sqsupseteq $};
   \end {tikzpicture}
-</fr:embedded-tex-body></fr:embedded-tex>
+]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14425</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#442</fr:addr><fr:route>unstable-442.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13210</fr:anchor><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001D</fr:parent></fr:frontmatter><fr:mainmatter>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001D</fr:parent></fr:frontmatter><fr:mainmatter>
   <fr:p>We fix another lax square of the following form:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -1311,7 +1342,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -1404,7 +1435,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -1416,7 +1447,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -1428,7 +1459,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -1461,10 +1492,10 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -1556,12 +1587,12 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -1569,7 +1600,7 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \SpliceDiagramSquare {
         nw = A,
@@ -1583,17 +1614,19 @@ hash="57746e7a7f6a546fd1700f5ec03e7764"><fr:embedded-tex-preamble>
       }
       \node  [between = nw and se] {$\sqsupseteq $};
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>We must show that there exists a <fr:em>unique</fr:em> morphism <fr:tex>\mathsf {L}{A}\xrightarrow {d}D</fr:tex> factoring the square above through <fr:tex>{\mathopen {}\left \{d_\bot \sqsubseteq  d_A\right \}\mathclose {}}</fr:tex> as follows:</fr:p>
+  <fr:p>We must show that there exists a <fr:em>unique</fr:em> morphism <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d}D]]></fr:tex> factoring the square above through <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{d_\bot \sqsubseteq  d_A\right \}\mathclose {}}]]></fr:tex> as follows:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -1611,7 +1644,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -1704,7 +1737,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -1716,7 +1749,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -1728,7 +1761,7 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -1761,10 +1794,10 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -1856,12 +1889,12 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -1869,9 +1902,9 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A,
         sw = A,
         ne = \mathbf {1}_{},
@@ -1887,57 +1920,74 @@ hash="bab01c336b15089cfc367f4f9512b706"><fr:embedded-tex-preamble>
       }
       \node  [between = sq/nw and sq/se] {$\sqsupseteq $};
       \node  (se) [below right = of sq/se] {$D$};
-      \draw [-&gt;,bend left=30] (sq/ne) to node[right] {$d_\bot $} (se);
-      \draw [-&gt;,bend right=30] (sq/sw) to node[sloped,below] {$d_A$} (se);
-      \draw [-&gt;,exists] (sq/se) to node[desc] {$\exists !d$} (se);
+      \draw [->,bend left=30] (sq/ne) to node[right] {$d_\bot $} (se);
+      \draw [->,bend right=30] (sq/sw) to node[sloped,below] {$d_A$} (se);
+      \draw [->,exists] (sq/se) to node[desc] {$\exists !d$} (se);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>We will define <fr:tex>\mathsf {L}{A}\xrightarrow {d}D</fr:tex> to take <fr:tex>a^{?}:\mathsf {L}{A}</fr:tex> to the least upper bound of the directed subset <fr:tex>U = {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{d_A a\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\subseteq  D</fr:tex>. As this assignment evidently has the correct factorization property, it remains just to check that it is continuous. Letting <fr:tex>V</fr:tex> be a directed subset of <fr:tex>\mathsf {L}{A}</fr:tex>, we compute:</fr:p>
+  <fr:p>We will define <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d}D]]></fr:tex> to take <fr:tex
+display="inline"><![CDATA[a^{?}:\mathsf {L}{A}]]></fr:tex> to the least upper bound of the directed subset <fr:tex
+display="inline"><![CDATA[U = {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{d_A a\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\subseteq  D]]></fr:tex>. As this assignment evidently has the correct factorization property, it remains just to check that it is continuous. Letting <fr:tex
+display="inline"><![CDATA[V]]></fr:tex> be a directed subset of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}]]></fr:tex>, we compute:</fr:p>
 
   <fr:tex
-display="block">\begin {aligned}     d\bigsqcup  V &amp; = \bigsqcup \,{\mathopen {}\left (       {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup        {\mathopen {}\left \{d_Aa\mid  \bigsqcup  V = \eta _A a\right \}\mathclose {}}     \right )\mathclose {}}     \\                 &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  \eta _Aa\in  V\right \}\mathclose {}}\right )\mathclose {}}     \\                 &amp; = \bigsqcup {\mathopen {}\left \{\bigsqcup  {\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}} \mid  a^{?}\in  V\right \}\mathclose {}}     \\                 &amp; = \bigsqcup {\mathopen {}\left \{da^{?}\mid  a^{?}\in  V\right \}\mathclose {}}   \end {aligned}   </fr:tex>
+display="block"><![CDATA[\begin {aligned}     d\bigsqcup  V & = \bigsqcup \,{\mathopen {}\left (       {\mathopen {}\left \{d_\bot \right \}\mathclose {}}\cup        {\mathopen {}\left \{d_Aa\mid  \bigsqcup  V = \eta _A a\right \}\mathclose {}}     \right )\mathclose {}}     \\                 & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  \eta _Aa\in  V\right \}\mathclose {}}\right )\mathclose {}}     \\                 & = \bigsqcup {\mathopen {}\left \{\bigsqcup  {\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}} \mid  a^{?}\in  V\right \}\mathclose {}}     \\                 & = \bigsqcup {\mathopen {}\left \{da^{?}\mid  a^{?}\in  V\right \}\mathclose {}}   \end {aligned}   ]]></fr:tex>
 
 
-  <fr:p>For uniqueness, suppose that we have two morphisms <fr:tex>\mathsf {L}{A}\xrightarrow {d,d'}D</fr:tex> factoring our square in the sense described above and fix <fr:tex>a^{?}:\mathsf {L}{A}</fr:tex>:</fr:p>
+  <fr:p>For uniqueness, suppose that we have two morphisms <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A}\xrightarrow {d,d'}D]]></fr:tex> factoring our square in the sense described above and fix <fr:tex
+display="inline"><![CDATA[a^{?}:\mathsf {L}{A}]]></fr:tex>:</fr:p>
 
   <fr:tex
-display="block">\begin {aligned}     d a^{?} &amp; = d\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d'\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d'\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = d'\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               &amp; = d'a^{?}   \end {aligned}   </fr:tex>
-</fr:mainmatter></fr:tree>
+display="block"><![CDATA[\begin {aligned}     d a^{?} & = d\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}}\cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d_\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d_Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = \bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{d'\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{d'\,{\mathopen {}\left (\eta _Aa\right )\mathclose {}}\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = d'\bigsqcup \,{\mathopen {}\left ({\mathopen {}\left \{\bot \right \}\mathclose {}} \cup  {\mathopen {}\left \{\eta _Aa\mid  a^{?}=\eta _Aa\right \}\mathclose {}}\right )\mathclose {}}     \\               & = d'a^{?}   \end {aligned}   ]]></fr:tex>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14432</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-001F</fr:addr><fr:route>jms-001F.xml</fr:route><fr:title>Lifting preserves connected colimits</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13212</fr:anchor><fr:addr>jms-001F</fr:addr><fr:route>jms-001F.xml</fr:route><fr:title>Lifting preserves connected colimits</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>A_\bullet </fr:tex> be a diagram of dcpos indexed in a connected category <fr:tex>\mathcal {I}</fr:tex>. Then the lifting endofunctor <fr:tex>\mathsf {L}</fr:tex> on dcpos preserves the colimit of <fr:tex>A_\bullet </fr:tex>.</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex
+display="inline"><![CDATA[A_\bullet ]]></fr:tex> be a diagram of dcpos indexed in a connected category <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex>. Then the lifting endofunctor <fr:tex
+display="inline"><![CDATA[\mathsf {L}]]></fr:tex> on dcpos preserves the colimit of <fr:tex
+display="inline"><![CDATA[A_\bullet ]]></fr:tex>.</fr:p>
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14430</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#441</fr:addr><fr:route>unstable-441.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13214</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001F</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>Let <fr:tex>A_\bullet \xrightarrow {\iota _\bullet }{\mathopen {}\left \{A_\infty \right \}\mathclose {}}</fr:tex> be a universal cocone; we must show that <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}</fr:tex> is universal as well, i.e. show any cocone <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {d_\bullet }{\mathopen {}\left \{D\right \}\mathclose {}}</fr:tex> factors uniquely through <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}</fr:tex> in the following sense:</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001F</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Let <fr:tex
+display="inline"><![CDATA[A_\bullet \xrightarrow {\iota _\bullet }{\mathopen {}\left \{A_\infty \right \}\mathclose {}}]]></fr:tex> be a universal cocone; we must show that <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}]]></fr:tex> is universal as well, i.e. show any cocone <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {d_\bullet }{\mathopen {}\left \{D\right \}\mathclose {}}]]></fr:tex> factors uniquely through <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}]]></fr:tex> in the following sense:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -1955,7 +2005,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -2048,7 +2098,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -2060,7 +2110,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -2072,7 +2122,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -2105,10 +2155,10 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -2200,12 +2250,12 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -2213,29 +2263,32 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \node  (nw) {$LA_\bullet $};
       \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
       \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-      \draw [exists,-&gt;] (ne) to node[right] {$\exists !{\mathopen {}\left \{d_\infty \right \}\mathclose {}}$} (se);
-      \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-      \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+      \draw [exists,->] (ne) to node[right] {$\exists !{\mathopen {}\left \{d_\infty \right \}\mathclose {}}$} (se);
+      \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+      \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
   <fr:p>Using the <fr:link
-href="jms-001D.xml"
 type="local"
-addr="jms-001D">universal property of <fr:tex>\mathsf {L}{A_\infty }</fr:tex> as a co-comma dcpo</fr:link>, we may define <fr:tex>\mathsf {L}{A_\infty }\xrightarrow {d_\infty }D</fr:tex> to be the universal map determined by a certain lax square in the following configuration:</fr:p>
+href="jms-001D.xml"
+addr="jms-001D"
+title="Lifting as a co-comma construction">universal property of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex> as a co-comma dcpo</fr:link>, we may define <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }\xrightarrow {d_\infty }D]]></fr:tex> to be the universal map determined by a certain lax square in the following configuration:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -2253,7 +2306,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -2346,7 +2399,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -2358,7 +2411,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -2370,7 +2423,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -2403,10 +2456,10 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -2498,12 +2551,12 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -2511,35 +2564,48 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A_\infty ,
         sw = A_\infty ,
         ne = \mathbf {1}_{},
         se = D,
         north = !_{A_\infty },
         east = {h_\bot },
-        east/style = {exists,-&gt;},
-        south/style = {exists,-&gt;},
+        east/style = {exists,->},
+        south/style = {exists,->},
         south = {h_{A_\infty }},
         west/style = double,
       }
       \node [between = sq/nw and sq/se] {$\sqsupseteq $};
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>First we define <fr:tex>{\mathbf {1}_{}}\xrightarrow {{h_\bot }}{D}</fr:tex> to be the element <fr:tex>d_i\bot </fr:tex> determined by an <fr:em>arbitrary</fr:em> object <fr:tex>i\in  \mathcal {I}</fr:tex>. To see that this is well-defined, fix <fr:tex>i,j\in  \mathcal {I}</fr:tex> to check that <fr:tex>d_i\bot =d_j\bot </fr:tex>. As <fr:tex>\mathcal {I}</fr:tex> is connected, we may proceed by induction on a zigzag <fr:tex>i\leadsto  j\in  \mathcal {I}</fr:tex>; ultimately, this amounts to checking that for any span <fr:tex>i\leftarrow  k \rightarrow  j</fr:tex> in <fr:tex>\mathcal {I}</fr:tex>, we have <fr:tex>d_i\bot =d_k\bot =d_j\bot </fr:tex>. This follows from the strictness of lifted morphisms as well as the naturality of the cocone <fr:tex>d_\bullet </fr:tex>.</fr:p>
+  <fr:p>First we define <fr:tex
+display="inline"><![CDATA[{\mathbf {1}_{}}\xrightarrow {{h_\bot }}{D}]]></fr:tex> to be the element <fr:tex
+display="inline"><![CDATA[d_i\bot ]]></fr:tex> determined by an <fr:em>arbitrary</fr:em> object <fr:tex
+display="inline"><![CDATA[i\in  \mathcal {I}]]></fr:tex>. To see that this is well-defined, fix <fr:tex
+display="inline"><![CDATA[i,j\in  \mathcal {I}]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[d_i\bot =d_j\bot ]]></fr:tex>. As <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex> is connected, we may proceed by induction on a zigzag <fr:tex
+display="inline"><![CDATA[i\leadsto  j\in  \mathcal {I}]]></fr:tex>; ultimately, this amounts to checking that for any span <fr:tex
+display="inline"><![CDATA[i\leftarrow  k \rightarrow  j]]></fr:tex> in <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex>, we have <fr:tex
+display="inline"><![CDATA[d_i\bot =d_k\bot =d_j\bot ]]></fr:tex>. This follows from the strictness of lifted morphisms as well as the naturality of the cocone <fr:tex
+display="inline"><![CDATA[d_\bullet ]]></fr:tex>.</fr:p>
 
-  <fr:p>Next we define <fr:tex>{A_\infty }\xrightarrow {{h_{A_\infty }}}{D}</fr:tex> using the universal property of the colimiting cocone <fr:tex>{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }</fr:tex>:</fr:p>
+  <fr:p>Next we define <fr:tex
+display="inline"><![CDATA[{A_\infty }\xrightarrow {{h_{A_\infty }}}{D}]]></fr:tex> using the universal property of the colimiting cocone <fr:tex
+display="inline"><![CDATA[{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }]]></fr:tex>:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -2557,7 +2623,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -2650,7 +2716,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -2662,7 +2728,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -2674,7 +2740,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -2707,10 +2773,10 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -2802,12 +2868,12 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -2815,7 +2881,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \DiagramSquare {
       nw = A_\bullet ,
       sw = \mathsf {L}{A_\bullet },
@@ -2825,25 +2891,38 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
       west = \eta _{A_\bullet },
       north = \iota _\bullet ,
       south = d_\bullet ,
-      east/style = {exists,-&gt;},
+      east/style = {exists,->},
       east = \exists !{\mathopen {}\left \{h_{A_\infty }\right \}\mathclose {}},
     }
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>To arrange <fr:tex>h_{A_\infty }</fr:tex> and <fr:tex>h_\bot </fr:tex> into the desired lax square, we must check that for all <fr:tex>a_\infty :A_\infty </fr:tex> we have <fr:tex>h_\bot  \sqsubseteq  h_{A_\infty }a_\infty </fr:tex>. Fixing arbitrary <fr:tex>i\in  \mathcal {I}</fr:tex> and <fr:tex>a\in  A_i</fr:tex>, it suffices to check that <fr:tex>h_\bot  \sqsubseteq  h_{A_\infty }\iota _{i}a</fr:tex>. As <fr:tex>h_\bot =d_i\bot </fr:tex> and <fr:tex>h_{A_\infty }\iota _ia = d_i\eta _{A_i}a</fr:tex>, our goal follows directly from the monotonicity of <fr:tex>{\mathsf {L}{A_i}}\xrightarrow {{d_i}}{D}</fr:tex>.</fr:p>
+  <fr:p>To arrange <fr:tex
+display="inline"><![CDATA[h_{A_\infty }]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[h_\bot ]]></fr:tex> into the desired lax square, we must check that for all <fr:tex
+display="inline"><![CDATA[a_\infty :A_\infty ]]></fr:tex> we have <fr:tex
+display="inline"><![CDATA[h_\bot  \sqsubseteq  h_{A_\infty }a_\infty ]]></fr:tex>. Fixing arbitrary <fr:tex
+display="inline"><![CDATA[i\in  \mathcal {I}]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[a\in  A_i]]></fr:tex>, it suffices to check that <fr:tex
+display="inline"><![CDATA[h_\bot  \sqsubseteq  h_{A_\infty }\iota _{i}a]]></fr:tex>. As <fr:tex
+display="inline"><![CDATA[h_\bot =d_i\bot ]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[h_{A_\infty }\iota _ia = d_i\eta _{A_i}a]]></fr:tex>, our goal follows directly from the monotonicity of <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_i}}\xrightarrow {{d_i}}{D}]]></fr:tex>.</fr:p>
 
   <fr:p><html:mark
-xmlns:html="http://www.w3.org/1999/xhtml">The reasoning above is not correct, we do not know that we can restrict attention to <fr:tex>a\in  A_i</fr:tex>. This is indeed the case, but need to make it explicit.</html:mark></fr:p>
+xmlns:html="http://www.w3.org/1999/xhtml">The reasoning above is not correct, we do not know that we can restrict attention to <fr:tex
+display="inline"><![CDATA[a\in  A_i]]></fr:tex>. This is indeed the case, but need to make it explicit.</html:mark></fr:p>
 
-  <fr:p>Thus we have the desired lax square and a unique morphism <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{h}}{D}</fr:tex> factoring it through the co-comma square that defines <fr:tex>\mathsf {L}{A_\infty }</fr:tex>:</fr:p>
+  <fr:p>Thus we have the desired lax square and a unique morphism <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{h}}{D}]]></fr:tex> factoring it through the co-comma square that defines <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex>:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -2861,7 +2940,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -2954,7 +3033,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -2966,7 +3045,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -2978,7 +3057,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -3011,10 +3090,10 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -3106,12 +3185,12 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -3119,9 +3198,9 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A_\infty ,
         sw = A_\infty ,
         ne = \mathbf {1}_{},
@@ -3138,21 +3217,24 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
       }
       \node  [between = sq/nw and sq/se] {$\sqsupseteq $};
       \node  (se) [below right = of sq/se] {$D$};
-      \draw [-&gt;,bend left=30] (sq/ne) to node[right] {$h_\bot $} (se);
-      \draw [-&gt;,bend right=30] (sq/sw) to node[sloped,below] {$h_{A_\infty }$} (se);
-      \draw [-&gt;,exists] (sq/se) to node[desc] {$\exists !h$} (se);
+      \draw [->,bend left=30] (sq/ne) to node[right] {$h_\bot $} (se);
+      \draw [->,bend right=30] (sq/sw) to node[sloped,below] {$h_{A_\infty }$} (se);
+      \draw [->,exists] (sq/se) to node[desc] {$\exists !h$} (se);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>Our goal is to show that we may choose the universal map <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{d_\infty }}{D}</fr:tex> corresponding to the cocone <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}</fr:tex> to be the morphism <fr:tex>h</fr:tex> defined above. First we must prove that the following triangle commutes:</fr:p>
+  <fr:p>Our goal is to show that we may choose the universal map <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{d_\infty }}{D}]]></fr:tex> corresponding to the cocone <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}]]></fr:tex> to be the morphism <fr:tex
+display="inline"><![CDATA[h]]></fr:tex> defined above. First we must prove that the following triangle commutes:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -3170,7 +3252,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -3263,7 +3345,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -3275,7 +3357,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -3287,7 +3369,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -3320,10 +3402,10 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -3415,12 +3497,12 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -3428,27 +3510,28 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \node  (nw) {$LA_\bullet $};
       \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
       \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-      \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-      \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-      \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+      \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+      \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+      \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>Using the universal property of the co-comma squares for each <fr:tex>\mathsf {L}{A_i}</fr:tex>, it suffices to check that two diagrams commute:</fr:p>
+  <fr:p>Using the universal property of the co-comma squares for each <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_i}]]></fr:tex>, it suffices to check that two diagrams commute:</fr:p>
   <fr:ol><fr:li><fr:p>We must check that the outer triangle below commutes:</fr:p>
 
       
  
   
-  <fr:embedded-tex
-hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -3466,7 +3549,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -3559,7 +3642,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -3571,7 +3654,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -3583,7 +3666,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -3616,10 +3699,10 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -3711,12 +3794,12 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -3724,30 +3807,31 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {${\mathopen {}\left \{\mathbf {1}_{}\right \}\mathclose {}}$};
           \node [right = of nww] (nw) {$LA_\bullet $};
           \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding] (nww) to node[above] {$\bot $} (nw);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-      <fr:p>Rewriting using the strictness of lifted morphisms, this amounts to the established fact that <fr:tex>h\bot  = h_\bot </fr:tex>.</fr:p></fr:li>
+      <fr:p>Rewriting using the strictness of lifted morphisms, this amounts to the established fact that <fr:tex
+display="inline"><![CDATA[h\bot  = h_\bot ]]></fr:tex>.</fr:p></fr:li>
 
     <fr:li><fr:p>We must check that the outer triangle below commutes:</fr:p>
 
       
  
   
-  <fr:embedded-tex
-hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -3765,7 +3849,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -3858,7 +3942,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -3870,7 +3954,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -3882,7 +3966,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -3915,10 +3999,10 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -4010,12 +4094,12 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -4023,18 +4107,18 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {$A_\bullet $};
           \node [right = of nww] (nw) {$LA_\bullet $};
           \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding] (nww) to node[above] {$\eta _{A_\bullet }$} (nw);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
@@ -4043,8 +4127,8 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
       
  
   
-  <fr:embedded-tex
-hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -4062,7 +4146,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -4155,7 +4239,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -4167,7 +4251,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -4179,7 +4263,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -4212,10 +4296,10 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -4307,12 +4391,12 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -4320,109 +4404,143 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {$A_\bullet $};
           \node [below = of nww] (sww) {${\mathopen {}\left \{A_\infty \right \}\mathclose {}}$};
           \node [right = 2.5cm of nww] (nw) {$LA_\bullet $};
           \node [right = 2.5cm of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;,gray] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;,gray] (nw) to node[upright desc,] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->,gray] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->,gray] (nw) to node[upright desc,] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding,gray] (nww) to node[upright desc,] {$\eta _{A_\bullet }$} (nw);
-          \draw [-&gt;] (nww) to node[left] {$\iota _{\bullet }$} (sww);
-          \draw [-&gt;] (sww) to node[below] {$h_{A_\infty }$} (se);
+          \draw [->] (nww) to node[left] {$\iota _{\bullet }$} (sww);
+          \draw [->] (sww) to node[below] {$h_{A_\infty }$} (se);
           \node [above = of nw] (nnw) {${\mathopen {}\left \{A_\infty \right \}\mathclose {}}$};
-          \draw [-&gt;] (nww) to node[sloped,above] {$\iota _\bullet $} (nnw);
-          \draw [-&gt;] (nnw) to node[sloped,above] {${\mathopen {}\left \{\eta _{A_\infty }\right \}\mathclose {}}$} (ne);
+          \draw [->] (nww) to node[sloped,above] {$\iota _\bullet $} (nnw);
+          \draw [->] (nnw) to node[sloped,above] {${\mathopen {}\left \{\eta _{A_\infty }\right \}\mathclose {}}$} (ne);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure></fr:li>
 
-    <fr:p>Finally, we must check that any two morphisms <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{k,k'}}{D}</fr:tex> factoring <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}</fr:tex> through <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{\mathsf {L}{\iota _\bullet }}}{{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}}</fr:tex> are equal. To that end, we will use the universal property of the co-comma square defining <fr:tex>\mathsf {L}{A_\infty }</fr:tex> once more to reduce this to checking that <fr:tex>k,k'</fr:tex> agree on <fr:tex>\bot </fr:tex> and on <fr:tex>\eta _{A_\bullet }</fr:tex>. The former follows directly from the strictness of <fr:tex>\mathsf {L}{\iota _\bullet }</fr:tex>, as we have <fr:tex>k\bot  = k{\mathopen {}\left (\mathsf {L} \iota _\bullet \bot \right )\mathclose {}}=d_\bullet \bot </fr:tex>. For the latter, we must check that <fr:tex>k\circ  \eta _{A_\infty }=k'\circ  \eta _{A_\infty }</fr:tex>; by the universal property of the colimiting cocone <fr:tex>{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }</fr:tex>, it suffices to check that <fr:tex>k\circ \eta _{A_\infty }\circ  \iota _\bullet  = k'\circ \eta _{A_\infty }\circ \iota _\bullet </fr:tex>. By naturality of the unit, these are both equal to <fr:tex>d_\bullet \circ  \eta _{A_\bullet }</fr:tex>.</fr:p></fr:ol>
-</fr:mainmatter></fr:tree>
+    <fr:p>Finally, we must check that any two morphisms <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{k,k'}}{D}]]></fr:tex> factoring <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}]]></fr:tex> through <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{\mathsf {L}{\iota _\bullet }}}{{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}}]]></fr:tex> are equal. To that end, we will use the universal property of the co-comma square defining <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex> once more to reduce this to checking that <fr:tex
+display="inline"><![CDATA[k,k']]></fr:tex> agree on <fr:tex
+display="inline"><![CDATA[\bot ]]></fr:tex> and on <fr:tex
+display="inline"><![CDATA[\eta _{A_\bullet }]]></fr:tex>. The former follows directly from the strictness of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{\iota _\bullet }]]></fr:tex>, as we have <fr:tex
+display="inline"><![CDATA[k\bot  = k{\mathopen {}\left (\mathsf {L} \iota _\bullet \bot \right )\mathclose {}}=d_\bullet \bot ]]></fr:tex>. For the latter, we must check that <fr:tex
+display="inline"><![CDATA[k\circ  \eta _{A_\infty }=k'\circ  \eta _{A_\infty }]]></fr:tex>; by the universal property of the colimiting cocone <fr:tex
+display="inline"><![CDATA[{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }]]></fr:tex>, it suffices to check that <fr:tex
+display="inline"><![CDATA[k\circ \eta _{A_\infty }\circ  \iota _\bullet  = k'\circ \eta _{A_\infty }\circ \iota _\bullet ]]></fr:tex>. By naturality of the unit, these are both equal to <fr:tex
+display="inline"><![CDATA[d_\bullet \circ  \eta _{A_\bullet }]]></fr:tex>.</fr:p></fr:ol>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14436</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-001L</fr:addr><fr:route>jms-001L.xml</fr:route><fr:title>Connected colimits of lift-algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>12</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13217</fr:anchor><fr:addr>jms-001L</fr:addr><fr:route>jms-001L.xml</fr:route><fr:title>Connected colimits of lift-algebras</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>12</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
 href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex
+display="inline"><![CDATA[\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}]]></fr:tex> be the lifting monad on dcpos; the Eilenberg–Moore category <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex> is closed under connected colimits, and these colimits are <fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}</fr:tex> be the lifting monad on dcpos; the Eilenberg–Moore category <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex> is closed under connected colimits, and these colimits are <fr:link
 href="jms-001H.xml"
-type="local"
-addr="jms-001H">created</fr:link> by the forgetful functor <fr:tex>{\mathsf {dcpo}^{\mathbb {L}}}\xrightarrow {{\mathsf {U}^{\mathbb {L}}}}{\mathsf {dcpo}}</fr:tex>.</fr:p>
+addr="jms-001H"
+title="Creation of (co)limits">created</fr:link> by the forgetful functor <fr:tex
+display="inline"><![CDATA[{\mathsf {dcpo}^{\mathbb {L}}}\xrightarrow {{\mathsf {U}^{\mathbb {L}}}}{\mathsf {dcpo}}]]></fr:tex>.</fr:p>
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14434</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#440</fr:addr><fr:route>unstable-440.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>12</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13219</fr:anchor><fr:addr>#427</fr:addr><fr:route>unstable-427.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>12</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001L</fr:parent></fr:frontmatter><fr:mainmatter>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001L</fr:parent></fr:frontmatter><fr:mainmatter>
   <fr:p>This follows from the following facts:</fr:p>
   <fr:ol><fr:li>The category of dcpos is (even constructively) <fr:link
+type="local"
 href="jung-moshier-vickers-2008.xml"
-type="local"
-addr="jung-moshier-vickers-2008">known to be cocomplete</fr:link>.</fr:li>
+addr="jung-moshier-vickers-2008"
+title="Presenting dcpos and dcpo algebras">known to be cocomplete</fr:link>.</fr:li>
     <fr:li><fr:link
+type="local"
 href="jms-001F.xml"
-type="local"
-addr="jms-001F">Lifting preserves connected colimits</fr:link>.</fr:li>
+addr="jms-001F"
+title="Lifting preserves connected colimits">Lifting preserves connected colimits</fr:link>.</fr:li>
     <fr:li><fr:link
-href="jms-001K.xml"
 type="local"
-addr="jms-001K">The forgetful functor <fr:tex>{\mathsf {dcpo}^{\mathbb {L}}}\xrightarrow {{\mathsf {U}^{\mathbb {L}}}}{\mathsf {dcpo}}</fr:tex> creates whatever colimits <fr:tex>\mathsf {L}</fr:tex> preserves</fr:link>.</fr:li></fr:ol>
-</fr:mainmatter></fr:tree>
+href="jms-001K.xml"
+addr="jms-001K"
+title="Creation of colimits by the forgetful functor">The forgetful functor <fr:tex
+display="inline"><![CDATA[{\mathsf {dcpo}^{\mathbb {L}}}\xrightarrow {{\mathsf {U}^{\mathbb {L}}}}{\mathsf {dcpo}}]]></fr:tex> creates whatever colimits <fr:tex
+display="inline"><![CDATA[\mathsf {L}]]></fr:tex> preserves</fr:link>.</fr:li></fr:ol>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14440</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-005F</fr:addr><fr:route>jms-005F.xml</fr:route><fr:title>Coproducts of lift-algebras</fr:title><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13221</fr:anchor><fr:addr>jms-005F</fr:addr><fr:route>jms-005F.xml</fr:route><fr:title>Coproducts of lift-algebras</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
 href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The Eilenberg–Moore category <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex> for the lifting monad <fr:tex
+display="inline"><![CDATA[\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}]]></fr:tex> on dcpos has all small coproducts.</fr:p><fr:p>This is the first part of Corollary 2 of Linton's <fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The Eilenberg–Moore category <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex> for the lifting monad <fr:tex>\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}</fr:tex> on dcpos has all small coproducts.</fr:p><fr:p>This is the first part of Corollary 2 of Linton's <fr:link
 href="linton-1969-coequalizers.xml"
-type="local"
-addr="linton-1969-coequalizers">Coequalizers in categories of algebras</fr:link>.</fr:p>
+addr="linton-1969-coequalizers"
+title="Coequalizers in categories of algebras">Coequalizers in categories of algebras</fr:link>.</fr:p>
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14438</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#432</fr:addr><fr:route>unstable-432.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13223</fr:anchor><fr:addr>#419</fr:addr><fr:route>unstable-419.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
 href="jonmsterling.xml"
-type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-005F</fr:parent></fr:frontmatter><fr:mainmatter>
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-005F</fr:parent></fr:frontmatter><fr:mainmatter>
   <fr:p>The coproduct of lift-algebras is computed as a reflexive coequalizer, whose existence we have <fr:link
+type="local"
 href="jms-001L.xml"
+addr="jms-001L"
+title="Connected colimits of lift-algebras">already established</fr:link>. Given an index set <fr:tex
+display="inline"><![CDATA[I]]></fr:tex> and a diagram <fr:tex
+display="inline"><![CDATA[{I}\xrightarrow {{X_{\bullet }}}{\mathsf {dcpo}^{\mathbb {L}}}]]></fr:tex>, the colimit of the following reflexive pair is the coproduct of <fr:tex
+display="inline"><![CDATA[{I}\xrightarrow {{X_{\bullet }}}{\mathsf {dcpo}^{\mathbb {L}}}]]></fr:tex> as shown by <fr:link
 type="local"
-addr="jms-001L">already established</fr:link>. Given an index set <fr:tex>I</fr:tex> and a diagram <fr:tex>{I}\xrightarrow {{X_{\bullet }}}{\mathsf {dcpo}^{\mathbb {L}}}</fr:tex>, the colimit of the following reflexive pair is the coproduct of <fr:tex>{I}\xrightarrow {{X_{\bullet }}}{\mathsf {dcpo}^{\mathbb {L}}}</fr:tex> as shown by <fr:link
 href="linton-1969-coequalizers.xml"
-type="local"
-addr="linton-1969-coequalizers">Linton</fr:link>:</fr:p>
+addr="linton-1969-coequalizers"
+title="Coequalizers in categories of algebras">Linton</fr:link>:</fr:p>
   
  
   
-  <fr:embedded-tex
-hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -4440,7 +4558,7 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -4533,7 +4651,7 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -4545,7 +4663,7 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -4557,7 +4675,7 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -4590,10 +4708,10 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -4685,12 +4803,12 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -4698,84 +4816,108 @@ hash="32c12b869fbc990836ee3c7b5aca2db3"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \node  (0) {$\mathsf {F}^{\mathbb {L}}\coprod _{I}{\mathsf {L}\mathsf {U}^{\mathbb {L}}X_{\bullet }}$};
       \node [right = 4.5cm of 0] (1) {$\mathsf {F}^{\mathbb {L}}\mathsf {L}\coprod _{I}{\mathsf {U}^{\mathbb {L}}X_{\bullet }}$};
       \node [right = 3cm of 1] (2) {$\mathsf {F}^{\mathbb {L}}\coprod _{I}{\mathsf {U}^{\mathbb {L}}X_{\bullet }}$};
-      \draw [-&gt;] (0) to node[above] {$\mathsf {F}^{\mathbb {L}}{\mathopen {}\left  [i\mid  \mathsf {L}\,\mathsf {in}_{i}\right  ]\mathclose {}}$} (1);
-      \draw [-&gt;] (1) to node[above] {$\epsilon $} (2);
-      \draw [-&gt;,bend right=30] (0) to node[below] {$\mathsf {F}^{\mathbb {L}}\coprod _{I}{\alpha _{X_\bullet }}$} (2);
+      \draw [->] (0) to node[above] {$\mathsf {F}^{\mathbb {L}}{\mathopen {}\left  [i\mid  \mathsf {L}\,\mathsf {in}_{i}\right  ]\mathclose {}}$} (1);
+      \draw [->] (1) to node[above] {$\epsilon $} (2);
+      \draw [->,bend right=30] (0) to node[below] {$\mathsf {F}^{\mathbb {L}}\coprod _{I}{\alpha _{X_\bullet }}$} (2);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
-</fr:mainmatter></fr:tree>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14444</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-005G</fr:addr><fr:route>jms-005G.xml</fr:route><fr:title>The category of lift-algebras is cocomplete</fr:title><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13225</fr:anchor><fr:addr>jms-005G</fr:addr><fr:route>jms-005G.xml</fr:route><fr:title>The category of lift-algebras is cocomplete</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The Eilenberg–Moore category <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex> for the lifting monad <fr:tex>\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}</fr:tex> on dcpos is cocomplete.</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>The Eilenberg–Moore category <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex> for the lifting monad <fr:tex
+display="inline"><![CDATA[\mathbb {L}={\mathopen {}\left (\mathsf {L},\eta ,\mu \right )\mathclose {}}]]></fr:tex> on dcpos is cocomplete.</fr:p>
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14442</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#431</fr:addr><fr:route>unstable-431.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13227</fr:anchor><fr:addr>#418</fr:addr><fr:route>unstable-418.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>5</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
 href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-005G</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>This follows because <fr:tex
+display="inline"><![CDATA[\mathsf {dcpo}^{\mathbb {L}}]]></fr:tex> under <fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-005G</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>This follows because <fr:tex>\mathsf {dcpo}^{\mathbb {L}}</fr:tex> under <fr:link
 href="jms-001F.xml"
+addr="jms-001F"
+title="Lifting preserves connected colimits">connected colimits</fr:link> and <fr:link
 type="local"
-addr="jms-001F">connected colimits</fr:link> and <fr:link
 href="jms-005F.xml"
-type="local"
-addr="jms-005F">coproducts</fr:link></fr:p>
-</fr:mainmatter></fr:tree>
+addr="jms-005F"
+title="Coproducts of lift-algebras">coproducts</fr:link></fr:p>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:context><fr:related></fr:related><fr:backlinks><fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+</fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Backlinks</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
 toc="true"
 numbered="false"
 show-heading="true"
 show-metadata="true"
-expanded="true"
-root="false"><fr:frontmatter><fr:anchor>17068</fr:anchor><fr:taxon>Lemma</fr:taxon><fr:addr>jms-001F</fr:addr><fr:route>jms-001F.xml</fr:route><fr:title>Lifting preserves connected colimits</fr:title><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>15588</fr:anchor><fr:addr>jms-001F</fr:addr><fr:route>jms-001F.xml</fr:route><fr:title>Lifting preserves connected colimits</fr:title><fr:taxon>Lemma</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex>A_\bullet </fr:tex> be a diagram of dcpos indexed in a connected category <fr:tex>\mathcal {I}</fr:tex>. Then the lifting endofunctor <fr:tex>\mathsf {L}</fr:tex> on dcpos preserves the colimit of <fr:tex>A_\bullet </fr:tex>.</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex
+display="inline"><![CDATA[A_\bullet ]]></fr:tex> be a diagram of dcpos indexed in a connected category <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex>. Then the lifting endofunctor <fr:tex
+display="inline"><![CDATA[\mathsf {L}]]></fr:tex> on dcpos preserves the colimit of <fr:tex
+display="inline"><![CDATA[A_\bullet ]]></fr:tex>.</fr:p>
  
    
    <fr:tree
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 toc="false"
 numbered="true"
 show-heading="true"
 show-metadata="false"
 expanded="true"
-root="false"><fr:frontmatter><fr:anchor>14430</fr:anchor><fr:taxon>Proof</fr:taxon><fr:addr>#441</fr:addr><fr:route>unstable-441.xml</fr:route><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>13214</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:taxon>Proof</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>2</fr:month><fr:day>8</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
-addr="jonmsterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001F</fr:parent></fr:frontmatter><fr:mainmatter>
-  <fr:p>Let <fr:tex>A_\bullet \xrightarrow {\iota _\bullet }{\mathopen {}\left \{A_\infty \right \}\mathclose {}}</fr:tex> be a universal cocone; we must show that <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}</fr:tex> is universal as well, i.e. show any cocone <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {d_\bullet }{\mathopen {}\left \{D\right \}\mathclose {}}</fr:tex> factors uniquely through <fr:tex>\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}</fr:tex> in the following sense:</fr:p>
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-001F</fr:parent></fr:frontmatter><fr:mainmatter>
+  <fr:p>Let <fr:tex
+display="inline"><![CDATA[A_\bullet \xrightarrow {\iota _\bullet }{\mathopen {}\left \{A_\infty \right \}\mathclose {}}]]></fr:tex> be a universal cocone; we must show that <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}]]></fr:tex> is universal as well, i.e. show any cocone <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {d_\bullet }{\mathopen {}\left \{D\right \}\mathclose {}}]]></fr:tex> factors uniquely through <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\bullet }\xrightarrow {\mathsf {L}{\iota _\bullet }}{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}]]></fr:tex> in the following sense:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -4793,7 +4935,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -4886,7 +5028,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -4898,7 +5040,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -4910,7 +5052,7 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -4943,10 +5085,10 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -5038,12 +5180,12 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -5051,29 +5193,32 @@ hash="d7827a447190213173b2a85fbbf37b06"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \node  (nw) {$LA_\bullet $};
       \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
       \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-      \draw [exists,-&gt;] (ne) to node[right] {$\exists !{\mathopen {}\left \{d_\infty \right \}\mathclose {}}$} (se);
-      \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-      \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+      \draw [exists,->] (ne) to node[right] {$\exists !{\mathopen {}\left \{d_\infty \right \}\mathclose {}}$} (se);
+      \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+      \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
   <fr:p>Using the <fr:link
-href="jms-001D.xml"
 type="local"
-addr="jms-001D">universal property of <fr:tex>\mathsf {L}{A_\infty }</fr:tex> as a co-comma dcpo</fr:link>, we may define <fr:tex>\mathsf {L}{A_\infty }\xrightarrow {d_\infty }D</fr:tex> to be the universal map determined by a certain lax square in the following configuration:</fr:p>
+href="jms-001D.xml"
+addr="jms-001D"
+title="Lifting as a co-comma construction">universal property of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex> as a co-comma dcpo</fr:link>, we may define <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }\xrightarrow {d_\infty }D]]></fr:tex> to be the universal map determined by a certain lax square in the following configuration:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -5091,7 +5236,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -5184,7 +5329,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -5196,7 +5341,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -5208,7 +5353,7 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -5241,10 +5386,10 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -5336,12 +5481,12 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -5349,35 +5494,48 @@ hash="132ce5165fb01b2964fb95191133b578"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A_\infty ,
         sw = A_\infty ,
         ne = \mathbf {1}_{},
         se = D,
         north = !_{A_\infty },
         east = {h_\bot },
-        east/style = {exists,-&gt;},
-        south/style = {exists,-&gt;},
+        east/style = {exists,->},
+        south/style = {exists,->},
         south = {h_{A_\infty }},
         west/style = double,
       }
       \node [between = sq/nw and sq/se] {$\sqsupseteq $};
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>First we define <fr:tex>{\mathbf {1}_{}}\xrightarrow {{h_\bot }}{D}</fr:tex> to be the element <fr:tex>d_i\bot </fr:tex> determined by an <fr:em>arbitrary</fr:em> object <fr:tex>i\in  \mathcal {I}</fr:tex>. To see that this is well-defined, fix <fr:tex>i,j\in  \mathcal {I}</fr:tex> to check that <fr:tex>d_i\bot =d_j\bot </fr:tex>. As <fr:tex>\mathcal {I}</fr:tex> is connected, we may proceed by induction on a zigzag <fr:tex>i\leadsto  j\in  \mathcal {I}</fr:tex>; ultimately, this amounts to checking that for any span <fr:tex>i\leftarrow  k \rightarrow  j</fr:tex> in <fr:tex>\mathcal {I}</fr:tex>, we have <fr:tex>d_i\bot =d_k\bot =d_j\bot </fr:tex>. This follows from the strictness of lifted morphisms as well as the naturality of the cocone <fr:tex>d_\bullet </fr:tex>.</fr:p>
+  <fr:p>First we define <fr:tex
+display="inline"><![CDATA[{\mathbf {1}_{}}\xrightarrow {{h_\bot }}{D}]]></fr:tex> to be the element <fr:tex
+display="inline"><![CDATA[d_i\bot ]]></fr:tex> determined by an <fr:em>arbitrary</fr:em> object <fr:tex
+display="inline"><![CDATA[i\in  \mathcal {I}]]></fr:tex>. To see that this is well-defined, fix <fr:tex
+display="inline"><![CDATA[i,j\in  \mathcal {I}]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[d_i\bot =d_j\bot ]]></fr:tex>. As <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex> is connected, we may proceed by induction on a zigzag <fr:tex
+display="inline"><![CDATA[i\leadsto  j\in  \mathcal {I}]]></fr:tex>; ultimately, this amounts to checking that for any span <fr:tex
+display="inline"><![CDATA[i\leftarrow  k \rightarrow  j]]></fr:tex> in <fr:tex
+display="inline"><![CDATA[\mathcal {I}]]></fr:tex>, we have <fr:tex
+display="inline"><![CDATA[d_i\bot =d_k\bot =d_j\bot ]]></fr:tex>. This follows from the strictness of lifted morphisms as well as the naturality of the cocone <fr:tex
+display="inline"><![CDATA[d_\bullet ]]></fr:tex>.</fr:p>
 
-  <fr:p>Next we define <fr:tex>{A_\infty }\xrightarrow {{h_{A_\infty }}}{D}</fr:tex> using the universal property of the colimiting cocone <fr:tex>{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }</fr:tex>:</fr:p>
+  <fr:p>Next we define <fr:tex
+display="inline"><![CDATA[{A_\infty }\xrightarrow {{h_{A_\infty }}}{D}]]></fr:tex> using the universal property of the colimiting cocone <fr:tex
+display="inline"><![CDATA[{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }]]></fr:tex>:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -5395,7 +5553,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -5488,7 +5646,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -5500,7 +5658,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -5512,7 +5670,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -5545,10 +5703,10 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -5640,12 +5798,12 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -5653,7 +5811,7 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \DiagramSquare {
       nw = A_\bullet ,
       sw = \mathsf {L}{A_\bullet },
@@ -5663,25 +5821,38 @@ hash="435a3b8e2643a6c52fdf9637a4cbb5b4"><fr:embedded-tex-preamble>
       west = \eta _{A_\bullet },
       north = \iota _\bullet ,
       south = d_\bullet ,
-      east/style = {exists,-&gt;},
+      east/style = {exists,->},
       east = \exists !{\mathopen {}\left \{h_{A_\infty }\right \}\mathclose {}},
     }
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>To arrange <fr:tex>h_{A_\infty }</fr:tex> and <fr:tex>h_\bot </fr:tex> into the desired lax square, we must check that for all <fr:tex>a_\infty :A_\infty </fr:tex> we have <fr:tex>h_\bot  \sqsubseteq  h_{A_\infty }a_\infty </fr:tex>. Fixing arbitrary <fr:tex>i\in  \mathcal {I}</fr:tex> and <fr:tex>a\in  A_i</fr:tex>, it suffices to check that <fr:tex>h_\bot  \sqsubseteq  h_{A_\infty }\iota _{i}a</fr:tex>. As <fr:tex>h_\bot =d_i\bot </fr:tex> and <fr:tex>h_{A_\infty }\iota _ia = d_i\eta _{A_i}a</fr:tex>, our goal follows directly from the monotonicity of <fr:tex>{\mathsf {L}{A_i}}\xrightarrow {{d_i}}{D}</fr:tex>.</fr:p>
+  <fr:p>To arrange <fr:tex
+display="inline"><![CDATA[h_{A_\infty }]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[h_\bot ]]></fr:tex> into the desired lax square, we must check that for all <fr:tex
+display="inline"><![CDATA[a_\infty :A_\infty ]]></fr:tex> we have <fr:tex
+display="inline"><![CDATA[h_\bot  \sqsubseteq  h_{A_\infty }a_\infty ]]></fr:tex>. Fixing arbitrary <fr:tex
+display="inline"><![CDATA[i\in  \mathcal {I}]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[a\in  A_i]]></fr:tex>, it suffices to check that <fr:tex
+display="inline"><![CDATA[h_\bot  \sqsubseteq  h_{A_\infty }\iota _{i}a]]></fr:tex>. As <fr:tex
+display="inline"><![CDATA[h_\bot =d_i\bot ]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[h_{A_\infty }\iota _ia = d_i\eta _{A_i}a]]></fr:tex>, our goal follows directly from the monotonicity of <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_i}}\xrightarrow {{d_i}}{D}]]></fr:tex>.</fr:p>
 
   <fr:p><html:mark
-xmlns:html="http://www.w3.org/1999/xhtml">The reasoning above is not correct, we do not know that we can restrict attention to <fr:tex>a\in  A_i</fr:tex>. This is indeed the case, but need to make it explicit.</html:mark></fr:p>
+xmlns:html="http://www.w3.org/1999/xhtml">The reasoning above is not correct, we do not know that we can restrict attention to <fr:tex
+display="inline"><![CDATA[a\in  A_i]]></fr:tex>. This is indeed the case, but need to make it explicit.</html:mark></fr:p>
 
-  <fr:p>Thus we have the desired lax square and a unique morphism <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{h}}{D}</fr:tex> factoring it through the co-comma square that defines <fr:tex>\mathsf {L}{A_\infty }</fr:tex>:</fr:p>
+  <fr:p>Thus we have the desired lax square and a unique morphism <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{h}}{D}]]></fr:tex> factoring it through the co-comma square that defines <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex>:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -5699,7 +5870,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -5792,7 +5963,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -5804,7 +5975,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -5816,7 +5987,7 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -5849,10 +6020,10 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -5944,12 +6115,12 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -5957,9 +6128,9 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
-      \SpliceDiagramSquare &lt;sq/&gt;{
+      \SpliceDiagramSquare <sq/>{
         nw = A_\infty ,
         sw = A_\infty ,
         ne = \mathbf {1}_{},
@@ -5976,21 +6147,24 @@ hash="e3df561f3347d31927f9a2bc80dd746c"><fr:embedded-tex-preamble>
       }
       \node  [between = sq/nw and sq/se] {$\sqsupseteq $};
       \node  (se) [below right = of sq/se] {$D$};
-      \draw [-&gt;,bend left=30] (sq/ne) to node[right] {$h_\bot $} (se);
-      \draw [-&gt;,bend right=30] (sq/sw) to node[sloped,below] {$h_{A_\infty }$} (se);
-      \draw [-&gt;,exists] (sq/se) to node[desc] {$\exists !h$} (se);
+      \draw [->,bend left=30] (sq/ne) to node[right] {$h_\bot $} (se);
+      \draw [->,bend right=30] (sq/sw) to node[sloped,below] {$h_{A_\infty }$} (se);
+      \draw [->,exists] (sq/se) to node[desc] {$\exists !h$} (se);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>Our goal is to show that we may choose the universal map <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{d_\infty }}{D}</fr:tex> corresponding to the cocone <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}</fr:tex> to be the morphism <fr:tex>h</fr:tex> defined above. First we must prove that the following triangle commutes:</fr:p>
+  <fr:p>Our goal is to show that we may choose the universal map <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{d_\infty }}{D}]]></fr:tex> corresponding to the cocone <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}]]></fr:tex> to be the morphism <fr:tex
+display="inline"><![CDATA[h]]></fr:tex> defined above. First we must prove that the following triangle commutes:</fr:p>
 
   
  
   
-  <fr:embedded-tex
-hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -6008,7 +6182,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -6101,7 +6275,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -6113,7 +6287,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -6125,7 +6299,7 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -6158,10 +6332,10 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -6253,12 +6427,12 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -6266,27 +6440,28 @@ hash="0aacebb98b16e2a1c55f585d0b8cedb7"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
     \begin {tikzpicture}[diagram]
       \node  (nw) {$LA_\bullet $};
       \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
       \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-      \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-      \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-      \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+      \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+      \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+      \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
     \end {tikzpicture}
-  </fr:embedded-tex-body></fr:embedded-tex>
+  ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-  <fr:p>Using the universal property of the co-comma squares for each <fr:tex>\mathsf {L}{A_i}</fr:tex>, it suffices to check that two diagrams commute:</fr:p>
+  <fr:p>Using the universal property of the co-comma squares for each <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_i}]]></fr:tex>, it suffices to check that two diagrams commute:</fr:p>
   <fr:ol><fr:li><fr:p>We must check that the outer triangle below commutes:</fr:p>
 
       
  
   
-  <fr:embedded-tex
-hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -6304,7 +6479,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -6397,7 +6572,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -6409,7 +6584,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -6421,7 +6596,7 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -6454,10 +6629,10 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -6549,12 +6724,12 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -6562,30 +6737,31 @@ hash="a9d3480c33ed6da0c476ccb90467aa5b"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {${\mathopen {}\left \{\mathbf {1}_{}\right \}\mathclose {}}$};
           \node [right = of nww] (nw) {$LA_\bullet $};
           \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding] (nww) to node[above] {$\bot $} (nw);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
-      <fr:p>Rewriting using the strictness of lifted morphisms, this amounts to the established fact that <fr:tex>h\bot  = h_\bot </fr:tex>.</fr:p></fr:li>
+      <fr:p>Rewriting using the strictness of lifted morphisms, this amounts to the established fact that <fr:tex
+display="inline"><![CDATA[h\bot  = h_\bot ]]></fr:tex>.</fr:p></fr:li>
 
     <fr:li><fr:p>We must check that the outer triangle below commutes:</fr:p>
 
       
  
   
-  <fr:embedded-tex
-hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -6603,7 +6779,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -6696,7 +6872,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -6708,7 +6884,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -6720,7 +6896,7 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -6753,10 +6929,10 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -6848,12 +7024,12 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -6861,18 +7037,18 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {$A_\bullet $};
           \node [right = of nww] (nw) {$LA_\bullet $};
           \node [right = of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->] (nw) to node[above] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding] (nww) to node[above] {$\eta _{A_\bullet }$} (nw);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
  
 
 
@@ -6881,8 +7057,8 @@ hash="bc1b42568cb254f6d0db75261a34d033"><fr:embedded-tex-preamble>
       
  
   
-  <fr:embedded-tex
-hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
+  <fr:figure><fr:embedded-tex
+hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble><![CDATA[
    
  \RequirePackage {tikz}
  \RequirePackage {amsmath}
@@ -6900,7 +7076,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
  \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
  \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
 
- \NewDocumentCommand \CreateRect {D&lt;&gt;{} m m}{
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
    \path 
      coordinate (#1nw)
      ++(#2,-#3) coordinate (#1se)
@@ -6993,7 +7169,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      -{Triangle[open]}
    },
    etale cover/.style= {
-     &gt;={Triangle[open]},-&gt;.&gt;
+     >={Triangle[open]},->.>
    },
    opfibration/.style = {
      -{Triangle}
@@ -7005,7 +7181,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      |-{Triangle}
    },
    embedding/.style = {
-     {right hook}-&gt;
+     {right hook}->
    },
    open immersion/.style = {
      {right hook}-{Triangle[open]}
@@ -7017,7 +7193,7 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
      {left hook}-{Triangle}
    },
    embedding*/.style = {
-     {left hook}-&gt;
+     {left hook}->
    },
    open immersion*/.style = {
      {left hook}-{Triangle[open]}
@@ -7050,10 +7226,10 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
    square/ne/.style = {},
    square/se/.style = {},
    square/sw/.style = {},
-   square/north/.style = {-&gt;},
-   square/south/.style = {-&gt;},
-   square/west/.style = {-&gt;},
-   square/east/.style = {-&gt;},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
    square/north/node/.style = {above},
    square/south/node/.style = {below},
    square/west/node/.style = {left},
@@ -7145,12 +7321,12 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
    \group_end:
  }
 
- \NewDocumentCommand\SpliceDiagramSquare{D&lt;&gt;{}m}{
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
    \__jon_tikz_render_square:nn {#1} {#2}
  }
 
 
- \NewDocumentCommand\DiagramSquare{D&lt;&gt;{}O{}m}{
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
    \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
      \__jon_tikz_render_square:nn {#1} {#3}
    \end{tikzpicture}
@@ -7158,26 +7334,39 @@ hash="3fe2111a3faf4c0775d9440cb8d73a19"><fr:embedded-tex-preamble>
 
  \ExplSyntaxOff
 
-  </fr:embedded-tex-preamble><fr:embedded-tex-body>
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
         \begin {tikzpicture}[diagram]
           \node  (nww) {$A_\bullet $};
           \node [below = of nww] (sww) {${\mathopen {}\left \{A_\infty \right \}\mathclose {}}$};
           \node [right = 2.5cm of nww] (nw) {$LA_\bullet $};
           \node [right = 2.5cm of nw] (ne) {${\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}$};
           \node [below = of ne] (se) {${\mathopen {}\left \{D\right \}\mathclose {}}$};
-          \draw [-&gt;] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
-          \draw [-&gt;,gray] (nw) to node[sloped,below] {$d_\bullet $} (se);
-          \draw [-&gt;,gray] (nw) to node[upright desc,] {$\mathsf {L}{\iota _\bullet }$} (ne);
+          \draw [->] (ne) to node[right] {${\mathopen {}\left \{h\right \}\mathclose {}}$} (se);
+          \draw [->,gray] (nw) to node[sloped,below] {$d_\bullet $} (se);
+          \draw [->,gray] (nw) to node[upright desc,] {$\mathsf {L}{\iota _\bullet }$} (ne);
           \draw [embedding,gray] (nww) to node[upright desc,] {$\eta _{A_\bullet }$} (nw);
-          \draw [-&gt;] (nww) to node[left] {$\iota _{\bullet }$} (sww);
-          \draw [-&gt;] (sww) to node[below] {$h_{A_\infty }$} (se);
+          \draw [->] (nww) to node[left] {$\iota _{\bullet }$} (sww);
+          \draw [->] (sww) to node[below] {$h_{A_\infty }$} (se);
           \node [above = of nw] (nnw) {${\mathopen {}\left \{A_\infty \right \}\mathclose {}}$};
-          \draw [-&gt;] (nww) to node[sloped,above] {$\iota _\bullet $} (nnw);
-          \draw [-&gt;] (nnw) to node[sloped,above] {${\mathopen {}\left \{\eta _{A_\infty }\right \}\mathclose {}}$} (ne);
+          \draw [->] (nww) to node[sloped,above] {$\iota _\bullet $} (nnw);
+          \draw [->] (nnw) to node[sloped,above] {${\mathopen {}\left \{\eta _{A_\infty }\right \}\mathclose {}}$} (ne);
         \end {tikzpicture}
-      </fr:embedded-tex-body></fr:embedded-tex></fr:li>
+      ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure></fr:li>
 
-    <fr:p>Finally, we must check that any two morphisms <fr:tex>{\mathsf {L}{A_\infty }}\xrightarrow {{k,k'}}{D}</fr:tex> factoring <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}</fr:tex> through <fr:tex>{\mathsf {L}{A_\bullet }}\xrightarrow {{\mathsf {L}{\iota _\bullet }}}{{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}}</fr:tex> are equal. To that end, we will use the universal property of the co-comma square defining <fr:tex>\mathsf {L}{A_\infty }</fr:tex> once more to reduce this to checking that <fr:tex>k,k'</fr:tex> agree on <fr:tex>\bot </fr:tex> and on <fr:tex>\eta _{A_\bullet }</fr:tex>. The former follows directly from the strictness of <fr:tex>\mathsf {L}{\iota _\bullet }</fr:tex>, as we have <fr:tex>k\bot  = k{\mathopen {}\left (\mathsf {L} \iota _\bullet \bot \right )\mathclose {}}=d_\bullet \bot </fr:tex>. For the latter, we must check that <fr:tex>k\circ  \eta _{A_\infty }=k'\circ  \eta _{A_\infty }</fr:tex>; by the universal property of the colimiting cocone <fr:tex>{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }</fr:tex>, it suffices to check that <fr:tex>k\circ \eta _{A_\infty }\circ  \iota _\bullet  = k'\circ \eta _{A_\infty }\circ \iota _\bullet </fr:tex>. By naturality of the unit, these are both equal to <fr:tex>d_\bullet \circ  \eta _{A_\bullet }</fr:tex>.</fr:p></fr:ol>
-</fr:mainmatter></fr:tree>
+    <fr:p>Finally, we must check that any two morphisms <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\infty }}\xrightarrow {{k,k'}}{D}]]></fr:tex> factoring <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{d_\bullet }}{{\mathopen {}\left \{D\right \}\mathclose {}}}]]></fr:tex> through <fr:tex
+display="inline"><![CDATA[{\mathsf {L}{A_\bullet }}\xrightarrow {{\mathsf {L}{\iota _\bullet }}}{{\mathopen {}\left \{\mathsf {L}{A_\infty }\right \}\mathclose {}}}]]></fr:tex> are equal. To that end, we will use the universal property of the co-comma square defining <fr:tex
+display="inline"><![CDATA[\mathsf {L}{A_\infty }]]></fr:tex> once more to reduce this to checking that <fr:tex
+display="inline"><![CDATA[k,k']]></fr:tex> agree on <fr:tex
+display="inline"><![CDATA[\bot ]]></fr:tex> and on <fr:tex
+display="inline"><![CDATA[\eta _{A_\bullet }]]></fr:tex>. The former follows directly from the strictness of <fr:tex
+display="inline"><![CDATA[\mathsf {L}{\iota _\bullet }]]></fr:tex>, as we have <fr:tex
+display="inline"><![CDATA[k\bot  = k{\mathopen {}\left (\mathsf {L} \iota _\bullet \bot \right )\mathclose {}}=d_\bullet \bot ]]></fr:tex>. For the latter, we must check that <fr:tex
+display="inline"><![CDATA[k\circ  \eta _{A_\infty }=k'\circ  \eta _{A_\infty }]]></fr:tex>; by the universal property of the colimiting cocone <fr:tex
+display="inline"><![CDATA[{A_\bullet }\xrightarrow {{\iota _\bullet }}{A_\infty }]]></fr:tex>, it suffices to check that <fr:tex
+display="inline"><![CDATA[k\circ \eta _{A_\infty }\circ  \iota _\bullet  = k'\circ \eta _{A_\infty }\circ \iota _\bullet ]]></fr:tex>. By naturality of the unit, these are both equal to <fr:tex
+display="inline"><![CDATA[d_\bullet \circ  \eta _{A_\bullet }]]></fr:tex>.</fr:p></fr:ol>
+</fr:mainmatter><fr:backmatter /></fr:tree>
  
-</fr:mainmatter></fr:tree></fr:backlinks><fr:references></fr:references></fr:backmatter></fr:tree>
+</fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:backmatter></fr:tree>
