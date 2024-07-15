@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>848</fr:anchor><fr:addr>jms-00WS</fr:addr><fr:route>jms-00WS.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00WK.xml"
+addr="jms-00WK"
+title="Forester 4.2">Forester 4.2</fr:link> › new query language</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The existing querying feature, <fr:link
+type="local"
+href="jms-0066.xml"
+addr="jms-0066"
+title="Forester 2.2 › queries">introduced in Forester 2.2</fr:link>, has been replaced by something much better — at the cost of a breaking change that will require existing queries to be rewritten.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>550</fr:anchor><fr:addr>jms-00WU</fr:addr><fr:route>jms-00WU.xml</fr:route><fr:title>New syntax for set operations</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Intersections of queries are formed using a <fr:em>variadic</fr:em> constructor <fr:code><![CDATA[\query/isect]]></fr:code>. For example, the following computes the intersection of the queries <fr:code>q1</fr:code>, <fr:code>q2</fr:code>, and <fr:code>q3</fr:code>:</fr:p><fr:pre><![CDATA[\query/isect{q1}{q2}{q3}]]></fr:pre><fr:p>Unions of queries are formed similarly using the variadic <fr:code><![CDATA[\query/union]]></fr:code> constructor. The complement of a query <fr:code>q</fr:code> is written <fr:code><![CDATA[\query/compl{q}]]></fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>552</fr:anchor><fr:addr>jms-00WV</fr:addr><fr:route>jms-00WV.xml</fr:route><fr:title>Query operations are first-class values</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Previously, the built-in query operations were written like <fr:code><![CDATA[\query/and]]></fr:code>, etc.; these names, however, were hard-coded into the lexer which meant that they did not work in the expected way with <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s hierarchical namespacing. This hardcoding has been removed, and query operations are treated as first-class values that are resolved from primitive names in the <fr:code><![CDATA[\query/]]></fr:code> namespace. As such, the following code is equivalent to <fr:code><![CDATA[\query/compl{\query/taxon{theorem}}]]></fr:code>:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \compl{\taxon{theorem}}
+}]]></fr:pre><fr:p>A further consequence of this change is that queries can be defined compositionally by macros.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>554</fr:anchor><fr:addr>jms-00WW</fr:addr><fr:route>jms-00WW.xml</fr:route><fr:title>Relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The most significant user-facing change to the query language is the ability to form basic <fr:em>relational</fr:em> queries along several <fr:link
+type="local"
+href="jms-00WX.xml"
+addr="jms-00WX"
+title="Forester 4.2 › new query language › relational queries › built-in relation symbols">built-in relation-symbols</fr:link>; in fact, the built-in query constructors <fr:code><![CDATA[\query/taxon]]></fr:code>, <fr:code><![CDATA[\query/tag]]></fr:code>, and <fr:code><![CDATA[\query/author]]></fr:code> are all expressible in these terms.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>556</fr:anchor><fr:addr>jms-00WX</fr:addr><fr:route>jms-00WX.xml</fr:route><fr:title>Built-in relation symbols</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> includes several built-in relation symbols, maintained as graphs that are accumulated during evaluation:</fr:p><fr:ul><fr:li><fr:code><![CDATA[\rel/transclusion]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> directly transcludes <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\transclude{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/links]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> links to <fr:code>y</fr:code>, i.e. contains something like <fr:code><![CDATA[[...](y)]]></fr:code> or <fr:code><![CDATA[[[y]]]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/taxa]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has taxon <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\taxon{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/tags]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has tag <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\tag{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/authors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has author <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\author{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/contributors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> is a tree with contributor <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\contributor{y}]]></fr:code>..</fr:li></fr:ul><fr:p>The implementation supports arbitrarily many relation symbols, even dynamically generated ones; this is not yet exposed to the user, but could in the future be employed by advanced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> to support the development of sophisticated ontologies.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>558</fr:anchor><fr:addr>jms-00WZ</fr:addr><fr:route>jms-00WZ.xml</fr:route><fr:title>Query modes and polarities</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Given an address <fr:code>x</fr:code> and a relation symbol <fr:code>r</fr:code>, there are several useful queries that we might wish to make:</fr:p><fr:ol><fr:li>We might wish to find all <fr:em>incoming</fr:em> edges to <fr:code>x</fr:code> in <fr:code>r</fr:code>, or we may wish to find all <fr:em>outgoing</fr:em> edges from <fr:code>x</fr:code> in <fr:code>r</fr:code>. We shall refer to the differenec between incoming and outgoing edges is referred to as a <fr:em>polarity</fr:em>.</fr:li>
+    <fr:li>Rather than searching for edges, we may wish to search for <fr:em>paths</fr:em> — which corresponds to passing from a relation to its preorder reflection. We will refer to this distinction as a <fr:em>mode</fr:em>.</fr:li></fr:ol><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> supports both polarities and modes for relational queries via the following built-in constants:</fr:p><fr:ol><fr:li><fr:code><![CDATA[\query/incoming]]></fr:code> and <fr:code><![CDATA[\query/outgoing]]></fr:code> denote the two polarities.</fr:li>
+    <fr:li><fr:code><![CDATA[\query/edges]]></fr:code> and <fr:code><![CDATA[\query/paths]]></fr:code> represent the two modes.</fr:li></fr:ol></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>560</fr:anchor><fr:addr>jms-00WY</fr:addr><fr:route>jms-00WY.xml</fr:route><fr:title>The syntax of a relational query</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A relational query takes the following form:</fr:p><fr:pre><![CDATA[\query/rel{mode}{polarity}{relation}{addr}]]></fr:pre><fr:p>In the above, <fr:code>mode</fr:code> and <fr:code>polarity</fr:code> must evaluate to mode and polarity constants as in <fr:ref
+addr="jms-00WZ" />; <fr:code>relation</fr:code> must evaluate to a relation symbol as in <fr:ref
+addr="jms-00WX" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>562</fr:anchor><fr:addr>jms-00X0</fr:addr><fr:route>jms-00X0.xml</fr:route><fr:title>Expressing built-in queries</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The built-in basic queries can be expressed in terms of <fr:link
+type="local"
+href="jms-00WY.xml"
+addr="jms-00WY"
+title="The syntax of a relational query"><fr:code><![CDATA[\query/rel]]></fr:code></fr:link> in the following way:</fr:p><fr:pre><![CDATA[\scope{
+ % open the \query namespace for convenience.
+ \open\query
+
+ \def\my-query/author[x]{
+  \open\query
+  \rel{\edges}{\incoming}{\rel/authors}{\x}
+ }
+
+ \def\my-query/taxon[x]{
+  \rel{\edges}{\incoming}{\rel/taxa}{\x}
+ }
+
+ \def\my-query/tag[x]{
+  \rel{\edges}{\incoming}{\rel/tags}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>564</fr:anchor><fr:addr>jms-00X2</fr:addr><fr:route>jms-00X2.xml</fr:route><fr:title>Querying the (back)links and context a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Both the backlinks and (forward) links of a given tree can be computed using a query to the <fr:code><![CDATA[\rel/links]]></fr:code> relation, and the context (immediate parents) of a given tree can be obatined from the <fr:code><![CDATA[\query/transclusion]]></fr:code> relation:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/backlinks[x]{
+  \rel{\edges}{\incoming}{\rel/links}{\x}
+ }
+
+ \def\query/links[x]{
+  \rel{\edges}{\outgoing}{\rel/links}{\x}
+ }
+
+ \def\query/context[x]{
+  \rel{\edges}{\incoming}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>566</fr:anchor><fr:addr>jms-00X4</fr:addr><fr:route>jms-00X4.xml</fr:route><fr:title>Querying a coslice of the transclusion preorder</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \def\query/transclusion-coslice[x]{
+  \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>568</fr:anchor><fr:addr>jms-00X1</fr:addr><fr:route>jms-00X1.xml</fr:route><fr:title>Unions and intersections of families of relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A further primitive query-former is the union or intersection of a certain <fr:em>family</fr:em> of relational queries indexed in the <fr:em>results</fr:em> of a fixed query. These are written as follows:</fr:p><fr:pre><![CDATA[\query/union-fam{q}{mode}{polarity}{relation}
+\query/isect-fam{q}{mode}{polarity}{relation}]]></fr:pre><fr:p>The meaning of the above is to first compute the set of trees <fr:code>x,...</fr:code> satisfying the query <fr:code>q</fr:code>, and then take the (union, intersection) of all the induced relational queries <fr:code><![CDATA[\query/rel{mode}{polarity}{relation}{x}]]></fr:code>. With this feature in hand, it becomes possible to compute the full bibliography of a given tree, or find the full list of contributors to a given tree (as opposed to only its immediate contributors).</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>570</fr:anchor><fr:addr>jms-00X3</fr:addr><fr:route>jms-00X3.xml</fr:route><fr:title>Querying the bibliography of a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
+addr="jms-00X4"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/bibliography[x]{
+  \isect{
+   \union-fam{\tree-under{\x}}{\edges}{\outgoing}{\links}
+  }{
+   \taxon{reference}
+  }
+ }
+}]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>572</fr:anchor><fr:addr>jms-00X5</fr:addr><fr:route>jms-00X5.xml</fr:route><fr:title>Querying all hereditary contributors to a tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link
+type="local"
+href="tfmt-000T.xml"
+addr="tfmt-000T"
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/contributors[x]{
+  \union-fam{
+   \isect{
+    \tree-under{\x}
+   }{
+    \compl{
+     \taxon{reference}
+    }
+   }
+  }{\edges}{\outgoing}{\rel/contributors}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>574</fr:anchor><fr:addr>jms-00WT</fr:addr><fr:route>jms-00WT.xml</fr:route><fr:taxon>Warning</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>It is strongly recommended that inexperienced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> continue to limit their usage of queries until the feature has reached a stable interface.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Context</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>850</fr:anchor><fr:addr>jms-00WK</fr:addr><fr:route>jms-00WK.xml</fr:route><fr:title>Forester 4.2</fr:title><fr:taxon>Prerelease</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+type="local"
+href="kentookura.xml"
+addr="kentookura"
+title="Kento Okura">Kento Okura</fr:link></fr:contributor></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>This release brings several internal changes that are meant to facilitate the further improvement of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>, as well as some user-facing changes (most notably a <fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="Forester 4.2 › new query language">new query language</fr:link>). These are breaking changes: existing queries will need to be translated, and you will need to upgrade your theme.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>607</fr:anchor><fr:addr>jms-00WS</fr:addr><fr:route>jms-00WS.xml</fr:route><fr:title>New query language</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The existing querying feature, <fr:link
+type="local"
+href="jms-0066.xml"
+addr="jms-0066"
+title="Forester 2.2 › queries">introduced in Forester 2.2</fr:link>, has been replaced by something much better — at the cost of a breaking change that will require existing queries to be rewritten.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>550</fr:anchor><fr:addr>jms-00WU</fr:addr><fr:route>jms-00WU.xml</fr:route><fr:title>New syntax for set operations</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Intersections of queries are formed using a <fr:em>variadic</fr:em> constructor <fr:code><![CDATA[\query/isect]]></fr:code>. For example, the following computes the intersection of the queries <fr:code>q1</fr:code>, <fr:code>q2</fr:code>, and <fr:code>q3</fr:code>:</fr:p><fr:pre><![CDATA[\query/isect{q1}{q2}{q3}]]></fr:pre><fr:p>Unions of queries are formed similarly using the variadic <fr:code><![CDATA[\query/union]]></fr:code> constructor. The complement of a query <fr:code>q</fr:code> is written <fr:code><![CDATA[\query/compl{q}]]></fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>552</fr:anchor><fr:addr>jms-00WV</fr:addr><fr:route>jms-00WV.xml</fr:route><fr:title>Query operations are first-class values</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Previously, the built-in query operations were written like <fr:code><![CDATA[\query/and]]></fr:code>, etc.; these names, however, were hard-coded into the lexer which meant that they did not work in the expected way with <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s hierarchical namespacing. This hardcoding has been removed, and query operations are treated as first-class values that are resolved from primitive names in the <fr:code><![CDATA[\query/]]></fr:code> namespace. As such, the following code is equivalent to <fr:code><![CDATA[\query/compl{\query/taxon{theorem}}]]></fr:code>:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \compl{\taxon{theorem}}
+}]]></fr:pre><fr:p>A further consequence of this change is that queries can be defined compositionally by macros.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>554</fr:anchor><fr:addr>jms-00WW</fr:addr><fr:route>jms-00WW.xml</fr:route><fr:title>Relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The most significant user-facing change to the query language is the ability to form basic <fr:em>relational</fr:em> queries along several <fr:link
+type="local"
+href="jms-00WX.xml"
+addr="jms-00WX"
+title="Forester 4.2 › new query language › relational queries › built-in relation symbols">built-in relation-symbols</fr:link>; in fact, the built-in query constructors <fr:code><![CDATA[\query/taxon]]></fr:code>, <fr:code><![CDATA[\query/tag]]></fr:code>, and <fr:code><![CDATA[\query/author]]></fr:code> are all expressible in these terms.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>556</fr:anchor><fr:addr>jms-00WX</fr:addr><fr:route>jms-00WX.xml</fr:route><fr:title>Built-in relation symbols</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> includes several built-in relation symbols, maintained as graphs that are accumulated during evaluation:</fr:p><fr:ul><fr:li><fr:code><![CDATA[\rel/transclusion]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> directly transcludes <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\transclude{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/links]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> links to <fr:code>y</fr:code>, i.e. contains something like <fr:code><![CDATA[[...](y)]]></fr:code> or <fr:code><![CDATA[[[y]]]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/taxa]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has taxon <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\taxon{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/tags]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has tag <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\tag{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/authors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has author <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\author{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/contributors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> is a tree with contributor <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\contributor{y}]]></fr:code>..</fr:li></fr:ul><fr:p>The implementation supports arbitrarily many relation symbols, even dynamically generated ones; this is not yet exposed to the user, but could in the future be employed by advanced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> to support the development of sophisticated ontologies.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>558</fr:anchor><fr:addr>jms-00WZ</fr:addr><fr:route>jms-00WZ.xml</fr:route><fr:title>Query modes and polarities</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Given an address <fr:code>x</fr:code> and a relation symbol <fr:code>r</fr:code>, there are several useful queries that we might wish to make:</fr:p><fr:ol><fr:li>We might wish to find all <fr:em>incoming</fr:em> edges to <fr:code>x</fr:code> in <fr:code>r</fr:code>, or we may wish to find all <fr:em>outgoing</fr:em> edges from <fr:code>x</fr:code> in <fr:code>r</fr:code>. We shall refer to the differenec between incoming and outgoing edges is referred to as a <fr:em>polarity</fr:em>.</fr:li>
+    <fr:li>Rather than searching for edges, we may wish to search for <fr:em>paths</fr:em> — which corresponds to passing from a relation to its preorder reflection. We will refer to this distinction as a <fr:em>mode</fr:em>.</fr:li></fr:ol><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> supports both polarities and modes for relational queries via the following built-in constants:</fr:p><fr:ol><fr:li><fr:code><![CDATA[\query/incoming]]></fr:code> and <fr:code><![CDATA[\query/outgoing]]></fr:code> denote the two polarities.</fr:li>
+    <fr:li><fr:code><![CDATA[\query/edges]]></fr:code> and <fr:code><![CDATA[\query/paths]]></fr:code> represent the two modes.</fr:li></fr:ol></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>560</fr:anchor><fr:addr>jms-00WY</fr:addr><fr:route>jms-00WY.xml</fr:route><fr:title>The syntax of a relational query</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A relational query takes the following form:</fr:p><fr:pre><![CDATA[\query/rel{mode}{polarity}{relation}{addr}]]></fr:pre><fr:p>In the above, <fr:code>mode</fr:code> and <fr:code>polarity</fr:code> must evaluate to mode and polarity constants as in <fr:ref
+addr="jms-00WZ" />; <fr:code>relation</fr:code> must evaluate to a relation symbol as in <fr:ref
+addr="jms-00WX" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>562</fr:anchor><fr:addr>jms-00X0</fr:addr><fr:route>jms-00X0.xml</fr:route><fr:title>Expressing built-in queries</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The built-in basic queries can be expressed in terms of <fr:link
+type="local"
+href="jms-00WY.xml"
+addr="jms-00WY"
+title="The syntax of a relational query"><fr:code><![CDATA[\query/rel]]></fr:code></fr:link> in the following way:</fr:p><fr:pre><![CDATA[\scope{
+ % open the \query namespace for convenience.
+ \open\query
+
+ \def\my-query/author[x]{
+  \open\query
+  \rel{\edges}{\incoming}{\rel/authors}{\x}
+ }
+
+ \def\my-query/taxon[x]{
+  \rel{\edges}{\incoming}{\rel/taxa}{\x}
+ }
+
+ \def\my-query/tag[x]{
+  \rel{\edges}{\incoming}{\rel/tags}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>564</fr:anchor><fr:addr>jms-00X2</fr:addr><fr:route>jms-00X2.xml</fr:route><fr:title>Querying the (back)links and context a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Both the backlinks and (forward) links of a given tree can be computed using a query to the <fr:code><![CDATA[\rel/links]]></fr:code> relation, and the context (immediate parents) of a given tree can be obatined from the <fr:code><![CDATA[\query/transclusion]]></fr:code> relation:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/backlinks[x]{
+  \rel{\edges}{\incoming}{\rel/links}{\x}
+ }
+
+ \def\query/links[x]{
+  \rel{\edges}{\outgoing}{\rel/links}{\x}
+ }
+
+ \def\query/context[x]{
+  \rel{\edges}{\incoming}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>566</fr:anchor><fr:addr>jms-00X4</fr:addr><fr:route>jms-00X4.xml</fr:route><fr:title>Querying a coslice of the transclusion preorder</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \def\query/transclusion-coslice[x]{
+  \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>568</fr:anchor><fr:addr>jms-00X1</fr:addr><fr:route>jms-00X1.xml</fr:route><fr:title>Unions and intersections of families of relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A further primitive query-former is the union or intersection of a certain <fr:em>family</fr:em> of relational queries indexed in the <fr:em>results</fr:em> of a fixed query. These are written as follows:</fr:p><fr:pre><![CDATA[\query/union-fam{q}{mode}{polarity}{relation}
+\query/isect-fam{q}{mode}{polarity}{relation}]]></fr:pre><fr:p>The meaning of the above is to first compute the set of trees <fr:code>x,...</fr:code> satisfying the query <fr:code>q</fr:code>, and then take the (union, intersection) of all the induced relational queries <fr:code><![CDATA[\query/rel{mode}{polarity}{relation}{x}]]></fr:code>. With this feature in hand, it becomes possible to compute the full bibliography of a given tree, or find the full list of contributors to a given tree (as opposed to only its immediate contributors).</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>570</fr:anchor><fr:addr>jms-00X3</fr:addr><fr:route>jms-00X3.xml</fr:route><fr:title>Querying the bibliography of a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
+addr="jms-00X4"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/bibliography[x]{
+  \isect{
+   \union-fam{\tree-under{\x}}{\edges}{\outgoing}{\links}
+  }{
+   \taxon{reference}
+  }
+ }
+}]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>572</fr:anchor><fr:addr>jms-00X5</fr:addr><fr:route>jms-00X5.xml</fr:route><fr:title>Querying all hereditary contributors to a tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link
+type="local"
+href="tfmt-000T.xml"
+addr="tfmt-000T"
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/contributors[x]{
+  \union-fam{
+   \isect{
+    \tree-under{\x}
+   }{
+    \compl{
+     \taxon{reference}
+    }
+   }
+  }{\edges}{\outgoing}{\rel/contributors}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>574</fr:anchor><fr:addr>jms-00WT</fr:addr><fr:route>jms-00WT.xml</fr:route><fr:taxon>Warning</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>It is strongly recommended that inexperienced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> continue to limit their usage of queries until the feature has reached a stable interface.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>609</fr:anchor><fr:addr>jms-00WL</fr:addr><fr:route>jms-00WL.xml</fr:route><fr:title>Intermediate representation of the XML format</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s primary output format is XML, rendered live in the browser to HTML using an XSLT stylesheet. Although this will continue to be the main output format, together with <fr:link
+type="local"
+href="kentookura.xml"
+addr="kentookura"
+title="Kento Okura">Kento Okura</fr:link> as well as our friends from <fr:link
+type="local"
+href="toposinstitute.xml"
+addr="toposinstitute"
+title="Topos Institute">Topos Institute</fr:link> I am hoping to explore richer <fr:link
+type="external"
+href="https://hypermedia.systems/"><fr:em>hypermedia</fr:em></fr:link> interfaces for <fr:link
+type="local"
+href="tfmt-000R.xml"
+addr="tfmt-000R"
+title="Forests and trees of evergreen notes">forests</fr:link> that could transcend the limitations of static HTML output.</fr:p><fr:p>In order to support multiple backends without creating a log of code churn, I have created an OCaml abstraction of the XML format that will serve as a “source of truth” for <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s output — which can be serialised directly to XML, or rendered in a different way (e.g. as HTML or <fr:link
+type="external"
+href="https://htmx.org/">htmx</fr:link> emitted by a hypermedia server).</fr:p><fr:p>With this change, I would expect <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s XML format to begin to change less and less over time, perhaps culminating in a versioned schema. I do not, however, guarantee that I will not make breaking changes to the format going forward.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>611</fr:anchor><fr:addr>jms-00WM</fr:addr><fr:route>jms-00WM.xml</fr:route><fr:title>Generalised backmatter</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Currently, the <fr:em>backmatter</fr:em> of a tree is not customisable; although the default backmatter sections are useful for most trees, it is likely that some of the sections are less relevant at times, and that other kinds of queries would be useful to be able to include on a tree-by-tree basis.</fr:p><fr:p>In order to facilitate such a feature in the future, this release changes the representation of backmatter to support arbitrary content and queries. <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">This is a breaking change to the XML format:</html:mark> the <fr:code>&lt;backmatter&gt;</fr:code> element now contains arbitrary <fr:code>&lt;tree&gt;</fr:code> elements that encode the backmatter sections. By virtue of the <fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="New query language">improved query engine</fr:link>, all default backmatter sections are computed from queries.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>614</fr:anchor><fr:addr>jms-00WN</fr:addr><fr:route>jms-00WN.xml</fr:route><fr:title>HTML figures and captions; embedded TeX</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release adds <fr:code><![CDATA[\]]>figure</fr:code> and <fr:code><![CDATA[\]]>figcaption</fr:code> primitives that are interpreted by the XSLT stylesheet as HTML’s <fr:code>&lt;figure&gt;</fr:code> and <fr:code>&lt;figcaption&gt;</fr:code> elements.</fr:p><fr:p>The stylesheet no longer emits the images corresponding to embedded <fr:tex
+display="inline"><![CDATA[\LaTeX ]]></fr:tex> inside a <fr:code>&lt;center&gt;</fr:code> tag, as this is deprecated in HTML. Users are encouraged to wrap <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s <fr:code><![CDATA[\]]>tex</fr:code> primitive in a macro that embeds a diagram in a figure. For example, the following code comes from my own macro preamble:</fr:p><fr:pre><![CDATA[% Allocate a fluid binding to hold the default LaTeX preamble,
+% e.g. for loading tikz packages.
+\alloc\base/tex-preamble
+
+\def\texfig[body]{
+ \scope{
+  % Install a LaTeX preamble to be used by default if none is set.
+  \put?\base/tex-preamble{
+   % Some useful things from my own library.
+   \latex-preamble/string-diagrams
+   \latex-preamble/diagrams
+  }
+
+  % Wrap the diagram in a figure
+  \figure{
+   % Render the LaTeX code with the current preamble
+   \tex{\get\base/tex-preamble}{\body}
+  }
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Backlinks</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>853</fr:anchor><fr:addr>jms-00WK</fr:addr><fr:route>jms-00WK.xml</fr:route><fr:title>Forester 4.2</fr:title><fr:taxon>Prerelease</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+type="local"
+href="kentookura.xml"
+addr="kentookura"
+title="Kento Okura">Kento Okura</fr:link></fr:contributor></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>This release brings several internal changes that are meant to facilitate the further improvement of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>, as well as some user-facing changes (most notably a <fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="Forester 4.2 › new query language">new query language</fr:link>). These are breaking changes: existing queries will need to be translated, and you will need to upgrade your theme.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>607</fr:anchor><fr:addr>jms-00WS</fr:addr><fr:route>jms-00WS.xml</fr:route><fr:title>New query language</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The existing querying feature, <fr:link
+type="local"
+href="jms-0066.xml"
+addr="jms-0066"
+title="Forester 2.2 › queries">introduced in Forester 2.2</fr:link>, has been replaced by something much better — at the cost of a breaking change that will require existing queries to be rewritten.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>550</fr:anchor><fr:addr>jms-00WU</fr:addr><fr:route>jms-00WU.xml</fr:route><fr:title>New syntax for set operations</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Intersections of queries are formed using a <fr:em>variadic</fr:em> constructor <fr:code><![CDATA[\query/isect]]></fr:code>. For example, the following computes the intersection of the queries <fr:code>q1</fr:code>, <fr:code>q2</fr:code>, and <fr:code>q3</fr:code>:</fr:p><fr:pre><![CDATA[\query/isect{q1}{q2}{q3}]]></fr:pre><fr:p>Unions of queries are formed similarly using the variadic <fr:code><![CDATA[\query/union]]></fr:code> constructor. The complement of a query <fr:code>q</fr:code> is written <fr:code><![CDATA[\query/compl{q}]]></fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>552</fr:anchor><fr:addr>jms-00WV</fr:addr><fr:route>jms-00WV.xml</fr:route><fr:title>Query operations are first-class values</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Previously, the built-in query operations were written like <fr:code><![CDATA[\query/and]]></fr:code>, etc.; these names, however, were hard-coded into the lexer which meant that they did not work in the expected way with <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s hierarchical namespacing. This hardcoding has been removed, and query operations are treated as first-class values that are resolved from primitive names in the <fr:code><![CDATA[\query/]]></fr:code> namespace. As such, the following code is equivalent to <fr:code><![CDATA[\query/compl{\query/taxon{theorem}}]]></fr:code>:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \compl{\taxon{theorem}}
+}]]></fr:pre><fr:p>A further consequence of this change is that queries can be defined compositionally by macros.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>554</fr:anchor><fr:addr>jms-00WW</fr:addr><fr:route>jms-00WW.xml</fr:route><fr:title>Relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The most significant user-facing change to the query language is the ability to form basic <fr:em>relational</fr:em> queries along several <fr:link
+type="local"
+href="jms-00WX.xml"
+addr="jms-00WX"
+title="Forester 4.2 › new query language › relational queries › built-in relation symbols">built-in relation-symbols</fr:link>; in fact, the built-in query constructors <fr:code><![CDATA[\query/taxon]]></fr:code>, <fr:code><![CDATA[\query/tag]]></fr:code>, and <fr:code><![CDATA[\query/author]]></fr:code> are all expressible in these terms.</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>556</fr:anchor><fr:addr>jms-00WX</fr:addr><fr:route>jms-00WX.xml</fr:route><fr:title>Built-in relation symbols</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> includes several built-in relation symbols, maintained as graphs that are accumulated during evaluation:</fr:p><fr:ul><fr:li><fr:code><![CDATA[\rel/transclusion]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> directly transcludes <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\transclude{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/links]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> links to <fr:code>y</fr:code>, i.e. contains something like <fr:code><![CDATA[[...](y)]]></fr:code> or <fr:code><![CDATA[[[y]]]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/taxa]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has taxon <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\taxon{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/tags]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has tag <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\tag{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/authors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> has author <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\author{y}]]></fr:code>.</fr:li>
+    <fr:li><fr:code><![CDATA[\rel/contributors]]></fr:code> contains an edge from <fr:code>x</fr:code> to <fr:code>y</fr:code> when <fr:code>x</fr:code> is a tree with contributor <fr:code>y</fr:code>, i.e. contains <fr:code><![CDATA[\contributor{y}]]></fr:code>..</fr:li></fr:ul><fr:p>The implementation supports arbitrarily many relation symbols, even dynamically generated ones; this is not yet exposed to the user, but could in the future be employed by advanced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> to support the development of sophisticated ontologies.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>558</fr:anchor><fr:addr>jms-00WZ</fr:addr><fr:route>jms-00WZ.xml</fr:route><fr:title>Query modes and polarities</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Given an address <fr:code>x</fr:code> and a relation symbol <fr:code>r</fr:code>, there are several useful queries that we might wish to make:</fr:p><fr:ol><fr:li>We might wish to find all <fr:em>incoming</fr:em> edges to <fr:code>x</fr:code> in <fr:code>r</fr:code>, or we may wish to find all <fr:em>outgoing</fr:em> edges from <fr:code>x</fr:code> in <fr:code>r</fr:code>. We shall refer to the differenec between incoming and outgoing edges is referred to as a <fr:em>polarity</fr:em>.</fr:li>
+    <fr:li>Rather than searching for edges, we may wish to search for <fr:em>paths</fr:em> — which corresponds to passing from a relation to its preorder reflection. We will refer to this distinction as a <fr:em>mode</fr:em>.</fr:li></fr:ol><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> supports both polarities and modes for relational queries via the following built-in constants:</fr:p><fr:ol><fr:li><fr:code><![CDATA[\query/incoming]]></fr:code> and <fr:code><![CDATA[\query/outgoing]]></fr:code> denote the two polarities.</fr:li>
+    <fr:li><fr:code><![CDATA[\query/edges]]></fr:code> and <fr:code><![CDATA[\query/paths]]></fr:code> represent the two modes.</fr:li></fr:ol></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>560</fr:anchor><fr:addr>jms-00WY</fr:addr><fr:route>jms-00WY.xml</fr:route><fr:title>The syntax of a relational query</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A relational query takes the following form:</fr:p><fr:pre><![CDATA[\query/rel{mode}{polarity}{relation}{addr}]]></fr:pre><fr:p>In the above, <fr:code>mode</fr:code> and <fr:code>polarity</fr:code> must evaluate to mode and polarity constants as in <fr:ref
+addr="jms-00WZ" />; <fr:code>relation</fr:code> must evaluate to a relation symbol as in <fr:ref
+addr="jms-00WX" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>562</fr:anchor><fr:addr>jms-00X0</fr:addr><fr:route>jms-00X0.xml</fr:route><fr:title>Expressing built-in queries</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The built-in basic queries can be expressed in terms of <fr:link
+type="local"
+href="jms-00WY.xml"
+addr="jms-00WY"
+title="The syntax of a relational query"><fr:code><![CDATA[\query/rel]]></fr:code></fr:link> in the following way:</fr:p><fr:pre><![CDATA[\scope{
+ % open the \query namespace for convenience.
+ \open\query
+
+ \def\my-query/author[x]{
+  \open\query
+  \rel{\edges}{\incoming}{\rel/authors}{\x}
+ }
+
+ \def\my-query/taxon[x]{
+  \rel{\edges}{\incoming}{\rel/taxa}{\x}
+ }
+
+ \def\my-query/tag[x]{
+  \rel{\edges}{\incoming}{\rel/tags}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>564</fr:anchor><fr:addr>jms-00X2</fr:addr><fr:route>jms-00X2.xml</fr:route><fr:title>Querying the (back)links and context a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Both the backlinks and (forward) links of a given tree can be computed using a query to the <fr:code><![CDATA[\rel/links]]></fr:code> relation, and the context (immediate parents) of a given tree can be obatined from the <fr:code><![CDATA[\query/transclusion]]></fr:code> relation:</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/backlinks[x]{
+  \rel{\edges}{\incoming}{\rel/links}{\x}
+ }
+
+ \def\query/links[x]{
+  \rel{\edges}{\outgoing}{\rel/links}{\x}
+ }
+
+ \def\query/context[x]{
+  \rel{\edges}{\incoming}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>566</fr:anchor><fr:addr>jms-00X4</fr:addr><fr:route>jms-00X4.xml</fr:route><fr:title>Querying a coslice of the transclusion preorder</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+ \def\query/transclusion-coslice[x]{
+  \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>568</fr:anchor><fr:addr>jms-00X1</fr:addr><fr:route>jms-00X1.xml</fr:route><fr:title>Unions and intersections of families of relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A further primitive query-former is the union or intersection of a certain <fr:em>family</fr:em> of relational queries indexed in the <fr:em>results</fr:em> of a fixed query. These are written as follows:</fr:p><fr:pre><![CDATA[\query/union-fam{q}{mode}{polarity}{relation}
+\query/isect-fam{q}{mode}{polarity}{relation}]]></fr:pre><fr:p>The meaning of the above is to first compute the set of trees <fr:code>x,...</fr:code> satisfying the query <fr:code>q</fr:code>, and then take the (union, intersection) of all the induced relational queries <fr:code><![CDATA[\query/rel{mode}{polarity}{relation}{x}]]></fr:code>. With this feature in hand, it becomes possible to compute the full bibliography of a given tree, or find the full list of contributors to a given tree (as opposed to only its immediate contributors).</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>570</fr:anchor><fr:addr>jms-00X3</fr:addr><fr:route>jms-00X3.xml</fr:route><fr:title>Querying the bibliography of a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
+addr="jms-00X4"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/bibliography[x]{
+  \isect{
+   \union-fam{\tree-under{\x}}{\edges}{\outgoing}{\links}
+  }{
+   \taxon{reference}
+  }
+ }
+}]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>572</fr:anchor><fr:addr>jms-00X5</fr:addr><fr:route>jms-00X5.xml</fr:route><fr:title>Querying all hereditary contributors to a tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link
+type="local"
+href="tfmt-000T.xml"
+addr="tfmt-000T"
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/contributors[x]{
+  \union-fam{
+   \isect{
+    \tree-under{\x}
+   }{
+    \compl{
+     \taxon{reference}
+    }
+   }
+  }{\edges}{\outgoing}{\rel/contributors}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>574</fr:anchor><fr:addr>jms-00WT</fr:addr><fr:route>jms-00WT.xml</fr:route><fr:taxon>Warning</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>It is strongly recommended that inexperienced users of <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> continue to limit their usage of queries until the feature has reached a stable interface.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>609</fr:anchor><fr:addr>jms-00WL</fr:addr><fr:route>jms-00WL.xml</fr:route><fr:title>Intermediate representation of the XML format</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s primary output format is XML, rendered live in the browser to HTML using an XSLT stylesheet. Although this will continue to be the main output format, together with <fr:link
+type="local"
+href="kentookura.xml"
+addr="kentookura"
+title="Kento Okura">Kento Okura</fr:link> as well as our friends from <fr:link
+type="local"
+href="toposinstitute.xml"
+addr="toposinstitute"
+title="Topos Institute">Topos Institute</fr:link> I am hoping to explore richer <fr:link
+type="external"
+href="https://hypermedia.systems/"><fr:em>hypermedia</fr:em></fr:link> interfaces for <fr:link
+type="local"
+href="tfmt-000R.xml"
+addr="tfmt-000R"
+title="Forests and trees of evergreen notes">forests</fr:link> that could transcend the limitations of static HTML output.</fr:p><fr:p>In order to support multiple backends without creating a log of code churn, I have created an OCaml abstraction of the XML format that will serve as a “source of truth” for <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s output — which can be serialised directly to XML, or rendered in a different way (e.g. as HTML or <fr:link
+type="external"
+href="https://htmx.org/">htmx</fr:link> emitted by a hypermedia server).</fr:p><fr:p>With this change, I would expect <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s XML format to begin to change less and less over time, perhaps culminating in a versioned schema. I do not, however, guarantee that I will not make breaking changes to the format going forward.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>611</fr:anchor><fr:addr>jms-00WM</fr:addr><fr:route>jms-00WM.xml</fr:route><fr:title>Generalised backmatter</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Currently, the <fr:em>backmatter</fr:em> of a tree is not customisable; although the default backmatter sections are useful for most trees, it is likely that some of the sections are less relevant at times, and that other kinds of queries would be useful to be able to include on a tree-by-tree basis.</fr:p><fr:p>In order to facilitate such a feature in the future, this release changes the representation of backmatter to support arbitrary content and queries. <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">This is a breaking change to the XML format:</html:mark> the <fr:code>&lt;backmatter&gt;</fr:code> element now contains arbitrary <fr:code>&lt;tree&gt;</fr:code> elements that encode the backmatter sections. By virtue of the <fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="New query language">improved query engine</fr:link>, all default backmatter sections are computed from queries.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>614</fr:anchor><fr:addr>jms-00WN</fr:addr><fr:route>jms-00WN.xml</fr:route><fr:title>HTML figures and captions; embedded TeX</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release adds <fr:code><![CDATA[\]]>figure</fr:code> and <fr:code><![CDATA[\]]>figcaption</fr:code> primitives that are interpreted by the XSLT stylesheet as HTML’s <fr:code>&lt;figure&gt;</fr:code> and <fr:code>&lt;figcaption&gt;</fr:code> elements.</fr:p><fr:p>The stylesheet no longer emits the images corresponding to embedded <fr:tex
+display="inline"><![CDATA[\LaTeX ]]></fr:tex> inside a <fr:code>&lt;center&gt;</fr:code> tag, as this is deprecated in HTML. Users are encouraged to wrap <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s <fr:code><![CDATA[\]]>tex</fr:code> primitive in a macro that embeds a diagram in a figure. For example, the following code comes from my own macro preamble:</fr:p><fr:pre><![CDATA[% Allocate a fluid binding to hold the default LaTeX preamble,
+% e.g. for loading tikz packages.
+\alloc\base/tex-preamble
+
+\def\texfig[body]{
+ \scope{
+  % Install a LaTeX preamble to be used by default if none is set.
+  \put?\base/tex-preamble{
+   % Some useful things from my own library.
+   \latex-preamble/string-diagrams
+   \latex-preamble/diagrams
+  }
+
+  % Wrap the diagram in a figure
+  \figure{
+   % Render the LaTeX code with the current preamble
+   \tex{\get\base/tex-preamble}{\body}
+  }
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>856</fr:anchor><fr:addr>jms-00WM</fr:addr><fr:route>jms-00WM.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00WK.xml"
+addr="jms-00WK"
+title="Forester 4.2">Forester 4.2</fr:link> › generalised backmatter</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WK</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Currently, the <fr:em>backmatter</fr:em> of a tree is not customisable; although the default backmatter sections are useful for most trees, it is likely that some of the sections are less relevant at times, and that other kinds of queries would be useful to be able to include on a tree-by-tree basis.</fr:p><fr:p>In order to facilitate such a feature in the future, this release changes the representation of backmatter to support arbitrary content and queries. <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">This is a breaking change to the XML format:</html:mark> the <fr:code>&lt;backmatter&gt;</fr:code> element now contains arbitrary <fr:code>&lt;tree&gt;</fr:code> elements that encode the backmatter sections. By virtue of the <fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="New query language">improved query engine</fr:link>, all default backmatter sections are computed from queries.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Related</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>858</fr:anchor><fr:addr>jms-0066</fr:addr><fr:route>jms-0066.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-005V.xml"
+addr="jms-005V"
+title="Forester 2.2">Forester 2.2</fr:link> › queries</fr:title><fr:taxon>Feature</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>7</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-005V</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>This release adds support for generating subsections from transclusions obtained by a query the forest; this can be used to produce topical bibliographies.</fr:p>
+  
+  <fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>770</fr:anchor><fr:addr>jms-006A</fr:addr><fr:route>jms-006A.xml</fr:route><fr:title>A conjunctive query node</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>7</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-0066</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The following code will generate a subsection entitled “featured talks” containing the appropriate items as collapsed subtrees:</fr:p><fr:pre><![CDATA[\scope{
+  \put\transclude/title{featured talks}
+  \query{
+    \query/and{
+      \query/author{jonmsterling}
+      \query/taxon{reference}
+      \query/tag{featured}
+    }
+  }
+}]]></fr:pre><fr:p>Under the hood, a query node is an “anonymous transclusion” and can therefore be <fr:link
+type="local"
+href="jms-0067.xml"
+addr="jms-0067"
+title="Flexible transclusion options">configured using the same options as other transclusions</fr:link>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree>
+</fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:backmatter></fr:tree>

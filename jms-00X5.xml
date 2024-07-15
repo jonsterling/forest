@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>892</fr:anchor><fr:addr>jms-00X5</fr:addr><fr:route>jms-00X5.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00X1.xml"
+addr="jms-00X1"
+title="Forester 4.2 › new query language › unions and intersections of families of relational queries"><fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="Forester 4.2 › new query language"><fr:link
+type="local"
+href="jms-00WK.xml"
+addr="jms-00WK"
+title="Forester 4.2">Forester 4.2</fr:link> › new query language</fr:link> › unions and intersections of families of relational queries</fr:link> › querying all hereditary contributors to a tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link
+type="local"
+href="tfmt-000T.xml"
+addr="tfmt-000T"
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/contributors[x]{
+  \union-fam{
+   \isect{
+    \tree-under{\x}
+   }{
+    \compl{
+     \taxon{reference}
+    }
+   }
+  }{\edges}{\outgoing}{\rel/contributors}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Context</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>894</fr:anchor><fr:addr>jms-00X1</fr:addr><fr:route>jms-00X1.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00WS.xml"
+addr="jms-00WS"
+title="Forester 4.2 › new query language"><fr:link
+type="local"
+href="jms-00WK.xml"
+addr="jms-00WK"
+title="Forester 4.2">Forester 4.2</fr:link> › new query language</fr:link> › unions and intersections of families of relational queries</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WS</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A further primitive query-former is the union or intersection of a certain <fr:em>family</fr:em> of relational queries indexed in the <fr:em>results</fr:em> of a fixed query. These are written as follows:</fr:p><fr:pre><![CDATA[\query/union-fam{q}{mode}{polarity}{relation}
+\query/isect-fam{q}{mode}{polarity}{relation}]]></fr:pre><fr:p>The meaning of the above is to first compute the set of trees <fr:code>x,...</fr:code> satisfying the query <fr:code>q</fr:code>, and then take the (union, intersection) of all the induced relational queries <fr:code><![CDATA[\query/rel{mode}{polarity}{relation}{x}]]></fr:code>. With this feature in hand, it becomes possible to compute the full bibliography of a given tree, or find the full list of contributors to a given tree (as opposed to only its immediate contributors).</fr:p><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>570</fr:anchor><fr:addr>jms-00X3</fr:addr><fr:route>jms-00X3.xml</fr:route><fr:title>Querying the bibliography of a given tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
+addr="jms-00X4"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/bibliography[x]{
+  \isect{
+   \union-fam{\tree-under{\x}}{\edges}{\outgoing}{\links}
+  }{
+   \taxon{reference}
+  }
+ }
+}]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>572</fr:anchor><fr:addr>jms-00X5</fr:addr><fr:route>jms-00X5.xml</fr:route><fr:title>Querying all hereditary contributors to a tree</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link
+type="local"
+href="tfmt-000T.xml"
+addr="tfmt-000T"
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+ \open\query
+
+ \def\query/contributors[x]{
+  \union-fam{
+   \isect{
+    \tree-under{\x}
+   }{
+    \compl{
+     \taxon{reference}
+    }
+   }
+  }{\edges}{\outgoing}{\rel/contributors}
+ }
+}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Related</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>896</fr:anchor><fr:addr>tfmt-000T</fr:addr><fr:route>tfmt-000T.xml</fr:route><fr:title>Contributor to a tree</fr:title><fr:taxon>Definition</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>4</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em>direct contributor</fr:em> to a <fr:link
+type="local"
+href="tfmt-000R.xml"
+addr="tfmt-000R"
+title="Forests and trees of evergreen notes">tree within a forest</fr:link> is either an <fr:link
+type="local"
+href="tfmt-000S.xml"
+addr="tfmt-000S"
+title="Author of a tree">author</fr:link> of the tree, or has contributed intellectually to the immediate content of the tree but cannot be held responsible for it.</fr:p><fr:p>A <fr:em>contributor</fr:em> to a tree is someone who is a direct contributor to at least one tree lying within its <fr:link
+type="local"
+href="tfmt-000U.xml"
+addr="tfmt-000U"
+title="The extent of a tree in a forest">extent</fr:link>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:backmatter></fr:tree>
