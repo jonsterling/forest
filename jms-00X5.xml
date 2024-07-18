@@ -27,20 +27,17 @@ title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>j
 type="local"
 href="tfmt-000T.xml"
 addr="tfmt-000T"
-title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\def\query/contributors[x]{
  \open\query
-
- \def\query/contributors[x]{
-  \union-fam{
-   \isect{
-    \tree-under{\x}
-   }{
-    \compl{
-     \taxon{reference}
-    }
+ \union-fam{
+  \isect{
+   \tree-under{\x}
+  }{
+   \compl{
+    \taxon{reference}
    }
-  }{\edges}{\outgoing}{\rel/contributors}
- }
+  }
+ }{\edges}{\outgoing}{\rel/contributors}
 }]]></fr:pre></fr:mainmatter><fr:backmatter><fr:tree
 toc="false"
 numbered="false"
@@ -81,15 +78,13 @@ href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
 addr="jms-00X4"
-taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+href="jms-00X4.xml"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\def\query/bibliography[x]{
  \open\query
-
- \def\query/bibliography[x]{
-  \isect{
-   \union-fam{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
-  }{
-   \taxon{reference}
-  }
+ \isect{
+  \union-fam{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
+ }{
+  \taxon{reference}
  }
 }]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
@@ -106,20 +101,17 @@ title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>j
 type="local"
 href="tfmt-000T.xml"
 addr="tfmt-000T"
-title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\def\query/contributors[x]{
  \open\query
-
- \def\query/contributors[x]{
-  \union-fam{
-   \isect{
-    \tree-under{\x}
-   }{
-    \compl{
-     \taxon{reference}
-    }
+ \union-fam{
+  \isect{
+   \tree-under{\x}
+  }{
+   \compl{
+    \taxon{reference}
    }
-  }{\edges}{\outgoing}{\rel/contributors}
- }
+  }
+ }{\edges}{\outgoing}{\rel/contributors}
 }]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="false"
 numbered="false"

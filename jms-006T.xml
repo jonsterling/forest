@@ -455,8 +455,10 @@ type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>A relational query takes the following form:</fr:p><fr:pre><![CDATA[\query/rel{mode}{polarity}{relation}{addr}]]></fr:pre><fr:p>In the above, <fr:code>mode</fr:code> and <fr:code>polarity</fr:code> must evaluate to mode and polarity constants as in <fr:ref
-addr="jms-00WZ" />; <fr:code>relation</fr:code> must evaluate to a relation symbol as in <fr:ref
-addr="jms-00WX" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+addr="jms-00WZ"
+href="jms-00WZ.xml" />; <fr:code>relation</fr:code> must evaluate to a relation symbol as in <fr:ref
+addr="jms-00WX"
+href="jms-00WX.xml" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
@@ -471,22 +473,19 @@ title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>j
 type="local"
 href="jms-00WY.xml"
 addr="jms-00WY"
-title="The syntax of a relational query"><fr:code><![CDATA[\query/rel]]></fr:code></fr:link> in the following way:</fr:p><fr:pre><![CDATA[\scope{
- % open the \query namespace for convenience.
+title="The syntax of a relational query"><fr:code><![CDATA[\query/rel]]></fr:code></fr:link> in the following way:</fr:p><fr:pre><![CDATA[\def\my-query/author[x]{
  \open\query
+ \rel{\edges}{\incoming}{\rel/authors}{\x}
+}
 
- \def\my-query/author[x]{
-  \open\query
-  \rel{\edges}{\incoming}{\rel/authors}{\x}
- }
+\def\my-query/taxon[x]{
+ \open\query
+ \rel{\edges}{\incoming}{\rel/taxa}{\x}
+}
 
- \def\my-query/taxon[x]{
-  \rel{\edges}{\incoming}{\rel/taxa}{\x}
- }
-
- \def\my-query/tag[x]{
-  \rel{\edges}{\incoming}{\rel/tags}{\x}
- }
+\def\my-query/tag[x]{
+ \open\query
+ \rel{\edges}{\incoming}{\rel/tags}{\x}
 }]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
@@ -498,20 +497,19 @@ xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>6
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Both the backlinks and (forward) links of a given tree can be computed using a query to the <fr:code><![CDATA[\rel/links]]></fr:code> relation, and the context (immediate parents) of a given tree can be obatined from the <fr:code><![CDATA[\query/transclusion]]></fr:code> relation:</fr:p><fr:pre><![CDATA[\scope{
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Both the backlinks and (forward) links of a given tree can be computed using a query to the <fr:code><![CDATA[\rel/links]]></fr:code> relation, and the context (immediate parents) of a given tree can be obatined from the <fr:code><![CDATA[\query/transclusion]]></fr:code> relation:</fr:p><fr:pre><![CDATA[\def\query/backlinks[x]{
  \open\query
+ \rel{\edges}{\incoming}{\rel/links}{\x}
+}
 
- \def\query/backlinks[x]{
-  \rel{\edges}{\incoming}{\rel/links}{\x}
- }
+\def\query/links[x]{
+ \open\query
+ \rel{\edges}{\outgoing}{\rel/links}{\x}
+}
 
- \def\query/links[x]{
-  \rel{\edges}{\outgoing}{\rel/links}{\x}
- }
-
- \def\query/context[x]{
-  \rel{\edges}{\incoming}{\rel/transclusion}{\x}
- }
+\def\query/context[x]{
+ \open\query
+ \rel{\edges}{\incoming}{\rel/transclusion}{\x}
 }]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
@@ -523,11 +521,9 @@ xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>6
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p><fr:pre><![CDATA[\scope{
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00WW</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p><fr:pre><![CDATA[\def\query/transclusion-coslice[x]{
  \open\query
- \def\query/transclusion-coslice[x]{
-  \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
- }
+ \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
 }]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
@@ -553,15 +549,13 @@ href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00X1</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:ref
 addr="jms-00X4"
-taxon="Example" />.</fr:p><fr:pre><![CDATA[\scope{
+href="jms-00X4.xml"
+taxon="Example" />.</fr:p><fr:pre><![CDATA[\def\query/bibliography[x]{
  \open\query
-
- \def\query/bibliography[x]{
-  \isect{
-   \union-fam{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
-  }{
-   \taxon{reference}
-  }
+ \isect{
+  \union-fam{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
+ }{
+  \taxon{reference}
  }
 }]]></fr:pre><fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
@@ -578,20 +572,17 @@ title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>j
 type="local"
 href="tfmt-000T.xml"
 addr="tfmt-000T"
-title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\scope{
+title="Contributor to a tree"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p><fr:pre><![CDATA[\def\query/contributors[x]{
  \open\query
-
- \def\query/contributors[x]{
-  \union-fam{
-   \isect{
-    \tree-under{\x}
-   }{
-    \compl{
-     \taxon{reference}
-    }
+ \union-fam{
+  \isect{
+   \tree-under{\x}
+  }{
+   \compl{
+    \taxon{reference}
    }
-  }{\edges}{\outgoing}{\rel/contributors}
- }
+  }
+ }{\edges}{\outgoing}{\rel/contributors}
 }]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="false"
 numbered="false"
@@ -918,7 +909,8 @@ title="Forester">Forester</fr:link> emits XML with element names qualified by a 
 xmlns:html="http://www.w3.org/1999/xhtml">This change breaks existing XSL stylesheets, so you must upgrade your theme.</html:mark></fr:p><fr:p>The new version of the <fr:link
 type="external"
 href="https://git.sr.ht/~jonsterling/forester-base-theme">default theme</fr:link> contains rules to allow anything in either the <fr:code>http://www.w3.org/1999/xhtml</fr:code> or <fr:code>http://www.w3.org/1998/Math/MathML</fr:code> namespaces to be copied through to the output HTML (with namespace prefixes stripped). In combination with <fr:ref
-addr="jms-00RJ" />, this allows you to write HTML and MathML in <fr:link
+addr="jms-00RJ"
+href="jms-00RJ.xml" />, this allows you to write HTML and MathML in <fr:link
 type="local"
 href="jms-005P.xml"
 addr="jms-005P"
@@ -981,6 +973,7 @@ expr ::= ... | \<qname>[qname]{expr}...{expr}]]></fr:pre><fr:p>For example, if t
 type="external"
 href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</fr:link> as in <fr:ref
 addr="jms-00RK"
+href="jms-00RK.xml"
 taxon="Feature" />, the expression <fr:code><![CDATA[\<html:mark>[class]{highlight}{some highlighted text}]]></fr:code> will emit the following XML:</fr:p><fr:pre><![CDATA[<html:mark
   xmlns:html="http://www.w3.org/1999/xhtml"
   class="highlight">
@@ -999,8 +992,10 @@ href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RJ</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The following code causes MathML to be emitted (in the correct namespace), combining <fr:ref
 addr="jms-00RK"
+href="jms-00RK.xml"
 taxon="Feature" /> and <fr:ref
 addr="jms-00RM"
+href="jms-00RM.xml"
 taxon="Feature" />:</fr:p><fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
 \<mml:math>[display]{block}{
  \<mml:mrow>{
@@ -1128,12 +1123,15 @@ href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00HY</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>You can now write <fr:code><![CDATA[\ref{xxx-NNNN}]]></fr:code> to produce a link to the tree at address <fr:code>xxx-NNNN</fr:code> labeled by its taxon. After the taxon, the textual format and destination of the link depends on whether <fr:code>xxx-NNNN</fr:code> lies in the present context. If the linked tree is present, then link will refer to the first transclusion of the tree into the present context; otherwise, the link will refer to the tree’s stable address. For example:</fr:p><fr:ol><fr:li>A reference to this very tree: <fr:ref
 addr="jms-00HZ"
+href="jms-00HZ.xml"
 taxon="Feature" />.</fr:li>
  <fr:li>A reference to a parent of this tree: <fr:ref
 addr="jms-00HY"
+href="jms-00HY.xml"
 taxon="Release" />.</fr:li>
  <fr:li>A reference to a cousin of this tree: <fr:ref
 addr="jms-00EY"
+href="jms-00EY.xml"
 taxon="Feature" />.</fr:li></fr:ol><fr:p>The behavior of references within one tree naturally depends on the transclusion context in which you are viewing that tree. It is instructive to examine the examples above by viewing this tree from its <fr:link
 type="local"
 href="jms-00HY.xml"
@@ -1202,6 +1200,7 @@ addr="jms-005P"
 title="Forester">Forester</fr:link> is by default relative and determined by position in the current view. When creating translations or digital editions, the numbering from the source material is what is important. For this reason, I have added a new frontmatter directive to impose a manual numbering on a given tree.</fr:p><fr:pre><![CDATA[\taxon{chapter}
 \number{foo}]]></fr:pre><fr:p>This numbering will be used in the table of contents, headings, and by <fr:ref
 addr="jms-00HZ"
+href="jms-00HZ.xml"
 taxon="Feature" />.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
