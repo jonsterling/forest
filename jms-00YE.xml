@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>545</fr:anchor><fr:addr>jms-00YE</fr:addr><fr:route>jms-00YE.xml</fr:route><fr:title>MathML</fr:title><fr:date><fr:year>2024</fr:year><fr:month>7</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:meta
+name="external">http://www.w3.org/1998/Math/MathML</fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter><fr:tree
+toc="false"
+numbered="false"
+show-heading="true"
+show-metadata="false"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title>Backlinks</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>547</fr:anchor><fr:addr>jms-00YG</fr:addr><fr:route>jms-00YG.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00YF.xml"
+addr="jms-00YF"
+title="Forester 4.2 › first-class functions and lazy arguments"><fr:link
+type="local"
+href="jms-00WK.xml"
+addr="jms-00WK"
+title="Forester 4.2">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:link> › combining fluid bindings and lazy arguments</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00YF</fr:parent></fr:frontmatter><fr:mainmatter><fr:p><fr:link
+type="local"
+href="jms-00RH.xml"
+addr="jms-00RH"
+title="Forester 4.0 › enhanced XML support">Forester 4.0’s enhanced XML support</fr:link> makes it possible (see <fr:ref
+addr="jms-00RL"
+href="jms-00RL.xml"
+taxon="Example" />) to write <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> directly as an alternative to using <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link>’s TeX-like math mode via KaTeX. For example, we can write the following wrappers for some basic <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> elements:</fr:p><fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
+\def\math[body]{\<mml:math>{\body}}
+\def\mrow[body]{\<mml:mrow>{\body}}
+\def\mi[x]{\<mml:mi>{\x}}
+\def\mo[o]{\<mml:mo>{\o}}
+\def\mn[n]{\<mml:mn>{\n}}]]></fr:pre><fr:p>With this in hand, we can write prose involving <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let \math{\mi{x}} and \math{\mi{y}} be integers such that \math{\mrow{\mrow{\mi{x}\mo{-}\mi{y}}\mo{=}\mn{0}}}.}]]></fr:pre><fr:p>The above is a bit messy. We can clean it up with some function definitions:</fr:p><fr:pre><![CDATA[\def\plus[x][y]{\mrow{\x \mo{+} \y}}
+\def\equals[x][y]{\mrow{\x \mo{=} \y}}
+\let\x{\mi{x}}
+\let\y{\mi{y}}
+
+\p{Let \math{\x} and \math{\y} be integers such that \math{\equals{\plus{\x}{\y}}{\mn{0}}}.}]]></fr:pre><fr:p>It is annoying that we have to always wrap things in <fr:code><![CDATA[\math|]]></fr:code>. By combining first-class functions, lazy arguments, and fluid bindings, we can lift this requirement:</fr:p><fr:pre><![CDATA[% Allocate a fluid binding to hold the function that enters math mode.
+\alloc\math-wrapper
+
+% Ensure that a given (lazy) argument is evaluated inside a
+% <mml:math> element.
+\def\ensure-math[~body]{
+ \scope{
+  % Set a default value for \math-wrapper (no-op if already set).
+  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}
+
+  % Apply the current function bound to \math-wrapper.
+  \get\math-wrapper{
+   % Bind \math-wrapper to the identity function in the current scope so that
+   % we do not get redundant <mml:math> nodes.
+   \put\math-wrapper{\fun[x]{\x}}
+
+   % Force the \body thunk to evaluate the body within the wrapper.
+   \body{}
+  }
+ }
+}]]></fr:pre><fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p><fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
+\def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
+\def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}
+\def\mn[~x]{\ensure-math{\<mml:mn>{\x{}}}}
+\def\plus[~x][~y]{\mrow{\x{} \mo{+} \y{}}}
+\def\equals[~x][~y]{\mrow{\x{} \mo{=} \y{}}}]]></fr:pre><fr:p>Now, we can put <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> content freely into prose without needing to wrap it each time.</fr:p><fr:pre><![CDATA[\let\x{\mi{x}}
+\let\y{\mi{y}}
+
+\p{Let \x and \y be integers such that \equals{\plus{\x}{\y}}{\mn{0}}.}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>549</fr:anchor><fr:addr>jms-00RL</fr:addr><fr:route>jms-00RL.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00RJ.xml"
+addr="jms-00RJ"
+title="Forester 4.0 › enhanced XML support › emitting XML and resolving namespaces"><fr:link
+type="local"
+href="jms-00RH.xml"
+addr="jms-00RH"
+title="Forester 4.0 › enhanced XML support"><fr:link
+type="local"
+href="jms-00RF.xml"
+addr="jms-00RF"
+title="Forester 4.0">Forester 4.0</fr:link> › enhanced XML support</fr:link> › emitting XML and resolving namespaces</fr:link> › a worked example</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RJ</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The following code causes <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> to be emitted (in the correct namespace), combining <fr:ref
+addr="jms-00RK"
+href="jms-00RK.xml"
+taxon="Feature" /> and <fr:ref
+addr="jms-00RM"
+href="jms-00RM.xml"
+taxon="Feature" />:</fr:p><fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
+\<mml:math>[display]{block}{
+ \<mml:mrow>{
+  \<mml:msup>{
+   \<mml:mi>{x}
+   \<mml:mn>{2}
+  }
+  \<mml:mo>{+}
+  \<mml:mi>{x}
+ }
+}]]></fr:pre><fr:p>The above displays as follows:</fr:p><mml:math
+xmlns:mml="http://www.w3.org/1998/Math/MathML"
+display="block">
+    <mml:mrow>
+     <mml:msup>
+      <mml:mi>x</mml:mi>
+      <mml:mn>2</mml:mn>
+     </mml:msup>
+     <mml:mo>+</mml:mo>
+     <mml:mi>x</mml:mi>
+    </mml:mrow>
+   </mml:math></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+toc="true"
+numbered="false"
+show-heading="true"
+show-metadata="true"
+expanded="false"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>558</fr:anchor><fr:addr>jms-00RI</fr:addr><fr:route>jms-00RI.xml</fr:route><fr:title><fr:link
+type="local"
+href="jms-00RH.xml"
+addr="jms-00RH"
+title="Forester 4.0 › enhanced XML support"><fr:link
+type="local"
+href="jms-00RF.xml"
+addr="jms-00RF"
+title="Forester 4.0">Forester 4.0</fr:link> › enhanced XML support</fr:link> › an XML namespace for <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link></fr:title><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+type="local"
+href="jonmsterling.xml"
+addr="jonmsterling"
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RH</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>The XML format is now governed by the <fr:link
+type="external"
+href="https://www.w3.org/TR/xml-names/">XML namespace</fr:link> with URI <fr:link
+type="external"
+href="http://www.jonmsterling.com/jms-005P.xml">http://www.jonmsterling.com/jms-005P.xml</fr:link>; as is typical of XML grammars, element names are namespaced whereas attribute names lie in no namespace. <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> emits XML with element names qualified by a prefix bound to this namespace. <html:mark
+xmlns:html="http://www.w3.org/1999/xhtml">This change breaks existing XSL stylesheets, so you must upgrade your theme.</html:mark></fr:p><fr:p>The new version of the <fr:link
+type="external"
+href="https://git.sr.ht/~jonsterling/forester-base-theme">default theme</fr:link> contains rules to allow anything in either the <fr:code>http://www.w3.org/1999/xhtml</fr:code> or <fr:code>http://www.w3.org/1998/Math/MathML</fr:code> namespaces to be copied through to the output HTML (with namespace prefixes stripped). In combination with <fr:ref
+addr="jms-00RJ"
+href="jms-00RJ.xml" />, this allows you to write HTML and <fr:link
+type="local"
+href="jms-00YE.xml"
+addr="jms-00YE"
+title="MathML">MathML</fr:link> in <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> directly.</fr:p><fr:p>Please note that although <fr:link
+type="local"
+href="jms-005P.xml"
+addr="jms-005P"
+title="Forester">Forester</fr:link> now has a namespace, it does <fr:em>not</fr:em> has a schema. Any direct integration with the XML format (e.g. by custom themes) is not supported and should be done at your own risk — several recent releases have illustrated the continued rapid evolution of the XML format with many breaking changes. I expect this evolution will continue for some time.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:backmatter></fr:tree>

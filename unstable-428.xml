@@ -7,28 +7,320 @@ show-heading="true"
 show-metadata="true"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1768</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1802</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title><fr:link
 type="local"
 href="jms-00RN.xml"
 addr="jms-00RN"
-title="Baby steps in higher domain theory">Baby steps in higher domain theory</fr:link> › the higher Phoa principle (<fr:link
-type="local"
-href="leonipugh.xml"
-addr="leonipugh"
-title="Leoni Pugh">Leoni Pugh</fr:link>)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+title="Baby steps in higher domain theory">Baby steps in higher domain theory</fr:link> › right-handed universal property of partial map classifiers</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We might name by the “higher Phoa principle” either of the following equivalent properties:</fr:p><fr:ol><fr:li>Each boundary map <fr:tex
-display="inline"><![CDATA[\mathbb {I}^{\mathbb {I}_n}\to  \mathbb {I}^{n+1}]]></fr:tex> factors through an isomorphism <fr:tex
-display="inline"><![CDATA[\mathbb {I}^{\mathbb {I}_n}\cong  \mathbb {I}_{n+1}\subseteq \mathbb {I}^{n+1}]]></fr:tex>.</fr:li>
-  <fr:li>For any function <fr:tex
-display="inline"><![CDATA[\phi \colon  \mathbb {I}_n\to  \mathbb {I}]]></fr:tex>, we have: <fr:tex
-display="block"><![CDATA[\phi {\mathopen {}\left (x_0,\ldots  x_{n-1}\right )\mathclose {}}=\phi {\mathopen {}\left (0\ldots \right )\mathclose {}}\lor  \bigvee _{1\leq  i \leq  n}{\mathopen {}\left (x_{n-i}\land  \phi {\mathopen {}\left (0^{n-i}\ldots  1^i\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex></fr:li></fr:ol><fr:p>Equivalence due to <fr:link
-type="local"
-href="leonipugh.xml"
-addr="leonipugh"
-title="Leoni Pugh">Leoni Pugh</fr:link>. In fact, Pugh shows that the ordinary Phoa principle implies the higher Phoa principle.</fr:p></fr:mainmatter><fr:backmatter><fr:tree
+title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>Maps <fr:tex
+display="inline"><![CDATA[X\to  L{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> uniquely determine spans <fr:tex
+display="inline"><![CDATA[X\hookleftarrow  U\to  A]]></fr:tex> whose left components are <fr:em><fr:strong>open</fr:strong></fr:em>, i.e. classified by <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{1\right \}\mathclose {}}\subseteq \mathbb {I}]]></fr:tex>, as follows:</fr:p>
+ 
+  
+  <fr:figure><fr:embedded-tex
+hash="03fa30089bea7984c3492e70f59f7bd9"><fr:embedded-tex-preamble><![CDATA[
+   
+ \RequirePackage {tikz}
+ \RequirePackage {amsmath}
+ \usetikzlibrary {backgrounds, intersections, calc, spath3, fit}
+
+ \definecolor {catccolor}{RGB}{255,244,138}
+ \tikzstyle {dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle {catc}=[catccolor!60]
+ \tikzstyle {catd}=[orange!40]
+ \tikzstyle {cate}=[red!40]
+ \tikzstyle {catf}=[blue!10]
+ \tikzstyle {catg}=[green!25]
+
+
+ \tikzstyle {blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle {white halo}=[fill=white, opacity=0.7, rounded corners]
+
+ \NewDocumentCommand \CreateRect {D<>{} m m}{
+   \path 
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+   \path [spath/save = #1north] (#1nw) to (#1ne);
+   \path [spath/save = #1west] (#1nw) to (#1sw);
+   \path [spath/save = #1east] (#1ne) to (#1se);
+   \path [spath/save = #1south] (#1sw) to (#1se);
+ }
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     >={Triangle[open]},->.>
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}->
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}->
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+
+  ]]></fr:embedded-tex-preamble><fr:embedded-tex-body><![CDATA[
+  \begin {tikzpicture}[diagram]
+   \SpliceDiagramSquare <l/>{
+    nw = U,
+    sw = X,
+    ne = A,
+    se = L{\mathopen {}\left (A\right )\mathclose {}},
+    nw/style = pullback,
+    north/style = {exists,->},
+    west/style = {exists,open immersion},
+    east/style = open immersion,
+    ne/style = pullback,
+   }
+   \SpliceDiagramSquare <r/>{
+    glue target = l/, glue = west,
+    east/style = open immersion,
+    ne = {\mathopen {}\left \{1\right \}\mathclose {}},
+    se = \mathbb {I},
+   }
+  \end {tikzpicture}
+ ]]></fr:embedded-tex-body></fr:embedded-tex></fr:figure>
+ 
+</fr:mainmatter><fr:backmatter><fr:tree
 toc="false"
 numbered="false"
 show-heading="true"
@@ -42,7 +334,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1770</fr:anchor><fr:addr>jms-00RN</fr:addr><fr:route>jms-00RN.xml</fr:route><fr:title>Baby steps in higher domain theory</fr:title><fr:taxon>Presentation</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1804</fr:anchor><fr:addr>jms-00RN</fr:addr><fr:route>jms-00RN.xml</fr:route><fr:title>Baby steps in higher domain theory</fr:title><fr:taxon>Presentation</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -84,7 +376,7 @@ show-heading="false"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1459</fr:anchor><fr:addr>#416</fr:addr><fr:route>unstable-416.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1500</fr:anchor><fr:addr>#418</fr:addr><fr:route>unstable-418.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -100,7 +392,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1461</fr:anchor><fr:addr>#417</fr:addr><fr:route>unstable-417.xml</fr:route><fr:title>What is domain theory?</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1502</fr:anchor><fr:addr>#419</fr:addr><fr:route>unstable-419.xml</fr:route><fr:title>What is domain theory?</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -121,7 +413,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1465</fr:anchor><fr:addr>#418</fr:addr><fr:route>unstable-418.xml</fr:route><fr:title>Domains for computer science</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1506</fr:anchor><fr:addr>#420</fr:addr><fr:route>unstable-420.xml</fr:route><fr:title>Domains for computer science</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -144,7 +436,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1468</fr:anchor><fr:addr>#419</fr:addr><fr:route>unstable-419.xml</fr:route><fr:title>Recursion as passage to the (co)limit</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1509</fr:anchor><fr:addr>#421</fr:addr><fr:route>unstable-421.xml</fr:route><fr:title>Recursion as passage to the (co)limit</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -162,7 +454,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1470</fr:anchor><fr:addr>#420</fr:addr><fr:route>unstable-420.xml</fr:route><fr:title>Denotational semantics in domains</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1511</fr:anchor><fr:addr>#422</fr:addr><fr:route>unstable-422.xml</fr:route><fr:title>Denotational semantics in domains</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -174,7 +466,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1472</fr:anchor><fr:addr>#421</fr:addr><fr:route>unstable-421.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1513</fr:anchor><fr:addr>#423</fr:addr><fr:route>unstable-423.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -186,7 +478,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1475</fr:anchor><fr:addr>#422</fr:addr><fr:route>unstable-422.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1516</fr:anchor><fr:addr>#424</fr:addr><fr:route>unstable-424.xml</fr:route><fr:title>2-Dimensional domain theory for concurrency (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -214,7 +506,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1480</fr:anchor><fr:addr>#423</fr:addr><fr:route>unstable-423.xml</fr:route><fr:title>Towards <fr:tex
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1521</fr:anchor><fr:addr>#425</fr:addr><fr:route>unstable-425.xml</fr:route><fr:title>Towards <fr:tex
 display="inline"><![CDATA[\infty ]]></fr:tex>-bicategories of domains</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
@@ -234,7 +526,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1483</fr:anchor><fr:addr>#424</fr:addr><fr:route>unstable-424.xml</fr:route><fr:title>Simplicial homotopy type theory</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1524</fr:anchor><fr:addr>#426</fr:addr><fr:route>unstable-426.xml</fr:route><fr:title>Simplicial homotopy type theory</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -260,7 +552,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1485</fr:anchor><fr:addr>#425</fr:addr><fr:route>unstable-425.xml</fr:route><fr:title>Lifting and partial map classifiers</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1526</fr:anchor><fr:addr>#427</fr:addr><fr:route>unstable-427.xml</fr:route><fr:title>Lifting and partial map classifiers</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -285,7 +577,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1487</fr:anchor><fr:addr>#426</fr:addr><fr:route>unstable-426.xml</fr:route><fr:title>Right-handed universal property of partial map classifiers</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1528</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title>Right-handed universal property of partial map classifiers</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -601,7 +893,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1489</fr:anchor><fr:addr>#427</fr:addr><fr:route>unstable-427.xml</fr:route><fr:title><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1530</fr:anchor><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:title><fr:link
 type="local"
 href="phoa-1991.xml"
 addr="phoa-1991"
@@ -625,7 +917,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1491</fr:anchor><fr:addr>#428</fr:addr><fr:route>unstable-428.xml</fr:route><fr:title>The higher Phoa principle (<fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1532</fr:anchor><fr:addr>#430</fr:addr><fr:route>unstable-430.xml</fr:route><fr:title>The higher Phoa principle (<fr:link
 type="local"
 href="leonipugh.xml"
 addr="leonipugh"
@@ -649,7 +941,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1493</fr:anchor><fr:addr>#429</fr:addr><fr:route>unstable-429.xml</fr:route><fr:title>The Phoa principle <fr:em>vs.</fr:em> synthetic quasicoherence</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1534</fr:anchor><fr:addr>#431</fr:addr><fr:route>unstable-431.xml</fr:route><fr:title>The Phoa principle <fr:em>vs.</fr:em> synthetic quasicoherence</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -668,7 +960,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1495</fr:anchor><fr:addr>#430</fr:addr><fr:route>unstable-430.xml</fr:route><fr:title>The partial map classifier of a synthetic <fr:tex
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1536</fr:anchor><fr:addr>#432</fr:addr><fr:route>unstable-432.xml</fr:route><fr:title>The partial map classifier of a synthetic <fr:tex
 display="inline"><![CDATA[{\mathopen {}\left (\infty ,1\right )\mathclose {}}]]></fr:tex>-category</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
@@ -697,7 +989,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1497</fr:anchor><fr:addr>#431</fr:addr><fr:route>unstable-431.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1538</fr:anchor><fr:addr>#433</fr:addr><fr:route>unstable-433.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -1004,7 +1296,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1499</fr:anchor><fr:addr>#432</fr:addr><fr:route>unstable-432.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1540</fr:anchor><fr:addr>#434</fr:addr><fr:route>unstable-434.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -1318,13 +1610,12 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1501</fr:anchor><fr:addr>#433</fr:addr><fr:route>unstable-433.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (III)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1542</fr:anchor><fr:addr>#435</fr:addr><fr:route>unstable-435.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (III)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
 title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors><fr:parent>jms-00RN</fr:parent></fr:frontmatter><fr:mainmatter><fr:p>We can actually compute the scone <fr:tex
-display="inline"><![CDATA[\bot {\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> in simplicial type theory.</fr:p><fr:ol><fr:li>
-    First take a pushout with the appropriate weight:
+display="inline"><![CDATA[\bot {\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> in simplicial type theory.</fr:p><fr:ol><fr:li>First take a pushout with the appropriate weight:
     
  
   
@@ -1634,7 +1925,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1505</fr:anchor><fr:addr>#434</fr:addr><fr:route>unstable-434.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (IV)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1546</fr:anchor><fr:addr>#436</fr:addr><fr:route>unstable-436.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (IV)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -1957,7 +2248,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1508</fr:anchor><fr:addr>#435</fr:addr><fr:route>unstable-435.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (V)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1549</fr:anchor><fr:addr>#437</fr:addr><fr:route>unstable-437.xml</fr:route><fr:title>Is the partial map classifier a Sierpiński cone? (V)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -1980,7 +2271,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1512</fr:anchor><fr:addr>#436</fr:addr><fr:route>unstable-436.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1553</fr:anchor><fr:addr>#438</fr:addr><fr:route>unstable-438.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (I)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -1993,7 +2284,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1514</fr:anchor><fr:addr>#437</fr:addr><fr:route>unstable-437.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1555</fr:anchor><fr:addr>#439</fr:addr><fr:route>unstable-439.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (II)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -2012,7 +2303,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1518</fr:anchor><fr:addr>#438</fr:addr><fr:route>unstable-438.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1559</fr:anchor><fr:addr>#440</fr:addr><fr:route>unstable-440.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -2322,7 +2613,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1520</fr:anchor><fr:addr>#439</fr:addr><fr:route>unstable-439.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (III)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1561</fr:anchor><fr:addr>#441</fr:addr><fr:route>unstable-441.xml</fr:route><fr:title>Analytic <fr:em>vs.</fr:em> synthetic domain theory (III)</fr:title><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
@@ -2350,7 +2641,7 @@ show-heading="true"
 show-metadata="false"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1525</fr:anchor><fr:addr>#440</fr:addr><fr:route>unstable-440.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1566</fr:anchor><fr:addr>#442</fr:addr><fr:route>unstable-442.xml</fr:route><fr:taxon>Slide</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>4</fr:month><fr:day>5</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
 href="jonmsterling.xml"
 addr="jonmsterling"
