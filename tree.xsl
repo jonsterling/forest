@@ -21,7 +21,7 @@
         </script>
         <script type="module" src="forester.js"></script>
         <title>
-          <xsl:value-of select="/f:tree/f:frontmatter/f:title" />
+          <xsl:value-of select="/f:tree/f:frontmatter/f:title[@text]" />
         </title>
       </head>
       <body>
@@ -106,8 +106,8 @@
                 <xsl:value-of select="f:route" />
               </xsl:attribute>
               <xsl:attribute name="title">
-                <xsl:value-of select="f:title" />
-                <xsl:text>[</xsl:text>
+                <xsl:value-of select="f:title[@text]" />
+                <xsl:text>&#160;[</xsl:text>
                 <xsl:value-of select="f:addr" />
                 <xsl:text>]</xsl:text>
               </xsl:attribute>
