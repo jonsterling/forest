@@ -675,21 +675,21 @@ title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let 
 
 % Ensure that a given (lazy) argument is evaluated inside a
 % <mml:math> element.
-\def\ensure-math[~body]{
- \scope{
+\def\ensure-math[~body]{%
+ \scope{%
   % Set a default value for \math-wrapper (no-op if already set).
-  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}
-
+  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}%
+  %
   % Apply the current function bound to \math-wrapper.
-  \get\math-wrapper{
+  \get\math-wrapper{%
    % Bind \math-wrapper to the identity function in the current scope so that
    % we do not get redundant <mml:math> nodes.
-   \put\math-wrapper{\fun[x]{\x}}
-
+   \put\math-wrapper{\fun[x]{\x}}%
+   %
    % Force the \body thunk to evaluate the body within the wrapper.
-   \body{}
-  }
- }
+   \body{}%
+  }%
+ }%
 }]]></fr:pre><fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p><fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
 \def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
 \def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}
@@ -1197,21 +1197,21 @@ title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let 
 
 % Ensure that a given (lazy) argument is evaluated inside a
 % <mml:math> element.
-\def\ensure-math[~body]{
- \scope{
+\def\ensure-math[~body]{%
+ \scope{%
   % Set a default value for \math-wrapper (no-op if already set).
-  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}
-
+  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}%
+  %
   % Apply the current function bound to \math-wrapper.
-  \get\math-wrapper{
+  \get\math-wrapper{%
    % Bind \math-wrapper to the identity function in the current scope so that
    % we do not get redundant <mml:math> nodes.
-   \put\math-wrapper{\fun[x]{\x}}
-
+   \put\math-wrapper{\fun[x]{\x}}%
+   %
    % Force the \body thunk to evaluate the body within the wrapper.
-   \body{}
-  }
- }
+   \body{}%
+  }%
+ }%
 }]]></fr:pre><fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p><fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
 \def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
 \def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}

@@ -7,7 +7,7 @@ show-heading="true"
 show-metadata="true"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12248</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12251</fr:anchor><fr:addr
 type="user">jms-007N</fr:addr><fr:route>jms-007N.xml</fr:route><fr:title
 text="The Forester markup language">The <fr:link
 type="local"
@@ -416,7 +416,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12250</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12253</fr:anchor><fr:addr
 type="user">jms-0052</fr:addr><fr:route>jms-0052.xml</fr:route><fr:title
 text="Build your own Stacks Project in 10 minutes">Build your own <fr:link
 type="local"
@@ -1931,7 +1931,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12252</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12255</fr:anchor><fr:addr
 type="user">jms-007H</fr:addr><fr:route>jms-007H.xml</fr:route><fr:title
 text="Creating a new tree using forester new">Creating a new <fr:link
 type="local"
@@ -2017,7 +2017,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12254</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12257</fr:anchor><fr:addr
 type="user">jms-007K</fr:addr><fr:route>jms-007K.xml</fr:route><fr:title
 text="Creating your personal biographical tree">Creating your personal biographical <fr:link
 type="local"
@@ -2124,7 +2124,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12256</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12259</fr:anchor><fr:addr
 type="user">jms-007O</fr:addr><fr:route>jms-007O.xml</fr:route><fr:title
 text="Forester markup: mainmatter"><fr:link
 type="local"
@@ -2276,7 +2276,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12258</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12261</fr:anchor><fr:addr
 type="user">jms-007P</fr:addr><fr:route>jms-007P.xml</fr:route><fr:title
 text="Forester markup: frontmatter"><fr:link
 type="local"
@@ -2424,7 +2424,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12260</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12263</fr:anchor><fr:addr
 type="user">jms-007L</fr:addr><fr:route>jms-007L.xml</fr:route><fr:title
 text="Bottom-up hierarchy via transclusion">Bottom-up hierarchy via <fr:em>transclusion</fr:em></fr:title><fr:date><fr:year>2023</fr:year><fr:month>8</fr:month><fr:day>15</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -2521,7 +2521,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12262</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12265</fr:anchor><fr:addr
 type="user">jms-005P</fr:addr><fr:route>jms-005P.xml</fr:route><fr:title
 text="Forester">Forester</fr:title><fr:date><fr:year>2023</fr:year><fr:month>6</fr:month><fr:day>1</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -3048,21 +3048,21 @@ title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let 
 
 % Ensure that a given (lazy) argument is evaluated inside a
 % <mml:math> element.
-\def\ensure-math[~body]{
- \scope{
+\def\ensure-math[~body]{%
+ \scope{%
   % Set a default value for \math-wrapper (no-op if already set).
-  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}
-
+  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}%
+  %
   % Apply the current function bound to \math-wrapper.
-  \get\math-wrapper{
+  \get\math-wrapper{%
    % Bind \math-wrapper to the identity function in the current scope so that
    % we do not get redundant <mml:math> nodes.
-   \put\math-wrapper{\fun[x]{\x}}
-
+   \put\math-wrapper{\fun[x]{\x}}%
+   %
    % Force the \body thunk to evaluate the body within the wrapper.
-   \body{}
-  }
- }
+   \body{}%
+  }%
+ }%
 }]]></fr:pre><fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p><fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
 \def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
 \def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}
@@ -4727,7 +4727,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12268</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>12271</fr:anchor><fr:addr
 type="user">tfmt-000R</fr:addr><fr:route>tfmt-000R.xml</fr:route><fr:title
 text="Forests and trees of evergreen notes">Forests and trees of evergreen notes</fr:title><fr:taxon>Definition</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>4</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"

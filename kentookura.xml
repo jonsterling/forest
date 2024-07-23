@@ -7,7 +7,7 @@ show-heading="true"
 show-metadata="true"
 expanded="true"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22307</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22358</fr:anchor><fr:addr
 type="user">kentookura</fr:addr><fr:route>kentookura.xml</fr:route><fr:title
 text="Kento Okura">Kento Okura</fr:title><fr:taxon>Person</fr:taxon><fr:authors /><fr:meta
 name="external">https://github.com/kentookura</fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter><fr:tree
@@ -25,7 +25,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22308</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22359</fr:anchor><fr:addr
 type="user">jms-00WL</fr:addr><fr:route>jms-00WL.xml</fr:route><fr:title
 text="Forester 4.2 › intermediate representation of the XML format"><fr:link
 type="local"
@@ -70,7 +70,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22310</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22361</fr:anchor><fr:addr
 type="user">jms-00S9</fr:addr><fr:route>jms-00S9.xml</fr:route><fr:title
 text="Forester 4.1">Forester 4.1</fr:title><fr:taxon>Release</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>15</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -219,7 +219,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22315</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22366</fr:anchor><fr:addr
 type="user">jms-00O5</fr:addr><fr:route>jms-00O5.xml</fr:route><fr:title
 text="Forester 3.1 › new forester query command"><fr:link
 type="local"
@@ -244,7 +244,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22318</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22369</fr:anchor><fr:addr
 type="user">jms-00CW</fr:addr><fr:route>jms-00CW.xml</fr:route><fr:title
 text="Forester 3.0">Forester 3.0</fr:title><fr:taxon>Release</fr:taxon><fr:date><fr:year>2023</fr:year><fr:month>11</fr:month><fr:day>3</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -530,7 +530,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22320</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22371</fr:anchor><fr:addr
 type="user">jms-009H</fr:addr><fr:route>jms-009H.xml</fr:route><fr:title
 text="List of forests">List of <fr:link
 type="local"
@@ -619,7 +619,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22321</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22372</fr:anchor><fr:addr
 type="user">jms-00WK</fr:addr><fr:route>jms-00WK.xml</fr:route><fr:title
 text="Forester 4.2">Forester 4.2</fr:title><fr:taxon>Prerelease</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -990,21 +990,21 @@ title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let 
 
 % Ensure that a given (lazy) argument is evaluated inside a
 % <mml:math> element.
-\def\ensure-math[~body]{
- \scope{
+\def\ensure-math[~body]{%
+ \scope{%
   % Set a default value for \math-wrapper (no-op if already set).
-  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}
-
+  \put?\math-wrapper{\fun[x]{\<mml:math>{\x}}}%
+  %
   % Apply the current function bound to \math-wrapper.
-  \get\math-wrapper{
+  \get\math-wrapper{%
    % Bind \math-wrapper to the identity function in the current scope so that
    % we do not get redundant <mml:math> nodes.
-   \put\math-wrapper{\fun[x]{\x}}
-
+   \put\math-wrapper{\fun[x]{\x}}%
+   %
    % Force the \body thunk to evaluate the body within the wrapper.
-   \body{}
-  }
- }
+   \body{}%
+  }%
+ }%
 }]]></fr:pre><fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p><fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
 \def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
 \def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}
@@ -1133,7 +1133,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22324</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22375</fr:anchor><fr:addr
 type="user">jms-00S9</fr:addr><fr:route>jms-00S9.xml</fr:route><fr:title
 text="Forester 4.1">Forester 4.1</fr:title><fr:taxon>Release</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>15</fr:day></fr:date><fr:authors><fr:author><fr:link
 type="local"
@@ -1282,7 +1282,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22329</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22380</fr:anchor><fr:addr
 type="user">jms-00U0</fr:addr><fr:route>jms-00U0.xml</fr:route><fr:title
 text="Forester 4.1 › new forester init command"><fr:link
 type="local"
@@ -1309,7 +1309,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22332</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22383</fr:anchor><fr:addr
 type="user">jms-00RG</fr:addr><fr:route>jms-00RG.xml</fr:route><fr:title
 text="Forester 4.0 › forest configuration via TOML"><fr:link
 type="local"
@@ -1344,7 +1344,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22335</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22386</fr:anchor><fr:addr
 type="user">jms-00O5</fr:addr><fr:route>jms-00O5.xml</fr:route><fr:title
 text="Forester 3.1 › new forester query command"><fr:link
 type="local"
@@ -1369,7 +1369,7 @@ show-heading="true"
 show-metadata="true"
 expanded="false"
 root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22338</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>22389</fr:anchor><fr:addr
 type="user">jms-00FI</fr:addr><fr:route>jms-00FI.xml</fr:route><fr:title
 text="Forester 3.0 › nix support"><fr:link
 type="local"
