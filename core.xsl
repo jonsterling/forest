@@ -100,6 +100,11 @@
     </blockquote>
   </xsl:template>
 
+
+  <xsl:template match="f:embedded-tex">
+    <img src="resources/{@hash}.svg" />
+  </xsl:template>
+
   <xsl:template match="f:img[@src]">
     <img src="{@src}"/>
   </xsl:template>
