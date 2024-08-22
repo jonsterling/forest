@@ -821,7 +821,7 @@ title="Patrick Nicodemus">Patrick Nicodemus</fr:link></fr:contributor></fr:autho
 type="local"
 href="jms-005P.xml"
 addr="jms-005P"
-title="Forester">Forester</fr:link> works under the hood.</fr:p><fr:tree
+title="Forester">Forester</fr:link> works under the hood. As usual, you must upgrade your theme (during prerelease, use the <fr:code>4.3-dev</fr:code> branch).</fr:p><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
@@ -838,14 +838,7 @@ title="Jon Sterling">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
 type="local"
 href="nickhu.xml"
 addr="nickhu"
-title="Nick Hu">Nick Hu</fr:link></fr:contributor></fr:authors></fr:frontmatter><fr:mainmatter><fr:ol><fr:li><fr:p>Previously, the <fr:code><![CDATA[\tex]]></fr:code> construct would generate a <fr:code>.tex</fr:code> file, convert it to an SVG file, and then copy it into <fr:code>output/resources/</fr:code>; this file would then be referenced in the resulting XML using the <fr:code>&lt;forester:embeddex-tex&gt;</fr:code> element, which was rendered by the theme to <fr:code>&lt;html:img&gt;</fr:code>.</fr:p>
-
-   <fr:p>Now, the contents of the SVG file are embedded directly into the resulting document as an <fr:code>&lt;html:img&gt;</fr:code> element with a base64-encoded data-url. The <fr:code>&lt;forester:embedded-tex&gt;</fr:code> element is no longer used.</fr:p>
-
-   <fr:p>The goal of this change is to make the output files more self-contained and less reliant on surrounding files. A downside of the present change is that it makes the output files a bit larger, as base64-encoded SVGs are not exactly small. In the future, we might instead embed the SVG code into the DOM (which could have some benefits for accessibility), but if we do this, we will have to massage the SVG output to remove duplicate <fr:code>@id</fr:code> attributes.</fr:p></fr:li>
-  <fr:li>Instead of calling the <fr:code>latex</fr:code> command, we now call <fr:code>dvilualatex</fr:code>. This change should be invisible for most users, but please contact the <fr:link
-type="external"
-href="https://lists.sr.ht/~jonsterling/forester-discuss">mailing list</fr:link> if it causes a problem for you.</fr:li></fr:ol></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
+title="Nick Hu">Nick Hu</fr:link></fr:contributor></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Previously, the <fr:code><![CDATA[\tex]]></fr:code> construct would generate a <fr:code>.tex</fr:code> file, convert it to an SVG file, and then copy it into <fr:code>output/resources/</fr:code>; this file would then be referenced in the resulting XML using the <fr:code>&lt;forester:embeddex-tex&gt;</fr:code> element, which was rendered by the theme to <fr:code>&lt;html:img&gt;</fr:code>.</fr:p><fr:p>Now, the contents of the SVG file are embedded directly into the resulting document as an <fr:code>&lt;html:img&gt;</fr:code> element with a base64-encoded data-url. The <fr:code>&lt;forester:embedded-tex&gt;</fr:code> element is no longer used.</fr:p><fr:p>The goal of this change is to make the output files more self-contained and less reliant on surrounding files. A downside of the present change is that it makes the output files a bit larger, as base64-encoded SVGs are not exactly small. In the future, we might instead embed the SVG code into the DOM (which could have some benefits for accessibility), but if we do this, we will have to massage the SVG output to remove duplicate <fr:code>@id</fr:code> attributes.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
 toc="true"
 numbered="true"
 show-heading="true"
