@@ -275,7 +275,10 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="/f:tree/f:backmatter">
+  <xsl:template match="/f:tree[@root='true']/f:backmatter">
+  </xsl:template>
+
+  <xsl:template match="/f:tree[not(@root='true')]/f:backmatter">
     <footer>
       <xsl:apply-templates />
     </footer>
