@@ -33,7 +33,6 @@
     </xsl:element>
   </xsl:template>
 
-
   <xsl:template match="f:figure">
     <figure>
       <xsl:apply-templates />
@@ -41,10 +40,10 @@
   </xsl:template>
 
   <xsl:template match="f:figcaption">
-   <figcaption>
-     <xsl:apply-templates />
-   </figcaption>
- </xsl:template>
+    <figcaption>
+      <xsl:apply-templates />
+    </figcaption>
+  </xsl:template>
 
   <xsl:template match="f:p">
     <p>
@@ -101,7 +100,7 @@
   </xsl:template>
 
   <xsl:template match="f:img[@src]">
-    <img src="{@src}"/>
+    <img src="{@src}" />
   </xsl:template>
 
   <xsl:template match="f:error | f:info">
@@ -111,12 +110,10 @@
   </xsl:template>
 
   <xsl:template match="f:info">
-   <span class="info">
-    <xsl:apply-templates />
-   </span>
+    <span class="info">
+      <xsl:apply-templates />
+    </span>
   </xsl:template>
-
-
 
   <xsl:template match="f:tex[@display='block']">
     <xsl:text>\[</xsl:text>

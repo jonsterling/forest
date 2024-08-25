@@ -55,21 +55,21 @@
   </xsl:template>
 
   <xsl:template match="f:tree" mode="tree-taxon-with-number">
-    <xsl:param name="suffix" select="''"/>
+    <xsl:param name="suffix" select="''" />
     <xsl:param name="taxon" select="f:frontmatter/f:taxon" />
     <xsl:param name="number" select="f:frontmatter/f:number" />
-    <xsl:param name="fallback-number"/>
-    <xsl:param name="in-backmatter" select="ancestor::f:backmatter"/>
+    <xsl:param name="fallback-number" />
+    <xsl:param name="in-backmatter" select="ancestor::f:backmatter" />
 
     <xsl:variable name="tree-is-root" select="not(parent::*)" />
 
-    <xsl:variable name="explicitly-unnumbered" select="boolean(ancestor-or-self::f:tree[@numbered='false' or @toc='false'])"/>
-    <xsl:variable name="implicitly-unnumbered" select="count(../f:tree) = 1 and not(count(f:mainmatter/f:tree) > 1)"/>
+    <xsl:variable name="explicitly-unnumbered" select="boolean(ancestor-or-self::f:tree[@numbered='false' or @toc='false'])" />
+    <xsl:variable name="implicitly-unnumbered" select="count(../f:tree) = 1 and not(count(f:mainmatter/f:tree) > 1)" />
 
-    <xsl:variable name="should-number" select="$number != '' or (not($in-backmatter) and not($tree-is-root) and not($explicitly-unnumbered)) and not($implicitly-unnumbered)"/>
+    <xsl:variable name="should-number" select="$number != '' or (not($in-backmatter) and not($tree-is-root) and not($explicitly-unnumbered)) and not($implicitly-unnumbered)" />
 
     <xsl:if test="$taxon != ''">
-      <xsl:value-of select="$taxon"/>
+      <xsl:value-of select="$taxon" />
       <xsl:if test="$should-number or $fallback-number != ''">
         <xsl:text>&#160;</xsl:text>
       </xsl:if>
@@ -79,7 +79,7 @@
       <xsl:when test="$should-number">
         <xsl:choose>
           <xsl:when test="$number != ''">
-            <xsl:value-of select="$number"/>
+            <xsl:value-of select="$number" />
           </xsl:when>
           <xsl:otherwise>
             <xsl:number format="1.1" count="f:tree[ancestor::f:tree and (not(@toc='false' or @numbered='false'))]" level="multiple" />
@@ -87,12 +87,46 @@
         </xsl:choose>
       </xsl:when>
       <xsl:when test="$fallback-number != ''">
-        <xsl:value-of select="$fallback-number"/>
+        <xsl:value-of select="$fallback-number" />
       </xsl:when>
     </xsl:choose>
 
     <xsl:if test="$taxon != '' or $fallback-number != '' or $should-number">
-      <xsl:value-of select="$suffix"/>
+      <xsl:value-of select="$suffix" />
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="f:tree" mode="contextual-number">
+    <xsl:param name="suffix" select="''" />
+    <xsl:param name="number" select="f:frontmatter/f:number" />
+    <xsl:param name="fallback-number" />
+    <xsl:param name="in-backmatter" select="ancestor::f:backmatter" />
+
+    <xsl:variable name="tree-is-root" select="not(parent::*)" />
+
+    <xsl:variable name="explicitly-unnumbered" select="boolean(ancestor-or-self::f:tree[@numbered='false' or @toc='false'])" />
+    <xsl:variable name="implicitly-unnumbered" select="count(../f:tree) = 1 and not(count(f:mainmatter/f:tree) > 1)" />
+
+    <xsl:variable name="should-number" select="$number != '' or (not($in-backmatter) and not($tree-is-root) and not($explicitly-unnumbered)) and not($implicitly-unnumbered)" />
+
+    <xsl:choose>
+      <xsl:when test="$should-number">
+        <xsl:choose>
+          <xsl:when test="$number != ''">
+            <xsl:value-of select="$number" />
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:number format="1.1" count="f:tree[ancestor::f:tree and (not(@toc='false' or @numbered='false'))]" level="multiple" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:when test="$fallback-number != ''">
+        <xsl:value-of select="$fallback-number" />
+      </xsl:when>
+    </xsl:choose>
+
+    <xsl:if test="$fallback-number != '' or $should-number">
+      <xsl:value-of select="$suffix" />
     </xsl:if>
   </xsl:template>
 
@@ -115,7 +149,7 @@
             <xsl:otherwise>
               <xsl:attribute name="href">
                 <xsl:text>#tree-</xsl:text>
-                <xsl:value-of select="f:anchor"/>
+                <xsl:value-of select="f:anchor" />
               </xsl:attribute>
               <xsl:attribute name="title">
                 <xsl:value-of select="f:title" />
@@ -166,13 +200,12 @@
   </xsl:template>
 
   <xsl:template match="f:resource">
-    <xsl:apply-templates select="f:resource-content"/>
+    <xsl:apply-templates select="f:resource-content" />
   </xsl:template>
 
   <xsl:template match="f:resource-content">
-    <xsl:apply-templates/>
+    <xsl:apply-templates />
   </xsl:template>
-
 
   <xsl:template match="f:source-path">
     <a class="edit-button" href="{concat('vscode://file', .)}">
@@ -222,14 +255,14 @@
   <xsl:template match="f:ref">
     <xsl:variable name="fallback-number">
       <xsl:text>[</xsl:text>
-      <xsl:value-of select="@addr"/>
+      <xsl:value-of select="@addr" />
       <xsl:text>]</xsl:text>
     </xsl:variable>
 
     <xsl:variable name="taxon">
       <xsl:choose>
         <xsl:when test="@taxon">
-          <xsl:value-of select="@taxon"/>
+          <xsl:value-of select="@taxon" />
         </xsl:when>
         <xsl:otherwise>
           <xsl:text>§</xsl:text>
@@ -254,25 +287,45 @@
         <xsl:when test="key('tree-with-addr', current()/@addr)">
           <xsl:apply-templates select="key('tree-with-addr', current()/@addr)" mode="tree-taxon-with-number">
             <xsl:with-param name="in-backmatter" select="boolean(ancestor::f:backmatter)" />
-            <xsl:with-param name="number" select="@number"/>
-            <xsl:with-param name="fallback-number" select="$fallback-number"/>
-            <xsl:with-param name="taxon" select="$taxon"/>
+            <xsl:with-param name="number" select="@number" />
+            <xsl:with-param name="fallback-number" select="$fallback-number" />
+            <xsl:with-param name="taxon" select="$taxon" />
           </xsl:apply-templates>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="$taxon"/>
+          <xsl:value-of select="$taxon" />
           <xsl:text>&#160;</xsl:text>
           <xsl:choose>
             <xsl:when test="@number">
-              <xsl:value-of select="@number"/>
+              <xsl:value-of select="@number" />
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="$fallback-number"/>
+              <xsl:value-of select="$fallback-number" />
             </xsl:otherwise>
           </xsl:choose>
         </xsl:otherwise>
       </xsl:choose>
     </a>
+  </xsl:template>
+
+  <xsl:template match="f:contextual-number[@addr]">
+    <xsl:variable name="fallback-number">
+      <xsl:text>[</xsl:text>
+      <xsl:value-of select="@addr" />
+      <xsl:text>]</xsl:text>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="key('tree-with-addr', current()/@addr)">
+        <xsl:apply-templates select="key('tree-with-addr', current()/@addr)" mode="contextual-number">
+          <xsl:with-param name="in-backmatter" select="boolean(ancestor::f:backmatter)" />
+          <xsl:with-param name="fallback-number" select="$fallback-number" />
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$fallback-number" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/f:tree[@root='true']/f:backmatter">
@@ -338,7 +391,5 @@
   </xsl:template>
 
   <xsl:template match="f:tree"></xsl:template>
-
-
 
 </xsl:stylesheet>
