@@ -9,6 +9,10 @@
   <xsl:template match="/">
     <html>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet" />
+
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="katex.min.css" />
