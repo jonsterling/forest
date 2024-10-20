@@ -1,97 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
 <fr:tree
-toc="true"
-numbered="true"
-show-heading="true"
-show-metadata="true"
-expanded="true"
-root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1190</fr:anchor><fr:addr
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
+root="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>6912</fr:anchor><fr:addr
 type="user">jms-00YH</fr:addr><fr:route>jms-00YH.xml</fr:route><fr:title
 text="Forester 4.2 › first-class functions and lazy arguments › lazy arguments are experimental"><fr:link
-type="local"
 href="jms-00YF.xml"
+title="Forester 4.2 › first-class functions and lazy arguments"
 addr="jms-00YF"
-title="Forester 4.2 › first-class functions and lazy arguments"><fr:link
-type="local"
+type="local"><fr:link
 href="jms-00WK.xml"
+title="Forester 4.2"
 addr="jms-00WK"
-title="Forester 4.2">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:link> › lazy arguments are experimental</fr:title><fr:taxon>Warning</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
-type="local"
-href="jonmsterling.xml"
-addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p></fr:mainmatter><fr:backmatter><fr:tree
-toc="false"
-numbered="false"
-show-heading="true"
+type="local">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:link> › lazy arguments are experimental</fr:title><fr:taxon>Warning</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p></fr:mainmatter><fr:backmatter><fr:tree
 show-metadata="false"
-expanded="true"
-root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:title
-text="Context">Context</fr:title><fr:authors /></fr:frontmatter><fr:mainmatter><fr:tree
-toc="true"
-numbered="false"
-show-heading="true"
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>6906</fr:anchor><fr:title
+text="References">References</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
+show-metadata="false"
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>6908</fr:anchor><fr:title
+text="Context">Context</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
-root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>1192</fr:anchor><fr:addr
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>6907</fr:anchor><fr:addr
 type="user">jms-00YF</fr:addr><fr:route>jms-00YF.xml</fr:route><fr:title
 text="Forester 4.2 › first-class functions and lazy arguments"><fr:link
-type="local"
 href="jms-00WK.xml"
+title="Forester 4.2"
 addr="jms-00WK"
-title="Forester 4.2">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:title><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
-type="local"
-href="jonmsterling.xml"
-addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>This release adds λ-abstraction, which can be written like so:</fr:p><fr:pre><![CDATA[\fun[x][y]{Hello, \x and \y}]]></fr:pre><fr:p>In addition, <fr:em>lazy</fr:em> arguments are now supported. In any place that a function argument can be bound (e.g. in <fr:code><![CDATA[\def]]></fr:code>, <fr:code><![CDATA[\let]]></fr:code>, or <fr:code><![CDATA[\fun]]></fr:code>), an argument marked with a tilde is automatically wrapped in a thunk when it is passed. For example, consider the following code:</fr:p><fr:pre><![CDATA[\def\my-fun[x][~y]{Hello, \x and \y{}!}
+type="local">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:title></fr:frontmatter><fr:mainmatter><fr:p>This release adds λ-abstraction, which can be written like so:</fr:p><fr:pre><![CDATA[\fun[x][y]{Hello, \x and \y}]]></fr:pre><fr:p>In addition, <fr:em>lazy</fr:em> arguments are now supported. In any place that a function argument can be bound (e.g. in <fr:code><![CDATA[\def]]></fr:code>, <fr:code><![CDATA[\let]]></fr:code>, or <fr:code><![CDATA[\fun]]></fr:code>), an argument marked with a tilde is automatically wrapped in a thunk when it is passed. For example, consider the following code:</fr:p><fr:pre><![CDATA[\def\my-fun[x][~y]{Hello, \x and \y{}!}
 
 \p{\my-fun{foo}{bar}}]]></fr:pre><fr:p>In the above, the argument <fr:code>x</fr:code> is strict and <fr:code>y</fr:code> is a thunk that must be forced before being used—hence the application to <fr:code>{}</fr:code>; note that the results are not memoised. The code above is functionally equivalent to the following:</fr:p><fr:pre><![CDATA[\def\my-fun[x][y]{Hello, \x and \y{}!}
 
 \p{\my-fun{foo}{\fun[z]{bar}}}]]></fr:pre><fr:p>Of course, when your code is pure, passing by name <fr:em>vs.</fr:em> by value does not make a difference. The purpose of this feature is, however, to enable more expressive macros that make use of fluid bindings.</fr:p><fr:tree
-toc="true"
-numbered="true"
-show-heading="true"
-show-metadata="false"
-expanded="true"
-root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>791</fr:anchor><fr:addr
-type="user">jms-00YG</fr:addr><fr:route>jms-00YG.xml</fr:route><fr:title
-text="Combining fluid bindings and lazy arguments">Combining fluid bindings and lazy arguments</fr:title><fr:taxon>Example</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
-type="local"
+show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
+title="Jon Sterling"
 addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p><fr:link
-type="local"
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>6520</fr:anchor><fr:addr
+type="user">jms-00YG</fr:addr><fr:route>jms-00YG.xml</fr:route><fr:title
+text="Combining fluid bindings and lazy arguments">Combining fluid bindings and lazy arguments</fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
 href="jms-00RH.xml"
+title="Forester 4.0 › enhanced XML support"
 addr="jms-00RH"
-title="Forester 4.0 › enhanced XML support">Forester 4.0’s enhanced XML support</fr:link> makes it possible (see <fr:ref
-addr="jms-00RL"
+type="local">Forester 4.0’s enhanced XML support</fr:link> makes it possible (see <fr:link
 href="jms-00RL.xml"
-taxon="Example" />) to write <fr:link
-type="local"
+title="Forester 4.0 › enhanced XML support › emitting XML and resolving namespaces › a worked example"
+addr="jms-00RL"
+type="local">Example <fr:contextual-number
+addr="jms-00RL" /></fr:link>) to write <fr:link
 href="jms-00YE.xml"
+title="MathML"
 addr="jms-00YE"
-title="MathML">MathML</fr:link> directly as an alternative to using <fr:link
-type="local"
+type="local">MathML</fr:link> directly as an alternative to using <fr:link
 href="jms-005P.xml"
+title="Forester"
 addr="jms-005P"
-title="Forester">Forester</fr:link>’s TeX-like math mode via KaTeX. For example, we can write the following wrappers for some basic <fr:link
-type="local"
+type="local">Forester</fr:link>’s TeX-like math mode via KaTeX. For example, we can write the following wrappers for some basic <fr:link
 href="jms-00YE.xml"
+title="MathML"
 addr="jms-00YE"
-title="MathML">MathML</fr:link> elements:</fr:p><fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
+type="local">MathML</fr:link> elements:</fr:p><fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
 \def\math[body]{\<mml:math>{\body}}
 \def\mrow[body]{\<mml:mrow>{\body}}
 \def\mi[x]{\<mml:mi>{\x}}
 \def\mo[o]{\<mml:mo>{\o}}
 \def\mn[n]{\<mml:mn>{\n}}]]></fr:pre><fr:p>With this in hand, we can write prose involving <fr:link
-type="local"
 href="jms-00YE.xml"
+title="MathML"
 addr="jms-00YE"
-title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let \math{\mi{x}} and \math{\mi{y}} be integers such that \math{\mrow{\mrow{\mi{x}\mo{-}\mi{y}}\mo{=}\mn{0}}}.}]]></fr:pre><fr:p>The above is a bit messy. We can clean it up with some function definitions:</fr:p><fr:pre><![CDATA[\def\plus[x][y]{\mrow{\x \mo{+} \y}}
+type="local">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let \math{\mi{x}} and \math{\mi{y}} be integers such that \math{\mrow{\mrow{\mi{x}\mo{-}\mi{y}}\mo{=}\mn{0}}}.}]]></fr:pre><fr:p>The above is a bit messy. We can clean it up with some function definitions:</fr:p><fr:pre><![CDATA[\def\plus[x][y]{\mrow{\x \mo{+} \y}}
 \def\equals[x][y]{\mrow{\x \mo{=} \y}}
 \let\x{\mi{x}}
 \let\y{\mi{y}}
@@ -122,23 +108,26 @@ title="MathML">MathML</fr:link> content, like so:</fr:p><fr:pre><![CDATA[\p{Let 
 \def\mn[~x]{\ensure-math{\<mml:mn>{\x{}}}}
 \def\plus[~x][~y]{\mrow{\x{} \mo{+} \y{}}}
 \def\equals[~x][~y]{\mrow{\x{} \mo{=} \y{}}}]]></fr:pre><fr:p>Now, we can put <fr:link
-type="local"
 href="jms-00YE.xml"
+title="MathML"
 addr="jms-00YE"
-title="MathML">MathML</fr:link> content freely into prose without needing to wrap it each time.</fr:p><fr:pre><![CDATA[\let\x{\mi{x}}
+type="local">MathML</fr:link> content freely into prose without needing to wrap it each time.</fr:p><fr:pre><![CDATA[\let\x{\mi{x}}
 \let\y{\mi{y}}
 
-\p{Let \x and \y be integers such that \equals{\plus{\x}{\y}}{\mn{0}}.}]]></fr:pre></fr:mainmatter><fr:backmatter /></fr:tree><fr:tree
-toc="true"
-numbered="true"
-show-heading="true"
-show-metadata="false"
-expanded="true"
-root="false"
-xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>793</fr:anchor><fr:addr
-type="user">jms-00YH</fr:addr><fr:route>jms-00YH.xml</fr:route><fr:title
-text="Lazy arguments are experimental">Lazy arguments are experimental</fr:title><fr:taxon>Warning</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:authors><fr:author><fr:link
-type="local"
+\p{Let \x and \y be integers such that \equals{\plus{\x}{\y}}{\mn{0}}.}]]></fr:pre></fr:mainmatter></fr:tree><fr:tree
+show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
+title="Jon Sterling"
 addr="jonmsterling"
-title="Jon Sterling">Jon Sterling</fr:link></fr:author></fr:authors></fr:frontmatter><fr:mainmatter><fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:mainmatter><fr:backmatter /></fr:tree></fr:backmatter></fr:tree>
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>6</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>6521</fr:anchor><fr:addr
+type="user">jms-00YH</fr:addr><fr:route>jms-00YH.xml</fr:route><fr:title
+text="Lazy arguments are experimental">Lazy arguments are experimental</fr:title><fr:taxon>Warning</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
+show-metadata="false"
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>6909</fr:anchor><fr:title
+text="Backlinks">Backlinks</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
+show-metadata="false"
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>6910</fr:anchor><fr:title
+text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
+show-metadata="false"
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>6911</fr:anchor><fr:title
+text="Contributions">Contributions</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree></fr:backmatter></fr:tree>
