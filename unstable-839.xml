@@ -1,41 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
 <fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 root="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>28</fr:day></fr:date><fr:anchor>9677</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>31</fr:day></fr:date><fr:anchor>19015</fr:anchor><fr:addr
 type="machine">unstable/839</fr:addr><fr:route>unstable-839.xml</fr:route><fr:title
-text="Cardinality of the cartesian product › "><fr:link
-href="jms-00LY.xml"
-title="Cardinality of the cartesian product"
-addr="jms-00LY"
-type="local">Cardinality of the cartesian product</fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>We can think of the cartesian product <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> as the set of cells in table or matrix with <fr:tex
-display="inline"><![CDATA[m]]></fr:tex> columns and <fr:tex
-display="inline"><![CDATA[n]]></fr:tex> rows — and then an element <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (i,j\right )\mathclose {}}]]></fr:tex> with <fr:tex
-display="inline"><![CDATA[i\in {\mathopen {}\left  [m\right  ]\mathclose {}}]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[j\in {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> is the coordinate of a given cell. Naturally, the total number of cells would be <fr:tex
-display="inline"><![CDATA[m\cdot  n]]></fr:tex>, but we can prove this formally by constructing the function that takes a coordinate <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (i,j\right )\mathclose {}}]]></fr:tex> to its absolute index in the counting of cells from left to right and top to bottom:</fr:p>
+text="Lawvere’s fixed point theorem › "><fr:link
+href="jms-00NH.xml"
+title="Lawvere’s fixed point theorem"
+addr="jms-00NH"
+type="local">Lawvere’s fixed point theorem</fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <fr:p>Let <fr:tex
+display="inline"><![CDATA[e\colon  A\twoheadrightarrow {\mathopen {}\left (A\to  X\right )\mathclose {}}]]></fr:tex> be a <fr:link
+href="jms-00M8.xml"
+title="Surjection"
+addr="jms-00M8"
+type="local">surjection</fr:link>.
+ Let <fr:tex
+display="inline"><![CDATA[f\colon  X\to  X]]></fr:tex> be a function of which are trying to find a <fr:link
+href="jms-00NG.xml"
+title="Fixed point"
+addr="jms-00NG"
+type="local">fixed point</fr:link>. Let <fr:tex
+display="inline"><![CDATA[h\colon  A\to  X]]></fr:tex> be the following function:</fr:p>
 
  <fr:tex
 display="block"><![CDATA[
-  \begin {aligned}
-   I &\colon {\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}\to  {\mathopen {}\left  [m\cdot  n\right  ]\mathclose {}}\\
-   I{\mathopen {}\left (i,j\right )\mathclose {}} &= m\cdot  j + i
-  \end {aligned}
+  h{\mathopen {}\left (a\right )\mathclose {}} = f{\mathopen {}\left (e{\mathopen {}\left (a\right )\mathclose {}}{\mathopen {}\left (a\right )\mathclose {}}\right )\mathclose {}}
  ]]></fr:tex>
+
+ <fr:p>Because <fr:tex
+display="inline"><![CDATA[e\colon  A\twoheadrightarrow {\mathopen {}\left (A\to  X\right )\mathclose {}}]]></fr:tex> is a <fr:link
+href="jms-00M8.xml"
+title="Surjection"
+addr="jms-00M8"
+type="local">surjection</fr:link>, we may find <fr:tex
+display="inline"><![CDATA[a_h\in  A]]></fr:tex> such that <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}} = h]]></fr:tex>. Therefore, we have <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}} = f{\mathopen {}\left (e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex> and so <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}}]]></fr:tex> is a <fr:link
+href="jms-00NG.xml"
+title="Fixed point"
+addr="jms-00NG"
+type="local">fixed point</fr:link> of <fr:tex
+display="inline"><![CDATA[f]]></fr:tex>.</fr:p>
+
+ <fr:p>Finally, we conclude that <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> is a singleton: first of all <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> has at least one element (the fixed point of the identity function). Now, let <fr:tex
+display="inline"><![CDATA[x_0\not = x_1\in  X]]></fr:tex> be two unequal elements of <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> and let <fr:tex
+display="inline"><![CDATA[f\colon  X\to  X]]></fr:tex> be the function that sends <fr:tex
+display="inline"><![CDATA[x_0]]></fr:tex> to <fr:tex
+display="inline"><![CDATA[x_1]]></fr:tex> and everything else to <fr:tex
+display="inline"><![CDATA[x_0]]></fr:tex>. By assumption, we have a fixed point <fr:tex
+display="inline"><![CDATA[p\in  X]]></fr:tex> of <fr:tex
+display="inline"><![CDATA[f]]></fr:tex>. We now proceed by cases:</fr:p>
+ <fr:ol><fr:li>If <fr:tex
+display="inline"><![CDATA[p=x_0]]></fr:tex>, then we have <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=x_1]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=p]]></fr:tex> and thus <fr:tex
+display="inline"><![CDATA[x_0=x_1]]></fr:tex>, a contradiction.</fr:li>
+  <fr:li>If <fr:tex
+display="inline"><![CDATA[p\not = x_0]]></fr:tex>, then we have <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=x_0]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=p]]></fr:tex>, also a contradiction.</fr:li></fr:ol>
 </fr:mainmatter><fr:backmatter><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>9671</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>19007</fr:anchor><fr:title
 text="References">References</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>9673</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>19009</fr:anchor><fr:title
 text="Context">Context</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
@@ -44,11 +82,26 @@ numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>28</fr:day></fr:date><fr:anchor>9672</fr:anchor><fr:addr
-type="user">jms-00LY</fr:addr><fr:route>jms-00LY.xml</fr:route><fr:title
-text="Cardinality of the cartesian product">Cardinality of the cartesian product</fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For all <fr:tex
-display="inline"><![CDATA[m,n\in \mathbb {N}]]></fr:tex>, we have <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}} \cong  {\mathopen {}\left  [m\cdot  n\right  ]\mathclose {}}]]></fr:tex>.</fr:p><fr:p>We can prove this from a combinatoric point of view.</fr:p>
+type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+href="marcelofiore.xml"
+title="Marcelo Fiore"
+addr="marcelofiore"
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>31</fr:day></fr:date><fr:anchor>19008</fr:anchor><fr:addr
+type="user">jms-00NH</fr:addr><fr:route>jms-00NH.xml</fr:route><fr:title
+text="Lawvere’s fixed point theorem">Lawvere’s fixed point theorem</fr:title><fr:taxon>Theorem</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Given sets <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[X]]></fr:tex>, if there exists a <fr:link
+href="jms-00M8.xml"
+title="Surjection"
+addr="jms-00M8"
+type="local">surjection</fr:link> <fr:tex
+display="inline"><![CDATA[A\twoheadrightarrow {\mathopen {}\left (A\to  X\right )\mathclose {}}]]></fr:tex> then every function <fr:tex
+display="inline"><![CDATA[X\to  X]]></fr:tex> has a <fr:link
+href="jms-00NG.xml"
+title="Fixed point"
+addr="jms-00NG"
+type="local">fixed point</fr:link>; and hence <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> is a singleton.</fr:p>
  
    
    <fr:tree
@@ -57,77 +110,107 @@ toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>28</fr:day></fr:date><fr:anchor>8903</fr:anchor><fr:addr
-type="machine">unstable/838</fr:addr><fr:route>unstable-838.xml</fr:route><fr:title
-text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>To choose a pair <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (i,j\right )\mathclose {}}\in {\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex>, we first choose an element of <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left  [m\right  ]\mathclose {}}]]></fr:tex> and we second choose an element of <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex>. There are <fr:tex
-display="inline"><![CDATA[m]]></fr:tex> possibilities for the first choice and <fr:tex
-display="inline"><![CDATA[n]]></fr:tex> possibilities for the second choice; as these choices are independent, we simply have <fr:tex
-display="inline"><![CDATA[m\cdot  n]]></fr:tex> choices in total.</fr:p>
-</fr:mainmatter></fr:tree>
- 
-<fr:p>We can also prove this isomorphism more formally by means of a specific bijection.</fr:p>
- 
-   
-   <fr:tree
-show-metadata="false"
-toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-title="Jon Sterling"
-addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>28</fr:day></fr:date><fr:anchor>8904</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>31</fr:day></fr:date><fr:anchor>7510</fr:anchor><fr:addr
 type="machine">unstable/839</fr:addr><fr:route>unstable-839.xml</fr:route><fr:title
 text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>We can think of the cartesian product <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> as the set of cells in table or matrix with <fr:tex
-display="inline"><![CDATA[m]]></fr:tex> columns and <fr:tex
-display="inline"><![CDATA[n]]></fr:tex> rows — and then an element <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (i,j\right )\mathclose {}}]]></fr:tex> with <fr:tex
-display="inline"><![CDATA[i\in {\mathopen {}\left  [m\right  ]\mathclose {}}]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[j\in {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> is the coordinate of a given cell. Naturally, the total number of cells would be <fr:tex
-display="inline"><![CDATA[m\cdot  n]]></fr:tex>, but we can prove this formally by constructing the function that takes a coordinate <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (i,j\right )\mathclose {}}]]></fr:tex> to its absolute index in the counting of cells from left to right and top to bottom:</fr:p>
+ <fr:p>Let <fr:tex
+display="inline"><![CDATA[e\colon  A\twoheadrightarrow {\mathopen {}\left (A\to  X\right )\mathclose {}}]]></fr:tex> be a <fr:link
+href="jms-00M8.xml"
+title="Surjection"
+addr="jms-00M8"
+type="local">surjection</fr:link>.
+ Let <fr:tex
+display="inline"><![CDATA[f\colon  X\to  X]]></fr:tex> be a function of which are trying to find a <fr:link
+href="jms-00NG.xml"
+title="Fixed point"
+addr="jms-00NG"
+type="local">fixed point</fr:link>. Let <fr:tex
+display="inline"><![CDATA[h\colon  A\to  X]]></fr:tex> be the following function:</fr:p>
 
  <fr:tex
 display="block"><![CDATA[
-  \begin {aligned}
-   I &\colon {\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}\to  {\mathopen {}\left  [m\cdot  n\right  ]\mathclose {}}\\
-   I{\mathopen {}\left (i,j\right )\mathclose {}} &= m\cdot  j + i
-  \end {aligned}
+  h{\mathopen {}\left (a\right )\mathclose {}} = f{\mathopen {}\left (e{\mathopen {}\left (a\right )\mathclose {}}{\mathopen {}\left (a\right )\mathclose {}}\right )\mathclose {}}
  ]]></fr:tex>
+
+ <fr:p>Because <fr:tex
+display="inline"><![CDATA[e\colon  A\twoheadrightarrow {\mathopen {}\left (A\to  X\right )\mathclose {}}]]></fr:tex> is a <fr:link
+href="jms-00M8.xml"
+title="Surjection"
+addr="jms-00M8"
+type="local">surjection</fr:link>, we may find <fr:tex
+display="inline"><![CDATA[a_h\in  A]]></fr:tex> such that <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}} = h]]></fr:tex>. Therefore, we have <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}} = f{\mathopen {}\left (e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex> and so <fr:tex
+display="inline"><![CDATA[e{\mathopen {}\left (a_h\right )\mathclose {}}{\mathopen {}\left (a_h\right )\mathclose {}}]]></fr:tex> is a <fr:link
+href="jms-00NG.xml"
+title="Fixed point"
+addr="jms-00NG"
+type="local">fixed point</fr:link> of <fr:tex
+display="inline"><![CDATA[f]]></fr:tex>.</fr:p>
+
+ <fr:p>Finally, we conclude that <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> is a singleton: first of all <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> has at least one element (the fixed point of the identity function). Now, let <fr:tex
+display="inline"><![CDATA[x_0\not = x_1\in  X]]></fr:tex> be two unequal elements of <fr:tex
+display="inline"><![CDATA[X]]></fr:tex> and let <fr:tex
+display="inline"><![CDATA[f\colon  X\to  X]]></fr:tex> be the function that sends <fr:tex
+display="inline"><![CDATA[x_0]]></fr:tex> to <fr:tex
+display="inline"><![CDATA[x_1]]></fr:tex> and everything else to <fr:tex
+display="inline"><![CDATA[x_0]]></fr:tex>. By assumption, we have a fixed point <fr:tex
+display="inline"><![CDATA[p\in  X]]></fr:tex> of <fr:tex
+display="inline"><![CDATA[f]]></fr:tex>. We now proceed by cases:</fr:p>
+ <fr:ol><fr:li>If <fr:tex
+display="inline"><![CDATA[p=x_0]]></fr:tex>, then we have <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=x_1]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=p]]></fr:tex> and thus <fr:tex
+display="inline"><![CDATA[x_0=x_1]]></fr:tex>, a contradiction.</fr:li>
+  <fr:li>If <fr:tex
+display="inline"><![CDATA[p\not = x_0]]></fr:tex>, then we have <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=x_0]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (p\right )\mathclose {}}=p]]></fr:tex>, also a contradiction.</fr:li></fr:ol>
 </fr:mainmatter></fr:tree>
  
-<fr:p>We do need to check that <fr:tex
-display="inline"><![CDATA[I{\mathopen {}\left (i,j\right )\mathclose {}}< m\cdot  n]]></fr:tex> for all <fr:tex
-display="inline"><![CDATA[i<m]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[j<n]]></fr:tex>. The maximimum value of <fr:tex
-display="inline"><![CDATA[I]]></fr:tex> is naturally <fr:tex
-display="inline"><![CDATA[I{\mathopen {}\left (m-1,n-1\right )\mathclose {}}]]></fr:tex>:</fr:p><fr:tex
-display="block"><![CDATA[
- \begin {aligned}
-  I{\mathopen {}\left (m-1,n-1\right )\mathclose {}} &= m\cdot {\mathopen {}\left (n-1\right )\mathclose {}} + {\mathopen {}\left (m-1\right )\mathclose {}}
-  \\
-  &=
-  m\cdot  n - m + m - 1
-  \\
-  &=
-  m\cdot  n - 1
-  \\
-  &< m\cdot  n
- \end {aligned}
-]]></fr:tex><fr:p>The inverse function <fr:tex
-display="inline"><![CDATA[I^{-1}\colon {\mathopen {}\left  [m\cdot  n\right  ]\mathclose {}}\to {\mathopen {}\left  [m\right  ]\mathclose {}}\times {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> takes <fr:tex
-display="inline"><![CDATA[i<m\cdot  n]]></fr:tex> to the pair <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (\operatorname {rem}{\mathopen {}\left (i,m\right )\mathclose {}}, \operatorname {quo}{\mathopen {}\left (i,m\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
+</fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>9674</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>19010</fr:anchor><fr:title
 text="Backlinks">Backlinks</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>9675</fr:anchor><fr:title
-text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>19013</fr:anchor><fr:title
+text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+href="marcelofiore.xml"
+title="Marcelo Fiore"
+addr="marcelofiore"
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>31</fr:day></fr:date><fr:anchor>19011</fr:anchor><fr:addr
+type="user">jms-00NG</fr:addr><fr:route>jms-00NG.xml</fr:route><fr:title
+text="Fixed point">Fixed point</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em><fr:strong>fixed point</fr:strong></fr:em> of a function <fr:tex
+display="inline"><![CDATA[f\colon  X\to  X]]></fr:tex> is an element <fr:tex
+display="inline"><![CDATA[x\in  X]]></fr:tex> such that <fr:tex
+display="inline"><![CDATA[f{\mathopen {}\left (x\right )\mathclose {}}=x]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+href="marcelofiore.xml"
+title="Marcelo Fiore"
+addr="marcelofiore"
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>29</fr:day></fr:date><fr:anchor>19012</fr:anchor><fr:addr
+type="user">jms-00M8</fr:addr><fr:route>jms-00M8.xml</fr:route><fr:title
+text="Surjection">Surjection</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>A function <fr:tex
+display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex> is said to be <fr:em><fr:strong>surjective</fr:strong></fr:em> or a<fr:em><fr:strong>surjection</fr:strong></fr:em> when for we have <fr:tex
+display="inline"><![CDATA[\forall  b\in  B\mathpunct {.} \exists  a\in  A\mathpunct {.} f{\mathopen {}\left (a\right )\mathclose {}}=b]]></fr:tex>. A function satisfying this condition is written <fr:tex
+display="inline"><![CDATA[f\colon  A\twoheadrightarrow  B]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>9676</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>19014</fr:anchor><fr:title
 text="Contributions">Contributions</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree></fr:backmatter></fr:tree>

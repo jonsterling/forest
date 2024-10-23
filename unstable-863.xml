@@ -1,39 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="jms-forest.xsl"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
 <fr:tree
 xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"
 root="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:anchor>10644</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>14085</fr:anchor><fr:addr
 type="machine">unstable/863</fr:addr><fr:route>unstable-863.xml</fr:route><fr:title
-text="Monoid structure of endo-relations › "><fr:link
-href="jms-00JD.xml"
-title="Monoid structure of endo-relations"
-addr="jms-00JD"
-type="local">Monoid structure of endo-relations</fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>We have seen in <fr:link
-href="jms-00IP.xml"
-title="Associativity and unit laws of relational composition"
-addr="jms-00IP"
-type="local">Lemma <fr:contextual-number
-addr="jms-00IP" /></fr:link> that <fr:link
-href="jms-00IQ.xml"
-title="Relational composition"
-addr="jms-00IQ"
-type="local">relational composition</fr:link> is associative and has <fr:link
-href="jms-00II.xml"
-title="The identity relation"
-addr="jms-00II"
-type="local">identity relations</fr:link> <fr:tex
-display="inline"><![CDATA[\mathsf {id}_{A}]]></fr:tex> as neutral elements.</fr:p>
+text="Bijection between equivalence relations and partitions › "><fr:link
+href="jms-00L7.xml"
+title="Bijection between equivalence relations and partitions"
+addr="jms-00L7"
+type="local">Bijection between <fr:link
+href="jms-00L4.xml"
+title="Equivalence relation"
+addr="jms-00L4"
+type="local">equivalence relations</fr:link> and <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partitions</fr:link></fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <fr:p>We must first argue that <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left  [a\right  ]\mathclose {}}_{E}\,\middle \vert \,a\in  A\right \}\mathclose {}}]]></fr:tex> in fact constitutes a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link>; the union of all <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> is indeed all of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, and we can see that any two distinct <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> have null intersection — since, if there were an intersection, the two <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> would be identical.</fr:p>
+
+ <fr:p>The inverse <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> sends a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link> <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> to the following equivalence relation:</fr:p>
+ <fr:tex
+display="block"><![CDATA[x \mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}}} y\Longleftrightarrow  \exists  b\in  P\mathpunct {.} x\in  b \land  y \in  b]]></fr:tex>
+
+ <fr:p>To check that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> is a <fr:link
+href="jms-00KS.xml"
+title="Section-retraction pair"
+addr="jms-00KS"
+type="local">section</fr:link> of <fr:tex
+display="inline"><![CDATA[\Phi ]]></fr:tex>, we fix a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link> <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[\Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} = P]]></fr:tex>.</fr:p>
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    \Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left  [a\right  ]\mathclose {}}_{\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+    \\
+    &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left \{x\in  A\,\middle \vert \,x \mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}}} a\right \}\mathclose {}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+    \\
+    &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left \{x\in  A\,\middle \vert \,
+        \exists  b\in  P\mathpunct {.}
+        x\in  b \land  a \in  b
+      \right \}\mathclose {}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>As <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> is a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link>, there is exactly one <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">block</fr:link> containing a given element <fr:tex
+display="inline"><![CDATA[a\in  A]]></fr:tex> — no more than one by disjointness, and no fewer than one because the union of a partition must be the entire set. Therefore, the set <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{x\in  A\,\middle \vert \,\exists  b\in  P\mathpunct {.} x\in  b \land  a \in  b\right \}\mathclose {}}]]></fr:tex> is precisely the unique <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">block</fr:link> of <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> containing <fr:tex
+display="inline"><![CDATA[a]]></fr:tex>. Thus we have <fr:tex
+display="inline"><![CDATA[\Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} = P]]></fr:tex>.</fr:p>
+
+ <fr:p>Conversely, we must show that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> is a <fr:link
+href="jms-00KS.xml"
+title="Section-retraction pair"
+addr="jms-00KS"
+type="local">retraction</fr:link> of <fr:tex
+display="inline"><![CDATA[\Phi ]]></fr:tex>. Fixing an equivalence relation <html:span
+style="white-space: nowrap"
+xmlns:html="http://www.w3.org/1999/xhtml"><fr:tex
+display="inline"><![CDATA[E\colon  A\mathbin {\nrightarrow } A]]></fr:tex>,</html:span> we must check that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}{\mathopen {}\left (\Phi {\mathopen {}\left (E\right )\mathclose {}}\right )\mathclose {}} = E]]></fr:tex>. Fixing <fr:tex
+display="inline"><![CDATA[x,y\in  A]]></fr:tex>, we proceed using <fr:link
+href="jms-00IM.xml"
+title="Relational extensionality"
+addr="jms-00IM"
+type="local">relational extensionality</fr:link>:</fr:p>
+
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    x\mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (\Phi {\mathopen {}\left (E\right )\mathclose {}}\right )\mathclose {}}\right )\mathclose {}}}y
+    &\Longleftrightarrow 
+    \exists  b\in  \Phi {\mathopen {}\left (E\right )\mathclose {}}\mathpunct {.}
+    x\in  b \land  y \in  b
+    \\
+    &\Longleftrightarrow 
+    \exists  a\in  A\mathpunct {.}
+    x\in  {\mathopen {}\left  [a\right  ]\mathclose {}}_{E}
+    \land 
+    y\in  {\mathopen {}\left  [a\right  ]\mathclose {}}_{E}
+    \\
+    &\Longleftrightarrow 
+    \exists  a \in  A\mathpunct {.}
+    x\mathrel {E}a\land  y\mathrel {E}a
+    \\
+    &\Longleftrightarrow 
+    x \mathrel {E} y
+  \end {aligned}
+ ]]></fr:tex>
 </fr:mainmatter><fr:backmatter><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>10635</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>14075</fr:anchor><fr:title
 text="References">References</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>10637</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>14077</fr:anchor><fr:title
 text="Context">Context</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
@@ -42,19 +160,35 @@ numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
-href="marcelofiore.xml"
-title="Marcelo Fiore"
-addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:anchor>10636</fr:anchor><fr:addr
-type="user">jms-00JD</fr:addr><fr:route>jms-00JD.xml</fr:route><fr:title
-text="Monoid structure of endo-relations">Monoid structure of endo-relations</fr:title><fr:taxon>Corollary</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For every set <fr:tex
-display="inline"><![CDATA[A]]></fr:tex>, the structure <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (\mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}},\mathsf {id}_{A},\circ \right )\mathclose {}}]]></fr:tex> given by <fr:link
-href="jms-00JC.xml"
-title="Directed graph"
-addr="jms-00JC"
-type="local">endo-relations</fr:link> is a monoid.</fr:p>
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>14076</fr:anchor><fr:addr
+type="user">jms-00L7</fr:addr><fr:route>jms-00L7.xml</fr:route><fr:title
+text="Bijection between equivalence relations and partitions">Bijection between <fr:link
+href="jms-00L4.xml"
+title="Equivalence relation"
+addr="jms-00L4"
+type="local">equivalence relations</fr:link> and <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partitions</fr:link></fr:title><fr:taxon>Theorem</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For every set <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, we can define a bijection <fr:tex
+display="inline"><![CDATA[\Phi \colon  \mathrm {EqRel}{\mathopen {}\left (A\right )\mathclose {}}\to  \mathrm {Part}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> sending every equivalence relation <fr:tex
+display="inline"><![CDATA[E]]></fr:tex> on <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> to the <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link> <fr:tex
+display="inline"><![CDATA[\Phi {\mathopen {}\left (E\right )\mathclose {}} = {\mathopen {}\left \{{\mathopen {}\left  [a\right  ]\mathclose {}}_{E}\,\middle \vert \,a\in  A\right \}\mathclose {}}]]></fr:tex> whose <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">blocks</fr:link> consist of the <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> of each element of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>.</fr:p>
  
    
    <fr:tree
@@ -63,32 +197,142 @@ toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>18</fr:day></fr:date><fr:anchor>8819</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>7977</fr:anchor><fr:addr
 type="machine">unstable/863</fr:addr><fr:route>unstable-863.xml</fr:route><fr:title
 text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>We have seen in <fr:link
-href="jms-00IP.xml"
-title="Associativity and unit laws of relational composition"
-addr="jms-00IP"
-type="local">Lemma <fr:contextual-number
-addr="jms-00IP" /></fr:link> that <fr:link
-href="jms-00IQ.xml"
-title="Relational composition"
-addr="jms-00IQ"
-type="local">relational composition</fr:link> is associative and has <fr:link
-href="jms-00II.xml"
-title="The identity relation"
-addr="jms-00II"
-type="local">identity relations</fr:link> <fr:tex
-display="inline"><![CDATA[\mathsf {id}_{A}]]></fr:tex> as neutral elements.</fr:p>
+ <fr:p>We must first argue that <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left  [a\right  ]\mathclose {}}_{E}\,\middle \vert \,a\in  A\right \}\mathclose {}}]]></fr:tex> in fact constitutes a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link>; the union of all <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> is indeed all of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, and we can see that any two distinct <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> have null intersection — since, if there were an intersection, the two <fr:link
+href="jms-00L6.xml"
+title="Equivalence class"
+addr="jms-00L6"
+type="local">equivalence classes</fr:link> would be identical.</fr:p>
+
+ <fr:p>The inverse <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> sends a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link> <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> to the following equivalence relation:</fr:p>
+ <fr:tex
+display="block"><![CDATA[x \mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}}} y\Longleftrightarrow  \exists  b\in  P\mathpunct {.} x\in  b \land  y \in  b]]></fr:tex>
+
+ <fr:p>To check that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> is a <fr:link
+href="jms-00KS.xml"
+title="Section-retraction pair"
+addr="jms-00KS"
+type="local">section</fr:link> of <fr:tex
+display="inline"><![CDATA[\Phi ]]></fr:tex>, we fix a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link> <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[\Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} = P]]></fr:tex>.</fr:p>
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    \Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left  [a\right  ]\mathclose {}}_{\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+    \\
+    &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left \{x\in  A\,\middle \vert \,x \mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}}} a\right \}\mathclose {}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+    \\
+    &=
+    {\mathopen {}\left \{
+      {\mathopen {}\left \{x\in  A\,\middle \vert \,
+        \exists  b\in  P\mathpunct {.}
+        x\in  b \land  a \in  b
+      \right \}\mathclose {}}
+    \,\middle \vert \,a\in  A\right \}\mathclose {}}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>As <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> is a <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">partition</fr:link>, there is exactly one <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">block</fr:link> containing a given element <fr:tex
+display="inline"><![CDATA[a\in  A]]></fr:tex> — no more than one by disjointness, and no fewer than one because the union of a partition must be the entire set. Therefore, the set <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left \{x\in  A\,\middle \vert \,\exists  b\in  P\mathpunct {.} x\in  b \land  a \in  b\right \}\mathclose {}}]]></fr:tex> is precisely the unique <fr:link
+href="jms-00L5.xml"
+title="Set partition"
+addr="jms-00L5"
+type="local">block</fr:link> of <fr:tex
+display="inline"><![CDATA[P]]></fr:tex> containing <fr:tex
+display="inline"><![CDATA[a]]></fr:tex>. Thus we have <fr:tex
+display="inline"><![CDATA[\Phi {\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (P\right )\mathclose {}}\right )\mathclose {}} = P]]></fr:tex>.</fr:p>
+
+ <fr:p>Conversely, we must show that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}]]></fr:tex> is a <fr:link
+href="jms-00KS.xml"
+title="Section-retraction pair"
+addr="jms-00KS"
+type="local">retraction</fr:link> of <fr:tex
+display="inline"><![CDATA[\Phi ]]></fr:tex>. Fixing an equivalence relation <html:span
+style="white-space: nowrap"
+xmlns:html="http://www.w3.org/1999/xhtml"><fr:tex
+display="inline"><![CDATA[E\colon  A\mathbin {\nrightarrow } A]]></fr:tex>,</html:span> we must check that <fr:tex
+display="inline"><![CDATA[\Phi ^{-1}{\mathopen {}\left (\Phi {\mathopen {}\left (E\right )\mathclose {}}\right )\mathclose {}} = E]]></fr:tex>. Fixing <fr:tex
+display="inline"><![CDATA[x,y\in  A]]></fr:tex>, we proceed using <fr:link
+href="jms-00IM.xml"
+title="Relational extensionality"
+addr="jms-00IM"
+type="local">relational extensionality</fr:link>:</fr:p>
+
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    x\mathrel {{\mathopen {}\left (\Phi ^{-1}{\mathopen {}\left (\Phi {\mathopen {}\left (E\right )\mathclose {}}\right )\mathclose {}}\right )\mathclose {}}}y
+    &\Longleftrightarrow 
+    \exists  b\in  \Phi {\mathopen {}\left (E\right )\mathclose {}}\mathpunct {.}
+    x\in  b \land  y \in  b
+    \\
+    &\Longleftrightarrow 
+    \exists  a\in  A\mathpunct {.}
+    x\in  {\mathopen {}\left  [a\right  ]\mathclose {}}_{E}
+    \land 
+    y\in  {\mathopen {}\left  [a\right  ]\mathclose {}}_{E}
+    \\
+    &\Longleftrightarrow 
+    \exists  a \in  A\mathpunct {.}
+    x\mathrel {E}a\land  y\mathrel {E}a
+    \\
+    &\Longleftrightarrow 
+    x \mathrel {E} y
+  \end {aligned}
+ ]]></fr:tex>
 </fr:mainmatter></fr:tree>
  
 </fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>10638</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>14078</fr:anchor><fr:title
 text="Backlinks">Backlinks</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>10642</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>14083</fr:anchor><fr:title
 text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
@@ -97,117 +341,42 @@ numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
-href="marcelofiore.xml"
-title="Marcelo Fiore"
-addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>10639</fr:anchor><fr:addr
-type="user">jms-00IP</fr:addr><fr:route>jms-00IP.xml</fr:route><fr:title
-text="Associativity and unit laws of relational composition">Associativity and unit laws of <fr:link
-href="jms-00IN.xml"
-title="Relational composite"
-addr="jms-00IN"
-type="local">relational composition</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
-href="jms-00IN.xml"
-title="Relational composite"
-addr="jms-00IN"
-type="local">Relational composition</fr:link> is associative and has the <fr:link
-href="jms-00II.xml"
-title="The identity relation"
-addr="jms-00II"
-type="local">identity relation</fr:link> as a neutral element.</fr:p>
- 
-   
-   <fr:tree
-show-metadata="false"
-toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>14079</fr:anchor><fr:addr
+type="user">jms-00L6</fr:addr><fr:route>jms-00L6.xml</fr:route><fr:title
+text="Equivalence class">Equivalence class</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex
+display="inline"><![CDATA[E\colon  A\mathbin {\nrightarrow } A]]></fr:tex> be an <fr:link
+href="jms-00L4.xml"
+title="Equivalence relation"
+addr="jms-00L4"
+type="local">equivalence relation</fr:link> on a set <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>. The <fr:em><fr:strong>equivalence class</fr:strong></fr:em> of a given element <fr:tex
+display="inline"><![CDATA[a\in  A]]></fr:tex> in <fr:tex
+display="inline"><![CDATA[E]]></fr:tex> is the subset <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left  [a\right  ]\mathclose {}}_{E}\subseteq  A]]></fr:tex> spanned by elements related to <fr:tex
+display="inline"><![CDATA[a]]></fr:tex> in <fr:tex
+display="inline"><![CDATA[E]]></fr:tex>, i.e. <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left  [a\right  ]\mathclose {}}_{E} = {\mathopen {}\left \{x\in  A\,\middle \vert \,x\mathrel {E}a\right \}\mathclose {}}]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8789</fr:anchor><fr:addr
-type="machine">unstable/868</fr:addr><fr:route>unstable-868.xml</fr:route><fr:title
-text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>To prove associativity, we fix <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relations</fr:link> <fr:tex
-display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex>, <fr:tex
-display="inline"><![CDATA[S\colon  B\mathbin {\nrightarrow } C]]></fr:tex>, and <fr:tex
-display="inline"><![CDATA[T\colon  C\mathbin {\nrightarrow } D]]></fr:tex> to prove <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (T\circ  S\right )\mathclose {}}\circ  R = T\circ {\mathopen {}\left (S\circ  R\right )\mathclose {}}]]></fr:tex>. To get started, we compute the intermediate composites:</fr:p>
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-b\mathrel {{\mathopen {}\left (T\circ  S\right )\mathclose {}}}d &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   b\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   a\mathrel {{\mathopen {}\left (S\circ  R\right )\mathclose {}}}c &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b\land  b\mathrel {S}c
-  \end {aligned}
- ]]></fr:tex>
-
- <fr:p>Using the above, we can compute the full composites:</fr:p>
-
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-   a\mathrel {{\mathopen {}\left ({\mathopen {}\left (T\circ  S\right )\mathclose {}}\circ  R\right )\mathclose {}}} d
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b \land  b\mathrel {{\mathopen {}\left (T\circ  S\right )\mathclose {}}} d
-   \\
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b \land  \exists  c\in  C\mathpunct {.}
-   c\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   \exists  c\in  C\mathpunct {.}
-   a\mathrel {R}b \land 
-   b\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   {\mathopen {}\left (\exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b\land 
-   b\mathrel {S}c\right )\mathclose {}}\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   a\mathrel {{\mathopen {}\left (S\circ  R\right )\mathclose {}}}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   a \mathrel {{\mathopen {}\left (T\circ {\mathopen {}\left (S\circ  R\right )\mathclose {}}\right )\mathclose {}}}d
-  \end {aligned}
- ]]></fr:tex>
-
- <fr:p>For the right and left neutrality, we must prove that <fr:tex
-display="inline"><![CDATA[R\circ  \mathsf {id}_{A} = R = \mathsf {id}_{B}\circ  R]]></fr:tex> for all <fr:tex
-display="inline"><![CDATA[r\colon  A\mathbin {\nrightarrow } B]]></fr:tex>. We prove only the first law, as the other proof is analogous:</fr:p>
-
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-   a \mathrel {{\mathopen {}\left (R\circ \mathsf {id}_{A}\right )\mathclose {}}} b
-   &\Longleftrightarrow 
-   \exists  a'\in  A\mathpunct {.}
-   a\mathrel {\mathsf {id}_{A}}a' \land  a' \mathrel {R}b
-   \\
-   &\Longleftrightarrow 
-   \exists  a'\in  A\mathpunct {.}
-   a = a' \land  a' \mathrel {R}b
-   \\
-   &\Longleftrightarrow 
-   a \mathrel {R} b
-  \end {aligned}
- ]]></fr:tex>
-</fr:mainmatter></fr:tree>
- 
-</fr:mainmatter></fr:tree><fr:tree
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>14080</fr:anchor><fr:addr
+type="user">jms-00KS</fr:addr><fr:route>jms-00KS.xml</fr:route><fr:title
+text="Section-retraction pair">Section-retraction pair</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em><fr:strong>section-retraction pair</fr:strong></fr:em> is defined to be a pair of <fr:link
+href="jms-00KF.xml"
+title="Function"
+addr="jms-00KF"
+type="local">functions</fr:link> <fr:tex
+display="inline"><![CDATA[s\colon  B \to  A]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[r\colon  A \to  B]]></fr:tex> such that <fr:tex
+display="inline"><![CDATA[r\circ  s =\mathsf {id}_{B}]]></fr:tex>. In this case, <fr:tex
+display="inline"><![CDATA[s]]></fr:tex> is referred to as a <fr:em><fr:strong>section</fr:strong></fr:em> of <fr:tex
+display="inline"><![CDATA[r]]></fr:tex>, and <fr:tex
+display="inline"><![CDATA[r]]></fr:tex> is referred to as a <fr:em><fr:strong>retraction</fr:strong></fr:em> of <fr:tex
+display="inline"><![CDATA[s]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
 show-metadata="true"
 expanded="false"
 toc="false"
@@ -219,42 +388,23 @@ type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
 href="marcelofiore.xml"
 title="Marcelo Fiore"
 addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>10640</fr:anchor><fr:addr
-type="user">jms-00IQ</fr:addr><fr:route>jms-00IQ.xml</fr:route><fr:title
-text="Relational composition">Relational composition</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
-show-metadata="false"><fr:frontmatter><fr:authors><fr:contributor><fr:link
-href="marcelofiore.xml"
-title="Marcelo Fiore"
-addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor><fr:author><fr:link
-href="jonmsterling.xml"
-title="Jon Sterling"
-addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8786</fr:anchor><fr:addr
-type="user">jms-00IN</fr:addr><fr:route>jms-00IN.xml</fr:route><fr:title
-text="Relational composite">Relational composite</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Given <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relations</fr:link> <fr:tex
-display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[S\colon  B\mathbin {\nrightarrow } C]]></fr:tex>, we can define the <fr:em><fr:strong>relational composite</fr:strong></fr:em> <fr:tex
-display="inline"><![CDATA[S\circ  R\colon  A\mathbin {\nrightarrow } C]]></fr:tex> in a way that generalises composition of functions. In particular, we define <fr:tex
-display="inline"><![CDATA[S\circ  R]]></fr:tex> to be the following subset of <fr:tex
-display="inline"><![CDATA[A\times  C]]></fr:tex>:</fr:p><fr:tex
-display="block"><![CDATA[
- \begin {aligned}
- S\circ  R &\colon  A\mathbin {\nrightarrow } C\\
-  S\circ  R &=
-  {\mathopen {}\left \{
-   {\mathopen {}\left (a,c\right )\mathclose {}}\in  A\times  C
-   \mid 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b \land  b\mathrel {S} c
-  \right \}\mathclose {}}
- \end {aligned}
-]]></fr:tex></fr:mainmatter></fr:tree><fr:tree
-show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:anchor>14081</fr:anchor><fr:addr
+type="user">jms-00L5</fr:addr><fr:route>jms-00L5.xml</fr:route><fr:title
+text="Set partition">Set partition</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>A <fr:em><fr:strong>partition</fr:strong></fr:em> of a set <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> is a set <fr:tex
+display="inline"><![CDATA[P\subseteq  \mathcal {P}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> of non-empty subsets of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> whose elements are referred to as <fr:em><fr:strong>blocks</fr:strong></fr:em>, satisfying the following conditions:</fr:p><fr:ol><fr:li>the union of all blocks is all of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>, i.e. <fr:tex
+display="inline"><![CDATA[\bigcup  P = A]]></fr:tex>;</fr:li>
+ <fr:li>the blocks are pairwise disjoint, i.e. for all <fr:tex
+display="inline"><![CDATA[b_1\not = b_2\in  P]]></fr:tex> we have <fr:tex
+display="inline"><![CDATA[b_1\cap  b_2 = \varnothing ]]></fr:tex>.</fr:li></fr:ol><fr:p>We will write <fr:tex
+display="inline"><![CDATA[\mathrm {Part}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> for the set of partitions of <fr:tex
+display="inline"><![CDATA[A]]></fr:tex>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
@@ -262,35 +412,20 @@ type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
 href="marcelofiore.xml"
 title="Marcelo Fiore"
 addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8788</fr:anchor><fr:addr
-type="user">jms-00IO</fr:addr><fr:route>jms-00IO.xml</fr:route><fr:title
-text="Negation invariance of the square root relation">Negation invariance of the <fr:link
-href="jms-00I9.xml"
-title="Relations in program specification"
-addr="jms-00I9"
-type="local">square root relation</fr:link></fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Recall the square root <fr:link
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>14082</fr:anchor><fr:addr
+type="user">jms-00IM</fr:addr><fr:route>jms-00IM.xml</fr:route><fr:title
+text="Relational extensionality">Relational extensionality</fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Let <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[B]]></fr:tex> be two sets, and let <fr:tex
+display="inline"><![CDATA[R,S\colon  A\mathbin {\nrightarrow } B]]></fr:tex> be two <fr:link
 href="jms-00I7.xml"
 title="Relation"
 addr="jms-00I7"
-type="local">relation</fr:link> <fr:tex
-display="inline"><![CDATA[\mathsf {sq}\colon \mathbb {R}_{\geq  0}\mathbin {\nrightarrow } \mathbb {R}]]></fr:tex> from <fr:link
-href="jms-00I9.xml"
-title="Relations in program specification"
-addr="jms-00I9"
-type="local">Example <fr:contextual-number
-addr="jms-00I9" /></fr:link>, and let <fr:tex
-display="inline"><![CDATA[\mathsf {neg} \colon \mathbb {R}\mathbin {\nrightarrow }\mathbb {R}]]></fr:tex> be the <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relation</fr:link> <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left \{(x,y)\in \mathbb {R}^2\mid  x = -y\right \}\mathclose {}}]]></fr:tex>. Then the <fr:link
-href="jms-00IN.xml"
-title="Relational composite"
-addr="jms-00IN"
-type="local">relational composite</fr:link> <fr:tex
-display="inline"><![CDATA[\mathsf {neg}\circ \mathsf {sq}\colon  \mathbb {R}_{\geq  0}\mathbin {\nrightarrow }\mathbb {R}]]></fr:tex> is equal to <fr:tex
-display="inline"><![CDATA[\mathsf {sq}]]></fr:tex>.</fr:p>
+type="local">relations</fr:link> from <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> to <fr:tex
+display="inline"><![CDATA[B]]></fr:tex>. Then we have <fr:tex
+display="inline"><![CDATA[R=S]]></fr:tex> if and only if <fr:tex
+display="inline"><![CDATA[\forall {a\in  A}\mathpunct {.} \forall {b\in  B}\mathpunct {.} a\mathrel {R}b\Longleftrightarrow  a\mathrel {S}b]]></fr:tex>.</fr:p>
  
    
    <fr:tree
@@ -299,190 +434,21 @@ toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8787</fr:anchor><fr:addr
-type="machine">unstable/869</fr:addr><fr:route>unstable-869.xml</fr:route><fr:title
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>7876</fr:anchor><fr:addr
+type="machine">unstable/888</fr:addr><fr:route>unstable-888.xml</fr:route><fr:title
 text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>By <fr:link
-href="jms-00IM.xml"
-title="Relational extensionality"
-addr="jms-00IM"
-type="local">relational extensionality</fr:link>, it suffices to check that for any <fr:tex
-display="inline"><![CDATA[x\in  \mathbb {R}_{\geq  0}]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[y\in  \mathbb {R}]]></fr:tex>, we have <fr:tex
-display="inline"><![CDATA[x\mathrel {{\mathopen {}\left (\mathsf {neg}\circ \mathsf {sq}\right )\mathclose {}}} y]]></fr:tex> if and only if <fr:tex
-display="inline"><![CDATA[x\mathrel {\mathsf {sq}}y]]></fr:tex>. We compute:</fr:p>
-
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-   x\mathrel {{\mathopen {}\left (\mathsf {neg}\circ \mathsf {sq}\right )\mathclose {}}} y
-   &\Longleftrightarrow 
-   \exists  z\in \mathbb {R}\mathpunct {.}
-   x\mathrel {\mathsf {sq}}z \land  z \mathrel {\mathsf {neg}}y
-   \\
-   &\Longleftrightarrow 
-   \exists  z\in \mathbb {R}\mathpunct {.}
-   x=z^2 \land  z =-y
-   \\
-   &\Longleftrightarrow 
-   x={\mathopen {}\left (-y\right )\mathclose {}}^2
-   \\
-   &\Longleftrightarrow 
-   x = y^2
-   \\
-   &\Longleftrightarrow 
-   x\mathrel {\mathsf {sq}}y
-  \end {aligned}
- ]]></fr:tex>
-</fr:mainmatter></fr:tree>
- 
-</fr:mainmatter></fr:tree><fr:tree
-show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-title="Jon Sterling"
-addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
-href="marcelofiore.xml"
-title="Marcelo Fiore"
-addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8790</fr:anchor><fr:addr
-type="user">jms-00IP</fr:addr><fr:route>jms-00IP.xml</fr:route><fr:title
-text="Associativity and unit laws of relational composition">Associativity and unit laws of <fr:link
-href="jms-00IN.xml"
-title="Relational composite"
-addr="jms-00IN"
-type="local">relational composition</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
-href="jms-00IN.xml"
-title="Relational composite"
-addr="jms-00IN"
-type="local">Relational composition</fr:link> is associative and has the <fr:link
-href="jms-00II.xml"
-title="The identity relation"
-addr="jms-00II"
-type="local">identity relation</fr:link> as a neutral element.</fr:p>
- 
-   
-   <fr:tree
-show-metadata="false"
-toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-title="Jon Sterling"
-addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>8789</fr:anchor><fr:addr
-type="machine">unstable/868</fr:addr><fr:route>unstable-868.xml</fr:route><fr:title
-text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>To prove associativity, we fix <fr:link
+ <fr:p>We recall that <fr:link
 href="jms-00I7.xml"
 title="Relation"
 addr="jms-00I7"
-type="local">relations</fr:link> <fr:tex
-display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex>, <fr:tex
-display="inline"><![CDATA[S\colon  B\mathbin {\nrightarrow } C]]></fr:tex>, and <fr:tex
-display="inline"><![CDATA[T\colon  C\mathbin {\nrightarrow } D]]></fr:tex> to prove <fr:tex
-display="inline"><![CDATA[{\mathopen {}\left (T\circ  S\right )\mathclose {}}\circ  R = T\circ {\mathopen {}\left (S\circ  R\right )\mathclose {}}]]></fr:tex>. To get started, we compute the intermediate composites:</fr:p>
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-b\mathrel {{\mathopen {}\left (T\circ  S\right )\mathclose {}}}d &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   b\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   a\mathrel {{\mathopen {}\left (S\circ  R\right )\mathclose {}}}c &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b\land  b\mathrel {S}c
-  \end {aligned}
- ]]></fr:tex>
-
- <fr:p>Using the above, we can compute the full composites:</fr:p>
-
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-   a\mathrel {{\mathopen {}\left ({\mathopen {}\left (T\circ  S\right )\mathclose {}}\circ  R\right )\mathclose {}}} d
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b \land  b\mathrel {{\mathopen {}\left (T\circ  S\right )\mathclose {}}} d
-   \\
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b \land  \exists  c\in  C\mathpunct {.}
-   c\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  b\in  B\mathpunct {.}
-   \exists  c\in  C\mathpunct {.}
-   a\mathrel {R}b \land 
-   b\mathrel {S}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   {\mathopen {}\left (\exists  b\in  B\mathpunct {.}
-   a\mathrel {R}b\land 
-   b\mathrel {S}c\right )\mathclose {}}\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   \exists  c\in  C\mathpunct {.}
-   a\mathrel {{\mathopen {}\left (S\circ  R\right )\mathclose {}}}c\land  c\mathrel {T}d
-   \\
-   &\Longleftrightarrow 
-   a \mathrel {{\mathopen {}\left (T\circ {\mathopen {}\left (S\circ  R\right )\mathclose {}}\right )\mathclose {}}}d
-  \end {aligned}
- ]]></fr:tex>
-
- <fr:p>For the right and left neutrality, we must prove that <fr:tex
-display="inline"><![CDATA[R\circ  \mathsf {id}_{A} = R = \mathsf {id}_{B}\circ  R]]></fr:tex> for all <fr:tex
-display="inline"><![CDATA[r\colon  A\mathbin {\nrightarrow } B]]></fr:tex>. We prove only the first law, as the other proof is analogous:</fr:p>
-
- <fr:tex
-display="block"><![CDATA[
-  \begin {aligned}
-   a \mathrel {{\mathopen {}\left (R\circ \mathsf {id}_{A}\right )\mathclose {}}} b
-   &\Longleftrightarrow 
-   \exists  a'\in  A\mathpunct {.}
-   a\mathrel {\mathsf {id}_{A}}a' \land  a' \mathrel {R}b
-   \\
-   &\Longleftrightarrow 
-   \exists  a'\in  A\mathpunct {.}
-   a = a' \land  a' \mathrel {R}b
-   \\
-   &\Longleftrightarrow 
-   a \mathrel {R} b
-  \end {aligned}
- ]]></fr:tex>
+type="local">relation</fr:link> from <fr:tex
+display="inline"><![CDATA[A]]></fr:tex> to <fr:tex
+display="inline"><![CDATA[B]]></fr:tex> is nothing more than a subset of <fr:tex
+display="inline"><![CDATA[A\times  B]]></fr:tex>. By the axiom of extensionality, two subsets of <fr:tex
+display="inline"><![CDATA[A\times  B]]></fr:tex> are equal if and only if they contain precisely the same elements.</fr:p>
 </fr:mainmatter></fr:tree>
  
 </fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
-show-metadata="true"
-expanded="false"
-toc="false"
-numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
-href="jonmsterling.xml"
-title="Jon Sterling"
-addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
-href="marcelofiore.xml"
-title="Marcelo Fiore"
-addr="marcelofiore"
-type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>10641</fr:anchor><fr:addr
-type="user">jms-00II</fr:addr><fr:route>jms-00II.xml</fr:route><fr:title
-text="The identity relation">The identity <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relation</fr:link></fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For any set <fr:tex
-display="inline"><![CDATA[A]]></fr:tex>, we can form the <fr:em><fr:strong>identity <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relation</fr:link></fr:strong></fr:em> <fr:tex
-display="inline"><![CDATA[\mathsf {id}_{A}\colon  A\mathbin {\nrightarrow } A]]></fr:tex>, also called the <fr:em><fr:strong>equality <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relation</fr:link></fr:strong></fr:em>, which relates each element of <fr:tex
-display="inline"><![CDATA[A]]></fr:tex> to itself. In other words, we have <fr:tex
-display="inline"><![CDATA[a\mathrel {\mathsf {id}_{A}} a']]></fr:tex> if and only if <fr:tex
-display="inline"><![CDATA[a=a']]></fr:tex>.</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>10643</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>14084</fr:anchor><fr:title
 text="Contributions">Contributions</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree></fr:backmatter></fr:tree>
