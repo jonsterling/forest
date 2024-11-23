@@ -6,28 +6,95 @@ root="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>17042</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>16836</fr:anchor><fr:addr
 type="machine">unstable/6015</fr:addr><fr:route>unstable-6015.xml</fr:route><fr:title
-text="Matrix addition and union of relations › "><fr:link
-href="jms-00JR.xml"
-title="Matrix addition and union of relations"
-addr="jms-00JR"
-type="local"><fr:link
-href="jms-00JO.xml"
-title="Pointwise addition of matrices"
-addr="jms-00JO"
-type="local">Matrix addition</fr:link> and union of <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relations</fr:link></fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>This follows because addition and zero in the boolean semiring are given by disjunction and falsehood respectively.</fr:p>
+text="Associativity and unit laws of matrix products › "><fr:link
+href="jms-00J3.xml"
+title="Associativity and unit laws of matrix products"
+addr="jms-00J3"
+type="local">Associativity and unit laws of <fr:link
+href="jms-00IV.xml"
+title="Product of matrices"
+addr="jms-00IV"
+type="local">matrix products</fr:link></fr:link> › </fr:title><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <fr:p>For associativity, fix <fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrices</fr:link> <fr:tex
+display="inline"><![CDATA[L\in  \mathrm {Mat}_{S}{\mathopen {}\left (k,l\right )\mathclose {}}]]></fr:tex>, <fr:tex
+display="inline"><![CDATA[M\in \mathrm {Mat}_{S}{\mathopen {}\left (l,m\right )\mathclose {}}]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[N\in \mathrm {Mat}_{S}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (N\cdot  M\right )\mathclose {}}\cdot  L = N\cdot {\mathopen {}\left (M\cdot  L\right )\mathclose {}}]]></fr:tex>. Below we use the associativity of multiplication, commutativity of addition, and distributivity of multiplication over addition in the semiring <fr:tex
+display="inline"><![CDATA[S]]></fr:tex>:</fr:p>
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    {\mathopen {}\left ({\mathopen {}\left (N\cdot  M\right )\mathclose {}}\cdot  L\right )\mathclose {}}_{a,b}
+    &=
+    \bigoplus _{c\in  {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    L_{a,c}\cdot  {\mathopen {}\left (N\cdot  M\right )\mathclose {}}_{c,b}
+    \\
+    &=
+    \bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    L_{a,c}\cdot  \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}} M_{c,d}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    L_{a,c}\cdot  M_{c,d}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    {\mathopen {}\left (\bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}} L_{a,c}\cdot  M_{c,d}\right )\mathclose {}}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    {\mathopen {}\left (M\cdot  L\right )\mathclose {}}_{a,d}\cdot  N_{d,b}
+    \\
+    &=
+    N\cdot  {\mathopen {}\left (M\cdot  L\right )\mathclose {}}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>For one unit law, we fix <fr:tex
+display="inline"><![CDATA[M\in \mathrm {Mat}_{S}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> and recall the definition of the <fr:link
+href="jms-00IT.xml"
+title="The identity matrix"
+addr="jms-00IT"
+type="local">identity matrix</fr:link> to check that <fr:tex
+display="inline"><![CDATA[M\cdot  I^m = M]]></fr:tex>.</fr:p>
+
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+   {\mathopen {}\left (M\cdot  I^m\right )\mathclose {}}_{i,j} &=
+   \bigoplus _{k\in  {\mathopen {}\left  [m\right  ]\mathclose {}}}
+   I^m_{i,k}\cdot  M_{k, j}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>Unfolding the definition of <fr:tex
+display="inline"><![CDATA[I^m_{i,j}]]></fr:tex> as given in <fr:link
+href="jms-00IT.xml"
+title="The identity matrix"
+addr="jms-00IT"
+type="local">Definition <fr:contextual-number
+addr="jms-00IT" /></fr:link>, we see that the iterated sum above expands to <fr:tex
+display="inline"><![CDATA[m-1]]></fr:tex> copies of <fr:tex
+display="inline"><![CDATA[0\cdot  M_{k,j}]]></fr:tex> for various <fr:tex
+display="inline"><![CDATA[k \not = i]]></fr:tex> and one copy of <fr:tex
+display="inline"><![CDATA[1\cdot  M_{i,j}]]></fr:tex>. Thus, we conclude that <fr:tex
+display="inline"><![CDATA[M\cdot  I^m_{i,j} = M_{i,j}]]></fr:tex> using the absorption and unit laws for multiplication as well as the unit laws for addition in <fr:tex
+display="inline"><![CDATA[S]]></fr:tex>.</fr:p>
+
+ <fr:p>The other unit law follows in an analogous way.</fr:p>
 </fr:mainmatter><fr:backmatter><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>17036</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>16828</fr:anchor><fr:title
 text="References">References</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>17038</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>16830</fr:anchor><fr:title
 text="Context">Context</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
@@ -36,38 +103,25 @@ numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>17037</fr:anchor><fr:addr
-type="user">jms-00JR</fr:addr><fr:route>jms-00JR.xml</fr:route><fr:title
-text="Matrix addition and union of relations"><fr:link
-href="jms-00JO.xml"
-title="Pointwise addition of matrices"
-addr="jms-00JO"
-type="local">Matrix addition</fr:link> and union of <fr:link
-href="jms-00I7.xml"
-title="Relation"
-addr="jms-00I7"
-type="local">relations</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>The pointwise sum <fr:tex
-display="inline"><![CDATA[M+N]]></fr:tex> of <fr:tex
-display="inline"><![CDATA[M,N\in \mathrm {Mat}_{\mathbb {B}}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> corresponds to the union of the <fr:link
-href="jms-00IZ.xml"
-title="The relation associated to a matrix"
-addr="jms-00IZ"
-type="local">relations associated</fr:link> to <fr:tex
-display="inline"><![CDATA[M]]></fr:tex> and <fr:tex
-display="inline"><![CDATA[N]]></fr:tex>:</fr:p><fr:tex
-display="block"><![CDATA[
- \operatorname {\underline {rel}}_{\mathbb {B}}{\mathopen {}\left (M+N\right )\mathclose {}} =
- \operatorname {\underline {rel}}_{\mathbb {B}}M \cup  \operatorname {\underline {rel}}_{\mathbb {B}}N
-]]></fr:tex><fr:p>Moreover, the <fr:link
-href="jms-00JP.xml"
-title="The zero matrix"
-addr="jms-00JP"
-type="local">zero matrix</fr:link> corresponds to the <fr:link
-href="jms-00IG.xml"
-title="The empty relation"
-addr="jms-00IG"
-type="local">empty relation</fr:link>: <fr:tex
-display="inline"><![CDATA[\operatorname {\underline {rel}}_{\mathbb {B}}\mathbf {0} = \varnothing ]]></fr:tex>.</fr:p>
+type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link
+href="marcelofiore.xml"
+title="Marcelo Fiore"
+addr="marcelofiore"
+type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>16829</fr:anchor><fr:addr
+type="user">jms-00J3</fr:addr><fr:route>jms-00J3.xml</fr:route><fr:title
+text="Associativity and unit laws of matrix products">Associativity and unit laws of <fr:link
+href="jms-00IV.xml"
+title="Product of matrices"
+addr="jms-00IV"
+type="local">matrix products</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>The <fr:link
+href="jms-00IV.xml"
+title="Product of matrices"
+addr="jms-00IV"
+type="local">product</fr:link> of <fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrices</fr:link> is associative and has the identity matrix as neutral element.</fr:p>
  
    
    <fr:tree
@@ -76,19 +130,164 @@ toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
 title="Jon Sterling"
 addr="jonmsterling"
-type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>20</fr:day></fr:date><fr:anchor>7701</fr:anchor><fr:addr
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>6466</fr:anchor><fr:addr
 type="machine">unstable/6015</fr:addr><fr:route>unstable-6015.xml</fr:route><fr:title
 text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
- <fr:p>This follows because addition and zero in the boolean semiring are given by disjunction and falsehood respectively.</fr:p>
+ <fr:p>For associativity, fix <fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrices</fr:link> <fr:tex
+display="inline"><![CDATA[L\in  \mathrm {Mat}_{S}{\mathopen {}\left (k,l\right )\mathclose {}}]]></fr:tex>, <fr:tex
+display="inline"><![CDATA[M\in \mathrm {Mat}_{S}{\mathopen {}\left (l,m\right )\mathclose {}}]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[N\in \mathrm {Mat}_{S}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> to check that <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (N\cdot  M\right )\mathclose {}}\cdot  L = N\cdot {\mathopen {}\left (M\cdot  L\right )\mathclose {}}]]></fr:tex>. Below we use the associativity of multiplication, commutativity of addition, and distributivity of multiplication over addition in the semiring <fr:tex
+display="inline"><![CDATA[S]]></fr:tex>:</fr:p>
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+    {\mathopen {}\left ({\mathopen {}\left (N\cdot  M\right )\mathclose {}}\cdot  L\right )\mathclose {}}_{a,b}
+    &=
+    \bigoplus _{c\in  {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    L_{a,c}\cdot  {\mathopen {}\left (N\cdot  M\right )\mathclose {}}_{c,b}
+    \\
+    &=
+    \bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    L_{a,c}\cdot  \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}} M_{c,d}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}}
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    L_{a,c}\cdot  M_{c,d}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    {\mathopen {}\left (\bigoplus _{c\in {\mathopen {}\left  [l\right  ]\mathclose {}}} L_{a,c}\cdot  M_{c,d}\right )\mathclose {}}\cdot  N_{d,b}
+    \\
+    &=
+    \bigoplus _{d\in {\mathopen {}\left  [m\right  ]\mathclose {}}}
+    {\mathopen {}\left (M\cdot  L\right )\mathclose {}}_{a,d}\cdot  N_{d,b}
+    \\
+    &=
+    N\cdot  {\mathopen {}\left (M\cdot  L\right )\mathclose {}}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>For one unit law, we fix <fr:tex
+display="inline"><![CDATA[M\in \mathrm {Mat}_{S}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> and recall the definition of the <fr:link
+href="jms-00IT.xml"
+title="The identity matrix"
+addr="jms-00IT"
+type="local">identity matrix</fr:link> to check that <fr:tex
+display="inline"><![CDATA[M\cdot  I^m = M]]></fr:tex>.</fr:p>
+
+ <fr:tex
+display="block"><![CDATA[
+  \begin {aligned}
+   {\mathopen {}\left (M\cdot  I^m\right )\mathclose {}}_{i,j} &=
+   \bigoplus _{k\in  {\mathopen {}\left  [m\right  ]\mathclose {}}}
+   I^m_{i,k}\cdot  M_{k, j}
+  \end {aligned}
+ ]]></fr:tex>
+
+ <fr:p>Unfolding the definition of <fr:tex
+display="inline"><![CDATA[I^m_{i,j}]]></fr:tex> as given in <fr:link
+href="jms-00IT.xml"
+title="The identity matrix"
+addr="jms-00IT"
+type="local">Definition <fr:contextual-number
+addr="jms-00IT" /></fr:link>, we see that the iterated sum above expands to <fr:tex
+display="inline"><![CDATA[m-1]]></fr:tex> copies of <fr:tex
+display="inline"><![CDATA[0\cdot  M_{k,j}]]></fr:tex> for various <fr:tex
+display="inline"><![CDATA[k \not = i]]></fr:tex> and one copy of <fr:tex
+display="inline"><![CDATA[1\cdot  M_{i,j}]]></fr:tex>. Thus, we conclude that <fr:tex
+display="inline"><![CDATA[M\cdot  I^m_{i,j} = M_{i,j}]]></fr:tex> using the absorption and unit laws for multiplication as well as the unit laws for addition in <fr:tex
+display="inline"><![CDATA[S]]></fr:tex>.</fr:p>
+
+ <fr:p>The other unit law follows in an analogous way.</fr:p>
 </fr:mainmatter></fr:tree>
  
 </fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>17039</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>16831</fr:anchor><fr:title
 text="Backlinks">Backlinks</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>17040</fr:anchor><fr:title
-text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>16834</fr:anchor><fr:title
+text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:contributor><fr:link
+href="marcelofiore.xml"
+title="Marcelo Fiore"
+addr="marcelofiore"
+type="local">Marcelo Fiore</fr:link></fr:contributor><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>16832</fr:anchor><fr:addr
+type="user">jms-00IS</fr:addr><fr:route>jms-00IS.xml</fr:route><fr:title
+text="Matrix over a semiring">Matrix over a semiring</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For natural numbers <fr:tex
+display="inline"><![CDATA[m]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[n]]></fr:tex>, an <fr:em><fr:strong><html:span
+style="white-space: nowrap"
+xmlns:html="http://www.w3.org/1999/xhtml"><fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (m\times  n\right )\mathclose {}}]]></fr:tex>-matrix</html:span></fr:strong></fr:em> over a semiring <fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (S,0,\oplus ,1,\odot \right )\mathclose {}}]]></fr:tex> is given by entries <fr:tex
+display="inline"><![CDATA[M_{i,j}\in  S]]></fr:tex> for all <fr:tex
+display="inline"><![CDATA[i\in {\mathopen {}\left  [m\right  ]\mathclose {}}]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[j\in  {\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex>. We will write <fr:tex
+display="inline"><![CDATA[\mathrm {Mat}_{S}{\mathopen {}\left (m,m\right )\mathclose {}}]]></fr:tex> for the set of <fr:em><fr:strong><html:span
+style="white-space: nowrap"
+xmlns:html="http://www.w3.org/1999/xhtml"><fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (m\times  n\right )\mathclose {}}]]></fr:tex>-matrices</html:span></fr:strong></fr:em>.</fr:p></fr:mainmatter></fr:tree><fr:tree
+show-metadata="true"
+expanded="false"
+toc="false"
+numbered="false"><fr:frontmatter><fr:authors><fr:author><fr:link
+href="jonmsterling.xml"
+title="Jon Sterling"
+addr="jonmsterling"
+type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>17</fr:day></fr:date><fr:anchor>16833</fr:anchor><fr:addr
+type="user">jms-00IT</fr:addr><fr:route>jms-00IT.xml</fr:route><fr:title
+text="The identity matrix">The identity <fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrix</fr:link></fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>For any <fr:tex
+display="inline"><![CDATA[m\in  \mathbb {N}]]></fr:tex>, we define the <fr:em><fr:strong>identity <html:span
+style="white-space: nowrap"
+xmlns:html="http://www.w3.org/1999/xhtml"><fr:tex
+display="inline"><![CDATA[{\mathopen {}\left (m\times  m\right )\mathclose {}}]]></fr:tex>-<fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrix</fr:link></html:span></fr:strong></fr:em> over a given semiring <fr:tex
+display="inline"><![CDATA[S]]></fr:tex> as follows:</fr:p><fr:tex
+display="block"><![CDATA[
+ I^m_{i,j} = \begin {cases}
+   1&\text {if } i=j\\
+   0&\text {otherwise}
+ \end {cases}
+]]></fr:tex><fr:p>The identity <fr:link
+href="jms-00IS.xml"
+title="Matrix over a semiring"
+addr="jms-00IS"
+type="local">matrix</fr:link> is sometimes called the <fr:em><fr:strong>diagonal matrix</fr:strong></fr:em>, for reasons that become apparent when visualising it according to <fr:link
+href="jms-00J4.xml"
+title="Matrices as tables"
+addr="jms-00J4"
+type="local">Notation <fr:contextual-number
+addr="jms-00J4" /></fr:link>:</fr:p><fr:tex
+display="block"><![CDATA[
+ I^4 =
+ \begin {bmatrix}
+  1 & 0 & 0 & 0\\
+  0 & 1 & 0 & 0\\
+  0 & 0 & 1 & 0\\
+  0 & 0 & 0 & 1
+ \end {bmatrix}
+]]></fr:tex></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>17041</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>16835</fr:anchor><fr:title
 text="Contributions">Contributions</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree></fr:backmatter></fr:tree>
