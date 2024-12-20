@@ -14,9 +14,9 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>26745</fr:anchor><fr:addr
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>26861</fr:anchor><fr:addr
 type="machine">unstable/5964</fr:addr><fr:route>unstable-5964.xml</fr:route><fr:title
-text="Towards univalent reference types › representation independence in the heap"><fr:link
+text="Towards univalent reference types › univalent reference types"><fr:link
 href="jms-00OI.xml"
 title="Towards univalent reference types"
 addr="jms-00OI"
@@ -24,7 +24,8 @@ type="local"><fr:em><fr:link
 href="sterling-gratzer-birkedal-2024-univalent.xml"
 title="Towards univalent reference types"
 addr="sterling-gratzer-birkedal-2024-univalent"
-type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › representation independence in the heap</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Consider two implementations of an “counter” object:</fr:p>
+type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › univalent reference types</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</fr:p><beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong>LAYOUT UNIVALENCE.</fr:strong></fr:p>
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
   
@@ -32,112 +33,72 @@ xmlns:jms-indent="jonmsterling:indenting">
 xmlns:jms-indent="jonmsterling:indenting">
    <fr:tex
 display="inline"><![CDATA[
-    \mathsf {Counter} :\equiv  {\mathopen {}\left \{
-     \mathsf {incr}\colon  \mathsf {T}\,{\mathopen {}\left (\right )\mathclose {}};
-     \mathsf {read}\colon  \mathsf {T}\,\mathsf {Integer}
-    \right \}\mathclose {}}
+    {\mathopen {}\left (
+     \ell _1\gets \mathsf {new}\,e_1;
+     \ell _2\gets \mathsf {new}\,e_2;
+     \mathsf {ret}\,{\mathopen {}\left (\ell _1,\ell _2\right )\mathclose {}}
+    \right )\mathclose {}}
    ]]></fr:tex>
   </jms-indent:row>
 
-
-  
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting" />
-
-
-  
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {posCounter} :\equiv ]]></fr:tex></jms-indent:row>
-
   
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\ell \gets \mathsf {new}\,0;]]></fr:tex></jms-indent:row>
-
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {ret}\,\lbrace ]]></fr:tex></jms-indent:row>
-
-   
- <jms-indent:block
-xmlns:jms-indent="jonmsterling:indenting">
-    
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {incr}\hookrightarrow  i\gets \mathsf {get}\,\ell ; \mathsf {set}\,{\mathopen {}\left (\ell ,i+1\right )\mathclose {}};]]></fr:tex></jms-indent:row>
-
-    
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {read}\hookrightarrow  \mathsf {get}\,\ell ]]></fr:tex></jms-indent:row>
-
-   </jms-indent:block>
-
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\rbrace ]]></fr:tex></jms-indent:row>
-
+   <fr:tex
+display="inline"><![CDATA[
+    \mathrel {\equiv }
+    {\mathopen {}\left (
+     \ell _{\color {red}2}\gets \mathsf {new}\,e_{\color {red}2};
+     \ell _{\color {red}1}\gets \mathsf {new}\,e_{\color {red}1};
+     \mathsf {ret}\,{\mathopen {}\left (\ell _1,\ell _2\right )\mathclose {}}
+    \right )\mathclose {}}
+   ]]></fr:tex>
   </jms-indent:block>
 
-
+ </jms-indent:block>
+<beamer:pause
+xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong>CELL UNIVALENCE.</fr:strong> For <fr:tex
+display="inline"><![CDATA[f^+\colon  A\to  B]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[f^-\colon  B\to  A]]></fr:tex> with <fr:tex
+display="inline"><![CDATA[x:B\vdash  f^+{\mathopen {}\left (f^-{\mathopen {}\left (x\right )\mathclose {}}\right )\mathclose {}}\equiv  x]]></fr:tex> and <fr:tex
+display="inline"><![CDATA[x\colon  A\vdash  f^-{\mathopen {}\left (f^+{\mathopen {}\left (x\right )\mathclose {}}\right )\mathclose {}} \equiv  x]]></fr:tex> we have:</fr:p>
+ <jms-indent:block
+xmlns:jms-indent="jonmsterling:indenting">
   
  <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting" />
-
-
-  
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {negCounter} :\equiv ]]></fr:tex></jms-indent:row>
+xmlns:jms-indent="jonmsterling:indenting">
+   <fr:tex
+display="inline"><![CDATA[
+    {\mathopen {}\left (
+     \ell \gets \mathsf {new}\,e;
+     \mathsf {ret}\,{\mathopen {}\left (\mathsf {get}\,\ell , \mathsf {set}\,{\mathopen {}\left (\ell ,-\right )\mathclose {}}\right )\mathclose {}}
+    \right )\mathclose {}}
+   ]]></fr:tex>
+  </jms-indent:row>
 
   
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\ell \gets \mathsf {new}\,0;]]></fr:tex></jms-indent:row>
-
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {ret}\,\lbrace ]]></fr:tex></jms-indent:row>
-
-   
- <jms-indent:block
-xmlns:jms-indent="jonmsterling:indenting">
-    
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {incr}\hookrightarrow  i\gets \mathsf {get}\,\ell ; \mathsf {set}\,{\mathopen {}\left (\ell ,i-1\right )\mathclose {}};]]></fr:tex></jms-indent:row>
-
-    
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\mathsf {read}\hookrightarrow  \mathsf {map}\,\mathsf {neg}\,{\mathopen {}\left (\mathsf {get}\,\ell \right )\mathclose {}}]]></fr:tex></jms-indent:row>
-
-   </jms-indent:block>
-
-   
- <jms-indent:row
-xmlns:jms-indent="jonmsterling:indenting"><fr:tex
-display="inline"><![CDATA[\rbrace ]]></fr:tex></jms-indent:row>
-
+   <fr:tex
+display="inline"><![CDATA[
+    \mathrel {\equiv }
+    {\mathopen {}\left (
+     \ell \gets \mathsf {new}\,{\mathopen {}\left ({\color {red}f^+}{\mathopen {}\left (e\right )\mathclose {}}\right )\mathclose {}};
+     \mathsf {ret}\,{\mathopen {}\left (
+      {\color {red}\mathsf {map}\,f^-}\,{\mathopen {}\left (\mathsf {get}\,\ell \right )\mathclose {}},
+      \mathsf {set}{\mathopen {}\left (\ell , {\color {red}f^+}{\mathopen {}\left (-\right )\mathclose {}}\right )\mathclose {}}
+     \right )\mathclose {}}
+    \right )\mathclose {}}
+   ]]></fr:tex>
   </jms-indent:block>
 
  </jms-indent:block>
 </fr:mainmatter><fr:backmatter><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>26739</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>26855</fr:anchor><fr:title
 text="References">References</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>26741</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>26857</fr:anchor><fr:title
 text="Context">Context</fr:title></fr:frontmatter><fr:mainmatter><fr:tree
 show-metadata="true"
 expanded="false"
@@ -154,7 +115,7 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>26740</fr:anchor><fr:addr
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>26856</fr:anchor><fr:addr
 type="user">jms-00OI</fr:addr><fr:route>jms-00OI.xml</fr:route><fr:title
 text="Towards univalent reference types"><fr:em><fr:link
 href="sterling-gratzer-birkedal-2024-univalent.xml"
@@ -190,8 +151,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6658</fr:anchor><fr:addr
-type="machine">unstable/5959</fr:addr><fr:route>unstable-5959.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6611</fr:anchor><fr:addr
+type="machine">unstable/5957</fr:addr><fr:route>unstable-5957.xml</fr:route><fr:title
 text="Side effects in programming languages">Side effects in programming languages</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Most practical programming languages have <fr:strong><fr:em>side effects</fr:em></fr:strong>: state, input-output, errors, etc.</fr:p><beamer:pause
 xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong><fr:em>Monads</fr:em></fr:strong> capture the structure of side effects (<fr:link
 href="moggi-1991.xml"
@@ -239,8 +200,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6659</fr:anchor><fr:addr
-type="machine">unstable/5960</fr:addr><fr:route>unstable-5960.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6612</fr:anchor><fr:addr
+type="machine">unstable/5958</fr:addr><fr:route>unstable-5958.xml</fr:route><fr:title
 text="State as a side effect">State as a side effect</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:strong><fr:em>State</fr:em></fr:strong> means being able to interact with the computer’s memory; <fr:strong><fr:em>references</fr:em></fr:strong> or <fr:strong><fr:em>pointers</fr:em></fr:strong> govern access to a location in memory.</fr:p><beamer:pause
 xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p>The <fr:em>syntax</fr:em> of state varies along three axes:</fr:p><fr:ol><fr:li><fr:p><fr:em>What kind of things can be stored in memory cells?</fr:em></fr:p><beamer:pause
 xmlns:beamer="http://ctan.org/pkg/beamer" />
@@ -272,8 +233,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6660</fr:anchor><fr:addr
-type="machine">unstable/5961</fr:addr><fr:route>unstable-5961.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6613</fr:anchor><fr:addr
+type="machine">unstable/5959</fr:addr><fr:route>unstable-5959.xml</fr:route><fr:title
 text="First-order dynamic allocation">First-order dynamic allocation</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Storing only integers or other first-order data.</fr:p>
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
@@ -319,8 +280,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6661</fr:anchor><fr:addr
-type="machine">unstable/5962</fr:addr><fr:route>unstable-5962.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6614</fr:anchor><fr:addr
+type="machine">unstable/5960</fr:addr><fr:route>unstable-5960.xml</fr:route><fr:title
 text="Higher-order dynamic allocation">Higher-order dynamic allocation</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>An extreme point in the design space...</fr:p>
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
@@ -359,8 +320,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6662</fr:anchor><fr:addr
-type="machine">unstable/5963</fr:addr><fr:route>unstable-5963.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6615</fr:anchor><fr:addr
+type="machine">unstable/5961</fr:addr><fr:route>unstable-5961.xml</fr:route><fr:title
 text="Guarded higher-order dynamic allocation">Guarded higher-order dynamic allocation</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>An equational theory of higher-order store in which reads to the heap leave behind “breadcrumbs”.</fr:p>
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
@@ -448,8 +409,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6663</fr:anchor><fr:addr
-type="machine">unstable/5964</fr:addr><fr:route>unstable-5964.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6616</fr:anchor><fr:addr
+type="machine">unstable/5962</fr:addr><fr:route>unstable-5962.xml</fr:route><fr:title
 text="Representation independence in the heap">Representation independence in the heap</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Consider two implementations of an “counter” object:</fr:p>
  <jms-indent:block
 xmlns:jms-indent="jonmsterling:indenting">
@@ -571,8 +532,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6664</fr:anchor><fr:addr
-type="machine">unstable/5965</fr:addr><fr:route>unstable-5965.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6617</fr:anchor><fr:addr
+type="machine">unstable/5963</fr:addr><fr:route>unstable-5963.xml</fr:route><fr:title
 text="Representation independence in the heap (II)">Representation independence in the heap (II)</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:em>What is the relationship between <fr:tex
 display="inline"><![CDATA[\mathsf {posCounter}]]></fr:tex> and <fr:tex
 display="inline"><![CDATA[\mathsf {negCounter}]]></fr:tex>?</fr:em></fr:p><beamer:pause
@@ -600,8 +561,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6665</fr:anchor><fr:addr
-type="machine">unstable/5966</fr:addr><fr:route>unstable-5966.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6618</fr:anchor><fr:addr
+type="machine">unstable/5964</fr:addr><fr:route>unstable-5964.xml</fr:route><fr:title
 text="Univalent reference types">Univalent reference types</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</fr:p><beamer:pause
 xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong>LAYOUT UNIVALENCE.</fr:strong></fr:p>
  <jms-indent:block
@@ -684,8 +645,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6667</fr:anchor><fr:addr
-type="machine">unstable/5967</fr:addr><fr:route>unstable-5967.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6620</fr:anchor><fr:addr
+type="machine">unstable/5965</fr:addr><fr:route>unstable-5965.xml</fr:route><fr:title
 text="Representation independence in the heap (III)">Representation independence in the heap (III)</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>The theory of univalent reference types derives <fr:tex
 display="inline"><![CDATA[\vdash  \mathsf {posCounter} \equiv  \mathsf {negCounter}]]></fr:tex>.</fr:p><beamer:pause
 xmlns:beamer="http://ctan.org/pkg/beamer" />
@@ -705,8 +666,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6666</fr:anchor><fr:addr
-type="machine">unstable/5968</fr:addr><fr:route>unstable-5968.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6619</fr:anchor><fr:addr
+type="machine">unstable/5966</fr:addr><fr:route>unstable-5966.xml</fr:route><fr:title
 text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
   <fr:p>The function <fr:tex
 display="inline"><![CDATA[\mathsf {neg} \colon \mathsf {Integer}\to \mathsf {Integer}]]></fr:tex> is inverse to itself; therefore, apply <fr:strong>CELL UNIVALENCE</fr:strong> with <fr:tex
@@ -726,8 +687,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6668</fr:anchor><fr:addr
-type="machine">unstable/5969</fr:addr><fr:route>unstable-5969.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6621</fr:anchor><fr:addr
+type="machine">unstable/5967</fr:addr><fr:route>unstable-5967.xml</fr:route><fr:title
 text="Can we find a reasonable model of this theory???">Can we find a reasonable model of this theory???</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Let’s start with the non-univalent fragment (“guarded higher-order dynamic allocation”).</fr:p></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link
 href="jonmsterling.xml"
@@ -741,8 +702,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6669</fr:anchor><fr:addr
-type="machine">unstable/5970</fr:addr><fr:route>unstable-5970.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6622</fr:anchor><fr:addr
+type="machine">unstable/5968</fr:addr><fr:route>unstable-5968.xml</fr:route><fr:title
 text="Models of guarded higher order dynamic allocation">Models of guarded higher order dynamic allocation</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
 href="sterling-gratzer-birkedal-2022.xml"
 title="Denotational semantics of general store and polymorphism"
@@ -824,8 +785,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6670</fr:anchor><fr:addr
-type="machine">unstable/5971</fr:addr><fr:route>unstable-5971.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6623</fr:anchor><fr:addr
+type="machine">unstable/5969</fr:addr><fr:route>unstable-5969.xml</fr:route><fr:title
 text="Models of univalent reference types">Models of univalent reference types</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Our main observation is that a slight variation on <fr:link
 href="sterling-gratzer-birkedal-2022.xml"
 title="Denotational semantics of general store and polymorphism"
@@ -854,8 +815,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6671</fr:anchor><fr:addr
-type="machine">unstable/5972</fr:addr><fr:route>unstable-5972.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6624</fr:anchor><fr:addr
+type="machine">unstable/5970</fr:addr><fr:route>unstable-5970.xml</fr:route><fr:title
 text="Impredicative Guarded Homotopy Type Theory">Impredicative Guarded Homotopy Type Theory</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>We define <fr:strong>iGHoTT</fr:strong> to be the extension of Martin-Löf’s intensional type theory by the following additional features:</fr:p><fr:ol><fr:li>homotopy type theory: the univalence axiom</fr:li>
   <fr:li>guarded recursion: later modality <fr:tex
 display="inline"><![CDATA[\mathord {\blacktriangleright }]]></fr:tex> and solutions to guarded fixed points</fr:li>
@@ -876,8 +837,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6672</fr:anchor><fr:addr
-type="machine">unstable/5973</fr:addr><fr:route>unstable-5973.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6625</fr:anchor><fr:addr
+type="machine">unstable/5971</fr:addr><fr:route>unstable-5971.xml</fr:route><fr:title
 text="Models of iGDTT">Models of <fr:strong>iGDTT</fr:strong></fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
 href="palombi-sterling-2023.xml"
 title="Classifying topoi in synthetic guarded domain theory: the universal property of multi-clock guarded recursion"
@@ -911,8 +872,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6673</fr:anchor><fr:addr
-type="machine">unstable/5974</fr:addr><fr:route>unstable-5974.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6626</fr:anchor><fr:addr
+type="machine">unstable/5972</fr:addr><fr:route>unstable-5972.xml</fr:route><fr:title
 text="Towards models of iGHoTT">Towards models of <fr:strong>iGHoTT</fr:strong></fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>We have not gotten around to adapting the <fr:link
 href="sterling-gratzer-birkedal-2022.xml"
 title="Denotational semantics of general store and polymorphism"
@@ -954,8 +915,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6674</fr:anchor><fr:addr
-type="machine">unstable/5975</fr:addr><fr:route>unstable-5975.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6627</fr:anchor><fr:addr
+type="machine">unstable/5973</fr:addr><fr:route>unstable-5973.xml</fr:route><fr:title
 text="A more canonical model of iGHoTT?">A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Even if internal presheaves of assemblies on <fr:tex
 display="inline"><![CDATA[\square \times \mathbb {O}]]></fr:tex> works, the resulting model will be uncanonical from the <fr:tex
 display="inline"><![CDATA[{\mathopen {}\left (\infty ,1\right )\mathclose {}}]]></fr:tex>-categorical standpoint.</fr:p><fr:p>For example, if <fr:tex
@@ -978,8 +939,8 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6675</fr:anchor><fr:addr
-type="machine">unstable/5976</fr:addr><fr:route>unstable-5976.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6628</fr:anchor><fr:addr
+type="machine">unstable/5974</fr:addr><fr:route>unstable-5974.xml</fr:route><fr:title
 text="Comparing with other realisability models of state">Comparing with other realisability models of state</fr:title><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p><fr:link
 href="sterling-gratzer-birkedal-2022.xml"
 title="Denotational semantics of general store and polymorphism"
@@ -1014,15 +975,15 @@ type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link
 href="larsbirkedal.xml"
 title="Lars Birkedal"
 addr="larsbirkedal"
-type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6676</fr:anchor><fr:addr
-type="machine">unstable/5977</fr:addr><fr:route>unstable-5977.xml</fr:route><fr:title
+type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6629</fr:anchor><fr:addr
+type="machine">unstable/5975</fr:addr><fr:route>unstable-5975.xml</fr:route><fr:title
 text="" /><fr:taxon>Slide</fr:taxon></fr:frontmatter><fr:mainmatter><fr:p>Thanks!</fr:p></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>26742</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>26858</fr:anchor><fr:title
 text="Backlinks">Backlinks</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>26743</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>26859</fr:anchor><fr:title
 text="Related">Related</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree><fr:tree
 show-metadata="false"
-hidden-when-empty="true"><fr:frontmatter><fr:anchor>26744</fr:anchor><fr:title
+hidden-when-empty="true"><fr:frontmatter><fr:anchor>26860</fr:anchor><fr:title
 text="Contributions">Contributions</fr:title></fr:frontmatter><fr:mainmatter /></fr:tree></fr:backmatter></fr:tree>
