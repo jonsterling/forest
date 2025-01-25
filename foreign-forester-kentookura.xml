@@ -3,7 +3,7 @@
 <fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" root="false">
   <fr:frontmatter>
     <fr:authors />
-    <fr:anchor>17819</fr:anchor>
+    <fr:anchor>17827</fr:anchor>
     <fr:addr type="user">//forester/kentookura</fr:addr>
     <fr:route>foreign-forester-kentookura.xml</fr:route>
     <fr:title text="Kento Okura">Kento Okura</fr:title>
@@ -14,991 +14,22 @@
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>17799</fr:anchor>
+        <fr:anchor>17807</fr:anchor>
         <fr:title text="References">References</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>17800</fr:anchor>
+        <fr:anchor>17808</fr:anchor>
         <fr:title text="Context">Context</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>17807</fr:anchor>
+        <fr:anchor>17815</fr:anchor>
         <fr:title text="Backlinks">Backlinks</fr:title>
-      </fr:frontmatter>
-      <fr:mainmatter>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-              </fr:author>
-              <fr:contributor>
-                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-              </fr:contributor>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>10</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:anchor>17801</fr:anchor>
-            <fr:addr type="user">//forester/jms-011P</fr:addr>
-            <fr:route>foreign-forester-jms-011P.xml</fr:route>
-            <fr:title text="Forester 5.0 [TBA]">Forester 5.0 [TBA]</fr:title>
-            <fr:taxon>Prerelease</fr:taxon>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p>This is a major release of Forester that includes many changes under the hood, as well as breaking changes that will require manual adjustments to existing forests. What will be included in this release is not completely decided, so consider these release notes as an evolving document. My thanks to <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> and <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link> for conversations leading to the design of this release.</fr:p>
-            <fr:p>Many of the changes included here are meant to support the future of Forester as an authoring tool for a new kind of <fr:em>Internet of Mathematics</fr:em> that will enable the federation of many different forests by extending existing protocols with new hypermedia controls for content transclusion applicable to scientific authoring.</fr:p>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2819</fr:anchor>
-                <fr:addr type="user">//forester/jms-0126</fr:addr>
-                <fr:route>foreign-forester-jms-0126.xml</fr:route>
-                <fr:title text="Tl;dr: migration guide">Tl;dr: migration guide</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>To migrate your forest to <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>, do the following:</fr:p>
-                <fr:ol><fr:li>Add a <fr:code>host = "myforestname"</fr:code> line to your <fr:code>forest.toml</fr:code> (see <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">§ <fr:contextual-number addr="//forester/jms-011Q" /></fr:link>). Most users of Forester will use their own name as the host of their main forest, e.g. <fr:code>host = "jonmsterling"</fr:code>.</fr:li>
-  <fr:li>Remove all usage of <fr:code><![CDATA[\transclude/title]]></fr:code> and <fr:code><![CDATA[\transclude/taxon]]></fr:code> (see <fr:link href="foreign-forester-jms-011T.xml" title="Forester 5.0 [TBA] › removing transclusion overrides" addr="//forester/jms-011T" type="local">§ <fr:contextual-number addr="//forester/jms-011T" /></fr:link>).</fr:li>
-  <fr:li>In your <fr:code>forest.toml</fr:code> file, change the <fr:code>root = "xxx-NNNN"</fr:code> line to <fr:code>home = "xxx-NNNN"</fr:code>, where <fr:code>xxx-NNNN</fr:code> is the name of the tree that you wish to be routed to <fr:code>index.xml</fr:code> (see <fr:link href="foreign-forester-jms-0125.xml" title="Forester 5.0 [TBA] › renamed root to home" addr="//forester/jms-0125" type="local">§ <fr:contextual-number addr="//forester/jms-0125" /></fr:link>).</fr:li>
-  <fr:li>Any <fr:code><![CDATA[\author]]></fr:code> or <fr:code><![CDATA[\contributor]]></fr:code> attributions must take a tree address as their argument; when you wish to attribute a resource to a person who is not represented by a tree, you can use <fr:code><![CDATA[\author/literal{Somebody’s Name}]]></fr:code> or <fr:code><![CDATA[\contributor/literal{Somebody’s Name}]]></fr:code> (see <fr:link href="foreign-forester-jms-012N.xml" title="Forester 5.0 [TBA] › Changes to attribution links" addr="//forester/jms-012N" type="local">§ <fr:contextual-number addr="//forester/jms-012N" /></fr:link>).</fr:li>
-  <fr:li>Take into account the renaming of several built-in relations (see <fr:link href="foreign-forester-jms-013C.xml" title="Forester 5.0 [TBA] › new datalog-based query engine › renamed built-in relations" addr="//forester/jms-013C" type="local">§ <fr:contextual-number addr="//forester/jms-013C" /></fr:link>).</fr:li>
-  <fr:li>Begin rewriting any queries to use the new datalog engine (see <fr:link href="foreign-forester-jms-013A.xml" title="Forester 5.0 [TBA] › new datalog-based query engine" addr="//forester/jms-013A" type="local">§ <fr:contextual-number addr="//forester/jms-013A" /></fr:link>), as the legacy query engine will be removed in a subsequent release.</fr:li>
-  <fr:li>Begin dialing back your use of custom XML stylesheets (see <fr:link href="foreign-forester-jms-0127.xml" title="Forester 5.0 [TBA] › the future of Forester’s XML format" addr="//forester/jms-0127" type="local">§ <fr:contextual-number addr="//forester/jms-0127" /></fr:link>). It is possible that support for customisation at this level will be removed in a future release; if you have innovative customisations that are very important for your use of Forester, consider discussing them on the <fr:link href="mailto:~jonsterling/forester-discuss@lists.sr.ht" type="external">mailing list</fr:link> so that maintainers can better understand the problems you are solving.</fr:li></fr:ol>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2821</fr:anchor>
-                <fr:addr type="user">//forester/jms-011Q</fr:addr>
-                <fr:route>foreign-forester-jms-011Q.xml</fr:route>
-                <fr:title text="A URL scheme for tree addresses">A URL scheme for tree addresses</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Up until this release, Forester’s trees were addressed by short strings — which, by convention, might be of the form <fr:code>xxx-NNNN</fr:code> or some arbitrary string like <fr:code>sterling-2021-thesis</fr:code>. In order to prepare for the future in which multiple forests can be glued together, we replace Forester’s addresses with a <fr:link href="foreign-forester-jms-011R.xml" title="What do we mean by “URL”?" addr="//forester/jms-011R" type="local">URL</fr:link> scheme that incorporates a <fr:code>host</fr:code> that demarcates the current forest. A typical tree will then have an address like this:</fr:p>
-                <fr:pre><![CDATA[forest://host/xxx-NNNN]]></fr:pre>
-                <fr:p>The <fr:code>host</fr:code> is configured in your <fr:code>forest.toml</fr:code> file; for example:</fr:p>
-                <fr:pre><![CDATA[[forest]
-host = "jonmsterling"
-# ...]]></fr:pre>
-                <fr:p>When evaluating trees, addresses are always resolved against the base URL <fr:code>forest://host/</fr:code>. Therefore, a link to address <fr:code>xxx-NNNN</fr:code> in my own forest will be resolved to <fr:code>forest://jonmsterling/xxx-NNNN</fr:code>. Of course, you can also write fully resolved links (including to other forests, or to resources addressed under any other protocol). <html:mark xmlns:html="http://www.w3.org/1999/xhtml">It follows that existing internal links will continue to work fine without modification; for external links, the new implementation includes some syntactic validation, so it is possible that one or two links may need to be repaired.</html:mark></fr:p>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2024</fr:year>
-                      <fr:month>10</fr:month>
-                      <fr:day>20</fr:day>
-                    </fr:date>
-                    <fr:anchor>2820</fr:anchor>
-                    <fr:addr type="user">//forester/jms-011R</fr:addr>
-                    <fr:route>foreign-forester-jms-011R.xml</fr:route>
-                    <fr:title text="What do we mean by “URL”?">What do we mean by “URL”?</fr:title>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>Today, “URLs” are a mostly implementation-defined concept that can only be understood by looking at the source code of major web browsers; in the future, this may congeal into an actual standard but today is not that day (nor is tomorrow, if the state of the <fr:link href="https://url.spec.whatwg.org/" type="external"><fr:code>whatwg/url</fr:code> “living” [non-]standard</fr:link> is any indication). In the meanwhile, Forester is implementing URLs in terms of Internationalized Resource Identifiers (RFC 3987); this standard improves on URIs by supporting unicode identifiers, which we need at the outset. It is best to think of Forester’s adoption of RFC 3987 as provisional and subject to evolution as the Web continues to mature.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2822</fr:anchor>
-                <fr:addr type="user">//forester/jms-011T</fr:addr>
-                <fr:route>foreign-forester-jms-011T.xml</fr:route>
-                <fr:title text="Removing transclusion overrides">Removing transclusion overrides</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>In prior versions of Forester, it was possible to override the title and the taxon of a transcluded tree using the fluid bindings <fr:code><![CDATA[\transclude/title]]></fr:code> and <fr:code><![CDATA[\transclude/taxon]]></fr:code> respectively. This feature is no longer supported in <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>, and existing users are encouraged to purge their use of it prior to upgrading to <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>.</fr:p>
-                <fr:p>In short, supporting this feature was greatly complicating the planned transition to a genuine hypermedia format; it could also be argued that it might have led to scenarios where an original author’s intentions are violated at the transclusion site.</fr:p>
-                <fr:p>Please note that transclusion options, such as <fr:code><![CDATA[\transclude/expanded]]></fr:code>, etc., are still supported.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2823</fr:anchor>
-                <fr:addr type="user">//forester/jms-0125</fr:addr>
-                <fr:route>foreign-forester-jms-0125.xml</fr:route>
-                <fr:title text="Renamed root to home">Renamed <fr:code>root</fr:code> to <fr:code>home</fr:code></fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>In your forest’s configuration file, the <fr:code>root</fr:code> key was previously used to designate a particular tree as the home page which will be routed to <fr:code>index.xml</fr:code>. Calling this the “root” didn’t make sense, because it is not actually the root of the forest in most cases. This configuration key has been renamed to <fr:code>home</fr:code>.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2824</fr:anchor>
-                <fr:addr type="user">//forester/jms-012N</fr:addr>
-                <fr:route>foreign-forester-jms-012N.xml</fr:route>
-                <fr:title text="Changes to attribution links">Changes to attribution links</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>In prior versions, the <fr:code><![CDATA[\author]]></fr:code> and <fr:code><![CDATA[\contributor]]></fr:code> command would detect whether its contents were the address of a tree; if so, it would create a wikilink to the tree and otherwise, the included text would appear directly. This feature was convenient for smoothly handling the case that an author of a given resource is not represented in the forest by a biographical tree; the downside is that it makes the assumption that at compiletime we shall know the entire contents of the forest (and, thus, whether a given address shall be bound to a tree).</fr:p>
-                <fr:p>To simplify the handling of author links and make it compatible with the open-world future of Forester, the behaviour is changed as follows:</fr:p>
-                <fr:ol><fr:li>The argument to <fr:code><![CDATA[\author]]></fr:code> and <fr:code><![CDATA[\author]]></fr:code> <fr:em>must</fr:em> be a (possibly relative) <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">Forester URL</fr:link>. Thus, on my own forest, it would be OK to have either <fr:code><![CDATA[\author{jeanbénabou}]]></fr:code> or <fr:code><![CDATA[\author{forest://jonmsterling/jeanbénabou}]]></fr:code> but it would not be OK to have <fr:code><![CDATA[\author{Jean Bénabou}]]></fr:code>.</fr:li>
-  <fr:li>To make an unlinked attribution containing, use <fr:code><![CDATA[\author/literal{Jean Bénabou}]]></fr:code>.</fr:li></fr:ol>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2829</fr:anchor>
-                <fr:addr type="user">//forester/jms-013A</fr:addr>
-                <fr:route>foreign-forester-jms-013A.xml</fr:route>
-                <fr:title text="New datalog-based query engine">New datalog-based query engine</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>As the query engine has evolved, it has become a bit unwieldy and misshapen. In order to prevent further churn and facilitate the long-term development and use of Forester, we are replacing the query engine and graph analysis with a more general tool: <fr:em>datalog</fr:em>. With this change comes the ability to introduce arbitrary relations of any arity; this is a powerful and dangerous tool, so use it wisely.</fr:p>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2024</fr:year>
-                      <fr:month>10</fr:month>
-                      <fr:day>20</fr:day>
-                    </fr:date>
-                    <fr:anchor>2825</fr:anchor>
-                    <fr:addr type="user">//forester/jms-013B</fr:addr>
-                    <fr:route>foreign-forester-jms-013B.xml</fr:route>
-                    <fr:title text="On performance trade-offs">On performance trade-offs</fr:title>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>Switching to datalog makes forests that make heavy use of queries a bit slower to render. We considered this trade-off carefully, but believe that for the long-term health of Forester, this is acceptable. In the near future, Forester will render trees on demand rather than all at once (except when you are preparing a static archive for upload/deployment); in this mode of use, Forester will be faster than ever.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2024</fr:year>
-                      <fr:month>10</fr:month>
-                      <fr:day>20</fr:day>
-                    </fr:date>
-                    <fr:anchor>2826</fr:anchor>
-                    <fr:addr type="user">//forester/jms-013C</fr:addr>
-                    <fr:route>foreign-forester-jms-013C.xml</fr:route>
-                    <fr:title text="Renamed built-in relations">Renamed built-in relations</fr:title>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>Forester’s built-in binary relations have been accessible via macros like <fr:code><![CDATA[\rel/authors]]></fr:code>, etc. In this release, these relations are being renamed to make them more pleasant and consistent to use with datalog.</fr:p>
-                    <html:table xmlns:html="http://www.w3.org/1999/xhtml">
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:th xmlns:html="http://www.w3.org/1999/xhtml">Old name</html:th>
-    <html:th xmlns:html="http://www.w3.org/1999/xhtml">New name</html:th>
-   </html:tr>
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/tags</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-tag</fr:code></html:td>
-   </html:tr>
-  
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/taxa</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-taxon</fr:code></html:td>
-   </html:tr>
-  
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/authors</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-author</fr:code></html:td>
-   </html:tr>
-  
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/contributors</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-direct-contributor</fr:code></html:td>
-   </html:tr>
-  
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/transclusion</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/transcludes</fr:code></html:td>
-   </html:tr>
-  
-   
-   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/links</fr:code></html:td>
-    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/links-to</fr:code></html:td>
-   </html:tr>
-  
-  </html:table>
-                  </fr:mainmatter>
-                </fr:tree>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2024</fr:year>
-                      <fr:month>10</fr:month>
-                      <fr:day>20</fr:day>
-                    </fr:date>
-                    <fr:anchor>2827</fr:anchor>
-                    <fr:addr type="user">//forester/jms-013D</fr:addr>
-                    <fr:route>foreign-forester-jms-013D.xml</fr:route>
-                    <fr:title text="New built-in relations">New built-in relations</fr:title>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>A few new built-in relations have been added.</fr:p>
-                    <fr:ul><fr:li><fr:code><![CDATA[\]]>rel/is-node ?X</fr:code> is a unary relation that holds for <fr:em>any</fr:em> tree address <fr:code>?X</fr:code>. This is needed when specifying reflexive binary relations: the clause <fr:code>R ?X ?X -:</fr:code> is not allowed by datalog, so one must use <fr:code><![CDATA[R ?X ?X -: {\rel/is-node X}]]></fr:code>.</fr:li>
-   <fr:li><fr:code><![CDATA[\]]>rel/transcludes/transitive-closure</fr:code> is the transitive closure of <fr:code><![CDATA[\]]>rel/transcludes</fr:code>.</fr:li>
-   <fr:li><fr:code><![CDATA[\]]>rel/transcludes/reflexive-transitive-closure</fr:code> is the <fr:em>reflexive</fr:em> transitive closure of <fr:code><![CDATA[\]]>rel/transcludes</fr:code>.</fr:li>
-   <fr:li><fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> holds when <fr:code>?X</fr:code> is designated as a reference/bibliographical tree. Currently, the built-in rules of the database deduce <fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> for any tree <fr:code>?X</fr:code> with taxon <fr:code>reference</fr:code>. The purpose of abstracting from the taxon is to enable non-English users of Forester to benefit from the computation of bibliographies.</fr:li>
-   <fr:li>Similarly, <fr:code><![CDATA[\]]>rel/is-person ?X</fr:code> holds when <fr:code>?X</fr:code> is designated as a personal/biographical tree. Currently, the built-in rules of the database deduce <fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> for any tree <fr:code>?X</fr:code> with taxon <fr:code>person</fr:code>.</fr:li>
-   <fr:li><fr:code><![CDATA[\]]>rel/in-bundle-closure ?X ?Y</fr:code> is the reflexive transitive closure of the union of the transclusion relation with the relation of <fr:code>?X</fr:code> requiring the asset <fr:code>?Y</fr:code>. The purpose of this relation is to easily bundle up fragments of a forest (see <fr:link href="foreign-forester-fr-30FN.xml" title="Forester 5.0 [TBA] › publishing and implanting forests" addr="//forester/fr-30FN" type="local">§ <fr:contextual-number addr="//forester/fr-30FN" /></fr:link>).</fr:li></fr:ul>
-                    <fr:p>All of these built-in relations can be defined in Forester’s dialect of datalog; they are predefined for convenience, and because they are used in the computation of backmatter.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2024</fr:year>
-                      <fr:month>10</fr:month>
-                      <fr:day>20</fr:day>
-                    </fr:date>
-                    <fr:anchor>2828</fr:anchor>
-                    <fr:addr type="user">//forester/jms-013E</fr:addr>
-                    <fr:route>foreign-forester-jms-013E.xml</fr:route>
-                    <fr:title text="An example datalog query">An example datalog query</fr:title>
-                    <fr:taxon>Example</fr:taxon>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>In order to illustrate the use of the datalog engine, I will show how to construct a query that will find all the trees with taxon <fr:code>reference</fr:code> written by <fr:code>jonmsterling</fr:code> that are tagged either <fr:code>accepted</fr:code> or <fr:code>refereed</fr:code>. The first thing we must do is define the smallest relation containing all trees tagged <fr:code>accepted</fr:code> or <fr:code>refereed</fr:code>; this is done by adding clauses to the database as follows.</fr:p>
-                    <fr:p>First we define the name of a relation. In the current release, relations are global strings and there is no facility to generate a “fresh” one; that may change in the future.</fr:p>
-                    <fr:pre><![CDATA[\let\rel/accepted-or-refereed{jonmsterling.query.bibliography.accepted-or-refereed}]]></fr:pre>
-                    <fr:p>Next, we add two defining clauses for our relation. In what follows, <fr:code><![CDATA[\datalog]]></fr:code> simply delimits content that should be parsed as a datalog expression, and <fr:code><![CDATA[\execute]]></fr:code> instructs Forester to execute the datalog expression.</fr:p>
-                    <fr:pre><![CDATA[\execute\datalog{
- \rel/accepted-or-refereed ?X -: {\rel/has-tag ?X '{refereed}}
-}
-
-\execute\datalog{
- \rel/accepted-or-refereed ?X -: {\rel/has-tag ?X '{accepted}}
-}]]></fr:pre>
-                    <fr:p>The left-hand side of the reversed turnstile <fr:code>-:</fr:code> is a proposition representing the <fr:em>goal</fr:em>; the right hand side is given by propositions representing the premises, each surrounded in braces and separated by whitespace. Metavariables are written with a question mark sigil. Literal content is embedded into a datalog proposition by surrounding it in <fr:code>'{...}</fr:code>; we will see that literal content is one kind of vertex in the graph database.</fr:p>
-                    <fr:p>Now that we have actually defined the relation that we will use, we can run a query:</fr:p>
-                    <fr:pre><![CDATA[\query\datalog{
- ?X -:
-   {\rel/has-author ?X @{jonmsterling}}
-   {\rel/is-reference ?X}
-   {\rel/accepted-or-refereed ?X}
- }]]></fr:pre>
-                    <fr:p>The structure of a query identifies the metavariable being solved behind the turnstile, and then lists the clauses that must hold. Whereas a content vertex is addressed via <fr:code>'{...}</fr:code>, a <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">URL vertex</fr:link> is addressed using <fr:code>@{...}</fr:code>.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-                <fr:p>
-                  <html:mark xmlns:html="http://www.w3.org/1999/xhtml">The old query engine is deprecated as of this release and will be removed in a subsequent release.</html:mark>
-                </fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2830</fr:anchor>
-                <fr:addr type="user">//forester/fr-30FN</fr:addr>
-                <fr:route>foreign-forester-fr-30FN.xml</fr:route>
-                <fr:title text="Publishing and implanting forests">Publishing and implanting forests</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Forester now includes the ability to “publish” a portion of your forest to a JSON blob that can be read by Forester and implanted into another forest. For example, if you include the following code in a tree within your forest, then a file will be emitted at <fr:code>publications/my-forest.json</fr:code> containing the compiled content of your entire forest, together with all the assets:</fr:p>
-                <fr:pre><![CDATA[\publish-query{my-forest}{
- \datalog{
-  ?X -: {\rel/is-node ?X}
- }
-}]]></fr:pre>
-                <fr:p>Of course, more sophisticated queries can be used. For example, you can emit all the items tagged <fr:code>public</fr:code> together with anything they (transitively) transclude and any assets they require as follows:</fr:p>
-                <fr:pre><![CDATA[\publish-query{my-public-forest}{
- \datalog{
-   ?X -: {\rel/has-tag ?Z '{public}} {\rel/in-bundle-closure ?Z ?X}
- }
-}]]></fr:pre>
-                <fr:p>To implant the resulting JSON file into another forest, simply copy over the file and add the following line to your configuration file:</fr:p>
-                <fr:pre><![CDATA[foreign = ["my-public-forest.json"]]]></fr:pre>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2831</fr:anchor>
-                <fr:addr type="user">//forester/jms-0127</fr:addr>
-                <fr:route>foreign-forester-jms-0127.xml</fr:route>
-                <fr:title text="The future of Forester’s XML format">The future of Forester’s XML format</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Forester currently emits archival-quality output in a custom XML format that is then interpreted using an XSLT stylesheet (as part of the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">“theme”</fr:link>). This format has served us well, enabling users to customise the presentation of their forests to a great degree. An added benefit of the XML format is to be able to easily convert a tree to LaTeX using another stylesheet.</fr:p>
-                <fr:p>However, the constantly changing XML format has been an equally frustrating source of churn for users of Forester, and I have for some time now been warning users who customise their theme that these customisations are technically possible but <fr:em>not</fr:em> supported (i.e. we make no promise not to break them).</fr:p>
-                <fr:p>The time is coming when Forester’s interaction model and output format will be changed <fr:em>drastically</fr:em>; rest assured that the core principles behind Forester (including the ability to generate static archival output that can be hosted anywhere) will be retained. We aim to become a better citizen of the World Wide Web by moving toward a more standard hypermedia format.</fr:p>
-                <fr:p>One possiblity is to extend HTML with just the hypermedia controls and embedded microformats needed for Forester’s operation. This re-coupling of presentation and data would, paradoxically, facilitate Forester to evolve more rapidly over time while simultaneously increasing the longevity of forests that have been compiled using older versions of the tool.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-              </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>6</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:anchor>17802</fr:anchor>
-            <fr:addr type="user">//forester/jms-00WL</fr:addr>
-            <fr:route>foreign-forester-jms-00WL.xml</fr:route>
-            <fr:title text="Forester 4.2 › intermediate representation of the XML format"><fr:link href="foreign-forester-jms-00WK.xml" title="Forester 4.2" addr="//forester/jms-00WK" type="local">Forester 4.2</fr:link> › intermediate representation of the XML format</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p>Forester’s primary output format is XML, rendered live in the browser to HTML using an XSLT stylesheet. Although this will continue to be the main output format, together with <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> as well as our friends from the Topos Institute I am hoping to explore richer <fr:link href="https://hypermedia.systems/" type="external"><fr:em>hypermedia</fr:em></fr:link> interfaces for <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link> that could transcend the limitations of static HTML output.</fr:p>
-            <fr:p>In order to support multiple backends without creating a log of code churn, I have created an OCaml abstraction of the XML format that will serve as a “source of truth” for Forester’s output — which can be serialised directly to XML, or rendered in a different way (e.g. as HTML or <fr:link href="https://htmx.org/" type="external">htmx</fr:link> emitted by a hypermedia server).</fr:p>
-            <fr:p>With this change, I would expect Forester’s XML format to begin to change less and less over time, perhaps culminating in a versioned schema. I do not, however, guarantee that I will not make breaking changes to the format going forward.</fr:p>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-              </fr:author>
-              <fr:contributor>
-                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-              </fr:contributor>
-              <fr:contributor>
-                <fr:link href="foreign-forester-treborhuang.xml" title="Trebor Huang" addr="//forester/treborhuang" type="local">Trebor Huang</fr:link>
-              </fr:contributor>
-              <fr:contributor>
-                <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>
-              </fr:contributor>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>6</fr:month>
-              <fr:day>15</fr:day>
-            </fr:date>
-            <fr:anchor>17803</fr:anchor>
-            <fr:addr type="user">//forester/jms-00S9</fr:addr>
-            <fr:route>foreign-forester-jms-00S9.xml</fr:route>
-            <fr:title text="Forester 4.1">Forester 4.1</fr:title>
-            <fr:taxon>Release</fr:taxon>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p>Special thanks to <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>, <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>, and <fr:link href="foreign-forester-treborhuang.xml" title="Trebor Huang" addr="//forester/treborhuang" type="local">Trebor Huang</fr:link> for their contributions to this release.</fr:p>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                  <fr:contributor>
-                    <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-                  </fr:contributor>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2439</fr:anchor>
-                <fr:addr type="user">//forester/jms-00U0</fr:addr>
-                <fr:route>foreign-forester-jms-00U0.xml</fr:route>
-                <fr:title text="New forester init command">New <fr:code>forester init</fr:code> command</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>To make it easier to set up a new forest, we have added a <fr:code>forester init</fr:code> command; when you run this command in an empty directory, it will initialise a git repository with a submodule for the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">default theme</fr:link> pinned to the correct release, and a <fr:link href="foreign-forester-jms-00RG.xml" title="Forester 4.0 › forest configuration via TOML" addr="//forester/jms-00RG" type="local">configuration file</fr:link>.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2440</fr:anchor>
-                <fr:addr type="user">//forester/jms-00WA</fr:addr>
-                <fr:route>foreign-forester-jms-00WA.xml</fr:route>
-                <fr:title text="Rendering only a subset of the forest">Rendering only a subset of the forest</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>A new option has been added to the <fr:code>forester build</fr:code> command to render only certain trees. For example, the following command will render only the trees at addresses <fr:code>xxx-MMMM</fr:code> and <fr:code>yyy-NNNN</fr:code>:</fr:p>
-                <fr:pre>forester build forest.toml --render-only=xxx-MMMM,yyy-NNNN</fr:pre>
-                <fr:p>Note that in order to maintain a correct graph analysis, the entire forest will nonetheless be <fr:em>evaluated</fr:em>. As rendering is the slowest part of the process, however, this option can still save a lot of time. In the future it could be useful to have a more sophisticated option that renders (e.g.) all children of a given tree, etc.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2441</fr:anchor>
-                <fr:addr type="user">//forester/jms-00SP</fr:addr>
-                <fr:route>foreign-forester-jms-00SP.xml</fr:route>
-                <fr:title text="Changed behaviour of queries">Changed behaviour of queries</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Forester’s <fr:link href="foreign-forester-jms-0066.xml" title="Forester 2.2 › queries" addr="//forester/jms-0066" type="local">rudimentary support for queries</fr:link> has been simplified somewhat. Previously, the results of a query would be gathered and, if non-empty, placed underneath an anonymous subtree (whose title could be modified using <fr:link href="foreign-forester-jms-0067.xml" title="Forester 2.2 › flexible transclusion options" addr="//forester/jms-0067" type="local">transclusion options</fr:link>).</fr:p>
-                <fr:p>In light of the <fr:link href="foreign-forester-jms-00O4.xml" title="Forester 3.1 › inline subtrees" addr="//forester/jms-00O4" type="local">user-level support for anonymous subtrees</fr:link> introduced in <fr:link href="foreign-forester-jms-00HY.xml" title="Forester 3.1" addr="//forester/jms-00HY" type="local">Forester 3.1</fr:link>, the behaviour of queries has been simplified: the results of a query are simply transcluded directly without being enclosed in a subtree.</fr:p>
-                <fr:p>Although the new behaviour is simpler, it is no longer possible to have a query subtree that is hidden when it returns no results. Users should treat the querying feature as highly provisional, and subject to change and even potential removal.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2442</fr:anchor>
-                <fr:addr type="user">//forester/jms-00SQ</fr:addr>
-                <fr:route>foreign-forester-jms-00SQ.xml</fr:route>
-                <fr:title text="Addresses for anonymous trees">Addresses for anonymous trees</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Previously, a subtree could be emitted without any address; this greatly complicated the logic of the graph analysis, <fr:link href="foreign-forester-jms-00O3.xml" title="Forester 3.1 › designated parents" addr="//forester/jms-00O3" type="local">designated parents</fr:link>, and other things. Now, emitting an anonymous subtree generates a fresh address in a separate namespace; as a result, these trees get rendered to their own XML file. Naturally, an anonymous subtree cannot be linked to or transcluded, but it can now participate properly in the graph analysis.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                  <fr:contributor>
-                    <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>
-                  </fr:contributor>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2443</fr:anchor>
-                <fr:addr type="user">//forester/jms-00SA</fr:addr>
-                <fr:route>foreign-forester-jms-00SA.xml</fr:route>
-                <fr:title text="Incremental parsing">Incremental parsing</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Menhir’s incremental parsing API is adopted in order to make the parser more resiliant to syntax errors. The goal is to support language server protocol diagnostics in a future release.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>6</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2444</fr:anchor>
-                <fr:addr type="user">//forester/jms-00WG</fr:addr>
-                <fr:route>foreign-forester-jms-00WG.xml</fr:route>
-                <fr:title text="Dependency audit">Dependency audit</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>In recent releases, Forester has become increasingly dependent on various system packages (including openssl) via transitive dependencies. This has caused a great deal of build breakage for both our developers and users, so we decided to remove all but the most critical dependencies to avoid losing control of things. Experimental tools that rely on more system dependencies that are likely to cause build breakage can be created, but only outside the main <fr:code>forester</fr:code> package.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-              </fr:author>
-              <fr:contributor>
-                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-              </fr:contributor>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>3</fr:month>
-              <fr:day>9</fr:day>
-            </fr:date>
-            <fr:anchor>17804</fr:anchor>
-            <fr:addr type="user">//forester/jms-00O5</fr:addr>
-            <fr:route>foreign-forester-jms-00O5.xml</fr:route>
-            <fr:title text="Forester 3.1 › new forester query command"><fr:link href="foreign-forester-jms-00HY.xml" title="Forester 3.1" addr="//forester/jms-00HY" type="local">Forester 3.1</fr:link> › new <fr:code>forester query</fr:code> command</fr:title>
-            <fr:taxon>Feature</fr:taxon>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p><fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> has implemented a new <fr:code>forester query</fr:code> command that may be useful for creating external editor tooling; currently it is possible to query for lists of all prefixes (the <fr:code>xxx</fr:code> in <fr:code>xxx-NNNN</fr:code>), tags, and taxa. Please run <fr:code>forester query --help</fr:code> for more information.</fr:p>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-              </fr:author>
-              <fr:contributor>
-                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-              </fr:contributor>
-              <fr:contributor>
-                <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>
-              </fr:contributor>
-              <fr:contributor>
-                <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link>
-              </fr:contributor>
-              <fr:contributor>
-                <fr:link href="foreign-forester-favonia.xml" title="Kuen-Bang Hou (Favonia)" addr="//forester/favonia" type="local">Kuen-Bang Hou (Favonia)</fr:link>
-              </fr:contributor>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2023</fr:year>
-              <fr:month>11</fr:month>
-              <fr:day>3</fr:day>
-            </fr:date>
-            <fr:anchor>17805</fr:anchor>
-            <fr:addr type="user">//forester/jms-00CW</fr:addr>
-            <fr:route>foreign-forester-jms-00CW.xml</fr:route>
-            <fr:title text="Forester 3.0">Forester 3.0</fr:title>
-            <fr:taxon>Release</fr:taxon>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p>This is a major breaking release; some surgery may be required on existing <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link>. Thanks to Favonia, <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>, <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>, and <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link> for their contributions to this release. Thanks also to Adrien Guatto for bug reports.</fr:p>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>11</fr:month>
-                  <fr:day>3</fr:day>
-                </fr:date>
-                <fr:anchor>2878</fr:anchor>
-                <fr:addr type="user">//forester/jms-00CX</fr:addr>
-                <fr:route>foreign-forester-jms-00CX.xml</fr:route>
-                <fr:title text="Proper diagnostics with source locations">Proper diagnostics with source locations</fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> adds proper diagnostics and error messages, via the excellent <fr:link href="https://ocaml.org/p/asai/latest" type="external">asai</fr:link> library maintained by <fr:link href="foreign-forester-favonia.xml" title="Kuen-Bang Hou (Favonia)" addr="//forester/favonia" type="local">Favonia</fr:link>. When something goes wrong in your forest, the terminal output should expain what happened while displaying the precise location in your source file.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>11</fr:month>
-                  <fr:day>19</fr:day>
-                </fr:date>
-                <fr:anchor>2879</fr:anchor>
-                <fr:addr type="user">//forester/jms-00EY</fr:addr>
-                <fr:route>foreign-forester-jms-00EY.xml</fr:route>
-                <fr:title text="Experimental support for objects">Experimental support for objects</fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>To facilitate the development of extensible macro libraries for diagramming and other tasks, <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> introduces experimental support for <fr:em>objects</fr:em> — which should be thought of as combination of records/structs, closures, and general recursion. An object is created like so:</fr:p>
-                <fr:pre><![CDATA[\def\my-object{
-  \object[self]{
-    [method1]{
-      the implementation of this method
-    }
-    [method2]{
-      the implementation of another method
-      \self#method1
-    }
-  }
-}]]></fr:pre>
-                <fr:p>The variable <fr:code>self</fr:code> is explicitly bound, and can be bound to any name you like. Methods currently are not allowed to take any arguments, but this may change in the future. A primitive form of inheritance is supported, using <fr:code><![CDATA[\patch]]></fr:code>:</fr:p>
-                <fr:pre><![CDATA[\patch{\my-object}[self]{
-  [method1]{
-    \self/super#method1
-    some further code
-  }
-}]]></fr:pre>
-                <fr:p>The support for objects in <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> is extremely experimental and preliminary: users are discouraged from relying on it.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>11</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:anchor>2880</fr:anchor>
-                <fr:addr type="user">//forester/jms-00F0</fr:addr>
-                <fr:route>foreign-forester-jms-00F0.xml</fr:route>
-                <fr:title text="Improvements to date handling">Improvements to date handling</fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> improves support for journaling with date-specific trees. When a tree is dated <fr:code>YYYY-MM-DD</fr:code> and there exists a tree at address <fr:code>YYYY-MM-DD</fr:code>, the date field will be hyperlinked to the latter. This involves changes to both the executable and the XSL stylesheet of the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">base theme</fr:link>. The purpose of this change is to better facilitate daily notes / journaling.</fr:p>
-                <fr:p>Additionally, Forester’s data model now allows <fr:em>multiple</fr:em> dates to be assigned to a single tree simultaneously.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>11</fr:month>
-                  <fr:day>22</fr:day>
-                </fr:date>
-                <fr:anchor>2881</fr:anchor>
-                <fr:addr type="user">//forester/jms-00FI</fr:addr>
-                <fr:route>foreign-forester-jms-00FI.xml</fr:route>
-                <fr:title text="Nix support">Nix support</fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> comes with a <fr:link href="https://nixos.wiki/wiki/Flakes" type="external">nix flake</fr:link>
-for easy integration with nix-based systems. Users of nix can try
-forester without installing the ocaml toolchain by running
-<fr:code>nix run sourcehut:~jonsterling/ocaml-forester</fr:code>.</fr:p>
-                <fr:p>To create a development shell with <fr:code>forester</fr:code> and LaTeX dependencies,
-create a file named <fr:code>flake.nix</fr:code> with the following content:</fr:p>
-                <fr:pre><![CDATA[{
- inputs = {
-   forester = {
-     url = "sourcehut:~jonsterling/ocaml-forester";
-   };
-   flake-utils.url = "github:numtide/flake-utils";
- };
- outputs =
-   { self
-   , flake-utils
-   , nixpkgs
-   , forester
-   }:
-   flake-utils.lib.eachDefaultSystem
-     (system:
-     let
-       pkgs = import nixpkgs { inherit system; };
-       legacyPackages = import forester.legacyPackages.${system};
-     in
-     {
-       devShell =
-         pkgs.mkShell {
-           buildInputs = with pkgs; [
-             forester.packages.${system}.default
-             texlive.combined.scheme-full
-             fswatch
-           ];
-         };
-     });
-}]]></fr:pre>
-                <fr:p>and run <fr:code>nix develop</fr:code>.</fr:p>
-                <fr:p>The <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">default template</fr:link> now ships with a flake and an <fr:link href="https://direnv.net/" type="external">envrc</fr:link>. If you created your forest using this template and would like to use direnv, simply copy <fr:code>flake.nix</fr:code> and <fr:code>.envrc</fr:code> to your forest base directory.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                  <fr:author>
-                    <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>12</fr:month>
-                  <fr:day>2</fr:day>
-                </fr:date>
-                <fr:anchor>2882</fr:anchor>
-                <fr:addr type="user">//forester/jms-00G7</fr:addr>
-                <fr:route>foreign-forester-jms-00G7.xml</fr:route>
-                <fr:title text="Lightweight templating in forester new">Lightweight templating in <fr:code>forester new</fr:code></fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> adds a new <fr:code>--template</fr:code> option to the <fr:code>forester new</fr:code> command. Running <fr:code>forester new --template xxx-0001</fr:code> will create a new tree with the contents of the existing tree <fr:code>xxx-0001</fr:code>.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                  <fr:author>
-                    <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>12</fr:month>
-                  <fr:day>13</fr:day>
-                </fr:date>
-                <fr:anchor>2883</fr:anchor>
-                <fr:addr type="user">//forester/jms-00GG</fr:addr>
-                <fr:route>foreign-forester-jms-00GG.xml</fr:route>
-                <fr:title text="Support for randomised tree identifiers in forester new">Support for randomised tree identifiers in <fr:code>forester new</fr:code></fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>The <fr:code>forester new</fr:code> has a new <fr:code>--random</fr:code> flag; when activated, the new tree will be allocated with a <fr:em>randomised</fr:em> unused tree identifier rather than the usual sequential tree identifier. This can be useful for projects that have multiple collaborators, although in this case, users are generally advised to claim their own namespaces.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>12</fr:month>
-                  <fr:day>15</fr:day>
-                </fr:date>
-                <fr:anchor>2884</fr:anchor>
-                <fr:addr type="user">//forester/jms-00GL</fr:addr>
-                <fr:route>foreign-forester-jms-00GL.xml</fr:route>
-                <fr:title text="Custom static assets directories">Custom static assets directories</fr:title>
-                <fr:taxon>Feature</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>A new <fr:code>--assets-dirs</fr:code> option has been added to the <fr:code>forester build</fr:code> command, which can be used to supply multiple directories containing static assets that should be copied into the forest. By default, the option is set to <fr:code>assets</fr:code>.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2023</fr:year>
-                  <fr:month>11</fr:month>
-                  <fr:day>3</fr:day>
-                </fr:date>
-                <fr:anchor>2887</fr:anchor>
-                <fr:addr type="user">//forester/jms-00CY</fr:addr>
-                <fr:route>foreign-forester-jms-00CY.xml</fr:route>
-                <fr:title text="Breaking changes">Breaking changes</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> introduces a number of breaking changes to the source language in order to facilitate maintainability, diagnostic support, and extensibility of both the Forester tool and your individual <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link>.</fr:p>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2023</fr:year>
-                      <fr:month>11</fr:month>
-                      <fr:day>3</fr:day>
-                    </fr:date>
-                    <fr:anchor>2885</fr:anchor>
-                    <fr:addr type="user">//forester/jms-00CZ</fr:addr>
-                    <fr:route>foreign-forester-jms-00CZ.xml</fr:route>
-                    <fr:title text="Fall-through of undefined identifiers">Fall-through of undefined identifiers</fr:title>
-                    <fr:taxon>Change</fr:taxon>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>The fall-through for undefined identifiers in XML mode is removed in <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link>: previously when an identifier <fr:code><![CDATA[\foo]]></fr:code> was undefined, it was possible to write <fr:code><![CDATA[\foo[attr]{value}{body}]]></fr:code> and have this be rendered in XML to <fr:code><![CDATA[<foo attr="value">body</foo>]]></fr:code>.</fr:p>
-                    <fr:p>This behavior has been removed, but you can nonetheless write <fr:code><![CDATA[\xml{foo}[attr]{value}{body}]]></fr:code> to achieve the same. For content that is being rendered by either LaTeX or KaTeX, simple fallthrough (naturally without attributes or arguments) is supported; therefore <fr:code><![CDATA[#{\alpha}]]></fr:code> will render to <fr:tex display="inline"><![CDATA[\alpha ]]></fr:tex>.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-                <fr:tree show-metadata="false">
-                  <fr:frontmatter>
-                    <fr:authors>
-                      <fr:author>
-                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
-                      </fr:author>
-                    </fr:authors>
-                    <fr:date>
-                      <fr:year>2023</fr:year>
-                      <fr:month>11</fr:month>
-                      <fr:day>3</fr:day>
-                    </fr:date>
-                    <fr:anchor>2886</fr:anchor>
-                    <fr:addr type="user">//forester/jms-00D0</fr:addr>
-                    <fr:route>foreign-forester-jms-00D0.xml</fr:route>
-                    <fr:title text="Primitive formatting commands">Primitive formatting commands</fr:title>
-                    <fr:taxon>Change</fr:taxon>
-                  </fr:frontmatter>
-                  <fr:mainmatter>
-                    <fr:p>As a consequence of the <fr:link href="foreign-forester-jms-00CZ.xml" title="Forester 3.0 › breaking changes › fall-through of undefined identifiers" addr="//forester/jms-00CZ" type="local">changed fallthrough behavior</fr:link>, several new primitives have been added to the source language, including <fr:code><![CDATA[\p]]></fr:code>, <fr:code><![CDATA[\em]]></fr:code>, <fr:code><![CDATA[\strong]]></fr:code>, <fr:code><![CDATA[\ol]]></fr:code>, <fr:code><![CDATA[\ul]]></fr:code>, <fr:code><![CDATA[\li]]></fr:code>, <fr:code><![CDATA[\blockquote]]></fr:code>, and <fr:code><![CDATA[\pre]]></fr:code>.</fr:p>
-                    <fr:p>You can add further commands to your primitives using a combination of <fr:code><![CDATA[\def]]></fr:code>, <fr:code><![CDATA[\iftex]]></fr:code>, and <fr:code><![CDATA[\xml]]></fr:code>.</fr:p>
-                  </fr:mainmatter>
-                </fr:tree>
-              </fr:mainmatter>
-            </fr:tree>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors />
-            <fr:anchor>17806</fr:anchor>
-            <fr:addr type="user">//forester/index</fr:addr>
-            <fr:route>foreign-forester-index.xml</fr:route>
-            <fr:title text="Forester">Forester</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p><fr:em>Forester</fr:em> is a tool for authoring, exploring, and sharing scientific and mathematical hypertexts. It is your lab notebook, your journal, your blackboard, and the home of your lecture notes.</fr:p>
-            <fr:p>Forester is maintained by <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link> and <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>.</fr:p>
-            <fr:ul><fr:li><fr:link href="foreign-forester-jms-0065.xml" title="Project information" addr="//forester/jms-0065" type="local">Project information</fr:link></fr:li>
-  <fr:li><fr:link href="foreign-forester-fr-30FM.xml" title="Blog" addr="//forester/fr-30FM" type="local">Forester blog</fr:link></fr:li>
-  <fr:li><fr:link href="foreign-forester-jms-005P.xml" title="Release notes" addr="//forester/jms-005P" type="local">Release notes</fr:link></fr:li></fr:ul>
-          </fr:mainmatter>
-        </fr:tree>
-      </fr:mainmatter>
-    </fr:tree>
-    <fr:tree show-metadata="false" hidden-when-empty="true">
-      <fr:frontmatter>
-        <fr:anchor>17808</fr:anchor>
-        <fr:title text="Related">Related</fr:title>
-      </fr:frontmatter>
-      <fr:mainmatter />
-    </fr:tree>
-    <fr:tree show-metadata="false" hidden-when-empty="true">
-      <fr:frontmatter>
-        <fr:anchor>17818</fr:anchor>
-        <fr:title text="Contributions">Contributions</fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
@@ -1412,6 +443,975 @@ host = "jonmsterling"
               <fr:author>
                 <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
               </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>6</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:anchor>17810</fr:anchor>
+            <fr:addr type="user">//forester/jms-00WL</fr:addr>
+            <fr:route>foreign-forester-jms-00WL.xml</fr:route>
+            <fr:title text="Forester 4.2 › intermediate representation of the XML format"><fr:link href="foreign-forester-jms-00WK.xml" title="Forester 4.2" addr="//forester/jms-00WK" type="local">Forester 4.2</fr:link> › intermediate representation of the XML format</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>Forester’s primary output format is XML, rendered live in the browser to HTML using an XSLT stylesheet. Although this will continue to be the main output format, together with <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> as well as our friends from the Topos Institute I am hoping to explore richer <fr:link href="https://hypermedia.systems/" type="external"><fr:em>hypermedia</fr:em></fr:link> interfaces for <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link> that could transcend the limitations of static HTML output.</fr:p>
+            <fr:p>In order to support multiple backends without creating a log of code churn, I have created an OCaml abstraction of the XML format that will serve as a “source of truth” for Forester’s output — which can be serialised directly to XML, or rendered in a different way (e.g. as HTML or <fr:link href="https://htmx.org/" type="external">htmx</fr:link> emitted by a hypermedia server).</fr:p>
+            <fr:p>With this change, I would expect Forester’s XML format to begin to change less and less over time, perhaps culminating in a versioned schema. I do not, however, guarantee that I will not make breaking changes to the format going forward.</fr:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="foreign-forester-treborhuang.xml" title="Trebor Huang" addr="//forester/treborhuang" type="local">Trebor Huang</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>6</fr:month>
+              <fr:day>15</fr:day>
+            </fr:date>
+            <fr:anchor>17811</fr:anchor>
+            <fr:addr type="user">//forester/jms-00S9</fr:addr>
+            <fr:route>foreign-forester-jms-00S9.xml</fr:route>
+            <fr:title text="Forester 4.1">Forester 4.1</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>Special thanks to <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>, <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>, and <fr:link href="foreign-forester-treborhuang.xml" title="Trebor Huang" addr="//forester/treborhuang" type="local">Trebor Huang</fr:link> for their contributions to this release.</fr:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                  <fr:contributor>
+                    <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+                  </fr:contributor>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2439</fr:anchor>
+                <fr:addr type="user">//forester/jms-00U0</fr:addr>
+                <fr:route>foreign-forester-jms-00U0.xml</fr:route>
+                <fr:title text="New forester init command">New <fr:code>forester init</fr:code> command</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>To make it easier to set up a new forest, we have added a <fr:code>forester init</fr:code> command; when you run this command in an empty directory, it will initialise a git repository with a submodule for the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">default theme</fr:link> pinned to the correct release, and a <fr:link href="foreign-forester-jms-00RG.xml" title="Forester 4.0 › forest configuration via TOML" addr="//forester/jms-00RG" type="local">configuration file</fr:link>.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2440</fr:anchor>
+                <fr:addr type="user">//forester/jms-00WA</fr:addr>
+                <fr:route>foreign-forester-jms-00WA.xml</fr:route>
+                <fr:title text="Rendering only a subset of the forest">Rendering only a subset of the forest</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>A new option has been added to the <fr:code>forester build</fr:code> command to render only certain trees. For example, the following command will render only the trees at addresses <fr:code>xxx-MMMM</fr:code> and <fr:code>yyy-NNNN</fr:code>:</fr:p>
+                <fr:pre>forester build forest.toml --render-only=xxx-MMMM,yyy-NNNN</fr:pre>
+                <fr:p>Note that in order to maintain a correct graph analysis, the entire forest will nonetheless be <fr:em>evaluated</fr:em>. As rendering is the slowest part of the process, however, this option can still save a lot of time. In the future it could be useful to have a more sophisticated option that renders (e.g.) all children of a given tree, etc.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2441</fr:anchor>
+                <fr:addr type="user">//forester/jms-00SP</fr:addr>
+                <fr:route>foreign-forester-jms-00SP.xml</fr:route>
+                <fr:title text="Changed behaviour of queries">Changed behaviour of queries</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Forester’s <fr:link href="foreign-forester-jms-0066.xml" title="Forester 2.2 › queries" addr="//forester/jms-0066" type="local">rudimentary support for queries</fr:link> has been simplified somewhat. Previously, the results of a query would be gathered and, if non-empty, placed underneath an anonymous subtree (whose title could be modified using <fr:link href="foreign-forester-jms-0067.xml" title="Forester 2.2 › flexible transclusion options" addr="//forester/jms-0067" type="local">transclusion options</fr:link>).</fr:p>
+                <fr:p>In light of the <fr:link href="foreign-forester-jms-00O4.xml" title="Forester 3.1 › inline subtrees" addr="//forester/jms-00O4" type="local">user-level support for anonymous subtrees</fr:link> introduced in <fr:link href="foreign-forester-jms-00HY.xml" title="Forester 3.1" addr="//forester/jms-00HY" type="local">Forester 3.1</fr:link>, the behaviour of queries has been simplified: the results of a query are simply transcluded directly without being enclosed in a subtree.</fr:p>
+                <fr:p>Although the new behaviour is simpler, it is no longer possible to have a query subtree that is hidden when it returns no results. Users should treat the querying feature as highly provisional, and subject to change and even potential removal.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2442</fr:anchor>
+                <fr:addr type="user">//forester/jms-00SQ</fr:addr>
+                <fr:route>foreign-forester-jms-00SQ.xml</fr:route>
+                <fr:title text="Addresses for anonymous trees">Addresses for anonymous trees</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Previously, a subtree could be emitted without any address; this greatly complicated the logic of the graph analysis, <fr:link href="foreign-forester-jms-00O3.xml" title="Forester 3.1 › designated parents" addr="//forester/jms-00O3" type="local">designated parents</fr:link>, and other things. Now, emitting an anonymous subtree generates a fresh address in a separate namespace; as a result, these trees get rendered to their own XML file. Naturally, an anonymous subtree cannot be linked to or transcluded, but it can now participate properly in the graph analysis.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                  <fr:contributor>
+                    <fr:link href="foreign-forester-nickhu.xml" title="Nick Hu" addr="//forester/nickhu" type="local">Nick Hu</fr:link>
+                  </fr:contributor>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2443</fr:anchor>
+                <fr:addr type="user">//forester/jms-00SA</fr:addr>
+                <fr:route>foreign-forester-jms-00SA.xml</fr:route>
+                <fr:title text="Incremental parsing">Incremental parsing</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Menhir’s incremental parsing API is adopted in order to make the parser more resiliant to syntax errors. The goal is to support language server protocol diagnostics in a future release.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>6</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2444</fr:anchor>
+                <fr:addr type="user">//forester/jms-00WG</fr:addr>
+                <fr:route>foreign-forester-jms-00WG.xml</fr:route>
+                <fr:title text="Dependency audit">Dependency audit</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>In recent releases, Forester has become increasingly dependent on various system packages (including openssl) via transitive dependencies. This has caused a great deal of build breakage for both our developers and users, so we decided to remove all but the most critical dependencies to avoid losing control of things. Experimental tools that rely on more system dependencies that are likely to cause build breakage can be created, but only outside the main <fr:code>forester</fr:code> package.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>9</fr:day>
+            </fr:date>
+            <fr:anchor>17812</fr:anchor>
+            <fr:addr type="user">//forester/jms-00O5</fr:addr>
+            <fr:route>foreign-forester-jms-00O5.xml</fr:route>
+            <fr:title text="Forester 3.1 › new forester query command"><fr:link href="foreign-forester-jms-00HY.xml" title="Forester 3.1" addr="//forester/jms-00HY" type="local">Forester 3.1</fr:link> › new <fr:code>forester query</fr:code> command</fr:title>
+            <fr:taxon>Feature</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p><fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> has implemented a new <fr:code>forester query</fr:code> command that may be useful for creating external editor tooling; currently it is possible to query for lists of all prefixes (the <fr:code>xxx</fr:code> in <fr:code>xxx-NNNN</fr:code>), tags, and taxa. Please run <fr:code>forester query --help</fr:code> for more information.</fr:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="foreign-forester-favonia.xml" title="Kuen-Bang Hou (Favonia)" addr="//forester/favonia" type="local">Kuen-Bang Hou (Favonia)</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>11</fr:month>
+              <fr:day>3</fr:day>
+            </fr:date>
+            <fr:anchor>17813</fr:anchor>
+            <fr:addr type="user">//forester/jms-00CW</fr:addr>
+            <fr:route>foreign-forester-jms-00CW.xml</fr:route>
+            <fr:title text="Forester 3.0">Forester 3.0</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>This is a major breaking release; some surgery may be required on existing <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link>. Thanks to Favonia, <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>, <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>, and <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link> for their contributions to this release. Thanks also to Adrien Guatto for bug reports.</fr:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>11</fr:month>
+                  <fr:day>3</fr:day>
+                </fr:date>
+                <fr:anchor>2878</fr:anchor>
+                <fr:addr type="user">//forester/jms-00CX</fr:addr>
+                <fr:route>foreign-forester-jms-00CX.xml</fr:route>
+                <fr:title text="Proper diagnostics with source locations">Proper diagnostics with source locations</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> adds proper diagnostics and error messages, via the excellent <fr:link href="https://ocaml.org/p/asai/latest" type="external">asai</fr:link> library maintained by <fr:link href="foreign-forester-favonia.xml" title="Kuen-Bang Hou (Favonia)" addr="//forester/favonia" type="local">Favonia</fr:link>. When something goes wrong in your forest, the terminal output should expain what happened while displaying the precise location in your source file.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>11</fr:month>
+                  <fr:day>19</fr:day>
+                </fr:date>
+                <fr:anchor>2879</fr:anchor>
+                <fr:addr type="user">//forester/jms-00EY</fr:addr>
+                <fr:route>foreign-forester-jms-00EY.xml</fr:route>
+                <fr:title text="Experimental support for objects">Experimental support for objects</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>To facilitate the development of extensible macro libraries for diagramming and other tasks, <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> introduces experimental support for <fr:em>objects</fr:em> — which should be thought of as combination of records/structs, closures, and general recursion. An object is created like so:</fr:p>
+                <fr:pre><![CDATA[\def\my-object{
+  \object[self]{
+    [method1]{
+      the implementation of this method
+    }
+    [method2]{
+      the implementation of another method
+      \self#method1
+    }
+  }
+}]]></fr:pre>
+                <fr:p>The variable <fr:code>self</fr:code> is explicitly bound, and can be bound to any name you like. Methods currently are not allowed to take any arguments, but this may change in the future. A primitive form of inheritance is supported, using <fr:code><![CDATA[\patch]]></fr:code>:</fr:p>
+                <fr:pre><![CDATA[\patch{\my-object}[self]{
+  [method1]{
+    \self/super#method1
+    some further code
+  }
+}]]></fr:pre>
+                <fr:p>The support for objects in <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> is extremely experimental and preliminary: users are discouraged from relying on it.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>11</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2880</fr:anchor>
+                <fr:addr type="user">//forester/jms-00F0</fr:addr>
+                <fr:route>foreign-forester-jms-00F0.xml</fr:route>
+                <fr:title text="Improvements to date handling">Improvements to date handling</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> improves support for journaling with date-specific trees. When a tree is dated <fr:code>YYYY-MM-DD</fr:code> and there exists a tree at address <fr:code>YYYY-MM-DD</fr:code>, the date field will be hyperlinked to the latter. This involves changes to both the executable and the XSL stylesheet of the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">base theme</fr:link>. The purpose of this change is to better facilitate daily notes / journaling.</fr:p>
+                <fr:p>Additionally, Forester’s data model now allows <fr:em>multiple</fr:em> dates to be assigned to a single tree simultaneously.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>11</fr:month>
+                  <fr:day>22</fr:day>
+                </fr:date>
+                <fr:anchor>2881</fr:anchor>
+                <fr:addr type="user">//forester/jms-00FI</fr:addr>
+                <fr:route>foreign-forester-jms-00FI.xml</fr:route>
+                <fr:title text="Nix support">Nix support</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> comes with a <fr:link href="https://nixos.wiki/wiki/Flakes" type="external">nix flake</fr:link>
+for easy integration with nix-based systems. Users of nix can try
+forester without installing the ocaml toolchain by running
+<fr:code>nix run sourcehut:~jonsterling/ocaml-forester</fr:code>.</fr:p>
+                <fr:p>To create a development shell with <fr:code>forester</fr:code> and LaTeX dependencies,
+create a file named <fr:code>flake.nix</fr:code> with the following content:</fr:p>
+                <fr:pre><![CDATA[{
+ inputs = {
+   forester = {
+     url = "sourcehut:~jonsterling/ocaml-forester";
+   };
+   flake-utils.url = "github:numtide/flake-utils";
+ };
+ outputs =
+   { self
+   , flake-utils
+   , nixpkgs
+   , forester
+   }:
+   flake-utils.lib.eachDefaultSystem
+     (system:
+     let
+       pkgs = import nixpkgs { inherit system; };
+       legacyPackages = import forester.legacyPackages.${system};
+     in
+     {
+       devShell =
+         pkgs.mkShell {
+           buildInputs = with pkgs; [
+             forester.packages.${system}.default
+             texlive.combined.scheme-full
+             fswatch
+           ];
+         };
+     });
+}]]></fr:pre>
+                <fr:p>and run <fr:code>nix develop</fr:code>.</fr:p>
+                <fr:p>The <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">default template</fr:link> now ships with a flake and an <fr:link href="https://direnv.net/" type="external">envrc</fr:link>. If you created your forest using this template and would like to use direnv, simply copy <fr:code>flake.nix</fr:code> and <fr:code>.envrc</fr:code> to your forest base directory.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                  <fr:author>
+                    <fr:link href="foreign-forester-dannypsnl.xml" title="Lîm Tsú-thuàn" addr="//forester/dannypsnl" type="local">Lîm Tsú-thuàn</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>12</fr:month>
+                  <fr:day>2</fr:day>
+                </fr:date>
+                <fr:anchor>2882</fr:anchor>
+                <fr:addr type="user">//forester/jms-00G7</fr:addr>
+                <fr:route>foreign-forester-jms-00G7.xml</fr:route>
+                <fr:title text="Lightweight templating in forester new">Lightweight templating in <fr:code>forester new</fr:code></fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> adds a new <fr:code>--template</fr:code> option to the <fr:code>forester new</fr:code> command. Running <fr:code>forester new --template xxx-0001</fr:code> will create a new tree with the contents of the existing tree <fr:code>xxx-0001</fr:code>.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                  <fr:author>
+                    <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>12</fr:month>
+                  <fr:day>13</fr:day>
+                </fr:date>
+                <fr:anchor>2883</fr:anchor>
+                <fr:addr type="user">//forester/jms-00GG</fr:addr>
+                <fr:route>foreign-forester-jms-00GG.xml</fr:route>
+                <fr:title text="Support for randomised tree identifiers in forester new">Support for randomised tree identifiers in <fr:code>forester new</fr:code></fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>The <fr:code>forester new</fr:code> has a new <fr:code>--random</fr:code> flag; when activated, the new tree will be allocated with a <fr:em>randomised</fr:em> unused tree identifier rather than the usual sequential tree identifier. This can be useful for projects that have multiple collaborators, although in this case, users are generally advised to claim their own namespaces.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>12</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:anchor>2884</fr:anchor>
+                <fr:addr type="user">//forester/jms-00GL</fr:addr>
+                <fr:route>foreign-forester-jms-00GL.xml</fr:route>
+                <fr:title text="Custom static assets directories">Custom static assets directories</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>A new <fr:code>--assets-dirs</fr:code> option has been added to the <fr:code>forester build</fr:code> command, which can be used to supply multiple directories containing static assets that should be copied into the forest. By default, the option is set to <fr:code>assets</fr:code>.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>11</fr:month>
+                  <fr:day>3</fr:day>
+                </fr:date>
+                <fr:anchor>2887</fr:anchor>
+                <fr:addr type="user">//forester/jms-00CY</fr:addr>
+                <fr:route>foreign-forester-jms-00CY.xml</fr:route>
+                <fr:title text="Breaking changes">Breaking changes</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> introduces a number of breaking changes to the source language in order to facilitate maintainability, diagnostic support, and extensibility of both the Forester tool and your individual <fr:link href="foreign-forester-tfmt-000R.xml" title="Forests and trees of evergreen notes" addr="//forester/tfmt-000R" type="local">forests</fr:link>.</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>11</fr:month>
+                      <fr:day>3</fr:day>
+                    </fr:date>
+                    <fr:anchor>2885</fr:anchor>
+                    <fr:addr type="user">//forester/jms-00CZ</fr:addr>
+                    <fr:route>foreign-forester-jms-00CZ.xml</fr:route>
+                    <fr:title text="Fall-through of undefined identifiers">Fall-through of undefined identifiers</fr:title>
+                    <fr:taxon>Change</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>The fall-through for undefined identifiers in XML mode is removed in <fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link>: previously when an identifier <fr:code><![CDATA[\foo]]></fr:code> was undefined, it was possible to write <fr:code><![CDATA[\foo[attr]{value}{body}]]></fr:code> and have this be rendered in XML to <fr:code><![CDATA[<foo attr="value">body</foo>]]></fr:code>.</fr:p>
+                    <fr:p>This behavior has been removed, but you can nonetheless write <fr:code><![CDATA[\xml{foo}[attr]{value}{body}]]></fr:code> to achieve the same. For content that is being rendered by either LaTeX or KaTeX, simple fallthrough (naturally without attributes or arguments) is supported; therefore <fr:code><![CDATA[#{\alpha}]]></fr:code> will render to <fr:tex display="inline"><![CDATA[\alpha ]]></fr:tex>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>11</fr:month>
+                      <fr:day>3</fr:day>
+                    </fr:date>
+                    <fr:anchor>2886</fr:anchor>
+                    <fr:addr type="user">//forester/jms-00D0</fr:addr>
+                    <fr:route>foreign-forester-jms-00D0.xml</fr:route>
+                    <fr:title text="Primitive formatting commands">Primitive formatting commands</fr:title>
+                    <fr:taxon>Change</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>As a consequence of the <fr:link href="foreign-forester-jms-00CZ.xml" title="Forester 3.0 › breaking changes › fall-through of undefined identifiers" addr="//forester/jms-00CZ" type="local">changed fallthrough behavior</fr:link>, several new primitives have been added to the source language, including <fr:code><![CDATA[\p]]></fr:code>, <fr:code><![CDATA[\em]]></fr:code>, <fr:code><![CDATA[\strong]]></fr:code>, <fr:code><![CDATA[\ol]]></fr:code>, <fr:code><![CDATA[\ul]]></fr:code>, <fr:code><![CDATA[\li]]></fr:code>, <fr:code><![CDATA[\blockquote]]></fr:code>, and <fr:code><![CDATA[\pre]]></fr:code>.</fr:p>
+                    <fr:p>You can add further commands to your primitives using a combination of <fr:code><![CDATA[\def]]></fr:code>, <fr:code><![CDATA[\iftex]]></fr:code>, and <fr:code><![CDATA[\xml]]></fr:code>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
+            <fr:anchor>17814</fr:anchor>
+            <fr:addr type="user">//forester/index</fr:addr>
+            <fr:route>foreign-forester-index.xml</fr:route>
+            <fr:title text="Forester">Forester</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p><fr:em>Forester</fr:em> is a tool for authoring, exploring, and sharing scientific and mathematical hypertexts. It is your lab notebook, your journal, your blackboard, and the home of your lecture notes.</fr:p>
+            <fr:p>Forester is maintained by <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link> and <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>.</fr:p>
+            <fr:ul><fr:li><fr:link href="foreign-forester-jms-0065.xml" title="Project information" addr="//forester/jms-0065" type="local">Project information</fr:link></fr:li>
+  <fr:li><fr:link href="foreign-forester-fr-30FM.xml" title="Blog" addr="//forester/fr-30FM" type="local">Forester blog</fr:link></fr:li>
+  <fr:li><fr:link href="foreign-forester-jms-005P.xml" title="Release notes" addr="//forester/jms-005P" type="local">Release notes</fr:link></fr:li></fr:ul>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>17816</fr:anchor>
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>17826</fr:anchor>
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:anchor>17817</fr:anchor>
+            <fr:addr type="user">//forester/jms-011P</fr:addr>
+            <fr:route>foreign-forester-jms-011P.xml</fr:route>
+            <fr:title text="Forester 5.0 [TBA]">Forester 5.0 [TBA]</fr:title>
+            <fr:taxon>Prerelease</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>This is a major release of Forester that includes many changes under the hood, as well as breaking changes that will require manual adjustments to existing forests. What will be included in this release is not completely decided, so consider these release notes as an evolving document. My thanks to <fr:link href="foreign-forester-kentookura.xml" title="Kento Okura" addr="//forester/kentookura" type="local">Kento Okura</fr:link> and <fr:link href="foreign-forester-owenlynch.xml" title="Owen Lynch" addr="//forester/owenlynch" type="local">Owen Lynch</fr:link> for conversations leading to the design of this release.</fr:p>
+            <fr:p>Many of the changes included here are meant to support the future of Forester as an authoring tool for a new kind of <fr:em>Internet of Mathematics</fr:em> that will enable the federation of many different forests by extending existing protocols with new hypermedia controls for content transclusion applicable to scientific authoring.</fr:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2819</fr:anchor>
+                <fr:addr type="user">//forester/jms-0126</fr:addr>
+                <fr:route>foreign-forester-jms-0126.xml</fr:route>
+                <fr:title text="Tl;dr: migration guide">Tl;dr: migration guide</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>To migrate your forest to <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>, do the following:</fr:p>
+                <fr:ol><fr:li>Add a <fr:code>host = "myforestname"</fr:code> line to your <fr:code>forest.toml</fr:code> (see <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">§ <fr:contextual-number addr="//forester/jms-011Q" /></fr:link>). Most users of Forester will use their own name as the host of their main forest, e.g. <fr:code>host = "jonmsterling"</fr:code>.</fr:li>
+  <fr:li>Remove all usage of <fr:code><![CDATA[\transclude/title]]></fr:code> and <fr:code><![CDATA[\transclude/taxon]]></fr:code> (see <fr:link href="foreign-forester-jms-011T.xml" title="Forester 5.0 [TBA] › removing transclusion overrides" addr="//forester/jms-011T" type="local">§ <fr:contextual-number addr="//forester/jms-011T" /></fr:link>).</fr:li>
+  <fr:li>In your <fr:code>forest.toml</fr:code> file, change the <fr:code>root = "xxx-NNNN"</fr:code> line to <fr:code>home = "xxx-NNNN"</fr:code>, where <fr:code>xxx-NNNN</fr:code> is the name of the tree that you wish to be routed to <fr:code>index.xml</fr:code> (see <fr:link href="foreign-forester-jms-0125.xml" title="Forester 5.0 [TBA] › renamed root to home" addr="//forester/jms-0125" type="local">§ <fr:contextual-number addr="//forester/jms-0125" /></fr:link>).</fr:li>
+  <fr:li>Any <fr:code><![CDATA[\author]]></fr:code> or <fr:code><![CDATA[\contributor]]></fr:code> attributions must take a tree address as their argument; when you wish to attribute a resource to a person who is not represented by a tree, you can use <fr:code><![CDATA[\author/literal{Somebody’s Name}]]></fr:code> or <fr:code><![CDATA[\contributor/literal{Somebody’s Name}]]></fr:code> (see <fr:link href="foreign-forester-jms-012N.xml" title="Forester 5.0 [TBA] › Changes to attribution links" addr="//forester/jms-012N" type="local">§ <fr:contextual-number addr="//forester/jms-012N" /></fr:link>).</fr:li>
+  <fr:li>Take into account the renaming of several built-in relations (see <fr:link href="foreign-forester-jms-013C.xml" title="Forester 5.0 [TBA] › new datalog-based query engine › renamed built-in relations" addr="//forester/jms-013C" type="local">§ <fr:contextual-number addr="//forester/jms-013C" /></fr:link>).</fr:li>
+  <fr:li>Begin rewriting any queries to use the new datalog engine (see <fr:link href="foreign-forester-jms-013A.xml" title="Forester 5.0 [TBA] › new datalog-based query engine" addr="//forester/jms-013A" type="local">§ <fr:contextual-number addr="//forester/jms-013A" /></fr:link>), as the legacy query engine will be removed in a subsequent release.</fr:li>
+  <fr:li>Begin dialing back your use of custom XML stylesheets (see <fr:link href="foreign-forester-jms-0127.xml" title="Forester 5.0 [TBA] › the future of Forester’s XML format" addr="//forester/jms-0127" type="local">§ <fr:contextual-number addr="//forester/jms-0127" /></fr:link>). It is possible that support for customisation at this level will be removed in a future release; if you have innovative customisations that are very important for your use of Forester, consider discussing them on the <fr:link href="mailto:~jonsterling/forester-discuss@lists.sr.ht" type="external">mailing list</fr:link> so that maintainers can better understand the problems you are solving.</fr:li></fr:ol>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2821</fr:anchor>
+                <fr:addr type="user">//forester/jms-011Q</fr:addr>
+                <fr:route>foreign-forester-jms-011Q.xml</fr:route>
+                <fr:title text="A URL scheme for tree addresses">A URL scheme for tree addresses</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Up until this release, Forester’s trees were addressed by short strings — which, by convention, might be of the form <fr:code>xxx-NNNN</fr:code> or some arbitrary string like <fr:code>sterling-2021-thesis</fr:code>. In order to prepare for the future in which multiple forests can be glued together, we replace Forester’s addresses with a <fr:link href="foreign-forester-jms-011R.xml" title="What do we mean by “URL”?" addr="//forester/jms-011R" type="local">URL</fr:link> scheme that incorporates a <fr:code>host</fr:code> that demarcates the current forest. A typical tree will then have an address like this:</fr:p>
+                <fr:pre><![CDATA[forest://host/xxx-NNNN]]></fr:pre>
+                <fr:p>The <fr:code>host</fr:code> is configured in your <fr:code>forest.toml</fr:code> file; for example:</fr:p>
+                <fr:pre><![CDATA[[forest]
+host = "jonmsterling"
+# ...]]></fr:pre>
+                <fr:p>When evaluating trees, addresses are always resolved against the base URL <fr:code>forest://host/</fr:code>. Therefore, a link to address <fr:code>xxx-NNNN</fr:code> in my own forest will be resolved to <fr:code>forest://jonmsterling/xxx-NNNN</fr:code>. Of course, you can also write fully resolved links (including to other forests, or to resources addressed under any other protocol). <html:mark xmlns:html="http://www.w3.org/1999/xhtml">It follows that existing internal links will continue to work fine without modification; for external links, the new implementation includes some syntactic validation, so it is possible that one or two links may need to be repaired.</html:mark></fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>10</fr:month>
+                      <fr:day>20</fr:day>
+                    </fr:date>
+                    <fr:anchor>2820</fr:anchor>
+                    <fr:addr type="user">//forester/jms-011R</fr:addr>
+                    <fr:route>foreign-forester-jms-011R.xml</fr:route>
+                    <fr:title text="What do we mean by “URL”?">What do we mean by “URL”?</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>Today, “URLs” are a mostly implementation-defined concept that can only be understood by looking at the source code of major web browsers; in the future, this may congeal into an actual standard but today is not that day (nor is tomorrow, if the state of the <fr:link href="https://url.spec.whatwg.org/" type="external"><fr:code>whatwg/url</fr:code> “living” [non-]standard</fr:link> is any indication). In the meanwhile, Forester is implementing URLs in terms of Internationalized Resource Identifiers (RFC 3987); this standard improves on URIs by supporting unicode identifiers, which we need at the outset. It is best to think of Forester’s adoption of RFC 3987 as provisional and subject to evolution as the Web continues to mature.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2822</fr:anchor>
+                <fr:addr type="user">//forester/jms-011T</fr:addr>
+                <fr:route>foreign-forester-jms-011T.xml</fr:route>
+                <fr:title text="Removing transclusion overrides">Removing transclusion overrides</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>In prior versions of Forester, it was possible to override the title and the taxon of a transcluded tree using the fluid bindings <fr:code><![CDATA[\transclude/title]]></fr:code> and <fr:code><![CDATA[\transclude/taxon]]></fr:code> respectively. This feature is no longer supported in <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>, and existing users are encouraged to purge their use of it prior to upgrading to <fr:link href="foreign-forester-jms-011P.xml" title="Forester 5.0 [TBA]" addr="//forester/jms-011P" type="local">Forester 5.0 [TBA]</fr:link>.</fr:p>
+                <fr:p>In short, supporting this feature was greatly complicating the planned transition to a genuine hypermedia format; it could also be argued that it might have led to scenarios where an original author’s intentions are violated at the transclusion site.</fr:p>
+                <fr:p>Please note that transclusion options, such as <fr:code><![CDATA[\transclude/expanded]]></fr:code>, etc., are still supported.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2823</fr:anchor>
+                <fr:addr type="user">//forester/jms-0125</fr:addr>
+                <fr:route>foreign-forester-jms-0125.xml</fr:route>
+                <fr:title text="Renamed root to home">Renamed <fr:code>root</fr:code> to <fr:code>home</fr:code></fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>In your forest’s configuration file, the <fr:code>root</fr:code> key was previously used to designate a particular tree as the home page which will be routed to <fr:code>index.xml</fr:code>. Calling this the “root” didn’t make sense, because it is not actually the root of the forest in most cases. This configuration key has been renamed to <fr:code>home</fr:code>.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2824</fr:anchor>
+                <fr:addr type="user">//forester/jms-012N</fr:addr>
+                <fr:route>foreign-forester-jms-012N.xml</fr:route>
+                <fr:title text="Changes to attribution links">Changes to attribution links</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>In prior versions, the <fr:code><![CDATA[\author]]></fr:code> and <fr:code><![CDATA[\contributor]]></fr:code> command would detect whether its contents were the address of a tree; if so, it would create a wikilink to the tree and otherwise, the included text would appear directly. This feature was convenient for smoothly handling the case that an author of a given resource is not represented in the forest by a biographical tree; the downside is that it makes the assumption that at compiletime we shall know the entire contents of the forest (and, thus, whether a given address shall be bound to a tree).</fr:p>
+                <fr:p>To simplify the handling of author links and make it compatible with the open-world future of Forester, the behaviour is changed as follows:</fr:p>
+                <fr:ol><fr:li>The argument to <fr:code><![CDATA[\author]]></fr:code> and <fr:code><![CDATA[\author]]></fr:code> <fr:em>must</fr:em> be a (possibly relative) <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">Forester URL</fr:link>. Thus, on my own forest, it would be OK to have either <fr:code><![CDATA[\author{jeanbénabou}]]></fr:code> or <fr:code><![CDATA[\author{forest://jonmsterling/jeanbénabou}]]></fr:code> but it would not be OK to have <fr:code><![CDATA[\author{Jean Bénabou}]]></fr:code>.</fr:li>
+  <fr:li>To make an unlinked attribution containing, use <fr:code><![CDATA[\author/literal{Jean Bénabou}]]></fr:code>.</fr:li></fr:ol>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2829</fr:anchor>
+                <fr:addr type="user">//forester/jms-013A</fr:addr>
+                <fr:route>foreign-forester-jms-013A.xml</fr:route>
+                <fr:title text="New datalog-based query engine">New datalog-based query engine</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>As the query engine has evolved, it has become a bit unwieldy and misshapen. In order to prevent further churn and facilitate the long-term development and use of Forester, we are replacing the query engine and graph analysis with a more general tool: <fr:em>datalog</fr:em>. With this change comes the ability to introduce arbitrary relations of any arity; this is a powerful and dangerous tool, so use it wisely.</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>10</fr:month>
+                      <fr:day>20</fr:day>
+                    </fr:date>
+                    <fr:anchor>2825</fr:anchor>
+                    <fr:addr type="user">//forester/jms-013B</fr:addr>
+                    <fr:route>foreign-forester-jms-013B.xml</fr:route>
+                    <fr:title text="On performance trade-offs">On performance trade-offs</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>Switching to datalog makes forests that make heavy use of queries a bit slower to render. We considered this trade-off carefully, but believe that for the long-term health of Forester, this is acceptable. In the near future, Forester will render trees on demand rather than all at once (except when you are preparing a static archive for upload/deployment); in this mode of use, Forester will be faster than ever.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>10</fr:month>
+                      <fr:day>20</fr:day>
+                    </fr:date>
+                    <fr:anchor>2826</fr:anchor>
+                    <fr:addr type="user">//forester/jms-013C</fr:addr>
+                    <fr:route>foreign-forester-jms-013C.xml</fr:route>
+                    <fr:title text="Renamed built-in relations">Renamed built-in relations</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>Forester’s built-in binary relations have been accessible via macros like <fr:code><![CDATA[\rel/authors]]></fr:code>, etc. In this release, these relations are being renamed to make them more pleasant and consistent to use with datalog.</fr:p>
+                    <html:table xmlns:html="http://www.w3.org/1999/xhtml">
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:th xmlns:html="http://www.w3.org/1999/xhtml">Old name</html:th>
+    <html:th xmlns:html="http://www.w3.org/1999/xhtml">New name</html:th>
+   </html:tr>
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/tags</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-tag</fr:code></html:td>
+   </html:tr>
+  
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/taxa</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-taxon</fr:code></html:td>
+   </html:tr>
+  
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/authors</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-author</fr:code></html:td>
+   </html:tr>
+  
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/contributors</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/has-direct-contributor</fr:code></html:td>
+   </html:tr>
+  
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/transclusion</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/transcludes</fr:code></html:td>
+   </html:tr>
+  
+   
+   <html:tr xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/links</fr:code></html:td>
+    <html:td xmlns:html="http://www.w3.org/1999/xhtml"><fr:code><![CDATA[\]]>rel/links-to</fr:code></html:td>
+   </html:tr>
+  
+  </html:table>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>10</fr:month>
+                      <fr:day>20</fr:day>
+                    </fr:date>
+                    <fr:anchor>2827</fr:anchor>
+                    <fr:addr type="user">//forester/jms-013D</fr:addr>
+                    <fr:route>foreign-forester-jms-013D.xml</fr:route>
+                    <fr:title text="New built-in relations">New built-in relations</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>A few new built-in relations have been added.</fr:p>
+                    <fr:ul><fr:li><fr:code><![CDATA[\]]>rel/is-node ?X</fr:code> is a unary relation that holds for <fr:em>any</fr:em> tree address <fr:code>?X</fr:code>. This is needed when specifying reflexive binary relations: the clause <fr:code>R ?X ?X -:</fr:code> is not allowed by datalog, so one must use <fr:code><![CDATA[R ?X ?X -: {\rel/is-node X}]]></fr:code>.</fr:li>
+   <fr:li><fr:code><![CDATA[\]]>rel/transcludes/transitive-closure</fr:code> is the transitive closure of <fr:code><![CDATA[\]]>rel/transcludes</fr:code>.</fr:li>
+   <fr:li><fr:code><![CDATA[\]]>rel/transcludes/reflexive-transitive-closure</fr:code> is the <fr:em>reflexive</fr:em> transitive closure of <fr:code><![CDATA[\]]>rel/transcludes</fr:code>.</fr:li>
+   <fr:li><fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> holds when <fr:code>?X</fr:code> is designated as a reference/bibliographical tree. Currently, the built-in rules of the database deduce <fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> for any tree <fr:code>?X</fr:code> with taxon <fr:code>reference</fr:code>. The purpose of abstracting from the taxon is to enable non-English users of Forester to benefit from the computation of bibliographies.</fr:li>
+   <fr:li>Similarly, <fr:code><![CDATA[\]]>rel/is-person ?X</fr:code> holds when <fr:code>?X</fr:code> is designated as a personal/biographical tree. Currently, the built-in rules of the database deduce <fr:code><![CDATA[\]]>rel/is-reference ?X</fr:code> for any tree <fr:code>?X</fr:code> with taxon <fr:code>person</fr:code>.</fr:li>
+   <fr:li><fr:code><![CDATA[\]]>rel/in-bundle-closure ?X ?Y</fr:code> is the reflexive transitive closure of the union of the transclusion relation with the relation of <fr:code>?X</fr:code> requiring the asset <fr:code>?Y</fr:code>. The purpose of this relation is to easily bundle up fragments of a forest (see <fr:link href="foreign-forester-fr-30FN.xml" title="Forester 5.0 [TBA] › publishing and implanting forests" addr="//forester/fr-30FN" type="local">§ <fr:contextual-number addr="//forester/fr-30FN" /></fr:link>).</fr:li></fr:ul>
+                    <fr:p>All of these built-in relations can be defined in Forester’s dialect of datalog; they are predefined for convenience, and because they are used in the computation of backmatter.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>10</fr:month>
+                      <fr:day>20</fr:day>
+                    </fr:date>
+                    <fr:anchor>2828</fr:anchor>
+                    <fr:addr type="user">//forester/jms-013E</fr:addr>
+                    <fr:route>foreign-forester-jms-013E.xml</fr:route>
+                    <fr:title text="An example datalog query">An example datalog query</fr:title>
+                    <fr:taxon>Example</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>In order to illustrate the use of the datalog engine, I will show how to construct a query that will find all the trees with taxon <fr:code>reference</fr:code> written by <fr:code>jonmsterling</fr:code> that are tagged either <fr:code>accepted</fr:code> or <fr:code>refereed</fr:code>. The first thing we must do is define the smallest relation containing all trees tagged <fr:code>accepted</fr:code> or <fr:code>refereed</fr:code>; this is done by adding clauses to the database as follows.</fr:p>
+                    <fr:p>First we define the name of a relation. In the current release, relations are global strings and there is no facility to generate a “fresh” one; that may change in the future.</fr:p>
+                    <fr:pre><![CDATA[\let\rel/accepted-or-refereed{jonmsterling.query.bibliography.accepted-or-refereed}]]></fr:pre>
+                    <fr:p>Next, we add two defining clauses for our relation. In what follows, <fr:code><![CDATA[\datalog]]></fr:code> simply delimits content that should be parsed as a datalog expression, and <fr:code><![CDATA[\execute]]></fr:code> instructs Forester to execute the datalog expression.</fr:p>
+                    <fr:pre><![CDATA[\execute\datalog{
+ \rel/accepted-or-refereed ?X -: {\rel/has-tag ?X '{refereed}}
+}
+
+\execute\datalog{
+ \rel/accepted-or-refereed ?X -: {\rel/has-tag ?X '{accepted}}
+}]]></fr:pre>
+                    <fr:p>The left-hand side of the reversed turnstile <fr:code>-:</fr:code> is a proposition representing the <fr:em>goal</fr:em>; the right hand side is given by propositions representing the premises, each surrounded in braces and separated by whitespace. Metavariables are written with a question mark sigil. Literal content is embedded into a datalog proposition by surrounding it in <fr:code>'{...}</fr:code>; we will see that literal content is one kind of vertex in the graph database.</fr:p>
+                    <fr:p>Now that we have actually defined the relation that we will use, we can run a query:</fr:p>
+                    <fr:pre><![CDATA[\query\datalog{
+ ?X -:
+   {\rel/has-author ?X @{jonmsterling}}
+   {\rel/is-reference ?X}
+   {\rel/accepted-or-refereed ?X}
+ }]]></fr:pre>
+                    <fr:p>The structure of a query identifies the metavariable being solved behind the turnstile, and then lists the clauses that must hold. Whereas a content vertex is addressed via <fr:code>'{...}</fr:code>, a <fr:link href="foreign-forester-jms-011Q.xml" title="Forester 5.0 [TBA] › a URL scheme for tree addresses" addr="//forester/jms-011Q" type="local">URL vertex</fr:link> is addressed using <fr:code>@{...}</fr:code>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:p>
+                  <html:mark xmlns:html="http://www.w3.org/1999/xhtml">The old query engine is deprecated as of this release and will be removed in a subsequent release.</html:mark>
+                </fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2830</fr:anchor>
+                <fr:addr type="user">//forester/fr-30FN</fr:addr>
+                <fr:route>foreign-forester-fr-30FN.xml</fr:route>
+                <fr:title text="Publishing and implanting forests">Publishing and implanting forests</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Forester now includes the ability to “publish” a portion of your forest to a JSON blob that can be read by Forester and implanted into another forest. For example, if you include the following code in a tree within your forest, then a file will be emitted at <fr:code>publications/my-forest.json</fr:code> containing the compiled content of your entire forest, together with all the assets:</fr:p>
+                <fr:pre><![CDATA[\publish-query{my-forest}{
+ \datalog{
+  ?X -: {\rel/is-node ?X}
+ }
+}]]></fr:pre>
+                <fr:p>Of course, more sophisticated queries can be used. For example, you can emit all the items tagged <fr:code>public</fr:code> together with anything they (transitively) transclude and any assets they require as follows:</fr:p>
+                <fr:pre><![CDATA[\publish-query{my-public-forest}{
+ \datalog{
+   ?X -: {\rel/has-tag ?Z '{public}} {\rel/in-bundle-closure ?Z ?X}
+ }
+}]]></fr:pre>
+                <fr:p>To implant the resulting JSON file into another forest, simply copy over the file and add the following line to your configuration file:</fr:p>
+                <fr:pre><![CDATA[foreign = ["my-public-forest.json"]]]></fr:pre>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:anchor>2831</fr:anchor>
+                <fr:addr type="user">//forester/jms-0127</fr:addr>
+                <fr:route>foreign-forester-jms-0127.xml</fr:route>
+                <fr:title text="The future of Forester’s XML format">The future of Forester’s XML format</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Forester currently emits archival-quality output in a custom XML format that is then interpreted using an XSLT stylesheet (as part of the <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme" type="external">“theme”</fr:link>). This format has served us well, enabling users to customise the presentation of their forests to a great degree. An added benefit of the XML format is to be able to easily convert a tree to LaTeX using another stylesheet.</fr:p>
+                <fr:p>However, the constantly changing XML format has been an equally frustrating source of churn for users of Forester, and I have for some time now been warning users who customise their theme that these customisations are technically possible but <fr:em>not</fr:em> supported (i.e. we make no promise not to break them).</fr:p>
+                <fr:p>The time is coming when Forester’s interaction model and output format will be changed <fr:em>drastically</fr:em>; rest assured that the core principles behind Forester (including the ability to generate static archival output that can be hosted anywhere) will be retained. We aim to become a better citizen of the World Wide Web by moving toward a more standard hypermedia format.</fr:p>
+                <fr:p>One possiblity is to extend HTML with just the hypermedia controls and embedded microformats needed for Forester’s operation. This re-coupling of presentation and data would, paradoxically, facilitate Forester to evolve more rapidly over time while simultaneously increasing the longevity of forests that have been compiled using older versions of the tool.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="foreign-forester-jonmsterling.xml" title="Jon Sterling" addr="//forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
               <fr:contributor>
                 <fr:link href="foreign-forester-patricknicodemus.xml" title="Patrick Nicodemus" addr="//forester/patricknicodemus" type="local">Patrick Nicodemus</fr:link>
               </fr:contributor>
@@ -1430,7 +1430,7 @@ host = "jonmsterling"
               <fr:month>8</fr:month>
               <fr:day>10</fr:day>
             </fr:date>
-            <fr:anchor>17810</fr:anchor>
+            <fr:anchor>17818</fr:anchor>
             <fr:addr type="user">//forester/jms-0109</fr:addr>
             <fr:route>foreign-forester-jms-0109.xml</fr:route>
             <fr:title text="Forester 4.3">Forester 4.3</fr:title>
@@ -1508,7 +1508,7 @@ host = "jonmsterling"
               <fr:month>6</fr:month>
               <fr:day>20</fr:day>
             </fr:date>
-            <fr:anchor>17811</fr:anchor>
+            <fr:anchor>17819</fr:anchor>
             <fr:addr type="user">//forester/jms-00WK</fr:addr>
             <fr:route>foreign-forester-jms-00WK.xml</fr:route>
             <fr:title text="Forester 4.2">Forester 4.2</fr:title>
@@ -2160,7 +2160,7 @@ host = "jonmsterling"
               <fr:month>6</fr:month>
               <fr:day>15</fr:day>
             </fr:date>
-            <fr:anchor>17812</fr:anchor>
+            <fr:anchor>17820</fr:anchor>
             <fr:addr type="user">//forester/jms-00S9</fr:addr>
             <fr:route>foreign-forester-jms-00S9.xml</fr:route>
             <fr:title text="Forester 4.1">Forester 4.1</fr:title>
@@ -2321,7 +2321,7 @@ host = "jonmsterling"
               <fr:month>6</fr:month>
               <fr:day>15</fr:day>
             </fr:date>
-            <fr:anchor>17813</fr:anchor>
+            <fr:anchor>17821</fr:anchor>
             <fr:addr type="user">//forester/jms-00U0</fr:addr>
             <fr:route>foreign-forester-jms-00U0.xml</fr:route>
             <fr:title text="Forester 4.1 › new forester init command"><fr:link href="foreign-forester-jms-00S9.xml" title="Forester 4.1" addr="//forester/jms-00S9" type="local">Forester 4.1</fr:link> › new <fr:code>forester init</fr:code> command</fr:title>
@@ -2345,7 +2345,7 @@ host = "jonmsterling"
               <fr:month>4</fr:month>
               <fr:day>5</fr:day>
             </fr:date>
-            <fr:anchor>17814</fr:anchor>
+            <fr:anchor>17822</fr:anchor>
             <fr:addr type="user">//forester/jms-00RG</fr:addr>
             <fr:route>foreign-forester-jms-00RG.xml</fr:route>
             <fr:title text="Forester 4.0 › forest configuration via TOML"><fr:link href="foreign-forester-jms-00RF.xml" title="Forester 4.0" addr="//forester/jms-00RF" type="local">Forester 4.0</fr:link> › forest configuration via TOML</fr:title>
@@ -2386,7 +2386,7 @@ base_url = "https://www.jonmsterling.com"]]></fr:pre>
               <fr:month>3</fr:month>
               <fr:day>9</fr:day>
             </fr:date>
-            <fr:anchor>17815</fr:anchor>
+            <fr:anchor>17823</fr:anchor>
             <fr:addr type="user">//forester/jms-00O5</fr:addr>
             <fr:route>foreign-forester-jms-00O5.xml</fr:route>
             <fr:title text="Forester 3.1 › new forester query command"><fr:link href="foreign-forester-jms-00HY.xml" title="Forester 3.1" addr="//forester/jms-00HY" type="local">Forester 3.1</fr:link> › new <fr:code>forester query</fr:code> command</fr:title>
@@ -2408,7 +2408,7 @@ base_url = "https://www.jonmsterling.com"]]></fr:pre>
               <fr:month>11</fr:month>
               <fr:day>22</fr:day>
             </fr:date>
-            <fr:anchor>17816</fr:anchor>
+            <fr:anchor>17824</fr:anchor>
             <fr:addr type="user">//forester/jms-00FI</fr:addr>
             <fr:route>foreign-forester-jms-00FI.xml</fr:route>
             <fr:title text="Forester 3.0 › nix support"><fr:link href="foreign-forester-jms-00CW.xml" title="Forester 3.0" addr="//forester/jms-00CW" type="local">Forester 3.0</fr:link> › nix support</fr:title>
@@ -2479,7 +2479,7 @@ create a file named <fr:code>flake.nix</fr:code> with the following content:</fr
               <fr:month>11</fr:month>
               <fr:day>3</fr:day>
             </fr:date>
-            <fr:anchor>17817</fr:anchor>
+            <fr:anchor>17825</fr:anchor>
             <fr:addr type="user">//forester/jms-00CW</fr:addr>
             <fr:route>foreign-forester-jms-00CW.xml</fr:route>
             <fr:title text="Forester 3.0">Forester 3.0</fr:title>
