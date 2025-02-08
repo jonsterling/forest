@@ -18,21 +18,66 @@
       <fr:month>2</fr:month>
       <fr:day>10</fr:day>
     </fr:date>
-    <fr:anchor>6960</fr:anchor>
+    <fr:anchor>6944</fr:anchor>
     <fr:addr type="machine">unstable/5976</fr:addr>
     <fr:route>unstable-5976.xml</fr:route>
-    <fr:title text="Towards univalent reference types › comparing with other realisability models of state"><fr:link href="jms-00OI.xml" title="Towards univalent reference types" addr="jms-00OI" type="local"><fr:em><fr:link href="sterling-gratzer-birkedal-2024-univalent.xml" title="Towards univalent reference types" addr="sterling-gratzer-birkedal-2024-univalent" type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › comparing with other realisability models of state</fr:title>
+    <fr:title text="Towards univalent reference types › models of guarded higher order dynamic allocation"><fr:link href="jms-00OI.xml" title="Towards univalent reference types" addr="jms-00OI" type="local"><fr:em><fr:link href="sterling-gratzer-birkedal-2024-univalent.xml" title="Towards univalent reference types" addr="sterling-gratzer-birkedal-2024-univalent" type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › models of guarded higher order dynamic allocation</fr:title>
     <fr:taxon>Slide</fr:taxon>
   </fr:frontmatter>
-  <fr:mainmatter>
-    <fr:p><fr:link href="sterling-gratzer-birkedal-2022.xml" title="Denotational semantics of general store and polymorphism" addr="sterling-gratzer-birkedal-2022" type="local">SGB’22</fr:link> were not the first to combine guarded recursion with realisability to model higher-order dynamic allocation; see <fr:link href="birkedal-st%C3%B8vring-thamsborg-2010-realisability.xml" title="Realisability semantics of parametric polymorphism, general references and recursive types" addr="birkedal-støvring-thamsborg-2010-realisability" type="local">Birkedal, Støvring, and Thamsborg (2010)</fr:link>.</fr:p>
-    <fr:p>However, <fr:em>op.cit.</fr:em> relied on a <fr:em>specific</fr:em> realisability model based on an untyped domain model of a stateful language; in contrast, the model construction of <fr:link href="sterling-gratzer-birkedal-2022.xml" title="Denotational semantics of general store and polymorphism" addr="sterling-gratzer-birkedal-2022" type="local">SGB’22</fr:link> applies uniformly for any pair <fr:tex display="inline"><![CDATA[{\mathopen {}\left (\mathcal {E},\mathbb {O}\right )\mathclose {}}]]></fr:tex>.</fr:p>
-    <fr:p>Thus <fr:link href="sterling-gratzer-birkedal-2022.xml" title="Denotational semantics of general store and polymorphism" addr="sterling-gratzer-birkedal-2022" type="local">SGB’22</fr:link> showed that realisability is inessential: if we find any other viable source of impredicative universes besides realisability, <fr:link href="sterling-gratzer-birkedal-2022.xml" title="Denotational semantics of general store and polymorphism" addr="sterling-gratzer-birkedal-2022" type="local">SGB’22</fr:link> would apply there too.</fr:p>
-  </fr:mainmatter>
+  <fr:mainmatter><fr:p><fr:link href="sterling-gratzer-birkedal-2022.xml" title="Denotational semantics of general store and polymorphism" addr="sterling-gratzer-birkedal-2022" type="local">S., Gratzer, and Birkedal (2022)</fr:link> found synthetic denotational semantics for guarded higher-order dynamic allocation in an impredicative version of guarded dependent type theory (<fr:strong>iGDTT</fr:strong>).</fr:p>
+ <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[{\mathopen {}\llbracket \mathbf {type}\rrbracket \mathclose {}} = \mathsf {Fun}{\mathopen {}\left (\mathsf {World},{\mathbf {Set}}\right )\mathclose {}}]]></fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[\mathsf {World} = \mathchoice {\textstyle \sum _{{\mathopen {}\left (L:\mathbf {FinSet}\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (L:\mathbf {FinSet}\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (L:\mathbf {FinSet}\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (L:\mathbf {FinSet}\right )\mathclose {}}}}{\mathopen {}\left (L\to  {\color {red}\mathord {\blacktriangleright }}{\mathopen {}\llbracket \mathbf {type}\rrbracket \mathclose {}}\right )\mathclose {}}]]></fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting">
+   <fr:tex display="inline"><![CDATA[
+    \mathsf {Heap} =
+    \mathchoice {\textstyle \sum _{{\mathopen {}\left (w:\mathsf {World}\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (w:\mathsf {World}\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (w:\mathsf {World}\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (w:\mathsf {World}\right )\mathclose {}}}}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left (l:\pi _1w\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (l:\pi _1w\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (l:\pi _1w\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (l:\pi _1w\right )\mathclose {}}}}
+    {\color {red}\mathord {\blacktriangleright }{\mathopen {}\left  [A\leftarrow  \pi _2wl\right  ]\mathclose {}}}
+    Aw
+   ]]></fr:tex>
+  </jms-indent:row>
+
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[{\mathopen {}\llbracket \mathsf {T}\rrbracket \mathclose {}}\,A\,w =]]></fr:tex></jms-indent:row>
+
+  
+ <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
+   
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting">
+    <fr:tex display="inline"><![CDATA[
+     {\color {blue}\forall {\mathopen {}\left (H_1:\mathsf {Heap}\right )\mathclose {}}\mathpunct {.}}
+     \mathsf {World}{\mathopen {}\left (w,\pi _1{H_1}\right )\mathclose {}}\to 
+    ]]></fr:tex>
+   </jms-indent:row>
+
+   
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting">
+    <fr:tex display="inline"><![CDATA[
+      {\color {red}\mathsf {Lift}}{\mathopen {}\left (
+      {
+       \color {blue}
+       \exists {\mathopen {}\left (H_2:\mathsf {Heap}\right )\mathclose {}}\mathpunct {.}
+      }
+      \mathsf {World}{\mathopen {}\left (\pi _1{H_1},\pi _1{H_2}\right )\mathclose {}}\times 
+      A{\mathopen {}\left (\pi _1{H'}\right )\mathclose {}}
+     \right )\mathclose {}}
+    ]]></fr:tex>
+   </jms-indent:row>
+
+  </jms-indent:block>
+
+ </jms-indent:block>
+<fr:p>Guarded recursion needed to solve the domain equation; impredicativity needed to define the monad (b/c <fr:tex display="inline"><![CDATA[\mathsf {Heap}]]></fr:tex> is large).</fr:p></fr:mainmatter>
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>6954</fr:anchor>
+        <fr:anchor>6938</fr:anchor>
         <fr:title text="References">References</fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
@@ -54,7 +99,7 @@
               <fr:month>10</fr:month>
               <fr:day>6</fr:day>
             </fr:date>
-            <fr:anchor>6952</fr:anchor>
+            <fr:anchor>6937</fr:anchor>
             <fr:addr type="user">sterling-gratzer-birkedal-2022</fr:addr>
             <fr:route>sterling-gratzer-birkedal-2022.xml</fr:route>
             <fr:title text="Denotational semantics of general store and polymorphism">Denotational semantics of general store and polymorphism</fr:title>
@@ -72,47 +117,11 @@
             <fr:p>We contribute the first denotational semantics of polymorphic dependent type theory extended by an equational theory for general (higher-order) reference types and recursive types, based on a combination of guarded recursion and impredicative polymorphism; because our model is based on <fr:em>recursively defined semantic worlds</fr:em>, it is compatible with polymorphism and relational reasoning about stateful abstract datatypes. We then extend our language with modal constructs for proof-relevant relational reasoning based on the <fr:em>logical relations as types</fr:em> principle, in which equivalences between imperative abstract datatypes can be established synthetically. Finally we develop a decomposition of the store model as a general construction that extends an arbitrary polymorphic call-by-push-value adjunction with higher-order store, improving on <fr:link href="paulblainlevy.xml" title="Paul Blain Levy" addr="paulblainlevy" type="local">Levy</fr:link>'s possible worlds model construction; what is new in relation to prior typed denotational models of higher-order store is that our Kripke worlds need not be syntactically definable, and are thus compatible with relational reasoning in the heap. Our work combines recent advances in the operational semantics of state with the purely denotational viewpoint of <fr:em>synthetic guarded domain theory</fr:em>.</fr:p>
           </fr:mainmatter>
         </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="larsbirkedal.xml" title="Lars Birkedal" addr="larsbirkedal" type="local">Lars Birkedal</fr:link>
-              </fr:author>
-              <fr:author>
-                <fr:link href="kristianst%C3%B8vring.xml" title="Kristian Støvring" addr="kristianstøvring" type="local">Kristian Støvring</fr:link>
-              </fr:author>
-              <fr:author>
-                <fr:link href="jacobthamsborg.xml" title="Jacob Junker Thamsborg" addr="jacobthamsborg" type="local">Jacob Junker Thamsborg</fr:link>
-              </fr:author>
-            </fr:authors>
-            <fr:anchor>6953</fr:anchor>
-            <fr:addr type="user">birkedal-støvring-thamsborg-2010-realisability</fr:addr>
-            <fr:route>birkedal-støvring-thamsborg-2010-realisability.xml</fr:route>
-            <fr:title text="Realisability semantics of parametric polymorphism, general references and recursive types">Realisability semantics of parametric polymorphism, general references and recursive types</fr:title>
-            <fr:taxon>Reference</fr:taxon>
-            <fr:meta name="venue">
-              <fr:link href="mscs.xml" title="Mathematical Structures in Computer Science" addr="mscs" type="local">Mathematical Structures in Computer Science</fr:link>
-            </fr:meta>
-            <fr:meta name="doi">10.1017/S0960129510000162</fr:meta>
-            <fr:meta name="bibtex"><![CDATA[@article{birkedal-støvring-thamsborg-2010-realisability,
-  author = {Birkedal, Lars and St\o{}vring, Kristian and Thamsborg, Jacob},
-  publisher = {Cambridge University Press},
-  year = {2010},
-  doi = {10.1017/S0960129510000162},
-  journal = {Mathematical Structures in Computer Science},
-  number = {4},
-  pages = {655--703},
-  title = {Realisability semantics of parametric polymorphism, general references and recursive types},
-  volume = {20},
-}]]></fr:meta>
-          </fr:frontmatter>
-          <fr:mainmatter />
-        </fr:tree>
       </fr:mainmatter>
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>6956</fr:anchor>
+        <fr:anchor>6940</fr:anchor>
         <fr:title text="Context">Context</fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
@@ -134,7 +143,7 @@
               <fr:month>2</fr:month>
               <fr:day>10</fr:day>
             </fr:date>
-            <fr:anchor>6955</fr:anchor>
+            <fr:anchor>6939</fr:anchor>
             <fr:addr type="user">jms-00OI</fr:addr>
             <fr:route>jms-00OI.xml</fr:route>
             <fr:title text="Towards univalent reference types">
@@ -170,9 +179,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6638</fr:anchor>
-                <fr:addr type="machine">unstable/5959</fr:addr>
-                <fr:route>unstable-5959.xml</fr:route>
+                <fr:anchor>6749</fr:anchor>
+                <fr:addr type="machine">unstable/5965</fr:addr>
+                <fr:route>unstable-5965.xml</fr:route>
                 <fr:title text="Side effects in programming languages">Side effects in programming languages</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -214,9 +223,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6639</fr:anchor>
-                <fr:addr type="machine">unstable/5960</fr:addr>
-                <fr:route>unstable-5960.xml</fr:route>
+                <fr:anchor>6750</fr:anchor>
+                <fr:addr type="machine">unstable/5966</fr:addr>
+                <fr:route>unstable-5966.xml</fr:route>
                 <fr:title text="State as a side effect">State as a side effect</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -254,9 +263,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6640</fr:anchor>
-                <fr:addr type="machine">unstable/5961</fr:addr>
-                <fr:route>unstable-5961.xml</fr:route>
+                <fr:anchor>6751</fr:anchor>
+                <fr:addr type="machine">unstable/5967</fr:addr>
+                <fr:route>unstable-5967.xml</fr:route>
                 <fr:title text="First-order dynamic allocation">First-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -303,9 +312,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6641</fr:anchor>
-                <fr:addr type="machine">unstable/5962</fr:addr>
-                <fr:route>unstable-5962.xml</fr:route>
+                <fr:anchor>6752</fr:anchor>
+                <fr:addr type="machine">unstable/5968</fr:addr>
+                <fr:route>unstable-5968.xml</fr:route>
                 <fr:title text="Higher-order dynamic allocation">Higher-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -344,9 +353,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6642</fr:anchor>
-                <fr:addr type="machine">unstable/5963</fr:addr>
-                <fr:route>unstable-5963.xml</fr:route>
+                <fr:anchor>6753</fr:anchor>
+                <fr:addr type="machine">unstable/5969</fr:addr>
+                <fr:route>unstable-5969.xml</fr:route>
                 <fr:title text="Guarded higher-order dynamic allocation">Guarded higher-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -419,9 +428,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6643</fr:anchor>
-                <fr:addr type="machine">unstable/5964</fr:addr>
-                <fr:route>unstable-5964.xml</fr:route>
+                <fr:anchor>6754</fr:anchor>
+                <fr:addr type="machine">unstable/5970</fr:addr>
+                <fr:route>unstable-5970.xml</fr:route>
                 <fr:title text="Representation independence in the heap">Representation independence in the heap</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -520,9 +529,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6644</fr:anchor>
-                <fr:addr type="machine">unstable/5965</fr:addr>
-                <fr:route>unstable-5965.xml</fr:route>
+                <fr:anchor>6755</fr:anchor>
+                <fr:addr type="machine">unstable/5971</fr:addr>
+                <fr:route>unstable-5971.xml</fr:route>
                 <fr:title text="Representation independence in the heap (II)">Representation independence in the heap (II)</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -561,9 +570,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6645</fr:anchor>
-                <fr:addr type="machine">unstable/5966</fr:addr>
-                <fr:route>unstable-5966.xml</fr:route>
+                <fr:anchor>6756</fr:anchor>
+                <fr:addr type="machine">unstable/5972</fr:addr>
+                <fr:route>unstable-5972.xml</fr:route>
                 <fr:title text="Univalent reference types">Univalent reference types</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -640,16 +649,16 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6647</fr:anchor>
-                <fr:addr type="machine">unstable/5967</fr:addr>
-                <fr:route>unstable-5967.xml</fr:route>
+                <fr:anchor>6758</fr:anchor>
+                <fr:addr type="machine">unstable/5973</fr:addr>
+                <fr:route>unstable-5973.xml</fr:route>
                 <fr:title text="Representation independence in the heap (III)">Representation independence in the heap (III)</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter><fr:p>The theory of univalent reference types derives <fr:tex display="inline"><![CDATA[\vdash  \mathsf {posCounter} \equiv  \mathsf {negCounter}]]></fr:tex>.</fr:p><beamer:pause xmlns:beamer="http://ctan.org/pkg/beamer" />
  
    
-   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:author><fr:link href="danielgratzer.xml" title="Daniel Gratzer" addr="danielgratzer" type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link href="larsbirkedal.xml" title="Lars Birkedal" addr="larsbirkedal" type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6646</fr:anchor><fr:addr type="machine">unstable/5968</fr:addr><fr:route>unstable-5968.xml</fr:route><fr:title text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:author><fr:link href="danielgratzer.xml" title="Daniel Gratzer" addr="danielgratzer" type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link href="larsbirkedal.xml" title="Lars Birkedal" addr="larsbirkedal" type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>6757</fr:anchor><fr:addr type="machine">unstable/5974</fr:addr><fr:route>unstable-5974.xml</fr:route><fr:title text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
   <fr:p>The function <fr:tex display="inline"><![CDATA[\mathsf {neg} \colon \mathsf {Integer}\to \mathsf {Integer}]]></fr:tex> is inverse to itself; therefore, apply <fr:strong>CELL UNIVALENCE</fr:strong> with <fr:tex display="inline"><![CDATA[f^+ \equiv  f^- \equiv  \mathsf {neg}]]></fr:tex> and simplify.</fr:p>
  </fr:mainmatter></fr:tree>
  
@@ -673,9 +682,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6648</fr:anchor>
-                <fr:addr type="machine">unstable/5969</fr:addr>
-                <fr:route>unstable-5969.xml</fr:route>
+                <fr:anchor>6759</fr:anchor>
+                <fr:addr type="machine">unstable/5975</fr:addr>
+                <fr:route>unstable-5975.xml</fr:route>
                 <fr:title text="Can we find a reasonable model of this theory???">Can we find a reasonable model of this theory???</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -701,9 +710,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6649</fr:anchor>
-                <fr:addr type="machine">unstable/5970</fr:addr>
-                <fr:route>unstable-5970.xml</fr:route>
+                <fr:anchor>6760</fr:anchor>
+                <fr:addr type="machine">unstable/5976</fr:addr>
+                <fr:route>unstable-5976.xml</fr:route>
                 <fr:title text="Models of guarded higher order dynamic allocation">Models of guarded higher order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -776,9 +785,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6650</fr:anchor>
-                <fr:addr type="machine">unstable/5971</fr:addr>
-                <fr:route>unstable-5971.xml</fr:route>
+                <fr:anchor>6761</fr:anchor>
+                <fr:addr type="machine">unstable/5977</fr:addr>
+                <fr:route>unstable-5977.xml</fr:route>
                 <fr:title text="Models of univalent reference types">Models of univalent reference types</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -807,9 +816,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6651</fr:anchor>
-                <fr:addr type="machine">unstable/5972</fr:addr>
-                <fr:route>unstable-5972.xml</fr:route>
+                <fr:anchor>6762</fr:anchor>
+                <fr:addr type="machine">unstable/5978</fr:addr>
+                <fr:route>unstable-5978.xml</fr:route>
                 <fr:title text="Impredicative Guarded Homotopy Type Theory">Impredicative Guarded Homotopy Type Theory</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -840,9 +849,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6652</fr:anchor>
-                <fr:addr type="machine">unstable/5973</fr:addr>
-                <fr:route>unstable-5973.xml</fr:route>
+                <fr:anchor>6763</fr:anchor>
+                <fr:addr type="machine">unstable/5979</fr:addr>
+                <fr:route>unstable-5979.xml</fr:route>
                 <fr:title text="Models of iGDTT">Models of <fr:strong>iGDTT</fr:strong></fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -871,9 +880,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6653</fr:anchor>
-                <fr:addr type="machine">unstable/5974</fr:addr>
-                <fr:route>unstable-5974.xml</fr:route>
+                <fr:anchor>6764</fr:anchor>
+                <fr:addr type="machine">unstable/5980</fr:addr>
+                <fr:route>unstable-5980.xml</fr:route>
                 <fr:title text="Towards models of iGHoTT">Towards models of <fr:strong>iGHoTT</fr:strong></fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -904,9 +913,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6654</fr:anchor>
-                <fr:addr type="machine">unstable/5975</fr:addr>
-                <fr:route>unstable-5975.xml</fr:route>
+                <fr:anchor>6765</fr:anchor>
+                <fr:addr type="machine">unstable/5981</fr:addr>
+                <fr:route>unstable-5981.xml</fr:route>
                 <fr:title text="A more canonical model of iGHoTT?">A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -934,9 +943,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6655</fr:anchor>
-                <fr:addr type="machine">unstable/5976</fr:addr>
-                <fr:route>unstable-5976.xml</fr:route>
+                <fr:anchor>6766</fr:anchor>
+                <fr:addr type="machine">unstable/5982</fr:addr>
+                <fr:route>unstable-5982.xml</fr:route>
                 <fr:title text="Comparing with other realisability models of state">Comparing with other realisability models of state</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -964,9 +973,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>6656</fr:anchor>
-                <fr:addr type="machine">unstable/5977</fr:addr>
-                <fr:route>unstable-5977.xml</fr:route>
+                <fr:anchor>6767</fr:anchor>
+                <fr:addr type="machine">unstable/5983</fr:addr>
+                <fr:route>unstable-5983.xml</fr:route>
                 <fr:title text="" />
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -980,21 +989,21 @@
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>6957</fr:anchor>
+        <fr:anchor>6941</fr:anchor>
         <fr:title text="Backlinks">Backlinks</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>6958</fr:anchor>
+        <fr:anchor>6942</fr:anchor>
         <fr:title text="Related">Related</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>6959</fr:anchor>
+        <fr:anchor>6943</fr:anchor>
         <fr:title text="Contributions">Contributions</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
