@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" root="false">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2025</fr:year>
+      <fr:month>2</fr:month>
+      <fr:day>11</fr:day>
+    </fr:date>
+    <fr:anchor>9004</fr:anchor>
+    <fr:addr type="user">jms-0179</fr:addr>
+    <fr:route>jms-0179.xml</fr:route>
+    <fr:title text="Regular expressions (abstract syntax)">Regular expressions (abstract syntax)</fr:title>
+    <fr:taxon>Definition</fr:taxon>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <fr:p>The <fr:em>abstract</fr:em> syntax of regular expressions over an alphabet <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> will be represented by trees whose vertices are labelled by the symbols <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> for any <fr:tex display="inline"><![CDATA[a\in \Sigma ]]></fr:tex>. More specifically, each node of a tree will be of the following form:</fr:p>
+    <fr:ol><fr:li>A node labelled by either <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> or <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> has exactly two children.</fr:li>
+ <fr:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> has exactly one child.</fr:li>
+ <fr:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, or <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> has no children.</fr:li></fr:ol>
+    <fr:p>The plain English description above could be expressed as an <fr:link href="jms-016N.xml" title="Inductive definitions" addr="jms-016N" type="local">inductive definition</fr:link> of a subset of the set of all trees.</fr:p>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>8996</fr:anchor>
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>8998</fr:anchor>
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:anchor>8997</fr:anchor>
+            <fr:addr type="user">jms-0178</fr:addr>
+            <fr:route>jms-0178.xml</fr:route>
+            <fr:title text="Regular expressions">Regular expressions</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>Using the tools that we have built up in <fr:link href="jms-016F.xml" title="Lecture 20: formal languages, inductive definitions, rule induction" addr="jms-016F" type="local">Lecture 20</fr:link>, we can smoothly study both concrete and abstract syntax. Somewhat confusingly, our running example will be the <fr:em>language of regular expressions</fr:em> (this might be confusing because regular expressions are a streamlined way to <fr:link href="jms-016W.xml" title="Syntactic presentation of a formal language" addr="jms-016W" type="local">present</fr:link> the grammar of certain kinds of formal languages—but we are treating the grammar of regular expressions themselves).</fr:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:anchor>7688</fr:anchor>
+                <fr:addr type="user">jms-0176</fr:addr>
+                <fr:route>jms-0176.xml</fr:route>
+                <fr:title text="Regular expressions (concrete syntax)">Regular expressions (concrete syntax)</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Let <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> be an <fr:link href="jms-016H.xml" title="Alphabet" addr="jms-016H" type="local">alphabet</fr:link>. We then let <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}]]></fr:tex> be the disjoint union of <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> with the set <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{\underline {\epsilon },\varnothing , \vert ,*,(,)\right \}\mathclose {}}]]></fr:tex>. Then a <fr:em>concrete</fr:em> syntax of regular expressions over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> can be defined as a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}]]></fr:tex>, which we <fr:link href="jms-016W.xml" title="Syntactic presentation of a formal language" addr="jms-016W" type="local">present</fr:link> by means of the following <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rules</fr:link>:</fr:p>
+                <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad a\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \underline {\epsilon }\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \varnothing \quad }
+
+
+   \\
+   
+ 
+ \displaystyle \frac {\displaystyle r}{\displaystyle \quad (r)\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r\quad  s}{\displaystyle \quad r\vert  s\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r\quad  s}{\displaystyle \quad rs\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r}{\displaystyle \quad r*\quad }
+
+
+ \end {gathered}
+]]></fr:tex>
+                <fr:p>Above we let <fr:tex display="inline"><![CDATA[a]]></fr:tex> range over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> and <fr:tex display="inline"><![CDATA[r,s]]></fr:tex> range over <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}^\star ]]></fr:tex>. We are careful to distinguish the formal symbol <fr:tex display="inline"><![CDATA[\underline {\epsilon }]]></fr:tex> from <fr:tex display="inline"><![CDATA[\epsilon ]]></fr:tex>: <fr:tex display="inline"><![CDATA[\epsilon ]]></fr:tex> is literally the empty <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">string</fr:link>, whereas <fr:tex display="inline"><![CDATA[\underline {\epsilon }]]></fr:tex> is the symbol representing the regular expression that <fr:em>matches</fr:em> the empty <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">string</fr:link>!</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:anchor>7689</fr:anchor>
+                <fr:addr type="user">jms-0177</fr:addr>
+                <fr:route>jms-0177.xml</fr:route>
+                <fr:title text="Derivation of a concrete regular expression">Derivation of a concrete regular expression</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>The (concrete) regular expression <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex> can be <fr:link href="jms-016X.xml" title="Derivations" addr="jms-016X" type="local">derived</fr:link> in the <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link> <fr:link href="jms-016W.xml" title="Syntactic presentation of a formal language" addr="jms-016W" type="local">presented</fr:link> in <fr:link href="jms-0176.xml" title="Regular expressions (concrete syntax)" addr="jms-0176" type="local">Definition <fr:contextual-number addr="jms-0176" /></fr:link> as follows:</fr:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \underline {\epsilon }\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad a\quad }
+
+
+  }{\displaystyle \quad \underline {\epsilon }\vert  a\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad b\quad }
+
+
+  }{\displaystyle \quad b*\quad }
+
+
+ }{\displaystyle \quad 
+  \underline {\epsilon }\vert  ab*
+ \quad }
+
+
+]]></fr:tex>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:anchor>7690</fr:anchor>
+                <fr:addr type="user">jms-0179</fr:addr>
+                <fr:route>jms-0179.xml</fr:route>
+                <fr:title text="Regular expressions (abstract syntax)">Regular expressions (abstract syntax)</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>The <fr:em>abstract</fr:em> syntax of regular expressions over an alphabet <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> will be represented by trees whose vertices are labelled by the symbols <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> for any <fr:tex display="inline"><![CDATA[a\in \Sigma ]]></fr:tex>. More specifically, each node of a tree will be of the following form:</fr:p>
+                <fr:ol><fr:li>A node labelled by either <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> or <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> has exactly two children.</fr:li>
+ <fr:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> has exactly one child.</fr:li>
+ <fr:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, or <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> has no children.</fr:li></fr:ol>
+                <fr:p>The plain English description above could be expressed as an <fr:link href="jms-016N.xml" title="Inductive definitions" addr="jms-016N" type="local">inductive definition</fr:link> of a subset of the set of all trees.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:anchor>7691</fr:anchor>
+                <fr:addr type="user">jms-017A</fr:addr>
+                <fr:route>jms-017A.xml</fr:route>
+                <fr:title text="Examples of abstract syntax trees">Examples of abstract syntax trees</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>We recall the derivation for the concrete regular expression <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex>. This will correspond eventually to the following abstract syntax tree as specified by <fr:link href="jms-0179.xml" title="Regular expressions (abstract syntax)" addr="jms-0179" type="local">Definition <fr:contextual-number addr="jms-0179" /></fr:link>:</fr:p>
+                <fr:figure>
+                  <fr:resource hash="ec9f65b212e1ed0db533f659b439e2d9">
+                    <fr:resource-content>
+                      <fr:img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDMuMi4yIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzEyNi44OTEzMThwdCcgaGVpZ2h0PScxNDguODMxOTVwdCcgdmlld0JveD0nLTcyIC03MiA4NC41OTQyMTIgOTkuMjIxMyc+CjxzdHlsZSB0eXBlPSd0ZXh0L2Nzcyc+CjwhW0NEQVRBW0Bmb250LWZhY2V7Zm9udC1mYW1pbHk6Y21taTc7c3JjOnVybChkYXRhOmFwcGxpY2F0aW9uL3gtZm9udC13b2ZmO2Jhc2U2NCxkMDlHUmdBQkFBQUFBQVFnQUFvQUFBQUFCS3dBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQlBVeTh5QUFBQTlBQUFBRU1BQUFCZ2hYeDBzbU50WVhBQUFBRTRBQUFBTEFBQUFEUUFEQUMxWjJ4NVpnQUFBV1FBQUFGaEFBQUJoTEhqbFJOb1pXRmtBQUFDeUFBQUFDOEFBQUEyS1grR1kyaG9aV0VBQUFMNEFBQUFId0FBQUNRRmlRSHFhRzEwZUFBQUF4Z0FBQUFNQUFBQURBZENBSUZzYjJOaEFBQURKQUFBQUFnQUFBQUlBR29Bd20xaGVIQUFBQU1zQUFBQUdBQUFBQ0FBQmdCQ2JtRnRaUUFBQTBRQUFBRFBBQUFCT1BOaEtxTndiM04wQUFBRUZBQUFBQXdBQUFBZ0FBTUFBSGphWTJCbXltYWN3TURLd01BMGkrbnNQeEdHZmhETitJYnhEWU14SXljREVMQXh3QUVqQXhKSUtTNUxCMG9tTWlReE0vd0g4cGtoMGtocS9nT0ZBZE9FRFI0QWVOcGpZR0JnWW1CZ1lBWmlFU0RKQ0taWkdCU0FOQXNRZ3ZoSi8vOER5Y1QvLy84dkFQTVpBRlZJQnI1NDJoV1B6VExEVUFDRjc3bUpKTTJRSzgwZlU0S2trcWdtZmxxSndhUksyNWthUmcwenBoM3NMRHhETjNaZXhkTEd3dDZNblZjd3d6T3dVMjdQMloxekZ1Y2psT1IvMzdTTFZ4S1RmVUtRWTlOMkdOVmdtYmFUbzRGMEFiWmpTakozRUdxUUU0UnBOcllMSVV2RElBd2ttY2N1c2h4WmlxZUorWktKb21YTEJXWXMrb29pcXFvRVF5K2x6b0h1ZGl1SGx4QWJ6RGdhTE5jM2FqQ3RtdFB4RFErb3VsNWRDZkJnRzlONjcrVEtTalI3RHJRZGxpUlFxazQwRjJzQ1NyRWJBZGZIdDJkR3NTUEFHMzI4VHk2WFJScnQrdmR4bG9BdUtIT0VpNUxEdng5ODBqZmlrWlF6Q2VObnRpTXhTT1A3UVlNSGdlOEZZWTRhTCtSeG4yTXJnZTl4Rkw3aTdOQTZ6a0cwZlNNSXphV2pmdk1Da09KRWxTZ3JGM1NBeWExcUdWblVObWJtc2VydTVab2l1c29LZlJ4OTJSem12SC9YODFzQytxZlQzc3R6eFpsU1JaVXBzaWhNL2c2d0Y2NFAvZnBhaXpGdEdNMG1PK1FmcE9JNUV3QUFBSGphWTJCa1lHQUE0a2ZOZ3VieC9EWmZHWmhaR0VEZzhVWEZVQVQ5L3l2VE1hYmpRQzRIQXhOSUZBQXI1Z3M1QUhqYVkyQmtZR0JtK00vQXdNQjBqTUdPUVlISmt3RW9nZ0tZQVQvc0Fua0FBc1lBQUFKNkFENENBZ0JEQUFBQUFBQnFBTUo0Mm1OZ1pHQmdZR1p3WkdCaUFBRkdCalFBQUFjb0FFbDQyazJNUFcvQ01CQ0duNGdFaVRDd29BNGRpb2ZPRVFRa3RpNE1US3hNTElCZGxNRTJja0lrcEtwamYzY3Zyb2VlNU5QemZweUJrbTh5aHNtWXhUMU1UaUhxand1bXpCT1BSUzBTbDd6eXpvZ3NuNGp6eGtmaVhKSlQ0b0lYUGhPUHhmOUtYTExoWitmdC9kR1pvQTVlbStDdTFqYmJvd2x0NDUxYVZjdW85OGFaY082TVZwZW4wbjNUOWplcjFsVmQxZXp3V080ODZEQUVGQWR4ZEdUSFZUSkx3NVpqZEZwaEw3NWlSY1h5WDc2WDNNWE9PZjZrcFhQaEtWdlRTNk9WZlpPdVlpMlg5ZkIrQWN3ckwva0FlTnBqWUdiQUN3QUFmUUFFKSBmb3JtYXQoJ3dvZmYnKTt9CkBmb250LWZhY2V7Zm9udC1mYW1pbHk6Y210dDEwO3NyYzp1cmwoZGF0YTphcHBsaWNhdGlvbi94LWZvbnQtd29mZjtiYXNlNjQsZDA5R1JnQUJBQUFBQUFrSUFBb0FBQUFBRERRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJQVXk4eUFBQUE5QUFBQUVZQUFBQmdoUlowVW1OdFlYQUFBQUU4QUFBQVlBQUFBSVFDT1FNbFoyeDVaZ0FBQVp3QUFBWFNBQUFJZ0I4RVNyRm9aV0ZrQUFBSGNBQUFBREVBQUFBMktNK0ZPMmhvWldFQUFBZWtBQUFBSGdBQUFDUUU0QUV1YUcxMGVBQUFCOFFBQUFBaUFBQUFJZ050QU9Wc2IyTmhBQUFINkFBQUFDSUFBQUFpRXE0UVFHMWhlSEFBQUFnTUFBQUFHQUFBQUNBQUV3QktibUZ0WlFBQUNDUUFBQURVQUFBQlBxc3VkZUJ3YjNOMEFBQUkrQUFBQUJBQUFBQWdBQU1BQVhqYVkyQm1rbUtjd01ES3dNQTBpK25zUHhHR2ZoRE4rSWJ4RFlNeEl5Y0RFTEF4d0FFakF4SklLUzVMQjBvNk0xUXluZnd2Q05SL2t1RTlxcHIvL3hrWUFPM2dEMVVBQUhqYVkyQmdZR0pnWUdBR1loRWd5UWltV1JnS2dMUUVnd0JRaElQQm1jR1BJWmdobENHUklaa2hreUdmb1lpaGxLSHkvMytnQ2xTWkhLQk1DVWptLzc3L1cvNXYrTC8rLzVML2kvL1Arei9uLzZ6L00vOVBBNXVORlFBQVpkUWZUSGphZlZWYmJCUmxGSjV6WmpwTGR5N2Q3ZXpNN096TzdyYmRkcmZYMlhiYm5TMVF0bHhLYjlDVVVvU1dPeVVHTHdqSUpWUVFva1JDakJIVUp4TU5EL0tnOFlXRUIwTk0wQmppbXlacTRvdEo4WUhFeE1SNFNTd0N5cTdubjExb2E0VHM1dXovbjluTS81M3ZmT2Y3T2VCYVN2UHdCNTdoV2pnT2RFT0ZWTnFCcEFxK09KaUdteTlBMWpCcDUwQzZBSG5EN0ljQ2RNY0JmZ2U1VXdaNUpEUDBITTgvTzVLY3F1YkR3UWpnMFIwSEx2TDhtd2NtZW1TZVZ4VERqNU1YZzJFSUtmM3I4T0tKNDI4aDVrYU5hcjgxZkpEbnIxMjZkSTNuSGJOYWxNRG02SGd1WGlyQjMzaU15M0JjRklKSk1kWGptdDJ1RVJMVHlTQUZNWlhtZzVWOStkbkNmMjdlaU1oMlZIbEJpZHB5SkdScVVmOE5pNjBQcXBHb1lsa3NydGN0SEN0eThCTlVkMGdBVWtjMVBQakxyZ0dRSThnVkxmQlRvaHptNmNjUG9ESk1QY1RQYmVKbmtEWVpjQ0JIUEJBbkhnMCszUkI5WWpxVklkWTh5aEpBdE5HWE5nMHNsWFFnbjB1NVdTTVVSK0l5eC80Sm1hSE02Z0Y0Wm10eVkxMVZJR2pRUWJLVkVGQ1g3ZkhldFFDWmhzbmxoYmpVaVBEMDl1eTJPakVRTUFtU2xKV0MvV3ZNdmpWQ1dtd0dLeUNGcG5JRE0yaEVUQXRzNVFKeGpIR3JMZEFzd01xV3BteTFKb2ZqL3Y2dW9lZDVNMndaRUZVdkJDekR6clhLZ0lPdC9XSEI4UGl1S3MyalJudzMweVpZN3ZKL1dJOUQxczB2eWNGWGVIaDgvQkFtNUZoTWZvMkZCTDloNjhiS1hyR2pLbllYTCs4OWhYaHFMOHlVaVdTaGVHWHp4TVJtMkxXUUlRZ2NjcjJsZTJqQmw2Uy9ITWMxcVpBdVM0MUU2Rk1aa1draTB1MEgxMlIwbTBhM0d3ZFBDUldKRmpBTko1c200K1BUZ0IrK2dZTjlqVFhMaUFwRmk0RFFVZHRaZjJnMzFNcDFzZzB4TTE2SXZYZ2FvTGR6V1g2NUF2WGhBT0NtL09nWXVsa0FRYlJEWUlhN2xDby9DalBMNTZvRUVnbmhsTDRYc3FsRUc0QVlyUXQ2bkkyVzdzT1BoTGVOMEJvMUlETFNVbm1YZlJMQVppWHBDWUowNFJPWkZLZ1cxM1FObUVOYlMrK2FPWVBRS3FtOXg1SmRtaU5BUkd1dVFqMDkzU2o1SW9nNzErWGJCTDhwMmtjQ0xiVnBnWDkxeitxQllNMnFLdlJYS1YxbUdIdEVCS0ZUcnVscEhOcUp2S05FQ0tUSDRRVE56YmZVeHpCWHp6cFpibFQ5MGhISkd1bVEyRURMckFGOUIxbXppdC9KTVZ0NStUaGJ2eDBKZ04wZWk3WGJjS2w0dFR3RkhnR3J2SFh0dXpvOWk4V28vajQ2YTg0NzYvRW5RZWQ1Tm5ERnE3SnRLNitkWi9HRFNBQ0hIOXhaOU9aNWJ3dzFlazNwbjFJSkEvQTVOOHh4bXB2UHN1RXlUUHI0ZEpjY3FUTHN1WjZVcjBGOFVzb2hsUVRGVkFHWVZJK2tzam5MeUlmem1vK3ZSanRPVTdKUnNlMkFIcXpQUWpRQk1YbU1DcThKUGRwdWwyT1FpSHJMZXRXQzk1S1FpNXRDcXhwb0Q5NWRnUDFiVnlNTURWeC9RcUpDbWRjYTRrdWgyaVNxTFV1MWxhMURYMkpoT2RjaHNlai9hMnRaNDJOMWZYZGhFRHJVYUZSNW53MVhNOFEzVC9JZFZJbDhoZkhhNGJDNElTN0Q2OEVrRG83OXVnRGtaNmNkMW0zNFpBa3k5bU42bWxsQk9yNEZOem1KTTd5NXExaDhISGh2K29oV3N2bGIrTksyYmJNOHprNU56WDZ6Y2h4eDA5RUp4UEc1L1djUnorNmZPWWQ0cm5nUDk0ME1UVTBOamV6ejZtMGdmY3pERjF5SzQvTDZZL1RoMHd2TUpsV3lVNXJqMjBjOU5jNHp5VXhPc25pRTFOaTJvN21RNHEwbUUzYnYrT3lWUmVaY1VXUzRJZE9FMk40VWhrZ3RmN3pNZGJSMEQ3NUdsNTJ0NmFMQkxqQm12ajRWVStuY1E3NjlUQVhaYmJSNjlSVUNTTjBTOFB0T2JNSHRTalNxVGpPM2hZOFlFamo5cDk2TEVIUFVzS1d1WHd2OUkvYzlEcmNFdzFaZ2k0ZkU2L0ZkNnZHbm5FTk1ldWEwcU5RZ3cwSCtsYzh0eWozcU5oeGVzWHJsVTFodUlsV04xZ3FiWGxEbE1CeWpsQ2d2YXF6NkZybzZoMEgwVHE4TkYzK0pOQU5xdkxiMmg0ZVpxK1VlK3dtUFhUS2hSSGpJVVlIM25JaDExNlg3Vy9RUkoyU25hWDZKenljZ3J5MHgrZXVYMFpKcUcxZWxITUMyRmg1NTJRbExja0I0SjZGRUkrcEo3MUxkWTByVE1YYkh6cklBcDR1TzVPaGFod0JkOWEyQzBLd2phQzFtUzZjQ2h5cklpS3c3ZmEyd2JLR1ovd0k5NzB3M0FBQjQybU5nWkdCZ0FPS3FTNXMzeHZQYmZHVmdabUVBZ2NjWEZVTmg5UDgvLzhXWnBKaHFnVndPQmlhUUtBQmhMUXhqQUFBQWVOcGpZR1JnWURyNVh4QklTdjMvdzhESUpNa0FGRUVCakFCc0lRUVNBQUFDR2dBQUFDa0FIZ0EwQUFVQU9BQktBRkVBUFAvOEFBMEFPZ0FpQUJzQURRQWNBQUFBQUFBQUFFWUFrQUQrQVVBQm1BSGlBaGdDUWdLd0F2d0RLQU5tQTZJRDZnUkFBQUI0Mm1OZ1pHQmdFR0R3WkdCaUFBRkdCalFBQUFsUEFGNTQyazJPd1lyQ01CUkZUNWxhbUk3Z1NoZXpHTEp5V2RycUJ3eTRjT1hXcGFBbVNBZWFTaG9MYm1RK1lENTZYbU1XdmtjdUovZmRGd0xrUEVnWUsyRVdkS3lVVEc1UG52REJQSEltclNMbmZMTGtqU1I5RitlTDc4Z3BVdzZSSnl6NGlaeUoveHM1WjgzZnBtdXZOMitjMm5YYU9IdHV2YS9LdlhGOTAxbFZGZVhUMkJwcjNORWJyVTUzcFllbUh5NnRXaFYxVWJPaG8rWEtEWS9CeWM5MjR1akFsclBNdkhSRnlUNTRQWTNNcmVRcUNuRmZFMXRKMkpBNmh0ZTBwRTdjUlRXRDdQV2lGOGtyVnJKYmorY2ZBbWt4QlhqYVkyQm1RQWFNREdnQUFBQ09BQVU9KSBmb3JtYXQoJ3dvZmYnKTt9CnRleHQuZjAge2ZvbnQtZmFtaWx5OmNtdHQxMDtmb250LXNpemU6OS45NjI2NHB4fQp0ZXh0LmYxIHtmb250LWZhbWlseTpjbW1pNztmb250LXNpemU6Ni45NzM4NDhweH0KXV0+Cjwvc3R5bGU+CjxnIGlkPSdwYWdlMSc+CjxnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyBmaWxsPScjMDAwJyBzdHJva2U9JyMwMDAnPgo8ZyBzdHJva2Utd2lkdGg9JzAuNCc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTEzLjEyNDg4LDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPlVuaW9uPC90ZXh0Pgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMTkuOTkwODQsLTI4LjAzMTM3KSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTEwLjQ5OTkxLDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPk51bGw8L3RleHQ+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMTkuOTkwODMsLTI4LjAzMTM3KSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTE1Ljc0OTg2LDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPkNvbmNhdDwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgyLjcyNjg0LC01Ni4wNjI3NCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIHN0cm9rZT0nIzAwMCcgc3Ryb2tlLW1pdGVybGltaXQ9JzEwJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoMC45OTYyNjQsLTAuOTk2MjY0KSc+CjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0xMC4yOTM3NSwwLjApJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBmaWxsPScjMDAwJz4KPGcgc3Ryb2tlPSdub25lJz4KPHRleHQgY2xhc3M9J2YwJyB4PSctMzguMzAyNjM5JyB5PSctNjIuNTkxMTk1Jz5TeW08L3RleHQ+Cjx0ZXh0IGNsYXNzPSdmMScgeD0nLTIyLjYxMTYxOCcgeT0nLTU5Ljg3OTE1Mic+YTwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgzNy4yNTQ4MiwtNTYuMDYyNzQpJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBzdHJva2U9JyMwMDAnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMTAuNDk5OTEsMC4wKSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgZmlsbD0nIzAwMCc+CjxnIHN0cm9rZT0nbm9uZSc+Cjx0ZXh0IGNsYXNzPSdmMCcgeD0nLTM4LjMwMjYzOScgeT0nLTYyLjU5MTE5NSc+U3RhcjwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgzNy4yNTQ4MiwtODQuMDk0MTIpJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBzdHJva2U9JyMwMDAnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtOS44ODMyNiwwLjApJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBmaWxsPScjMDAwJz4KPGcgc3Ryb2tlPSdub25lJz4KPHRleHQgY2xhc3M9J2YwJyB4PSctMzguMzAyNjM5JyB5PSctNjIuNTkxMTk1Jz5TeW08L3RleHQ+Cjx0ZXh0IGNsYXNzPSdmMScgeD0nLTIyLjYxMTYxOCcgeT0nLTU5Ljg3OTE1Mic+YjwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8cGF0aCBkPSdNLTQuNjk4Ny0zLjUzMjk3TC0xNS4yOTQxNC0xOC4zODcyOCcgZmlsbD0nbm9uZScvPgo8cGF0aCBkPSdNNC42OTg3LTMuNTMyOTdMMTUuMjk0MTMtMTguMzg3MjgnIGZpbGw9J25vbmUnLz4KPHBhdGggZD0nTTE2LjEyMTAyLTMxLjU2NDM1TDcuMzk0NjQtNDYuNDE4NjYnIGZpbGw9J25vbmUnLz4KPHBhdGggZD0nTTI0LjA0ODYzLTMxLjU2NDM1TDMzLjE5ODgyLTQ2LjQxODY2JyBmaWxsPSdub25lJy8+CjxwYXRoIGQ9J00zNy4yNTQ4Mi01OS41OTU3MlYtNzQuNDUwMDMnIGZpbGw9J25vbmUnLz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L3N2Zz4=" />
+                    </fr:resource-content>
+                    <fr:resource-source type="latex" part="preamble"><![CDATA[\usepackage {forest}\usepackage [tt=false]{libertine}]]></fr:resource-source>
+                    <fr:resource-source type="latex" part="body"><![CDATA[
+   \begin {forest}
+     [\texttt {Union}
+      [\texttt {Null}]
+      [\texttt {Concat}
+       [$\texttt {Sym}_{a}$]
+       [\texttt {Star} [$\texttt {Sym}_{b}$]]
+      ]
+     ]
+   \end {forest}
+ ]]></fr:resource-source>
+                  </fr:resource>
+                </fr:figure>
+                <fr:p>Observe that we had to decide whether how tightly the concatenation and union operators bind with respect to each other. That is part of defining the <fr:em>parsing</fr:em> relation.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:anchor>7692</fr:anchor>
+                <fr:addr type="user">jms-017B</fr:addr>
+                <fr:route>jms-017B.xml</fr:route>
+                <fr:title text="Precedence parsing for regular expressions">Precedence parsing for regular expressions</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>Parsing is decribed by a <fr:link href="jms-00I7.xml" title="Relation" addr="jms-00I7" type="local">relation</fr:link> from concrete syntax to abstract syntax. Ideally, this relation would be <fr:link href="jms-00K7.xml" title="Partial function" addr="jms-00K7" type="local">functional</fr:link> and so give rise to a <fr:link href="jms-00K7.xml" title="Partial function" addr="jms-00K7" type="local">partial function</fr:link>. In order to achieve this, we address ahead of time any ambiguity in how tightly operators bind: for example, <fr:tex display="inline"><![CDATA[ab\vert  c]]></fr:tex> should be the union of <fr:tex display="inline"><![CDATA[ab]]></fr:tex> and <fr:tex display="inline"><![CDATA[c]]></fr:tex>, rather than the concatenation of <fr:tex display="inline"><![CDATA[a]]></fr:tex> with <fr:tex display="inline"><![CDATA[b\vert  c]]></fr:tex>.</fr:p>
+                <fr:p>This can be achieved by defining a more complex three-place relation <fr:tex display="block"><![CDATA[{r} \leadsto  {R} \mathrel {@} {n}]]></fr:tex> on concrete syntax <fr:tex display="inline"><![CDATA[r]]></fr:tex>, abstract syntax <fr:tex display="inline"><![CDATA[R]]></fr:tex>, and <fr:em>precedences</fr:em> <fr:tex display="inline"><![CDATA[n]]></fr:tex>. The idea is that we parse operations in the order of increasing tightness/precedence: in this case, that will be <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> followed by all the atomic regular expressions: <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>.</fr:p>
+                <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {0}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {1}
+   }{\displaystyle \quad 
+    {r\vert  s} \leadsto  {\texttt {Union}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {0}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {1}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {rs} \leadsto  {\texttt {Concat}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {1}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {r*} \leadsto  {\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\varnothing } \leadsto  {\texttt {Never}} \mathrel {@} {3}
+   \quad }
+
+
+  \end {gathered}
+]]></fr:tex>
+                <fr:p>If we are parsing, e.g., unions but we encounter only a symbol, that needs to be allowed too. So we add a rule that coerces a higher precedence to a lower one silently:</fr:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n+k}
+ }{\displaystyle \quad 
+  {r} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+                <fr:p>Finally, we allow the use of parentheses to coerce a precedences in the other direction; this is what would make it possible to concatenate a union with another regular expression.</fr:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n - k}
+ }{\displaystyle \quad 
+  {(r)} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+                <fr:p>We then define the parsing relation <fr:tex display="inline"><![CDATA[{r}\leadsto  {R}]]></fr:tex> to hold if and only if <fr:tex display="inline"><![CDATA[{r} \leadsto  {R} \mathrel {@} {0}]]></fr:tex> holds. We demonstrate parsing <fr:link href="jms-016X.xml" title="Derivations" addr="jms-016X" type="local">derivation</fr:link> for <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex> and <fr:tex display="inline"><![CDATA[(\underline {\epsilon }\vert  a)b*]]></fr:tex> as follows:</fr:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+  }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+   }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {1}\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}\quad }
+
+
+  }{\displaystyle \quad {ab*} \leadsto  {\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {1}\quad }
+
+
+ }{\displaystyle \quad 
+  {\underline {\epsilon }\vert  ab*} \leadsto  {\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+     \quad 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {\texttt {Sym}_{a}}{0}\quad }
+
+
+    }{\displaystyle \quad 
+     {\underline {\epsilon }\vert  a} \leadsto  {
+      \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+     } \mathrel {@} {0}
+    \quad }
+
+
+   }{\displaystyle \quad 
+    {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}} \leadsto  {
+     \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+    } \mathrel {@} {1}
+   \quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad 
+    {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+  }{\displaystyle \quad 
+   {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+    \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+   } \mathrel {@} {1}
+  \quad }
+
+
+ }{\displaystyle \quad 
+  {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+   \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+  } \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>9000</fr:anchor>
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:anchor>8999</fr:anchor>
+            <fr:addr type="user">jms-017A</fr:addr>
+            <fr:route>jms-017A.xml</fr:route>
+            <fr:title text="Examples of abstract syntax trees">Examples of abstract syntax trees</fr:title>
+            <fr:taxon>Example</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:p>We recall the derivation for the concrete regular expression <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex>. This will correspond eventually to the following abstract syntax tree as specified by <fr:link href="jms-0179.xml" title="Regular expressions (abstract syntax)" addr="jms-0179" type="local">Definition <fr:contextual-number addr="jms-0179" /></fr:link>:</fr:p>
+            <fr:figure>
+              <fr:resource hash="ec9f65b212e1ed0db533f659b439e2d9">
+                <fr:resource-content>
+                  <fr:img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDMuMi4yIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzEyNi44OTEzMThwdCcgaGVpZ2h0PScxNDguODMxOTVwdCcgdmlld0JveD0nLTcyIC03MiA4NC41OTQyMTIgOTkuMjIxMyc+CjxzdHlsZSB0eXBlPSd0ZXh0L2Nzcyc+CjwhW0NEQVRBW0Bmb250LWZhY2V7Zm9udC1mYW1pbHk6Y21taTc7c3JjOnVybChkYXRhOmFwcGxpY2F0aW9uL3gtZm9udC13b2ZmO2Jhc2U2NCxkMDlHUmdBQkFBQUFBQVFnQUFvQUFBQUFCS3dBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQlBVeTh5QUFBQTlBQUFBRU1BQUFCZ2hYeDBzbU50WVhBQUFBRTRBQUFBTEFBQUFEUUFEQUMxWjJ4NVpnQUFBV1FBQUFGaEFBQUJoTEhqbFJOb1pXRmtBQUFDeUFBQUFDOEFBQUEyS1grR1kyaG9aV0VBQUFMNEFBQUFId0FBQUNRRmlRSHFhRzEwZUFBQUF4Z0FBQUFNQUFBQURBZENBSUZzYjJOaEFBQURKQUFBQUFnQUFBQUlBR29Bd20xaGVIQUFBQU1zQUFBQUdBQUFBQ0FBQmdCQ2JtRnRaUUFBQTBRQUFBRFBBQUFCT1BOaEtxTndiM04wQUFBRUZBQUFBQXdBQUFBZ0FBTUFBSGphWTJCbXltYWN3TURLd01BMGkrbnNQeEdHZmhETitJYnhEWU14SXljREVMQXh3QUVqQXhKSUtTNUxCMG9tTWlReE0vd0g4cGtoMGtocS9nT0ZBZE9FRFI0QWVOcGpZR0JnWW1CZ1lBWmlFU0RKQ0taWkdCU0FOQXNRZ3ZoSi8vOER5Y1QvLy84dkFQTVpBRlZJQnI1NDJoV1B6VExEVUFDRjc3bUpKTTJRSzgwZlU0S2trcWdtZmxxSndhUksyNWthUmcwenBoM3NMRHhETjNaZXhkTEd3dDZNblZjd3d6T3dVMjdQMloxekZ1Y2psT1IvMzdTTFZ4S1RmVUtRWTlOMkdOVmdtYmFUbzRGMEFiWmpTakozRUdxUUU0UnBOcllMSVV2RElBd2ttY2N1c2h4WmlxZUorWktKb21YTEJXWXMrb29pcXFvRVF5K2x6b0h1ZGl1SGx4QWJ6RGdhTE5jM2FqQ3RtdFB4RFErb3VsNWRDZkJnRzlONjcrVEtTalI3RHJRZGxpUlFxazQwRjJzQ1NyRWJBZGZIdDJkR3NTUEFHMzI4VHk2WFJScnQrdmR4bG9BdUtIT0VpNUxEdng5ODBqZmlrWlF6Q2VObnRpTXhTT1A3UVlNSGdlOEZZWTRhTCtSeG4yTXJnZTl4Rkw3aTdOQTZ6a0cwZlNNSXphV2pmdk1Da09KRWxTZ3JGM1NBeWExcUdWblVObWJtc2VydTVab2l1c29LZlJ4OTJSem12SC9YODFzQytxZlQzc3R6eFpsU1JaVXBzaWhNL2c2d0Y2NFAvZnBhaXpGdEdNMG1PK1FmcE9JNUV3QUFBSGphWTJCa1lHQUE0a2ZOZ3VieC9EWmZHWmhaR0VEZzhVWEZVQVQ5L3l2VE1hYmpRQzRIQXhOSUZBQXI1Z3M1QUhqYVkyQmtZR0JtK00vQXdNQjBqTUdPUVlISmt3RW9nZ0tZQVQvc0Fua0FBc1lBQUFKNkFENENBZ0JEQUFBQUFBQnFBTUo0Mm1OZ1pHQmdZR1p3WkdCaUFBRkdCalFBQUFjb0FFbDQyazJNUFcvQ01CQ0duNGdFaVRDd29BNGRpb2ZPRVFRa3RpNE1US3hNTElCZGxNRTJja0lrcEtwamYzY3Zyb2VlNU5QemZweUJrbTh5aHNtWXhUMU1UaUhxand1bXpCT1BSUzBTbDd6eXpvZ3NuNGp6eGtmaVhKSlQ0b0lYUGhPUHhmOUtYTExoWitmdC9kR1pvQTVlbStDdTFqYmJvd2x0NDUxYVZjdW85OGFaY082TVZwZW4wbjNUOWplcjFsVmQxZXp3V080ODZEQUVGQWR4ZEdUSFZUSkx3NVpqZEZwaEw3NWlSY1h5WDc2WDNNWE9PZjZrcFhQaEtWdlRTNk9WZlpPdVlpMlg5ZkIrQWN3ckwva0FlTnBqWUdiQUN3QUFmUUFFKSBmb3JtYXQoJ3dvZmYnKTt9CkBmb250LWZhY2V7Zm9udC1mYW1pbHk6Y210dDEwO3NyYzp1cmwoZGF0YTphcHBsaWNhdGlvbi94LWZvbnQtd29mZjtiYXNlNjQsZDA5R1JnQUJBQUFBQUFrSUFBb0FBQUFBRERRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJQVXk4eUFBQUE5QUFBQUVZQUFBQmdoUlowVW1OdFlYQUFBQUU4QUFBQVlBQUFBSVFDT1FNbFoyeDVaZ0FBQVp3QUFBWFNBQUFJZ0I4RVNyRm9aV0ZrQUFBSGNBQUFBREVBQUFBMktNK0ZPMmhvWldFQUFBZWtBQUFBSGdBQUFDUUU0QUV1YUcxMGVBQUFCOFFBQUFBaUFBQUFJZ050QU9Wc2IyTmhBQUFINkFBQUFDSUFBQUFpRXE0UVFHMWhlSEFBQUFnTUFBQUFHQUFBQUNBQUV3QktibUZ0WlFBQUNDUUFBQURVQUFBQlBxc3VkZUJ3YjNOMEFBQUkrQUFBQUJBQUFBQWdBQU1BQVhqYVkyQm1rbUtjd01ES3dNQTBpK25zUHhHR2ZoRE4rSWJ4RFlNeEl5Y0RFTEF4d0FFakF4SklLUzVMQjBvNk0xUXluZnd2Q05SL2t1RTlxcHIvL3hrWUFPM2dEMVVBQUhqYVkyQmdZR0pnWUdBR1loRWd5UWltV1JnS2dMUUVnd0JRaElQQm1jR1BJWmdobENHUklaa2hreUdmb1lpaGxLSHkvMytnQ2xTWkhLQk1DVWptLzc3L1cvNXYrTC8rLzVML2kvL1Arei9uLzZ6L00vOVBBNXVORlFBQVpkUWZUSGphZlZWYmJCUmxGSjV6WmpwTGR5N2Q3ZXpNN096TzdyYmRkcmZYMlhiYm5TMVF0bHhLYjlDVVVvU1dPeVVHTHdqSUpWUVFva1JDakJIVUp4TU5EL0tnOFlXRUIwTk0wQmppbXlacTRvdEo4WUhFeE1SNFNTd0N5cTdubjExb2E0VHM1dXovbjluTS81M3ZmT2Y3T2VCYVN2UHdCNTdoV2pnT2RFT0ZWTnFCcEFxK09KaUdteTlBMWpCcDUwQzZBSG5EN0ljQ2RNY0JmZ2U1VXdaNUpEUDBITTgvTzVLY3F1YkR3UWpnMFIwSEx2TDhtd2NtZW1TZVZ4VERqNU1YZzJFSUtmM3I4T0tKNDI4aDVrYU5hcjgxZkpEbnIxMjZkSTNuSGJOYWxNRG02SGd1WGlyQjMzaU15M0JjRklKSk1kWGptdDJ1RVJMVHlTQUZNWlhtZzVWOStkbkNmMjdlaU1oMlZIbEJpZHB5SkdScVVmOE5pNjBQcXBHb1lsa3NydGN0SEN0eThCTlVkMGdBVWtjMVBQakxyZ0dRSThnVkxmQlRvaHptNmNjUG9ESk1QY1RQYmVKbmtEWVpjQ0JIUEJBbkhnMCszUkI5WWpxVklkWTh5aEpBdE5HWE5nMHNsWFFnbjB1NVdTTVVSK0l5eC80Sm1hSE02Z0Y0Wm10eVkxMVZJR2pRUWJLVkVGQ1g3ZkhldFFDWmhzbmxoYmpVaVBEMDl1eTJPakVRTUFtU2xKV0MvV3ZNdmpWQ1dtd0dLeUNGcG5JRE0yaEVUQXRzNVFKeGpIR3JMZEFzd01xV3BteTFKb2ZqL3Y2dW9lZDVNMndaRUZVdkJDekR6clhLZ0lPdC9XSEI4UGl1S3MyalJudzMweVpZN3ZKL1dJOUQxczB2eWNGWGVIaDgvQkFtNUZoTWZvMkZCTDloNjhiS1hyR2pLbllYTCs4OWhYaHFMOHlVaVdTaGVHWHp4TVJtMkxXUUlRZ2NjcjJsZTJqQmw2Uy9ITWMxcVpBdVM0MUU2Rk1aa1draTB1MEgxMlIwbTBhM0d3ZFBDUldKRmpBTko1c200K1BUZ0IrK2dZTjlqVFhMaUFwRmk0RFFVZHRaZjJnMzFNcDFzZzB4TTE2SXZYZ2FvTGR6V1g2NUF2WGhBT0NtL09nWXVsa0FRYlJEWUlhN2xDby9DalBMNTZvRUVnbmhsTDRYc3FsRUc0QVlyUXQ2bkkyVzdzT1BoTGVOMEJvMUlETFNVbm1YZlJMQVppWHBDWUowNFJPWkZLZ1cxM1FObUVOYlMrK2FPWVBRS3FtOXg1SmRtaU5BUkd1dVFqMDkzU2o1SW9nNzErWGJCTDhwMmtjQ0xiVnBnWDkxeitxQllNMnFLdlJYS1YxbUdIdEVCS0ZUcnVscEhOcUp2S05FQ0tUSDRRVE56YmZVeHpCWHp6cFpibFQ5MGhISkd1bVEyRURMckFGOUIxbXppdC9KTVZ0NStUaGJ2eDBKZ04wZWk3WGJjS2w0dFR3RkhnR3J2SFh0dXpvOWk4V28vajQ2YTg0NzYvRW5RZWQ1Tm5ERnE3SnRLNitkWi9HRFNBQ0hIOXhaOU9aNWJ3dzFlazNwbjFJSkEvQTVOOHh4bXB2UHN1RXlUUHI0ZEpjY3FUTHN1WjZVcjBGOFVzb2hsUVRGVkFHWVZJK2tzam5MeUlmem1vK3ZSanRPVTdKUnNlMkFIcXpQUWpRQk1YbU1DcThKUGRwdWwyT1FpSHJMZXRXQzk1S1FpNXRDcXhwb0Q5NWRnUDFiVnlNTURWeC9RcUpDbWRjYTRrdWgyaVNxTFV1MWxhMURYMkpoT2RjaHNlai9hMnRaNDJOMWZYZGhFRHJVYUZSNW53MVhNOFEzVC9JZFZJbDhoZkhhNGJDNElTN0Q2OEVrRG83OXVnRGtaNmNkMW0zNFpBa3k5bU42bWxsQk9yNEZOem1KTTd5NXExaDhISGh2K29oV3N2bGIrTksyYmJNOHprNU56WDZ6Y2h4eDA5RUp4UEc1L1djUnorNmZPWWQ0cm5nUDk0ME1UVTBOamV6ejZtMGdmY3pERjF5SzQvTDZZL1RoMHd2TUpsV3lVNXJqMjBjOU5jNHp5VXhPc25pRTFOaTJvN21RNHEwbUUzYnYrT3lWUmVaY1VXUzRJZE9FMk40VWhrZ3RmN3pNZGJSMEQ3NUdsNTJ0NmFMQkxqQm12ajRWVStuY1E3NjlUQVhaYmJSNjlSVUNTTjBTOFB0T2JNSHRTalNxVGpPM2hZOFlFamo5cDk2TEVIUFVzS1d1WHd2OUkvYzlEcmNFdzFaZ2k0ZkU2L0ZkNnZHbm5FTk1ldWEwcU5RZ3cwSCtsYzh0eWozcU5oeGVzWHJsVTFodUlsV04xZ3FiWGxEbE1CeWpsQ2d2YXF6NkZybzZoMEgwVHE4TkYzK0pOQU5xdkxiMmg0ZVpxK1VlK3dtUFhUS2hSSGpJVVlIM25JaDExNlg3Vy9RUkoyU25hWDZKenljZ3J5MHgrZXVYMFpKcUcxZWxITUMyRmg1NTJRbExja0I0SjZGRUkrcEo3MUxkWTByVE1YYkh6cklBcDR1TzVPaGFod0JkOWEyQzBLd2phQzFtUzZjQ2h5cklpS3c3ZmEyd2JLR1ovd0k5NzB3M0FBQjQybU5nWkdCZ0FPS3FTNXMzeHZQYmZHVmdabUVBZ2NjWEZVTmg5UDgvLzhXWnBKaHFnVndPQmlhUUtBQmhMUXhqQUFBQWVOcGpZR1JnWURyNVh4QklTdjMvdzhESUpNa0FGRUVCakFCc0lRUVNBQUFDR2dBQUFDa0FIZ0EwQUFVQU9BQktBRkVBUFAvOEFBMEFPZ0FpQUJzQURRQWNBQUFBQUFBQUFFWUFrQUQrQVVBQm1BSGlBaGdDUWdLd0F2d0RLQU5tQTZJRDZnUkFBQUI0Mm1OZ1pHQmdFR0R3WkdCaUFBRkdCalFBQUFsUEFGNTQyazJPd1lyQ01CUkZUNWxhbUk3Z1NoZXpHTEp5V2RycUJ3eTRjT1hXcGFBbVNBZWFTaG9MYm1RK1lENTZYbU1XdmtjdUovZmRGd0xrUEVnWUsyRVdkS3lVVEc1UG52REJQSEltclNMbmZMTGtqU1I5RitlTDc4Z3BVdzZSSnl6NGlaeUoveHM1WjgzZnBtdXZOMitjMm5YYU9IdHV2YS9LdlhGOTAxbFZGZVhUMkJwcjNORWJyVTUzcFllbUh5NnRXaFYxVWJPaG8rWEtEWS9CeWM5MjR1akFsclBNdkhSRnlUNTRQWTNNcmVRcUNuRmZFMXRKMkpBNmh0ZTBwRTdjUlRXRDdQV2lGOGtyVnJKYmorY2ZBbWt4QlhqYVkyQm1RQWFNREdnQUFBQ09BQVU9KSBmb3JtYXQoJ3dvZmYnKTt9CnRleHQuZjAge2ZvbnQtZmFtaWx5OmNtdHQxMDtmb250LXNpemU6OS45NjI2NHB4fQp0ZXh0LmYxIHtmb250LWZhbWlseTpjbW1pNztmb250LXNpemU6Ni45NzM4NDhweH0KXV0+Cjwvc3R5bGU+CjxnIGlkPSdwYWdlMSc+CjxnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyBmaWxsPScjMDAwJyBzdHJva2U9JyMwMDAnPgo8ZyBzdHJva2Utd2lkdGg9JzAuNCc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTEzLjEyNDg4LDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPlVuaW9uPC90ZXh0Pgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMTkuOTkwODQsLTI4LjAzMTM3KSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTEwLjQ5OTkxLDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPk51bGw8L3RleHQ+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMTkuOTkwODMsLTI4LjAzMTM3KSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgc3Ryb2tlPScjMDAwJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgwLjk5NjI2NCwtMC45OTYyNjQpJz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTE1Ljc0OTg2LDAuMCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIGZpbGw9JyMwMDAnPgo8ZyBzdHJva2U9J25vbmUnPgo8dGV4dCBjbGFzcz0nZjAnIHg9Jy0zOC4zMDI2MzknIHk9Jy02Mi41OTExOTUnPkNvbmNhdDwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgyLjcyNjg0LC01Ni4wNjI3NCknPgo8ZyBzdHJva2U9J25vbmUnIHRyYW5zZm9ybT0nc2NhbGUoLTEuMDAzNzUsMS4wMDM3NSl0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKC0xLC0xKSc+CjxnIHN0cm9rZT0nIzAwMCcgc3Ryb2tlLW1pdGVybGltaXQ9JzEwJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoMC45OTYyNjQsLTAuOTk2MjY0KSc+CjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0xMC4yOTM3NSwwLjApJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBmaWxsPScjMDAwJz4KPGcgc3Ryb2tlPSdub25lJz4KPHRleHQgY2xhc3M9J2YwJyB4PSctMzguMzAyNjM5JyB5PSctNjIuNTkxMTk1Jz5TeW08L3RleHQ+Cjx0ZXh0IGNsYXNzPSdmMScgeD0nLTIyLjYxMTYxOCcgeT0nLTU5Ljg3OTE1Mic+YTwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgzNy4yNTQ4MiwtNTYuMDYyNzQpJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBzdHJva2U9JyMwMDAnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMTAuNDk5OTEsMC4wKSc+CjxnIHN0cm9rZT0nbm9uZScgdHJhbnNmb3JtPSdzY2FsZSgtMS4wMDM3NSwxLjAwMzc1KXRyYW5zbGF0ZSgtMzguMzAyNjM5LC02Mi41OTExOTUpc2NhbGUoLTEsLTEpJz4KPGcgZmlsbD0nIzAwMCc+CjxnIHN0cm9rZT0nbm9uZSc+Cjx0ZXh0IGNsYXNzPSdmMCcgeD0nLTM4LjMwMjYzOScgeT0nLTYyLjU5MTE5NSc+U3RhcjwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgzNy4yNTQ4MiwtODQuMDk0MTIpJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBzdHJva2U9JyMwMDAnIHN0cm9rZS1taXRlcmxpbWl0PScxMCcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTM4LjMwMjYzOSwtNjIuNTkxMTk1KXNjYWxlKDAuOTk2MjY0LC0wLjk5NjI2NCknPgo8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtOS44ODMyNiwwLjApJz4KPGcgc3Ryb2tlPSdub25lJyB0cmFuc2Zvcm09J3NjYWxlKC0xLjAwMzc1LDEuMDAzNzUpdHJhbnNsYXRlKC0zOC4zMDI2MzksLTYyLjU5MTE5NSlzY2FsZSgtMSwtMSknPgo8ZyBmaWxsPScjMDAwJz4KPGcgc3Ryb2tlPSdub25lJz4KPHRleHQgY2xhc3M9J2YwJyB4PSctMzguMzAyNjM5JyB5PSctNjIuNTkxMTk1Jz5TeW08L3RleHQ+Cjx0ZXh0IGNsYXNzPSdmMScgeD0nLTIyLjYxMTYxOCcgeT0nLTU5Ljg3OTE1Mic+YjwvdGV4dD4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8cGF0aCBkPSdNLTQuNjk4Ny0zLjUzMjk3TC0xNS4yOTQxNC0xOC4zODcyOCcgZmlsbD0nbm9uZScvPgo8cGF0aCBkPSdNNC42OTg3LTMuNTMyOTdMMTUuMjk0MTMtMTguMzg3MjgnIGZpbGw9J25vbmUnLz4KPHBhdGggZD0nTTE2LjEyMTAyLTMxLjU2NDM1TDcuMzk0NjQtNDYuNDE4NjYnIGZpbGw9J25vbmUnLz4KPHBhdGggZD0nTTI0LjA0ODYzLTMxLjU2NDM1TDMzLjE5ODgyLTQ2LjQxODY2JyBmaWxsPSdub25lJy8+CjxwYXRoIGQ9J00zNy4yNTQ4Mi01OS41OTU3MlYtNzQuNDUwMDMnIGZpbGw9J25vbmUnLz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8L3N2Zz4=" />
+                </fr:resource-content>
+                <fr:resource-source type="latex" part="preamble"><![CDATA[\usepackage {forest}\usepackage [tt=false]{libertine}]]></fr:resource-source>
+                <fr:resource-source type="latex" part="body"><![CDATA[
+   \begin {forest}
+     [\texttt {Union}
+      [\texttt {Null}]
+      [\texttt {Concat}
+       [$\texttt {Sym}_{a}$]
+       [\texttt {Star} [$\texttt {Sym}_{b}$]]
+      ]
+     ]
+   \end {forest}
+ ]]></fr:resource-source>
+              </fr:resource>
+            </fr:figure>
+            <fr:p>Observe that we had to decide whether how tightly the concatenation and union operators bind with respect to each other. That is part of defining the <fr:em>parsing</fr:em> relation.</fr:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>9002</fr:anchor>
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>7</fr:day>
+            </fr:date>
+            <fr:anchor>9001</fr:anchor>
+            <fr:addr type="user">jms-016N</fr:addr>
+            <fr:route>jms-016N.xml</fr:route>
+            <fr:title text="Inductive definitions">Inductive definitions</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>7</fr:day>
+                </fr:date>
+                <fr:anchor>7679</fr:anchor>
+                <fr:addr type="user">jms-016O</fr:addr>
+                <fr:route>jms-016O.xml</fr:route>
+                <fr:title text="Axioms and rules">Axioms and rules</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:p>In many cases, a subset is defined implicitly by describing the <fr:em>rules</fr:em> that you must follow in order to construct an element of it.</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7668</fr:anchor>
+                    <fr:addr type="user">jms-016Q</fr:addr>
+                    <fr:route>jms-016Q.xml</fr:route>
+                    <fr:title text="Informal rules for constructing naturals">Informal rules for constructing naturals</fr:title>
+                    <fr:taxon>Example</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>For example, consider the set of natural numbers <fr:tex display="inline"><![CDATA[\mathbb {N}]]></fr:tex> viewed as a subset of the reals <fr:tex display="inline"><![CDATA[\mathbb {R}]]></fr:tex>; this could be described by the following rules of construction:</fr:p>
+                    <fr:ol><fr:li><fr:tex display="inline"><![CDATA[0]]></fr:tex> is a natural number.</fr:li>
+ <fr:li>If <fr:tex display="inline"><![CDATA[x]]></fr:tex> is a natural number, then <fr:tex display="inline"><![CDATA[x+1]]></fr:tex> is also a natural number.</fr:li></fr:ol>
+                    <fr:p>The set of natural numbers is then described as the <fr:em>smallest</fr:em> subset of <fr:tex display="inline"><![CDATA[\mathbb {R}]]></fr:tex> that obeys these rules, i.e. the <fr:em>intersection</fr:em> of all the subsets of <fr:tex display="inline"><![CDATA[\mathbb {R}]]></fr:tex> that contain <fr:tex display="inline"><![CDATA[0]]></fr:tex> and are closed under the successor function <fr:tex display="inline"><![CDATA[x \mapsto  x+1]]></fr:tex>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:p>This is the same process as we saw when <fr:link href="jms-00KP.xml" title="Existence of inductively defined functions" addr="jms-00KP" type="local">constructing</fr:link> <fr:link href="jms-00KM.xml" title="Inductively defined function" addr="jms-00KM" type="local">inductively defined functions</fr:link>, where we first defined the equational rules we wanted the function to follow as a <fr:em>closure condition</fr:em> on a relation and then we defined the function as the smallest relation satisfying the closure condition.</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7669</fr:anchor>
+                    <fr:addr type="user">jms-016R</fr:addr>
+                    <fr:route>jms-016R.xml</fr:route>
+                    <fr:title text="Inductive definition of the naturals via closure conditions">Inductive definition of the naturals via closure conditions</fr:title>
+                    <fr:taxon>Example</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>In <fr:link href="jms-016Q.xml" title="Informal rules for constructing naturals" addr="jms-016Q" type="local">Example <fr:contextual-number addr="jms-016Q" /></fr:link> we described the rules for constructing natural numbers in plain English. Formally, the two rules above would be understood each as a subset of <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (\mathbb {R}\right )\mathclose {}}]]></fr:tex>.</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+   \mathsf {ZeroClosed},\mathsf {SuccClosed} &\subseteq  \mathcal {P}{\mathopen {}\left (\mathbb {R}\right )\mathclose {}}
+   \\
+   S\in \mathsf {ZeroClosed} &\Leftrightarrow  0\in  S\\
+   S\in \mathsf {SuccClosed} &\Leftrightarrow  \forall  x\in  S\mathpunct {.} x+1\in  S
+ \end {aligned}
+]]></fr:tex>
+                    <fr:p>Then natural numbers would be defined to be the smallest subset of <fr:tex display="inline"><![CDATA[\mathbb {R}]]></fr:tex> that lies both in <fr:tex display="inline"><![CDATA[\mathsf {ZeroClosed}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathsf {SuccClosed}]]></fr:tex>:</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ \mathbb {N} =
+ \bigcap {\mathopen {}\left \{S\subseteq \mathbb {R}\,\middle \vert \,S\in  \mathsf {ZeroClosed}\cap \mathsf {SuccClosed}\right \}\mathclose {}}
+]]></fr:tex>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>8</fr:day>
+                    </fr:date>
+                    <fr:anchor>7670</fr:anchor>
+                    <fr:addr type="user">jms-0172</fr:addr>
+                    <fr:route>jms-0172.xml</fr:route>
+                    <fr:title text="Closure conditions must be closed under intersection">Closure conditions must be closed under intersection</fr:title>
+                    <fr:taxon>Warning</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>In general, for the definition of <fr:tex display="inline"><![CDATA[\mathbb {N}\subseteq \mathbb {R}]]></fr:tex> in <fr:link href="jms-016R.xml" title="Inductive definition of the naturals via closure conditions" addr="jms-016R" type="local">Example <fr:contextual-number addr="jms-016R" /></fr:link> to work, the subsets of <fr:tex display="inline"><![CDATA[\pow {X}]]></fr:tex> must themselves be closed under intersection: otherwise, taking the big intersection to get the smallest subset “closed under the rules” might not work because the intersection might no longer be closed under the rules. So, for example, you need to check that if you have a family of subsets <fr:tex display="inline"><![CDATA[X_i\subseteq  \mathbb {R}]]></fr:tex>, then if each <fr:tex display="inline"><![CDATA[X_i\in \mathsf {SuccClosed}]]></fr:tex> we also have <fr:tex display="inline"><![CDATA[\bigcap _i X_i\in  \mathsf {SuccClosed}]]></fr:tex>. But this is nearly always obvious for closure conditions encountered in practice.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7674</fr:anchor>
+                    <fr:addr type="user">jms-016P</fr:addr>
+                    <fr:route>jms-016P.xml</fr:route>
+                    <fr:title text="Syntactic description of rules">Syntactic description of rules</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>The plain-English description of rules of construction that we saw in <fr:link href="jms-016Q.xml" title="Informal rules for constructing naturals" addr="jms-016Q" type="local">Example <fr:contextual-number addr="jms-016Q" /></fr:link> are a bit lengthy to read and write; by contrast, the more precise depiction of rules as subsets of the powerset that we saw in <fr:link href="jms-016R.xml" title="Inductive definition of the naturals via closure conditions" addr="jms-016R" type="local">Example <fr:contextual-number addr="jms-016R" /></fr:link> is perhaps overly formal and obfuscated. For this reason, computer scientists and logicians have developed an alternative notation for describing rules of construction that involves drawing things above and below horizontal lines (these are not fractions!).</fr:p>
+                    <fr:tree show-metadata="false">
+                      <fr:frontmatter>
+                        <fr:authors>
+                          <fr:author>
+                            <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                          </fr:author>
+                        </fr:authors>
+                        <fr:date>
+                          <fr:year>2025</fr:year>
+                          <fr:month>2</fr:month>
+                          <fr:day>7</fr:day>
+                        </fr:date>
+                        <fr:anchor>7671</fr:anchor>
+                        <fr:addr type="user">jms-016S</fr:addr>
+                        <fr:route>jms-016S.xml</fr:route>
+                        <fr:title text="Syntactic rule">Syntactic rule</fr:title>
+                        <fr:taxon>Definition</fr:taxon>
+                      </fr:frontmatter>
+                      <fr:mainmatter>
+                        <fr:p>The basic form of a rule that describes a subset of a set <fr:tex display="inline"><![CDATA[X]]></fr:tex> is as follows:</fr:p>
+                        <fr:tex display="block"><![CDATA[
+ \frac {
+  u_1 \quad  \ldots  \quad  u_n
+ }{
+  v
+ }
+]]></fr:tex>
+                        <fr:p>The plain English meaning of the rule is: <fr:em>If <fr:tex display="inline"><![CDATA[u_1]]></fr:tex> through <fr:tex display="inline"><![CDATA[u_n]]></fr:tex> are elements of the subset that I am defining, then so is <fr:tex display="inline"><![CDATA[v]]></fr:tex>.</fr:em> In such a rule, the items on top of the horizontal line are called <fr:em><fr:strong>premises</fr:strong></fr:em> or <fr:em><fr:strong>antecedents</fr:strong></fr:em> or <fr:em><fr:strong>hypotheses</fr:strong></fr:em>, and the item on the bottom of the horizontal line is called the <fr:em><fr:strong>conclusion</fr:strong></fr:em>. When a rule has no premises, it is called an <fr:em><fr:strong>axiom</fr:strong></fr:em>.</fr:p>
+                      </fr:mainmatter>
+                    </fr:tree>
+                    <fr:tree show-metadata="false">
+                      <fr:frontmatter>
+                        <fr:authors>
+                          <fr:author>
+                            <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                          </fr:author>
+                        </fr:authors>
+                        <fr:date>
+                          <fr:year>2025</fr:year>
+                          <fr:month>2</fr:month>
+                          <fr:day>7</fr:day>
+                        </fr:date>
+                        <fr:anchor>7672</fr:anchor>
+                        <fr:addr type="user">jms-016T</fr:addr>
+                        <fr:route>jms-016T.xml</fr:route>
+                        <fr:title text="Syntactic rules for forming natural numbers"><fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">Syntactic rules</fr:link> for forming natural numbers</fr:title>
+                        <fr:taxon>Example</fr:taxon>
+                      </fr:frontmatter>
+                      <fr:mainmatter>
+                        <fr:p>We can translate the <fr:link href="jms-016Q.xml" title="Informal rules for constructing naturals" addr="jms-016Q" type="local">plain-English description of the natural numbers</fr:link> into the syntactic form specified by <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">Definition <fr:contextual-number addr="jms-016S" /></fr:link>. In particular, the rules expression closure under zero and successor are rendered as follows:</fr:p>
+                        <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 0\quad }
+
+
+ \qquad 
+ 
+ 
+ \displaystyle \frac {\displaystyle x}{\displaystyle \quad x+1\quad }
+
+
+]]></fr:tex>
+                        <fr:p>The above are to be understood as <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rules</fr:link> describing a subset of <fr:tex display="inline"><![CDATA[\mathbb {R}]]></fr:tex>. The first rule is an <fr:em>axiom</fr:em> in the sense of our definition, because it has no premises.</fr:p>
+                      </fr:mainmatter>
+                    </fr:tree>
+                    <fr:tree show-metadata="false">
+                      <fr:frontmatter>
+                        <fr:authors>
+                          <fr:author>
+                            <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                          </fr:author>
+                        </fr:authors>
+                        <fr:date>
+                          <fr:year>2025</fr:year>
+                          <fr:month>2</fr:month>
+                          <fr:day>7</fr:day>
+                        </fr:date>
+                        <fr:anchor>7673</fr:anchor>
+                        <fr:addr type="user">jms-016U</fr:addr>
+                        <fr:route>jms-016U.xml</fr:route>
+                        <fr:title text="The closure condition denoted by a syntactic rule">The closure condition denoted by a <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rule</fr:link></fr:title>
+                        <fr:taxon>Definition</fr:taxon>
+                      </fr:frontmatter>
+                      <fr:mainmatter>
+                        <fr:p>A <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rule</fr:link> like <fr:tex display="inline"><![CDATA[
+ \scriptstyle \frac {\scriptstyle u_1\quad \ldots \quad  u_n}{\scriptstyle v}
+]]></fr:tex> on a set <fr:tex display="inline"><![CDATA[X]]></fr:tex> denotes a <fr:em>closure condition</fr:em> on subsets of <fr:tex display="inline"><![CDATA[X]]></fr:tex>, i.e. a subset of the powerset <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (X\right )\mathclose {}}]]></fr:tex>. In particular, the meaning of this rule is the following subset of <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (X\right )\mathclose {}}]]></fr:tex>:</fr:p>
+                        <fr:tex display="block"><![CDATA[
+ {\mathopen {}\left \{S\subseteq  X\,\middle \vert \,
+  u_1,\ldots ,u_n\in  S\implies 
+  v\in  S
+ \right \}\mathclose {}}
+]]></fr:tex>
+                        <fr:p>When <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex> is a set of <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">rules</fr:link> over <fr:tex display="inline"><![CDATA[X]]></fr:tex>, we will write <fr:tex display="inline"><![CDATA[\mathrm {Cl}_{\mathcal {R}}\subseteq  \mathcal {P}{\mathopen {}\left (X\right )\mathclose {}}]]></fr:tex> for the intersection of the closure conditions denoted by each rule in <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex>. This is, in other words, the set of subsets of <fr:tex display="inline"><![CDATA[X]]></fr:tex> that lie in the <fr:link href="jms-016U.xml" title="The closure condition denoted by a syntactic rule" addr="jms-016U" type="local">closure condition</fr:link> for each <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">rule</fr:link> <fr:tex display="inline"><![CDATA[r\in  \mathcal {R}]]></fr:tex>.</fr:p>
+                      </fr:mainmatter>
+                    </fr:tree>
+                    <fr:p>In light of <fr:link href="jms-016U.xml" title="The closure condition denoted by a syntactic rule" addr="jms-016U" type="local">Definition <fr:contextual-number addr="jms-016U" /></fr:link>, we see that the closure conditions denoted by the syntactic rules for the naturals in <fr:link href="jms-016T.xml" title="Syntactic rules for forming natural numbers" addr="jms-016T" type="local">Example <fr:contextual-number addr="jms-016T" /></fr:link> are precisely those specified in <fr:link href="jms-016R.xml" title="Inductive definition of the naturals via closure conditions" addr="jms-016R" type="local">Example <fr:contextual-number addr="jms-016R" /></fr:link>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7675</fr:anchor>
+                    <fr:addr type="user">jms-016X</fr:addr>
+                    <fr:route>jms-016X.xml</fr:route>
+                    <fr:title text="Derivations">Derivations</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>In the presence of a set <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex> of <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rules</fr:link> describing a subset of <fr:tex display="inline"><![CDATA[X]]></fr:tex>, a <fr:em><fr:strong>derivation</fr:strong></fr:em> that a particular element <fr:tex display="inline"><![CDATA[u]]></fr:tex> lies in that subset is given by a finite tree with vertices labelled by elements of <fr:tex display="inline"><![CDATA[X]]></fr:tex> such that:</fr:p>
+                    <fr:ol><fr:li>the root of the tree is <fr:tex display="inline"><![CDATA[u]]></fr:tex>;</fr:li>
+ <fr:li>each vertex of the tree is the <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">conclusion</fr:link> of a rule whose <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">premises</fr:link> are the children of the node</fr:li>
+ <fr:li>each leaf of the tree is an <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">axiom</fr:link>.</fr:li></fr:ol>
+                    <fr:p>Viewing a tree as growing upwards from the root, we have the following derivation for <fr:tex display="inline"><![CDATA[3\in \mathbb {N}]]></fr:tex> in when <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex> is the two rules from <fr:link href="jms-016T.xml" title="Syntactic rules for forming natural numbers" addr="jms-016T" type="local">Example <fr:contextual-number addr="jms-016T" /></fr:link>:</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 0\quad }
+
+
+   }{\displaystyle \quad 1\quad }
+
+
+  }{\displaystyle \quad 2\quad }
+
+
+ }{\displaystyle \quad 3\quad }
+
+
+]]></fr:tex>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:p>We recall the definition of a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local"><fr:em>formal language</fr:em></fr:link>:</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7666</fr:anchor>
+                    <fr:addr type="user">jms-016M</fr:addr>
+                    <fr:route>jms-016M.xml</fr:route>
+                    <fr:title text="Formal language">Formal language</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>A <fr:em><fr:strong>formal language</fr:strong></fr:em> over an <fr:link href="jms-016H.xml" title="Alphabet" addr="jms-016H" type="local">alphabet</fr:link> <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> is defined to be a <fr:em>subset</fr:em> of <fr:tex display="inline"><![CDATA[\Sigma ^\star ]]></fr:tex>, i.e. a set of <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">strings</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:p>Because a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link> is nothing more than a subset, we can define them by rules of construction—either in the form of <fr:link href="jms-016Q.xml" title="Informal rules for constructing naturals" addr="jms-016Q" type="local">plain English rules</fr:link>, <fr:link href="jms-016R.xml" title="Inductive definition of the naturals via closure conditions" addr="jms-016R" type="local">closure conditions</fr:link>, or <fr:link href="jms-016T.xml" title="Syntactic rules for forming natural numbers" addr="jms-016T" type="local">syntactic rules</fr:link>. We will focus on the use of syntactic rules and their relationship to the closure conditions they denote.</fr:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>7</fr:day>
+                    </fr:date>
+                    <fr:anchor>7676</fr:anchor>
+                    <fr:addr type="user">jms-016W</fr:addr>
+                    <fr:route>jms-016W.xml</fr:route>
+                    <fr:title text="Syntactic presentation of a formal language">Syntactic presentation of a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link></fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>A <fr:em><fr:strong>syntactic presentation</fr:strong></fr:em> of a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link> over an <fr:link href="jms-016H.xml" title="Alphabet" addr="jms-016H" type="local">alphabet</fr:link> <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> is defined to be a set of <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rules</fr:link> over the set of <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">strings</fr:link> <fr:tex display="inline"><![CDATA[\Sigma ^\star ]]></fr:tex>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>8</fr:day>
+                    </fr:date>
+                    <fr:anchor>7677</fr:anchor>
+                    <fr:addr type="user">jms-016Y</fr:addr>
+                    <fr:route>jms-016Y.xml</fr:route>
+                    <fr:title text="A syntactic presentation of a formal language">A <fr:link href="jms-016W.xml" title="Syntactic presentation of a formal language" addr="jms-016W" type="local">syntactic presentation</fr:link> of a <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link></fr:title>
+                    <fr:taxon>Example</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>We can <fr:link href="jms-016W.xml" title="Syntactic presentation of a formal language" addr="jms-016W" type="local">present</fr:link> an example <fr:link href="jms-016M.xml" title="Formal language" addr="jms-016M" type="local">formal language</fr:link> over the <fr:link href="jms-016H.xml" title="Alphabet" addr="jms-016H" type="local">alphabet</fr:link> <fr:tex display="inline"><![CDATA[\Sigma  = {\mathopen {}\left \{a,b\right \}\mathclose {}}]]></fr:tex> by a set of rules:</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \epsilon \quad }
+
+
+ \quad 
+ 
+ 
+ \displaystyle \frac {\displaystyle u}{\displaystyle \quad aub\quad }
+
+
+ \quad 
+ 
+ 
+ \displaystyle \frac {\displaystyle u}{\displaystyle \quad bua\quad }
+
+
+ \quad 
+ 
+ 
+ \displaystyle \frac {\displaystyle u\quad  v}{\displaystyle \quad uv\quad }
+
+
+]]></fr:tex>
+                    <fr:p>The <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">string</fr:link> <fr:tex display="inline"><![CDATA[abaabb]]></fr:tex> can be generated from these rules in at least two ways by means of the following <fr:link href="jms-016X.xml" title="Derivations" addr="jms-016X" type="local">derivations</fr:link>:</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \epsilon \quad }
+
+
+  }{\displaystyle \quad ab\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \epsilon \quad }
+
+
+   }{\displaystyle \quad ab\quad }
+
+
+  }{\displaystyle \quad aabb\quad }
+
+
+ }{\displaystyle \quad abaabb\quad }
+
+
+ \qquad 
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \epsilon \quad }
+
+
+   }{\displaystyle \quad ba\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \epsilon \quad }
+
+
+   }{\displaystyle \quad ab\quad }
+
+
+  }{\displaystyle \quad baab\quad }
+
+
+ }{\displaystyle \quad abaabb\quad }
+
+
+]]></fr:tex>
+                    <fr:p>On the other hand, there is <fr:em>no</fr:em> <fr:link href="jms-016X.xml" title="Derivations" addr="jms-016X" type="local">derivation</fr:link> for the <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">string</fr:link> <fr:tex display="inline"><![CDATA[abaab]]></fr:tex>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>8</fr:day>
+                    </fr:date>
+                    <fr:anchor>7678</fr:anchor>
+                    <fr:addr type="user">jms-016Z</fr:addr>
+                    <fr:route>jms-016Z.xml</fr:route>
+                    <fr:title text="Revisiting reflexive-transitive closure">Revisiting <fr:link href="jms-003K.xml" title="Initial objects in wild categories" addr="jms-003K" type="local">reflexive-transitive closure</fr:link></fr:title>
+                    <fr:taxon>Example</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <fr:p>Let <fr:tex display="inline"><![CDATA[R\colon  X\mathbin {\nrightarrow } X]]></fr:tex> be a binary <fr:link href="jms-00I7.xml" title="Relation" addr="jms-00I7" type="local">relation</fr:link> on a set <fr:tex display="inline"><![CDATA[X]]></fr:tex>. In <fr:link href="jms-00JA.xml" title="Lecture 14: directed graphs and paths" addr="jms-00JA" type="local">Lecture 14</fr:link> we saw that the reflexive-transitive closure of <fr:tex display="inline"><![CDATA[R]]></fr:tex> can be defined in two equivalent ways:</fr:p>
+                    <fr:ol><fr:li><fr:strong>Concretely:</fr:strong> it can be <fr:link href="jms-00JH.xml" title="The reflexive-transitive closure of an endo-relation" addr="jms-00JH" type="local">defined</fr:link> to be the smallest relation closed under all finite <fr:link href="jms-00JF.xml" title="Path in a directed graph" addr="jms-00JF" type="local">paths</fr:link> in <fr:tex display="inline"><![CDATA[R]]></fr:tex>, viewed as a <fr:link href="jms-00JC.xml" title="Directed graph" addr="jms-00JC" type="local">directed graph</fr:link>.</fr:li>
+ <fr:li><fr:strong>Abstractly:</fr:strong> it is the <fr:link href="jms-00JZ.xml" title="Preorders and reflexive-transitive closure" addr="jms-00JZ" type="local">smallest preorder</fr:link> containing <fr:tex display="inline"><![CDATA[R]]></fr:tex> as a subrelation.</fr:li></fr:ol>
+                    <fr:p>There is a “middle ground” between the most concrete and abstract ways of looking at reflexive-transitive closure: we can present it by means of <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">syntactic rules</fr:link> whose <fr:link href="jms-016U.xml" title="The closure condition denoted by a syntactic rule" addr="jms-016U" type="local">induced closure conditions</fr:link> isolate the “set of preorders containing <fr:tex display="inline"><![CDATA[R]]></fr:tex> as a subrelation”.</fr:p>
+                    <fr:p>We first add the following <fr:link href="jms-016S.xml" title="Syntactic rule" addr="jms-016S" type="local">rules</fr:link> over <fr:tex display="inline"><![CDATA[X\times  X]]></fr:tex> that correspond to the laws of a preorder.</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad (x,x)\quad }
+
+
+ \quad 
+ 
+ 
+ \displaystyle \frac {\displaystyle (x,y)\quad  (y,z)}{\displaystyle \quad (x,z)\quad }
+
+
+]]></fr:tex>
+                    <fr:p>Finally, we add the following rule for any <fr:tex display="inline"><![CDATA[x,y\in  X]]></fr:tex> such that <fr:tex display="inline"><![CDATA[x\mathrel {R}y]]></fr:tex>:</fr:p>
+                    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad (x,y)\quad }
+
+\quad  (x\mathrel {R}y)
+]]></fr:tex>
+                    <fr:p>To be very clear, this last rule only applies when <fr:tex display="inline"><![CDATA[x\mathrel {R}y]]></fr:tex>. This is called a <fr:em>side condition</fr:em>.</fr:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:p>In order to see that the rules described in <fr:link href="jms-016Z.xml" title="Revisiting reflexive-transitive closure" addr="jms-016Z" type="local">Example <fr:contextual-number addr="jms-016Z" /></fr:link> actually define the reflexive transitive closure in the sense that a pair <fr:tex display="inline"><![CDATA[(x,y)]]></fr:tex> has a <fr:link href="jms-016X.xml" title="Derivations" addr="jms-016X" type="local">derivation</fr:link> if and only if there is a <fr:link href="jms-00JF.xml" title="Path in a directed graph" addr="jms-00JF" type="local">path</fr:link> from <fr:tex display="inline"><![CDATA[x]]></fr:tex> to <fr:tex display="inline"><![CDATA[y]]></fr:tex>, we will need the <fr:em>rule induction</fr:em> theorem, which is the topic of the rest of this lecture.</fr:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:anchor>9003</fr:anchor>
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>
