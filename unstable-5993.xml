@@ -18,77 +18,39 @@
       <fr:month>2</fr:month>
       <fr:day>10</fr:day>
     </fr:date>
-    <fr:anchor>29466</fr:anchor>
+    <fr:anchor>30022</fr:anchor>
     <fr:addr type="machine">unstable/5993</fr:addr>
     <fr:route>unstable-5993.xml</fr:route>
-    <fr:title text="Towards univalent reference types › univalent reference types"><fr:link href="jms-00OI.xml" title="Towards univalent reference types" addr="jms-00OI" type="local"><fr:em><fr:link href="sterling-gratzer-birkedal-2024-univalent.xml" title="Towards univalent reference types" addr="sterling-gratzer-birkedal-2024-univalent" type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › univalent reference types</fr:title>
+    <fr:title text="Towards univalent reference types › higher-order dynamic allocation"><fr:link href="jms-00OI.xml" title="Towards univalent reference types" addr="jms-00OI" type="local"><fr:em><fr:link href="sterling-gratzer-birkedal-2024-univalent.xml" title="Towards univalent reference types" addr="sterling-gratzer-birkedal-2024-univalent" type="local">Towards <fr:strong>univalent</fr:strong> reference types</fr:link></fr:em></fr:link> › higher-order dynamic allocation</fr:title>
     <fr:taxon>Slide</fr:taxon>
   </fr:frontmatter>
-  <fr:mainmatter><fr:p>We add two additional rules to the equational theory of guarded higher-order dynamic allocation.</fr:p><beamer:pause xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong>LAYOUT UNIVALENCE.</fr:strong></fr:p>
+  <fr:mainmatter><fr:p>An extreme point in the design space...</fr:p>
  <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
   
- <jms-indent:row xmlns:jms-indent="jonmsterling:indenting">
-   <fr:tex display="inline"><![CDATA[
-    {\mathopen {}\left (
-     \ell _1\gets \mathsf {new}\,e_1;
-     \ell _2\gets \mathsf {new}\,e_2;
-     \mathsf {ret}\,{\mathopen {}\left (\ell _1,\ell _2\right )\mathclose {}}
-    \right )\mathclose {}}
-   ]]></fr:tex>
-  </jms-indent:row>
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[\mathsf {ref}\colon  \mathbf {type}\to \mathbf {type}]]></fr:tex></jms-indent:row>
 
   
- <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
-   <fr:tex display="inline"><![CDATA[
-    \mathrel {\equiv }
-    {\mathopen {}\left (
-     \ell _{\color {red}2}\gets \mathsf {new}\,e_{\color {red}2};
-     \ell _{\color {red}1}\gets \mathsf {new}\,e_{\color {red}1};
-     \mathsf {ret}\,{\mathopen {}\left (\ell _1,\ell _2\right )\mathclose {}}
-    \right )\mathclose {}}
-   ]]></fr:tex>
-  </jms-indent:block>
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[\mathsf {new}\colon  A\to  \mathsf {T}\,{\mathopen {}\left (\mathsf {ref}\,A\right )\mathclose {}}]]></fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[\mathsf {get}\colon  \mathsf {ref}\,A\to \mathsf {T}\,A]]></fr:tex></jms-indent:row>
+
+  
+ <jms-indent:row xmlns:jms-indent="jonmsterling:indenting"><fr:tex display="inline"><![CDATA[\mathsf {set}\colon  {\mathsf {ref} \,A}\times  A\to  \mathsf {T}\,{\mathopen {}\left (\right )\mathclose {}}]]></fr:tex></jms-indent:row>
 
  </jms-indent:block>
-<beamer:pause xmlns:beamer="http://ctan.org/pkg/beamer" /><fr:p><fr:strong>CELL UNIVALENCE.</fr:strong> For <fr:tex display="inline"><![CDATA[f^+\colon  A\to  B]]></fr:tex> and <fr:tex display="inline"><![CDATA[f^-\colon  B\to  A]]></fr:tex> with <fr:tex display="inline"><![CDATA[x:B\vdash  f^+{\mathopen {}\left (f^-{\mathopen {}\left (x\right )\mathclose {}}\right )\mathclose {}}\equiv  x]]></fr:tex> and <fr:tex display="inline"><![CDATA[x\colon  A\vdash  f^-{\mathopen {}\left (f^+{\mathopen {}\left (x\right )\mathclose {}}\right )\mathclose {}} \equiv  x]]></fr:tex> we have:</fr:p>
- <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
-  
- <jms-indent:row xmlns:jms-indent="jonmsterling:indenting">
-   <fr:tex display="inline"><![CDATA[
-    {\mathopen {}\left (
-     \ell \gets \mathsf {new}\,e;
-     \mathsf {ret}\,{\mathopen {}\left (\mathsf {get}\,\ell , \mathsf {set}\,{\mathopen {}\left (\ell ,-\right )\mathclose {}}\right )\mathclose {}}
-    \right )\mathclose {}}
-   ]]></fr:tex>
-  </jms-indent:row>
-
-  
- <jms-indent:block xmlns:jms-indent="jonmsterling:indenting">
-   <fr:tex display="inline"><![CDATA[
-    \mathrel {\equiv }
-    {\mathopen {}\left (
-     \ell \gets \mathsf {new}\,{\mathopen {}\left ({\color {red}f^+}{\mathopen {}\left (e\right )\mathclose {}}\right )\mathclose {}};
-     \mathsf {ret}\,{\mathopen {}\left (
-      {\color {red}\mathsf {map}\,f^-}\,{\mathopen {}\left (\mathsf {get}\,\ell \right )\mathclose {}},
-      \mathsf {set}{\mathopen {}\left (\ell , {\color {red}f^+}{\mathopen {}\left (-\right )\mathclose {}}\right )\mathclose {}}
-     \right )\mathclose {}}
-    \right )\mathclose {}}
-   ]]></fr:tex>
-  </jms-indent:block>
-
- </jms-indent:block>
-</fr:mainmatter>
+<fr:p><fr:strong>Deeply impredicative:</fr:strong> heap contains elements of <fr:em>arbitrary</fr:em> types.</fr:p><fr:p><fr:tex display="inline"><![CDATA[\Longrightarrow ]]></fr:tex> guarded recursion (step-indexing) used to break the circularity.</fr:p></fr:mainmatter>
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>29460</fr:anchor>
+        <fr:anchor>30016</fr:anchor>
         <fr:title text="References">References</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>29462</fr:anchor>
+        <fr:anchor>30018</fr:anchor>
         <fr:title text="Context">Context</fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
@@ -110,7 +72,7 @@
               <fr:month>2</fr:month>
               <fr:day>10</fr:day>
             </fr:date>
-            <fr:anchor>29461</fr:anchor>
+            <fr:anchor>30017</fr:anchor>
             <fr:addr type="user">jms-00OI</fr:addr>
             <fr:route>jms-00OI.xml</fr:route>
             <fr:title text="Towards univalent reference types">
@@ -146,9 +108,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10108</fr:anchor>
-                <fr:addr type="machine">unstable/5986</fr:addr>
-                <fr:route>unstable-5986.xml</fr:route>
+                <fr:anchor>10337</fr:anchor>
+                <fr:addr type="machine">unstable/5990</fr:addr>
+                <fr:route>unstable-5990.xml</fr:route>
                 <fr:title text="Side effects in programming languages">Side effects in programming languages</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -190,9 +152,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10109</fr:anchor>
-                <fr:addr type="machine">unstable/5987</fr:addr>
-                <fr:route>unstable-5987.xml</fr:route>
+                <fr:anchor>10338</fr:anchor>
+                <fr:addr type="machine">unstable/5991</fr:addr>
+                <fr:route>unstable-5991.xml</fr:route>
                 <fr:title text="State as a side effect">State as a side effect</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -230,9 +192,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10110</fr:anchor>
-                <fr:addr type="machine">unstable/5988</fr:addr>
-                <fr:route>unstable-5988.xml</fr:route>
+                <fr:anchor>10339</fr:anchor>
+                <fr:addr type="machine">unstable/5992</fr:addr>
+                <fr:route>unstable-5992.xml</fr:route>
                 <fr:title text="First-order dynamic allocation">First-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -279,9 +241,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10111</fr:anchor>
-                <fr:addr type="machine">unstable/5989</fr:addr>
-                <fr:route>unstable-5989.xml</fr:route>
+                <fr:anchor>10340</fr:anchor>
+                <fr:addr type="machine">unstable/5993</fr:addr>
+                <fr:route>unstable-5993.xml</fr:route>
                 <fr:title text="Higher-order dynamic allocation">Higher-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -320,9 +282,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10112</fr:anchor>
-                <fr:addr type="machine">unstable/5990</fr:addr>
-                <fr:route>unstable-5990.xml</fr:route>
+                <fr:anchor>10341</fr:anchor>
+                <fr:addr type="machine">unstable/5994</fr:addr>
+                <fr:route>unstable-5994.xml</fr:route>
                 <fr:title text="Guarded higher-order dynamic allocation">Guarded higher-order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -395,9 +357,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10113</fr:anchor>
-                <fr:addr type="machine">unstable/5991</fr:addr>
-                <fr:route>unstable-5991.xml</fr:route>
+                <fr:anchor>10342</fr:anchor>
+                <fr:addr type="machine">unstable/5995</fr:addr>
+                <fr:route>unstable-5995.xml</fr:route>
                 <fr:title text="Representation independence in the heap">Representation independence in the heap</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -496,9 +458,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10114</fr:anchor>
-                <fr:addr type="machine">unstable/5992</fr:addr>
-                <fr:route>unstable-5992.xml</fr:route>
+                <fr:anchor>10343</fr:anchor>
+                <fr:addr type="machine">unstable/5996</fr:addr>
+                <fr:route>unstable-5996.xml</fr:route>
                 <fr:title text="Representation independence in the heap (II)">Representation independence in the heap (II)</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -537,9 +499,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10115</fr:anchor>
-                <fr:addr type="machine">unstable/5993</fr:addr>
-                <fr:route>unstable-5993.xml</fr:route>
+                <fr:anchor>10344</fr:anchor>
+                <fr:addr type="machine">unstable/5997</fr:addr>
+                <fr:route>unstable-5997.xml</fr:route>
                 <fr:title text="Univalent reference types">Univalent reference types</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -616,16 +578,16 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10117</fr:anchor>
-                <fr:addr type="machine">unstable/5994</fr:addr>
-                <fr:route>unstable-5994.xml</fr:route>
+                <fr:anchor>10346</fr:anchor>
+                <fr:addr type="machine">unstable/5998</fr:addr>
+                <fr:route>unstable-5998.xml</fr:route>
                 <fr:title text="Representation independence in the heap (III)">Representation independence in the heap (III)</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter><fr:p>The theory of univalent reference types derives <fr:tex display="inline"><![CDATA[\vdash  \mathsf {posCounter} \equiv  \mathsf {negCounter}]]></fr:tex>.</fr:p><beamer:pause xmlns:beamer="http://ctan.org/pkg/beamer" />
  
    
-   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:author><fr:link href="danielgratzer.xml" title="Daniel Gratzer" addr="danielgratzer" type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link href="larsbirkedal.xml" title="Lars Birkedal" addr="larsbirkedal" type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>10116</fr:anchor><fr:addr type="machine">unstable/5995</fr:addr><fr:route>unstable-5995.xml</fr:route><fr:title text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:author><fr:link href="danielgratzer.xml" title="Daniel Gratzer" addr="danielgratzer" type="local">Daniel Gratzer</fr:link></fr:author><fr:author><fr:link href="larsbirkedal.xml" title="Lars Birkedal" addr="larsbirkedal" type="local">Lars Birkedal</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>2</fr:month><fr:day>10</fr:day></fr:date><fr:anchor>10345</fr:anchor><fr:addr type="machine">unstable/5999</fr:addr><fr:route>unstable-5999.xml</fr:route><fr:title text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
   <fr:p>The function <fr:tex display="inline"><![CDATA[\mathsf {neg} \colon \mathsf {Integer}\to \mathsf {Integer}]]></fr:tex> is inverse to itself; therefore, apply <fr:strong>CELL UNIVALENCE</fr:strong> with <fr:tex display="inline"><![CDATA[f^+ \equiv  f^- \equiv  \mathsf {neg}]]></fr:tex> and simplify.</fr:p>
  </fr:mainmatter></fr:tree>
  
@@ -649,9 +611,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10118</fr:anchor>
-                <fr:addr type="machine">unstable/5996</fr:addr>
-                <fr:route>unstable-5996.xml</fr:route>
+                <fr:anchor>10347</fr:anchor>
+                <fr:addr type="machine">unstable/6000</fr:addr>
+                <fr:route>unstable-6000.xml</fr:route>
                 <fr:title text="Can we find a reasonable model of this theory???">Can we find a reasonable model of this theory???</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -677,9 +639,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10119</fr:anchor>
-                <fr:addr type="machine">unstable/5997</fr:addr>
-                <fr:route>unstable-5997.xml</fr:route>
+                <fr:anchor>10348</fr:anchor>
+                <fr:addr type="machine">unstable/6001</fr:addr>
+                <fr:route>unstable-6001.xml</fr:route>
                 <fr:title text="Models of guarded higher order dynamic allocation">Models of guarded higher order dynamic allocation</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -752,9 +714,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10120</fr:anchor>
-                <fr:addr type="machine">unstable/5998</fr:addr>
-                <fr:route>unstable-5998.xml</fr:route>
+                <fr:anchor>10349</fr:anchor>
+                <fr:addr type="machine">unstable/6002</fr:addr>
+                <fr:route>unstable-6002.xml</fr:route>
                 <fr:title text="Models of univalent reference types">Models of univalent reference types</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -783,9 +745,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10121</fr:anchor>
-                <fr:addr type="machine">unstable/5999</fr:addr>
-                <fr:route>unstable-5999.xml</fr:route>
+                <fr:anchor>10350</fr:anchor>
+                <fr:addr type="machine">unstable/6003</fr:addr>
+                <fr:route>unstable-6003.xml</fr:route>
                 <fr:title text="Impredicative Guarded Homotopy Type Theory">Impredicative Guarded Homotopy Type Theory</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -816,9 +778,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10122</fr:anchor>
-                <fr:addr type="machine">unstable/6000</fr:addr>
-                <fr:route>unstable-6000.xml</fr:route>
+                <fr:anchor>10351</fr:anchor>
+                <fr:addr type="machine">unstable/6004</fr:addr>
+                <fr:route>unstable-6004.xml</fr:route>
                 <fr:title text="Models of iGDTT">Models of <fr:strong>iGDTT</fr:strong></fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -847,9 +809,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10123</fr:anchor>
-                <fr:addr type="machine">unstable/6001</fr:addr>
-                <fr:route>unstable-6001.xml</fr:route>
+                <fr:anchor>10352</fr:anchor>
+                <fr:addr type="machine">unstable/6005</fr:addr>
+                <fr:route>unstable-6005.xml</fr:route>
                 <fr:title text="Towards models of iGHoTT">Towards models of <fr:strong>iGHoTT</fr:strong></fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -880,9 +842,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10124</fr:anchor>
-                <fr:addr type="machine">unstable/6002</fr:addr>
-                <fr:route>unstable-6002.xml</fr:route>
+                <fr:anchor>10353</fr:anchor>
+                <fr:addr type="machine">unstable/6006</fr:addr>
+                <fr:route>unstable-6006.xml</fr:route>
                 <fr:title text="A more canonical model of iGHoTT?">A more canonical model of <fr:strong>iGHoTT</fr:strong>?</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -910,9 +872,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10125</fr:anchor>
-                <fr:addr type="machine">unstable/6003</fr:addr>
-                <fr:route>unstable-6003.xml</fr:route>
+                <fr:anchor>10354</fr:anchor>
+                <fr:addr type="machine">unstable/6007</fr:addr>
+                <fr:route>unstable-6007.xml</fr:route>
                 <fr:title text="Comparing with other realisability models of state">Comparing with other realisability models of state</fr:title>
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -940,9 +902,9 @@
                   <fr:month>2</fr:month>
                   <fr:day>10</fr:day>
                 </fr:date>
-                <fr:anchor>10126</fr:anchor>
-                <fr:addr type="machine">unstable/6004</fr:addr>
-                <fr:route>unstable-6004.xml</fr:route>
+                <fr:anchor>10355</fr:anchor>
+                <fr:addr type="machine">unstable/6008</fr:addr>
+                <fr:route>unstable-6008.xml</fr:route>
                 <fr:title text="" />
                 <fr:taxon>Slide</fr:taxon>
               </fr:frontmatter>
@@ -956,21 +918,21 @@
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>29463</fr:anchor>
+        <fr:anchor>30019</fr:anchor>
         <fr:title text="Backlinks">Backlinks</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>29464</fr:anchor>
+        <fr:anchor>30020</fr:anchor>
         <fr:title text="Related">Related</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>29465</fr:anchor>
+        <fr:anchor>30021</fr:anchor>
         <fr:title text="Contributions">Contributions</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />

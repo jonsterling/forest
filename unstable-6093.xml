@@ -9,30 +9,42 @@
     </fr:authors>
     <fr:date>
       <fr:year>2024</fr:year>
-      <fr:month>2</fr:month>
-      <fr:day>9</fr:day>
+      <fr:month>1</fr:month>
+      <fr:day>31</fr:day>
     </fr:date>
-    <fr:anchor>27620</fr:anchor>
+    <fr:anchor>28157</fr:anchor>
     <fr:addr type="machine">unstable/6093</fr:addr>
     <fr:route>unstable-6093.xml</fr:route>
-    <fr:title text="Soundness of the subset construction › forest://jonmsterling/unstable/6091 › non-empty string"><fr:link href="unstable-6091.xml" title="Soundness of the subset construction › " addr="unstable/6091" type="local"><fr:link href="jms-00OD.xml" title="Soundness of the subset construction" addr="jms-00OD" type="local">Soundness of the <fr:link href="jms-017T.xml" title="Subset construction" addr="jms-017T" type="local">subset construction</fr:link></fr:link> › unstable/6091</fr:link> › non-empty string</fr:title>
-    <fr:taxon>Case</fr:taxon>
+    <fr:title text="The principle of well-founded induction › "><fr:link href="jms-00NP.xml" title="The principle of well-founded induction" addr="jms-00NP" type="local">The principle of well-founded induction</fr:link> › </fr:title>
+    <fr:taxon>Proof</fr:taxon>
   </fr:frontmatter>
   <fr:mainmatter>
-    <fr:p>Suppose on the other hand that <fr:tex display="inline"><![CDATA[u=a_1\cdots  a_n]]></fr:tex>, and so we therefore have transitions <fr:tex display="inline"><![CDATA[s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\mathrel {\xrightarrow {a_1}}S_1\mathrel {\xrightarrow {\ldots }}S_{n-1}\mathrel {\xrightarrow {a_n}}S_n]]></fr:tex> with <fr:tex display="inline"><![CDATA[S_n\in  F_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>, and so there exists some <fr:tex display="inline"><![CDATA[q_n\in  S_n\cap  F_{M}]]></fr:tex>. Define <fr:tex display="inline"><![CDATA[S_0 = s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>.</fr:p>
-    <fr:p>By definition of <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex>, from the transition <fr:tex display="inline"><![CDATA[S_{n-1}\mathrel {\xrightarrow {a_n}}S_n]]></fr:tex> we may find some <fr:tex display="inline"><![CDATA[q_{n-1}\in  S_{n-1}]]></fr:tex> such that <fr:tex display="inline"><![CDATA[q_{n-1}\mathrel {\xRightarrow {a_n}}q_n]]></fr:tex>. Iterating this process, we may find states <fr:tex display="inline"><![CDATA[q_i\in  S_{i}]]></fr:tex> such that we have a sequence of transitions <fr:tex display="inline"><![CDATA[q_{i-1}\mathrel {\xRightarrow {a_i}}q_i]]></fr:tex> in <fr:tex display="inline"><![CDATA[M]]></fr:tex>; thus we have a sequence of transitions <fr:tex display="inline"><![CDATA[q_0\mathrel {\xRightarrow {u}}q_n]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[q_0\in  S_0=s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {\epsilon }}q_0]]></fr:tex> and thus <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {\epsilon }}q_0\mathrel {\xRightarrow {u}}q_n]]></fr:tex> and therefore <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {u}} q_n]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[q_n\in  F_{M}]]></fr:tex>, we are done.</fr:p>
-  </fr:mainmatter>
+ <fr:p>One direction is trivial: suppose <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex> and thus <fr:tex display="inline"><![CDATA[A=S]]></fr:tex>, and fix <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\forall  y\in  A\mathpunct {.} y\prec  x \implies  y \in  S]]></fr:tex> holds. To show <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex> we use our assumption that <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex>.</fr:p>
+
+ <fr:p>In the other direction, we suppose that for all <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\forall  y\in  A\mathpunct {.} y\prec  x\implies  y\in  S]]></fr:tex> we have <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex>. We need to show that <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex>.</fr:p>
+
+ <fr:p>Fixing <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>, we need to show that <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex>. Suppose to the contrary that <fr:tex display="inline"><![CDATA[x\not \in  S]]></fr:tex>. Then the complement <fr:tex display="inline"><![CDATA[A\setminus  S]]></fr:tex> is non-empty and therefore has a minimal element <fr:tex display="inline"><![CDATA[m\in  A]]></fr:tex>.</fr:p>
+
+ <fr:p>We will deduce that <fr:tex display="inline"><![CDATA[m\in  S]]></fr:tex>, which is contradictory. By assumption we have <fr:tex display="block"><![CDATA[(\forall  y\in  A\mathpunct {.} y\prec  m\implies  y\in  S)\implies  m\in  S\text {.}]]></fr:tex></fr:p>
+
+ <fr:p>It therefore sufices to prove the antecedent:</fr:p>
+ <fr:tex display="block"><![CDATA[
+  \forall  y\in  A\mathpunct {.} y\prec  m \implies  y\in  S
+ ]]></fr:tex>
+
+ <fr:p>Fixing <fr:tex display="inline"><![CDATA[y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[y\prec  m]]></fr:tex>, we see that <fr:tex display="inline"><![CDATA[y]]></fr:tex> cannot lie outside <fr:tex display="inline"><![CDATA[S]]></fr:tex> because it is smaller than <fr:tex display="inline"><![CDATA[m]]></fr:tex> and <fr:tex display="inline"><![CDATA[m]]></fr:tex> is the smallest element that lies outside <fr:tex display="inline"><![CDATA[S]]></fr:tex>. Therefore, we have <fr:tex display="inline"><![CDATA[m\in  S]]></fr:tex> which contradicts our assumption <fr:tex display="inline"><![CDATA[m\not \in  S]]></fr:tex>.</fr:p>
+</fr:mainmatter>
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>27614</fr:anchor>
+        <fr:anchor>28151</fr:anchor>
         <fr:title text="References">References</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>27616</fr:anchor>
+        <fr:anchor>28153</fr:anchor>
         <fr:title text="Context">Context</fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
@@ -42,86 +54,62 @@
               <fr:author>
                 <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
               </fr:author>
+              <fr:contributor>
+                <fr:link href="marcelofiore.xml" title="Marcelo Fiore" addr="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
             </fr:authors>
             <fr:date>
               <fr:year>2024</fr:year>
-              <fr:month>2</fr:month>
-              <fr:day>9</fr:day>
+              <fr:month>1</fr:month>
+              <fr:day>31</fr:day>
             </fr:date>
-            <fr:anchor>27615</fr:anchor>
-            <fr:addr type="machine">unstable/6091</fr:addr>
-            <fr:route>unstable-6091.xml</fr:route>
-            <fr:title text="Soundness of the subset construction › "><fr:link href="jms-00OD.xml" title="Soundness of the subset construction" addr="jms-00OD" type="local">Soundness of the <fr:link href="jms-017T.xml" title="Subset construction" addr="jms-017T" type="local">subset construction</fr:link></fr:link> › </fr:title>
-            <fr:taxon>Proof</fr:taxon>
+            <fr:anchor>28152</fr:anchor>
+            <fr:addr type="user">jms-00NP</fr:addr>
+            <fr:route>jms-00NP.xml</fr:route>
+            <fr:title text="The principle of well-founded induction">The principle of well-founded induction</fr:title>
+            <fr:taxon>Proposition</fr:taxon>
           </fr:frontmatter>
-          <fr:mainmatter>
-            <fr:p>We must show that any <fr:link href="jms-016I.xml" title="String over an alphabet" addr="jms-016I" type="local">string</fr:link> <fr:tex display="inline"><![CDATA[u\in  \mathcal {L}{\mathopen {}\left (\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex> lies in <fr:tex display="inline"><![CDATA[\mathcal {L}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex>.</fr:p>
-            <fr:tree show-metadata="false" toc="false" numbered="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>2</fr:month>
-                  <fr:day>9</fr:day>
-                </fr:date>
-                <fr:anchor>6673</fr:anchor>
-                <fr:addr type="machine">unstable/6092</fr:addr>
-                <fr:route>unstable-6092.xml</fr:route>
-                <fr:title text="Empty string">Empty string</fr:title>
-                <fr:taxon>Case</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>If <fr:tex display="inline"><![CDATA[u=\epsilon ]]></fr:tex>, then by definition we have <fr:tex display="inline"><![CDATA[s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\in F_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex> and so by definition, there exists <fr:tex display="inline"><![CDATA[q\in  s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex> such that <fr:tex display="inline"><![CDATA[q\in  F_{M}]]></fr:tex>. By definition of <fr:tex display="inline"><![CDATA[s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>, we therefore have <fr:tex display="inline"><![CDATA[s\mathrel {\xRightarrow {\epsilon }}q]]></fr:tex>; because <fr:tex display="inline"><![CDATA[q\in  F_{M}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[\epsilon \in \mathcal {L}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex>.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-            <fr:tree show-metadata="false" toc="false" numbered="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>2</fr:month>
-                  <fr:day>9</fr:day>
-                </fr:date>
-                <fr:anchor>6674</fr:anchor>
-                <fr:addr type="machine">unstable/6093</fr:addr>
-                <fr:route>unstable-6093.xml</fr:route>
-                <fr:title text="Non-empty string">Non-empty string</fr:title>
-                <fr:taxon>Case</fr:taxon>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <fr:p>Suppose on the other hand that <fr:tex display="inline"><![CDATA[u=a_1\cdots  a_n]]></fr:tex>, and so we therefore have transitions <fr:tex display="inline"><![CDATA[s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\mathrel {\xrightarrow {a_1}}S_1\mathrel {\xrightarrow {\ldots }}S_{n-1}\mathrel {\xrightarrow {a_n}}S_n]]></fr:tex> with <fr:tex display="inline"><![CDATA[S_n\in  F_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>, and so there exists some <fr:tex display="inline"><![CDATA[q_n\in  S_n\cap  F_{M}]]></fr:tex>. Define <fr:tex display="inline"><![CDATA[S_0 = s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>.</fr:p>
-                <fr:p>By definition of <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex>, from the transition <fr:tex display="inline"><![CDATA[S_{n-1}\mathrel {\xrightarrow {a_n}}S_n]]></fr:tex> we may find some <fr:tex display="inline"><![CDATA[q_{n-1}\in  S_{n-1}]]></fr:tex> such that <fr:tex display="inline"><![CDATA[q_{n-1}\mathrel {\xRightarrow {a_n}}q_n]]></fr:tex>. Iterating this process, we may find states <fr:tex display="inline"><![CDATA[q_i\in  S_{i}]]></fr:tex> such that we have a sequence of transitions <fr:tex display="inline"><![CDATA[q_{i-1}\mathrel {\xRightarrow {a_i}}q_i]]></fr:tex> in <fr:tex display="inline"><![CDATA[M]]></fr:tex>; thus we have a sequence of transitions <fr:tex display="inline"><![CDATA[q_0\mathrel {\xRightarrow {u}}q_n]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[q_0\in  S_0=s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {\epsilon }}q_0]]></fr:tex> and thus <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {\epsilon }}q_0\mathrel {\xRightarrow {u}}q_n]]></fr:tex> and therefore <fr:tex display="inline"><![CDATA[s_{M}\mathrel {\xRightarrow {u}} q_n]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[q_n\in  F_{M}]]></fr:tex>, we are done.</fr:p>
-              </fr:mainmatter>
-            </fr:tree>
-          </fr:mainmatter>
+          <fr:mainmatter><fr:p>Let <fr:tex display="inline"><![CDATA[\prec \colon  A\mathbin {\nrightarrow } A]]></fr:tex> be a <fr:link href="jms-00NL.xml" title="Well-founded relation" addr="jms-00NL" type="local">well-founded relation</fr:link> and fix a subset <fr:tex display="inline"><![CDATA[S\subseteq  A]]></fr:tex>. Then <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex> holds if and only if for each <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\forall  y\in  A\mathpunct {.} y\prec  x\implies  y\in  S]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex>.</fr:p><fr:p>In other words, to show that every element of <fr:tex display="inline"><![CDATA[A]]></fr:tex> lies in <fr:tex display="inline"><![CDATA[S]]></fr:tex>, it is enough to show that for any element <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>, the elements below <fr:tex display="inline"><![CDATA[x]]></fr:tex> lie in <fr:tex display="inline"><![CDATA[S]]></fr:tex>.</fr:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="jonmsterling.xml" title="Jon Sterling" addr="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>31</fr:day></fr:date><fr:anchor>7690</fr:anchor><fr:addr type="machine">unstable/6093</fr:addr><fr:route>unstable-6093.xml</fr:route><fr:title text="" /><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <fr:p>One direction is trivial: suppose <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex> and thus <fr:tex display="inline"><![CDATA[A=S]]></fr:tex>, and fix <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\forall  y\in  A\mathpunct {.} y\prec  x \implies  y \in  S]]></fr:tex> holds. To show <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex> we use our assumption that <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex>.</fr:p>
+
+ <fr:p>In the other direction, we suppose that for all <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\forall  y\in  A\mathpunct {.} y\prec  x\implies  y\in  S]]></fr:tex> we have <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex>. We need to show that <fr:tex display="inline"><![CDATA[A\subseteq  S]]></fr:tex>.</fr:p>
+
+ <fr:p>Fixing <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>, we need to show that <fr:tex display="inline"><![CDATA[x\in  S]]></fr:tex>. Suppose to the contrary that <fr:tex display="inline"><![CDATA[x\not \in  S]]></fr:tex>. Then the complement <fr:tex display="inline"><![CDATA[A\setminus  S]]></fr:tex> is non-empty and therefore has a minimal element <fr:tex display="inline"><![CDATA[m\in  A]]></fr:tex>.</fr:p>
+
+ <fr:p>We will deduce that <fr:tex display="inline"><![CDATA[m\in  S]]></fr:tex>, which is contradictory. By assumption we have <fr:tex display="block"><![CDATA[(\forall  y\in  A\mathpunct {.} y\prec  m\implies  y\in  S)\implies  m\in  S\text {.}]]></fr:tex></fr:p>
+
+ <fr:p>It therefore sufices to prove the antecedent:</fr:p>
+ <fr:tex display="block"><![CDATA[
+  \forall  y\in  A\mathpunct {.} y\prec  m \implies  y\in  S
+ ]]></fr:tex>
+
+ <fr:p>Fixing <fr:tex display="inline"><![CDATA[y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[y\prec  m]]></fr:tex>, we see that <fr:tex display="inline"><![CDATA[y]]></fr:tex> cannot lie outside <fr:tex display="inline"><![CDATA[S]]></fr:tex> because it is smaller than <fr:tex display="inline"><![CDATA[m]]></fr:tex> and <fr:tex display="inline"><![CDATA[m]]></fr:tex> is the smallest element that lies outside <fr:tex display="inline"><![CDATA[S]]></fr:tex>. Therefore, we have <fr:tex display="inline"><![CDATA[m\in  S]]></fr:tex> which contradicts our assumption <fr:tex display="inline"><![CDATA[m\not \in  S]]></fr:tex>.</fr:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
         </fr:tree>
       </fr:mainmatter>
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>27617</fr:anchor>
+        <fr:anchor>28154</fr:anchor>
         <fr:title text="Backlinks">Backlinks</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>27618</fr:anchor>
+        <fr:anchor>28155</fr:anchor>
         <fr:title text="Related">Related</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
     </fr:tree>
     <fr:tree show-metadata="false" hidden-when-empty="true">
       <fr:frontmatter>
-        <fr:anchor>27619</fr:anchor>
+        <fr:anchor>28156</fr:anchor>
         <fr:title text="Contributions">Contributions</fr:title>
       </fr:frontmatter>
       <fr:mainmatter />
