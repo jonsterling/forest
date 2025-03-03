@@ -152,8 +152,8 @@
             </xsl:when>
             <xsl:otherwise>
               <xsl:attribute name="href">
-                <xsl:text>#tree-</xsl:text>
-                <xsl:value-of select="f:anchor" />
+                <xsl:text>#</xsl:text>
+                <xsl:value-of select="generate-id(..)" />
               </xsl:attribute>
               <xsl:attribute name="title">
                 <xsl:value-of select="f:title" />
@@ -162,7 +162,7 @@
           </xsl:choose>
           <xsl:text>■</xsl:text>
         </a>
-        <span class="link local" data-target="#tree-{f:anchor}">
+        <span class="link local" data-target="#{generate-id(..)}">
           <span class="taxon">
             <xsl:apply-templates select=".." mode="tree-taxon-with-number">
               <xsl:with-param name="suffix">.&#160;</xsl:with-param>
@@ -278,8 +278,8 @@
       <xsl:attribute name="href">
         <xsl:choose>
           <xsl:when test="key('tree-with-addr',current()/@addr)">
-            <xsl:text>#tree-</xsl:text>
-            <xsl:value-of select="key('tree-with-addr',current()/@addr)/f:frontmatter/f:anchor" />
+            <xsl:text>#</xsl:text>
+            <xsl:value-of select="generate-id(key('tree-with-addr',current()/@addr))" />
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@href" />
@@ -374,7 +374,7 @@
 
       <xsl:choose>
         <xsl:when test="not(@show-heading='false')">
-          <details id="{concat('tree-',f:frontmatter/f:anchor)}">
+          <details id="{generate-id(.)}">
             <xsl:if test="not(@expanded = 'false')">
               <xsl:attribute name="open">open</xsl:attribute>
             </xsl:if>
