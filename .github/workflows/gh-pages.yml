@@ -58,7 +58,11 @@ jobs:
         run: latex --version
 
       - name: Build with Forester
-        run: opam exec -- forester build forest.toml
+        run: 
+          cd erct
+          opam exec --forester build 
+          cd ..
+          opam exec -- forester build forest.toml
 
       - name: Setup upterm session
         if: failure()
