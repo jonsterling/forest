@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="default.xsl"?>
-<fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" root="false">
+<fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" xmlns:html="http://www.w3.org/1999/xhtml" root="false">
   <fr:frontmatter>
     <fr:authors>
       <fr:author>
@@ -18,16 +18,16 @@
     <fr:taxon>Example</fr:taxon>
   </fr:frontmatter>
   <fr:mainmatter>
-    <fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:link href="foreign-forester-jms-00X4.xml" title="Forester 4.2 › new query language › relational queries › querying a coslice of the transclusion preorder" addr="forest://forester/jms-00X4" type="local">Example <fr:contextual-number addr="forest://forester/jms-00X4" /></fr:link>.</fr:p>
-    <fr:pre><![CDATA[\def\query/bibliography[x]{
+    <html:p>We can define a macro to compute the bibliography of a given tree, making use of <html:code><![CDATA[\query/transclusion-coslice]]></html:code> from <fr:link href="foreign-forester-jms-00X4.xml" title="Forester 4.2 › new query language › relational queries › querying a coslice of the transclusion preorder" addr="forest://forester/jms-00X4" type="local">Example <fr:contextual-number addr="forest://forester/jms-00X4" /></fr:link>.</html:p>
+    <html:pre><![CDATA[\def\query/bibliography[x]{
  \open\query
  \isect{
   \union-fam-rel{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
  }{
   \taxon{reference}
  }
-}]]></fr:pre>
-    <fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p>
+}]]></html:pre>
+    <html:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <html:code>reference</html:code>.</html:p>
   </fr:mainmatter>
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
@@ -58,17 +58,17 @@
             <fr:title text="Forester 4.2 › new query language › unions and intersections of families of queries"><fr:link href="foreign-forester-jms-00WS.xml" title="Forester 4.2 › new query language" addr="forest://forester/jms-00WS" type="local"><fr:link href="foreign-forester-jms-00WK.xml" title="Forester 4.2" addr="forest://forester/jms-00WK" type="local">Forester 4.2</fr:link> › new query language</fr:link> › unions and intersections of families of queries</fr:title>
           </fr:frontmatter>
           <fr:mainmatter>
-            <fr:p>A further primitive query-former is the union or intersection of a certain <fr:em>family</fr:em> of queries indexed in the <fr:em>results</fr:em> of a fixed query. These are written as follows:</fr:p>
-            <fr:pre><![CDATA[\query/union-fam{q}{qfam}
-\query/isect-fam{q}{qfam}]]></fr:pre>
-            <fr:p>In the above, <fr:code>q</fr:code> is a query expression and <fr:code>qfam</fr:code> is a <fr:link href="foreign-forester-jms-00YF.xml" title="Forester 4.2 › first-class functions and lazy arguments" addr="forest://forester/jms-00YF" type="local"><fr:em>first-class function</fr:em></fr:link> that takes an address and returns a query expression. There are a couple built-in instantiations of <fr:code><![CDATA[\query/union-fam]]></fr:code> and <fr:code><![CDATA[\query/isect-fam]]></fr:code> for the specific case where <fr:code>qfam</fr:code> is a family of <fr:em>relational</fr:em> queries; for example:</fr:p>
-            <fr:pre><![CDATA[\query/union-fam-rel{q}{mode}{polarity}{rel}]]></fr:pre>
-            <fr:p>is equivalent to the following more verbose code:</fr:p>
-            <fr:pre><![CDATA[\query/union-fam{q}{
+            <html:p>A further primitive query-former is the union or intersection of a certain <html:em>family</html:em> of queries indexed in the <html:em>results</html:em> of a fixed query. These are written as follows:</html:p>
+            <html:pre><![CDATA[\query/union-fam{q}{qfam}
+\query/isect-fam{q}{qfam}]]></html:pre>
+            <html:p>In the above, <html:code>q</html:code> is a query expression and <html:code>qfam</html:code> is a <fr:link href="foreign-forester-jms-00YF.xml" title="Forester 4.2 › first-class functions and lazy arguments" addr="forest://forester/jms-00YF" type="local"><html:em>first-class function</html:em></fr:link> that takes an address and returns a query expression. There are a couple built-in instantiations of <html:code><![CDATA[\query/union-fam]]></html:code> and <html:code><![CDATA[\query/isect-fam]]></html:code> for the specific case where <html:code>qfam</html:code> is a family of <html:em>relational</html:em> queries; for example:</html:p>
+            <html:pre><![CDATA[\query/union-fam-rel{q}{mode}{polarity}{rel}]]></html:pre>
+            <html:p>is equivalent to the following more verbose code:</html:p>
+            <html:pre><![CDATA[\query/union-fam{q}{
  \fun[x]{
   \query/rel{mode}{pol}{\x}
  }
-}]]></fr:pre>
+}]]></html:pre>
             <fr:tree show-metadata="false">
               <fr:frontmatter>
                 <fr:authors>
@@ -87,16 +87,16 @@
                 <fr:taxon>Example</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter>
-                <fr:p>We can define a macro to compute the bibliography of a given tree, making use of <fr:code><![CDATA[\query/transclusion-coslice]]></fr:code> from <fr:link href="foreign-forester-jms-00X4.xml" title="Forester 4.2 › new query language › relational queries › querying a coslice of the transclusion preorder" addr="forest://forester/jms-00X4" type="local">Example <fr:contextual-number addr="forest://forester/jms-00X4" /></fr:link>.</fr:p>
-                <fr:pre><![CDATA[\def\query/bibliography[x]{
+                <html:p>We can define a macro to compute the bibliography of a given tree, making use of <html:code><![CDATA[\query/transclusion-coslice]]></html:code> from <fr:link href="foreign-forester-jms-00X4.xml" title="Forester 4.2 › new query language › relational queries › querying a coslice of the transclusion preorder" addr="forest://forester/jms-00X4" type="local">Example <fr:contextual-number addr="forest://forester/jms-00X4" /></fr:link>.</html:p>
+                <html:pre><![CDATA[\def\query/bibliography[x]{
  \open\query
  \isect{
   \union-fam-rel{\transclusion-coslice{\x}}{\edges}{\outgoing}{\rel/links}
  }{
   \taxon{reference}
  }
-}]]></fr:pre>
-                <fr:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <fr:code>reference</fr:code>.</fr:p>
+}]]></html:pre>
+                <html:p>The above code first accumulates all the outgoing links from the given tree and any of its children, and then restricts (by intersection) to those with taxon <html:code>reference</html:code>.</html:p>
               </fr:mainmatter>
             </fr:tree>
             <fr:tree show-metadata="false">
@@ -117,8 +117,8 @@
                 <fr:taxon>Example</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter>
-                <fr:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link href="foreign-forester-tfmt-000T.xml" title="Contributor to a tree" addr="forest://forester/tfmt-000T" type="local"><fr:em>contributors</fr:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</fr:p>
-                <fr:pre><![CDATA[\def\query/contributors[x]{
+                <html:p>We can use the union of families of relational queries to compute the set of (proper) <fr:link href="foreign-forester-tfmt-000T.xml" title="Contributor to a tree" addr="forest://forester/tfmt-000T" type="local"><html:em>contributors</html:em></fr:link> to a given tree. This is slightly subtle, because if a bibliographic tree is transcluded, we do not want its contributors to be included.</html:p>
+                <html:pre><![CDATA[\def\query/contributors[x]{
  \open\query
  \union-fam-rel{
   \isect{
@@ -129,10 +129,10 @@
    }
   }
  }{\edges}{\outgoing}{\rel/contributors}
-}]]></fr:pre>
+}]]></html:pre>
               </fr:mainmatter>
             </fr:tree>
-            <fr:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</fr:p>
+            <html:p>In the future, the support for query-indexed families of queries might be generalised to allow arbitrary queries in the components rather than only relational ones. The current version of the feature should be viewed as somewhat provisional.</html:p>
           </fr:mainmatter>
         </fr:tree>
       </fr:mainmatter>
@@ -166,11 +166,11 @@
             <fr:taxon>Example</fr:taxon>
           </fr:frontmatter>
           <fr:mainmatter>
-            <fr:p>We can also write a query to compute the set of trees <fr:em>underneath</fr:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</fr:p>
-            <fr:pre><![CDATA[\def\query/transclusion-coslice[x]{
+            <html:p>We can also write a query to compute the set of trees <html:em>underneath</html:em> a given tree in the transclusion preorder (including the original tree) — in other words, the coslice.</html:p>
+            <html:pre><![CDATA[\def\query/transclusion-coslice[x]{
  \open\query
  \rel{\paths}{\outgoing}{\rel/transclusion}{\x}
-}]]></fr:pre>
+}]]></html:pre>
           </fr:mainmatter>
         </fr:tree>
       </fr:mainmatter>

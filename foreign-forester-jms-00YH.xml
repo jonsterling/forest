@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="default.xsl"?>
-<fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" root="false">
+<fr:tree xmlns:fr="http://www.jonmsterling.com/jms-005P.xml" xmlns:html="http://www.w3.org/1999/xhtml" root="false">
   <fr:frontmatter>
     <fr:authors>
       <fr:author>
@@ -18,7 +18,7 @@
     <fr:taxon>Warning</fr:taxon>
   </fr:frontmatter>
   <fr:mainmatter>
-    <fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p>
+    <html:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</html:p>
   </fr:mainmatter>
   <fr:backmatter>
     <fr:tree show-metadata="false" hidden-when-empty="true">
@@ -49,17 +49,17 @@
             <fr:title text="Forester 4.2 › first-class functions and lazy arguments"><fr:link href="foreign-forester-jms-00WK.xml" title="Forester 4.2" addr="forest://forester/jms-00WK" type="local">Forester 4.2</fr:link> › first-class functions and lazy arguments</fr:title>
           </fr:frontmatter>
           <fr:mainmatter>
-            <fr:p>This release adds λ-abstraction, which can be written like so:</fr:p>
-            <fr:pre><![CDATA[\fun[x][y]{Hello, \x and \y}]]></fr:pre>
-            <fr:p>In addition, <fr:em>lazy</fr:em> arguments are now supported. In any place that a function argument can be bound (e.g. in <fr:code><![CDATA[\def]]></fr:code>, <fr:code><![CDATA[\let]]></fr:code>, or <fr:code><![CDATA[\fun]]></fr:code>), an argument marked with a tilde is automatically wrapped in a thunk when it is passed. For example, consider the following code:</fr:p>
-            <fr:pre><![CDATA[\def\my-fun[x][~y]{Hello, \x and \y{}!}
+            <html:p>This release adds λ-abstraction, which can be written like so:</html:p>
+            <html:pre><![CDATA[\fun[x][y]{Hello, \x and \y}]]></html:pre>
+            <html:p>In addition, <html:em>lazy</html:em> arguments are now supported. In any place that a function argument can be bound (e.g. in <html:code><![CDATA[\def]]></html:code>, <html:code><![CDATA[\let]]></html:code>, or <html:code><![CDATA[\fun]]></html:code>), an argument marked with a tilde is automatically wrapped in a thunk when it is passed. For example, consider the following code:</html:p>
+            <html:pre><![CDATA[\def\my-fun[x][~y]{Hello, \x and \y{}!}
 
-\p{\my-fun{foo}{bar}}]]></fr:pre>
-            <fr:p>In the above, the argument <fr:code>x</fr:code> is strict and <fr:code>y</fr:code> is a thunk that must be forced before being used—hence the application to <fr:code>{}</fr:code>; note that the results are not memoised. The code above is functionally equivalent to the following:</fr:p>
-            <fr:pre><![CDATA[\def\my-fun[x][y]{Hello, \x and \y{}!}
+\p{\my-fun{foo}{bar}}]]></html:pre>
+            <html:p>In the above, the argument <html:code>x</html:code> is strict and <html:code>y</html:code> is a thunk that must be forced before being used—hence the application to <html:code>{}</html:code>; note that the results are not memoised. The code above is functionally equivalent to the following:</html:p>
+            <html:pre><![CDATA[\def\my-fun[x][y]{Hello, \x and \y{}!}
 
-\p{\my-fun{foo}{\fun[z]{bar}}}]]></fr:pre>
-            <fr:p>Of course, when your code is pure, passing by name <fr:em>vs.</fr:em> by value does not make a difference. The purpose of this feature is, however, to enable more expressive macros that make use of fluid bindings.</fr:p>
+\p{\my-fun{foo}{\fun[z]{bar}}}]]></html:pre>
+            <html:p>Of course, when your code is pure, passing by name <html:em>vs.</html:em> by value does not make a difference. The purpose of this feature is, however, to enable more expressive macros that make use of fluid bindings.</html:p>
             <fr:tree show-metadata="false">
               <fr:frontmatter>
                 <fr:authors>
@@ -78,24 +78,24 @@
                 <fr:taxon>Example</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter>
-                <fr:p><fr:link href="foreign-forester-jms-00RH.xml" title="Forester 4.0 › enhanced XML support" addr="forest://forester/jms-00RH" type="local">Forester 4.0’s enhanced XML support</fr:link> makes it possible (see <fr:link href="foreign-forester-jms-00RL.xml" title="Forester 4.0 › enhanced XML support › emitting XML and resolving namespaces › a worked example" addr="forest://forester/jms-00RL" type="local">Example <fr:contextual-number addr="forest://forester/jms-00RL" /></fr:link>) to write MathML directly as an alternative to using Forester’s TeX-like math mode via KaTeX. For example, we can write the following wrappers for some basic MathML elements:</fr:p>
-                <fr:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
+                <html:p><fr:link href="foreign-forester-jms-00RH.xml" title="Forester 4.0 › enhanced XML support" addr="forest://forester/jms-00RH" type="local">Forester 4.0’s enhanced XML support</fr:link> makes it possible (see <fr:link href="foreign-forester-jms-00RL.xml" title="Forester 4.0 › enhanced XML support › emitting XML and resolving namespaces › a worked example" addr="forest://forester/jms-00RL" type="local">Example <fr:contextual-number addr="forest://forester/jms-00RL" /></fr:link>) to write MathML directly as an alternative to using Forester’s TeX-like math mode via KaTeX. For example, we can write the following wrappers for some basic MathML elements:</html:p>
+                <html:pre><![CDATA[\xmlns:mml{http://www.w3.org/1998/Math/MathML}
 \def\math[body]{\<mml:math>{\body}}
 \def\mrow[body]{\<mml:mrow>{\body}}
 \def\mi[x]{\<mml:mi>{\x}}
 \def\mo[o]{\<mml:mo>{\o}}
-\def\mn[n]{\<mml:mn>{\n}}]]></fr:pre>
-                <fr:p>With this in hand, we can write prose involving MathML content, like so:</fr:p>
-                <fr:pre><![CDATA[\p{Let \math{\mi{x}} and \math{\mi{y}} be integers such that \math{\mrow{\mrow{\mi{x}\mo{-}\mi{y}}\mo{=}\mn{0}}}.}]]></fr:pre>
-                <fr:p>The above is a bit messy. We can clean it up with some function definitions:</fr:p>
-                <fr:pre><![CDATA[\def\plus[x][y]{\mrow{\x \mo{+} \y}}
+\def\mn[n]{\<mml:mn>{\n}}]]></html:pre>
+                <html:p>With this in hand, we can write prose involving MathML content, like so:</html:p>
+                <html:pre><![CDATA[\p{Let \math{\mi{x}} and \math{\mi{y}} be integers such that \math{\mrow{\mrow{\mi{x}\mo{-}\mi{y}}\mo{=}\mn{0}}}.}]]></html:pre>
+                <html:p>The above is a bit messy. We can clean it up with some function definitions:</html:p>
+                <html:pre><![CDATA[\def\plus[x][y]{\mrow{\x \mo{+} \y}}
 \def\equals[x][y]{\mrow{\x \mo{=} \y}}
 \let\x{\mi{x}}
 \let\y{\mi{y}}
 
-\p{Let \math{\x} and \math{\y} be integers such that \math{\equals{\plus{\x}{\y}}{\mn{0}}}.}]]></fr:pre>
-                <fr:p>It is annoying that we have to always wrap things in <fr:code><![CDATA[\math]]></fr:code>. By combining first-class functions, lazy arguments, and fluid bindings, we can lift this requirement:</fr:p>
-                <fr:pre><![CDATA[% Allocate a fluid binding to hold the function that enters math mode.
+\p{Let \math{\x} and \math{\y} be integers such that \math{\equals{\plus{\x}{\y}}{\mn{0}}}.}]]></html:pre>
+                <html:p>It is annoying that we have to always wrap things in <html:code><![CDATA[\math]]></html:code>. By combining first-class functions, lazy arguments, and fluid bindings, we can lift this requirement:</html:p>
+                <html:pre><![CDATA[% Allocate a fluid binding to hold the function that enters math mode.
 \alloc\math-wrapper
 
 % Ensure that a given (lazy) argument is evaluated inside a
@@ -115,19 +115,19 @@
    \body{}%
   }%
  }%
-}]]></fr:pre>
-                <fr:p>We now re-define our macro library to use the <fr:code><![CDATA[\ensure-math]]></fr:code>:</fr:p>
-                <fr:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
+}]]></html:pre>
+                <html:p>We now re-define our macro library to use the <html:code><![CDATA[\ensure-math]]></html:code>:</html:p>
+                <html:pre><![CDATA[\def\mrow[~x]{\ensure-math{\<mml:mrow>{\x{}}}}
 \def\mi[~x]{\ensure-math{\<mml:mi>{\x{}}}}
 \def\mo[~x]{\ensure-math{\<mml:mo>{\x{}}}}
 \def\mn[~x]{\ensure-math{\<mml:mn>{\x{}}}}
 \def\plus[~x][~y]{\mrow{\x{} \mo{+} \y{}}}
-\def\equals[~x][~y]{\mrow{\x{} \mo{=} \y{}}}]]></fr:pre>
-                <fr:p>Now, we can put MathML content freely into prose without needing to wrap it each time.</fr:p>
-                <fr:pre><![CDATA[\let\x{\mi{x}}
+\def\equals[~x][~y]{\mrow{\x{} \mo{=} \y{}}}]]></html:pre>
+                <html:p>Now, we can put MathML content freely into prose without needing to wrap it each time.</html:p>
+                <html:pre><![CDATA[\let\x{\mi{x}}
 \let\y{\mi{y}}
 
-\p{Let \x and \y be integers such that \equals{\plus{\x}{\y}}{\mn{0}}.}]]></fr:pre>
+\p{Let \x and \y be integers such that \equals{\plus{\x}{\y}}{\mn{0}}.}]]></html:pre>
               </fr:mainmatter>
             </fr:tree>
             <fr:tree show-metadata="false">
@@ -148,7 +148,7 @@
                 <fr:taxon>Warning</fr:taxon>
               </fr:frontmatter>
               <fr:mainmatter>
-                <fr:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</fr:p>
+                <html:p>Please note that these features are experimental and subject to change—only build large macro libraries relying on them at your own risk.</html:p>
               </fr:mainmatter>
             </fr:tree>
           </fr:mainmatter>
