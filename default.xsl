@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- SPDX-License-Identifier: CC0-1.0 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:f="http://www.jonmsterling.com/jms-005P.xml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:f="http://www.forester-notes.org">
 
   <xsl:output method="html" encoding="utf-8" indent="yes" doctype-public="" doctype-system="" />
   <xsl:strip-space elements="f:author f:contributor"/>
