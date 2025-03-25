@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="http://www.jonmsterling.com/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2023</fr:year>
+      <fr:month>8</fr:month>
+      <fr:day>14</fr:day>
+    </fr:date>
+    <fr:addr>forest://forester/jms-0072</fr:addr>
+    <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0072.xml</fr:route>
+    <fr:title text="Forester 2.3 › rudimentary support for XML attributes"><fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> › rudimentary support for XML attributes</fr:title>
+    <fr:taxon>Feature</fr:taxon>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>When Forester encounters an undefined function, it automatically passes through to the XML output. For instance, if the function <html:code><![CDATA[\myfun]]></html:code> is not defined, then the Forester code <html:code><![CDATA[\myfun{hello}]]></html:code> will render to the XML code <html:code><![CDATA[<myfun>hello</myfun>]]></html:code>. <html:strong>The <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> extends this fall-through behavior to support XML attributes.</html:strong></html:p>
+    <html:p>In particular, if you write <html:code><![CDATA[\myfun{key1}{value1}{key2}{value2}{hello}]]></html:code>, Forester will render the following XML code:</html:p>
+    <html:pre><![CDATA[<myfun key1="value1" key2="value2">
+  hello
+</myfun>]]></html:pre>
+    <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for suggesting this feature, and welcome to the <fr:link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Forester community</fr:link>!.</html:p>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>8</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:addr>forest://forester/jms-006Z</fr:addr>
+            <fr:route>http://www.jonmsterling.com/foreign/forester/jms-006Z.xml</fr:route>
+            <fr:title text="Forester 2.3">Forester 2.3</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p><fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>, <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>, and <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link> contributed code to this major release. Thanks also to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-0072.xml" title="Rudimentary support for XML attributes" addr="forest://forester/jms-0072" type="local">feature requests</fr:link> that made it into this release.</html:p>
+            <html:p>This release adds some new features to the command line interface. The original behavior of the <html:code>forester</html:code> command is now obtained by calling <html:code>forester build</html:code>. Please browse <html:code>forester --help</html:code> for more information.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0070</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0070.xml</fr:route>
+                <fr:title text="Create new trees from the command line">Create new trees from the command line</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new command has been added in <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> to simplify the creation of new trees with the correct base-36 identifier. If your personal namespace prefix is <html:code>xxx</html:code>, you may run the following command to create a new tree in the <html:code>trees</html:code> directory:</html:p>
+                <html:pre><![CDATA[forester new --dir=trees --prefix=xxx]]></html:pre>
+                <html:p>If the last tree in this directory was <html:code>xxx-0039</html:code>, a new tree will be generated at <html:code>xxx-003A</html:code>. The new tree will be populated with a correct <html:code><![CDATA[\date]]></html:code> declaration.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0071</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0071.xml</fr:route>
+                <fr:title text="Tree title completion for tool support">Tree title completion for tool support</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new <html:code>forester complete</html:code> command has been added to search for trees by their title; the purpose of this command is to facilitate external tool support, such as this <fr:link href="https://github.com/rileyshahar/cmp-Forester" type="external">proof-of-concept completion engine for neovim</fr:link>. Please browse <html:code>forester complete --help</html:code> for more information about this command.</html:p>
+                <html:p>Current limitations: the command is currently case sensitive and only searches prefixes; in the future, it would be desirable to support more flexible <fr:link href="https://en.wikipedia.org/wiki/Approximate_string_matching" type="external">fuzzy-search</fr:link>.</html:p>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link> for implementing this feature.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0072</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0072.xml</fr:route>
+                <fr:title text="Rudimentary support for XML attributes">Rudimentary support for XML attributes</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>When Forester encounters an undefined function, it automatically passes through to the XML output. For instance, if the function <html:code><![CDATA[\myfun]]></html:code> is not defined, then the Forester code <html:code><![CDATA[\myfun{hello}]]></html:code> will render to the XML code <html:code><![CDATA[<myfun>hello</myfun>]]></html:code>. <html:strong>The <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> extends this fall-through behavior to support XML attributes.</html:strong></html:p>
+                <html:p>In particular, if you write <html:code><![CDATA[\myfun{key1}{value1}{key2}{value2}{hello}]]></html:code>, Forester will render the following XML code:</html:p>
+                <html:pre><![CDATA[<myfun key1="value1" key2="value2">
+  hello
+</myfun>]]></html:pre>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for suggesting this feature, and welcome to the <fr:link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Forester community</fr:link>!.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <html:p>In addition to the major changes above, the following minor changes are included in this release:</html:p>
+            <html:ol><html:li>A <html:code>title</html:code> attribute attribute has been added to the XML output of internal links, in order to facilitate tooltips and other affordances in rendered forests. Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link> for implementing this feature.</html:li>
+  <html:li>Subdirectories of input directories will now be traversed automatically; note that the tree address model remains flat, and subdirectories are present only for convenience.</html:li>
+  <html:li>Added a nicer command line interface with <html:code>--help</html:code> documentation.</html:li>
+  <html:li>I have migrated much of the system code to use the experimental <fr:link href="https://github.com/ocaml-multicore/eio" type="external">Eio library</fr:link> for improved portability.</html:li>
+  <html:li>The example forest has been removed from the main repository, and moved into a separate <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">template repository</fr:link>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>9</fr:month>
+              <fr:day>22</fr:day>
+            </fr:date>
+            <fr:addr>forest://forester/jms-007M</fr:addr>
+            <fr:route>http://www.jonmsterling.com/foreign/forester/jms-007M.xml</fr:route>
+            <fr:title text="Forester 2.4">Forester 2.4</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> and <fr:link href="http://www.jonmsterling.com/foreign/forester/haroldcarr.xml" title="Harold Carr" addr="forest://forester/haroldcarr" type="local">Harold Carr</fr:link> for their suggestions which have influenced this release. In addition to the major changes detailed below, there are a few minor improvements:</html:p>
+            <html:ul><html:li>The evaluator for Markdown-style links <html:code><![CDATA[[title](destination)]]></html:code> now allows <html:code>destination</html:code> to contain expressions other than text, so long as they <html:em>evaluate</html:em> to text.</html:li>
+  <html:li>The <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-0072.xml" title="Forester 2.3 › rudimentary support for XML attributes" addr="forest://forester/jms-0072" type="local">XML attribute support</fr:link> introduced in <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> has been amended so that attributes appear in square brackets, e.g. <html:code><![CDATA[\p[class]{myclass}{body}]]></html:code></html:li>
+  <html:li>The <html:code>forester new</html:code> command now has a <html:code>--dest</html:code> option, which is used to specify the directory in which to deposit the new tree (independently of the <html:code>--dir</html:code> option, which specifies the directory to scan for existing trees). Please run  <html:code>forester new --help</html:code> for details.</html:li></html:ul>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>19</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-007Y</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-007Y.xml</fr:route>
+                <fr:title text="Rudimentary support for RSS feeds">Rudimentary support for RSS feeds</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Each tree generates an RSS feed containing its immediate children; if a tree is located at <html:code>xxx-NNNN.xml</html:code>, then the corresponding RSS file will be located at <html:code>xxx-NNNN.rss.xml</html:code>. Currently no content is placed in the RSS feed items, but in the future we may add some best-effort plain text linearization of the first paragraph of the tree or something. <fr:link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Feedback on this feature is welcome</fr:link>.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>9</fr:month>
+                  <fr:day>13</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-008Z</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-008Z.xml</fr:route>
+                <fr:title text="Wikilinks support">Wikilinks support</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>This release adds support for “wikilinks” in the form <html:code><![CDATA[[[destination]]]]></html:code>; this will be rendered as a link whose title is given by the title of the tree at address <html:code>destination</html:code>. Users are discouraged from using wikilinks heavily, as it is better for your mind to “work a link into a sentence” naturally; but this can be very useful for linking to <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-007K.xml" title="Creating your personal biographical tree" addr="forest://forester/jms-007K" type="local">biographical trees</fr:link> or daily notes.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>19</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-007X</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-007X.xml</fr:route>
+                <fr:title text="Breaking changes to XML format">Breaking changes to XML format</fr:title>
+                <fr:taxon>Change</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</html:p>
+                <html:ol><html:li>Taxa used to be attributes of <html:code>tree</html:code>, but they are now child elements of <html:code>tree/frontmatter</html:code>. Therefore, what previously was written as
+    <html:pre>&lt;tree taxon="lemma"&gt;
+  &lt;frontmatter&gt;
+    &lt;!-- ... --&gt;
+  &lt;/frontmatter&gt;
+  &lt;!-- ... --&gt;
+&lt;/tree&gt;</html:pre>
+    is now written as follows:
+    <html:pre>&lt;tree&gt;
+  &lt;frontmatter&gt;
+    &lt;taxon&gt;lemma&lt;/taxon&gt;
+    &lt;!-- ... --&gt;
+  &lt;/frontmatter&gt;
+  &lt;!-- ... --&gt;
+&lt;/tree&gt;</html:pre></html:li>
+  <html:li><html:p>Dates are now stored in machine-readable format. For example, what used to be written <html:code>&lt;date&gt;August 16, 2023&lt;/date&gt;</html:code> is now written as follows:</html:p>
+    <html:pre>&lt;date&gt;
+  &lt;year&gt;2023&lt;/year&gt;
+  &lt;month&gt;8&lt;/month&gt;
+  &lt;day&gt;16&lt;/day&gt;
+&lt;/date&gt;</html:pre>
+    <html:p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for suggesting this change.</html:p></html:li>
+  <html:li>All identifiers in the XML format have been regularized to use snake-case; for instance, <html:code>sourcePath</html:code> is now <html:code>source-path</html:code> and <html:code>show_heading</html:code> is now <html:code>show-heading</html:code>.</html:li></html:ol>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>8</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:addr>forest://forester/jms-006Z</fr:addr>
+            <fr:route>http://www.jonmsterling.com/foreign/forester/jms-006Z.xml</fr:route>
+            <fr:title text="Forester 2.3">Forester 2.3</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p><fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>, <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>, and <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link> contributed code to this major release. Thanks also to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-0072.xml" title="Rudimentary support for XML attributes" addr="forest://forester/jms-0072" type="local">feature requests</fr:link> that made it into this release.</html:p>
+            <html:p>This release adds some new features to the command line interface. The original behavior of the <html:code>forester</html:code> command is now obtained by calling <html:code>forester build</html:code>. Please browse <html:code>forester --help</html:code> for more information.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0070</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0070.xml</fr:route>
+                <fr:title text="Create new trees from the command line">Create new trees from the command line</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new command has been added in <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> to simplify the creation of new trees with the correct base-36 identifier. If your personal namespace prefix is <html:code>xxx</html:code>, you may run the following command to create a new tree in the <html:code>trees</html:code> directory:</html:p>
+                <html:pre><![CDATA[forester new --dir=trees --prefix=xxx]]></html:pre>
+                <html:p>If the last tree in this directory was <html:code>xxx-0039</html:code>, a new tree will be generated at <html:code>xxx-003A</html:code>. The new tree will be populated with a correct <html:code><![CDATA[\date]]></html:code> declaration.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0071</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0071.xml</fr:route>
+                <fr:title text="Tree title completion for tool support">Tree title completion for tool support</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new <html:code>forester complete</html:code> command has been added to search for trees by their title; the purpose of this command is to facilitate external tool support, such as this <fr:link href="https://github.com/rileyshahar/cmp-Forester" type="external">proof-of-concept completion engine for neovim</fr:link>. Please browse <html:code>forester complete --help</html:code> for more information about this command.</html:p>
+                <html:p>Current limitations: the command is currently case sensitive and only searches prefixes; in the future, it would be desirable to support more flexible <fr:link href="https://en.wikipedia.org/wiki/Approximate_string_matching" type="external">fuzzy-search</fr:link>.</html:p>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link> for implementing this feature.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0072</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0072.xml</fr:route>
+                <fr:title text="Rudimentary support for XML attributes">Rudimentary support for XML attributes</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>When Forester encounters an undefined function, it automatically passes through to the XML output. For instance, if the function <html:code><![CDATA[\myfun]]></html:code> is not defined, then the Forester code <html:code><![CDATA[\myfun{hello}]]></html:code> will render to the XML code <html:code><![CDATA[<myfun>hello</myfun>]]></html:code>. <html:strong>The <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> extends this fall-through behavior to support XML attributes.</html:strong></html:p>
+                <html:p>In particular, if you write <html:code><![CDATA[\myfun{key1}{value1}{key2}{value2}{hello}]]></html:code>, Forester will render the following XML code:</html:p>
+                <html:pre><![CDATA[<myfun key1="value1" key2="value2">
+  hello
+</myfun>]]></html:pre>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for suggesting this feature, and welcome to the <fr:link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Forester community</fr:link>!.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <html:p>In addition to the major changes above, the following minor changes are included in this release:</html:p>
+            <html:ol><html:li>A <html:code>title</html:code> attribute attribute has been added to the XML output of internal links, in order to facilitate tooltips and other affordances in rendered forests. Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link> for implementing this feature.</html:li>
+  <html:li>Subdirectories of input directories will now be traversed automatically; note that the tree address model remains flat, and subdirectories are present only for convenience.</html:li>
+  <html:li>Added a nicer command line interface with <html:code>--help</html:code> documentation.</html:li>
+  <html:li>I have migrated much of the system code to use the experimental <fr:link href="https://github.com/ocaml-multicore/eio" type="external">Eio library</fr:link> for improved portability.</html:li>
+  <html:li>The example forest has been removed from the main repository, and moved into a separate <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">template repository</fr:link>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>
+              </fr:contributor>
+              <fr:contributor>
+                <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>8</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:addr>forest://forester/jms-006Z</fr:addr>
+            <fr:route>http://www.jonmsterling.com/foreign/forester/jms-006Z.xml</fr:route>
+            <fr:title text="Forester 2.3">Forester 2.3</fr:title>
+            <fr:taxon>Release</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p><fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link>, <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link>, and <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link> contributed code to this major release. Thanks also to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-0072.xml" title="Rudimentary support for XML attributes" addr="forest://forester/jms-0072" type="local">feature requests</fr:link> that made it into this release.</html:p>
+            <html:p>This release adds some new features to the command line interface. The original behavior of the <html:code>forester</html:code> command is now obtained by calling <html:code>forester build</html:code>. Please browse <html:code>forester --help</html:code> for more information.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0070</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0070.xml</fr:route>
+                <fr:title text="Create new trees from the command line">Create new trees from the command line</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new command has been added in <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> to simplify the creation of new trees with the correct base-36 identifier. If your personal namespace prefix is <html:code>xxx</html:code>, you may run the following command to create a new tree in the <html:code>trees</html:code> directory:</html:p>
+                <html:pre><![CDATA[forester new --dir=trees --prefix=xxx]]></html:pre>
+                <html:p>If the last tree in this directory was <html:code>xxx-0039</html:code>, a new tree will be generated at <html:code>xxx-003A</html:code>. The new tree will be populated with a correct <html:code><![CDATA[\date]]></html:code> declaration.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0071</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0071.xml</fr:route>
+                <fr:title text="Tree title completion for tool support">Tree title completion for tool support</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>A new <html:code>forester complete</html:code> command has been added to search for trees by their title; the purpose of this command is to facilitate external tool support, such as this <fr:link href="https://github.com/rileyshahar/cmp-Forester" type="external">proof-of-concept completion engine for neovim</fr:link>. Please browse <html:code>forester complete --help</html:code> for more information about this command.</html:p>
+                <html:p>Current limitations: the command is currently case sensitive and only searches prefixes; in the future, it would be desirable to support more flexible <fr:link href="https://en.wikipedia.org/wiki/Approximate_string_matching" type="external">fuzzy-search</fr:link>.</html:p>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/rileyshahar.xml" title="Riley Shahar" addr="forest://forester/rileyshahar" type="local">Riley Shahar</fr:link> for implementing this feature.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="http://www.jonmsterling.com/foreign/forester/jonmsterling.xml" title="Jon Sterling" addr="forest://forester/jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>8</fr:month>
+                  <fr:day>14</fr:day>
+                </fr:date>
+                <fr:addr>forest://forester/jms-0072</fr:addr>
+                <fr:route>http://www.jonmsterling.com/foreign/forester/jms-0072.xml</fr:route>
+                <fr:title text="Rudimentary support for XML attributes">Rudimentary support for XML attributes</fr:title>
+                <fr:taxon>Feature</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>When Forester encounters an undefined function, it automatically passes through to the XML output. For instance, if the function <html:code><![CDATA[\myfun]]></html:code> is not defined, then the Forester code <html:code><![CDATA[\myfun{hello}]]></html:code> will render to the XML code <html:code><![CDATA[<myfun>hello</myfun>]]></html:code>. <html:strong>The <fr:link href="http://www.jonmsterling.com/foreign/forester/jms-006Z.xml" title="Forester 2.3" addr="forest://forester/jms-006Z" type="local">Forester 2.3</fr:link> extends this fall-through behavior to support XML attributes.</html:strong></html:p>
+                <html:p>In particular, if you write <html:code><![CDATA[\myfun{key1}{value1}{key2}{value2}{hello}]]></html:code>, Forester will render the following XML code:</html:p>
+                <html:pre><![CDATA[<myfun key1="value1" key2="value2">
+  hello
+</myfun>]]></html:pre>
+                <html:p>Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/masanoriogino.xml" title="Masanori Ogino" addr="forest://forester/masanoriogino" type="local">Masanori Ogino</fr:link> for suggesting this feature, and welcome to the <fr:link href="https://lists.sr.ht/~jonsterling/forester-discuss" type="external">Forester community</fr:link>!.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <html:p>In addition to the major changes above, the following minor changes are included in this release:</html:p>
+            <html:ol><html:li>A <html:code>title</html:code> attribute attribute has been added to the XML output of internal links, in order to facilitate tooltips and other affordances in rendered forests. Thanks to <fr:link href="http://www.jonmsterling.com/foreign/forester/arma%C3%ABlgu%C3%A9neau.xml" title="Armaël Guéneau" addr="forest://forester/armaëlguéneau" type="local">Armaël Guéneau</fr:link> for implementing this feature.</html:li>
+  <html:li>Subdirectories of input directories will now be traversed automatically; note that the tree address model remains flat, and subdirectories are present only for convenience.</html:li>
+  <html:li>Added a nicer command line interface with <html:code>--help</html:code> documentation.</html:li>
+  <html:li>I have migrated much of the system code to use the experimental <fr:link href="https://github.com/ocaml-multicore/eio" type="external">Eio library</fr:link> for improved portability.</html:li>
+  <html:li>The example forest has been removed from the main repository, and moved into a separate <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">template repository</fr:link>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
+            <fr:addr>forest://forester/masanoriogino</fr:addr>
+            <fr:route>http://www.jonmsterling.com/foreign/forester/masanoriogino.xml</fr:route>
+            <fr:title text="Masanori Ogino">Masanori Ogino</fr:title>
+            <fr:taxon>Person</fr:taxon>
+            <fr:meta name="external">https://www.brackets-salad.com/</fr:meta>
+            <fr:meta name="orcid">0000-0003-3390-2804</fr:meta>
+            <fr:meta name="position">Part-time Researcher</fr:meta>
+            <fr:meta name="institution">Hiroshima University</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter />
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>
