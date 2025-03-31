@@ -233,6 +233,109 @@
           <fr:frontmatter>
             <fr:authors>
               <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>8</fr:month>
+              <fr:day>29</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0087/</fr:uri>
+            <fr:display-uri>jms-0087</fr:display-uri>
+            <fr:route>/jms-0087/</fr:route>
+            <fr:title text="An XSLT 2.0 transformer to convert Bike outlines to HTML">An XSLT 2.0 transformer to convert <fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> outlines to HTML</fr:title>
+            <fr:taxon>Listing</fr:taxon>
+            <fr:meta name="external">https://git.sr.ht/~jonsterling/bike-convertors/tree/main/item/bike-to-html.xsl</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>We can write convert <fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> outlines to reasonable HTML using an XSLT 2.0 stylesheet, <html:code>bike-to-html.xsl</html:code> detailed below.</html:p>
+            <html:pre><![CDATA[<?xml version="1.0"?>
+
+<xsl:stylesheet version="2.0"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  exclude-result-prefixes="xhtml">
+
+  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" />
+  <xsl:strip-space elements="*" />]]></html:pre>
+            <html:p>We will allow several tags to be copied verbatim into the output, as <fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> uses these in the same way that idiomatic HTML does.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:html | html:body | html:code | html:strong | html:em | html:mark">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*" />
+    </xsl:copy>
+  </xsl:template>]]></html:pre>
+            <html:p><fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> leaves behind a lot of empty <html:code>span</html:code> elements; we drop these.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:span">
+    <xsl:apply-templates />
+  </xsl:template>]]></html:pre>
+            <html:p><fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> uses <html:code>ul</html:code> for all lists; the list type is determined not at this level, but rather by each individual item’s <html:code>@data-type</html:code> attribute. To get this data into the HTML list model, we must group items that have the same <html:code>@data-type</html:code> and wrap them in an appropriate list-forming element.</html:p>
+            <html:p>To do this, we use XSLT 2.0’s <html:code>xsl:for-each-group</html:code> instruction to group adjacent <html:code>li</html:code> elements by their <html:code>@data-type</html:code> attribute.  (It is extremely difficult and error-prone to write equivalent code in the more widely available XSLT 1.0.) We must convert <html:code>@data-type</html:code> to a string: otherwise, the transformer will crash when it encounters an item without a <html:code>@data-type</html:code> attribute.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:ul">
+    <xsl:for-each-group select="html:li" group-adjacent="string(@data-type)">
+      <xsl:choose>
+        <xsl:when test="@data-type='ordered' or @data-type='task'">
+          <ol>
+            <xsl:apply-templates select="current-group()" />
+          </ol>
+        </xsl:when>
+        <xsl:when test="@data-type='unordered'">
+          <ul>
+            <xsl:apply-templates select="current-group()" />
+          </ul>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="current-group()" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each-group>
+  </xsl:template>]]></html:pre>
+            <html:p>Next, we match each individual <html:code>li</html:code> element; the content of a list item is stored in a <html:code>p</html:code> element directly under <html:code>li</html:code>, so we let the transformer fall thorugh the parent and then format the content underneath according to the <html:code>@data-type</html:code> of the item.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:li">
+    <xsl:apply-templates />
+  </xsl:template>
+
+  <xsl:template
+    match="html:li[@data-type='ordered' or @data-type='unordered' or @data-type='task']/html:p">
+    <li>
+      <xsl:apply-templates />
+    </li>
+  </xsl:template>]]></html:pre>
+            <html:p><fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> has correctly adopted the optimal <fr:link href="/foreign/www.forester-notes.org/tfmt-000D/" title="Implicit vs. explicit hierarchy in document markup languages" uri="https://www.forester-notes.org/tfmt-000D/" display-uri="https://www.forester-notes.org/tfmt-000D" type="local">explicit</fr:link> and <fr:link href="/foreign/www.forester-notes.org/tfmt-000B/" title="Absolute vs. relative hierarchy in document markup languages" uri="https://www.forester-notes.org/tfmt-000B/" display-uri="https://www.forester-notes.org/tfmt-000B" type="local">relative</fr:link> model of hierarchy, in contrast to HTML; this means that the depth of a heading is not reflected in the element that introduces it, but is instead inferred from its actual position in the outline hierarchy. To convert <fr:link href="/jms-0085/" title="Bike Outliner: Structured focused writing" uri="https://www.jonmsterling.com/jms-0085/" display-uri="jms-0085" type="local">Bike</fr:link> outlines to idiomatic HTML, we must flatten the hierarchy and introduce explicit heading levels; luckily, this is easy to accomplish in XSLT by counting the ancestors of <html:code>heading</html:code> type.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:li[@data-type='heading']/html:p">
+    <xsl:element
+      name="h{count(ancestor::html:li[@data-type='heading'])}">
+      <xsl:apply-templates />
+    </xsl:element>
+  </xsl:template>]]></html:pre>
+            <html:p>The remainder of the row types are not difficult to render; you may prefer alternative formatting depending on your goals.</html:p>
+            <html:pre><![CDATA[  <xsl:template match="html:li[@data-type='quote']/html:p">
+    <blockquote>
+      <xsl:apply-templates />
+    </blockquote>
+  </xsl:template>
+
+  <xsl:template match="html:li[@data-type='note']/html:p">
+    <p>
+      <em>
+        <xsl:apply-templates />
+      </em>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="html:li[not(@data-type)]/html:p">
+    <p>
+      <xsl:apply-templates />
+    </p>
+  </xsl:template>
+</xsl:stylesheet>]]></html:pre>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
                 <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling" type="local">Jon Sterling</fr:link>
               </fr:author>
             </fr:authors>
