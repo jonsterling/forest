@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2025</fr:year>
+      <fr:month>2</fr:month>
+      <fr:day>11</fr:day>
+    </fr:date>
+    <fr:uri>https://www.jonmsterling.com/jms-017B/</fr:uri>
+    <fr:display-uri>jms-017B</fr:display-uri>
+    <fr:route>/jms-017B/</fr:route>
+    <fr:title text="Precedence parsing for regular expressions">Precedence parsing for regular expressions</fr:title>
+    <fr:taxon>Example</fr:taxon>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>Parsing is decribed by a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> from concrete syntax to abstract syntax. Ideally, this relation would be <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link> and so give rise to a <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link>. In order to achieve this, we address ahead of time any ambiguity in how tightly operators bind: for example, <fr:tex display="inline"><![CDATA[ab\vert  c]]></fr:tex> should be the union of <fr:tex display="inline"><![CDATA[ab]]></fr:tex> and <fr:tex display="inline"><![CDATA[c]]></fr:tex>, rather than the concatenation of <fr:tex display="inline"><![CDATA[a]]></fr:tex> with <fr:tex display="inline"><![CDATA[b\vert  c]]></fr:tex>.</html:p>
+    <html:p>This can be achieved by defining a more complex three-place relation <fr:tex display="block"><![CDATA[{r} \leadsto  {R} \mathrel {@} {n}]]></fr:tex> on concrete syntax <fr:tex display="inline"><![CDATA[r]]></fr:tex>, abstract syntax <fr:tex display="inline"><![CDATA[R]]></fr:tex>, and <html:em>precedences</html:em> <fr:tex display="inline"><![CDATA[n]]></fr:tex>. The idea is that we parse operations in the order of increasing tightness/precedence: in this case, that will be <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> followed by all the atomic regular expressions: <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>.</html:p>
+    <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {0}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {1}
+   }{\displaystyle \quad 
+    {r\vert  s} \leadsto  {\texttt {Union}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {0}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {1}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {rs} \leadsto  {\texttt {Concat}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {1}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {r*} \leadsto  {\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\varnothing } \leadsto  {\texttt {Never}} \mathrel {@} {3}
+   \quad }
+
+
+  \end {gathered}
+]]></fr:tex>
+    <html:p>If we are parsing, e.g., unions but we encounter only a symbol, that needs to be allowed too. So we add a rule that coerces a higher precedence to a lower one silently:</html:p>
+    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n+k}
+ }{\displaystyle \quad 
+  {r} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+    <html:p>Finally, we allow the use of parentheses to coerce a precedences in the other direction; this is what would make it possible to concatenate a union with another regular expression.</html:p>
+    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n - k}
+ }{\displaystyle \quad 
+  {(r)} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+    <html:p>We then define the parsing relation <fr:tex display="inline"><![CDATA[{r}\leadsto  {R}]]></fr:tex> to hold if and only if <fr:tex display="inline"><![CDATA[{r} \leadsto  {R} \mathrel {@} {0}]]></fr:tex> holds. We demonstrate parsing <fr:link href="/jms-016X/" title="Derivations" uri="https://www.jonmsterling.com/jms-016X/" display-uri="jms-016X" type="local">derivation</fr:link> for <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex> and <fr:tex display="inline"><![CDATA[(\underline {\epsilon }\vert  a)b*]]></fr:tex> as follows:</html:p>
+    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+  }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+   }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {1}\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}\quad }
+
+
+  }{\displaystyle \quad {ab*} \leadsto  {\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {1}\quad }
+
+
+ }{\displaystyle \quad 
+  {\underline {\epsilon }\vert  ab*} \leadsto  {\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+    <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+     \quad 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {\texttt {Sym}_{a}}{0}\quad }
+
+
+    }{\displaystyle \quad 
+     {\underline {\epsilon }\vert  a} \leadsto  {
+      \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+     } \mathrel {@} {0}
+    \quad }
+
+
+   }{\displaystyle \quad 
+    {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}} \leadsto  {
+     \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+    } \mathrel {@} {1}
+   \quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad 
+    {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+  }{\displaystyle \quad 
+   {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+    \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+   } \mathrel {@} {1}
+  \quad }
+
+
+ }{\displaystyle \quad 
+  {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+   \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+  } \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0178/</fr:uri>
+            <fr:display-uri>jms-0178</fr:display-uri>
+            <fr:route>/jms-0178/</fr:route>
+            <fr:title text="Regular expressions">Regular expressions</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Using the tools that we have built up in <fr:link href="/jms-016F/" title="Lecture 20: formal languages, inductive definitions, rule induction" uri="https://www.jonmsterling.com/jms-016F/" display-uri="jms-016F" type="local">Lecture 20</fr:link>, we can smoothly study both concrete and abstract syntax. Somewhat confusingly, our running example will be the <html:em>language of regular expressions</html:em> (this might be confusing because regular expressions are a streamlined way to <fr:link href="/jms-016W/" title="Syntactic presentation of a formal language" uri="https://www.jonmsterling.com/jms-016W/" display-uri="jms-016W" type="local">present</fr:link> the grammar of certain kinds of formal languages—but we are treating the grammar of regular expressions themselves).</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-0176/</fr:uri>
+                <fr:display-uri>jms-0176</fr:display-uri>
+                <fr:route>/jms-0176/</fr:route>
+                <fr:title text="Regular expressions (concrete syntax)">Regular expressions (concrete syntax)</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Let <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> be an <fr:link href="/jms-016H/" title="Alphabet" uri="https://www.jonmsterling.com/jms-016H/" display-uri="jms-016H" type="local">alphabet</fr:link>. We then let <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}]]></fr:tex> be the disjoint union of <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> with the set <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{\underline {\epsilon },\varnothing , \vert ,*,(,)\right \}\mathclose {}}]]></fr:tex>. Then a <html:em>concrete</html:em> syntax of regular expressions over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> can be defined as a <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal language</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}]]></fr:tex>, which we <fr:link href="/jms-016W/" title="Syntactic presentation of a formal language" uri="https://www.jonmsterling.com/jms-016W/" display-uri="jms-016W" type="local">present</fr:link> by means of the following <fr:link href="/jms-016S/" title="Syntactic rule" uri="https://www.jonmsterling.com/jms-016S/" display-uri="jms-016S" type="local">syntactic rules</fr:link>:</html:p>
+                <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad a\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \underline {\epsilon }\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \varnothing \quad }
+
+
+   \\
+   
+ 
+ \displaystyle \frac {\displaystyle r}{\displaystyle \quad (r)\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r\quad  s}{\displaystyle \quad r\vert  s\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r\quad  s}{\displaystyle \quad rs\quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle r}{\displaystyle \quad r*\quad }
+
+
+ \end {gathered}
+]]></fr:tex>
+                <html:p>Above we let <fr:tex display="inline"><![CDATA[a]]></fr:tex> range over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> and <fr:tex display="inline"><![CDATA[r,s]]></fr:tex> range over <fr:tex display="inline"><![CDATA[\Sigma _{\mathsf {rx}}^\star ]]></fr:tex>. We are careful to distinguish the formal symbol <fr:tex display="inline"><![CDATA[\underline {\epsilon }]]></fr:tex> from <fr:tex display="inline"><![CDATA[\epsilon ]]></fr:tex>: <fr:tex display="inline"><![CDATA[\epsilon ]]></fr:tex> is literally the empty <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link>, whereas <fr:tex display="inline"><![CDATA[\underline {\epsilon }]]></fr:tex> is the symbol representing the regular expression that <html:em>matches</html:em> the empty <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link>!</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-0177/</fr:uri>
+                <fr:display-uri>jms-0177</fr:display-uri>
+                <fr:route>/jms-0177/</fr:route>
+                <fr:title text="Derivation of a concrete regular expression">Derivation of a concrete regular expression</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>The (concrete) regular expression <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex> can be <fr:link href="/jms-016X/" title="Derivations" uri="https://www.jonmsterling.com/jms-016X/" display-uri="jms-016X" type="local">derived</fr:link> in the <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal language</fr:link> <fr:link href="/jms-016W/" title="Syntactic presentation of a formal language" uri="https://www.jonmsterling.com/jms-016W/" display-uri="jms-016W" type="local">presented</fr:link> in <fr:link href="/jms-0176/" title="Regular expressions (concrete syntax)" uri="https://www.jonmsterling.com/jms-0176/" display-uri="jms-0176" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-0176/" display-uri="jms-0176" /></fr:link> as follows:</html:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad \underline {\epsilon }\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad a\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad b\quad }
+
+
+   }{\displaystyle \quad b*\quad }
+
+
+  }{\displaystyle \quad ab*\quad }
+
+
+ }{\displaystyle \quad 
+  \underline {\epsilon }\vert  ab*
+ \quad }
+
+
+]]></fr:tex>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-0179/</fr:uri>
+                <fr:display-uri>jms-0179</fr:display-uri>
+                <fr:route>/jms-0179/</fr:route>
+                <fr:title text="Regular expressions (abstract syntax)">Regular expressions (abstract syntax)</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>The <html:em>abstract</html:em> syntax of regular expressions over an alphabet <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> will be represented by trees whose vertices are labelled by the symbols <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> for any <fr:tex display="inline"><![CDATA[a\in \Sigma ]]></fr:tex>. More specifically, each node of a tree will be of the following form:</html:p>
+                <html:ol><html:li>A node labelled by either <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> or <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> has exactly two children.</html:li>
+ <html:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> has exactly one child.</html:li>
+ <html:li>A node labelled by <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>, or <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex> has no children.</html:li></html:ol>
+                <html:p>The plain English description above could be expressed as an <fr:link href="/jms-016N/" title="Inductive definitions" uri="https://www.jonmsterling.com/jms-016N/" display-uri="jms-016N" type="local">inductive definition</fr:link> of a subset of the set of all trees.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-017A/</fr:uri>
+                <fr:display-uri>jms-017A</fr:display-uri>
+                <fr:route>/jms-017A/</fr:route>
+                <fr:title text="Examples of abstract syntax trees">Examples of abstract syntax trees</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>We recall the derivation for the concrete regular expression <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex>. This will correspond eventually to the following abstract syntax tree as specified by <fr:link href="/jms-0179/" title="Regular expressions (abstract syntax)" uri="https://www.jonmsterling.com/jms-0179/" display-uri="jms-0179" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-0179/" display-uri="jms-0179" /></fr:link>:</html:p>
+                <html:figure>
+                  <fr:resource hash="ec9f65b212e1ed0db533f659b439e2d9">
+                    <fr:resource-content>
+                      <html:img src="/ec9f65b212e1ed0db533f659b439e2d9.svg" />
+                    </fr:resource-content>
+                    <fr:resource-source type="latex" part="preamble"><![CDATA[\usepackage {forest}\usepackage [tt=false]{libertine}]]></fr:resource-source>
+                    <fr:resource-source type="latex" part="body"><![CDATA[
+   \begin {forest}
+     [\texttt {Union}
+      [\texttt {Null}]
+      [\texttt {Concat}
+       [$\texttt {Sym}_{a}$]
+       [\texttt {Star} [$\texttt {Sym}_{b}$]]
+      ]
+     ]
+   \end {forest}
+ ]]></fr:resource-source>
+                  </fr:resource>
+                </html:figure>
+                <html:p>Observe that we had to decide whether how tightly the concatenation and union operators bind with respect to each other. That is part of defining the <html:em>parsing</html:em> relation.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-017B/</fr:uri>
+                <fr:display-uri>jms-017B</fr:display-uri>
+                <fr:route>/jms-017B/</fr:route>
+                <fr:title text="Precedence parsing for regular expressions">Precedence parsing for regular expressions</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Parsing is decribed by a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> from concrete syntax to abstract syntax. Ideally, this relation would be <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link> and so give rise to a <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link>. In order to achieve this, we address ahead of time any ambiguity in how tightly operators bind: for example, <fr:tex display="inline"><![CDATA[ab\vert  c]]></fr:tex> should be the union of <fr:tex display="inline"><![CDATA[ab]]></fr:tex> and <fr:tex display="inline"><![CDATA[c]]></fr:tex>, rather than the concatenation of <fr:tex display="inline"><![CDATA[a]]></fr:tex> with <fr:tex display="inline"><![CDATA[b\vert  c]]></fr:tex>.</html:p>
+                <html:p>This can be achieved by defining a more complex three-place relation <fr:tex display="block"><![CDATA[{r} \leadsto  {R} \mathrel {@} {n}]]></fr:tex> on concrete syntax <fr:tex display="inline"><![CDATA[r]]></fr:tex>, abstract syntax <fr:tex display="inline"><![CDATA[R]]></fr:tex>, and <html:em>precedences</html:em> <fr:tex display="inline"><![CDATA[n]]></fr:tex>. The idea is that we parse operations in the order of increasing tightness/precedence: in this case, that will be <fr:tex display="inline"><![CDATA[\texttt {Union}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Concat}]]></fr:tex> followed by <fr:tex display="inline"><![CDATA[\texttt {Star}]]></fr:tex> followed by all the atomic regular expressions: <fr:tex display="inline"><![CDATA[\texttt {Sym}_{a}]]></fr:tex>, <fr:tex display="inline"><![CDATA[\texttt {Null}]]></fr:tex>, and <fr:tex display="inline"><![CDATA[\texttt {Never}]]></fr:tex>.</html:p>
+                <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {0}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {1}
+   }{\displaystyle \quad 
+    {r\vert  s} \leadsto  {\texttt {Union}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {0}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {1}
+    \quad 
+    {s} \leadsto  {S} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {rs} \leadsto  {\texttt {Concat}{\mathopen {}\left (R,S\right )\mathclose {}}} \mathrel {@} {1}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    {r} \leadsto  {R} \mathrel {@} {2}
+   }{\displaystyle \quad 
+    {r*} \leadsto  {\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+   \\[10pt]
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}
+   \quad }
+
+
+   \qquad 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+    {\varnothing } \leadsto  {\texttt {Never}} \mathrel {@} {3}
+   \quad }
+
+
+  \end {gathered}
+]]></fr:tex>
+                <html:p>If we are parsing, e.g., unions but we encounter only a symbol, that needs to be allowed too. So we add a rule that coerces a higher precedence to a lower one silently:</html:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n+k}
+ }{\displaystyle \quad 
+  {r} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+                <html:p>Finally, we allow the use of parentheses to coerce a precedences in the other direction; this is what would make it possible to concatenate a union with another regular expression.</html:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  {r} \leadsto  {R} \mathrel {@} {n - k}
+ }{\displaystyle \quad 
+  {(r)} \leadsto  {R} \mathrel {@} {n}
+ \quad }
+
+
+]]></fr:tex>
+                <html:p>We then define the parsing relation <fr:tex display="inline"><![CDATA[{r}\leadsto  {R}]]></fr:tex> to hold if and only if <fr:tex display="inline"><![CDATA[{r} \leadsto  {R} \mathrel {@} {0}]]></fr:tex> holds. We demonstrate parsing <fr:link href="/jms-016X/" title="Derivations" uri="https://www.jonmsterling.com/jms-016X/" display-uri="jms-016X" type="local">derivation</fr:link> for <fr:tex display="inline"><![CDATA[\underline {\epsilon }\vert  ab*]]></fr:tex> and <fr:tex display="inline"><![CDATA[(\underline {\epsilon }\vert  a)b*]]></fr:tex> as follows:</html:p>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+  }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+   }{\displaystyle \quad {a} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {1}\quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}\quad }
+
+
+  }{\displaystyle \quad {ab*} \leadsto  {\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {1}\quad }
+
+
+ }{\displaystyle \quad 
+  {\underline {\epsilon }\vert  ab*} \leadsto  {\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Concat}{\mathopen {}\left (\texttt {Sym}_{a},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}\right )\mathclose {}}} \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+                <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {0}\quad }
+
+
+     \quad 
+     
+ 
+ \displaystyle \frac {\displaystyle 
+      
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Sym}_{a}} \mathrel {@} {3}\quad }
+
+
+     }{\displaystyle \quad {\underline {\epsilon }} \leadsto  {\texttt {Null}} \mathrel {@} {\texttt {Sym}_{a}}{0}\quad }
+
+
+    }{\displaystyle \quad 
+     {\underline {\epsilon }\vert  a} \leadsto  {
+      \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+     } \mathrel {@} {0}
+    \quad }
+
+
+   }{\displaystyle \quad 
+    {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}} \leadsto  {
+     \texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}}
+    } \mathrel {@} {1}
+   \quad }
+
+
+   \quad 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle 
+     
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {3}\quad }
+
+
+    }{\displaystyle \quad {b} \leadsto  {\texttt {Sym}_{b}} \mathrel {@} {2}\quad }
+
+
+   }{\displaystyle \quad 
+    {b*} \leadsto  {\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}} \mathrel {@} {2}
+   \quad }
+
+
+  }{\displaystyle \quad 
+   {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+    \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+   } \mathrel {@} {1}
+  \quad }
+
+
+ }{\displaystyle \quad 
+  {{\mathopen {}\left (\underline {\epsilon }\vert  a\right )\mathclose {}}b*} \leadsto  {
+   \texttt {Concat}{\mathopen {}\left (\texttt {Union}{\mathopen {}\left (\texttt {Null},\texttt {Sym}_{a}\right )\mathclose {}},\texttt {Star}{\mathopen {}\left (\texttt {Sym}_{b}\right )\mathclose {}}\right )\mathclose {}}
+  } \mathrel {@} {0}
+ \quad }
+
+
+]]></fr:tex>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-017C/</fr:uri>
+            <fr:display-uri>jms-017C</fr:display-uri>
+            <fr:route>/jms-017C/</fr:route>
+            <fr:title text="Regular expression matching">Regular expression matching</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>We have seen the <fr:link href="/jms-0178/" title="Regular expressions" uri="https://www.jonmsterling.com/jms-0178/" display-uri="jms-0178" type="local"><html:em>syntax</html:em> of regular expressions</fr:link> in both concrete and abstract form. What about <html:em>semantics</html:em>, i.e. what do regular expressions actually do? The meaning of a given regular expression over an <fr:link href="/jms-016H/" title="Alphabet" uri="https://www.jonmsterling.com/jms-016H/" display-uri="jms-016H" type="local">alphabet</fr:link> <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> is a <html:em><html:strong>matching predicate</html:strong></html:em> on <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">strings</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> that says when a given string is matched by the regular expression. In this course, we are particularly interested in the class of <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal languages</fr:link> that can be recognised by regular expressions, and later on we will develop tools that allow us to show that some <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal languages</fr:link> are too complex to be recognised by regular expressions. In the meanwhile, we will first explain how matching works.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-017D/</fr:uri>
+                <fr:display-uri>jms-017D</fr:display-uri>
+                <fr:route>/jms-017D/</fr:route>
+                <fr:title text="The matching relation for regular expressions">The matching relation for regular expressions</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>The matching relation <fr:tex display="inline"><![CDATA[u\mathrel {\textsf {matches}}R]]></fr:tex> is given by an <html:em>inductive</html:em> definition over <fr:tex display="inline"><![CDATA[\Sigma ^\star \times \mathsf {Regexp}_{\Sigma }]]></fr:tex>.</html:p>
+                <fr:tex display="block"><![CDATA[
+ \begin {gathered}
+  
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+   {\mathopen {}\left ({a},{\texttt {Sym}_{a}}\right )\mathclose {}}
+  \quad }
+
+
+  \quad 
+  
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+   {\mathopen {}\left ({\epsilon },{\texttt {Null}}\right )\mathclose {}}
+  \quad }
+
+
+  \\[10pt]
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   {\mathopen {}\left ({u},{R}\right )\mathclose {}}
+  }{\displaystyle \quad 
+   {\mathopen {}\left ({u},{\texttt {Union}{\mathopen {}\left (R,S\right )\mathclose {}}}\right )\mathclose {}}
+  \quad }
+
+
+  \qquad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   {\mathopen {}\left ({u},{S}\right )\mathclose {}}
+  }{\displaystyle \quad 
+   {\mathopen {}\left ({u},{\texttt {Union}{\mathopen {}\left (R,S\right )\mathclose {}}}\right )\mathclose {}}
+  \quad }
+
+
+  \\[10pt]
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   {\mathopen {}\left ({v},{R}\right )\mathclose {}}
+   \quad 
+   {\mathopen {}\left ({w},{S}\right )\mathclose {}}
+  }{\displaystyle \quad 
+   {\mathopen {}\left ({vw},{\texttt {Concat}{\mathopen {}\left (R,S\right )\mathclose {}}}\right )\mathclose {}}
+  \quad }
+
+
+  \\[10pt]
+  
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 
+   {\mathopen {}\left ({\epsilon },{\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}}\right )\mathclose {}}
+  \quad }
+
+
+  \qquad 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   {\mathopen {}\left ({u},{R}\right )\mathclose {}}
+   \quad 
+   {\mathopen {}\left ({v},{\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}}\right )\mathclose {}}
+  }{\displaystyle \quad 
+   {\mathopen {}\left ({uv},{\texttt {Star}{\mathopen {}\left (R\right )\mathclose {}}}\right )\mathclose {}}
+  \quad }
+
+
+ \end {gathered}
+]]></fr:tex>
+                <html:p>We will write <fr:tex display="inline"><![CDATA[\mathcal {L}{\mathopen {}\left (R\right )\mathclose {}}]]></fr:tex> for the <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal language</fr:link> matching or “recognised” by the regular expression <fr:tex display="inline"><![CDATA[R]]></fr:tex>:</html:p>
+                <fr:tex display="block"><![CDATA[
+ \mathcal {L}{\mathopen {}\left (R\right )\mathclose {}} =
+ {\mathopen {}\left \{
+  u\in \Sigma ^\star 
+  \mid 
+  u\mathrel {\textsf {matches}}R
+ \right \}\mathclose {}}
+]]></fr:tex>
+              </fr:mainmatter>
+            </fr:tree>
+            <html:p>We can also obtain a version of the <fr:link href="/jms-017D/" title="The matching relation for regular expressions" uri="https://www.jonmsterling.com/jms-017D/" display-uri="jms-017D" type="local">matching relation</fr:link> between <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">strings</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> and <fr:link href="/jms-0176/" title="Regular expressions (concrete syntax)" uri="https://www.jonmsterling.com/jms-0176/" display-uri="jms-0176" type="local"><html:em>concrete</html:em> regular expressions</fr:link> by <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">relational composition</fr:link> with the (transpose of) the <fr:link href="/jms-017B/" title="Precedence parsing for regular expressions" uri="https://www.jonmsterling.com/jms-017B/" display-uri="jms-017B" type="local">parsing relation</fr:link>. Alternatively, we can simply <html:em>write</html:em> the concrete syntax as a mere notation (to be eliminated by the reader immediately) for the abstract syntax. In fact, that is what we will do in the future.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-017E/</fr:uri>
+                <fr:display-uri>jms-017E</fr:display-uri>
+                <fr:route>/jms-017E/</fr:route>
+                <fr:title text="Examples of regular expression matching">Examples of regular expression matching</fr:title>
+                <fr:taxon>Example</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Consider <fr:link href="/jms-017D/" title="The matching relation for regular expressions" uri="https://www.jonmsterling.com/jms-017D/" display-uri="jms-017D" type="local">regular expression matching</fr:link> over the alphabet <fr:tex display="inline"><![CDATA[\Sigma ={\mathopen {}\left \{a,b\right \}\mathclose {}}]]></fr:tex>.</html:p>
+                <html:ol><html:li><fr:tex display="inline"><![CDATA[a\vert  b]]></fr:tex> is matched by each symbol in <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex>.</html:li>
+ <html:li><fr:tex display="inline"><![CDATA[(a\vert  b)*]]></fr:tex> is matched every <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex>.</html:li>
+ <html:li><fr:tex display="inline"><![CDATA[b(a\vert  b)*]]></fr:tex> is matched by any <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link> over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex> that starts with a <fr:tex display="inline"><![CDATA[b]]></fr:tex>.</html:li>
+ <html:li><fr:tex display="inline"><![CDATA[((a\vert  b)(a\vert  b))*]]></fr:tex> is matched by any <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link> of even length over <fr:tex display="inline"><![CDATA[\Sigma ]]></fr:tex>.</html:li>
+ <html:li><fr:tex display="inline"><![CDATA[(\underline {\epsilon }\vert  a)(\underline {\epsilon }\vert  b)\vert  bb]]></fr:tex> is matched just by the <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">strings</fr:link> <fr:tex display="inline"><![CDATA[\epsilon ]]></fr:tex>, <fr:tex display="inline"><![CDATA[a]]></fr:tex>, <fr:tex display="inline"><![CDATA[b]]></fr:tex>, <fr:tex display="inline"><![CDATA[ab]]></fr:tex>, and <fr:tex display="inline"><![CDATA[bb]]></fr:tex>.</html:li>
+ <html:li><fr:tex display="inline"><![CDATA[\varnothing  b\vert  a]]></fr:tex> is matched only by the symbol <fr:tex display="inline"><![CDATA[a]]></fr:tex>.</html:li></html:ol>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-017F/</fr:uri>
+                <fr:display-uri>jms-017F</fr:display-uri>
+                <fr:route>/jms-017F/</fr:route>
+                <fr:title text="Questions about regular expression matching">Questions about regular expression matching</fr:title>
+                <fr:taxon>Discussion</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Here are some questions for discussion.</html:p>
+                <html:ol><html:li>Is there an algorithm which, given a string <fr:tex display="inline"><![CDATA[u]]></fr:tex> and a regular expression <fr:tex display="inline"><![CDATA[r]]></fr:tex>, computes whether or not <fr:tex display="inline"><![CDATA[u]]></fr:tex> matches <fr:tex display="inline"><![CDATA[r]]></fr:tex>?</html:li>
+ <html:li>In formulating the definition of regular expressions, have we missed out on some practically useful notions of pattern?</html:li>
+ <html:li>Is there an algorithm that will compute whether two regular expressions generate the same <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">language</fr:link>?</html:li>
+ <html:li>Is every <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal language</fr:link> of generated by a regular expression?</html:li></html:ol>
+                <html:p>We will come back to these questions in subsequent lectures. In the meantime, we can say:</html:p>
+                <html:ol><html:li><html:em>Is there an algorithm which, given a string <fr:tex display="inline"><![CDATA[u]]></fr:tex> and a regular expression <fr:tex display="inline"><![CDATA[r]]></fr:tex>, computes whether or not <fr:tex display="inline"><![CDATA[u]]></fr:tex> matches <fr:tex display="inline"><![CDATA[r]]></fr:tex>?</html:em> Yes. One very simple way is to simply use the rules of <fr:link href="/jms-017D/" title="The matching relation for regular expressions" uri="https://www.jonmsterling.com/jms-017D/" display-uri="jms-017D" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-017D/" display-uri="jms-017D" /></fr:link> as a search algorithm, but this is not very efficient; better ways to decide regular expression matching can be achieved using <html:em>finite automata</html:em>, which we will study in the next lecture.</html:li>
+ <html:li><html:em>In formulating the definition of regular expressions, have we missed out on some practically useful notions of pattern?</html:em>
+  Yes! For example, it can be useful to specify a <html:em>range</html:em> of symbols (including all symbols!) over an alphabet like most practical regular expression libraries allow. A more sophisticated example is complementation, where a <fr:link href="/jms-016I/" title="String over an alphabet" uri="https://www.jonmsterling.com/jms-016I/" display-uri="jms-016I" type="local">string</fr:link> matches <fr:tex display="inline"><![CDATA[\mathord {\sim }(r)]]></fr:tex> if and only if it does <html:em>not</html:em> match <fr:tex display="inline"><![CDATA[r]]></fr:tex>. We will ultimately see that the complement of any regular expression already exists—but it can be useful to include it as a built-in feature.</html:li>
+ <html:li><html:em>Is there an algorithm that will compute whether two regular expressions generate the same <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">language</fr:link>?</html:em> Yes, but we will need the theory of finite automata to see that this is the case.</html:li>
+ <html:li><html:em>Is every <fr:link href="/jms-016M/" title="Formal language" uri="https://www.jonmsterling.com/jms-016M/" display-uri="jms-016M" type="local">formal language</fr:link> of generated by a regular expression?</html:em> No: we will ultimately learn a technique, called the <html:em>pumping lemma</html:em> to find counter-examples.</html:li></html:ol>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>7</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-016X/</fr:uri>
+            <fr:display-uri>jms-016X</fr:display-uri>
+            <fr:route>/jms-016X/</fr:route>
+            <fr:title text="Derivations">Derivations</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>In the presence of a set <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex> of <fr:link href="/jms-016S/" title="Syntactic rule" uri="https://www.jonmsterling.com/jms-016S/" display-uri="jms-016S" type="local">syntactic rules</fr:link> describing a subset of <fr:tex display="inline"><![CDATA[X]]></fr:tex>, a <html:em><html:strong>derivation</html:strong></html:em> that a particular element <fr:tex display="inline"><![CDATA[u]]></fr:tex> lies in that subset is given by a finite tree with vertices labelled by elements of <fr:tex display="inline"><![CDATA[X]]></fr:tex> such that:</html:p>
+            <html:ol><html:li>the root of the tree is <fr:tex display="inline"><![CDATA[u]]></fr:tex>;</html:li>
+ <html:li>each vertex of the tree is the <fr:link href="/jms-016S/" title="Syntactic rule" uri="https://www.jonmsterling.com/jms-016S/" display-uri="jms-016S" type="local">conclusion</fr:link> of a rule whose <fr:link href="/jms-016S/" title="Syntactic rule" uri="https://www.jonmsterling.com/jms-016S/" display-uri="jms-016S" type="local">premises</fr:link> are the children of the node</html:li>
+ <html:li>each leaf of the tree is an <fr:link href="/jms-016S/" title="Syntactic rule" uri="https://www.jonmsterling.com/jms-016S/" display-uri="jms-016S" type="local">axiom</fr:link>.</html:li></html:ol>
+            <html:p>Viewing a tree as growing upwards from the root, we have the following derivation for <fr:tex display="inline"><![CDATA[3\in \mathbb {N}]]></fr:tex> in when <fr:tex display="inline"><![CDATA[\mathcal {R}]]></fr:tex> is the two rules from <fr:link href="/jms-016T/" title="syntactic rules for forming natural numbers" uri="https://www.jonmsterling.com/jms-016T/" display-uri="jms-016T" type="local">Example <fr:contextual-number uri="https://www.jonmsterling.com/jms-016T/" display-uri="jms-016T" /></fr:link>:</html:p>
+            <fr:tex display="block"><![CDATA[
+ 
+ 
+ \displaystyle \frac {\displaystyle 
+  
+ 
+ \displaystyle \frac {\displaystyle 
+   
+ 
+ \displaystyle \frac {\displaystyle 
+    
+ 
+ \displaystyle \frac {\displaystyle }{\displaystyle \quad 0\quad }
+
+
+   }{\displaystyle \quad 1\quad }
+
+
+  }{\displaystyle \quad 2\quad }
+
+
+ }{\displaystyle \quad 3\quad }
+
+
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>22</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00K7/</fr:uri>
+            <fr:display-uri>jms-00K7</fr:display-uri>
+            <fr:route>/jms-00K7/</fr:route>
+            <fr:title text="Partial function">Partial function</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>A <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex> is said to be <html:em><html:strong>functional</html:strong></html:em> when it relates an element of <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <html:em>at most</html:em> one element of <fr:tex display="inline"><![CDATA[B]]></fr:tex>:</html:p>
+            <fr:tex display="block"><![CDATA[
+ \forall  a\in  A\mathpunct {.}
+ \forall  b_1,b_2\in  B\mathpunct {.}
+ a\mathrel {R}b_1\land  a\mathrel {R}b_2
+ \implies 
+ b_1 = b_2
+]]></fr:tex>
+            <html:p>We refer to a functional <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> as a <html:em><html:strong>partial function</html:strong></html:em>; we often use letters like <fr:tex display="inline"><![CDATA[f,g]]></fr:tex> to refer to partial functions rather than <fr:tex display="inline"><![CDATA[R,S]]></fr:tex>. When we write <html:span style="white-space: nowrap">“<fr:tex display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex>”</html:span>, we mean that <fr:tex display="inline"><![CDATA[f]]></fr:tex> is a partial function from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>17</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00I7/</fr:uri>
+            <fr:display-uri>jms-00I7</fr:display-uri>
+            <fr:route>/jms-00I7/</fr:route>
+            <fr:title text="Relation">Relation</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>A <html:em><html:strong>(binary) relation</html:strong></html:em> <fr:tex display="inline"><![CDATA[R]]></fr:tex> from a set <fr:tex display="inline"><![CDATA[A]]></fr:tex> to a set <fr:tex display="inline"><![CDATA[B]]></fr:tex>, written <fr:tex display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex> or <fr:tex display="inline"><![CDATA[R\in  \mathrm {Rel}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> is defined to be a subset <fr:tex display="inline"><![CDATA[R\subseteq  A\times  B]]></fr:tex>. We shall typically write <fr:tex display="inline"><![CDATA[a\mathrel {R}b]]></fr:tex> for <fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,b\right )\mathclose {}}\in  R]]></fr:tex>. More generally, a <html:em><html:strong>relation between multiple sets</html:strong></html:em> <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A_i\right )\mathclose {}}_{i\in  I}]]></fr:tex> is defined to be a subset of the cartesian product <fr:tex display="inline"><![CDATA[\prod _{i\in  I} A_i]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>

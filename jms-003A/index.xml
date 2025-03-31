@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2023</fr:year>
+      <fr:month>3</fr:month>
+      <fr:day>14</fr:day>
+    </fr:date>
+    <fr:uri>https://www.jonmsterling.com/jms-003A/</fr:uri>
+    <fr:display-uri>jms-003A</fr:display-uri>
+    <fr:route>/jms-003A/</fr:route>
+    <fr:title text="Wild category theory">Wild category theory</fr:title>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>We describe some basic definitions and results in “wild (incoherent) category theory”, i.e. the study of untruncated category-like objects in univalent foundations that may lack higher coherences and saturation/completeness assumptions. Some of this is based on the <fr:link href="https://github.com/HoTT/Coq-HoTT/blob/master/theories/WildCat/Core.v" type="external">Homotopy Type Theory Coq library</fr:link>, as well as ideas from a <fr:link href="https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/" type="external">blog post</fr:link> of <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Mike Shulman</fr:link> and private conversations with <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Mike Shulman</fr:link>.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2023</fr:year>
+          <fr:month>3</fr:month>
+          <fr:day>14</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-0037/</fr:uri>
+        <fr:display-uri>jms-0037</fr:display-uri>
+        <fr:route>/jms-0037/</fr:route>
+        <fr:title text="Wild category">Wild category</fr:title>
+        <fr:taxon>Definition</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>A <html:em>wild category</html:em> is given by the following data:</html:p>
+        <html:ol><html:li>a type <fr:tex display="inline"><![CDATA[\mathbf {ob}_{\mathcal {C}}]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[A,B:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>, a family of types <fr:tex display="inline"><![CDATA[\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[A:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>, an element <fr:tex display="inline"><![CDATA[1_{A} : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,A\right )\mathclose {}}]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[g:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (B,C\right )\mathclose {}}]]></fr:tex>, an element <fr:tex display="inline"><![CDATA[{\mathopen {}\left (f;g\right )\mathclose {}} : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,C\right )\mathclose {}}]]></fr:tex></html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex>, a identification <fr:tex display="inline"><![CDATA[\mathsf {lunit}_{\mathcal {C}} f : {\mathopen {}\left (1_{A};f\right )\mathclose {}} = f]]></fr:tex> and a identification <fr:tex display="inline"><![CDATA[\mathsf {runit}_{\mathcal {C}} f : {\mathopen {}\left (f;1_{B}\right )\mathclose {}}=f]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[g:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (B,C\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[h:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (C,D\right )\mathclose {}}]]></fr:tex>, a identification <fr:tex display="inline"><![CDATA[\mathsf {assoc}_{\mathcal {C}}\,f\,g\,h : f;{\mathopen {}\left (g;h\right )\mathclose {}} = {\mathopen {}\left (f;g\right )\mathclose {}};h]]></fr:tex>.</html:li></html:ol>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2023</fr:year>
+          <fr:month>3</fr:month>
+          <fr:day>15</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-003N/</fr:uri>
+        <fr:display-uri>jms-003N</fr:display-uri>
+        <fr:route>/jms-003N/</fr:route>
+        <fr:title text="Idempotents in wild categories">Idempotents in wild categories</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>The definitions here are adapted from <fr:link href="/shulman-2016/" title="Idempotents in intensional type theory" uri="https://www.jonmsterling.com/shulman-2016/" display-uri="shulman-2016" type="local">Shulman</fr:link> from the setting of intensional type theory to an arbitrary <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>.</html:p>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>15</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003L/</fr:uri>
+            <fr:display-uri>jms-003L</fr:display-uri>
+            <fr:route>/jms-003L/</fr:route>
+            <fr:title text="Pre-idempotent in a wild category">Pre-idempotent in a wild category</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> be a <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>; a <html:em>pre-idempotent</html:em> on an object <fr:tex display="inline"><![CDATA[A:\mathbf {ob}_{\mathcal {C}}]]></fr:tex> is defined to be a morphism <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,A\right )\mathclose {}}]]></fr:tex> together with an identification <fr:tex display="inline"><![CDATA[\phi  : f;f = f]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>15</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003M/</fr:uri>
+            <fr:display-uri>jms-003M</fr:display-uri>
+            <fr:route>/jms-003M/</fr:route>
+            <fr:title text="Quasi-idempotent in a wild category">Quasi-idempotent in a wild category</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> be a <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>; a <html:em>quasi-idempotent</html:em> on an object <fr:tex display="inline"><![CDATA[A:\mathbf {ob}_{\mathcal {C}}]]></fr:tex> is defined to be a <fr:link href="/jms-003L/" title="Pre-idempotent in a wild category" uri="https://www.jonmsterling.com/jms-003L/" display-uri="jms-003L" type="local">pre-idempotent</fr:link> <fr:tex display="inline"><![CDATA[{\mathopen {}\left (f,\phi \right )\mathclose {}}]]></fr:tex> on <fr:tex display="inline"><![CDATA[A]]></fr:tex> together with an identification <fr:tex display="inline"><![CDATA[\chi ]]></fr:tex> between <fr:tex display="inline"><![CDATA[f;\phi  : f;{\mathopen {}\left (f;f\right )\mathclose {}} = f;f]]></fr:tex> and the following composite identification:</html:p>
+            <fr:tex display="block"><![CDATA[  f;{\mathopen {}\left (f;f\right )\mathclose {}} \xrightarrow {\mathsf {assoc}_{\mathcal {C}}\,f\,f\,f} {\mathopen {}\left (f;f\right )\mathclose {}};f \xrightarrow {\phi ;f}
+f;f
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2023</fr:year>
+          <fr:month>3</fr:month>
+          <fr:day>14</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-003I/</fr:uri>
+        <fr:display-uri>jms-003I</fr:display-uri>
+        <fr:route>/jms-003I/</fr:route>
+        <fr:title text="Wild functors">Wild functors</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0038/</fr:uri>
+            <fr:display-uri>jms-0038</fr:display-uri>
+            <fr:route>/jms-0038/</fr:route>
+            <fr:title text="Wild 0-functor">Wild 0-functor</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex> be two <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild categories</fr:link>. A <html:em>wild 0-functor</html:em> from <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex> is given by the following data:</html:p>
+            <html:ol><html:li>a function <fr:tex display="inline"><![CDATA[\mathbf {ob}_{F} : \mathbf {ob}_{\mathcal {C}}\to \mathbf {ob}_{\mathcal {D}}]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[A,B:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>, a function <fr:tex display="inline"><![CDATA[\mathbf {hom}_{F} : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}\to \mathbf {hom}_{\mathcal {D}}{\mathopen {}\left (\mathbf {ob}_{F}A,\mathbf {ob}_{F}B\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol>
+            <html:p>In other words, a wild 0-functor is a homomorphism of the underlying graphs.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003F/</fr:uri>
+            <fr:display-uri>jms-003F</fr:display-uri>
+            <fr:route>/jms-003F/</fr:route>
+            <fr:title text="Wild 1-semi-functor">Wild 1-semi-functor</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex> be two <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild categories</fr:link>. A <html:em>wild 1-semi-functor</html:em> from <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex> is given by a wild 0-functor <fr:tex display="inline"><![CDATA[F : \mathcal {C}\to \mathcal {D}]]></fr:tex> equipped with, for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (C,D\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[g : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (C,D\right )\mathclose {}}]]></fr:tex>, an identification <fr:tex display="inline"><![CDATA[\mathsf {seq}_F\,f\,g : \mathbf {hom}_{F}{\mathopen {}\left (f;g\right )\mathclose {}} = \mathbf {hom}_{F}{f};\mathbf {hom}_{G}{g} ]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003C/</fr:uri>
+            <fr:display-uri>jms-003C</fr:display-uri>
+            <fr:route>/jms-003C/</fr:route>
+            <fr:title text="The wild identity functor">The wild identity functor</fr:title>
+            <fr:taxon>Example</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> be a <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>; the <html:em>identity 0-functor</html:em> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{1_{\mathcal {C}}}}{\mathcal {C}}]]></fr:tex> on <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> is defined as follows:</html:p>
+            <fr:tex display="block"><![CDATA[\begin {aligned}
+  \mathbf {ob}_{1_{\mathcal {C}}}A   & :\equiv  A \\
+  \mathbf {hom}_{1_{\mathcal {C}}}f & :\equiv  f
+\end {aligned}
+]]></fr:tex>
+            <html:p>The above may be extended to a <fr:link href="/jms-003F/" title="Wild 1-semi-functor" uri="https://www.jonmsterling.com/jms-003F/" display-uri="jms-003F" type="local">wild 1-semi-functor</fr:link> as follows:</html:p>
+            <fr:tex display="block"><![CDATA[  \mathsf {seq}_{F}\,f\,g :\equiv  \mathsf {refl}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003D/</fr:uri>
+            <fr:display-uri>jms-003D</fr:display-uri>
+            <fr:route>/jms-003D/</fr:route>
+            <fr:title text="The wild constant functor">The wild constant functor</fr:title>
+            <fr:taxon>Example</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex> be <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild categories</fr:link>, and let <fr:tex display="inline"><![CDATA[D:\mathbf {ob}_{\mathcal {D}}]]></fr:tex> be an object of <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex>. We define the <html:em>constant 0-functor</html:em> on <fr:tex display="inline"><![CDATA[D:\mathbf {ob}_{\mathcal {D}}]]></fr:tex> out of <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> to be the <fr:link href="/jms-0038/" title="Wild 0-functor" uri="https://www.jonmsterling.com/jms-0038/" display-uri="jms-0038" type="local">0-functor</fr:link> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{\Delta  D}}{\mathcal {D}}]]></fr:tex> defined as follows:</html:p>
+            <fr:tex display="block"><![CDATA[\begin {aligned}
+  \mathbf {ob}_{\Delta  D}C    & :\equiv  D       \\
+  \mathbf {hom}_{\Delta  D} f & :\equiv  1_{D}
+\end {aligned}
+]]></fr:tex>
+            <html:p>The above may be extended to a <fr:link href="/jms-003F/" title="Wild 1-semi-functor" uri="https://www.jonmsterling.com/jms-003F/" display-uri="jms-003F" type="local">wild 1-semi-functor</fr:link> as follows:</html:p>
+            <fr:tex display="block"><![CDATA[\mathsf {seq}_{F}\,f\,g :\equiv  \mathsf {refl}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2023</fr:year>
+          <fr:month>3</fr:month>
+          <fr:day>14</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-003J/</fr:uri>
+        <fr:display-uri>jms-003J</fr:display-uri>
+        <fr:route>/jms-003J/</fr:route>
+        <fr:title text="Wild natural transformations">Wild natural transformations</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0039/</fr:uri>
+            <fr:display-uri>jms-0039</fr:display-uri>
+            <fr:route>/jms-0039/</fr:route>
+            <fr:title text="Wild natural transformation">Wild natural transformation</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C},\mathcal {D}]]></fr:tex> be two <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild categories</fr:link>, and let <fr:tex display="inline"><![CDATA[F,G:\mathcal {C}\to \mathcal {D}]]></fr:tex> be two
+  <fr:link href="/jms-0038/" title="Wild 0-functor" uri="https://www.jonmsterling.com/jms-0038/" display-uri="jms-0038" type="local">wild 0-functors</fr:link> from <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex>. A <html:em>wild natural transformation</html:em> is defined by the following data:</html:p>
+            <html:ol><html:li>for each <fr:tex display="inline"><![CDATA[A:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>, an element <fr:tex display="inline"><![CDATA[\alpha _{A} : \mathbf {hom}_{\mathcal {D}}{\mathopen {}\left (\mathbf {ob}_{F}A,\mathbf {ob}_{G}A\right )\mathclose {}}]]></fr:tex>;</html:li>
+  <html:li>for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex>, an identification <fr:tex display="inline"><![CDATA[\alpha _{f} : \alpha _A; \mathbf {hom}_{G}{f} = \mathbf {hom}_{F}{f};\alpha _B]]></fr:tex>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003H/</fr:uri>
+            <fr:display-uri>jms-003H</fr:display-uri>
+            <fr:route>/jms-003H/</fr:route>
+            <fr:title text="Wild semicoherent natural transformations">Wild semicoherent natural transformations</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C},\mathcal {D}]]></fr:tex> be two <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild categories</fr:link>, and let <fr:tex display="inline"><![CDATA[F,G:\mathcal {C}\to \mathcal {D}]]></fr:tex> be two
+  <fr:link href="/jms-003F/" title="Wild 1-semi-functor" uri="https://www.jonmsterling.com/jms-003F/" display-uri="jms-003F" type="local">wild 1-semi-functors</fr:link> from <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\mathcal {D}]]></fr:tex>. A <html:em>wild semi-coherent natural transformation</html:em> is defined by the data of a <fr:link href="/jms-0039/" title="Wild natural transformation" uri="https://www.jonmsterling.com/jms-0039/" display-uri="jms-0039" type="local">wild natural transformation</fr:link> <fr:tex display="inline"><![CDATA[\alpha  : F \to  G]]></fr:tex> together with, for each <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[g : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (B,C\right )\mathclose {}}]]></fr:tex>, a higher identification <fr:tex display="inline"><![CDATA[\mathsf {seq}_{\alpha }\,f\,g]]></fr:tex> between <fr:tex display="inline"><![CDATA[\alpha _{f;g} : F{\mathopen {}\left (f;g\right )\mathclose {}};\alpha _{C} = \alpha _{A};G{\mathopen {}\left (f;g\right )\mathclose {}}]]></fr:tex> and the composite identification:</html:p>
+ 
+  
+  <html:figure><fr:resource hash="d5a7171b54af79c18fff559cf0d515df"><fr:resource-content><html:img src="/d5a7171b54af79c18fff559cf0d515df.svg" /></fr:resource-content><fr:resource-source type="latex" part="preamble"><![CDATA[
+   
+  \RequirePackage{tikz}
+ \RequirePackage{amsmath}
+ \usetikzlibrary{backgrounds, intersections, calc, spath3, fit}
+
+ \definecolor{catccolor}{RGB}{255,244,138}
+ \tikzstyle{dot}=[circle, draw=black, fill=black, minimum size=1mm, inner sep=0mm]
+ \tikzstyle{catc}=[catccolor!60]
+ \tikzstyle{catd}=[orange!40]
+ \tikzstyle{cate}=[red!40]
+ \tikzstyle{catf}=[blue!10]
+ \tikzstyle{catg}=[green!25]
+
+
+ \tikzstyle{blue halo}=[fill=blue!10, opacity=0.7, rounded corners]
+ \tikzstyle{white halo}=[fill=white, opacity=0.7, rounded corners]
+
+ \NewDocumentCommand\CreateRect{D<>{} m m}{
+   \path
+     coordinate (#1nw)
+     ++(#2,-#3) coordinate (#1se)
+     coordinate (#1sw) at (#1se -| #1nw)
+     coordinate (#1ne) at (#1nw -| #1se)
+   ;
+
+   \path[spath/save = #1north] (#1nw) to (#1ne);
+   \path[spath/save = #1west] (#1nw) to (#1sw);
+   \path[spath/save = #1east] (#1ne) to (#1se);
+   \path[spath/save = #1south] (#1sw) to (#1se);
+ }
+
+   
+  \usepackage{tikz, tikz-cd, mathtools, amssymb, stmaryrd}
+ \usetikzlibrary{matrix,arrows}
+ \usetikzlibrary{backgrounds,fit,positioning,calc,shapes}
+ \usetikzlibrary{decorations.pathreplacing}
+ \usetikzlibrary{decorations.pathmorphing}
+ \usetikzlibrary{decorations.markings}
+
+ \tikzset{
+   desc/.style={sloped, fill=white,inner sep=2pt},
+   upright desc/.style={fill=white,inner sep=2pt},
+   pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pullback 45/.style = {
+     append after command={
+       \pgfextra{
+         \draw[rotate = 45] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   ne pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,-.5cm)$) -- ++(-0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   sw pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (.2cm,.5cm)$) -- ++(0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   dotted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [densely dotted] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   muted pullback/.style = {
+     append after command={
+       \pgfextra{
+         \draw [gray] ($(\tikzlastnode) + (.2cm,-.5cm)$) -- ++(0.3cm,0) -- ++(0,0.3cm);
+       }
+     }
+   },
+   pushout/.style = {
+     append after command={
+       \pgfextra{
+         \draw ($(\tikzlastnode) + (-.2cm,.5cm)$) -- ++(-0.3cm,0) -- ++(0,-0.3cm);
+       }
+     }
+   },
+   between/.style args={#1 and #2}{
+     at = ($(#1)!0.5!(#2)$)
+   },
+   diagram/.style = {
+     on grid,
+     node distance=2cm,
+     commutative diagrams/every diagram,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+     }
+   },
+   fibration/.style = {
+     -{Triangle[open]}
+   },
+   etale/.style = {
+     -{Triangle[open]}
+   },
+   etale cover/.style= {
+     >={Triangle[open]},->.>
+   },
+   opfibration/.style = {
+     -{Triangle}
+   },
+   lies over/.style = {
+     |-{Triangle[open]}
+   },
+   op lies over/.style = {
+     |-{Triangle}
+   },
+   embedding/.style = {
+     {right hook}->
+   },
+   open immersion/.style = {
+     {right hook}-{Triangle[open]}
+   },
+   closed immersion/.style = {
+     {right hook}-{Triangle}
+   },
+   closed immersion*/.style = {
+     {left hook}-{Triangle}
+   },
+   embedding*/.style = {
+     {left hook}->
+   },
+   open immersion*/.style = {
+     {left hook}-{Triangle[open]}
+   },
+   exists/.style = {
+     densely dashed
+   },
+ }
+
+ \newlength{\dontworryaboutit}
+
+ \tikzset{
+   inline diagram/.style = {
+     commutative diagrams/every diagram,
+     commutative diagrams/cramped,
+     line width = .5pt,
+     every node/.append style = {
+       commutative diagrams/every cell,
+       anchor = base,
+       inner sep = 0pt
+     },
+     every path/.append style = {
+       outer xsep = 2pt
+     }
+   }
+ }
+
+ \tikzset{
+   square/nw/.style = {},
+   square/ne/.style = {},
+   square/se/.style = {},
+   square/sw/.style = {},
+   square/north/.style = {->},
+   square/south/.style = {->},
+   square/west/.style = {->},
+   square/east/.style = {->},
+   square/north/node/.style = {above},
+   square/south/node/.style = {below},
+   square/west/node/.style = {left},
+   square/east/node/.style = {right},
+ }
+
+ \ExplSyntaxOn
+
+ \bool_new:N \l_jon_glue_west
+
+ \keys_define:nn { jon-tikz/diagram } {
+   nw .tl_set:N = \l_jon_tikz_diagram_nw,
+   sw .tl_set:N = \l_jon_tikz_diagram_sw,
+   ne .tl_set:N = \l_jon_tikz_diagram_ne,
+   se .tl_set:N = \l_jon_tikz_diagram_se,
+
+   width .tl_set:N = \l_jon_tikz_diagram_width,
+   height .tl_set:N = \l_jon_tikz_diagram_height,
+
+   north .tl_set:N = \l_jon_tikz_diagram_north,
+   south .tl_set:N = \l_jon_tikz_diagram_south,
+   west .tl_set:N = \l_jon_tikz_diagram_west,
+   east .tl_set:N = \l_jon_tikz_diagram_east,
+
+   nw/style .code:n = {\tikzset{square/nw/.style = {#1}}},
+   sw/style .code:n = {\tikzset{square/sw/.style = {#1}}},
+   ne/style .code:n = {\tikzset{square/ne/.style = {#1}}},
+   se/style .code:n = {\tikzset{square/se/.style = {#1}}},
+
+   glue .choice:,
+   glue / west .code:n = {\bool_set:Nn \l_jon_glue_west \c_true_bool},
+
+   glue~target .tl_set:N = \l_jon_tikz_glue_target,
+
+   north/style .code:n = {\tikzset{square/north/.style = {#1}}},
+   north/node/style .code:n = {\tikzset{square/north/node/.style = {#1}}},
+   south/style .code:n = {\tikzset{square/south/.style = {#1}}},
+   south/node/style .code:n = {\tikzset{square/south/node/.style = {#1}}},
+   west/style .code:n = {\tikzset{square/west/.style = {#1}}},
+   west/node/style .code:n = {\tikzset{square/west/node/.style = {#1}}},
+   east/style .code:n = {\tikzset{square/east/.style = {#1}}},
+   east/node/style .code:n = {\tikzset{square/east/node/.style = {#1}}},
+
+   draft .meta:n = {
+     nw = {\__jon_tikz_diagram_fmt_placeholder:n {nw}},
+     sw = {\__jon_tikz_diagram_fmt_placeholder:n {sw}},
+     se = {\__jon_tikz_diagram_fmt_placeholder:n {se}},
+     ne = {\__jon_tikz_diagram_fmt_placeholder:n {ne}},
+     north = {\__jon_tikz_diagram_fmt_placeholder:n {north}},
+     south = {\__jon_tikz_diagram_fmt_placeholder:n {south}},
+     west = {\__jon_tikz_diagram_fmt_placeholder:n {west}},
+     east = {\__jon_tikz_diagram_fmt_placeholder:n {east}},
+   }
+ }
+
+ \tl_set:Nn \l_jon_tikz_diagram_width { 2cm }
+ \tl_set:Nn \l_jon_tikz_diagram_height { 2cm }
+
+
+ \cs_new:Npn \__jon_tikz_diagram_fmt_placeholder:n #1 {
+   \texttt{\textcolor{red}{#1}}
+ }
+
+ \keys_set:nn { jon-tikz/diagram } {
+   glue~target = {},
+ }
+
+
+ \cs_new:Nn \__jon_tikz_render_square:nn {
+   \group_begin:
+   \keys_set:nn {jon-tikz/diagram} {#2}
+   \bool_if:nTF \l_jon_glue_west {
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~\l_jon_tikz_glue_target ne,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (\l_jon_tikz_glue_target ne) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (\l_jon_tikz_glue_target se) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   } {
+     \node (#1nw) [square/nw] {$\l_jon_tikz_diagram_nw$};
+     \node (#1sw) [below = \l_jon_tikz_diagram_height~of~#1nw,square/sw] {$\l_jon_tikz_diagram_sw$};
+     \draw[square/west] (#1nw) to node [square/west/node] {$\l_jon_tikz_diagram_west$} (#1sw);
+
+     \node (#1ne) [right = \l_jon_tikz_diagram_width~of~#1nw,square/ne] {$\l_jon_tikz_diagram_ne$};
+     \node (#1se) [below = \l_jon_tikz_diagram_height~of~#1ne,square/se] {$\l_jon_tikz_diagram_se$};
+     \draw[square/north] (#1nw) to node [square/north/node] {$\l_jon_tikz_diagram_north$} (#1ne);
+     \draw[square/east] (#1ne) to node [square/east/node] {$\l_jon_tikz_diagram_east$} (#1se);
+     \draw[square/south] (#1sw) to node [square/south/node] {$\l_jon_tikz_diagram_south$} (#1se);
+   }
+   \group_end:
+ }
+
+ \NewDocumentCommand\SpliceDiagramSquare{D<>{}m}{
+   \__jon_tikz_render_square:nn {#1} {#2}
+ }
+
+
+ \NewDocumentCommand\DiagramSquare{D<>{}O{}m}{
+   \begin{tikzpicture}[diagram,#2,baseline=(#1sw.base)]
+     \__jon_tikz_render_square:nn {#1} {#3}
+   \end{tikzpicture}
+ }
+
+ \ExplSyntaxOff
+
+  ]]></fr:resource-source><fr:resource-source type="latex" part="body"><![CDATA[
+  \begin {tikzpicture}[diagram]
+    \node  (0) {$F{\mathopen {}\left (f;g\right )\mathclose {}}; \alpha _{Z}$};
+    \node [right = 4.5cm of 0] (1) {${\mathopen {}\left (Ff;Fg\right )\mathclose {}};\alpha _{Z}$};
+    \node [right = 6cm of 1] (2) {$Ff;{\mathopen {}\left (Fg;\alpha _{Z}\right )\mathclose {}}$};
+
+    \node [below = of 0] (3) {$Ff;{\mathopen {}\left (\alpha _{Y};Gg\right )\mathclose {}}$};
+    \node [right = 6 cm of 3] (4) {${\mathopen {}\left (Ff;\alpha _{Y}\right )\mathclose {}};Gg$};
+    \node [below = of 2] (5) {${\mathopen {}\left (\alpha _{X};Gf\right )\mathclose {}};Gg$};
+
+    \node [below = of 3] (6) {$\alpha _{X};{\mathopen {}\left (Gf;Gg\right )\mathclose {}}$};
+    \node [right = 5.5cm of 6] (7) {$\alpha _{X};G{\mathopen {}\left (f;g\right )\mathclose {}}$};
+
+    \draw [->] (0) to node[above] {$\mathsf {seq}_{F}\,f\,g;\alpha _Z$} (1);
+    \draw [->] (1) to node[above] {${\mathopen {}\left (\mathsf {assoc}_{\mathcal {C}}\,{\mathopen {}\left (Ff\right )\mathclose {}}\,{\mathopen {}\left (Fg\right )\mathclose {}}\,\alpha _Z\right )\mathclose {}}^{-1}$} (2);
+    \draw [->] (2) to[out = 270, in = 80, looseness = 0.3] node[upright desc] {$Ff;\alpha _{g}$} (3);
+    \draw [->] (3) to node[above] {$\mathsf {assoc}_{\mathcal {C}}\,{\mathopen {}\left (Ff\right )\mathclose {}}\,\alpha _{Y}\,{\mathopen {}\left (Gg\right )\mathclose {}}$} (4);
+    \draw [->] (4) to node[above] {$\alpha _f;Gg$} (5);
+    \draw [->] (5) to[out = 270, in = 80, looseness = 0.3] node[upright desc] {${\mathopen {}\left (\mathsf {assoc}_{\mathcal {C}}\,\alpha _{X}\,{\mathopen {}\left (Gf\right )\mathclose {}}\,{\mathopen {}\left (Gg\right )\mathclose {}}\right )\mathclose {}}^{-1}$} (6);
+
+    \draw [->] (6) to node[above] {$\alpha _{X};{\mathopen {}\left (\mathsf {seq}_{G}\,f\,g\right )\mathclose {}}^{-1}$} (7);
+
+  \end {tikzpicture}
+]]></fr:resource-source></fr:resource></html:figure>
+ 
+</fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2023</fr:year>
+          <fr:month>3</fr:month>
+          <fr:day>14</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-003K/</fr:uri>
+        <fr:display-uri>jms-003K</fr:display-uri>
+        <fr:route>/jms-003K/</fr:route>
+        <fr:title text="Initial objects in wild categories">Initial objects in wild categories</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003B/</fr:uri>
+            <fr:display-uri>jms-003B</fr:display-uri>
+            <fr:route>/jms-003B/</fr:route>
+            <fr:title text="Wild initial objects from universal cones">Wild initial objects from universal cones</fr:title>
+            <fr:taxon>Lemma</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> be a <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>, and let <fr:tex display="inline"><![CDATA[I:\mathbf {ob}_{\mathcal {C}}]]></fr:tex> be an object of <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex>. If we may equip a <fr:link href="/jms-0039/" title="Wild natural transformation" uri="https://www.jonmsterling.com/jms-0039/" display-uri="jms-0039" type="local">wild natural transformation</fr:link> <fr:tex display="inline"><![CDATA[{\Delta  I}\xrightarrow {{\alpha }}{1_{\mathcal {C}}}]]></fr:tex> from the <fr:link href="/jms-003D/" title="The wild constant functor" uri="https://www.jonmsterling.com/jms-003D/" display-uri="jms-003D" type="local">constant 0-functor</fr:link> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{\Delta  I}}{\mathcal {C}}]]></fr:tex> to the <fr:link href="/jms-003C/" title="The wild identity functor" uri="https://www.jonmsterling.com/jms-003C/" display-uri="jms-003C" type="local">identity 0-functor</fr:link> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{1_{\mathcal {C}}}}{\mathcal {C}}]]></fr:tex> with an identification <fr:tex display="inline"><![CDATA[c_\alpha  : \alpha _I = 1_{I}]]></fr:tex>, then <fr:tex display="inline"><![CDATA[\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,A\right )\mathclose {}}]]></fr:tex> is contractible for all <fr:tex display="inline"><![CDATA[A:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>.</html:p><html:p>(Our proof will follow that of the <fr:link href="https://ncatlab.org/nlab/show/initial+object" type="external">nLab</fr:link>, which was stated for ordinary categories and functors and natural transformations rather than wild ones. It was <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Mike Shulman</fr:link> who <fr:link href="https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/" type="external">noticed</fr:link> who noticed that this proof also works for the wild/incoherent notions studied here.)</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>14</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>To show that <fr:tex display="inline"><![CDATA[\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,A\right )\mathclose {}}]]></fr:tex> is contractible, we choose <fr:tex display="inline"><![CDATA[\alpha _{A} : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,A\right )\mathclose {}}]]></fr:tex> as the center of contraction. To identify any <fr:tex display="inline"><![CDATA[f : \mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,A\right )\mathclose {}}]]></fr:tex> with <fr:tex display="inline"><![CDATA[\alpha _{A}]]></fr:tex>, we use the <fr:link href="/jms-0039/" title="Wild natural transformation" uri="https://www.jonmsterling.com/jms-0039/" display-uri="jms-0039" type="local">wild naturality</fr:link> of <fr:tex display="inline"><![CDATA[{\Delta  I}\xrightarrow {{\alpha }}{1_{\mathcal {C}}}]]></fr:tex>. In particular, we have an identification <fr:tex display="inline"><![CDATA[\alpha _f]]></fr:tex> between <fr:tex display="inline"><![CDATA[\alpha _I;f]]></fr:tex> and <fr:tex display="inline"><![CDATA[1_{I};\alpha _A]]></fr:tex>. By our assumption that <fr:tex display="inline"><![CDATA[\alpha _I=1_{I}]]></fr:tex> and using the <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild left-unit</fr:link> identifications <fr:tex display="inline"><![CDATA[\lambda  f]]></fr:tex> and <fr:tex display="inline"><![CDATA[\lambda  \alpha _A]]></fr:tex>, we may identify <fr:tex display="inline"><![CDATA[f]]></fr:tex> with <fr:tex display="inline"><![CDATA[\alpha _A]]></fr:tex>.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>14</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-003E/</fr:uri>
+            <fr:display-uri>jms-003E</fr:display-uri>
+            <fr:route>/jms-003E/</fr:route>
+            <fr:title text="A wild universal cone from a splitting of the generic element">A wild universal cone from a splitting of the generic element</fr:title>
+            <fr:taxon>Construction</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> be a <fr:link href="/jms-0037/" title="Wild category" uri="https://www.jonmsterling.com/jms-0037/" display-uri="jms-0037" type="local">wild category</fr:link>, and let <fr:tex display="inline"><![CDATA[I:\mathbf {ob}_{\mathcal {C}}]]></fr:tex> be an object of <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> such  that <fr:tex display="inline"><![CDATA[{\Delta  I}\xrightarrow {{\alpha }}{1_{\mathcal {C}}}]]></fr:tex> is a <fr:link href="/jms-0039/" title="Wild natural transformation" uri="https://www.jonmsterling.com/jms-0039/" display-uri="jms-0039" type="local">wild natural transformation</fr:link> from the <fr:link href="/jms-003D/" title="The wild constant functor" uri="https://www.jonmsterling.com/jms-003D/" display-uri="jms-003D" type="local">constant 0-functor</fr:link> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{\Delta  I}}{\mathcal {C}}]]></fr:tex> to the <fr:link href="/jms-003C/" title="The wild identity functor" uri="https://www.jonmsterling.com/jms-003C/" display-uri="jms-003C" type="local">identity 0-functor</fr:link> <fr:tex display="inline"><![CDATA[{\mathcal {C}}\xrightarrow {{1_{\mathcal {C}}}}{\mathcal {C}}]]></fr:tex> on <fr:tex display="inline"><![CDATA[\mathcal {C}]]></fr:tex> for some <fr:tex display="inline"><![CDATA[I:\mathbf {ob}_{\mathcal {C}}]]></fr:tex>. Now let <fr:tex display="inline"><![CDATA[r:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,J\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[s:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (J,I\right )\mathclose {}}]]></fr:tex> be a section-retraction pair witnessed by <fr:tex display="inline"><![CDATA[\eta  : s;r = 1_{I}]]></fr:tex>, and let <fr:tex display="inline"><![CDATA[\sigma  : r;s=\alpha _{I}]]></fr:tex> be a splitting of <fr:tex display="inline"><![CDATA[\alpha _{I}:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (I,I\right )\mathclose {}}]]></fr:tex>. Then we may define a <fr:link href="/jms-0039/" title="Wild natural transformation" uri="https://www.jonmsterling.com/jms-0039/" display-uri="jms-0039" type="local">wild natural transformation</fr:link> <fr:tex display="inline"><![CDATA[{\Delta  J}\xrightarrow {{\beta }}{1_{\mathcal {C}}}]]></fr:tex> and an identification <fr:tex display="inline"><![CDATA[\chi  : \beta _{J} = 1_{J}]]></fr:tex>.</html:p><html:p>(This construction is due to <fr:link href="https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/" type="external">Mike Shulman</fr:link>.)</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>14</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>Define the component <fr:tex display="inline"><![CDATA[\beta _{A}:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (J,A\right )\mathclose {}}]]></fr:tex> to be the composite <fr:tex display="inline"><![CDATA[s;\alpha _{A}]]></fr:tex>; for the wild naturality structure, we fix <fr:tex display="inline"><![CDATA[f:\mathbf {hom}_{\mathcal {C}}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> to define <fr:tex display="inline"><![CDATA[\beta _{f} : \beta _{A};f = 1_{J};\beta _{B}]]></fr:tex> as follows:</html:p>
+
+  <fr:tex display="block"><![CDATA[\begin {aligned}
+    \beta _{A};f & = {\mathopen {}\left (s;\alpha _{A}\right )\mathclose {}};f        \\
+                & = s;{\mathopen {}\left (1_{A};\alpha _{B}\right )\mathclose {}}  \\
+                & = s;\alpha _{B}                \\
+                & = 1_{J}; {\mathopen {}\left (s;\alpha _{B}\right )\mathclose {}} \\
+                & = 1_{J}; \beta _{B}
+  \end {aligned}
+  ]]></fr:tex>
+
+
+  <html:p>Next we identify <fr:tex display="inline"><![CDATA[\beta _{J}]]></fr:tex> with <fr:tex display="inline"><![CDATA[1_{J}]]></fr:tex>. By incoherent naturality, we have <fr:tex display="inline"><![CDATA[\alpha _{J};s = \alpha _{I}]]></fr:tex>; thus by our splitting of <fr:tex display="inline"><![CDATA[\alpha _{I}]]></fr:tex> we have <fr:tex display="inline"><![CDATA[\alpha _{J};s = r;s]]></fr:tex> and hence by postcomposing <fr:tex display="inline"><![CDATA[r]]></fr:tex> and canceling via <fr:tex display="inline"><![CDATA[\eta :s;r=1_{I}]]></fr:tex> we conclude that <fr:tex display="inline"><![CDATA[\alpha _J = r]]></fr:tex>. Therefore <fr:tex display="inline"><![CDATA[\beta _J=s;\alpha _J=s;r=1_{J}]]></fr:tex>.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Mike Shulman</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>15</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/shulman-2016/</fr:uri>
+            <fr:display-uri>shulman-2016</fr:display-uri>
+            <fr:route>/shulman-2016/</fr:route>
+            <fr:title text="Idempotents in intensional type theory">Idempotents in intensional type theory</fr:title>
+            <fr:taxon>Reference</fr:taxon>
+            <fr:meta name="bibtex"><![CDATA[@article{shulman-2016,
+  author = {Shulman, Michael},
+  year = {2016},
+  month = apr,
+  doi = {10.2168/LMCS-12(3:9)2016},
+  issue = {3},
+  journal = {Logical Methods in Computer Science},
+  title = {{Idempotents in intensional type theory}},
+  volume = {12},
+}]]></fr:meta>
+            <fr:meta name="doi">10.2168/LMCS-12(3:9)2016</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>We study idempotents in intensional Martin-Löf type theory, and in particular the question of when and whether they split. We show that in the presence of propositional truncation and Voevodsky’s univalence axiom, there exist idempotents that do not split; thus in plain MLTT not all idempotents can be proven to split. On the other hand, assuming only function extensionality, an idempotent can be split if and only if its witness of idempotency satisfies one extra coherence condition. Both proofs are inspired by parallel results of Lurie in higher category theory, showing that ideas from higher category theory and homotopy theory can have applications even in ordinary MLTT.</html:p>
+            <html:p>Finally, we show that although the witness of idempotency can be recovered from a splitting, the one extra coherence condition cannot in general; and we construct “the type of fully coherent idempotents”, by splitting an idempotent on the type of partially coherent ones. Our results have been formally verified in the proof assistant Coq.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0036/</fr:uri>
+            <fr:display-uri>jms-0036</fr:display-uri>
+            <fr:route>/jms-0036/</fr:route>
+            <fr:title text="Reflectivity of impredicative subuniverses">Reflectivity of impredicative subuniverses</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Working in univalent foundations, let <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> be a pair of not-necessarily-univalent universes such that <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> is closed under <fr:tex display="inline"><![CDATA[\mathcal {V}]]></fr:tex>-small products of <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex>-small types; then the subuniverse inclusion <fr:tex display="inline"><![CDATA[{\mathcal {U}}\xrightarrow {{j}}{\mathcal {V}}]]></fr:tex> is <html:em>reflective</html:em>. This argument will combine ideas due to <fr:link href="/awodey-frey-speight-2018/" title="Impredicative encodings of (higher) inductive types" uri="https://www.jonmsterling.com/awodey-frey-speight-2018/" display-uri="awodey-frey-speight-2018" type="local">Awodey, Frey, Speight</fr:link>, and <fr:link href="https://homotopytypetheory.org/2018/11/26/impredicative-encodings-part-3/" type="external">Shulman</fr:link>. For any type <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex>, we will define the reflection of <fr:tex display="inline"><![CDATA[A]]></fr:tex> in <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> in several steps.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-003U/</fr:uri>
+                <fr:display-uri>jms-003U</fr:display-uri>
+                <fr:route>/jms-003U/</fr:route>
+                <fr:title text="Reflection algebras, homomorphisms, and displays">Reflection algebras, homomorphisms, and displays</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003O/</fr:uri>
+                    <fr:display-uri>jms-003O</fr:display-uri>
+                    <fr:route>/jms-003O/</fr:route>
+                    <fr:title text="Reflection algebras and homomorphisms">Reflection algebras and homomorphisms</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> be a subuniverse of <fr:tex display="inline"><![CDATA[\mathcal {V}]]></fr:tex> and let <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex> be a type. A <html:em>reflection algebra</html:em> <fr:tex display="inline"><![CDATA[X]]></fr:tex> under <fr:tex display="inline"><![CDATA[A]]></fr:tex> in <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> is defined to be a type <fr:tex display="inline"><![CDATA[UX:\mathcal {U}]]></fr:tex> together with a function <fr:tex display="inline"><![CDATA[{A}\xrightarrow {{\eta _{X}}}{UX}]]></fr:tex>. A homomorphism <fr:tex display="inline"><![CDATA[f]]></fr:tex> of reflection algebras from <fr:tex display="inline"><![CDATA[X]]></fr:tex> to <fr:tex display="inline"><![CDATA[Y]]></fr:tex> is given by a function <fr:tex display="inline"><![CDATA[{UX}\xrightarrow {{Uf}}{UY}]]></fr:tex> together with a homotopy <fr:tex display="inline"><![CDATA[\eta _{f} : {\eta _{Y}} \sim _{A\to  Y} {Uf\circ  \eta _X}]]></fr:tex>.</html:p>
+                    <html:p>When it causes no ambiguity, we will write <fr:tex display="inline"><![CDATA[X:\mathcal {U}]]></fr:tex> for the underlying type <fr:tex display="inline"><![CDATA[UX]]></fr:tex> of a given reflection algebra <fr:tex display="inline"><![CDATA[X]]></fr:tex>; likewise, we will write <fr:tex display="inline"><![CDATA[f x]]></fr:tex> rather than <fr:tex display="inline"><![CDATA[Uf x]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003P/</fr:uri>
+                    <fr:display-uri>jms-003P</fr:display-uri>
+                    <fr:route>/jms-003P/</fr:route>
+                    <fr:title text="The type of reflection algebras and homomorphisms">The type of reflection algebras and homomorphisms</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>We will write <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}} :\equiv  \mathchoice {\textstyle \sum _{{\mathopen {}\left (X:\mathcal {U}\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (X:\mathcal {U}\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (X:\mathcal {U}\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (X:\mathcal {U}\right )\mathclose {}}}}{A\to  X}]]></fr:tex> for the type of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> under <fr:tex display="inline"><![CDATA[A]]></fr:tex>; given two reflection algebras <fr:tex display="inline"><![CDATA[X,Y:{A}\downarrow {\mathcal {U}}]]></fr:tex> we will write <fr:tex display="inline"><![CDATA[{\mathopen {}\left (X\multimap  Y\right )\mathclose {}} :\equiv  \mathchoice {\textstyle \sum _{{\mathopen {}\left (f:X\to  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (f:X\to  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (f:X\to  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (f:X\to  Y\right )\mathclose {}}}} {\eta _{Y}} \sim _{A\to  Y} {f\circ  \eta _{X}}]]></fr:tex> for the type of <html:em>homomorphisms</html:em> of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-0043/</fr:uri>
+                    <fr:display-uri>jms-0043</fr:display-uri>
+                    <fr:route>/jms-0043/</fr:route>
+                    <fr:title text="Identity and composition of reflection algebra homomorphisms">Identity and composition of reflection algebra homomorphisms</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Let <fr:tex display="inline"><![CDATA[X:{A}\downarrow {\mathcal {U}}]]></fr:tex> be a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link>; we define the identity homomorphism <fr:tex display="inline"><![CDATA[1_{X}:X\multimap  X]]></fr:tex> on <fr:tex display="inline"><![CDATA[X]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  1_{X}x :\equiv  x \\
+  \eta _{1_{X}} a :\equiv  \mathsf {refl}
+\end {array}
+]]></fr:tex>
+                    <html:p>Now let <fr:tex display="inline"><![CDATA[Y,Z:{A}\downarrow {\mathcal {U}}]]></fr:tex> be two further <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> and let <fr:tex display="inline"><![CDATA[f : X\multimap  Y]]></fr:tex> and <fr:tex display="inline"><![CDATA[g : Y\multimap  Z]]></fr:tex> be two <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms of reflection algebras</fr:link>. The composite homomorphism <fr:tex display="inline"><![CDATA[f;g : X\multimap  Z]]></fr:tex> is defined like so:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  {\mathopen {}\left (f;g\right )\mathclose {}}x :\equiv  g{\mathopen {}\left (fx\right )\mathclose {}} \\
+  \eta _{f;g}a :\equiv  \mathsf {ap}_{g}\,{\mathopen {}\left (\eta _{f}a\right )\mathclose {}}\bullet  \eta _{g}a
+\end {array}
+]]></fr:tex>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003X/</fr:uri>
+                    <fr:display-uri>jms-003X</fr:display-uri>
+                    <fr:route>/jms-003X/</fr:route>
+                    <fr:title text="Homotopies between reflection algebra homomorphisms">Homotopies between reflection algebra homomorphisms</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Given a pair of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> <fr:tex display="inline"><![CDATA[X,Y:{\mathcal {U}}\downarrow {A}]]></fr:tex> and a pair of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms</fr:link> <fr:tex display="inline"><![CDATA[f,g : X\multimap  Y]]></fr:tex>, a <html:em>homotopy</html:em> from <fr:tex display="inline"><![CDATA[f]]></fr:tex> to <fr:tex display="inline"><![CDATA[g]]></fr:tex> is defined to be a homotopy <fr:tex display="inline"><![CDATA[\phi  : {Uf} \sim _{X\to  Y} {Ug}]]></fr:tex> between the underlying functions together with a witness <fr:tex display="inline"><![CDATA[\bar {\phi }]]></fr:tex>  of the following coherence:</html:p>
+                    <fr:tex display="block"><![CDATA[   \bar \phi  :
+\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}
+{
+  \eta _{g}a
+} =_{
+  {g{\mathopen {}\left (\eta _{X}a\right )\mathclose {}}} =_{Y} {\eta _{Y}a}
+} {
+  \eta _{f}a\bullet  \phi {\mathopen {}\left (\eta _{X}a\right )\mathclose {}}
+}
+]]></fr:tex>
+                    <html:p>We shall write <fr:tex display="inline"><![CDATA[{f} \sim _{X\multimap  Y} {g}]]></fr:tex> for the type of homotopies from the homomorphism <fr:tex display="inline"><![CDATA[f]]></fr:tex> to the homomorphism <fr:tex display="inline"><![CDATA[g]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003Y/</fr:uri>
+                    <fr:display-uri>jms-003Y</fr:display-uri>
+                    <fr:route>/jms-003Y/</fr:route>
+                    <fr:title text="Path spaces of algebra homomorphisms">Path spaces of algebra homomorphisms</fr:title>
+                    <fr:taxon>Lemma</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Given a path of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> <fr:tex display="inline"><![CDATA[X,Y:{A}\downarrow {\mathcal {U}}]]></fr:tex> and a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphism</fr:link> <fr:tex display="inline"><![CDATA[f : X\multimap  Y]]></fr:tex>, the type <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \sum _{{\mathopen {}\left (g:X\multimap  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (g:X\multimap  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (g:X\multimap  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (g:X\multimap  Y\right )\mathclose {}}}}{{g} \sim _{X\multimap  Y} {f}}]]></fr:tex> of homomorphisms equipped with a <fr:link href="/jms-003X/" title="Homotopies between reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003X/" display-uri="jms-003X" type="local">homotopy</fr:link> to <fr:tex display="inline"><![CDATA[f]]></fr:tex> is contractible, by function extensionality and the characterization of path spaces in dependent sums. Hence it follows that the canonical map <fr:tex display="inline"><![CDATA[{f} =_{X\multimap  Y} {g}\to  {f} \sim _{X\multimap  Y} {g}]]></fr:tex> is an equivalence.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003Q/</fr:uri>
+                    <fr:display-uri>jms-003Q</fr:display-uri>
+                    <fr:route>/jms-003Q/</fr:route>
+                    <fr:title text="The product of reflection algebras">The product of reflection algebras</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Given a type <fr:tex display="inline"><![CDATA[K]]></fr:tex> and a family of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> <fr:tex display="inline"><![CDATA[X : K\to  {A}\downarrow {\mathcal {U}}]]></fr:tex> such that the dependent product <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}U{\mathopen {}\left (Xk\right )\mathclose {}}]]></fr:tex> lies in <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex>, we may define the product of product of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}Xk]]></fr:tex> to have the following structure map:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  \eta _{\mathchoice {\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}Xk} : A \to  \mathchoice {\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{Xk} \\
+  \eta _{\mathchoice {\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (k:K\right )\mathclose {}}}}Xk} a :\equiv  \lambda  k:K.\, \eta _{Xk}a
+\end {array}
+]]></fr:tex>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003R/</fr:uri>
+                    <fr:display-uri>jms-003R</fr:display-uri>
+                    <fr:route>/jms-003R/</fr:route>
+                    <fr:title text="Displayed reflection algebra">Displayed reflection algebra</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Let <fr:tex display="inline"><![CDATA[X:{A}\downarrow {\mathcal {U}}]]></fr:tex> be a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link>; a <html:em>displayed reflection algebra</html:em> <fr:tex display="inline"><![CDATA[Y]]></fr:tex> over <fr:tex display="inline"><![CDATA[X]]></fr:tex> is defined to be a dependent type <fr:tex display="inline"><![CDATA[\bar {U}Y : X \to  \mathcal {U}]]></fr:tex> together with a dependent function <fr:tex display="inline"><![CDATA[\bar {\eta }_{Y} : \mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\bar {U}Y{\mathopen {}\left (\eta _{X}a\right )\mathclose {}}}.]]></fr:tex></html:p>
+                    <html:p>We will write <fr:tex display="inline"><![CDATA[Y[x]]]></fr:tex> for <fr:tex display="inline"><![CDATA[\bar {U}Yx]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003S/</fr:uri>
+                    <fr:display-uri>jms-003S</fr:display-uri>
+                    <fr:route>/jms-003S/</fr:route>
+                    <fr:title text="The total reflection algebra">The total reflection algebra</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Given a <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[Y]]></fr:tex> over a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[X:{A}\downarrow {\mathcal {U}}]]></fr:tex>, we may define the <html:em>total reflection algebra</html:em> <fr:tex display="inline"><![CDATA[\widetilde {Y}:{A}\downarrow {\mathcal {U}}]]></fr:tex> of <fr:tex display="inline"><![CDATA[Y]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[
+  \begin {array}{l}
+    U\widetilde {Y} :\equiv  \mathchoice {\textstyle \sum _{{\mathopen {}\left (x:Ux\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (x:Ux\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (x:Ux\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (x:Ux\right )\mathclose {}}}}Y[x] \\
+    \eta _{\widetilde {Y}}a :\equiv  {\mathopen {}\left (\eta _{X}a,\bar {\eta }_{Y}a\right )\mathclose {}}
+  \end {array}
+]]></fr:tex>
+                    <html:p>The projection function <fr:tex display="inline"><![CDATA[{U\widetilde {Y}}\xrightarrow {{\pi _1}}{UX}]]></fr:tex> extends to a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphism of reflection algebras</fr:link> <fr:tex display="inline"><![CDATA[\pi _{Y}:\widetilde {Y}\multimap  X]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[
+  \begin {array}{l}
+    \pi _{Y} {\mathopen {}\left (x,y\right )\mathclose {}} :\equiv  x \\
+    \alpha _{\pi _{Y}} a :\equiv  \mathsf {refl}
+  \end {array}
+]]></fr:tex>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003T/</fr:uri>
+                    <fr:display-uri>jms-003T</fr:display-uri>
+                    <fr:route>/jms-003T/</fr:route>
+                    <fr:title text="Displayed reflection algebras over displayed reflection algebras">Displayed reflection algebras over displayed reflection algebras</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>If <fr:tex display="inline"><![CDATA[Y]]></fr:tex> is a <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> over a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[X:{A}\downarrow {\mathcal {U}}]]></fr:tex>, we define a <html:em>displayed reflection algebra over <fr:tex display="inline"><![CDATA[Y]]></fr:tex></html:em> to be a <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> in the original sense over the <fr:link href="/jms-003S/" title="The total reflection algebra" uri="https://www.jonmsterling.com/jms-003S/" display-uri="jms-003S" type="local">total reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[\widetilde {Y}]]></fr:tex> corresponding to <fr:tex display="inline"><![CDATA[Y]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>15</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-0040/</fr:uri>
+                <fr:display-uri>jms-0040</fr:display-uri>
+                <fr:route>/jms-0040/</fr:route>
+                <fr:title text="Cones over the identity functor">Cones over the identity functor</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Letting <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> be an impredicative pair of universes with <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex> a type in the outer universe, our goal is to construct a limit cone over the identity functor in the (∞,1)-category <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}}]]></fr:tex> of reflection algebras in <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> under <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex>, in order to prove that there is an initial reflection algebra. Even though we do not have access to the fully coherent language of (∞,1)-category theory in univalent foundations, we can specify the coherence structure that we need in order to obtain our result.</html:p>
+                <html:p>Our first step is describe a classifying reflection algebra for <html:em>fully incoherent</html:em> cones over the identity functor on <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}}]]></fr:tex>, which we do by means of a <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> of <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structures</fr:link> on the <fr:link href="/jms-003Q/" title="The product of reflection algebras" uri="https://www.jonmsterling.com/jms-003Q/" display-uri="jms-003Q" type="local">product</fr:link> of all <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link>.</html:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003V/</fr:uri>
+                    <fr:display-uri>jms-003V</fr:display-uri>
+                    <fr:route>/jms-003V/</fr:route>
+                    <fr:title text="Incoherent naturality structure">Incoherent naturality structure</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> be an impredicative universe pair with <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex> a type in the outer universe, so that we may form the <fr:link href="/jms-003Q/" title="The product of reflection algebras" uri="https://www.jonmsterling.com/jms-003Q/" display-uri="jms-003Q" type="local">product</fr:link> <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}X]]></fr:tex> of all <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link> in <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> under <fr:tex display="inline"><![CDATA[A]]></fr:tex>. To express the data of the components of a given <fr:tex display="inline"><![CDATA[u:\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}X]]></fr:tex> being preserved by all <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms</fr:link> and thus representing “cones” over the identity functor on <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}}]]></fr:tex>, we define a <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {INatStr}]]></fr:tex> of “incoherent naturality structures” over <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{X}]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[
+\begin {array}{l}
+  \mathsf {INatStr}[u] :\equiv 
+  \mathchoice {\textstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}
+  \mathchoice {\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}
+  {f {\mathopen {}\left (uX\right )\mathclose {}}} =_{Y} {uY}
+  \\
+  \bar {\eta }_{\mathsf {INatStr}}\, a\, f :\equiv  \eta _{f}a
+\end {array}
+]]></fr:tex>
+                    <html:p>Given an element <fr:tex display="inline"><![CDATA[u:\widetilde {\mathsf {INatStr}}]]></fr:tex>, we will write <fr:tex display="inline"><![CDATA[\epsilon _{u} : \mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}X]]></fr:tex> for the first component <fr:tex display="inline"><![CDATA[\pi _{\mathsf {INatStr}}u]]></fr:tex> and <fr:tex display="inline"><![CDATA[\vartheta _{u} : \mathsf {INatStr}[\epsilon _{u}]]]></fr:tex> for the second component.</html:p>
+                    <html:p>This definition is equivalent to one given by <fr:link href="/awodey-frey-speight-2018/" title="Impredicative encodings of (higher) inductive types" uri="https://www.jonmsterling.com/awodey-frey-speight-2018/" display-uri="awodey-frey-speight-2018" type="local">Awodey, Frey, and Speight</fr:link>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <html:p>As suggested by the name, the data of an <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structure</fr:link> over a family <fr:tex display="inline"><![CDATA[u:\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}UX]]></fr:tex> is not particularly coherent. It will happen that for our goals, we need only add a single dimension of additional coherence data governing the behavior of the naturality structure on binary compositions of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms</fr:link>. This will give us a classifier for what we shall refer to as “semicoherent” cones over the identity functor on <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}}]]></fr:tex>.</html:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003W/</fr:uri>
+                    <fr:display-uri>jms-003W</fr:display-uri>
+                    <fr:route>/jms-003W/</fr:route>
+                    <fr:title text="Semicoherence structure">Semicoherence structure</fr:title>
+                    <fr:taxon>Definition</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> be an impredicative universe pair with <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex> such that <fr:tex display="inline"><![CDATA[\mathsf {INatStr}]]></fr:tex> is the <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> of <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structures</fr:link> over the <fr:link href="/jms-003Q/" title="The product of reflection algebras" uri="https://www.jonmsterling.com/jms-003Q/" display-uri="jms-003Q" type="local">product</fr:link> <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}X]]></fr:tex> of all <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebras</fr:link>. We define a further <fr:link href="/jms-003T/" title="Displayed reflection algebras over displayed reflection algebras" uri="https://www.jonmsterling.com/jms-003T/" display-uri="jms-003T" type="local">displayed reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {SemiCoh}]]></fr:tex> over <fr:tex display="inline"><![CDATA[\mathsf {INatStr}]]></fr:tex> of “semicoherence structures” associating to each <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structure</fr:link> one dimension of coherence data for binary compositions of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms</fr:link>.</html:p>
+                    <html:p>In particular, we define <fr:tex display="inline"><![CDATA[\mathsf {SemiCoh}]]></fr:tex> over <fr:tex display="inline"><![CDATA[\widetilde {\mathsf {INatStr}}]]></fr:tex> as follows, employing our notion of <fr:link href="/jms-003X/" title="Homotopies between reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003X/" display-uri="jms-003X" type="local">homotopy between homomorphisms</fr:link>:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  \mathsf {SemiCoh}[u] :\equiv  \\
+  \begin {array}{l}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left ({\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}\right )\mathclose {}}}}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left (h : X \multimap  Z\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (h : X \multimap  Z\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (h : X \multimap  Z\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (h : X \multimap  Z\right )\mathclose {}}}}
+    \mathchoice {\textstyle \prod _{{\mathopen {}\left (\phi  : {f;g} \sim _{X\multimap  Z} {h}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (\phi  : {f;g} \sim _{X\multimap  Z} {h}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (\phi  : {f;g} \sim _{X\multimap  Z} {h}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (\phi  : {f;g} \sim _{X\multimap  Z} {h}\right )\mathclose {}}}} \\
+    \mathsf {ap}_{g} {\mathopen {}\left (\vartheta _{u} f\right )\mathclose {}} \bullet  \vartheta _{u} g
+    = \phi {\mathopen {}\left (\epsilon _{u} X\right )\mathclose {}} \bullet  \vartheta _{u} h
+  \end {array}
+\end {array}
+]]></fr:tex>
+                    <html:p>To define the displayed algebra structure <fr:tex display="inline"><![CDATA[\bar \eta _{\mathsf {SemiCoh}}]]></fr:tex>, we will use the contractibility of singletons several times. In particular, given <fr:tex display="inline"><![CDATA[{\mathopen {}\left (Y,f\right )\mathclose {}}]]></fr:tex> where <fr:tex display="inline"><![CDATA[Y:{A}\downarrow {\mathcal {U}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[f:X\multimap  Y]]></fr:tex>, the algebra component <fr:tex display="inline"><![CDATA[\eta _{Y}]]></fr:tex> is completely determined by the homotopy <fr:tex display="inline"><![CDATA[\eta _{f} :{\eta _{Y}} \sim _{A\to  Y} {f \circ  \eta _{X}}]]></fr:tex>; likewise, by our <fr:link href="/jms-003Y/" title="Path spaces of algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003Y/" display-uri="jms-003Y" type="local">characterization of paths between homomorphisms</fr:link>, the pair <fr:tex display="inline"><![CDATA[{\mathopen {}\left (h,\phi \right )\mathclose {}}]]></fr:tex> is uniquely determined. Therefore, we may define <fr:tex display="inline"><![CDATA[\bar \eta _{\mathsf {SemiCoh}}]]></fr:tex> to be the unique function satisfying the following equation:</html:p>
+                    <fr:tex display="block"><![CDATA[\bar \eta _{\mathsf {SemiCoh}}\,a\,{\mathopen {}\left (f,\lambda \_.\mathsf {refl}\right )\mathclose {}}\,{\mathopen {}\left (g,\lambda \_.\mathsf {refl}\right )\mathclose {}}\,{\mathopen {}\left ({\mathopen {}\left (f;g\right )\mathclose {}},\lambda \_.\mathsf {refl}\right )\mathclose {}}, {\mathopen {}\left (\lambda \_.\mathsf {refl},\lambda \_.\mathsf {refl}\right )\mathclose {}} := \mathsf {refl}
+]]></fr:tex>
+                    <html:p>Given an element <fr:tex display="inline"><![CDATA[u:\widetilde {\mathsf {SemiCoh}}]]></fr:tex>, we shall write <fr:tex display="inline"><![CDATA[\epsilon _{u},\vartheta _{u}]]></fr:tex> for the components of its underlying <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structure</fr:link> <fr:tex display="inline"><![CDATA[\pi _{\mathsf {SemiCoh}}u]]></fr:tex> and <fr:tex display="inline"><![CDATA[\varsigma _{u} : \mathsf {SemiCoh}[\pi _{\mathsf {SemiCoh}}u]]]></fr:tex> for the semicoherence structure itself.</html:p>
+                    <html:p>This definition is similar to that of <fr:link href="/awodey-frey-speight-2018/" title="Impredicative encodings of (higher) inductive types" uri="https://www.jonmsterling.com/awodey-frey-speight-2018/" display-uri="awodey-frey-speight-2018" type="local">Awodey, Frey, and Speight</fr:link>, except that we do not impose any coherence law for identities.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-003Z/</fr:uri>
+                    <fr:display-uri>jms-003Z</fr:display-uri>
+                    <fr:route>/jms-003Z/</fr:route>
+                    <fr:title text="Alternative presentation of semicoherence structure">Alternative presentation of semicoherence structure</fr:title>
+                    <fr:taxon>Remark</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>By the contractibility of singletons and our <fr:link href="/jms-003Y/" title="Path spaces of algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003Y/" display-uri="jms-003Y" type="local">characterization of paths between homomorphisms</fr:link>, the definition of <fr:link href="/jms-003W/" title="Semicoherence structure" uri="https://www.jonmsterling.com/jms-003W/" display-uri="jms-003W" type="local">semicoherence structures</fr:link> is equivalent to following more direct formulation that avoids the additional cell <fr:tex display="inline"><![CDATA[\phi ]]></fr:tex>:</html:p>
+                    <fr:tex display="block"><![CDATA[  \mathchoice {\textstyle \prod _{{\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left \{X,Y,Z:{A}\downarrow {\mathcal {U}}\right \}\mathclose {}}}}
+\mathchoice {\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (f : X\multimap  Y\right )\mathclose {}}}}
+\mathchoice {\textstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (g : Y\multimap  Z\right )\mathclose {}}}}
+\mathsf {ap}_{g} {\mathopen {}\left (\vartheta _{u} f\right )\mathclose {}} \bullet  \vartheta _{u} g
+= \vartheta _{u} {\mathopen {}\left (f;g\right )\mathclose {}}
+]]></fr:tex>
+                    <html:p>Our reason for choosing the more complex definition involving <fr:tex display="inline"><![CDATA[{\mathopen {}\left (h,\phi \right )\mathclose {}}]]></fr:tex> is that the extra flexibility comes in handy in our results, as suggested by <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Michael Shulman</fr:link> in private communication.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-0041/</fr:uri>
+                    <fr:display-uri>jms-0041</fr:display-uri>
+                    <fr:route>/jms-0041/</fr:route>
+                    <fr:title text="A generic cone over the identity functor and its generic element">A generic cone over the identity functor and its generic element</fr:title>
+                    <fr:taxon>Construction</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Letting <fr:tex display="inline"><![CDATA[I :\equiv  \widetilde {\mathsf {SemiCoh}}]]></fr:tex> be the <fr:link href="/jms-003S/" title="The total reflection algebra" uri="https://www.jonmsterling.com/jms-003S/" display-uri="jms-003S" type="local">total algebra</fr:link> of the <fr:link href="/jms-003R/" title="Displayed reflection algebra" uri="https://www.jonmsterling.com/jms-003R/" display-uri="jms-003R" type="local">displayed reflection algebra</fr:link> of <fr:link href="/jms-003W/" title="Semicoherence structure" uri="https://www.jonmsterling.com/jms-003W/" display-uri="jms-003W" type="local">semicoherence structures</fr:link>, we may define a dependent function <fr:tex display="block"><![CDATA[ p_{\bullet } : \mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}} I\multimap  X ]]></fr:tex> exhibiting a “incoherent cone” from <fr:tex display="inline"><![CDATA[I]]></fr:tex> onto the identity functor on <fr:tex display="inline"><![CDATA[{A}\downarrow {\mathcal {U}}]]></fr:tex>. In particular, we define the components of <fr:tex display="inline"><![CDATA[p_{\bullet }]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  p_{X}\,u :\equiv  \epsilon _{u} X \\
+  \eta _{p_{X}} a :\equiv  \mathsf {refl}
+\end {array}
+]]></fr:tex>
+                    <html:p>Above we have used the definition of the structure map on the <fr:link href="/jms-003S/" title="The total reflection algebra" uri="https://www.jonmsterling.com/jms-003S/" display-uri="jms-003S" type="local">total reflection algebra</fr:link> as well as that of the displayed structure map on <fr:tex display="inline"><![CDATA[\mathsf {SemiCoh}]]></fr:tex> over <fr:tex display="inline"><![CDATA[\mathsf {INatStr}]]></fr:tex> over <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}X]]></fr:tex>. We shall refer to <fr:tex display="inline"><![CDATA[p_{\bullet }]]></fr:tex> as the <html:em>generic cone</html:em> over the identity functor, with the caveat that we have not formally established it as a “cone” of any kind. Furthermore, we shall refer to the component <fr:tex display="inline"><![CDATA[p_{I}:I\multimap  I]]></fr:tex> as the <html:em>generic element</html:em> of the generic cone.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-0042/</fr:uri>
+                    <fr:display-uri>jms-0042</fr:display-uri>
+                    <fr:route>/jms-0042/</fr:route>
+                    <fr:title text="Quasi-idempotence of the generic element of the generic cone">Quasi-idempotence of the generic element of the generic cone</fr:title>
+                    <fr:taxon>Construction</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>The <fr:link href="/jms-0041/" title="A generic cone over the identity functor and its generic element" uri="https://www.jonmsterling.com/jms-0041/" display-uri="jms-0041" type="local">generic element</fr:link> <fr:tex display="inline"><![CDATA[p_{I}:I\multimap  I]]></fr:tex> of the <fr:link href="/jms-0041/" title="A generic cone over the identity functor and its generic element" uri="https://www.jonmsterling.com/jms-0041/" display-uri="jms-0041" type="local">generic cone</fr:link> <fr:tex display="inline"><![CDATA[p_{\bullet }:\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}I\multimap  X]]></fr:tex> under <fr:tex display="inline"><![CDATA[I \equiv  \widetilde {\mathsf {SemiCoh}}]]></fr:tex> can be equipped with the structure of a <html:em>pre-idempotent</html:em>. In particular, we may define a <fr:link href="/jms-003X/" title="Homotopies between reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003X/" display-uri="jms-003X" type="local">homotopy</fr:link> <fr:tex display="inline"><![CDATA[\chi  : {p_{I};p_{I}} \sim _{I\multimap  I} {p_{I}}]]></fr:tex> using the <fr:link href="/jms-003V/" title="Incoherent naturality structure" uri="https://www.jonmsterling.com/jms-003V/" display-uri="jms-003V" type="local">incoherent naturality structure</fr:link> of any element of <fr:tex display="inline"><![CDATA[I]]></fr:tex>.</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  \chi \,u :\equiv  \vartheta _{u}p_{I} \\
+  \bar {\chi }a :\equiv  \mathsf {refl}
+\end {array}
+]]></fr:tex>
+                    <html:p>That the higher identification <fr:tex display="inline"><![CDATA[\bar \chi {a} : \eta _{p_{I}}a = \eta _{p_{I};p_{I}}\bullet  \vartheta _{\eta _{I}a}p_{I}]]></fr:tex> may be defined by reflexivity follows from the definition of <fr:tex display="inline"><![CDATA[\eta _{I}a]]></fr:tex>, the computation of <fr:link href="/jms-0043/" title="Identity and composition of reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-0043/" display-uri="jms-0043" type="local">composite homomorphisms</fr:link>, and the fact that <fr:tex display="inline"><![CDATA[\eta _{p_{I}}a]]></fr:tex> is also <fr:link href="/jms-0041/" title="A generic cone over the identity functor and its generic element" uri="https://www.jonmsterling.com/jms-0041/" display-uri="jms-0041" type="local">defined by reflexivity</fr:link>; in particular, we compute:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {aligned}
+  \eta _{p_{I};p_{I}} \bullet  \vartheta _{\eta _{I}a}p_{I}
+   & \equiv 
+  {\mathopen {}\left (\mathsf {ap}_{p_{I}}{\mathopen {}\left (\eta _{p_{I}}a\right )\mathclose {}}\bullet  \eta _{p_{I}}a\right )\mathclose {}}\bullet   \eta _{p_{I}}a
+  \\
+   & \equiv 
+  {\mathopen {}\left (\mathsf {refl}\bullet \mathsf {refl}\right )\mathclose {}}\bullet \mathsf {refl}
+  \\
+   & \equiv 
+  \mathsf {refl}\bullet \mathsf {refl}
+  \\
+   & \equiv  \mathsf {refl}
+\end {aligned}
+]]></fr:tex>
+                    <html:p>We will use the <fr:link href="/jms-003W/" title="Semicoherence structure" uri="https://www.jonmsterling.com/jms-003W/" display-uri="jms-003W" type="local">semicoherence structure</fr:link> associated to any element of <fr:tex display="inline"><![CDATA[I]]></fr:tex> to exhibit the underlying function <fr:tex display="inline"><![CDATA[p_{I}:I\to  I]]></fr:tex> of the generic element as a quasi-idempotent in the sense of <fr:link href="/shulman-2016/" title="Idempotents in intensional type theory" uri="https://www.jonmsterling.com/shulman-2016/" display-uri="shulman-2016" type="local">Shulman</fr:link>. In particular, we must exhibit for each <fr:tex display="inline"><![CDATA[u:I]]></fr:tex> an identification <fr:tex display="inline"><![CDATA[\psi  : \mathsf {ap}_{p_{I}}{\mathopen {}\left (\chi  u\right )\mathclose {}} = \chi {\mathopen {}\left (p_{I}u\right )\mathclose {}}]]></fr:tex>. Unfolding definitions, this means to identify <fr:tex display="inline"><![CDATA[\mathsf {ap}_{p_{I}}{\mathopen {}\left (\vartheta _{u}p_{I}\right )\mathclose {}}]]></fr:tex> with <fr:tex display="inline"><![CDATA[\vartheta _{p_{I}u}p_{I}]]></fr:tex>.</html:p>
+                    <html:p>From the <fr:link href="/jms-003W/" title="Semicoherence structure" uri="https://www.jonmsterling.com/jms-003W/" display-uri="jms-003W" type="local">semicoherence structure</fr:link> <fr:tex display="inline"><![CDATA[\varsigma _{u} : \mathsf {SemiCoh}[\pi _{\mathsf {SemiCoh}}u]]]></fr:tex> we obtain the following identification:</html:p>
+                    <fr:tex display="block"><![CDATA[  \varsigma _{u}\,p_{I}\,p_{I}\,p_{I}\,\chi 
+: \mathsf {ap}_{p_{I}}{\mathopen {}\left (\vartheta _{u}p_{I}\right )\mathclose {}}\bullet  \vartheta _{u}p_{I}
+=
+\chi {\mathopen {}\left (\epsilon _{u}I\right )\mathclose {}}\bullet  \vartheta _{u}p_{I}
+]]></fr:tex>
+                    <html:p>Canceling <fr:tex display="inline"><![CDATA[\vartheta _{u}p_{I}]]></fr:tex>, unfolding the definition of <fr:tex display="inline"><![CDATA[\chi ]]></fr:tex>, and recalling that <fr:tex display="inline"><![CDATA[p_{I}u \equiv \epsilon _{u}I]]></fr:tex> by definition, we obtain the desired identification <fr:tex display="inline"><![CDATA[\mathsf {ap}_{p_{I}}{\mathopen {}\left (\vartheta _{u}p_{I}\right )\mathclose {}}=\vartheta _{p_{I}u}p_{I}]]></fr:tex>.</html:p>
+                    <html:p>Therefore, the underlying function <fr:tex display="inline"><![CDATA[p_{I}:I\to  I]]></fr:tex> has the structure of a quasi-idempotent.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>15</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-0044/</fr:uri>
+                    <fr:display-uri>jms-0044</fr:display-uri>
+                    <fr:route>/jms-0044/</fr:route>
+                    <fr:title text="Splitting the generic element of the generic cone">Splitting the generic element of the generic cone</fr:title>
+                    <fr:taxon>Construction</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>The underlying function <fr:tex display="inline"><![CDATA[p_{I}:I\to  I]]></fr:tex> of the <fr:link href="/jms-0041/" title="A generic cone over the identity functor and its generic element" uri="https://www.jonmsterling.com/jms-0041/" display-uri="jms-0041" type="local">generic element</fr:link> <fr:tex display="inline"><![CDATA[p_{I}:I\multimap  I]]></fr:tex> of the <fr:link href="/jms-0041/" title="A generic cone over the identity functor and its generic element" uri="https://www.jonmsterling.com/jms-0041/" display-uri="jms-0041" type="local">generic cone</fr:link> <fr:tex display="inline"><![CDATA[p_{\bullet }:\mathchoice {\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (X:{A}\downarrow {\mathcal {U}}\right )\mathclose {}}}}I\multimap  X]]></fr:tex> under <fr:tex display="inline"><![CDATA[I \equiv  \widetilde {\mathsf {SemiCoh}}]]></fr:tex> <fr:link href="/jms-0042/" title="Quasi-idempotence of the generic element of the generic cone" uri="https://www.jonmsterling.com/jms-0042/" display-uri="jms-0042" type="local">has been equipped</fr:link> with the structure of a quasi-idempotent in the sense of <fr:link href="/shulman-2016/" title="Idempotents in intensional type theory" uri="https://www.jonmsterling.com/shulman-2016/" display-uri="shulman-2016" type="local">Shulman</fr:link>, so we may split it.</html:p>
+                    <html:p>In particular, the construction of <fr:link href="/shulman-2016/" title="Idempotents in intensional type theory" uri="https://www.jonmsterling.com/shulman-2016/" display-uri="shulman-2016" type="local">Shulman</fr:link> gives us a type <fr:tex display="inline"><![CDATA[J]]></fr:tex> together with a retraction <fr:tex display="inline"><![CDATA[r : I\to  J]]></fr:tex> and a section <fr:tex display="inline"><![CDATA[s : J \to  I]]></fr:tex> witnessed by a homotopy <fr:tex display="inline"><![CDATA[\rho :{s;r} \sim _{J\to  J} {1_{J}}]]></fr:tex>, such that <fr:tex display="inline"><![CDATA[r;s\equiv  p_{I} : I \to  I]]></fr:tex> definitionally. Our goal is to lift this splitting of the underlying function <fr:tex display="inline"><![CDATA[p_{I}:I\to  I]]></fr:tex> to a splitting of the homomorphism <fr:tex display="inline"><![CDATA[p_{I}:I\multimap  I]]></fr:tex>.</html:p>
+                    <html:p>We may equip <fr:tex display="inline"><![CDATA[J]]></fr:tex> with the structure of a <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link> by setting <fr:tex display="inline"><![CDATA[\eta _{J} :\equiv  \eta _{I};r]]></fr:tex>, making <fr:tex display="inline"><![CDATA[r : I \multimap  J]]></fr:tex> a homomorphism of algebras definitionally, i.e. <fr:tex display="inline"><![CDATA[\eta _{r}a:\equiv  \mathsf {refl}]]></fr:tex>. To exhibit <fr:tex display="inline"><![CDATA[s : J \multimap  I]]></fr:tex> as a homomorphism of algebras, we may likewise use reflexivity:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {array}{l}
+  \eta _{s}:{\eta _{J};s} \sim _{A\to  I} {\eta _{I}} \\
+  \eta _{s}a :\equiv  \mathsf {refl}
+\end {array}
+]]></fr:tex>
+                    <html:p>That the above is well-defined can be deduced as follows, using the fact that the splitting of <fr:tex display="inline"><![CDATA[p_{I}\equiv  r;s]]></fr:tex> is definitional and that <fr:tex display="inline"><![CDATA[p_{I}]]></fr:tex> is a definitional homomorphism:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {aligned}
+  s{\mathopen {}\left (\eta _{J}a\right )\mathclose {}} & \equiv  s{\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+  \\
+                      & \equiv  p_{I}{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}
+  \\
+                      & \equiv  \eta _{I}a
+\end {aligned}
+]]></fr:tex>
+                    <html:p>We have to check that the homotopy of functions <fr:tex display="inline"><![CDATA[\rho  : {s;r} \sim _{J\to  J} {1_{J}}]]></fr:tex> lifts to a <fr:link href="/jms-003X/" title="Homotopies between reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-003X/" display-uri="jms-003X" type="local">homotopy of homomorphisms</fr:link>. In particular, we must construct the coherence <fr:tex display="inline"><![CDATA[\bar \rho ]]></fr:tex> specified below:</html:p>
+                    <fr:tex display="block"><![CDATA[  \bar \rho  : \mathchoice {\textstyle \prod _{{\mathopen {}\left (a : A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a : A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a : A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a : A\right )\mathclose {}}}}\eta _{1_{J}}a = \eta _{s;r}a \bullet  \rho {\mathopen {}\left (\eta _{J}a\right )\mathclose {}}
+]]></fr:tex>
+                    <html:p>Note that <fr:tex display="inline"><![CDATA[\eta _{1_{J}}]]></fr:tex> is reflexivity; we compute the other side of the desired identificiation <fr:tex display="inline"><![CDATA[\bar \rho  a]]></fr:tex> by unfolding definitions (e.g. that of <fr:link href="/jms-0043/" title="Identity and composition of reflection algebra homomorphisms" uri="https://www.jonmsterling.com/jms-0043/" display-uri="jms-0043" type="local">identities and compositions of homomorphisms</fr:link>) and using basic path algebra:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {aligned}
+  \eta _{s;r}a \bullet  \rho {\mathopen {}\left (\eta _{J}a\right )\mathclose {}}
+   & \equiv 
+  {\mathopen {}\left (\mathsf {ap}_{r}{\mathopen {}\left (\eta _{s}a\right )\mathclose {}} \bullet  \eta _{r}a\right )\mathclose {}} \bullet  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+  \\
+   & \equiv 
+  {\mathopen {}\left (\mathsf {ap}_{r}\mathsf {refl} \bullet  \mathsf {refl}\right )\mathclose {}} \bullet  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+  \\
+   & \equiv 
+  {\mathopen {}\left (\mathsf {refl}\bullet \mathsf {refl}\right )\mathclose {}} \bullet  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+  \\
+   & \equiv 
+  \mathsf {refl}\bullet  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+  \\
+   & =
+  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+\end {aligned}
+]]></fr:tex>
+                    <html:p>Therefore, to construct <fr:tex display="inline"><![CDATA[\bar \rho  a]]></fr:tex> is suffices to identify <fr:tex display="inline"><![CDATA[\rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex> with reflexivity. To do so, we will use an argument suggested by <fr:link href="/mikeshulman/" title="Mike Shulman" uri="https://www.jonmsterling.com/mikeshulman/" display-uri="mikeshulman" type="local">Shulman</fr:link> in private conversation. We recall from Theorem 3.3 of <fr:link href="/shulman-2016/" title="Idempotents in intensional type theory" uri="https://www.jonmsterling.com/shulman-2016/" display-uri="shulman-2016" type="local">Shulman</fr:link> that the homotopy <fr:tex display="inline"><![CDATA[\rho ]]></fr:tex> induces a new witness of pre-idempotency for <fr:tex display="inline"><![CDATA[p_{I}]]></fr:tex>, namely <fr:tex display="inline"><![CDATA[\chi ' x :\equiv  \mathsf {ap}_{s}{\mathopen {}\left (\rho {\mathopen {}\left (rx\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex> and that by Theorem 7.1 of the same, this homotopy may be identified with our original witness <fr:tex display="inline"><![CDATA[\chi  : {p_{I};p_{I}} \sim _{I\to  I} {p_{I}}]]></fr:tex>. Therefore we have <fr:tex display="inline"><![CDATA[\mathsf {ap}_{s}{\mathopen {}\left (\rho {\mathopen {}\left (rx\right )\mathclose {}}\right )\mathclose {}} = \vartheta _{x}p_{I}]]></fr:tex>; because <fr:tex display="inline"><![CDATA[s]]></fr:tex> is a section of <fr:tex display="inline"><![CDATA[r]]></fr:tex>, this implies that <fr:tex display="inline"><![CDATA[\rho {\mathopen {}\left (r x\right )\mathclose {}} = \mathsf {ap}_{r}{\mathopen {}\left (\vartheta _{x}p_{I}\right )\mathclose {}}]]></fr:tex> and so we may compute our identification <fr:tex display="inline"><![CDATA[\bar \rho \, a]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[  \begin {aligned}
+  \rho {\mathopen {}\left (r{\mathopen {}\left (\eta _{I}a\right )\mathclose {}}\right )\mathclose {}}
+   & = \mathsf {ap}_{r}{\mathopen {}\left (\vartheta _{\eta _{I}a}p_{I}\right )\mathclose {}}
+  \\
+   & \equiv  \mathsf {ap}_{r} {\mathopen {}\left (\eta _{p_{I}}a\right )\mathclose {}}
+  \\
+   & \equiv  \mathsf {ap}_{r}\mathsf {refl}
+  \\
+   & \equiv  \mathsf {refl}
+\end {aligned}
+]]></fr:tex>
+                    <html:p>Above we have used the fact that the coherence datum <fr:tex display="inline"><![CDATA[\eta _{p_{I}}a]]></fr:tex> is reflexivity.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <html:p>Our <fr:link href="/jms-004H/" title="Impredicative subuniverses are reflective" uri="https://www.jonmsterling.com/jms-004H/" display-uri="jms-004H" type="local">main theorem</fr:link> then follows from <fr:link href="/jms-003A/" title="Wild category theory" uri="https://www.jonmsterling.com/jms-003A/" display-uri="jms-003A" type="local">wild categorical</fr:link> considerations, as we show below.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>22</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-004I/</fr:uri>
+                <fr:display-uri>jms-004I</fr:display-uri>
+                <fr:route>/jms-004I/</fr:route>
+                <fr:title text="The main result: reflectivity of impredicative subuniverses">The main result: reflectivity of impredicative subuniverses</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>22</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-004G/</fr:uri>
+                    <fr:display-uri>jms-004G</fr:display-uri>
+                    <fr:route>/jms-004G/</fr:route>
+                    <fr:title text="The initial reflection algebra">The initial reflection algebra</fr:title>
+                    <fr:taxon>Theorem</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> be an impredicative pair of universes with <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex>. There we may construct a  <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[A_{\mathcal {U}} :{A}\downarrow {\mathcal {U}}]]></fr:tex> such that for any other <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">reflection algebra</fr:link> <fr:tex display="inline"><![CDATA[X:{A}\downarrow {\mathcal {U}}]]></fr:tex>, the space of <fr:link href="/jms-003O/" title="Reflection algebras and homomorphisms" uri="https://www.jonmsterling.com/jms-003O/" display-uri="jms-003O" type="local">homomorphisms</fr:link> <fr:tex display="inline"><![CDATA[A_{\mathcal {U}}\multimap  X]]></fr:tex> is contractible.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>Our <fr:link href="/jms-0044/" title="Splitting the generic element of the generic cone" uri="https://www.jonmsterling.com/jms-0044/" display-uri="jms-0044" type="local">splitting of the generic element of the generic cone</fr:link> <fr:tex display="inline"><![CDATA[{\Delta  I}\xrightarrow {{p}}{1_{{A}\downarrow {\mathcal {U}}}}]]></fr:tex> over the identity functor on reflection algebras <fr:link href="/jms-003E/" title="A wild universal cone from a splitting of the generic element" uri="https://www.jonmsterling.com/jms-003E/" display-uri="jms-003E" type="local">yields a new (incoherent) cone</fr:link> <fr:tex display="inline"><![CDATA[{\Delta  J}\xrightarrow {{q}}{1_{{A}\downarrow {\mathcal {U}}}}]]></fr:tex> whose generic element <fr:tex display="inline"><![CDATA[q_{J}:J\multimap  J]]></fr:tex> may be identified with the identity homomorphism. It <fr:link href="/jms-003B/" title="Wild initial objects from universal cones" uri="https://www.jonmsterling.com/jms-003B/" display-uri="jms-003B" type="local">follows</fr:link> that each  space of homomorphisms <fr:tex display="inline"><![CDATA[J\to  X]]></fr:tex> is contractible. Therefore, we define <fr:tex display="inline"><![CDATA[A_{\mathcal {U}}]]></fr:tex> to be the apex <fr:tex display="inline"><![CDATA[J]]></fr:tex>.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2023</fr:year>
+                      <fr:month>3</fr:month>
+                      <fr:day>22</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-004H/</fr:uri>
+                    <fr:display-uri>jms-004H</fr:display-uri>
+                    <fr:route>/jms-004H/</fr:route>
+                    <fr:title text="Impredicative subuniverses are reflective">Impredicative subuniverses are reflective</fr:title>
+                    <fr:taxon>Corollary</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter><html:p>If <fr:tex display="inline"><![CDATA[\mathcal {U}\in \mathcal {V}]]></fr:tex> is an impredicative pair of universes, then <fr:tex display="inline"><![CDATA[\mathcal {U}]]></fr:tex> is reflective in <fr:tex display="inline"><![CDATA[\mathcal {V}]]></fr:tex>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>3</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>Our construction of the <fr:link href="/jms-004G/" title="The initial reflection algebra" uri="https://www.jonmsterling.com/jms-004G/" display-uri="jms-004G" type="local">initial reflection algebra</fr:link> for each <fr:tex display="inline"><![CDATA[A:\mathcal {V}]]></fr:tex> is one of several equivalent formulations of reflective subuniverse in univalent foundations.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
+            <fr:uri>https://www.jonmsterling.com/mikeshulman/</fr:uri>
+            <fr:display-uri>mikeshulman</fr:display-uri>
+            <fr:route>/mikeshulman/</fr:route>
+            <fr:title text="Mike Shulman">Mike Shulman</fr:title>
+            <fr:taxon>Person</fr:taxon>
+            <fr:meta name="external">https://home.sandiego.edu/~shulman/</fr:meta>
+            <fr:meta name="position">Associate Professor</fr:meta>
+            <fr:meta name="institution">University of San Diego</fr:meta>
+            <fr:meta name="orcid">0000-0002-9948-6682</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter />
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>

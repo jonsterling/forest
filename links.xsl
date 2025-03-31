@@ -12,12 +12,12 @@
   <xsl:template match="f:link//node()[not(f:link)]" mode="link-flattening">
     <a href="{ancestor::f:link[1]/@href}">
       <xsl:choose>
-        <xsl:when test="ancestor::f:link[1]/@addr">
+        <xsl:when test="ancestor::f:link[1]/@uri">
           <xsl:attribute name="title">
             <xsl:value-of select="ancestor::f:link[1]/@title" />
             <xsl:text> [</xsl:text>
             <xsl:value-of
-              select="ancestor::f:link[1]/@addr" />
+              select="ancestor::f:link[1]/@uri" />
             <xsl:text>]</xsl:text>
           </xsl:attribute>
         </xsl:when>
