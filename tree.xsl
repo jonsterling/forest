@@ -2,20 +2,16 @@
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:f="http://www.jonmsterling.com/jms-005P.xml">
+  xmlns:f="http://www.forester-notes.org">
 
-  <xsl:key name="tree-with-addr" match="/f:tree/f:mainmatter//f:tree" use="f:frontmatter/f:addr/text()" />
+  <xsl:key name="tree-with-uri" match="/f:tree/f:mainmatter//f:tree" use="f:frontmatter/f:uri/text()" />
 
   <xsl:template match="/">
-    <html>
+    <html xmlns="http://www.w3.org/1999/xhtml" data-base-url="{/f:tree/@base-url}">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet" />
-
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="katex.min.css" />
+        <link rel="stylesheet" href="{/f:tree/@base-url}style.css" />
+        <link rel="stylesheet" href="{/f:tree/@base-url}katex.min.css" />
         <script type="text/javascript">
           <xsl:if test="/f:tree/f:frontmatter/f:source-path">
             <xsl:text>window.sourcePath = '</xsl:text>
@@ -23,9 +19,9 @@
             <xsl:text>'</xsl:text>
           </xsl:if>
         </script>
-        <script type="module" src="forester.js"></script>
+        <script type="module" src="{/f:tree/@base-url}forester.js"></script>
         <title>
-          <xsl:value-of select="/f:tree/f:frontmatter/f:title[@text]" />
+          <xsl:value-of select="/f:tree/f:frontmatter/f:title/@text" />
         </title>
       </head>
       <body>
@@ -34,7 +30,7 @@
           <header class="header">
             <nav class="nav">
               <div class="logo">
-                <a href="index.xml" title="Home">
+                <a href="{/f:tree/@base-url}index.html" title="Home">
                   <xsl:text>« Home</xsl:text>
                 </a>
               </div>
@@ -139,14 +135,14 @@
       <xsl:for-each select="f:frontmatter">
         <a class="bullet">
           <xsl:choose>
-            <xsl:when test="f:addr and f:route">
+            <xsl:when test="f:display-uri and f:route">
               <xsl:attribute name="href">
                 <xsl:value-of select="f:route" />
               </xsl:attribute>
               <xsl:attribute name="title">
-                <xsl:value-of select="f:title[@text]" />
+                <xsl:value-of select="f:title/@text" />
                 <xsl:text>&#160;[</xsl:text>
-                <xsl:value-of select="f:addr" />
+                <xsl:value-of select="f:display-uri" />
                 <xsl:text>]</xsl:text>
               </xsl:attribute>
             </xsl:when>
@@ -187,12 +183,10 @@
   </xsl:template>
 
   <xsl:template match="f:mainmatter">
-    <div class="tree-content">
-      <xsl:apply-templates />
-    </div>
+     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="f:addr[../f:route]">
+  <xsl:template match="f:display-uri[../f:route]">
     <a class="slug" href="{../f:route}">
       <xsl:text>[</xsl:text>
       <xsl:value-of select="." />
@@ -200,7 +194,7 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="f:addr[not(../f:route)]">
+  <xsl:template match="f:display-uri[not(../f:route)]">
   </xsl:template>
 
   <xsl:template match="f:resource">
@@ -232,7 +226,7 @@
 
         <xsl:apply-templates select="f:title" />
         <xsl:text>&#032;</xsl:text>
-        <xsl:apply-templates select="f:addr" />
+        <xsl:apply-templates select="f:display-uri" />
         <xsl:text>&#032;</xsl:text>
         <xsl:apply-templates select="f:source-path" />
       </h1>
@@ -259,7 +253,7 @@
   <xsl:template match="f:ref">
     <xsl:variable name="fallback-number">
       <xsl:text>[</xsl:text>
-      <xsl:value-of select="@addr" />
+      <xsl:value-of select="@uri" />
       <xsl:text>]</xsl:text>
     </xsl:variable>
 
@@ -277,9 +271,9 @@
     <a class="link local">
       <xsl:attribute name="href">
         <xsl:choose>
-          <xsl:when test="key('tree-with-addr',current()/@addr)">
+          <xsl:when test="key('tree-with-uri',current()/@uri)">
             <xsl:text>#</xsl:text>
-            <xsl:value-of select="generate-id(key('tree-with-addr',current()/@addr))" />
+            <xsl:value-of select="generate-id(key('tree-with-uri',current()/@uri))" />
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@href" />
@@ -288,8 +282,8 @@
       </xsl:attribute>
 
       <xsl:choose>
-        <xsl:when test="key('tree-with-addr', current()/@addr)">
-          <xsl:apply-templates select="key('tree-with-addr', current()/@addr)" mode="tree-taxon-with-number">
+        <xsl:when test="key('tree-with-uri', current()/@uri)">
+          <xsl:apply-templates select="key('tree-with-uri', current()/@uri)" mode="tree-taxon-with-number">
             <xsl:with-param name="in-backmatter" select="boolean(ancestor::f:backmatter)" />
             <xsl:with-param name="number" select="@number" />
             <xsl:with-param name="fallback-number" select="$fallback-number" />
@@ -312,16 +306,16 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="f:contextual-number[@addr]">
+  <xsl:template match="f:contextual-number[@uri]">
     <xsl:variable name="fallback-number">
       <xsl:text>[</xsl:text>
-      <xsl:value-of select="@addr" />
+      <xsl:value-of select="@display-uri" />
       <xsl:text>]</xsl:text>
     </xsl:variable>
 
     <xsl:choose>
-      <xsl:when test="key('tree-with-addr', current()/@addr)">
-        <xsl:apply-templates select="key('tree-with-addr', current()/@addr)" mode="contextual-number">
+      <xsl:when test="key('tree-with-uri', current()/@uri)">
+        <xsl:apply-templates select="key('tree-with-uri', current()/@uri)" mode="contextual-number">
           <xsl:with-param name="in-backmatter" select="boolean(ancestor::f:backmatter)" />
           <xsl:with-param name="fallback-number" select="$fallback-number" />
         </xsl:apply-templates>

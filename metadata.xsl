@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:f="http://www.jonmsterling.com/jms-005P.xml">
+  xmlns:f="http://www.forester-notes.org">
 
   <xsl:template match="f:month[.='1']">
     <xsl:text>January</xsl:text>
