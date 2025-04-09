@@ -208,12 +208,38 @@ let <fr:tex display="inline"><![CDATA[x : {\mathsf {tt}}\mathrel {{\sim }_{\math
                   <fr:month>4</fr:month>
                   <fr:day>9</fr:day>
                 </fr:date>
+                <fr:title text="Forester: canonical URLs and atom feeds"><fr:link href="/foreign/www.forester-notes.org/index/" title="Forester" uri="https://www.forester-notes.org/index/" display-uri="https://www.forester-notes.org/index/" type="local">Forester</fr:link>: canonical URLs and atom feeds</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Work on <fr:link href="https://www.forester-notes.org/jms-011P" type="external">Forester 5.0</fr:link> proceeds apace, generously supported by <fr:link href="/jms-00XB/" title="Advanced Research + Invention Agency" uri="https://www.jonmsterling.com/jms-00XB/" display-uri="jms-00XB" type="local">ARIA</fr:link> who have engaged <fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento Okura</fr:link> and myself on a consulting basis to support their internal use of Forester. My recent goals have been to bring Forester closer in line with the architecture of the World Wide Web; to that end, I have made two big improvements:</html:p>
+                <html:ol><html:li>Trees are addressed by “canonical URLs” that are meant to be the place where they will ultimately be published. See <fr:link href="/foreign/www.forester-notes.org/JVIT/" title="Towards Forester 5.0 II: a design for canonical URLs" uri="https://www.forester-notes.org/JVIT/" display-uri="https://www.forester-notes.org/JVIT/" type="local">my blog post</fr:link> on the design for more details. Canonical URLs are of the form <html:code>https://www.my-host.net/tree-name/</html:code>; the handling is a little fragile right now and you can expect bugs (but please write to me about them).</html:li>
+    <html:li>It is now possible to syndicate the children of a tree as an Atom feed. This is done currently by including the following directive in the tree you wish to syndicate:
+    <html:pre><![CDATA[\syndicate-current-tree-as-atom-feed]]></html:pre>
+
+     Then, if your tree is located at <html:code>https://www.my-host.net/tree-name/</html:code>, you will find that there is an atom feed at <html:code>https://www.my-host.net/tree-name/atom.xml</html:code>. There are many subtleties to this, and the atom support will continue to evolve and improve. One thing I need to deal with is the fact that Forester produces nested hyperlinks—which are not valid in HTML! I came up with a pretty slick way to <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme/commit/a251f9cf19b0ff42f4553d315df5181b985c79cb" type="external">handle this in XSLT</fr:link>, but that Atom renderer is intended to bypass that entirely.</html:li></html:ol>
+                <html:p>As a side note, I am very happy to see that I am <fr:link href="https://patrick.sirref.org/weekly-2025-03-31/" type="external">not the only person</fr:link> using the new support for Atom feeds. Patrick’s fork of Forester is looking pretty cool, and I am excited to learn more from what he is doing. I’m also relieved that he was able to get rebased atop the ever-changing <html:code>forester-5.0-dev</html:code> branch.</html:p>
+                <html:p>One thing I want to start designing soon is how best to handle federated forests. Right now, Forester bundles all the imported material under a <html:code>foreign/my-friends-host/</html:code> directory and routes all links accordingly, but in many (but not all!) cases one would want to not bundle things at all and instead have links routed directly to the canonical URLs as published on the World Wide Web. I am not sure of the best design for this, so I welcome feedback. In the meanwhile, enjoy the janky prototype feel.</html:p>
+                <html:p><fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento</fr:link> is hard at work hardening Forester’s language server. I am hoping that we will have something to show on the scale of a week.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
                 <fr:title text="Project Pterosaur">
                   <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>
                 </fr:title>
               </fr:frontmatter>
               <fr:mainmatter>
-                <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say these days, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
+                <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
                 <fr:tree show-metadata="false">
                   <fr:frontmatter>
                     <fr:authors>
@@ -396,6 +422,24 @@ locale AbelianGroup { A =>
                     <html:p>We dedicated our paper to Thomas’s memory. May he rest in peace.</html:p>
                   </fr:mainmatter>
                 </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:title text="Personal, reading">Personal, reading</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>I recently read Arthur C. Clarke’s <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>; although it was a pretty good read, I found that like many science fiction books of that era, one has to look past a lot in order to enjoy it. I wrote some commentary in my post entitled <fr:link href="/jms-019W/" title="Ventriloquy of the Mid-Century Man" uri="https://www.jonmsterling.com/jms-019W/" display-uri="jms-019W" type="local">Ventriloquy of the Mid-Century Man</fr:link> on my culture blog <fr:link href="/jms-015X/" title="The Jon Sterling Review of Books" uri="https://www.jonmsterling.com/jms-015X/" display-uri="jms-015X" type="local">The Jon Sterling Review of Books</fr:link>.</html:p>
               </fr:mainmatter>
             </fr:tree>
           </fr:mainmatter>

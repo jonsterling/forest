@@ -30,12 +30,38 @@
           <fr:month>4</fr:month>
           <fr:day>9</fr:day>
         </fr:date>
+        <fr:title text="Forester: canonical URLs and atom feeds"><fr:link href="/foreign/www.forester-notes.org/index/" title="Forester" uri="https://www.forester-notes.org/index/" display-uri="https://www.forester-notes.org/index/" type="local">Forester</fr:link>: canonical URLs and atom feeds</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>Work on <fr:link href="https://www.forester-notes.org/jms-011P" type="external">Forester 5.0</fr:link> proceeds apace, generously supported by <fr:link href="/jms-00XB/" title="Advanced Research + Invention Agency" uri="https://www.jonmsterling.com/jms-00XB/" display-uri="jms-00XB" type="local">ARIA</fr:link> who have engaged <fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento Okura</fr:link> and myself on a consulting basis to support their internal use of Forester. My recent goals have been to bring Forester closer in line with the architecture of the World Wide Web; to that end, I have made two big improvements:</html:p>
+        <html:ol><html:li>Trees are addressed by “canonical URLs” that are meant to be the place where they will ultimately be published. See <fr:link href="/foreign/www.forester-notes.org/JVIT/" title="Towards Forester 5.0 II: a design for canonical URLs" uri="https://www.forester-notes.org/JVIT/" display-uri="https://www.forester-notes.org/JVIT/" type="local">my blog post</fr:link> on the design for more details. Canonical URLs are of the form <html:code>https://www.my-host.net/tree-name/</html:code>; the handling is a little fragile right now and you can expect bugs (but please write to me about them).</html:li>
+    <html:li>It is now possible to syndicate the children of a tree as an Atom feed. This is done currently by including the following directive in the tree you wish to syndicate:
+    <html:pre><![CDATA[\syndicate-current-tree-as-atom-feed]]></html:pre>
+
+     Then, if your tree is located at <html:code>https://www.my-host.net/tree-name/</html:code>, you will find that there is an atom feed at <html:code>https://www.my-host.net/tree-name/atom.xml</html:code>. There are many subtleties to this, and the atom support will continue to evolve and improve. One thing I need to deal with is the fact that Forester produces nested hyperlinks—which are not valid in HTML! I came up with a pretty slick way to <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme/commit/a251f9cf19b0ff42f4553d315df5181b985c79cb" type="external">handle this in XSLT</fr:link>, but that Atom renderer is intended to bypass that entirely.</html:li></html:ol>
+        <html:p>As a side note, I am very happy to see that I am <fr:link href="https://patrick.sirref.org/weekly-2025-03-31/" type="external">not the only person</fr:link> using the new support for Atom feeds. Patrick’s fork of Forester is looking pretty cool, and I am excited to learn more from what he is doing. I’m also relieved that he was able to get rebased atop the ever-changing <html:code>forester-5.0-dev</html:code> branch.</html:p>
+        <html:p>One thing I want to start designing soon is how best to handle federated forests. Right now, Forester bundles all the imported material under a <html:code>foreign/my-friends-host/</html:code> directory and routes all links accordingly, but in many (but not all!) cases one would want to not bundle things at all and instead have links routed directly to the canonical URLs as published on the World Wide Web. I am not sure of the best design for this, so I welcome feedback. In the meanwhile, enjoy the janky prototype feel.</html:p>
+        <html:p><fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento</fr:link> is hard at work hardening Forester’s language server. I am hoping that we will have something to show on the scale of a week.</html:p>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>9</fr:day>
+        </fr:date>
         <fr:title text="Project Pterosaur">
           <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>
         </fr:title>
       </fr:frontmatter>
       <fr:mainmatter>
-        <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say these days, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
+        <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
         <fr:tree show-metadata="false">
           <fr:frontmatter>
             <fr:authors>
@@ -218,6 +244,24 @@ locale AbelianGroup { A =>
             <html:p>We dedicated our paper to Thomas’s memory. May he rest in peace.</html:p>
           </fr:mainmatter>
         </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>9</fr:day>
+        </fr:date>
+        <fr:title text="Personal, reading">Personal, reading</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>I recently read Arthur C. Clarke’s <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>; although it was a pretty good read, I found that like many science fiction books of that era, one has to look past a lot in order to enjoy it. I wrote some commentary in my post entitled <fr:link href="/jms-019W/" title="Ventriloquy of the Mid-Century Man" uri="https://www.jonmsterling.com/jms-019W/" display-uri="jms-019W" type="local">Ventriloquy of the Mid-Century Man</fr:link> on my culture blog <fr:link href="/jms-015X/" title="The Jon Sterling Review of Books" uri="https://www.jonmsterling.com/jms-015X/" display-uri="jms-015X" type="local">The Jon Sterling Review of Books</fr:link>.</html:p>
       </fr:mainmatter>
     </fr:tree>
   </fr:mainmatter>
@@ -595,6 +639,22 @@ locale AbelianGroup { A =>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
           <fr:frontmatter>
             <fr:authors>
+              <fr:author>Arthur C. Clarke</fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>1979</fr:year>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/clarke-1979/</fr:uri>
+            <fr:display-uri>clarke-1979</fr:display-uri>
+            <fr:route>/clarke-1979/</fr:route>
+            <fr:title text="The Fountains of Paradise">The Fountains of Paradise</fr:title>
+            <fr:taxon>Reference</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter />
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
               <fr:author>
                 <fr:link href="/alexandergrothendieck/" title="Alexander Grothendieck" uri="https://www.jonmsterling.com/alexandergrothendieck/" display-uri="alexandergrothendieck" type="local">Alexander Grothendieck</fr:link>
               </fr:author>
@@ -655,6 +715,172 @@ locale AbelianGroup { A =>
         </fr:tree>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
           <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>4</fr:month>
+              <fr:day>6</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-019W/</fr:uri>
+            <fr:display-uri>jms-019W</fr:display-uri>
+            <fr:route>/jms-019W/</fr:route>
+            <fr:title text="Ventriloquy of the Mid-Century Man">Ventriloquy of the Mid-Century Man</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Moments before leaving for a meeting in Barbados with my colleagues <fr:link href="/anilmadhavapeddy/" title="Anil Madhavapeddy" uri="https://www.jonmsterling.com/anilmadhavapeddy/" display-uri="anilmadhavapeddy" type="local">Anil Madhavapeddy</fr:link> and <fr:link href="https://www.tunbury.org/" type="external">Mark Elvers</fr:link>, I hastily loaded Arthur C. Clarke’s <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link> onto my Kindle for airplane reading. I really want to love “hard science fiction” — I spent months with Asimov’s <html:em>Foundation</html:em> in 2022 — but I must admit that I am struggling with the limitations of this genre.</html:p>
+            <html:figure><html:img width="200px" src="/bafkrmicus43xa6wklmijk6ljw34mnvajzuofcpdkwkvyhodxflyj3c6jji.jpg" />
+ <html:figcaption>The cover of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>.</html:figcaption></html:figure>
+            <html:p>In her <fr:link href="https://www.theparisreview.org/interviews/6253/the-art-of-fiction-no-221-ursula-k-le-guin" type="external">2013 interview with The Paris Review</fr:link>, <fr:link href="/ursulakleguin/" title="Ursula K. Le Guin" uri="https://www.jonmsterling.com/ursulakleguin/" display-uri="ursulakleguin" type="local">Ursula Le Guin</fr:link> questioned the hard/soft divide in science fiction, pointing out that the distinction seems to be based on authors and readers of sci-fi arbitrarily deciding which of the sciences are “Science” and which aren’t.</html:p>
+            <html:blockquote>The “hard”–science fiction writers dismiss everything except, well, physics, astronomy, and maybe chemistry. Biology, sociology, anthropology—that’s not science to them, that’s soft stuff. They’re not that interested in what human beings do, really. But I am. I draw on the social sciences a great deal. I get a lot of ideas from them, particularly from anthropology. When I create another planet, another world, with a society on it, I try to hint at the complexity of the society I’m creating, instead of just referring to an empire or something like that.</html:blockquote>
+            <html:p>There is a good point here, and Le Guin’s attention to social sciences and anthropology and history was indeed a strength, but Asimov was also preoccupied with the same throughout <html:em>Foundation</html:em>. So what is the difference, aside from the fact that <html:em>Foundation</html:em> was written by a man? Well, it cannot be unrelated to Asimov being a man, but perhaps we will get to the point sooner by referring to a specific type of man — the <html:em>Mid-Century Man</html:em>.</html:p>
+            <html:p>The Mid-Century Man has no time for the usual literary rules governing the development of characters and their arc of growth. He is interested in science and humanity, yes, but through the lens of his own avatar whom he transplants directly from our world of his time into the futuristic world of his story. This hapless transplant finds himself, with no volition, speaking the author’s words through his own lips… He hears his own voice prattle on about “the last refuge of the incompetent” and can do absolutely nothing about it.</html:p>
+            <html:p>The inclination of the Mid-Century Man to spill no ink that might distract from his speculations (flavoured with thematic orientalism, as in the case of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">Fountains</fr:link>) is not limited to hard science fiction — Herbert falls prey to the same tendancy in <html:em>Dune</html:em>, which I adore, but he is saved by his mastery of the tragedy-form: indeed, we are already weeping with Paul over Chani’s fate a quarter of the way through <html:em>Dune Messiah</html:em>.</html:p>
+            <html:p>In contrast, there is little that is compelling about the characters of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>, nor those of <html:em>2001: A Space Odyssey</html:em>, and the same holds for Asimov’s <html:em>Foundation</html:em>. The mostly one-dimensional characters of these works are foils for the authors’ speculative ideas about technology or “future history”, and a shorter work could have been written that omits the ventriloquy act entirely and just directly makes the point the author so strongly wished to make.</html:p>
+            <html:p>Will <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">Fountains</fr:link> be the last “hard science fiction” book I read? Surely not… There is still much to enjoy and marvel over — and there is a true sense in which Clarke’s elevator to Heaven is compelling enough to outweigh even the worst of his flimsy characterisation.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>3</fr:month>
+              <fr:day>25</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/JVIT/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/JVIT/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/JVIT/</fr:route>
+            <fr:title text="Towards Forester 5.0 II: a design for canonical URLs">Towards <fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> II: a design for canonical URLs</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>One of the goals of <fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> is <html:em>lightweight federation</html:em>—the ability to have two forests participate in the same graph and therefore provide backlinks, etc. In a previous post (<fr:link href="/foreign/www.forester-notes.org/OYOJ/" title="Towards Forester 5.0: a design for global identity" uri="https://www.forester-notes.org/OYOJ/" display-uri="https://www.forester-notes.org/OYOJ/" type="local">Towards <fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link>: a design for global identity</fr:link>), I talked about some of the difficulties that arise when dealing with identities of people and references that have global scope but could nonetheless be described by trees in many forests. I proposed that such things should be addressed by canonical URIs (e.g. DIDs, DOIs, etc.) and that Forester should grow the ability to bind a canonical URI to multiple trees, which are then gathered into a disambiguation page.</html:p>
+            <html:p>Today I want to broaden the discussion to cover the difficulties of addressing trees themselves (as opposed to the global entities they may describe). <html:mark>This is a proposal and I welcome feedback.</html:mark></html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/JVIU/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/JVIU/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/JVIU/</fr:route>
+                <fr:title text="Forester must become part of the Web">Forester must become part of the Web</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>I have been working on developing the prerequisites for Forester to emit RSS and Atom feeds for blogs, and I realised that the problem I was trying to solve <fr:link href="/foreign/www.forester-notes.org/OYOJ/" title="Towards Forester 5.0: a design for global identity" uri="https://www.forester-notes.org/OYOJ/" display-uri="https://www.forester-notes.org/OYOJ/" type="local">earlier this month</fr:link> is a more multifaceted than I originally thought. It comes down to analysing what is needed for Forester to be a good citizen of the World Wide Web: in particular, <html:mark>if we emit an RSS feed that has hyperlinks to some trees in it, those links <html:em>must</html:em> refer to an actual page on the actual web rather than something specific to Forester’s ontology.</html:mark></html:p>
+                <html:p>This may seem downright obvious in hindsight, but you must understand that for the longest time I was not thinking of Forester as a tool for progressively enhancing the Web, but rather as a tool for building fully-local life-wikis or Zettelkästen; I no longer believe that my former viewpoint is reasonable, and I have concluded that we must integrate Forester into the Web or else we will be buried under friction. This post is the start of a design for how to do this.</html:p>
+                <html:p>Forget what you know about how either <fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> or previous versions currently work; in order to solve these problems in a reasonable way, we cannot be bound by the past versions of an experimental tool. What we <html:em>are</html:em> bound by is the architecture of the World Wide Web, and that will be reflected in the design.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/JVIV/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/JVIV/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/JVIV/</fr:route>
+                <fr:title text="What is the proposal?">What is the proposal?</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Here is the essence of the proposal:</html:p>
+                <html:ol><html:li>We get rid of the <html:code>forest://host/addr</html:code> scheme. Instead, trees are globally addressed by a canonical URL.</html:li>
+    <html:li>The canonical URL of a tree can in principle be arbitrary, but in practice you will want it to be a place where that tree can be viewed — e.g. the place to which it will be uploaded and served via HTTP(S). Indeed, a default scheme will be provided so as to enable files to be rendered with names and relative locations consistent with the intended global addressing scheme; it is also possible to imagine customisation of this without disturbing the overall design.</html:li>
+    <html:li>The canonical URLs are now the vertices of the graph.</html:li>
+    <html:li>In Forester source code, a hyperlink like <html:code><![CDATA[[foo](jms-0001)]]></html:code> would be resolved right away to <html:code><![CDATA[[foo](https://www.jonmsterling.com/jms-0001.xml)]]></html:code> or something, using information supplied in the user’s forest; the same goes for transclusion.</html:li>
+    
+    <html:li>Links to trees in foreign forests must, for now, be totally explicit (but we can imagine relaxing this in the future). Importantly, this approach does not require knowing what is in the forest at evaluation-time.</html:li></html:ol>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/JVIW/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/JVIW/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/JVIW/</fr:route>
+                <fr:title text="What about replication and mirroring?">What about replication and mirroring?</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>It may seem annoying to have canonical URLs. For example, a forest that contains vital information might need to be published in multiple places. That much is true, but the fact that the physical publication of a forest is replicated should not allowed to impact the graph or fill it with redundant vertices and edges (e.g. should two mirrors become federated). So the only problem with replication is that hyperlinks might take you to the original forest instead of keeping you in the mirror, but I think this should be resolved by some kind of middleware that rewrites links, just as the <fr:link href="https://web.archive.org/" type="external">Wayback machine</fr:link> rewrites links in its snapshots. That can be handled outside of Forester.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/JVIX/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/JVIX/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/JVIX/</fr:route>
+                <fr:title text="What about viewing my forest locally?">What about viewing my forest locally?</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Most of the time, an author is working with their forest on their own machine rather than on the web. It is important that links and transclusions point to the local content rather than whatever (if anything) is stored in the “global” canonical URL. I believe this is not actually a problem: although things like RSS feeds and perhaps even published websites would have all the hyperlinks point to the canonical URLs, there is no reason that this should be required for all renderers. It is easy to imagine making this a configurable flag for the default renderer, and for the upcoming “dynamic”/interactive HTML server we would emit links back to the local server rather than to the canonical URLs.</html:p>
+                <html:p>Similarly, there may be projects where there is no intention at all of online publication. In such cases, the scheme for assigning canonical URLs can be arbitrary.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/JVIY/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/JVIY/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/JVIY/</fr:route>
+                <fr:title text="What about access control?">What about access control?</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Forester does not currently support any kind of access control, but this is indeed an important area that we are considering carefully in order to enable institutional use of Forester, and ease the burden of collaboration in the usual case of a forest that contains a mixture of data with varying levels of confidentiality. I believe that the current design is compatible with essentially any approach to access control that we might adopt, but I am interested in feedback to the contrary.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
             <fr:authors />
             <fr:date>
               <fr:year>2025</fr:year>
@@ -686,9 +912,141 @@ locale AbelianGroup { A =>
             <fr:display-uri>jms-019E</fr:display-uri>
             <fr:route>/jms-019E/</fr:route>
             <fr:title text="Project Pterosaur">Project Pterosaur</fr:title>
+            <fr:meta name="external">https://github.com/jonsterling/project-pterosaur</fr:meta>
           </fr:frontmatter>
           <fr:mainmatter>
             <html:p>An experimental proof assistant based on locales.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>25</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-015X/</fr:uri>
+            <fr:display-uri>jms-015X</fr:display-uri>
+            <fr:route>/jms-015X/</fr:route>
+            <fr:title text="The Jon Sterling Review of Books">The Jon Sterling Review of Books</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>I write short reviews of books that I am reading here. You can subscribe via the <fr:link href="/jms-015X/atom.xml" type="external">Atom feed</fr:link> if you prefer.</html:p>
+            <fr:tree show-metadata="true" expanded="false" numbered="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>6</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-019W/</fr:uri>
+                <fr:display-uri>jms-019W</fr:display-uri>
+                <fr:route>/jms-019W/</fr:route>
+                <fr:title text="Ventriloquy of the Mid-Century Man">Ventriloquy of the Mid-Century Man</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Moments before leaving for a meeting in Barbados with my colleagues <fr:link href="/anilmadhavapeddy/" title="Anil Madhavapeddy" uri="https://www.jonmsterling.com/anilmadhavapeddy/" display-uri="anilmadhavapeddy" type="local">Anil Madhavapeddy</fr:link> and <fr:link href="https://www.tunbury.org/" type="external">Mark Elvers</fr:link>, I hastily loaded Arthur C. Clarke’s <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link> onto my Kindle for airplane reading. I really want to love “hard science fiction” — I spent months with Asimov’s <html:em>Foundation</html:em> in 2022 — but I must admit that I am struggling with the limitations of this genre.</html:p>
+                <html:figure><html:img width="200px" src="/bafkrmicus43xa6wklmijk6ljw34mnvajzuofcpdkwkvyhodxflyj3c6jji.jpg" />
+ <html:figcaption>The cover of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>.</html:figcaption></html:figure>
+                <html:p>In her <fr:link href="https://www.theparisreview.org/interviews/6253/the-art-of-fiction-no-221-ursula-k-le-guin" type="external">2013 interview with The Paris Review</fr:link>, <fr:link href="/ursulakleguin/" title="Ursula K. Le Guin" uri="https://www.jonmsterling.com/ursulakleguin/" display-uri="ursulakleguin" type="local">Ursula Le Guin</fr:link> questioned the hard/soft divide in science fiction, pointing out that the distinction seems to be based on authors and readers of sci-fi arbitrarily deciding which of the sciences are “Science” and which aren’t.</html:p>
+                <html:blockquote>The “hard”–science fiction writers dismiss everything except, well, physics, astronomy, and maybe chemistry. Biology, sociology, anthropology—that’s not science to them, that’s soft stuff. They’re not that interested in what human beings do, really. But I am. I draw on the social sciences a great deal. I get a lot of ideas from them, particularly from anthropology. When I create another planet, another world, with a society on it, I try to hint at the complexity of the society I’m creating, instead of just referring to an empire or something like that.</html:blockquote>
+                <html:p>There is a good point here, and Le Guin’s attention to social sciences and anthropology and history was indeed a strength, but Asimov was also preoccupied with the same throughout <html:em>Foundation</html:em>. So what is the difference, aside from the fact that <html:em>Foundation</html:em> was written by a man? Well, it cannot be unrelated to Asimov being a man, but perhaps we will get to the point sooner by referring to a specific type of man — the <html:em>Mid-Century Man</html:em>.</html:p>
+                <html:p>The Mid-Century Man has no time for the usual literary rules governing the development of characters and their arc of growth. He is interested in science and humanity, yes, but through the lens of his own avatar whom he transplants directly from our world of his time into the futuristic world of his story. This hapless transplant finds himself, with no volition, speaking the author’s words through his own lips… He hears his own voice prattle on about “the last refuge of the incompetent” and can do absolutely nothing about it.</html:p>
+                <html:p>The inclination of the Mid-Century Man to spill no ink that might distract from his speculations (flavoured with thematic orientalism, as in the case of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">Fountains</fr:link>) is not limited to hard science fiction — Herbert falls prey to the same tendancy in <html:em>Dune</html:em>, which I adore, but he is saved by his mastery of the tragedy-form: indeed, we are already weeping with Paul over Chani’s fate a quarter of the way through <html:em>Dune Messiah</html:em>.</html:p>
+                <html:p>In contrast, there is little that is compelling about the characters of <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>, nor those of <html:em>2001: A Space Odyssey</html:em>, and the same holds for Asimov’s <html:em>Foundation</html:em>. The mostly one-dimensional characters of these works are foils for the authors’ speculative ideas about technology or “future history”, and a shorter work could have been written that omits the ventriloquy act entirely and just directly makes the point the author so strongly wished to make.</html:p>
+                <html:p>Will <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">Fountains</fr:link> be the last “hard science fiction” book I read? Surely not… There is still much to enjoy and marvel over — and there is a true sense in which Clarke’s elevator to Heaven is compelling enough to outweigh even the worst of his flimsy characterisation.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="true" expanded="false" numbered="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>3</fr:month>
+                  <fr:day>23</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-019O/</fr:uri>
+                <fr:display-uri>jms-019O</fr:display-uri>
+                <fr:route>/jms-019O/</fr:route>
+                <fr:title text="Winter in Eden and Return to Eden: an imperfect conclusion"><fr:link href="/harrison-1986/" title="Winter in Eden" uri="https://www.jonmsterling.com/harrison-1986/" display-uri="harrison-1986" type="local">Winter in Eden</fr:link> and <fr:link href="/harrison-1988/" title="Return to Eden" uri="https://www.jonmsterling.com/harrison-1988/" display-uri="harrison-1988" type="local">Return to Eden</fr:link>: an imperfect conclusion</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Two months ago I <fr:link href="/jms-015W/" title="West of Eden: you can judge a book by its cover" uri="https://www.jonmsterling.com/jms-015W/" display-uri="jms-015W" type="local">reviewed</fr:link> Harry Harrison’s delightful <fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">West of Eden</fr:link>, a piece of speculative fiction that considers a world in which the Cretaceous–Paleogene extinction event never occurred, and one species of dinosaur went on to evolve over the subsequent 66 million years into a highly sophisticated society stratified by uneven linguistic abilities. The most intelligent stratum of this species calls itself <html:em>Yilanè</html:em>, which is at once an ethnonym and a classification of linguistic ability.</html:p>
+                <html:p>In Harrison’s Eden, reptiles of all kinds dominate Africa (<html:em>Entoban</html:em> in Yilanè) whereas mankind (<html:em>Tanu</html:em> and <html:em>Sasku</html:em> in their languages) and other mammals live in North America (<html:em>Gendasi</html:em> in Yilanè), confined at first mainly to its colder northern reaches. The icy winds of climate change blow across Entoban and northern Gendasi alike, which leads mankind to migrate south just as the Yilanè begin to colonise southern Gendasi. The encounter of Tanu and Yilanè is predictably violent—when the Tanu encounter the torpid Yilanè males basking on the birthing beaches of Alpèasak (the new Yilanè colony in our own Florida), they slay them immediately and spark a war of the species that shapes the entire trilogy.</html:p>
+                <html:figure><html:img height="200px" src="/bafkrmiabjfjguelr6ayscwbzqonts26dkvhmephxe2g5gy5dvjbxuctjem.jpg" />
+  <html:img height="200px" src="/bafkrmiacwpt7ky5yniefejcq7nqp7cdlphmvu6ka6zrxgnn63p4t7g4dwi.jpg" />
+  <html:img height="200px" src="/bafkrmih7i2jw3w4f353s2sotl3ywcssizf5crvycejoxcuvwlinmax5u7a.jpg" />
+
+ <html:figcaption>Covers of the Eden Trilogy.</html:figcaption></html:figure>
+                <html:p>That is the premise of <fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">West of Eden</fr:link>, the first book of the Eden Trilogy, which tells the story of a young Tanu man named Kerrick who is kidnapped and raised by Yilanè in Alpèasak. The next two books, <fr:link href="/harrison-1986/" title="Winter in Eden" uri="https://www.jonmsterling.com/harrison-1986/" display-uri="harrison-1986" type="local">Winter in Eden</fr:link> and <fr:link href="/harrison-1988/" title="Return to Eden" uri="https://www.jonmsterling.com/harrison-1988/" display-uri="harrison-1988" type="local">Return to Eden</fr:link>, concern the continuing struggle of Tanu and their Sasku allies to survive in the South while being pursued by a genocidal Yilanè expedition, and of the minority faction of Yilanè called the <html:em>Daughters of Life</html:em> who aim to establish a peaceful city in South America.</html:p>
+                <html:p>Although <fr:link href="/harrison-1986/" title="Winter in Eden" uri="https://www.jonmsterling.com/harrison-1986/" display-uri="harrison-1986" type="local">Winter in Eden</fr:link> and <fr:link href="/harrison-1988/" title="Return to Eden" uri="https://www.jonmsterling.com/harrison-1988/" display-uri="harrison-1988" type="local">Return to Eden</fr:link> share the charm of the <fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">first book</fr:link>, they do not quite live up to its promise. Without revealing anything that might spoil the Trilogy (which I do still recommend), there are several imperfections that give a reader the distinct impression of rushed writing—especially in <fr:link href="/harrison-1988/" title="Return to Eden" uri="https://www.jonmsterling.com/harrison-1988/" display-uri="harrison-1988" type="local">Return</fr:link>.</html:p>
+                <html:ul><html:li>Throughout <fr:link href="/harrison-1988/" title="Return to Eden" uri="https://www.jonmsterling.com/harrison-1988/" display-uri="harrison-1988" type="local">Return to Eden</fr:link> the toponyms <html:em>Gendasi</html:em> and <html:em>Entoban</html:em> are frequently mixed up, leading to a great deal of confusion. For example, Vaintè says “But Entoban is large, most of it unknown to us, warm and filled with good meat” but this could only refer to Gendasi in the context of the novel. I am apparently not the only person to notice this oversight, as can be seen by perusing the <fr:link href="https://www.amazon.co.uk/Return-Eden-Harry-Harrison/dp/0246126132" type="external">Amazon reviews</fr:link>.</html:li>
+ <html:li>Relatedly, there is no explicit toponym for South America, which plays an important role in the story. Indeed, South America appears to be referred to as part of Gendasi, which makes sense considering the land bridge that joins it to North America, but in that case it is surprising that Gendasi is glossed as North America rather than The Americas.</html:li>
+ <html:li>Several interesting story-lines appear to be dropped on the floor. What of the scientist Ambalasei’s fate, and will the radical city <html:em>Ambalasokei</html:em> survive?</html:li></html:ul>
+                <html:p>Perhaps what was needed most was more time. Despite these imperfections, I don’t regret my time in Eden—and I dream of returning there one day.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="true" expanded="false" numbered="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>1</fr:month>
+                  <fr:day>25</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-015W/</fr:uri>
+                <fr:display-uri>jms-015W</fr:display-uri>
+                <fr:route>/jms-015W/</fr:route>
+                <fr:title text="West of Eden: you can judge a book by its cover"><fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">West of Eden</fr:link>: you <html:em>can</html:em> judge a book by its cover</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>I have found that one could do far worse than perusing the <fr:link href="https://www.reddit.com/r/CoolSciFiCovers/" type="external">r/CoolSciFiCovers</fr:link> subreddit and picking things to read at random. This week I chose <fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">West of Eden</fr:link> based on its outstanding cover art, and it turned out to be a very enjoyable read.</html:p>
+                <html:figure><html:img width="200px" src="/bafkrmiabjfjguelr6ayscwbzqonts26dkvhmephxe2g5gy5dvjbxuctjem.jpg" />
+ <html:figcaption>The cover of <fr:link href="/harrison-1984/" title="West of Eden" uri="https://www.jonmsterling.com/harrison-1984/" display-uri="harrison-1984" type="local">West of Eden</fr:link>, by Harry Harrison and illustrated by Bill Sanderson.</html:figcaption></html:figure>
+                <html:p>The premise is that the impact causing the mass extinction of non-avian dinosaurs never occurred, and neolithic Man unknowingly shares the Earth with a very advanced and highly stratified female-dominated race of intelligent lizards whose males have two penises (<html:del>don’t ask me why!</html:del> <html:ins>apparently this is common in nature</html:ins>). When climate change threatens both the human and lizard civilisations, they are forced to migrate and, in doing so, discover each other’s presence and clash violently.</html:p>
+                <html:p>Some aspects of the story are a little old-fashioned—I barely need to discuss the instinctive disgust and “racial hatred” felt by the humans and the lizards for each other, but the narrative ultimately challenges this feeling by revealing each culture to be civilised in its own terms, if not in terms that would lead to a cooperative multi-species stewardship of the Earth.</html:p>
+                <html:p>The initial inability of the intelligent lizards to fathom that the “filthy ustuzou”—the lizard phrase for humans and other mammalian creatures—may be sentient and even conscious entities of moral force is challenged by their experience, and by a religious extremist trend within their society that recognises the intrinsic value of all forms of conscious life. In a time where current science continues to reveal, bit by bit, the overconfident ignorance and moral wickedness of those who have insisted that the “lower forms of life” on our own Earth are without sentience, value, moral force (the octopus, the elephant, etc.), it is hard to read this without thinking about our own “filthy ustuzou” and the future consequences of our vicious behaviour toward them.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="true" expanded="false" numbered="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>12</fr:month>
+                  <fr:day>18</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-015Q/</fr:uri>
+                <fr:display-uri>jms-015Q</fr:display-uri>
+                <fr:route>/jms-015Q/</fr:route>
+                <fr:title text="Impressions of How the Steel was Tempered">Impressions of <fr:link href="/ostrovsky-1936/" title="How the Steel was Tempered" uri="https://www.jonmsterling.com/ostrovsky-1936/" display-uri="ostrovsky-1936" type="local">How the Steel was Tempered</fr:link></fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Reading <fr:link href="/ostrovsky-1936/" title="How the Steel was Tempered" uri="https://www.jonmsterling.com/ostrovsky-1936/" display-uri="ostrovsky-1936" type="local">How the Steel was Tempered</fr:link>, I am struck by the way the narrative takes a definite position—it is for <html:em>us</html:em>, children of the future!—without cloaking itself in the viewpoints of depicted characters or that of an active narrator. How unsophisticated and innocent it must seem to those acquainted with the “neutrality” of bourgeois fiction, which deviates from the viewpoint of the bourgeoisie only to relate the views of a character—who naturally lives in a different world.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
           </fr:mainmatter>
         </fr:tree>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
@@ -737,6 +1095,18 @@ let <fr:tex display="inline"><![CDATA[x : {\mathsf {tt}}\mathrel {{\sim }_{\math
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
           <fr:frontmatter>
             <fr:authors />
+            <fr:uri>https://www.jonmsterling.com/jms-00XB/</fr:uri>
+            <fr:display-uri>jms-00XB</fr:display-uri>
+            <fr:route>/jms-00XB/</fr:route>
+            <fr:title text="Advanced Research + Invention Agency">Advanced Research + Invention Agency</fr:title>
+            <fr:taxon>Institution</fr:taxon>
+            <fr:meta name="external">https://www.aria.org.uk/programme-safeguarded-ai/</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter />
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
             <fr:uri>https://www.jonmsterling.com/andrewslattery/</fr:uri>
             <fr:display-uri>andrewslattery</fr:display-uri>
             <fr:route>/andrewslattery/</fr:route>
@@ -764,6 +1134,35 @@ let <fr:tex display="inline"><![CDATA[x : {\mathsf {tt}}\mathrel {{\sim }_{\math
             <fr:meta name="institution"><fr:link href="/toposinstitute/" title="Topos Institute" uri="https://www.jonmsterling.com/toposinstitute/" display-uri="toposinstitute" type="local">Topos Institute</fr:link>; <fr:link href="/cmu/" title="Carnegie Mellon University" uri="https://www.jonmsterling.com/cmu/" display-uri="cmu" type="local">Carnegie Mellon University</fr:link></fr:meta>
             <fr:meta name="position">Senior Advisor; Emeritus Hillman Huniversity Professor of Computer Science, Philosophy, and Mathematical Logic</fr:meta>
             <fr:meta name="external">http://www.cs.cmu.edu/~scott/</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter />
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
+            <fr:uri>https://www.forester-notes.org/index/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/index/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/index/</fr:route>
+            <fr:title text="Forester">Forester</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p><html:em>Forester</html:em> is a tool for authoring, exploring, and sharing scientific and mathematical hypertexts. It is your lab notebook, your journal, your blackboard, and the home of your lecture notes.</html:p>
+            <html:p>Forester is maintained by <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link> and <fr:link href="/foreign/www.forester-notes.org/kentookura/" title="Kento Okura" uri="https://www.forester-notes.org/kentookura/" display-uri="https://www.forester-notes.org/kentookura/" type="local">Kento Okura</fr:link>.</html:p>
+            <html:ul><html:li><fr:link href="/foreign/www.forester-notes.org/jms-0065/" title="Project information" uri="https://www.forester-notes.org/jms-0065/" display-uri="https://www.forester-notes.org/jms-0065/" type="local">Project information</fr:link></html:li>
+  <html:li><fr:link href="/foreign/www.forester-notes.org/30FM/" title="Forester Blog" uri="https://www.forester-notes.org/30FM/" display-uri="https://www.forester-notes.org/30FM/" type="local">Forester blog</fr:link></html:li>
+  <html:li><fr:link href="/foreign/www.forester-notes.org/5CDY/" title="Presentations" uri="https://www.forester-notes.org/5CDY/" display-uri="https://www.forester-notes.org/5CDY/" type="local">Presentations</fr:link></html:li>
+  <html:li><fr:link href="/foreign/www.forester-notes.org/jms-005P/" title="Release notes" uri="https://www.forester-notes.org/jms-005P/" display-uri="https://www.forester-notes.org/jms-005P/" type="local">Release notes</fr:link></html:li></html:ul>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors />
+            <fr:uri>https://www.jonmsterling.com/kentookura/</fr:uri>
+            <fr:display-uri>kentookura</fr:display-uri>
+            <fr:route>/kentookura/</fr:route>
+            <fr:title text="Kento Okura">Kento Okura</fr:title>
+            <fr:taxon>Person</fr:taxon>
+            <fr:meta name="external">https://github.com/kentookura</fr:meta>
           </fr:frontmatter>
           <fr:mainmatter />
         </fr:tree>
