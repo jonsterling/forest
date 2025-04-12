@@ -155,51 +155,6 @@
               <fr:author>
                 <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
               </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2023</fr:year>
-              <fr:month>8</fr:month>
-              <fr:day>19</fr:day>
-            </fr:date>
-            <fr:uri>https://www.forester-notes.org/jms-007X/</fr:uri>
-            <fr:display-uri>https://www.forester-notes.org/jms-007X/</fr:display-uri>
-            <fr:route>/foreign/www.forester-notes.org/jms-007X/</fr:route>
-            <fr:title text="Forester 2.4 › Breaking changes to XML format"><fr:link href="/foreign/www.forester-notes.org/jms-007M/" title="Forester 2.4" uri="https://www.forester-notes.org/jms-007M/" display-uri="https://www.forester-notes.org/jms-007M/" type="local">Forester 2.4</fr:link> › Breaking changes to XML format</fr:title>
-            <fr:taxon>Change</fr:taxon>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <html:p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</html:p>
-            <html:ol><html:li>Taxa used to be attributes of <html:code>tree</html:code>, but they are now child elements of <html:code>tree/frontmatter</html:code>. Therefore, what previously was written as
-    <html:pre>&lt;tree taxon="lemma"&gt;
-  &lt;frontmatter&gt;
-    &lt;!-- ... --&gt;
-  &lt;/frontmatter&gt;
-  &lt;!-- ... --&gt;
-&lt;/tree&gt;</html:pre>
-    is now written as follows:
-    <html:pre>&lt;tree&gt;
-  &lt;frontmatter&gt;
-    &lt;taxon&gt;lemma&lt;/taxon&gt;
-    &lt;!-- ... --&gt;
-  &lt;/frontmatter&gt;
-  &lt;!-- ... --&gt;
-&lt;/tree&gt;</html:pre></html:li>
-  <html:li><html:p>Dates are now stored in machine-readable format. For example, what used to be written <html:code>&lt;date&gt;August 16, 2023&lt;/date&gt;</html:code> is now written as follows:</html:p>
-    <html:pre>&lt;date&gt;
-  &lt;year&gt;2023&lt;/year&gt;
-  &lt;month&gt;8&lt;/month&gt;
-  &lt;day&gt;16&lt;/day&gt;
-&lt;/date&gt;</html:pre>
-    <html:p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <fr:link href="/foreign/www.forester-notes.org/masanoriogino/" title="Masanori Ogino" uri="https://www.forester-notes.org/masanoriogino/" display-uri="https://www.forester-notes.org/masanoriogino/" type="local">Masanori Ogino</fr:link> for suggesting this change.</html:p></html:li>
-  <html:li>All identifiers in the XML format have been regularized to use snake-case; for instance, <html:code>sourcePath</html:code> is now <html:code>source-path</html:code> and <html:code>show_heading</html:code> is now <html:code>show-heading</html:code>.</html:li></html:ol>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-              </fr:author>
               <fr:contributor>
                 <fr:link href="/foreign/www.forester-notes.org/arma%C3%ABlgu%C3%A9neau/" title="Armaël Guéneau" uri="https://www.forester-notes.org/armaëlguéneau/" display-uri="https://www.forester-notes.org/armaëlguéneau/" type="local">Armaël Guéneau</fr:link>
               </fr:contributor>
@@ -302,6 +257,51 @@
   <html:li>Added a nicer command line interface with <html:code>--help</html:code> documentation.</html:li>
   <html:li>I have migrated much of the system code to use the experimental <fr:link href="https://github.com/ocaml-multicore/eio" type="external">Eio library</fr:link> for improved portability.</html:li>
   <html:li>The example forest has been removed from the main repository, and moved into a separate <fr:link href="https://git.sr.ht/~jonsterling/forest-template" type="external">template repository</fr:link>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>8</fr:month>
+              <fr:day>19</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/jms-007X/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/jms-007X/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/jms-007X/</fr:route>
+            <fr:title text="Forester 2.4 › Breaking changes to XML format"><fr:link href="/foreign/www.forester-notes.org/jms-007M/" title="Forester 2.4" uri="https://www.forester-notes.org/jms-007M/" display-uri="https://www.forester-notes.org/jms-007M/" type="local">Forester 2.4</fr:link> › Breaking changes to XML format</fr:title>
+            <fr:taxon>Change</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>This release contains several breaking changes to the XML format that can break custom XSLT stylesheets.</html:p>
+            <html:ol><html:li>Taxa used to be attributes of <html:code>tree</html:code>, but they are now child elements of <html:code>tree/frontmatter</html:code>. Therefore, what previously was written as
+    <html:pre>&lt;tree taxon="lemma"&gt;
+  &lt;frontmatter&gt;
+    &lt;!-- ... --&gt;
+  &lt;/frontmatter&gt;
+  &lt;!-- ... --&gt;
+&lt;/tree&gt;</html:pre>
+    is now written as follows:
+    <html:pre>&lt;tree&gt;
+  &lt;frontmatter&gt;
+    &lt;taxon&gt;lemma&lt;/taxon&gt;
+    &lt;!-- ... --&gt;
+  &lt;/frontmatter&gt;
+  &lt;!-- ... --&gt;
+&lt;/tree&gt;</html:pre></html:li>
+  <html:li><html:p>Dates are now stored in machine-readable format. For example, what used to be written <html:code>&lt;date&gt;August 16, 2023&lt;/date&gt;</html:code> is now written as follows:</html:p>
+    <html:pre>&lt;date&gt;
+  &lt;year&gt;2023&lt;/year&gt;
+  &lt;month&gt;8&lt;/month&gt;
+  &lt;day&gt;16&lt;/day&gt;
+&lt;/date&gt;</html:pre>
+    <html:p>It is the responsibility of the XSLT stylesheet to format dates appropriately. Thanks to <fr:link href="/foreign/www.forester-notes.org/masanoriogino/" title="Masanori Ogino" uri="https://www.forester-notes.org/masanoriogino/" display-uri="https://www.forester-notes.org/masanoriogino/" type="local">Masanori Ogino</fr:link> for suggesting this change.</html:p></html:li>
+  <html:li>All identifiers in the XML format have been regularized to use snake-case; for instance, <html:code>sourcePath</html:code> is now <html:code>source-path</html:code> and <html:code>show_heading</html:code> is now <html:code>show-heading</html:code>.</html:li></html:ol>
           </fr:mainmatter>
         </fr:tree>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">

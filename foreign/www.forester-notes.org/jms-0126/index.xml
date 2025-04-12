@@ -563,124 +563,6 @@ base_url = "my-subfolder/"]]></html:pre>
               <fr:author>
                 <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
               </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>10</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:uri>https://www.forester-notes.org/jms-011Q/</fr:uri>
-            <fr:display-uri>https://www.forester-notes.org/jms-011Q/</fr:display-uri>
-            <fr:route>/foreign/www.forester-notes.org/jms-011Q/</fr:route>
-            <fr:title text="Forester 5.0 › Canonical URLs for tree addresses"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Canonical URLs for tree addresses</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <html:p>Up until this release, Forester’s trees were addressed by short strings — which, by convention, might be of the form <html:code>xxx-NNNN</html:code> or some arbitrary string like <html:code>sterling-2021-thesis</html:code>. In order to prepare for the future in which multiple forests can be glued together, we replace Forester’s short names with fully qualified URLs that point to the location on the World Wide Web where a given tree would be published (if you choose to publish it). In your <html:code>forest.toml</html:code> configuration, first set a base URL for your forest like the following:</html:p>
-            <html:pre><![CDATA[[forest]
-url = "https://www.forester-notes.com/"]]></html:pre>
-            <html:p>Within this forest, a tree named <html:code>foo</html:code> is then associated to the canonical URL <html:code>https://www.forester-notes.com/foo/</html:code>. Forester’s renderer will produce the correct directory structure so that if you were to upload the contents of the <html:code>output</html:code> directory to <html:code>https://www.forester-notes.com/</html:code>, a link to <html:code>https://www.forester-notes.com/foo/</html:code> would bring you to the <html:code>foo</html:code> tree.</html:p>
-            <html:p>Hyperlinks in Forester source code to trees within your own forest will automatically expand the short name <html:code>foo</html:code> to the canonical URL <html:code>https://www.forester-notes.com/foo/</html:code>. Canonical URLs are used as vertices in the <fr:link href="/foreign/www.forester-notes.org/jms-013A/" title="Forester 5.0 › New datalog-based query engine" uri="https://www.forester-notes.org/jms-013A/" display-uri="https://www.forester-notes.org/jms-013A/" type="local">graph</fr:link>.</html:p>
-            <fr:tree show-metadata="false">
-              <fr:frontmatter>
-                <fr:authors>
-                  <fr:author>
-                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-                  </fr:author>
-                </fr:authors>
-                <fr:date>
-                  <fr:year>2024</fr:year>
-                  <fr:month>10</fr:month>
-                  <fr:day>20</fr:day>
-                </fr:date>
-                <fr:uri>https://www.forester-notes.org/jms-011R/</fr:uri>
-                <fr:display-uri>https://www.forester-notes.org/jms-011R/</fr:display-uri>
-                <fr:route>/foreign/www.forester-notes.org/jms-011R/</fr:route>
-                <fr:title text="What do we mean by “URL”?">What do we mean by “URL”?</fr:title>
-              </fr:frontmatter>
-              <fr:mainmatter>
-                <html:p>Today, “URLs” are a mostly implementation-defined concept that can only be understood by looking at the source code of major web browsers; in the future, this may congeal into an actual standard but today is not that day (nor is tomorrow, if the state of the <fr:link href="https://url.spec.whatwg.org/" type="external"><html:code>whatwg/url</html:code> “living” [non-]standard</fr:link> is any indication). It is best to think of Forester’s approach to URLs as provisional and subject to evolution as the Web continues to mature.</html:p>
-              </fr:mainmatter>
-            </fr:tree>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-              </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>10</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:uri>https://www.forester-notes.org/jms-012N/</fr:uri>
-            <fr:display-uri>https://www.forester-notes.org/jms-012N/</fr:display-uri>
-            <fr:route>/foreign/www.forester-notes.org/jms-012N/</fr:route>
-            <fr:title text="Forester 5.0 › Changes to attribution links"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Changes to attribution links</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <html:p>In prior versions, the <html:code><![CDATA[\author]]></html:code> and <html:code><![CDATA[\contributor]]></html:code> command would detect whether its contents were the address of a tree; if so, it would create a wikilink to the tree and otherwise, the included text would appear directly. This feature was convenient for smoothly handling the case that an author of a given resource is not represented in the forest by a biographical tree; the downside is that it makes the assumption that at compiletime we shall know the entire contents of the forest (and, thus, whether a given address shall be bound to a tree).</html:p>
-            <html:p>To simplify the handling of author links and make it compatible with the open-world future of Forester, the behaviour is changed as follows:</html:p>
-            <html:ol><html:li>The argument to <html:code><![CDATA[\author]]></html:code> and <html:code><![CDATA[\author]]></html:code> <html:em>must</html:em> be a (possibly relative) <fr:link href="/foreign/www.forester-notes.org/jms-011Q/" title="Forester 5.0 › Canonical URLs for tree addresses" uri="https://www.forester-notes.org/jms-011Q/" display-uri="https://www.forester-notes.org/jms-011Q/" type="local">Forester URL</fr:link>. Thus, on my own forest, it would be OK to have either <html:code><![CDATA[\author{jeanbénabou}]]></html:code> or <html:code><![CDATA[\author{forest://jonmsterling/jeanbénabou}]]></html:code> but it would not be OK to have <html:code><![CDATA[\author{Jean Bénabou}]]></html:code>.</html:li>
-  <html:li>To make an unlinked attribution containing, use <html:code><![CDATA[\author/literal{Jean Bénabou}]]></html:code>.</html:li></html:ol>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-              </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>10</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:uri>https://www.forester-notes.org/VNQ8/</fr:uri>
-            <fr:display-uri>https://www.forester-notes.org/VNQ8/</fr:display-uri>
-            <fr:route>/foreign/www.forester-notes.org/VNQ8/</fr:route>
-            <fr:title text="Forester 5.0 › Changes to how forests are viewed locally and deployed"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Changes to how forests are viewed locally and deployed</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <html:p>In the past, Forester’s XML output used relative URLs for all links. This was tractable because the output had no directory structure, but this is increasingly becoming problematic—for example, <fr:link href="/foreign/www.forester-notes.org/30FN/" title="Forester 5.0 › Publishing and implanting forests" uri="https://www.forester-notes.org/30FN/" display-uri="https://www.forester-notes.org/30FN/" type="local">foreign trees</fr:link> are going to be rendered to a subdirectory, but this breaks all the relative URLs. I have come to the conclusion that the only way forward is to use absolute URLs for everything, but this assumes that the output is being served from the root directory of some host. As a result, users <html:em>must</html:em> fire up an HTTP server in order to view their forest locally. With this release we will (TODO) include a built-in HTTP server, but early adopters can simply run <html:code>python3 -m http.server 8000</html:code> from the <html:code>output</html:code> directory and open <html:code>localhost:8000/index.xml</html:code> in their browser.</html:p>
-            <html:p>Some users may wish to deploy their forest somewhere other than the root directory of a given (sub)domain. To achieve this and have all your links work correctly, enter the following configuration:</html:p>
-            <html:pre><![CDATA[[renderer]
-base_url = "my-subfolder/"]]></html:pre>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-              </fr:author>
-            </fr:authors>
-            <fr:date>
-              <fr:year>2024</fr:year>
-              <fr:month>10</fr:month>
-              <fr:day>20</fr:day>
-            </fr:date>
-            <fr:uri>https://www.forester-notes.org/jms-0125/</fr:uri>
-            <fr:display-uri>https://www.forester-notes.org/jms-0125/</fr:display-uri>
-            <fr:route>/foreign/www.forester-notes.org/jms-0125/</fr:route>
-            <fr:title text="Forester 5.0 › Configuration: the [renderer] section"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Configuration: the <html:code>[renderer]</html:code> section</fr:title>
-          </fr:frontmatter>
-          <fr:mainmatter>
-            <html:p>The TOML configuration file now has a new section called <html:code>[renderer]</html:code>, which groups settings that pertain not to the evaluation of the forest but rather to the rendered output. A sample configuration might look like the following:</html:p>
-            <html:pre><![CDATA[[renderer]
-home = "index"]]></html:pre>
-            <html:p>In the <html:code>[forest]</html:code> section, the <html:code>root</html:code> key was previously used to designate a particular tree as the home page which will be routed to <html:code>index.xml</html:code>. Calling this the “root” didn’t make sense, because it is not actually the root of the forest in most cases. This configuration key has been renamed to <html:code>home</html:code> and placed in the <html:code>[renderer]</html:code> section.</html:p>
-          </fr:mainmatter>
-        </fr:tree>
-        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
-          <fr:frontmatter>
-            <fr:authors>
-              <fr:author>
-                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
-              </fr:author>
               <fr:contributor>
                 <fr:link href="/foreign/www.forester-notes.org/kentookura/" title="Kento Okura" uri="https://www.forester-notes.org/kentookura/" display-uri="https://www.forester-notes.org/kentookura/" type="local">Kento Okura</fr:link>
               </fr:contributor>
@@ -1169,6 +1051,124 @@ base_url = "my-subfolder/"]]></html:pre>
                 <html:p>One possiblity is to extend HTML with just the hypermedia controls and embedded microformats needed for Forester’s operation. This re-coupling of presentation and data would, paradoxically, facilitate Forester to evolve more rapidly over time while simultaneously increasing the longevity of forests that have been compiled using older versions of the tool.</html:p>
               </fr:mainmatter>
             </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/jms-011Q/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/jms-011Q/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/jms-011Q/</fr:route>
+            <fr:title text="Forester 5.0 › Canonical URLs for tree addresses"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Canonical URLs for tree addresses</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Up until this release, Forester’s trees were addressed by short strings — which, by convention, might be of the form <html:code>xxx-NNNN</html:code> or some arbitrary string like <html:code>sterling-2021-thesis</html:code>. In order to prepare for the future in which multiple forests can be glued together, we replace Forester’s short names with fully qualified URLs that point to the location on the World Wide Web where a given tree would be published (if you choose to publish it). In your <html:code>forest.toml</html:code> configuration, first set a base URL for your forest like the following:</html:p>
+            <html:pre><![CDATA[[forest]
+url = "https://www.forester-notes.com/"]]></html:pre>
+            <html:p>Within this forest, a tree named <html:code>foo</html:code> is then associated to the canonical URL <html:code>https://www.forester-notes.com/foo/</html:code>. Forester’s renderer will produce the correct directory structure so that if you were to upload the contents of the <html:code>output</html:code> directory to <html:code>https://www.forester-notes.com/</html:code>, a link to <html:code>https://www.forester-notes.com/foo/</html:code> would bring you to the <html:code>foo</html:code> tree.</html:p>
+            <html:p>Hyperlinks in Forester source code to trees within your own forest will automatically expand the short name <html:code>foo</html:code> to the canonical URL <html:code>https://www.forester-notes.com/foo/</html:code>. Canonical URLs are used as vertices in the <fr:link href="/foreign/www.forester-notes.org/jms-013A/" title="Forester 5.0 › New datalog-based query engine" uri="https://www.forester-notes.org/jms-013A/" display-uri="https://www.forester-notes.org/jms-013A/" type="local">graph</fr:link>.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>20</fr:day>
+                </fr:date>
+                <fr:uri>https://www.forester-notes.org/jms-011R/</fr:uri>
+                <fr:display-uri>https://www.forester-notes.org/jms-011R/</fr:display-uri>
+                <fr:route>/foreign/www.forester-notes.org/jms-011R/</fr:route>
+                <fr:title text="What do we mean by “URL”?">What do we mean by “URL”?</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Today, “URLs” are a mostly implementation-defined concept that can only be understood by looking at the source code of major web browsers; in the future, this may congeal into an actual standard but today is not that day (nor is tomorrow, if the state of the <fr:link href="https://url.spec.whatwg.org/" type="external"><html:code>whatwg/url</html:code> “living” [non-]standard</fr:link> is any indication). It is best to think of Forester’s approach to URLs as provisional and subject to evolution as the Web continues to mature.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/jms-012N/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/jms-012N/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/jms-012N/</fr:route>
+            <fr:title text="Forester 5.0 › Changes to attribution links"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Changes to attribution links</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>In prior versions, the <html:code><![CDATA[\author]]></html:code> and <html:code><![CDATA[\contributor]]></html:code> command would detect whether its contents were the address of a tree; if so, it would create a wikilink to the tree and otherwise, the included text would appear directly. This feature was convenient for smoothly handling the case that an author of a given resource is not represented in the forest by a biographical tree; the downside is that it makes the assumption that at compiletime we shall know the entire contents of the forest (and, thus, whether a given address shall be bound to a tree).</html:p>
+            <html:p>To simplify the handling of author links and make it compatible with the open-world future of Forester, the behaviour is changed as follows:</html:p>
+            <html:ol><html:li>The argument to <html:code><![CDATA[\author]]></html:code> and <html:code><![CDATA[\author]]></html:code> <html:em>must</html:em> be a (possibly relative) <fr:link href="/foreign/www.forester-notes.org/jms-011Q/" title="Forester 5.0 › Canonical URLs for tree addresses" uri="https://www.forester-notes.org/jms-011Q/" display-uri="https://www.forester-notes.org/jms-011Q/" type="local">Forester URL</fr:link>. Thus, on my own forest, it would be OK to have either <html:code><![CDATA[\author{jeanbénabou}]]></html:code> or <html:code><![CDATA[\author{forest://jonmsterling/jeanbénabou}]]></html:code> but it would not be OK to have <html:code><![CDATA[\author{Jean Bénabou}]]></html:code>.</html:li>
+  <html:li>To make an unlinked attribution containing, use <html:code><![CDATA[\author/literal{Jean Bénabou}]]></html:code>.</html:li></html:ol>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/VNQ8/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/VNQ8/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/VNQ8/</fr:route>
+            <fr:title text="Forester 5.0 › Changes to how forests are viewed locally and deployed"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Changes to how forests are viewed locally and deployed</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>In the past, Forester’s XML output used relative URLs for all links. This was tractable because the output had no directory structure, but this is increasingly becoming problematic—for example, <fr:link href="/foreign/www.forester-notes.org/30FN/" title="Forester 5.0 › Publishing and implanting forests" uri="https://www.forester-notes.org/30FN/" display-uri="https://www.forester-notes.org/30FN/" type="local">foreign trees</fr:link> are going to be rendered to a subdirectory, but this breaks all the relative URLs. I have come to the conclusion that the only way forward is to use absolute URLs for everything, but this assumes that the output is being served from the root directory of some host. As a result, users <html:em>must</html:em> fire up an HTTP server in order to view their forest locally. With this release we will (TODO) include a built-in HTTP server, but early adopters can simply run <html:code>python3 -m http.server 8000</html:code> from the <html:code>output</html:code> directory and open <html:code>localhost:8000/index.xml</html:code> in their browser.</html:p>
+            <html:p>Some users may wish to deploy their forest somewhere other than the root directory of a given (sub)domain. To achieve this and have all your links work correctly, enter the following configuration:</html:p>
+            <html:pre><![CDATA[[renderer]
+base_url = "my-subfolder/"]]></html:pre>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/foreign/www.forester-notes.org/jonmsterling/" title="Jon Sterling" uri="https://www.forester-notes.org/jonmsterling/" display-uri="https://www.forester-notes.org/jonmsterling/" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:uri>https://www.forester-notes.org/jms-0125/</fr:uri>
+            <fr:display-uri>https://www.forester-notes.org/jms-0125/</fr:display-uri>
+            <fr:route>/foreign/www.forester-notes.org/jms-0125/</fr:route>
+            <fr:title text="Forester 5.0 › Configuration: the [renderer] section"><fr:link href="/foreign/www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> › Configuration: the <html:code>[renderer]</html:code> section</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>The TOML configuration file now has a new section called <html:code>[renderer]</html:code>, which groups settings that pertain not to the evaluation of the forest but rather to the rendered output. A sample configuration might look like the following:</html:p>
+            <html:pre><![CDATA[[renderer]
+home = "index"]]></html:pre>
+            <html:p>In the <html:code>[forest]</html:code> section, the <html:code>root</html:code> key was previously used to designate a particular tree as the home page which will be routed to <html:code>index.xml</html:code>. Calling this the “root” didn’t make sense, because it is not actually the root of the forest in most cases. This configuration key has been renamed to <html:code>home</html:code> and placed in the <html:code>[renderer]</html:code> section.</html:p>
           </fr:mainmatter>
         </fr:tree>
         <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">

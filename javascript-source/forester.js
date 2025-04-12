@@ -45,7 +45,7 @@ window.addEventListener("load", (event) => {
 
  fetch(jsonUrl)
   .then((res) => res.json())
-  .then((data) => {
+  .then((trees) => {
    const items = []
  
    const editIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480-120v-71l216-216 71 71-216 216h-71ZM120-330v-60h300v60H120Zm690-49-71-71 29-29q8-8 21-8t21 8l29 29q8 8 8 21t-8 21l-29 29ZM120-495v-60h470v60H120Zm0-165v-60h470v60H120Z"/></svg>'
@@ -64,20 +64,18 @@ window.addEventListener("load", (event) => {
     })
    }
  
-   const isTopTree = (addr) => {
-    const item = data[addr]
+   const isTopTree = (item) => {
     return item.tags ? item.tags.includes('top') : false
    }
  
-   const addItemToSection = (addr, section, icon) => {
-    const item = data[addr]
+   const addItemToSection = (item, section, icon) => {
     const title =
      item.taxon
       ? (item.title ? `${item.taxon}. ${item.title}` : item.taxon)
       : (item.title ? item.title : "Untitled")
-    const fullTitle = `${title} [${addr}]`
+    const fullTitle = `${title} [${item.uri}]`
     items.push({
-     id: addr,
+     id: item.uri,
      title: fullTitle,
      section: section,
      icon: icon,
@@ -87,9 +85,9 @@ window.addEventListener("load", (event) => {
     })
    }
  
-   const [top, rest] = partition(Object.keys(data), isTopTree)
-   top.forEach((addr) => addItemToSection(addr, "Top Trees", bookmarkIcon))
-   rest.forEach((addr) => addItemToSection(addr, "All Trees", null))
+   const [top, rest] = partition(trees, isTopTree)
+   top.forEach((item) => addItemToSection(item, "Top Trees", bookmarkIcon))
+   rest.forEach((item) => addItemToSection(item, "All Trees", null))
  
    ninja.data = items
   }); 
