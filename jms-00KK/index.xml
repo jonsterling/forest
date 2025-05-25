@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+      <fr:contributor>
+        <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+      </fr:contributor>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2024</fr:year>
+      <fr:month>1</fr:month>
+      <fr:day>23</fr:day>
+    </fr:date>
+    <fr:uri>https://www.jonmsterling.com/jms-00KK/</fr:uri>
+    <fr:display-uri>jms-00KK</fr:display-uri>
+    <fr:route>/jms-00KK/</fr:route>
+    <fr:title text="Inductive definitions">Inductive definitions</fr:title>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>We have already seen some inductive definitions:</html:p>
+    <html:ul><html:li><fr:link href="/jms-00JE/" title="Iteration of endo-relations" uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" /></fr:link> defines <html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[n]]></fr:tex>-fold iterations</html:span> of <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">endo-relations</fr:link> by induction on <fr:tex display="inline"><![CDATA[n]]></fr:tex>.</html:li>
+ <html:li><fr:link href="/jms-00JV/" title="The adjacency matrix of the reflexive-transitive closure" uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" type="local">Algorithm <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" /></fr:link> computes the <fr:link href="/jms-00JN/" title="Adjacency matrix of a finite directed graph" uri="https://www.jonmsterling.com/jms-00JN/" display-uri="jms-00JN" type="local">adjacency matrix</fr:link> of the <fr:link href="/jms-00JH/" title="The reflexive-transitive closure of an endo-relation" uri="https://www.jonmsterling.com/jms-00JH/" display-uri="jms-00JH" type="local">reflexive-transitive closure</fr:link> of a finite <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">directed graph</fr:link> by induction on the number of vertices in the graph.</html:li></html:ul>
+    <html:p>In this section, we will study this concept in more detail.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+          <fr:contributor>
+            <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+          </fr:contributor>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2024</fr:year>
+          <fr:month>1</fr:month>
+          <fr:day>23</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-00KL/</fr:uri>
+        <fr:display-uri>jms-00KL</fr:display-uri>
+        <fr:route>/jms-00KL/</fr:route>
+        <fr:title text="Informal examples of inductively defined functions">Informal examples of inductively defined functions</fr:title>
+        <fr:taxon>Example</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>An inductive definition on the naturals defines a structure for each number <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> by first defining it for <fr:tex display="inline"><![CDATA[n=0]]></fr:tex> and then specifying how to augment a structure for <fr:tex display="inline"><![CDATA[n=m]]></fr:tex> to a structure for <fr:tex display="inline"><![CDATA[n=m+1]]></fr:tex>. From the point of view of computer programming, inductive definitions proceed by <html:em>structural recursion</html:em>. For example, addition of natural numbers can be defined by induction on the second argument (or the first, if you prefer!):</html:p>
+        <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathsf {add} &\colon  \mathbb {N}^2\to \mathbb {N}
+  \\
+  \mathsf {add}{\mathopen {}\left (m,0\right )\mathclose {}} &= m
+  \\
+  \mathsf {add}{\mathopen {}\left (m,n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (m,n\right )\mathclose {}}+1
+ \end {aligned}
+]]></fr:tex>
+        <html:p>Likewise, the function <fr:tex display="inline"><![CDATA[\Sigma \colon  \mathbb {N}\to \mathbb {N}]]></fr:tex> that takes <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> to the sum <fr:tex display="inline"><![CDATA[\sum _{0\leq  i < n}i]]></fr:tex> can be defined inductively:</html:p>
+        <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \Sigma  &\colon  \mathbb {N}\to \mathbb {N}\\
+  \Sigma {\mathopen {}\left (0\right )\mathclose {}} &= 0\\
+  \Sigma {\mathopen {}\left (n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (n,\Sigma {\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex>
+      </fr:mainmatter>
+    </fr:tree>
+    <html:p>In order to make precise the description of <fr:link href="/jms-00JE/" title="Iteration of endo-relations" uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" /></fr:link>, <fr:link href="/jms-00JV/" title="The adjacency matrix of the reflexive-transitive closure" uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" type="local">Algorithm <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" /></fr:link>, and <fr:link href="/jms-00KL/" title="Informal examples of inductively defined functions" uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" type="local">Example <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" /></fr:link> as “inductive definitions”, we must give an actual formal definition of what an inductive definition is.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+          <fr:contributor>
+            <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+          </fr:contributor>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2024</fr:year>
+          <fr:month>1</fr:month>
+          <fr:day>23</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-00KM/</fr:uri>
+        <fr:display-uri>jms-00KM</fr:display-uri>
+        <fr:route>/jms-00KM/</fr:route>
+        <fr:title text="Inductively defined function">Inductively defined <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link></fr:title>
+        <fr:taxon>Definition</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a set, and fix <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A\to  A]]></fr:tex>. The <html:em><html:strong><fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> inductively defined from</html:strong></html:em> <fr:tex display="inline"><![CDATA[a]]></fr:tex> and <fr:tex display="inline"><![CDATA[f]]></fr:tex> is defined to be the unique <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> satisfying the following equations:</html:p>
+        <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}} &= a\\
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}} &= f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex>
+      </fr:mainmatter>
+    </fr:tree>
+    <html:p>Note that our specification of inductively defined <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functions</fr:link> in <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> asserts, without proof, that there does in fact exist a unique function <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> satisfying the described equations. It is not blindingly obvious that this claim is true — and, after seeing a few examples to motivate <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link>, we will explicitly justify <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> by means of an existence theorem.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+          <fr:contributor>
+            <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+          </fr:contributor>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2024</fr:year>
+          <fr:month>1</fr:month>
+          <fr:day>23</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-00KN/</fr:uri>
+        <fr:display-uri>jms-00KN</fr:display-uri>
+        <fr:route>/jms-00KN/</fr:route>
+        <fr:title text="Formal examples of inductively defined functions">Formal examples of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined functions</fr:link></fr:title>
+        <fr:taxon>Example</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>We have seen two informal examples of inductive definitions in <fr:link href="/jms-00KL/" title="Informal examples of inductively defined functions" uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" type="local">Example <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" /></fr:link>; we will now update these examples in light of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link>:</html:p>
+        <html:ul><html:li>For every <fr:tex display="inline"><![CDATA[m\in  \mathbb {N}]]></fr:tex>, <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {add}{\mathopen {}\left (m,-\right )\mathclose {}}\colon \mathbb {N}\to \mathbb {N}]]></fr:tex> is the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{m,{\mathopen {}\left (i,n\right )\mathclose {}}\mapsto  n+1}]]></fr:tex> <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined</fr:link> by <fr:tex display="inline"><![CDATA[m\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (i,n\right )\mathclose {}} = n+1]]></fr:tex>.</html:li>
+ <html:li>The function <fr:tex display="inline"><![CDATA[\Sigma \colon \mathbb {N}\to \mathbb {N}]]></fr:tex> taking <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\sum _{0\leq  i<n}i]]></fr:tex> is the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{0,\mathsf {add}}]]></fr:tex> <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined</fr:link> by <fr:tex display="inline"><![CDATA[0\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathsf {add}\colon  \mathbb {N}\times \mathbb {N}\to \mathbb {N}]]></fr:tex>.</html:li></html:ul>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+          <fr:contributor>
+            <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+          </fr:contributor>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2024</fr:year>
+          <fr:month>1</fr:month>
+          <fr:day>23</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-00KO/</fr:uri>
+        <fr:display-uri>jms-00KO</fr:display-uri>
+        <fr:route>/jms-00KO/</fr:route>
+        <fr:title text="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link></fr:title>
+        <fr:taxon>Definition</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>Given an element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A \to  A]]></fr:tex>, we call a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> <html:em><html:strong><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></html:strong></html:em> whenever we have both <fr:tex display="inline"><![CDATA[0\mathrel {R}a]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {R}x\implies  {\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}f{\mathopen {}\left (n,x\right )\mathclose {}}]]></fr:tex> for all <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>.</html:p>
+      </fr:mainmatter>
+    </fr:tree>
+    <html:p>In light of <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" /></fr:link>, we see that <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> is defining <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> to be the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>. We still have to show that this exists.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+          <fr:contributor>
+            <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+          </fr:contributor>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2024</fr:year>
+          <fr:month>1</fr:month>
+          <fr:day>23</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-00KP/</fr:uri>
+        <fr:display-uri>jms-00KP</fr:display-uri>
+        <fr:route>/jms-00KP/</fr:route>
+        <fr:title text="Existence of inductively defined functions">Existence of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined functions</fr:link></fr:title>
+        <fr:taxon>Theorem</fr:taxon>
+      </fr:frontmatter>
+      <fr:mainmatter><html:p>Given an element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A\to  A]]></fr:tex>, now let <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> be the intersection of all the <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relations</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex>.</html:p><html:ol><html:li>The <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link> and <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>, and therefore a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>.</html:li>
+ <html:li>The <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\to  A]]></fr:tex> is the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>, i.e. it is the unique <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> satisfying both <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}}=a]]></fr:tex> and <fr:tex display="inline"><![CDATA[\forall  n\in \mathbb {N}\mathpunct {.} \mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}}=f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}{n}\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>We first notice that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is itself <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>, which can be seen by observing that the intersection of a set of <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relations</fr:link> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. With this in hand, we proceed.</html:p>
+
+ <html:ol><html:li><html:p>We must show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>.</html:p>
+
+   <html:ol><html:li>To show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>, we must show that for all <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex>, if <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} x]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}y]]></fr:tex>, then <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>. We proceed to prove <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n\right )\mathclose {}} = \forall  x,y\in  A\mathpunct {.} n\mathrel {\mathbf {\rho }_{a,f}} x \land  n\mathrel {\mathbf {\rho }_{a,f}}y\implies  x=y]]></fr:tex> by induction on <html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>.</html:span>
+
+     <html:ol><html:li><html:p>For the base case, we fix <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}} y]]></fr:tex> to check that <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>. By definition, we know that for any <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> we both <fr:tex display="inline"><![CDATA[0\mathrel {R}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[0\mathrel {R}y]]></fr:tex>.</html:p>
+       <html:p>We choose <fr:tex display="inline"><![CDATA[R]]></fr:tex> be the union of <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (0,a\right )\mathclose {}}\right \}\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (n,x\right )\mathclose {}}\,\middle \vert \,n > 0 \land  n\mathrel {\mathbf {\rho }_{a,f}} x\right \}\mathclose {}}]]></fr:tex>, which is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>; we have used the fact that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. As this union is disjoint, we can see that <fr:tex display="inline"><![CDATA[0\mathrel {R}z]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[z=a]]></fr:tex>, so we have <fr:tex display="inline"><![CDATA[x=a=y]]></fr:tex>.</html:p></html:li>
+      <html:li><html:p>In the inductive step, we assume <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n\right )\mathclose {}}]]></fr:tex> to prove <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n+1\right )\mathclose {}}]]></fr:tex>. Fixing <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}y]]></fr:tex>, we must show that <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>.</html:p>
+       <html:p>We know that for any <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> we have both <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}y]]></fr:tex>.</html:p>
+
+       <html:p>We choose <fr:tex display="inline"><![CDATA[R]]></fr:tex> to be the union of <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (m+1,f{\mathopen {}\left (m,z\right )\mathclose {}}\right )\mathclose {}}\,\middle \vert \,m=n\land  m\mathrel {\mathbf {\rho }_{a,f}}{z}\right \}\mathclose {}}]]></fr:tex> with <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (m,z\right )\mathclose {}}\,\middle \vert \,m\mathrel {\mathbf {\rho }_{a,f}}z\land  m\not =n+1\right \}\mathclose {}}]]></fr:tex>, noting that <fr:tex display="inline"><![CDATA[R]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> because <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. As the union defining <fr:tex display="inline"><![CDATA[R]]></fr:tex> is disjoint, for any <fr:tex display="inline"><![CDATA[z\in  A]]></fr:tex> we know that <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}z]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[z=f{\mathopen {}\left (n,z'\right )\mathclose {}}]]></fr:tex> for some <fr:tex display="inline"><![CDATA[z']]></fr:tex> with <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} z']]></fr:tex>.</html:p>
+       <html:p>Therefore, we have some <fr:tex display="inline"><![CDATA[x',y'\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[x=f{\mathopen {}\left (n,x'\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[y=f{\mathopen {}\left (n,y'\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} x']]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}y']]></fr:tex>. By our inductive hypothesis, we know that <fr:tex display="inline"><![CDATA[x'=y']]></fr:tex>, and hence <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>.</html:p></html:li></html:ol></html:li>
+
+    <html:li><html:p>To show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\rightharpoonup } A]]></fr:tex> is <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>, we must show that for every <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}{\downarrow }]]></fr:tex>. This is proved by induction on <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>:</html:p>
+     <html:ol><html:li>In the base case, we deduce <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}}{\downarrow }]]></fr:tex> from our asumption that <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}}a]]></fr:tex>.</html:li>
+      <html:li>In the inductive step, we assume that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}{\downarrow }]]></fr:tex> and must show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}}{\downarrow }]]></fr:tex>. By our assumption, we have <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}\mathbf {\rho }_{a,f}{{\mathopen {}\left (n\right )\mathclose {}}}]]></fr:tex>; because <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link>, we may conclude <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol></html:li></html:ol></html:li>
+
+  <html:li>It remains to show that the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> is the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>. This too can be proved by induction, as <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functionality</fr:link> and <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closure</html:span></fr:link> fully specify the <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">values</fr:link> of <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> on all inputs.</html:li></html:ol>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+    </fr:tree>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>24</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00K6/</fr:uri>
+            <fr:display-uri>jms-00K6</fr:display-uri>
+            <fr:route>/jms-00K6/</fr:route>
+            <fr:title text="Lecture 15: functions and inductive definitions">Lecture 15: functions and inductive definitions</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+ 
+ 
+ <fr:tree show-heading="false" show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>21</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00K0/</fr:uri><fr:display-uri>jms-00K0</fr:display-uri><fr:route>/jms-00K0/</fr:route><fr:title text="Lectures on discrete mathematics › Authorship statement"><fr:link href="/jms-00JB/" title="Lectures on discrete mathematics" uri="https://www.jonmsterling.com/jms-00JB/" display-uri="jms-00JB" type="local">Lectures on discrete mathematics</fr:link> › Authorship statement</fr:title></fr:frontmatter><fr:mainmatter><html:p>These lecture notes were prepared by <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link> using <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>’s lectures as source material. Any mistakes were introduced by <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>.</html:p></fr:mainmatter></fr:tree>
+<fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KJ/</fr:uri><fr:display-uri>jms-00KJ</fr:display-uri><fr:route>/jms-00KJ/</fr:route><fr:title text="Partial and total functions">Partial and total functions</fr:title></fr:frontmatter><fr:mainmatter><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00K7/</fr:uri><fr:display-uri>jms-00K7</fr:display-uri><fr:route>/jms-00K7/</fr:route><fr:title text="Partial function">Partial function</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>A <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex> is said to be <html:em><html:strong>functional</html:strong></html:em> when it relates an element of <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <html:em>at most</html:em> one element of <fr:tex display="inline"><![CDATA[B]]></fr:tex>:</html:p><fr:tex display="block"><![CDATA[
+ \forall  a\in  A\mathpunct {.}
+ \forall  b_1,b_2\in  B\mathpunct {.}
+ a\mathrel {R}b_1\land  a\mathrel {R}b_2
+ \implies 
+ b_1 = b_2
+]]></fr:tex><html:p>We refer to a functional <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> as a <html:em><html:strong>partial function</html:strong></html:em>; we often use letters like <fr:tex display="inline"><![CDATA[f,g]]></fr:tex> to refer to partial functions rather than <fr:tex display="inline"><![CDATA[R,S]]></fr:tex>. When we write <html:span style="white-space: nowrap">“<fr:tex display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex>”</html:span>, we mean that <fr:tex display="inline"><![CDATA[f]]></fr:tex> is a partial function from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex>.</html:p></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00K8/</fr:uri><fr:display-uri>jms-00K8</fr:display-uri><fr:route>/jms-00K8/</fr:route><fr:title text="Closure of partial functions under identity and composition">Closure of <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> under <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> and <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link></fr:title><fr:taxon>Theorem</fr:taxon></fr:frontmatter><fr:mainmatter><html:p><fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">Partial functions</fr:link> are closed under <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> and <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link> in the following sense:</html:p><html:ol><html:li>For any set <fr:tex display="inline"><![CDATA[A]]></fr:tex>, the <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity relation</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {id}_{A} \colon  A\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>.</html:li>
+ <html:li>For any sets <fr:tex display="inline"><![CDATA[A,B,C]]></fr:tex> and <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional relations</fr:link> <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> and <fr:tex display="inline"><![CDATA[g \colon  B\mathbin {\rightharpoonup } C]]></fr:tex>, the <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">relational composite</fr:link> <fr:tex display="inline"><![CDATA[g\circ  f \colon  A\mathbin {\nrightarrow } C]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>.</html:li></html:ol>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>First, we prove that each <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity relation</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {id}_{A}\colon  A\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>. Fixing <fr:tex display="inline"><![CDATA[a,a_1,a_2\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a=a_1]]></fr:tex> and <fr:tex display="inline"><![CDATA[a=a_2]]></fr:tex>, we must show that <fr:tex display="inline"><![CDATA[a_1=a_2]]></fr:tex>; this follows from transitivity and symmetry of equality.</html:p>
+ <html:p>Next, we fix <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> and <fr:tex display="inline"><![CDATA[g \colon  B\mathbin {\rightharpoonup } C]]></fr:tex> to check that <fr:tex display="inline"><![CDATA[g\circ  f \colon  A\mathbin {\nrightarrow } C]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>. Fixing <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and <fr:tex display="inline"><![CDATA[c_1,c_2\in  C]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {{\mathopen {}\left (g\circ  f\right )\mathclose {}}}c_1]]></fr:tex> and <fr:tex display="inline"><![CDATA[a\mathrel {{\mathopen {}\left (g\circ  f\right )\mathclose {}}}c_2]]></fr:tex>, we must check that <fr:tex display="inline"><![CDATA[c_1=c_2]]></fr:tex>. By definition of the relational composite, we have <fr:tex display="inline"><![CDATA[b_1,b_2\in  B]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {f}b_1\mathrel {g}c_1]]></fr:tex> and <fr:tex display="inline"><![CDATA[a\mathrel {f}b_2\mathrel {g}c_2]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> is functional, we note that <fr:tex display="inline"><![CDATA[b_1 = b_2]]></fr:tex>. Writing <fr:tex display="inline"><![CDATA[b=b_1=b_2]]></fr:tex>, we therefore have <fr:tex display="inline"><![CDATA[b\mathrel {g}c_1]]></fr:tex> and <fr:tex display="inline"><![CDATA[b\mathrel {g}c_2]]></fr:tex>. Because <fr:tex display="inline"><![CDATA[g\colon  B\mathbin {\rightharpoonup } C]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>, we conclude that <fr:tex display="inline"><![CDATA[c_1=c_2]]></fr:tex>.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KA/</fr:uri><fr:display-uri>jms-00KA</fr:display-uri><fr:route>/jms-00KA/</fr:route><fr:title text="Values of partial functions">Values of <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link></fr:title><fr:taxon>Notation</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> be a <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link>. Given <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>, we will write <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex> to mean that <fr:tex display="inline"><![CDATA[f]]></fr:tex> is <html:em><html:strong>defined</html:strong></html:em> at <fr:tex display="inline"><![CDATA[a]]></fr:tex>, i.e. there exists some (necessarily unique) <fr:tex display="inline"><![CDATA[b\in  B]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {f}b]]></fr:tex>. When <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex> holds, we may write <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}]]></fr:tex> to mean the unique <fr:tex display="inline"><![CDATA[b]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {f}b]]></fr:tex>, which we shall refer to as the <html:em><html:strong>value</html:strong></html:em> of <fr:tex display="inline"><![CDATA[b]]></fr:tex>.</html:p></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KB/</fr:uri><fr:display-uri>jms-00KB</fr:display-uri><fr:route>/jms-00KB/</fr:route><fr:title text="Domain of definition of a partial function">Domain of definition of a <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link></fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>The <html:em><html:strong>domain of definition</html:strong></html:em> of a <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link> <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> is the subset <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{a\in  A\,\middle \vert \,f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }\right \}\mathclose {}}\subseteq  A]]></fr:tex> spanned by elements of the domain on which the partial function is <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">defined</fr:link>.</html:p></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00K9/</fr:uri><fr:display-uri>jms-00K9</fr:display-uri><fr:route>/jms-00K9/</fr:route><fr:title text="Partial functional extensionality">Partial functional extensionality</fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[f,g\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> be two <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link>. We have <fr:tex display="inline"><![CDATA[f=g]]></fr:tex> if and only if for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>, <fr:tex display="inline"><![CDATA[f]]></fr:tex> is <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">defined</fr:link> at <fr:tex display="inline"><![CDATA[a]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[g]]></fr:tex> is defined at <fr:tex display="inline"><![CDATA[a]]></fr:tex> and, moreover, the <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">value</fr:link> of <fr:tex display="inline"><![CDATA[f]]></fr:tex> at <fr:tex display="inline"><![CDATA[a]]></fr:tex> is the same as the <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">value</fr:link> of <fr:tex display="inline"><![CDATA[g]]></fr:tex> at <fr:tex display="inline"><![CDATA[a]]></fr:tex>:</html:p><fr:tex display="block"><![CDATA[
+ f=g
+ \Longleftrightarrow 
+ \forall  a\in  A\mathpunct {.}
+ {\mathopen {}\left (
+  f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow } \Leftrightarrow  g{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }
+ \right )\mathclose {}}
+ \land 
+ f{\mathopen {}\left (a\right )\mathclose {}} = g{\mathopen {}\left (a\right )\mathclose {}}
+]]></fr:tex>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>One direction is trivial. In the other direction, we assume
+  <fr:tex display="block"><![CDATA[
+   \forall  a\in  A\mathpunct {.}
+   {\mathopen {}\left (
+    f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow } \Leftrightarrow  g{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }
+   \right )\mathclose {}}
+   \land 
+   f{\mathopen {}\left (a\right )\mathclose {}} = g{\mathopen {}\left (a\right )\mathclose {}}
+  ]]></fr:tex>
+  to deduce <fr:tex display="inline"><![CDATA[f=g]]></fr:tex>. By <fr:link href="/jms-00IM/" title="Relational extensionality" uri="https://www.jonmsterling.com/jms-00IM/" display-uri="jms-00IM" type="local">relational extensionality</fr:link>, it suffices to show
+  <fr:tex display="block"><![CDATA[
+   \forall  a\in  A\mathpunct {.}
+   \forall  b\in  B\mathpunct {.}
+   a\mathrel {f}b \Longleftrightarrow  a\mathrel {g}b.
+  ]]></fr:tex></html:p>
+
+ <html:p>Fixing <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and <fr:tex display="inline"><![CDATA[b\in  B]]></fr:tex>, we assume <fr:tex display="inline"><![CDATA[a\mathrel {f} b]]></fr:tex> to prove <fr:tex display="inline"><![CDATA[a\mathrel {g}b]]></fr:tex>. By assumption, we deduce <fr:tex display="inline"><![CDATA[g{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex> from <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex>, so there exists <fr:tex display="inline"><![CDATA[b'=g{\mathopen {}\left (a\right )\mathclose {}}]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {g}b']]></fr:tex>. By our other assumption, we know that <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}=g{\mathopen {}\left (a\right )\mathclose {}}]]></fr:tex>, so we conclude <fr:tex display="inline"><![CDATA[a\mathrel {g}b]]></fr:tex>. The other direction works the same way.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KD/</fr:uri><fr:display-uri>jms-00KD</fr:display-uri><fr:route>/jms-00KD/</fr:route><fr:title text="Examples of partial functions">Examples of <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link></fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>The following are examples of partial functions:</html:p><html:ol><html:li>rational division <fr:tex display="inline"><![CDATA[{\div }\colon  \mathbb {Q}\times \mathbb {Q}\mathbin {\rightharpoonup }\mathbb {Q}]]></fr:tex> defined by <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left ({\mathopen {}\left (r,s\right )\mathclose {}},t\right )\mathclose {}}\in {\mathopen {}\left (\mathbb {Q}\times \mathbb {Q}\right )\mathclose {}}\times \mathbb {Q}\,\middle \vert \,r=s\cdot  t\right \}\mathclose {}}]]></fr:tex> with <fr:link href="/jms-00KB/" title="Domain of definition of a partial function" uri="https://www.jonmsterling.com/jms-00KB/" display-uri="jms-00KB" type="local">domain of definition</fr:link> <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (r,s\right )\mathclose {}}\in \mathbb {Q}\times \mathbb {Q}\,\middle \vert \,s\not =0\right \}\mathclose {}}]]></fr:tex>;</html:li>
+ <html:li>integer square root <fr:tex display="inline"><![CDATA[\sqrt {-}\colon \mathbb {Z}\mathbin {\rightharpoonup }\mathbb {Z}]]></fr:tex> defined by <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (m,n\right )\mathclose {}}\in \mathbb {Z}\times \mathbb {Z}\,\middle \vert \,m=n^2\right \}\mathclose {}}]]></fr:tex> with <fr:link href="/jms-00KB/" title="Domain of definition of a partial function" uri="https://www.jonmsterling.com/jms-00KB/" display-uri="jms-00KB" type="local">domain of definition</fr:link> <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{m\in \mathbb {Z}\,\middle \vert \,\exists  n\in \mathbb {Z}\mathpunct {.} m=n^2\right \}\mathclose {}}]]></fr:tex>;</html:li>
+ <html:li>real square root <fr:tex display="inline"><![CDATA[\sqrt {-}\colon \mathbb {R}\mathbin {\rightharpoonup }\mathbb {R}]]></fr:tex> defined by <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (x,y\right )\mathclose {}}\in \mathbb {R}\times \mathbb {R}\,\middle \vert \,x=y^2\right \}\mathclose {}}]]></fr:tex> with <fr:link href="/jms-00KB/" title="Domain of definition of a partial function" uri="https://www.jonmsterling.com/jms-00KB/" display-uri="jms-00KB" type="local">domain of definition</fr:link> <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{x\in \mathbb {R}\,\middle \vert \,x\geq  0\right \}\mathclose {}}]]></fr:tex>.</html:li></html:ol></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KE/</fr:uri><fr:display-uri>jms-00KE</fr:display-uri><fr:route>/jms-00KE/</fr:route><fr:title text="Cardinality of the set of partial functions">Cardinality of the set of <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>For all finite sets <fr:tex display="inline"><![CDATA[A]]></fr:tex> and <fr:tex display="inline"><![CDATA[B]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[\mathord {\#}{\mathopen {}\left (A\mathbin {\rightharpoonup } B\right )\mathclose {}}={\mathopen {}\left (\mathord {\#}{B}+1\right )\mathclose {}}^{\mathord {\#}{A}}]]></fr:tex>, recalling that <fr:tex display="inline"><![CDATA[\mathord {\#}{S}]]></fr:tex> is the cardinality of a set <fr:tex display="inline"><![CDATA[S]]></fr:tex>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>A partial function <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> associates to each element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> either a unique element <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}\in  B]]></fr:tex> when <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex>, or it associates nothing. Therefore, we have <fr:tex display="inline"><![CDATA[\mathord {\#}{A}]]></fr:tex> many possibilities, each followed by <fr:tex display="inline"><![CDATA[\mathord {\#}{B}+1]]></fr:tex> many possibilities.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KF/</fr:uri><fr:display-uri>jms-00KF</fr:display-uri><fr:route>/jms-00KF/</fr:route><fr:title text="Function">Function</fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>A <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link> <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> is called <html:em><html:strong>total</html:strong></html:em> whenever its <fr:link href="/jms-00KB/" title="Domain of definition of a partial function" uri="https://www.jonmsterling.com/jms-00KB/" display-uri="jms-00KB" type="local">domain of definition</fr:link> coincides with its domain (source), i.e. we have <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex> for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>. In this case, we will write <fr:tex display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex> and refer to it as a <html:em><html:strong>function</html:strong></html:em> or a <html:em><html:strong>map</html:strong></html:em>. Sometimes, we redundantly refer to it as a <html:em><html:strong>total function</html:strong></html:em>.</html:p><html:p>Just as we write <fr:tex display="inline"><![CDATA[\mathrm {Rel}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A\mathbin {\rightharpoonup } B\right )\mathclose {}}]]></fr:tex>for the sets of <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relations</fr:link> and <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex> respectively, we shall write <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A\to  B\right )\mathclose {}}]]></fr:tex> for the set of functions from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex>.</html:p></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KG/</fr:uri><fr:display-uri>jms-00KG</fr:display-uri><fr:route>/jms-00KG/</fr:route><fr:title text="functions are uniquely-valued relations"><fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functions</fr:link> are uniquely-valued <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relations</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Any <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } B]]></fr:tex> is a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> if and only if for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>, there exists some unique <fr:tex display="inline"><![CDATA[b\in  B]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {R}b]]></fr:tex>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>Symbolically, our second criterion is <fr:tex display="inline"><![CDATA[\forall  a\in  A\mathpunct {.} \exists ! b\in  B\mathpunct {.} a\mathrel {R}b]]></fr:tex>. Unfolding the definition of unique existence, this is equivalent to <fr:tex display="block"><![CDATA[\forall  a\in  A\mathpunct {.} {\mathopen {}\left (\forall  b,b'\in  B\mathpunct {.} a\mathrel {R}b\land  a\mathrel {B}b'\implies  b=b'\right )\mathclose {}}\land  {\mathopen {}\left (\exists  b\in  B\mathpunct {.} a\mathrel {R}b\right )\mathclose {}}]]></fr:tex> which is, by the distributivity of universal quantification over conjunction, equivalent to the claim that <fr:tex display="inline"><![CDATA[R]]></fr:tex> is both <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link> and <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KH/</fr:uri><fr:display-uri>jms-00KH</fr:display-uri><fr:route>/jms-00KH/</fr:route><fr:title text="Cardinality of the set of functions">Cardinality of the set of <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functions</fr:link></fr:title><fr:taxon>Lemma</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>For all finite sets <fr:tex display="inline"><![CDATA[A]]></fr:tex> and <fr:tex display="inline"><![CDATA[B]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[\#{\mathopen {}\left (A\to  B\right )\mathclose {}} = \#B^{\#A}]]></fr:tex>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>A function <fr:tex display="inline"><![CDATA[f\colon  A \to  B]]></fr:tex> associates to each element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> a single element <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}\in  B]]></fr:tex>. Therefore, we have <fr:tex display="inline"><![CDATA[\#A]]></fr:tex> possibilities, each followed by <fr:tex display="inline"><![CDATA[\#B]]></fr:tex> possibilities.</html:p>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KI/</fr:uri><fr:display-uri>jms-00KI</fr:display-uri><fr:route>/jms-00KI/</fr:route><fr:title text="Closure of functions under identity and composition">Closure of <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functions</fr:link> under <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> and <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link></fr:title><fr:taxon>Theorem</fr:taxon></fr:frontmatter><fr:mainmatter><html:p><fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">Functions</fr:link> are closed under <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> and <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>22</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>We have already seen in <fr:link href="/jms-00K8/" title="Closure of partial functions under identity and composition" uri="https://www.jonmsterling.com/jms-00K8/" display-uri="jms-00K8" type="local">Theorem <fr:contextual-number uri="https://www.jonmsterling.com/jms-00K8/" display-uri="jms-00K8" /></fr:link> that <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> are closed under <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> and <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link>. Therefore, it suffices to argue that the <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity</fr:link> <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link> is total, and that the <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">composition</fr:link> of two <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link> <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> is <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>.</html:p>
+
+ <html:ol><html:li>We must show that for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>, there exists <fr:tex display="inline"><![CDATA[a' \in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {\mathsf {id}_{A}} a']]></fr:tex>; unfolding the definition of the <fr:link href="/jms-00II/" title="The identity relation" uri="https://www.jonmsterling.com/jms-00II/" display-uri="jms-00II" type="local">identity relation</fr:link> we may choose <fr:tex display="inline"><![CDATA[a' = a]]></fr:tex>.</html:li>
+  <html:li>Given <fr:tex display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex> and <fr:tex display="inline"><![CDATA[g\colon  A \to  C]]></fr:tex>, we must check that for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>, there exists some <fr:tex display="inline"><![CDATA[c\in  C]]></fr:tex> such that <fr:tex display="inline"><![CDATA[a\mathrel {{\mathopen {}\left (g\circ  f\right )\mathclose {}}}c]]></fr:tex>. By the definition of <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">relational composition</fr:link>, we must show that there exists <fr:tex display="inline"><![CDATA[b\in  B]]></fr:tex> and <fr:tex display="inline"><![CDATA[c\in  C]]></fr:tex> and such that <fr:tex display="inline"><![CDATA[a\mathrel {f}b]]></fr:tex> and <fr:tex display="inline"><![CDATA[b\mathrel {c}]]></fr:tex>. We choose <fr:tex display="inline"><![CDATA[b = f{\mathopen {}\left (a\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[c = g{\mathopen {}\left (b\right )\mathclose {}}=g{\mathopen {}\left (f{\mathopen {}\left (a\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KK/</fr:uri><fr:display-uri>jms-00KK</fr:display-uri><fr:route>/jms-00KK/</fr:route><fr:title text="Inductive definitions">Inductive definitions</fr:title></fr:frontmatter><fr:mainmatter><html:p>We have already seen some inductive definitions:</html:p><html:ul><html:li><fr:link href="/jms-00JE/" title="Iteration of endo-relations" uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" /></fr:link> defines <html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[n]]></fr:tex>-fold iterations</html:span> of <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">endo-relations</fr:link> by induction on <fr:tex display="inline"><![CDATA[n]]></fr:tex>.</html:li>
+ <html:li><fr:link href="/jms-00JV/" title="The adjacency matrix of the reflexive-transitive closure" uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" type="local">Algorithm <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" /></fr:link> computes the <fr:link href="/jms-00JN/" title="Adjacency matrix of a finite directed graph" uri="https://www.jonmsterling.com/jms-00JN/" display-uri="jms-00JN" type="local">adjacency matrix</fr:link> of the <fr:link href="/jms-00JH/" title="The reflexive-transitive closure of an endo-relation" uri="https://www.jonmsterling.com/jms-00JH/" display-uri="jms-00JH" type="local">reflexive-transitive closure</fr:link> of a finite <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">directed graph</fr:link> by induction on the number of vertices in the graph.</html:li></html:ul><html:p>In this section, we will study this concept in more detail.</html:p><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KL/</fr:uri><fr:display-uri>jms-00KL</fr:display-uri><fr:route>/jms-00KL/</fr:route><fr:title text="Informal examples of inductively defined functions">Informal examples of inductively defined functions</fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>An inductive definition on the naturals defines a structure for each number <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> by first defining it for <fr:tex display="inline"><![CDATA[n=0]]></fr:tex> and then specifying how to augment a structure for <fr:tex display="inline"><![CDATA[n=m]]></fr:tex> to a structure for <fr:tex display="inline"><![CDATA[n=m+1]]></fr:tex>. From the point of view of computer programming, inductive definitions proceed by <html:em>structural recursion</html:em>. For example, addition of natural numbers can be defined by induction on the second argument (or the first, if you prefer!):</html:p><fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathsf {add} &\colon  \mathbb {N}^2\to \mathbb {N}
+  \\
+  \mathsf {add}{\mathopen {}\left (m,0\right )\mathclose {}} &= m
+  \\
+  \mathsf {add}{\mathopen {}\left (m,n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (m,n\right )\mathclose {}}+1
+ \end {aligned}
+]]></fr:tex><html:p>Likewise, the function <fr:tex display="inline"><![CDATA[\Sigma \colon  \mathbb {N}\to \mathbb {N}]]></fr:tex> that takes <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> to the sum <fr:tex display="inline"><![CDATA[\sum _{0\leq  i < n}i]]></fr:tex> can be defined inductively:</html:p><fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \Sigma  &\colon  \mathbb {N}\to \mathbb {N}\\
+  \Sigma {\mathopen {}\left (0\right )\mathclose {}} &= 0\\
+  \Sigma {\mathopen {}\left (n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (n,\Sigma {\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex></fr:mainmatter></fr:tree><html:p>In order to make precise the description of <fr:link href="/jms-00JE/" title="Iteration of endo-relations" uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JE/" display-uri="jms-00JE" /></fr:link>, <fr:link href="/jms-00JV/" title="The adjacency matrix of the reflexive-transitive closure" uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" type="local">Algorithm <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JV/" display-uri="jms-00JV" /></fr:link>, and <fr:link href="/jms-00KL/" title="Informal examples of inductively defined functions" uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" type="local">Example <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" /></fr:link> as “inductive definitions”, we must give an actual formal definition of what an inductive definition is.</html:p><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KM/</fr:uri><fr:display-uri>jms-00KM</fr:display-uri><fr:route>/jms-00KM/</fr:route><fr:title text="Inductively defined function">Inductively defined <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link></fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a set, and fix <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A\to  A]]></fr:tex>. The <html:em><html:strong><fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> inductively defined from</html:strong></html:em> <fr:tex display="inline"><![CDATA[a]]></fr:tex> and <fr:tex display="inline"><![CDATA[f]]></fr:tex> is defined to be the unique <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> satisfying the following equations:</html:p><fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}} &= a\\
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}} &= f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex></fr:mainmatter></fr:tree><html:p>Note that our specification of inductively defined <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functions</fr:link> in <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> asserts, without proof, that there does in fact exist a unique function <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> satisfying the described equations. It is not blindingly obvious that this claim is true — and, after seeing a few examples to motivate <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link>, we will explicitly justify <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> by means of an existence theorem.</html:p><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KN/</fr:uri><fr:display-uri>jms-00KN</fr:display-uri><fr:route>/jms-00KN/</fr:route><fr:title text="Formal examples of inductively defined functions">Formal examples of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined functions</fr:link></fr:title><fr:taxon>Example</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>We have seen two informal examples of inductive definitions in <fr:link href="/jms-00KL/" title="Informal examples of inductively defined functions" uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" type="local">Example <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KL/" display-uri="jms-00KL" /></fr:link>; we will now update these examples in light of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link>:</html:p><html:ul><html:li>For every <fr:tex display="inline"><![CDATA[m\in  \mathbb {N}]]></fr:tex>, <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathsf {add}{\mathopen {}\left (m,-\right )\mathclose {}}\colon \mathbb {N}\to \mathbb {N}]]></fr:tex> is the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{m,{\mathopen {}\left (i,n\right )\mathclose {}}\mapsto  n+1}]]></fr:tex> <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined</fr:link> by <fr:tex display="inline"><![CDATA[m\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (i,n\right )\mathclose {}} = n+1]]></fr:tex>.</html:li>
+ <html:li>The function <fr:tex display="inline"><![CDATA[\Sigma \colon \mathbb {N}\to \mathbb {N}]]></fr:tex> taking <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> to <fr:tex display="inline"><![CDATA[\sum _{0\leq  i<n}i]]></fr:tex> is the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{0,\mathsf {add}}]]></fr:tex> <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined</fr:link> by <fr:tex display="inline"><![CDATA[0\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[\mathsf {add}\colon  \mathbb {N}\times \mathbb {N}\to \mathbb {N}]]></fr:tex>.</html:li></html:ul></fr:mainmatter></fr:tree><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KO/</fr:uri><fr:display-uri>jms-00KO</fr:display-uri><fr:route>/jms-00KO/</fr:route><fr:title text="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link></fr:title><fr:taxon>Definition</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Given an element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A \to  A]]></fr:tex>, we call a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> <html:em><html:strong><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></html:strong></html:em> whenever we have both <fr:tex display="inline"><![CDATA[0\mathrel {R}a]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {R}x\implies  {\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}f{\mathopen {}\left (n,x\right )\mathclose {}}]]></fr:tex> for all <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>.</html:p></fr:mainmatter></fr:tree><html:p>In light of <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" /></fr:link>, we see that <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" /></fr:link> is defining <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> to be the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>. We still have to show that this exists.</html:p><fr:tree show-metadata="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author><fr:contributor><fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link></fr:contributor></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:uri>https://www.jonmsterling.com/jms-00KP/</fr:uri><fr:display-uri>jms-00KP</fr:display-uri><fr:route>/jms-00KP/</fr:route><fr:title text="Existence of inductively defined functions">Existence of <fr:link href="/jms-00KM/" title="Inductively defined function" uri="https://www.jonmsterling.com/jms-00KM/" display-uri="jms-00KM" type="local">inductively defined functions</fr:link></fr:title><fr:taxon>Theorem</fr:taxon></fr:frontmatter><fr:mainmatter><html:p>Given an element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A\to  A]]></fr:tex>, now let <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> be the intersection of all the <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relations</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex>.</html:p><html:ol><html:li>The <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link> and <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>, and therefore a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>.</html:li>
+ <html:li>The <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\to  A]]></fr:tex> is the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>, i.e. it is the unique <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> satisfying both <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}}=a]]></fr:tex> and <fr:tex display="inline"><![CDATA[\forall  n\in \mathbb {N}\mathpunct {.} \mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}}=f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}{n}\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>23</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>We first notice that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is itself <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>, which can be seen by observing that the intersection of a set of <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relations</fr:link> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. With this in hand, we proceed.</html:p>
+
+ <html:ol><html:li><html:p>We must show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>.</html:p>
+
+   <html:ol><html:li>To show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> is <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">functional</fr:link>, we must show that for all <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex>, if <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} x]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}y]]></fr:tex>, then <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>. We proceed to prove <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n\right )\mathclose {}} = \forall  x,y\in  A\mathpunct {.} n\mathrel {\mathbf {\rho }_{a,f}} x \land  n\mathrel {\mathbf {\rho }_{a,f}}y\implies  x=y]]></fr:tex> by induction on <html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>.</html:span>
+
+     <html:ol><html:li><html:p>For the base case, we fix <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}} y]]></fr:tex> to check that <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>. By definition, we know that for any <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> we both <fr:tex display="inline"><![CDATA[0\mathrel {R}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[0\mathrel {R}y]]></fr:tex>.</html:p>
+       <html:p>We choose <fr:tex display="inline"><![CDATA[R]]></fr:tex> be the union of <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (0,a\right )\mathclose {}}\right \}\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (n,x\right )\mathclose {}}\,\middle \vert \,n > 0 \land  n\mathrel {\mathbf {\rho }_{a,f}} x\right \}\mathclose {}}]]></fr:tex>, which is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>; we have used the fact that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. As this union is disjoint, we can see that <fr:tex display="inline"><![CDATA[0\mathrel {R}z]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[z=a]]></fr:tex>, so we have <fr:tex display="inline"><![CDATA[x=a=y]]></fr:tex>.</html:p></html:li>
+      <html:li><html:p>In the inductive step, we assume <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n\right )\mathclose {}}]]></fr:tex> to prove <fr:tex display="inline"><![CDATA[P{\mathopen {}\left (n+1\right )\mathclose {}}]]></fr:tex>. Fixing <fr:tex display="inline"><![CDATA[x,y\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}y]]></fr:tex>, we must show that <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>.</html:p>
+       <html:p>We know that for any <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> we have both <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}x]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}y]]></fr:tex>.</html:p>
+
+       <html:p>We choose <fr:tex display="inline"><![CDATA[R]]></fr:tex> to be the union of <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (m+1,f{\mathopen {}\left (m,z\right )\mathclose {}}\right )\mathclose {}}\,\middle \vert \,m=n\land  m\mathrel {\mathbf {\rho }_{a,f}}{z}\right \}\mathclose {}}]]></fr:tex> with <fr:tex display="inline"><![CDATA[{\mathopen {}\left \{{\mathopen {}\left (m,z\right )\mathclose {}}\,\middle \vert \,m\mathrel {\mathbf {\rho }_{a,f}}z\land  m\not =n+1\right \}\mathclose {}}]]></fr:tex>, noting that <fr:tex display="inline"><![CDATA[R]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> because <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link>. As the union defining <fr:tex display="inline"><![CDATA[R]]></fr:tex> is disjoint, for any <fr:tex display="inline"><![CDATA[z\in  A]]></fr:tex> we know that <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}z]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[z=f{\mathopen {}\left (n,z'\right )\mathclose {}}]]></fr:tex> for some <fr:tex display="inline"><![CDATA[z']]></fr:tex> with <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} z']]></fr:tex>.</html:p>
+       <html:p>Therefore, we have some <fr:tex display="inline"><![CDATA[x',y'\in  A]]></fr:tex> such that <fr:tex display="inline"><![CDATA[x=f{\mathopen {}\left (n,x'\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[y=f{\mathopen {}\left (n,y'\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}} x']]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}y']]></fr:tex>. By our inductive hypothesis, we know that <fr:tex display="inline"><![CDATA[x'=y']]></fr:tex>, and hence <fr:tex display="inline"><![CDATA[x=y]]></fr:tex>.</html:p></html:li></html:ol></html:li>
+
+    <html:li><html:p>To show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon  \mathbb {N}\mathbin {\rightharpoonup } A]]></fr:tex> is <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">total</fr:link>, we must show that for every <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}{\downarrow }]]></fr:tex>. This is proved by induction on <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>:</html:p>
+     <html:ol><html:li>In the base case, we deduce <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}}{\downarrow }]]></fr:tex> from our asumption that <fr:tex display="inline"><![CDATA[0\mathrel {\mathbf {\rho }_{a,f}}a]]></fr:tex>.</html:li>
+      <html:li>In the inductive step, we assume that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}{\downarrow }]]></fr:tex> and must show that <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}}{\downarrow }]]></fr:tex>. By our assumption, we have <fr:tex display="inline"><![CDATA[n\mathrel {\mathbf {\rho }_{a,f}}\mathbf {\rho }_{a,f}{{\mathopen {}\left (n\right )\mathclose {}}}]]></fr:tex>; because <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> is <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> relation</fr:link>, we may conclude <fr:tex display="inline"><![CDATA[{\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {\mathbf {\rho }_{a,f}}f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}\right )\mathclose {}}]]></fr:tex>.</html:li></html:ol></html:li></html:ol></html:li>
+
+  <html:li>It remains to show that the <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> is the unique <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></fr:link> <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link>. This too can be proved by induction, as <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">functionality</fr:link> and <fr:link href="/jms-00KO/" title="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation" uri="https://www.jonmsterling.com/jms-00KO/" display-uri="jms-00KO" type="local"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closure</html:span></fr:link> fully specify the <fr:link href="/jms-00KA/" title="Values of partial functions" uri="https://www.jonmsterling.com/jms-00KA/" display-uri="jms-00KA" type="local">values</fr:link> of <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}]]></fr:tex> on all inputs.</html:li></html:ol>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter></fr:tree></fr:mainmatter></fr:tree></fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>9</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00OE/</fr:uri>
+            <fr:display-uri>jms-00OE</fr:display-uri>
+            <fr:route>/jms-00OE/</fr:route>
+            <fr:title text="Completeness of the subset construction">Completeness of the <fr:link href="/jms-017T/" title="Subset construction" uri="https://www.jonmsterling.com/jms-017T/" display-uri="jms-017T" type="local">subset construction</fr:link></fr:title>
+            <fr:taxon>Lemma</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[M]]></fr:tex> be an <fr:link href="/jms-017O/" title="non-deterministic finite automaton with \varepsilon -transitions" uri="https://www.jonmsterling.com/jms-017O/" display-uri="jms-017O" type="local">NFA<html:sup><fr:tex display="inline"><![CDATA[\varepsilon ]]></fr:tex></html:sup></fr:link>; then <fr:tex display="inline"><![CDATA[\mathcal {L}{\mathopen {}\left (M\right )\mathclose {}}\subseteq \mathcal {L}{\mathopen {}\left (\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex>.</html:p>
+            <fr:tree show-metadata="false" toc="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2024</fr:year>
+                  <fr:month>2</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:taxon>Proof</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>We must show that any string <fr:tex display="inline"><![CDATA[u\in \mathcal {L}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex> lies in <fr:tex display="inline"><![CDATA[\mathcal {L}{\mathopen {}\left (\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}\right )\mathclose {}}]]></fr:tex>.</html:p>
+                <fr:tree show-metadata="false" toc="false" numbered="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:title text="Empty string">Empty string</fr:title>
+                    <fr:taxon>Case</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>If <fr:tex display="inline"><![CDATA[u=\epsilon ]]></fr:tex>, then we have assumed that <fr:tex display="inline"><![CDATA[s_{M}\xRightarrow {\epsilon }q]]></fr:tex> such that <fr:tex display="inline"><![CDATA[q\in F_{M}]]></fr:tex>; therefore, by definition, we have <fr:tex display="inline"><![CDATA[q\in  s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>. Thus we have <fr:tex display="inline"><![CDATA[q\in  s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\cap F_{M}]]></fr:tex> and so it follows by definition that <fr:tex display="inline"><![CDATA[s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\in  F_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false" toc="false" numbered="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2024</fr:year>
+                      <fr:month>2</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:title text="Non-empty string">Non-empty string</fr:title>
+                    <fr:taxon>Case</fr:taxon>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Suppose that <fr:tex display="inline"><![CDATA[u=a_1\cdots  a_n]]></fr:tex>, and so we have transitions <fr:tex display="inline"><![CDATA[s_{M}\xRightarrow {a_1}q_1\xRightarrow {\cdots } q_{n-1}\xRightarrow {a_n}q_n]]></fr:tex> with <fr:tex display="inline"><![CDATA[q_n\in F_{M}]]></fr:tex>.</html:p>
+                    <html:p>We <fr:link href="/jms-00KK/" title="Inductive definitions" uri="https://www.jonmsterling.com/jms-00KK/" display-uri="jms-00KK" type="local">inductively define</fr:link> a sequence of states <fr:tex display="inline"><![CDATA[S_i]]></fr:tex> in <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex> as follows:</html:p>
+                    <fr:tex display="block"><![CDATA[
+   \begin {aligned}
+    S_0 &= s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\\
+    S_{k+1} &= \delta _{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}{\mathopen {}\left (S_k,a_{k+1}\right )\mathclose {}}
+   \end {aligned}
+  ]]></fr:tex>
+                    <html:p>Define <fr:tex display="inline"><![CDATA[q_0=s_{M}]]></fr:tex>. Then for all <fr:tex display="inline"><![CDATA[0\leq  i \leq  n]]></fr:tex>, we observe that we have <fr:tex display="inline"><![CDATA[q_i\in  S_i]]></fr:tex>.</html:p>
+                    <fr:tree show-metadata="false" toc="false" numbered="false">
+                      <fr:frontmatter>
+                        <fr:authors>
+                          <fr:author>
+                            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                          </fr:author>
+                        </fr:authors>
+                        <fr:date>
+                          <fr:year>2024</fr:year>
+                          <fr:month>2</fr:month>
+                          <fr:day>9</fr:day>
+                        </fr:date>
+                        <fr:taxon>Subproof</fr:taxon>
+                      </fr:frontmatter>
+                      <fr:mainmatter>
+                        <html:p>We proceed by induction on <fr:tex display="inline"><![CDATA[i]]></fr:tex>. For <fr:tex display="inline"><![CDATA[i=0]]></fr:tex>, we need <fr:tex display="inline"><![CDATA[s_{M}\in  s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>; but this holds by definition. Next, assuming <fr:tex display="inline"><![CDATA[q_i\in  S_i]]></fr:tex> we must show that <fr:tex display="inline"><![CDATA[q_{i+1}\in  S_{i+1} = \delta _{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}{\mathopen {}\left (S_i,a_{i+1}\right )\mathclose {}}]]></fr:tex>. Unfolding definitions, this follows from the transition <fr:tex display="inline"><![CDATA[q_i\xRightarrow {a_{i+1}} q_{i+1}]]></fr:tex> that we have assumed, as our inductive hypothesis ensures <fr:tex display="inline"><![CDATA[q_i\in  S_i]]></fr:tex>.</html:p>
+                      </fr:mainmatter>
+                    </fr:tree>
+                    <html:p>It follows from the above that we have transitions <fr:tex display="inline"><![CDATA[S_0=s_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}\xrightarrow {a_1}S_1\xrightarrow {\cdots }S_{n-1}\xrightarrow {a_n}S_n]]></fr:tex>. Becuase we have shown <fr:tex display="inline"><![CDATA[q_n\in  S_n]]></fr:tex> and we have assumed <fr:tex display="inline"><![CDATA[q_n\in  F_{M}]]></fr:tex>, we have <fr:tex display="inline"><![CDATA[S_n\in  F_{\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}}]]></fr:tex>. Thus it follows that <fr:tex display="inline"><![CDATA[\mathcal {P}{\mathopen {}\left (M\right )\mathclose {}}]]></fr:tex> accepts <fr:tex display="inline"><![CDATA[u]]></fr:tex>.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>23</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00KM/</fr:uri>
+            <fr:display-uri>jms-00KM</fr:display-uri>
+            <fr:route>/jms-00KM/</fr:route>
+            <fr:title text="Inductively defined function">Inductively defined <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link></fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a set, and fix <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A\to  A]]></fr:tex>. The <html:em><html:strong><fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> inductively defined from</html:strong></html:em> <fr:tex display="inline"><![CDATA[a]]></fr:tex> and <fr:tex display="inline"><![CDATA[f]]></fr:tex> is defined to be the unique <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[\mathbf {\rho }_{a,f}\colon \mathbb {N}\to  A]]></fr:tex> satisfying the following equations:</html:p>
+            <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (0\right )\mathclose {}} &= a\\
+  \mathbf {\rho }_{a,f}{\mathopen {}\left (n+1\right )\mathclose {}} &= f{\mathopen {}\left (n,\mathbf {\rho }_{a,f}{\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>23</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00KL/</fr:uri>
+            <fr:display-uri>jms-00KL</fr:display-uri>
+            <fr:route>/jms-00KL/</fr:route>
+            <fr:title text="Informal examples of inductively defined functions">Informal examples of inductively defined functions</fr:title>
+            <fr:taxon>Example</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>An inductive definition on the naturals defines a structure for each number <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> by first defining it for <fr:tex display="inline"><![CDATA[n=0]]></fr:tex> and then specifying how to augment a structure for <fr:tex display="inline"><![CDATA[n=m]]></fr:tex> to a structure for <fr:tex display="inline"><![CDATA[n=m+1]]></fr:tex>. From the point of view of computer programming, inductive definitions proceed by <html:em>structural recursion</html:em>. For example, addition of natural numbers can be defined by induction on the second argument (or the first, if you prefer!):</html:p>
+            <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \mathsf {add} &\colon  \mathbb {N}^2\to \mathbb {N}
+  \\
+  \mathsf {add}{\mathopen {}\left (m,0\right )\mathclose {}} &= m
+  \\
+  \mathsf {add}{\mathopen {}\left (m,n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (m,n\right )\mathclose {}}+1
+ \end {aligned}
+]]></fr:tex>
+            <html:p>Likewise, the function <fr:tex display="inline"><![CDATA[\Sigma \colon  \mathbb {N}\to \mathbb {N}]]></fr:tex> that takes <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> to the sum <fr:tex display="inline"><![CDATA[\sum _{0\leq  i < n}i]]></fr:tex> can be defined inductively:</html:p>
+            <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+  \Sigma  &\colon  \mathbb {N}\to \mathbb {N}\\
+  \Sigma {\mathopen {}\left (0\right )\mathclose {}} &= 0\\
+  \Sigma {\mathopen {}\left (n+1\right )\mathclose {}} &= \mathsf {add}{\mathopen {}\left (n,\Sigma {\mathopen {}\left (n\right )\mathclose {}}\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>23</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00KO/</fr:uri>
+            <fr:display-uri>jms-00KO</fr:display-uri>
+            <fr:route>/jms-00KO/</fr:route>
+            <fr:title text="{\mathopen {}\left (a,f\right )\mathclose {}}-closed relation"><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span> <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link></fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>Given an element <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex> and a <fr:link href="/jms-00KF/" title="Function" uri="https://www.jonmsterling.com/jms-00KF/" display-uri="jms-00KF" type="local">function</fr:link> <fr:tex display="inline"><![CDATA[f\colon \mathbb {N}\times  A \to  A]]></fr:tex>, we call a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon \mathbb {N}\mathbin {\nrightarrow } A]]></fr:tex> <html:em><html:strong><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[{\mathopen {}\left (a,f\right )\mathclose {}}]]></fr:tex>-closed</html:span></html:strong></html:em> whenever we have both <fr:tex display="inline"><![CDATA[0\mathrel {R}a]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\mathrel {R}x\implies  {\mathopen {}\left (n+1\right )\mathclose {}}\mathrel {R}f{\mathopen {}\left (n,x\right )\mathclose {}}]]></fr:tex> for all <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex> and <fr:tex display="inline"><![CDATA[x\in  A]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>22</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00KF/</fr:uri>
+            <fr:display-uri>jms-00KF</fr:display-uri>
+            <fr:route>/jms-00KF/</fr:route>
+            <fr:title text="Function">Function</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>A <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial function</fr:link> <fr:tex display="inline"><![CDATA[f\colon  A\mathbin {\rightharpoonup } B]]></fr:tex> is called <html:em><html:strong>total</html:strong></html:em> whenever its <fr:link href="/jms-00KB/" title="Domain of definition of a partial function" uri="https://www.jonmsterling.com/jms-00KB/" display-uri="jms-00KB" type="local">domain of definition</fr:link> coincides with its domain (source), i.e. we have <fr:tex display="inline"><![CDATA[f{\mathopen {}\left (a\right )\mathclose {}}{\downarrow }]]></fr:tex> for all <fr:tex display="inline"><![CDATA[a\in  A]]></fr:tex>. In this case, we will write <fr:tex display="inline"><![CDATA[f\colon  A\to  B]]></fr:tex> and refer to it as a <html:em><html:strong>function</html:strong></html:em> or a <html:em><html:strong>map</html:strong></html:em>. Sometimes, we redundantly refer to it as a <html:em><html:strong>total function</html:strong></html:em>.</html:p>
+            <html:p>Just as we write <fr:tex display="inline"><![CDATA[\mathrm {Rel}{\mathopen {}\left (A,B\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A\mathbin {\rightharpoonup } B\right )\mathclose {}}]]></fr:tex>for the sets of <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relations</fr:link> and <fr:link href="/jms-00K7/" title="Partial function" uri="https://www.jonmsterling.com/jms-00K7/" display-uri="jms-00K7" type="local">partial functions</fr:link> from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex> respectively, we shall write <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A\to  B\right )\mathclose {}}]]></fr:tex> for the set of functions from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to <fr:tex display="inline"><![CDATA[B]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>21</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00JV/</fr:uri>
+            <fr:display-uri>jms-00JV</fr:display-uri>
+            <fr:route>/jms-00JV/</fr:route>
+            <fr:title text="The adjacency matrix of the reflexive-transitive closure">The <fr:link href="/jms-00JN/" title="Adjacency matrix of a finite directed graph" uri="https://www.jonmsterling.com/jms-00JN/" display-uri="jms-00JN" type="local">adjacency matrix</fr:link> of the <fr:link href="/jms-00JH/" title="The reflexive-transitive closure of an endo-relation" uri="https://www.jonmsterling.com/jms-00JH/" display-uri="jms-00JH" type="local">reflexive-transitive closure</fr:link></fr:title>
+            <fr:taxon>Algorithm</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[M = \operatorname {\underline {mat}}_{\mathbb {B}}R]]></fr:tex> be the <fr:link href="/jms-00JN/" title="Adjacency matrix of a finite directed graph" uri="https://www.jonmsterling.com/jms-00JN/" display-uri="jms-00JN" type="local">adjacency matrix</fr:link> of a  finite <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">directed graph</fr:link> <fr:tex display="inline"><![CDATA[{\mathopen {}\left ({\mathopen {}\left  [n\right  ]\mathclose {}},R\right )\mathclose {}}]]></fr:tex>. We will show that the <fr:link href="/jms-00JN/" title="Adjacency matrix of a finite directed graph" uri="https://www.jonmsterling.com/jms-00JN/" display-uri="jms-00JN" type="local">adjacency matrix</fr:link> <fr:tex display="inline"><![CDATA[M^*]]></fr:tex> of the <fr:link href="/jms-00JH/" title="The reflexive-transitive closure of an endo-relation" uri="https://www.jonmsterling.com/jms-00JH/" display-uri="jms-00JH" type="local">reflexive-transitive closure</fr:link> <fr:tex display="inline"><![CDATA[R^{\circ *}]]></fr:tex> can be computed recursively using the <fr:link href="/jms-00JS/" title="Adding matrices together" uri="https://www.jonmsterling.com/jms-00JS/" display-uri="jms-00JS" type="local">additive</fr:link> and <fr:link href="/jms-00IW/" title="Multiplication of matrices" uri="https://www.jonmsterling.com/jms-00IW/" display-uri="jms-00IW" type="local">multiplicative</fr:link> structure of <fr:link href="/jms-00IS/" title="Matrix over a semiring" uri="https://www.jonmsterling.com/jms-00IS/" display-uri="jms-00IS" type="local">matrices</fr:link>. In particular, we can define <fr:tex display="inline"><![CDATA[M^* = M_n]]></fr:tex> where <fr:tex display="inline"><![CDATA[M_k]]></fr:tex> is computed recursively as below:</html:p><fr:tex display="block"><![CDATA[
+ \begin {aligned}
+   M_0 &= I^n\\
+   M_{k+1} &= I^n \oplus  {\mathopen {}\left (M\otimes  M_k\right )\mathclose {}}
+ \end {aligned}
+]]></fr:tex><html:p>Thus we have a recursive algorithm that can deicde whether there is a path between two elements in a finite <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">directed graph</fr:link>: indeed, there is a path from <fr:tex display="inline"><![CDATA[s]]></fr:tex> to <fr:tex display="inline"><![CDATA[t]]></fr:tex> in <fr:tex display="inline"><![CDATA[R]]></fr:tex> if and only if <fr:tex display="inline"><![CDATA[M^*_{s,t} =\mathsf {true}]]></fr:tex>.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2024</fr:year><fr:month>1</fr:month><fr:day>21</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+ <html:p>We first unravel the first few <html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[M_k]]></fr:tex>’s</html:span> to get a better understanding.</html:p>
+
+ <fr:tex display="block"><![CDATA[
+  \begin {aligned}
+   M_1 &= I^n \oplus  {\mathopen {}\left (M\otimes  M_0\right )\mathclose {}}
+   \\
+   &= I^n\oplus  {\mathopen {}\left (M\otimes  I^n\right )\mathclose {}}
+   \\
+   &= I^n \oplus  M
+   \\
+   M_2 &= I^n \oplus  {\mathopen {}\left (M\otimes  M_1\right )\mathclose {}}
+   \\
+   &= I^n \oplus  {\mathopen {}\left (M\otimes  {\mathopen {}\left (I^n \oplus  M\right )\mathclose {}}\right )\mathclose {}}
+   \\
+   &= I^n \oplus  {\mathopen {}\left (M\otimes  I^n\right )\mathclose {}} \oplus  {\mathopen {}\left (M\otimes  M\right )\mathclose {}}
+   \\
+   &= I^n \oplus  M \oplus  M^2
+  \end {aligned}
+ ]]></fr:tex>
+
+ <html:p>By induction, we can extend the pattern above to a closed form for each <fr:tex display="inline"><![CDATA[M_k]]></fr:tex>. In particular, we deduce that <fr:tex display="inline"><![CDATA[M_k = \bigoplus _{l\leq  k} M^l]]></fr:tex> by recalling from <fr:link href="/jms-00J3/" title="Associativity and unit laws of matrix products" uri="https://www.jonmsterling.com/jms-00J3/" display-uri="jms-00J3" type="local">Lemma <fr:contextual-number uri="https://www.jonmsterling.com/jms-00J3/" display-uri="jms-00J3" /></fr:link> that the <fr:link href="/jms-00IT/" title="The identity matrix" uri="https://www.jonmsterling.com/jms-00IT/" display-uri="jms-00IT" type="local">identity matrix</fr:link> is the neutral element for <fr:link href="/jms-00IV/" title="Product of matrices" uri="https://www.jonmsterling.com/jms-00IV/" display-uri="jms-00IV" type="local">matrix multiplication</fr:link>. Therefore, we have <fr:tex display="inline"><![CDATA[M_n =\bigoplus _{k \leq  n}M^k]]></fr:tex>.</html:p>
+
+ <html:p>Our goal is to show that <fr:tex display="inline"><![CDATA[M_n = \operatorname {\underline {mat}}_{\mathbb {B}} R^{\circ  *}]]></fr:tex>; we have already seen in <fr:link href="/jms-00JR/" title="matrix addition and union of relations" uri="https://www.jonmsterling.com/jms-00JR/" display-uri="jms-00JR" type="local">Lemma <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JR/" display-uri="jms-00JR" /></fr:link> and <fr:link href="/jms-00J2/" title="matrix product is relational composition" uri="https://www.jonmsterling.com/jms-00J2/" display-uri="jms-00J2" type="local">Lemma <fr:contextual-number uri="https://www.jonmsterling.com/jms-00J2/" display-uri="jms-00J2" /></fr:link> that <fr:link href="/jms-00JO/" title="Pointwise addition of matrices" uri="https://www.jonmsterling.com/jms-00JO/" display-uri="jms-00JO" type="local">matrix addition</fr:link> corresponds to union of <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relations</fr:link> and <fr:link href="/jms-00IV/" title="Product of matrices" uri="https://www.jonmsterling.com/jms-00IV/" display-uri="jms-00IV" type="local">matrix multiplication</fr:link> corresponds to <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">relational composition</fr:link>.</html:p>
+
+ <html:p>By <fr:link href="/jms-00JU/" title="Reflexive-transitive closure of finite endo-relations" uri="https://www.jonmsterling.com/jms-00JU/" display-uri="jms-00JU" type="local">Observation <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JU/" display-uri="jms-00JU" /></fr:link> (<fr:link href="/jms-00JU/" title="Reflexive-transitive closure of finite endo-relations" uri="https://www.jonmsterling.com/jms-00JU/" display-uri="jms-00JU" type="local">Reflexive-transitive closure of <html:em>finite</html:em> <fr:link href="/jms-00JF/" title="Path in a directed graph" uri="https://www.jonmsterling.com/jms-00JF/" display-uri="jms-00JF" type="local">endo-relations</fr:link></fr:link>), we have <fr:tex display="inline"><![CDATA[R^{\circ *} = \bigcup _{k\leq  n} R^{\circ  k}]]></fr:tex>. Therefore:</html:p>
+
+ <fr:tex display="block"><![CDATA[
+  \operatorname {\underline {mat}}_{\mathbb {B}}R^{\circ *} = \operatorname {\underline {mat}}_{\mathbb {B}}\bigcup _{k\leq  n} R^{\circ  k}
+ ]]></fr:tex>
+
+ <html:p>By <fr:link href="/jms-00JR/" title="matrix addition and union of relations" uri="https://www.jonmsterling.com/jms-00JR/" display-uri="jms-00JR" type="local">Lemma <fr:contextual-number uri="https://www.jonmsterling.com/jms-00JR/" display-uri="jms-00JR" /></fr:link> (<fr:link href="/jms-00JR/" title="matrix addition and union of relations" uri="https://www.jonmsterling.com/jms-00JR/" display-uri="jms-00JR" type="local"><fr:link href="/jms-00JO/" title="Pointwise addition of matrices" uri="https://www.jonmsterling.com/jms-00JO/" display-uri="jms-00JO" type="local">matrix addition</fr:link> and union of <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">relations</fr:link></fr:link>), we have:</html:p>
+
+ <fr:tex display="block"><![CDATA[
+  \operatorname {\underline {mat}}_{\mathbb {B}}\bigcup _{k\leq  n} R^{\circ  k}
+  =
+  \bigoplus _{k\leq  n} \operatorname {\underline {mat}}_{\mathbb {B}}R^{\circ  k}
+ ]]></fr:tex>
+
+ By <fr:link href="/jms-00J2/" title="matrix product is relational composition" uri="https://www.jonmsterling.com/jms-00J2/" display-uri="jms-00J2" type="local">Lemma <fr:contextual-number uri="https://www.jonmsterling.com/jms-00J2/" display-uri="jms-00J2" /></fr:link> (<fr:link href="/jms-00J2/" title="matrix product is relational composition" uri="https://www.jonmsterling.com/jms-00J2/" display-uri="jms-00J2" type="local"><fr:link href="/jms-00IV/" title="Product of matrices" uri="https://www.jonmsterling.com/jms-00IV/" display-uri="jms-00IV" type="local">matrix product</fr:link> is <fr:link href="/jms-00IN/" title="Relational composite" uri="https://www.jonmsterling.com/jms-00IN/" display-uri="jms-00IN" type="local">relational composition</fr:link></fr:link>), we have:
+ <fr:tex display="block"><![CDATA[
+  \bigoplus _{k\leq  n} \operatorname {\underline {mat}}_{\mathbb {B}}R^{\circ  k}  =
+  \bigoplus _{k\leq  n} {\mathopen {}\left (\operatorname {\underline {mat}}_{\mathbb {B}}R\right )\mathclose {}}^k
+  =
+  \bigoplus _{k\leq  n} M^k
+  = M_n
+ ]]></fr:tex>
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>20</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00JN/</fr:uri>
+            <fr:display-uri>jms-00JN</fr:display-uri>
+            <fr:route>/jms-00JN/</fr:route>
+            <fr:title text="Adjacency matrix of a finite directed graph">Adjacency <fr:link href="/jms-00IS/" title="Matrix over a semiring" uri="https://www.jonmsterling.com/jms-00IS/" display-uri="jms-00IS" type="local">matrix</fr:link> of a finite <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">directed graph</fr:link></fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>We have seen in <fr:link href="/jms-00I6/" title="Lecture 13: relations and matrices" uri="https://www.jonmsterling.com/jms-00I6/" display-uri="jms-00I6" type="local">Lecture 13</fr:link> (<fr:link href="/jms-00IY/" title="The matrix associated to a finite relation" uri="https://www.jonmsterling.com/jms-00IY/" display-uri="jms-00IY" type="local">Definition <fr:contextual-number uri="https://www.jonmsterling.com/jms-00IY/" display-uri="jms-00IY" /></fr:link>) how to turn any relation <fr:tex display="inline"><![CDATA[R\colon {\mathopen {}\left  [m\right  ]\mathclose {}}\mathbin {\nrightarrow }{\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex> into a <fr:link href="/jms-00IS/" title="Matrix over a semiring" uri="https://www.jonmsterling.com/jms-00IS/" display-uri="jms-00IS" type="local">matrix</fr:link> <fr:tex display="inline"><![CDATA[\operatorname {\underline {mat}}_{\mathbb {B}}R\in \mathrm {Mat}_{\mathbb {B}}{\mathopen {}\left (m,n\right )\mathclose {}}]]></fr:tex> over the boolean semiring. When <fr:tex display="inline"><![CDATA[R\in \mathrm {Rel}{\mathopen {}\left ({\mathopen {}\left  [n\right  ]\mathclose {}}\right )\mathclose {}}]]></fr:tex> is the <html:em>edge relation</html:em> in a graph with vertices in the finite set <fr:tex display="inline"><![CDATA[{\mathopen {}\left  [n\right  ]\mathclose {}}]]></fr:tex>, we refer to <fr:tex display="inline"><![CDATA[\operatorname {\underline {mat}}_{\mathbb {B}}R\in \mathrm {Mat}_{\mathbb {B}}{\mathopen {}\left (n,n\right )\mathclose {}}]]></fr:tex> as the <html:em><html:strong>adjacency matrix</html:strong></html:em> of <fr:tex display="inline"><![CDATA[R]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>18</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00JC/</fr:uri>
+            <fr:display-uri>jms-00JC</fr:display-uri>
+            <fr:route>/jms-00JC/</fr:route>
+            <fr:title text="Directed graph">Directed graph</fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>A <html:em><html:strong>directed graph</html:strong></html:em> <fr:tex display="inline"><![CDATA[{\mathopen {}\left (A,R\right )\mathclose {}}]]></fr:tex> consists of a set <fr:tex display="inline"><![CDATA[A]]></fr:tex> and a <fr:link href="/jms-00I7/" title="Relation" uri="https://www.jonmsterling.com/jms-00I7/" display-uri="jms-00I7" type="local">binary relation</fr:link> <fr:tex display="inline"><![CDATA[R\colon  A\mathbin {\nrightarrow } A]]></fr:tex> from <fr:tex display="inline"><![CDATA[A]]></fr:tex> to itself; such a relation from a set to itself is called an <html:em><html:strong>endo-relation</html:strong></html:em>. We will abbreviate <fr:tex display="inline"><![CDATA[\mathrm {Rel}{\mathopen {}\left (A,A\right )\mathclose {}}]]></fr:tex> by <fr:tex display="inline"><![CDATA[\mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> for the set of all endo-relations on <fr:tex display="inline"><![CDATA[A]]></fr:tex>.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>18</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00JE/</fr:uri>
+            <fr:display-uri>jms-00JE</fr:display-uri>
+            <fr:route>/jms-00JE/</fr:route>
+            <fr:title text="Iteration of endo-relations">Iteration of <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">endo-relations</fr:link></fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>For <fr:tex display="inline"><![CDATA[R\in  \mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> and <fr:tex display="inline"><![CDATA[n\in \mathbb {N}]]></fr:tex>, we define the <html:em><html:strong><html:span style="white-space: nowrap"><fr:tex display="inline"><![CDATA[n]]></fr:tex>-fold</html:span> iteration</html:strong></html:em> of <fr:tex display="inline"><![CDATA[R]]></fr:tex> to be the following <fr:link href="/jms-00JC/" title="Directed graph" uri="https://www.jonmsterling.com/jms-00JC/" display-uri="jms-00JC" type="local">endo-relation</fr:link> <fr:tex display="inline"><![CDATA[R^{\circ  n}\in \mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex>:</html:p>
+            <fr:tex display="block"><![CDATA[
+ R^{\circ  n} = \underbrace {R\circ \cdots \circ  R}_{n\text { times}}
+]]></fr:tex>
+            <html:p>More precisely, we define <fr:tex display="inline"><![CDATA[R^{\circ  n}]]></fr:tex> by recursion on <fr:tex display="inline"><![CDATA[n]]></fr:tex>:</html:p>
+            <fr:tex display="block"><![CDATA[
+ \begin {aligned}
+   R^{\circ  0} &= \mathsf {id}_{A}\\
+   R^{\circ {\mathopen {}\left (n+1\right )\mathclose {}}} &= R\circ  R^{\circ  n}
+ \end {aligned}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+              <fr:contributor>
+                <fr:link href="/marcelofiore/" title="Marcelo Fiore" uri="https://www.jonmsterling.com/marcelofiore/" display-uri="marcelofiore" type="local">Marcelo Fiore</fr:link>
+              </fr:contributor>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2024</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>18</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-00JH/</fr:uri>
+            <fr:display-uri>jms-00JH</fr:display-uri>
+            <fr:route>/jms-00JH/</fr:route>
+            <fr:title text="The reflexive-transitive closure of an endo-relation">The reflexive-transitive closure of an <fr:link href="/jms-00JF/" title="Path in a directed graph" uri="https://www.jonmsterling.com/jms-00JF/" display-uri="jms-00JF" type="local">endo-relation</fr:link></fr:title>
+            <fr:taxon>Definition</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>For <fr:tex display="inline"><![CDATA[R\in \mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex>, we define <fr:tex display="inline"><![CDATA[R^{\circ *}\in \mathrm {Rel}{\mathopen {}\left (A\right )\mathclose {}}]]></fr:tex> to be the <html:em>smallest relation closed under all finite <fr:link href="/jms-00JF/" title="Path in a directed graph" uri="https://www.jonmsterling.com/jms-00JF/" display-uri="jms-00JF" type="local">paths</fr:link> in <fr:tex display="inline"><![CDATA[R]]></fr:tex></html:em>, i.e. the <html:em><html:strong>reflexive-transitive closure</html:strong></html:em> of <fr:tex display="inline"><![CDATA[R]]></fr:tex>.</html:p>
+            <fr:tex display="block"><![CDATA[
+ R^{\circ *} = \bigcup _{n\in \mathbb {N}} R^{\circ  n}
+]]></fr:tex>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>

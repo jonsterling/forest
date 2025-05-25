@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2025</fr:year>
+      <fr:month>4</fr:month>
+      <fr:day>9</fr:day>
+    </fr:date>
+    <fr:date>
+      <fr:year>2025</fr:year>
+      <fr:month>4</fr:month>
+      <fr:day>11</fr:day>
+    </fr:date>
+    <fr:uri>https://www.jonmsterling.com/jms-01A1/</fr:uri>
+    <fr:display-uri>jms-01A1</fr:display-uri>
+    <fr:route>/jms-01A1/</fr:route>
+    <fr:title text="Weeknotes 2025-W15 › Project Pterosaur: yes, I’m building a new proof assistant"><fr:link href="/2025-W15/" title="Weeknotes 2025-W15" uri="https://www.jonmsterling.com/2025-W15/" display-uri="2025-W15" type="local">Weeknotes 2025-W15</fr:link> › <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>: yes, I’m building a new proof assistant</fr:title>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>9</fr:day>
+        </fr:date>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>11</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-01A2/</fr:uri>
+        <fr:display-uri>jms-01A2</fr:display-uri>
+        <fr:route>/jms-01A2/</fr:route>
+        <fr:title text="Locales in dependent type theory?">Locales in dependent type theory?</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>The goal of Pterosaur is to explore the adaptation of <html:em>locales</html:em> from Isabelle to dependent type theory, as a lightweight but extremely expressive alternative to type classes. My colleague <fr:link href="/lawrencepaulson/" title="Lawrence Paulson" uri="https://www.jonmsterling.com/lawrencepaulson/" display-uri="lawrencepaulson" type="local">Larry Paulson</fr:link> has written <fr:link href="https://lawrencecpaulson.github.io/tag/locales" type="external">some great blog posts about locales in Isabelle</fr:link>, and I strongly recommend reading Ballarin’s <fr:link href="https://www21.in.tum.de/~ballarin/publications/jar2019.pdf" type="external">Exploring the Structure of an Algebra Text with Locales</fr:link> to get a feel for what is possible. Here is what locales do:</html:p>
+        <html:ol><html:li>Locales appear to completely solve the pain involved when building up hierarchies of mathematical structures and notations, allowing you to effortlessly combine theories along a common core (e.g. defining rings in terms of a multiplicative monoid and an Abelian group sharing the same carrier).</html:li>
+      <html:li>Locales allow you to <html:em>add new methods</html:em> to a theory after the fact, and they will magically be available on anything that extended that theory. You can also add new links in the theory graph, and both cycles and diamonds are allowed so long as they are coherent; this is useful if you want to silently regard (e.g.) the space of endomaps on a set as a monoid, etc.</html:li></html:ol>
+        <html:p>In comparison to modules and type classes, the strength of locales is that you don’t have to decide ahead of time whether you want to “bundle” fields with their carriers, etc. In contrast, a great deal of the difficult work of mathematical library design and maintainance in tools like Rocq, Agda, and <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link> is figuring out just what things to bundle, and fixing things when your choices inevitably lead to breakage, etc. Locales avoid these problems entirely.</html:p>
+        <html:p>Finally, a reasonably usable locale implementation can be obtained <html:em>without any higher-order unification whatsoever</html:em>. I have a feeling that will be extremely important, given how unreliable (and <fr:link href="https://github.com/agda/agda/issues/5837" type="external">incorrect</fr:link>!) most implementations of higher-order unification are; the situation is so bad that it is actually an open problem to define a correct higher-order unification algorithm in the presence of singleton types (such as the unit type). I do think that this can be solved (and may have already been solved by Andras Kovacs), but my point is that the prognosis for unification in dependent type theory is bad.</html:p>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>9</fr:day>
+        </fr:date>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>11</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-01A3/</fr:uri>
+        <fr:display-uri>jms-01A3</fr:display-uri>
+        <fr:route>/jms-01A3/</fr:route>
+        <fr:title text="Experimental implementation in Lean">Experimental implementation in <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link></fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>The other interesting thing about Pterosaur is that I am implementing it in <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link>; I am not verifying anything, and am making free use of Lean’s <html:code>partial</html:code> keyword (which hides potentially divergent code from definitional equality). Instead, I am thinking of Lean as a “better OCaml”: I can’t speak to the quality of the compiler and code generator, but I can absolutely say that from the perspective of day-to-day programming, Lean has a lot of affordances that make it extremely nice to use. On the other hand, Lean’s story for modularity is not so good; but I hope they don’t “fix” it any time soon, because I think that something like locales could be a good option for Lean itself in the future if I am able to demonstrate their potential in the context of Pterosaur’s clean-room implementation.</html:p>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false">
+      <fr:frontmatter>
+        <fr:authors>
+          <fr:author>
+            <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+          </fr:author>
+        </fr:authors>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>9</fr:day>
+        </fr:date>
+        <fr:date>
+          <fr:year>2025</fr:year>
+          <fr:month>4</fr:month>
+          <fr:day>11</fr:day>
+        </fr:date>
+        <fr:uri>https://www.jonmsterling.com/jms-01A4/</fr:uri>
+        <fr:display-uri>jms-01A4</fr:display-uri>
+        <fr:route>/jms-01A4/</fr:route>
+        <fr:title text="A taste of code">A taste of code</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <html:p>I will have more to say about Pterosaur in the future, but let me leave you with a bit of demo code.</html:p>
+        <html:pre><![CDATA[locale Magma { A =>
+  car : Type,
+  car.isSet : isSet A·car,
+  cmp : (x y : A·car) → A·car
+}
+
+locale Magma.Hom { f =>
+  dom : Magma,
+  cod : Magma,
+  car : (x : f·dom·car) → f·cod·car,
+  cmp : (x y : f·dom·car) → Id f·cod·car (f·car (f·dom·cmp x y)) (f·cod·cmp (f·car x) (f·car y))
+}
+
+locale Semigroup { A =>
+  splice magma : Magma,
+  cmp.assoc : (x y z : A·car) → Id A·car (A·cmp (A·cmp x y) z) (A·cmp x (A·cmp y z))
+}
+
+locale Semigroup.Hom {f =>
+  dom : Semigroup,
+  cod : Semigroup,
+  splice magma.hom : Magma.Hom / {dom := f·dom·magma, cod := f·cod·magma}
+}
+
+locale Monoid { A =>
+  splice semigroup : Semigroup,
+  unit : A·car,
+  cmp.leftUnit : (x : A·car) → Id A·car (A·cmp A·unit x) x,
+  cmp.rightUnit : (x : A·car) → Id A·car (A·cmp x A·unit) x
+}
+
+locale Monoid.Hom {f =>
+  dom : Monoid,
+  cod : Monoid,
+  splice semigroup.hom : Semigroup.Hom / {dom := f·dom·semigroup, cod := f·cod·semigroup},
+  unit : Id f·cod·car (f·car f·dom·unit) f·cod·unit
+}
+
+locale Group { G =>
+  splice monoid : Monoid,
+  inv : (x : G·car) → G·car,
+  inv.inv : (x : G·car) → Id G·car (G·inv (G·inv x)) x
+}
+
+locale AbelianGroup { A =>
+  splice group : Group,
+  splice commutativeOperation : CommutativeOperation / {car := A·car, cmp := A·cmp}
+}]]></html:pre>
+      </fr:mainmatter>
+    </fr:tree>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2021</fr:year>
+              <fr:month>9</fr:month>
+              <fr:day>13</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/sterling-2021-thesis/</fr:uri>
+            <fr:display-uri>sterling-2021-thesis</fr:display-uri>
+            <fr:route>/sterling-2021-thesis/</fr:route>
+            <fr:title text="First steps in synthetic Tait computability: the objective metatheory of cubical type theory">First steps in synthetic Tait computability: the objective metatheory of cubical type theory</fr:title>
+            <fr:taxon>Reference</fr:taxon>
+            <fr:meta name="venue">Doctoral dissertation, <fr:link href="/cmu/" title="Carnegie Mellon University" uri="https://www.jonmsterling.com/cmu/" display-uri="cmu" type="local">Carnegie Mellon University</fr:link></fr:meta>
+            <fr:meta name="bibtex"><![CDATA[@phdthesis{sterling-2021-thesis,
+  author = {Sterling, Jonathan},
+  school = {Carnegie Mellon University},
+  year = {2021},
+  doi = {10.5281/zenodo.6990769},
+  note = {Version 1.1, revised May 2022},
+  number = {CMU-CS-21-142},
+  title = {First Steps in Synthetic {Tait} Computability: The Objective Metatheory of Cubical Type Theory},
+}]]></fr:meta>
+            <fr:meta name="doi">10.5281/zenodo.6990769</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>The implementation and semantics of dependent type theories can be studied in a syntax-independent way: the objective metatheory of dependent type theories exploits the universal properties of their syntactic categories to endow them with computational content, mathematical meaning, and practical implementation (normalization, type checking, elaboration). The semantic methods of the objective metatheory inform the design and implementation of correct-by-construction elaboration algorithms, promising a principled interface between real proof assistants and ideal mathematics.</html:p>
+            <html:p>In this dissertation, I add synthetic Tait computability to the arsenal of the objective metatheorist. Synthetic Tait computability is a mathematical machine to reduce difficult problems of type theory and programming languages to trivial theorems of topos theory. First employed by <fr:link href="/sterling-harper-2021/" title="Logical relations as types: proof-relevant parametricity for program modules" uri="https://www.jonmsterling.com/sterling-harper-2021/" display-uri="sterling-harper-2021" type="local">Sterling and Harper</fr:link> to reconstruct the theory of program modules and their phase separated parametricity, synthetic Tait computability is deployed here to resolve the last major open question in the syntactic metatheory of cubical type theory: normalization of open terms.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>4</fr:month>
+              <fr:day>9</fr:day>
+            </fr:date>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>4</fr:month>
+              <fr:day>11</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/2025-W15/</fr:uri>
+            <fr:display-uri>2025-W15</fr:display-uri>
+            <fr:route>/2025-W15/</fr:route>
+            <fr:title text="Weeknotes 2025-W15">Weeknotes 2025-W15</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>I have a lot to say this week, so strap in.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-01A0/</fr:uri>
+                <fr:display-uri>jms-01A0</fr:display-uri>
+                <fr:route>/jms-01A0/</fr:route>
+                <fr:title text="Forester 5.0 development: canonical URLs, atom feeds, and LSP"><fr:link href="https://www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> development: canonical URLs, atom feeds, and LSP</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Work on <fr:link href="https://www.forester-notes.org/jms-011P/" title="Forester 5.0" uri="https://www.forester-notes.org/jms-011P/" display-uri="https://www.forester-notes.org/jms-011P/" type="local">Forester 5.0</fr:link> proceeds apace, generously supported by <fr:link href="/jms-00XB/" title="Advanced Research + Invention Agency" uri="https://www.jonmsterling.com/jms-00XB/" display-uri="jms-00XB" type="local">ARIA</fr:link> who have engaged <fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento Okura</fr:link> and myself on a consulting basis to support their internal use of Forester. My recent goals have been to bring Forester closer in line with the architecture of the World Wide Web; to that end, I have made two big improvements.</html:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01AA/</fr:uri>
+                    <fr:display-uri>jms-01AA</fr:display-uri>
+                    <fr:route>/jms-01AA/</fr:route>
+                    <fr:title text="First cut at canonical URLs">First cut at canonical URLs</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>Trees are addressed by “canonical URLs” that are meant to be the place where they will ultimately be published. See <fr:link href="https://www.forester-notes.org/JVIT/" title="Towards Forester 5.0 II: a design for canonical URLs" uri="https://www.forester-notes.org/JVIT/" display-uri="https://www.forester-notes.org/JVIT/" type="local">my blog post</fr:link> on the design for more details. Canonical URLs are of the form <html:code>https://www.my-host.net/tree-name/</html:code>; the handling is a little fragile right now and you can expect bugs (but please write to me about them).</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01AB/</fr:uri>
+                    <fr:display-uri>jms-01AB</fr:display-uri>
+                    <fr:route>/jms-01AB/</fr:route>
+                    <fr:title text="First cut at atom syndication">First cut at atom syndication</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>It is now possible to syndicate the children of a tree as an Atom feed. This is done currently by including the following directive in the tree you wish to syndicate:</html:p>
+                    <html:pre><![CDATA[\syndicate-current-tree-as-atom-feed]]></html:pre>
+                    <html:p>Then, if your tree is located at <html:code>https://www.my-host.net/tree-name/</html:code>, you will find that there is an atom feed at <html:code>https://www.my-host.net/tree-name/atom.xml</html:code>. There are many subtleties to this, and the atom support will continue to evolve and improve. One thing I need to deal with is the fact that Forester produces nested hyperlinks—which are not valid in HTML! I came up with a pretty slick way to <fr:link href="https://git.sr.ht/~jonsterling/forester-base-theme/commit/a251f9cf19b0ff42f4553d315df5181b985c79cb" type="external">handle this in XSLT</fr:link>, but that Atom renderer is intended to bypass that entirely.</html:p>
+                    <html:p>As a side note, I am very happy to see that I am <fr:link href="https://patrick.sirref.org/weekly-2025-03-31/" type="external">not the only person</fr:link> using the new support for Atom feeds. Patrick’s fork of Forester is looking pretty cool, and I am excited to learn more from what he is doing. I’m also relieved that he was able to get rebased atop the ever-changing <html:code>forester-5.0-dev</html:code> branch.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01AC/</fr:uri>
+                    <fr:display-uri>jms-01AC</fr:display-uri>
+                    <fr:route>/jms-01AC/</fr:route>
+                    <fr:title text="Federation is still janky">Federation is still janky</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>One thing I want to start designing soon is how best to handle federated forests. Right now, Forester bundles all the imported material under a <html:code>foreign/my-friends-host/</html:code> directory and routes all links accordingly, but in many (but not all!) cases one would want to not bundle things at all and instead have links routed directly to the canonical URLs as published on the World Wide Web. I am not sure of the best design for this, so I welcome feedback. In the meanwhile, enjoy the janky prototype feel.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A9/</fr:uri>
+                    <fr:display-uri>jms-01A9</fr:display-uri>
+                    <fr:route>/jms-01A9/</fr:route>
+                    <fr:title text="Language server; code completion via effects and handlers">Language server; code completion via effects and handlers</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p><fr:link href="/kentookura/" title="Kento Okura" uri="https://www.jonmsterling.com/kentookura/" display-uri="kentookura" type="local">Kento</fr:link> is hard at work hardening Forester’s language server. I am hoping that we will have something to show on the scale of a week.</html:p>
+                    <html:p>There were some subtleties about how to provide completion information at a source location—which is at least as complex as the expander itself, since scope emerges from the expansion process. We had something fairly broken in place, which I have spent Thursday and Friday morning replacing with something cool using OCaml 5’s effects and handlers. The idea is to instrument the expander with an effect that notifies observes that it has entered a source range; this can be handled as a no-op, <html:em>or</html:em> by querying the scope’s available symbols when it enters the desired range and throwing away the continuation, and resuming the continuation otherwise to keep searching. This approach allows all the scope-handling code to be unified into a single routine, whose behaviour is controlled by effect handlers on the outside.</html:p>
+                    <html:p>As a side note, I am looking forward to when the next version of <fr:link href="https://topiary.tweag.io/" type="external">Topiary</fr:link> is released, which should contain support for formatting OCaml’s effect handlers. Right now we don’t use the nice notation because we are stuck on Topiary 0.6.0.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-01A1/</fr:uri>
+                <fr:display-uri>jms-01A1</fr:display-uri>
+                <fr:route>/jms-01A1/</fr:route>
+                <fr:title text="Project Pterosaur: yes, I’m building a new proof assistant"><fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>: yes, I’m building a new proof assistant</fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>I swore after building <fr:link href="https://github.com/RedPRL/cooltt" type="external">cooltt</fr:link>, <fr:link href="https://github.com/RedPRL/redtt" type="external">redtt</fr:link>, and <fr:link href="https://github.com/RedPRL/sml-redprl" type="external">RedPRL</fr:link> that I would never build another proof assistant, as the experience burned around four years of my PhD and resulted (at least directly) in very little publishable work—but, to be fair, I probably would not have made the <fr:link href="/jms-0014/" title="Chapter 7: normalization for cubical type theory" uri="https://www.jonmsterling.com/jms-0014/" display-uri="jms-0014" type="local">key mathematical discovery</fr:link> of my <fr:link href="/sterling-2021-thesis/" title="First steps in synthetic Tait computability: the objective metatheory of cubical type theory" uri="https://www.jonmsterling.com/sterling-2021-thesis/" display-uri="sterling-2021-thesis" type="local">PhD thesis</fr:link> if it were not for these engineering experiments. But I’m back on my bullshit, as the young people say, and hard at work building a new interactive proof assistant that I have code-named <fr:link href="/jms-019E/" title="Project Pterosaur" uri="https://www.jonmsterling.com/jms-019E/" display-uri="jms-019E" type="local">Project Pterosaur</fr:link>.</html:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A2/</fr:uri>
+                    <fr:display-uri>jms-01A2</fr:display-uri>
+                    <fr:route>/jms-01A2/</fr:route>
+                    <fr:title text="Locales in dependent type theory?">Locales in dependent type theory?</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>The goal of Pterosaur is to explore the adaptation of <html:em>locales</html:em> from Isabelle to dependent type theory, as a lightweight but extremely expressive alternative to type classes. My colleague <fr:link href="/lawrencepaulson/" title="Lawrence Paulson" uri="https://www.jonmsterling.com/lawrencepaulson/" display-uri="lawrencepaulson" type="local">Larry Paulson</fr:link> has written <fr:link href="https://lawrencecpaulson.github.io/tag/locales" type="external">some great blog posts about locales in Isabelle</fr:link>, and I strongly recommend reading Ballarin’s <fr:link href="https://www21.in.tum.de/~ballarin/publications/jar2019.pdf" type="external">Exploring the Structure of an Algebra Text with Locales</fr:link> to get a feel for what is possible. Here is what locales do:</html:p>
+                    <html:ol><html:li>Locales appear to completely solve the pain involved when building up hierarchies of mathematical structures and notations, allowing you to effortlessly combine theories along a common core (e.g. defining rings in terms of a multiplicative monoid and an Abelian group sharing the same carrier).</html:li>
+      <html:li>Locales allow you to <html:em>add new methods</html:em> to a theory after the fact, and they will magically be available on anything that extended that theory. You can also add new links in the theory graph, and both cycles and diamonds are allowed so long as they are coherent; this is useful if you want to silently regard (e.g.) the space of endomaps on a set as a monoid, etc.</html:li></html:ol>
+                    <html:p>In comparison to modules and type classes, the strength of locales is that you don’t have to decide ahead of time whether you want to “bundle” fields with their carriers, etc. In contrast, a great deal of the difficult work of mathematical library design and maintainance in tools like Rocq, Agda, and <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link> is figuring out just what things to bundle, and fixing things when your choices inevitably lead to breakage, etc. Locales avoid these problems entirely.</html:p>
+                    <html:p>Finally, a reasonably usable locale implementation can be obtained <html:em>without any higher-order unification whatsoever</html:em>. I have a feeling that will be extremely important, given how unreliable (and <fr:link href="https://github.com/agda/agda/issues/5837" type="external">incorrect</fr:link>!) most implementations of higher-order unification are; the situation is so bad that it is actually an open problem to define a correct higher-order unification algorithm in the presence of singleton types (such as the unit type). I do think that this can be solved (and may have already been solved by Andras Kovacs), but my point is that the prognosis for unification in dependent type theory is bad.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A3/</fr:uri>
+                    <fr:display-uri>jms-01A3</fr:display-uri>
+                    <fr:route>/jms-01A3/</fr:route>
+                    <fr:title text="Experimental implementation in Lean">Experimental implementation in <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link></fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>The other interesting thing about Pterosaur is that I am implementing it in <fr:link href="/jms-019G/" title="Lean" uri="https://www.jonmsterling.com/jms-019G/" display-uri="jms-019G" type="local">Lean</fr:link>; I am not verifying anything, and am making free use of Lean’s <html:code>partial</html:code> keyword (which hides potentially divergent code from definitional equality). Instead, I am thinking of Lean as a “better OCaml”: I can’t speak to the quality of the compiler and code generator, but I can absolutely say that from the perspective of day-to-day programming, Lean has a lot of affordances that make it extremely nice to use. On the other hand, Lean’s story for modularity is not so good; but I hope they don’t “fix” it any time soon, because I think that something like locales could be a good option for Lean itself in the future if I am able to demonstrate their potential in the context of Pterosaur’s clean-room implementation.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A4/</fr:uri>
+                    <fr:display-uri>jms-01A4</fr:display-uri>
+                    <fr:route>/jms-01A4/</fr:route>
+                    <fr:title text="A taste of code">A taste of code</fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>I will have more to say about Pterosaur in the future, but let me leave you with a bit of demo code.</html:p>
+                    <html:pre><![CDATA[locale Magma { A =>
+  car : Type,
+  car.isSet : isSet A·car,
+  cmp : (x y : A·car) → A·car
+}
+
+locale Magma.Hom { f =>
+  dom : Magma,
+  cod : Magma,
+  car : (x : f·dom·car) → f·cod·car,
+  cmp : (x y : f·dom·car) → Id f·cod·car (f·car (f·dom·cmp x y)) (f·cod·cmp (f·car x) (f·car y))
+}
+
+locale Semigroup { A =>
+  splice magma : Magma,
+  cmp.assoc : (x y z : A·car) → Id A·car (A·cmp (A·cmp x y) z) (A·cmp x (A·cmp y z))
+}
+
+locale Semigroup.Hom {f =>
+  dom : Semigroup,
+  cod : Semigroup,
+  splice magma.hom : Magma.Hom / {dom := f·dom·magma, cod := f·cod·magma}
+}
+
+locale Monoid { A =>
+  splice semigroup : Semigroup,
+  unit : A·car,
+  cmp.leftUnit : (x : A·car) → Id A·car (A·cmp A·unit x) x,
+  cmp.rightUnit : (x : A·car) → Id A·car (A·cmp x A·unit) x
+}
+
+locale Monoid.Hom {f =>
+  dom : Monoid,
+  cod : Monoid,
+  splice semigroup.hom : Semigroup.Hom / {dom := f·dom·semigroup, cod := f·cod·semigroup},
+  unit : Id f·cod·car (f·car f·dom·unit) f·cod·unit
+}
+
+locale Group { G =>
+  splice monoid : Monoid,
+  inv : (x : G·car) → G·car,
+  inv.inv : (x : G·car) → Id G·car (G·inv (G·inv x)) x
+}
+
+locale AbelianGroup { A =>
+  splice group : Group,
+  splice commutativeOperation : CommutativeOperation / {car := A·car, cmp := A·cmp}
+}]]></html:pre>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-01A5/</fr:uri>
+                <fr:display-uri>jms-01A5</fr:display-uri>
+                <fr:route>/jms-01A5/</fr:route>
+                <fr:title text="Two papers to appear in LICS ’25">Two papers to appear in <fr:link href="/lics-2025/" title="LICS ’25: 40th Annual ACM/IEEE Symposium on Logic in Computer Science" uri="https://www.jonmsterling.com/lics-2025/" display-uri="lics-2025" type="local">LICS ’25</fr:link></fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>This week I have had two papers accepted at <fr:link href="/lics-2025/" title="LICS ’25: 40th Annual ACM/IEEE Symposium on Logic in Computer Science" uri="https://www.jonmsterling.com/lics-2025/" display-uri="lics-2025" type="local">LICS ’25</fr:link>; I’m excited about both of them.</html:p>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A6/</fr:uri>
+                    <fr:display-uri>jms-01A6</fr:display-uri>
+                    <fr:route>/jms-01A6/</fr:route>
+                    <fr:title text="With Leoni Pugh: When is the partial map classifier a Sierpiński cone?">With <fr:link href="/leonipugh/" title="Leoni Pugh" uri="https://www.jonmsterling.com/leonipugh/" display-uri="leonipugh" type="local">Leoni Pugh</fr:link>: <fr:link href="/pugh-sterling-2025/" title="When is the partial map classifier a Sierpiński cone?" uri="https://www.jonmsterling.com/pugh-sterling-2025/" display-uri="pugh-sterling-2025" type="local">When is the partial map classifier a Sierpiński cone?</fr:link></fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p><fr:link href="/leonipugh/" title="Leoni Pugh" uri="https://www.jonmsterling.com/leonipugh/" display-uri="leonipugh" type="local">Leoni Pugh</fr:link> is my old Part III student from 2023–2024, and this work builds on her Part III dissertation. The goal of our paper was to better understand the relationship between two approaches to partial functions in denotational semantics:</html:p>
+                    <html:ol><html:li><html:strong>“Geometrical” partiality / “the Sierpiński cone”</html:strong>: freely add a lowest element to the space representing a given data type. This is useful for defining functions whose <html:em>inputs</html:em> are partially defined, because you can do a case-analysis on the definedness of the input.</html:li>
+      <html:li><html:strong>“Logical” partiality / “the partial map classifier”</html:strong>: representing partially defined elements of a space <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">X</mml:mi></mml:math> by pairs 
+  <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mrow xmlns:mml="http://www.w3.org/1998/Math/MathML">
+   <mml:mo fence="true" xmlns:mml="http://www.w3.org/1998/Math/MathML"><![CDATA[(]]></mml:mo>
+   <mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">p</mml:mi><mml:mo xmlns:mml="http://www.w3.org/1998/Math/MathML">,</mml:mo><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">x</mml:mi>
+   <mml:mo fence="true" xmlns:mml="http://www.w3.org/1998/Math/MathML"><![CDATA[)]]></mml:mo>
+  </mml:mrow></mml:math>
+  where <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">p</mml:mi></mml:math> is a proposition and <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">x</mml:mi></mml:math> is a function from <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mrow xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">isTrue</mml:mi>
+  <mml:mrow xmlns:mml="http://www.w3.org/1998/Math/MathML">
+   <mml:mo fence="true" xmlns:mml="http://www.w3.org/1998/Math/MathML"><![CDATA[(]]></mml:mo>
+   <mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">p</mml:mi>
+   <mml:mo fence="true" xmlns:mml="http://www.w3.org/1998/Math/MathML"><![CDATA[)]]></mml:mo>
+  </mml:mrow>
+ </mml:mrow></mml:math> to <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">X</mml:mi></mml:math>. This is useful for defining functions whose <html:em>outputs</html:em> are partially defined.</html:li></html:ol>
+                    <html:p>In traditional domain theory as developed by <fr:link href="/danascott/" title="Dana Scott" uri="https://www.jonmsterling.com/danascott/" display-uri="danascott" type="local">Scott</fr:link>, the two kinds of partiality coincide—<fr:link href="/sterling-2024-lifting/" title="Tensorial structure of the lifting doctrine in constructive domain theory" uri="https://www.jonmsterling.com/sterling-2024-lifting/" display-uri="sterling-2024-lifting" type="local">even constructively</fr:link>. I am, however, interested in <fr:link href="/hyland-1991/" title="First steps in synthetic domain theory" uri="https://www.jonmsterling.com/hyland-1991/" display-uri="hyland-1991" type="local"><html:em>synthetic domain theory</html:em></fr:link> which abstracts away from continuity and limits and lets you just use sets and functions rather than cpos and continuous functions—provided that you avoid non-constructive principles like the Axiom of Choice or the Law of Excluded Middle. The starting point of our work is my observation that the two notions cannot coincide <html:em>absolutely</html:em> in synthetic domain theory, but that there may be restricted subuniverses in which they do coincide. The main result of our paper is to define such a subuniverse, made possible by my discovery of the <html:em>based Segal condition</html:em>—a strengthening of the usual Segal condition for higher categories.</html:p>
+                    <html:p>A broader motivation of this work is to develop synthetic domain theory and synthetic higher category theory within the same framework. Whereas synthetic domain theory traditionally concerned itself with spaces that behaved like ω-complete partial orders (but where all functions are automatically monotone and continuous), the same ideas (if applied within <fr:link href="/hottbook/" title="Homotopy Type Theory: univalent foundations of mathematics" uri="https://www.jonmsterling.com/hottbook/" display-uri="hottbook" type="local">homotopy type theory</fr:link>) allow you to consider spaces that behave like <html:em>∞-categories</html:em> with colimits of ω-chains (but where all functions are automatically ∞-functorial and ω-continuous). I believe that unifying domain theory and higher category theory will prove useful for studying things like the denotational semantics of concurrency, which is inherently higher-dimensional.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+                <fr:tree show-metadata="false">
+                  <fr:frontmatter>
+                    <fr:authors>
+                      <fr:author>
+                        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                      </fr:author>
+                    </fr:authors>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>9</fr:day>
+                    </fr:date>
+                    <fr:date>
+                      <fr:year>2025</fr:year>
+                      <fr:month>4</fr:month>
+                      <fr:day>11</fr:day>
+                    </fr:date>
+                    <fr:uri>https://www.jonmsterling.com/jms-01A7/</fr:uri>
+                    <fr:display-uri>jms-01A7</fr:display-uri>
+                    <fr:route>/jms-01A7/</fr:route>
+                    <fr:title text="With Andrew Slattery: Hofmann–Streicher lifting of fibred categories">With <fr:link href="/andrewslattery/" title="Andrew Slattery" uri="https://www.jonmsterling.com/andrewslattery/" display-uri="andrewslattery" type="local">Andrew Slattery</fr:link>: <fr:link href="/slattery-sterling-2025/" title="Hofmann–Streicher lifting of fibred categories" uri="https://www.jonmsterling.com/slattery-sterling-2025/" display-uri="slattery-sterling-2025" type="local">Hofmann–Streicher lifting of fibred categories</fr:link></fr:title>
+                  </fr:frontmatter>
+                  <fr:mainmatter>
+                    <html:p>This year, <fr:link href="/thomasstreicher/" title="Thomas Streicher" uri="https://www.jonmsterling.com/thomasstreicher/" display-uri="thomasstreicher" type="local">Thomas Streicher</fr:link> (born 1958) passed away from cancer. Thomas was one of the Greats of dependent type theory and he also wrote an <fr:link href="https://www.abebooks.co.uk/9789812701428/Domain-theoretic-Foundations-Functional-Programming-Streicher-9812701427/plp" type="external">excellent textbook on domain theory for denotational semantics</fr:link>, but much more importantly he was kind and curious and patient and always made time for young people. While I was still finding my place in the community, Thomas was very generous to me with his time and advice, and he sent me many papers to referee.</html:p>
+                    <html:p>Although Thomas made many contributions to dependent type theory, domain theory, realisability theory, and category theory, he is most known to type theorists for two things—both in collaboration with the late <fr:link href="/martinhofmann/" title="Martin Hofmann" uri="https://www.jonmsterling.com/martinhofmann/" display-uri="martinhofmann" type="local">Martin Hofmann</fr:link>: the <fr:link href="/hofmann-streicher-1998/" title="The groupoid interpretation of type theory" uri="https://www.jonmsterling.com/hofmann-streicher-1998/" display-uri="hofmann-streicher-1998" type="local">groupoid interpretation of type theory</fr:link> and the eponymous  <fr:link href="/hofmann-streicher-1997/" title="Lifting Grothendieck universes" uri="https://www.jonmsterling.com/hofmann-streicher-1997/" display-uri="hofmann-streicher-1997" type="local">Hofmann–Streicher universe lifting construction</fr:link>. Andrew and my paper pertains to the latter.</html:p>
+                    <html:p>The idea of Hofmann–Streicher lifting has to do with universes, which are “types of types” (typically defined in such a way as to avoid paradoxes). Martin-Löf type theory usually includes universes in order to be able to quantify over (small enough) types; in the simplest models of Martin-Löf type theory, types are interpreted as sets and so Martin-Löf’s universes are interpreted as certain sets of sets, such as <fr:link href="/sga-4/" title="Théorie des topos et cohomologie étale des schémas (SGA 4)" uri="https://www.jonmsterling.com/sga-4/" display-uri="sga-4" type="local">Grothendieck universes</fr:link>. But it is important to be able to interpret the language of type theory in more sophisticated worlds than set theory: for example, in <html:em>presheaves</html:em> (which are functors from a fixed category <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">C</mml:mi></mml:math> into <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi xmlns:mml="http://www.w3.org/1998/Math/MathML">Set</mml:mi></mml:math>).  What <fr:link href="/hofmann-streicher-1997/" title="Lifting Grothendieck universes" uri="https://www.jonmsterling.com/hofmann-streicher-1997/" display-uri="hofmann-streicher-1997" type="local">Hofmann and Streicher</fr:link> did is show how to transform any universe of sets into a universe of presheaves!</html:p>
+                    <html:p>Although Hofmann and Streicher’s construction worked well and had good properties, they did not find a <html:em>universal property</html:em> for it—which is an abstract description of the object that determines it uniquely up to isomorphism, usually in terms of how it relates to other objects. Recently <fr:link href="/awodey-2024-universes/" title="On Hofmann–Streicher universes" uri="https://www.jonmsterling.com/awodey-2024-universes/" display-uri="awodey-2024-universes" type="local">Awodey</fr:link> found a 1-dimensional universal property, which was the starting point of our work. What Andrew and I wanted to do is generalise Awodey’s analysis in two directions:</html:p>
+                    <html:ol><html:li>We wanted a <html:em>2-dimensional</html:em> version, which is useful because it captures more about the universe than can be said in just one dimension: for example, with a 2-dimensional version, you can see immediately (by “abstract nonsense”) that Hofmann–Streicher lifting preserves structures like monads, adjunctions, etc. that might be used for modelling computational effects, etc.</html:li>
+      <html:li>We wanted a <html:em>relative</html:em> version, which would make it easier to iterate the Hofmann–Streicher lifting construction: the purpose of this is to be able to define presheaf models of type theory <html:em>internal</html:em> to other presheaf models. These kind of situations actually happen in practice! For example, the model of <fr:link href="/bbcgsv-2019/" title="Guarded cubical type theory" uri="https://www.jonmsterling.com/bbcgsv-2019/" display-uri="bbcgsv-2019" type="local">guarded cubical type theory</fr:link> that combines step-indexing with univalence ought to be an example of this.</html:li></html:ol>
+                    <html:p>To develop this two-fold generalisation of Hofmann–Streicher lifting, we resituated the theory in terms of another of Thomas’s favourite topics: the theory of <html:em>fibrations</html:em>, on which Thomas had written <fr:link href="/streicher-fcjb/" title="Fibred categories à la Jean Bénabou" uri="https://www.jonmsterling.com/streicher-fcjb/" display-uri="streicher-fcjb" type="local">the most wonderful lecture notes</fr:link>.</html:p>
+                    <html:p>We dedicated our paper to Thomas’s memory. May he rest in peace.</html:p>
+                  </fr:mainmatter>
+                </fr:tree>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>9</fr:day>
+                </fr:date>
+                <fr:date>
+                  <fr:year>2025</fr:year>
+                  <fr:month>4</fr:month>
+                  <fr:day>11</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-01A8/</fr:uri>
+                <fr:display-uri>jms-01A8</fr:display-uri>
+                <fr:route>/jms-01A8/</fr:route>
+                <fr:title text="Reading corner: The Fountains of Paradise"><fr:link href="/jms-01AY/" title="Reading corner" uri="https://www.jonmsterling.com/jms-01AY/" display-uri="jms-01AY" type="local">Reading corner</fr:link>: <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link></fr:title>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>I recently read Arthur C. Clarke’s <fr:link href="/clarke-1979/" title="The Fountains of Paradise" uri="https://www.jonmsterling.com/clarke-1979/" display-uri="clarke-1979" type="local">The Fountains of Paradise</fr:link>; although it was a pretty good read, I found that like many science fiction books of that era, one has to look past a lot in order to enjoy it. I wrote some commentary in my post entitled <fr:link href="/jms-019W/" title="Ventriloquy of the Mid-Century Man" uri="https://www.jonmsterling.com/jms-019W/" display-uri="jms-019W" type="local">Ventriloquy of the Mid-Century Man</fr:link> on my culture blog <fr:link href="/jms-015X/" title="The Jon Sterling Review of Books" uri="https://www.jonmsterling.com/jms-015X/" display-uri="jms-015X" type="local">The Jon Sterling Review of Books</fr:link>.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2025</fr:year>
+              <fr:month>2</fr:month>
+              <fr:day>28</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-019E/</fr:uri>
+            <fr:display-uri>jms-019E</fr:display-uri>
+            <fr:route>/jms-019E/</fr:route>
+            <fr:title text="Project Pterosaur">Project Pterosaur</fr:title>
+            <fr:meta name="external">https://github.com/jonsterling/project-pterosaur</fr:meta>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>An experimental proof assistant based on locales.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>1</fr:month>
+              <fr:day>19</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-0014/</fr:uri>
+            <fr:display-uri>jms-0014</fr:display-uri>
+            <fr:route>/jms-0014/</fr:route>
+            <fr:title text="Chapter 7: normalization for cubical type theory">Chapter 7: normalization for cubical type theory</fr:title>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>This chapter reports the main result of the dissertation, normalization for cubical type theory and its corollaries: injectivity of type constructors, and <fr:link href="/jms-000T/" title="Decidability of cubical type theory" uri="https://www.jonmsterling.com/jms-000T/" display-uri="jms-000T" type="local">decidability of equality &amp; typing</fr:link>. These results were first obtained by <fr:link href="/sterling-angiuli-2021/" title="Normalization for cubical type theory" uri="https://www.jonmsterling.com/sterling-angiuli-2021/" display-uri="sterling-angiuli-2021" type="local">Sterling and Angiuli</fr:link> for the fragment of cubical type theory <html:em>without</html:em> universes; the present chapter extends the results of <html:em>op. cit.</html:em> to support a cumulative hierarchy of universes.</html:p>
+            <html:p>The central innovation of this chapter is to generalize the notion of neutral form to accommodate the computational behavior of terms that have free variables of type <fr:tex display="inline"><![CDATA[\mathbb {I}]]></fr:tex> discussed in our <fr:link href="/jms-0017/" title="Chapter 6: cartesian cubical type theory" uri="https://www.jonmsterling.com/jms-0017/" display-uri="jms-0017" type="local">synopsis of Chapter 6</fr:link>.  In the conventional account of neutral and normal forms, neutrals <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}}]]></fr:tex> are built up inductively from
+<fr:tex display="inline"><![CDATA[x]]></fr:tex> for term variables <fr:tex display="inline"><![CDATA[x : A]]></fr:tex>, function applications to normal forms <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{e}}}\mathrel {{\color {DarkRed}{\bullet }}}{{\color {DarkBlue}{m}}}]]></fr:tex>
+and projections from neutral pairs <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{e}}}{\color {DarkRed}{.1}}]]></fr:tex>, <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{e}}}{\color {DarkRed}{.2}}]]></fr:tex>; our account of neutrals is much the same, except that each neutral form <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}}]]></fr:tex> comes equipped with a <html:strong>“frontier
+  of instability”</html:strong> <fr:tex display="inline"><![CDATA[\boldsymbol {\partial }{{\color {DarkRed}{e}}}]]></fr:tex>, a predicate on its free <fr:tex display="inline"><![CDATA[\mathbb {I}]]></fr:tex>-variables that indicates when it “needs to compute further”. We think of a neutral form for an <fr:tex display="inline"><![CDATA[n]]></fr:tex>-cube as being <html:em>undefined</html:em> on its frontier of instability; the process of restricting a neutral to its frontier of instability is then referred to as <html:em>destabilization</html:em>.</html:p>
+            <html:p>When <fr:tex display="inline"><![CDATA[x : A]]></fr:tex> is a variable of an ordinary type, the frontier of instability <fr:tex display="inline"><![CDATA[\boldsymbol {\partial }\,{\mathopen {}\left ({\color {DarkRed}{\mathsf {var}}}\,{x}\right )\mathclose {}}]]></fr:tex> is empty because variables never need to compute further. Where something new happens is the path type: given a neutral form <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}} : \mathsf {ne}\,{\mathopen {}\left ({u}\mathrel {{\sim }_{A}}{v}\right )\mathclose {}}]]></fr:tex>
+of path type, we have for each term <fr:tex display="inline"><![CDATA[r : \mathbb {I}]]></fr:tex> a neutral form <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{e}}}\mathrel {{\color {DarkRed}{@}}}{r} : \mathsf {ne}\,A]]></fr:tex> whose frontier of instability is defined like so:</html:p>
+            <fr:tex display="block"><![CDATA[  \boldsymbol {\partial }\,{\mathopen {}\left ({{\color {DarkRed}{e}}}\mathrel {{\color {DarkRed}{@}}}{r}\right )\mathclose {}}
+=
+\boldsymbol {\partial }{\color {DarkRed}{e}}
+\lor 
+{\mathopen {}\left (r=0\right )\mathclose {}}
+\lor 
+{\mathopen {}\left (r=1\right )\mathclose {}}
+]]></fr:tex>
+            <html:p>In other words, the path neutral application <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{e}}}\mathrel {{\color {DarkRed}{@}}}{r}]]></fr:tex> needs to compute as soon as e needs to compute, and as soon as the interval term <fr:tex display="inline"><![CDATA[r : \mathbb {I}]]></fr:tex> becomes equal to a constant. Prior to the introduction of the frontier of instability, the neutrals are embedded into the normals at base types unconditionally, i.e. for each neutral form <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}} : \mathsf {ne}\,\mathsf {bool}]]></fr:tex>, we have a normal form <fr:tex display="inline"><![CDATA[{\color {DarkBlue}{\lfloor }}{e}{\color {DarkBlue}{\rfloor }} : \mathsf {nf}\,\mathsf {bool}]]></fr:tex>.</html:p>
+            <html:p>Now that neutrals are equipped with frontiers of instability, a more refined notion of normal form is needed: when <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}}]]></fr:tex> is a neutral form, the corresponding normal form should contain (recursively) normal forms for <fr:tex display="inline"><![CDATA[e]]></fr:tex> that are defined under the frontier of instability <fr:tex display="inline"><![CDATA[\boldsymbol {\partial }\,{\color {DarkRed}{e}}]]></fr:tex>. To be more concrete,
+let <fr:tex display="inline"><![CDATA[x : {\mathsf {tt}}\mathrel {{\sim }_{\mathsf {bool}}}{\mathsf {tt}}]]></fr:tex> be a variable of path type and <fr:tex display="inline"><![CDATA[r : \mathbb {I}]]></fr:tex> is a term; then <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{\mathsf {var}}}\,x}\mathrel {{\color {DarkRed}{@}}}{r}:\mathsf {ne}\,{\mathopen {}\left ({\mathsf {tt}}\mathrel {{\sim }_{\mathsf {bool}}}{\mathsf {tt}}\right )\mathclose {}}]]></fr:tex> is a neutral form for the term <fr:tex display="inline"><![CDATA[xr]]></fr:tex> whose frontier of instability is the boundary <fr:tex display="inline"><![CDATA[(r = 0) \lor  (r = 1)]]></fr:tex>; the corresponding normal form must therefore glue onto <fr:tex display="inline"><![CDATA[{{\color {DarkRed}{\mathsf {var}}}\,x}\mathrel {{\color {DarkRed}{@}}}{r}]]></fr:tex> additional normal forms for <fr:tex display="inline"><![CDATA[x0]]></fr:tex> and
+<fr:tex display="inline"><![CDATA[x1]]></fr:tex>. We refer to the process of completing a neutral with additional data defined on its frontier of instability as stabilization; the <html:em>stabilized</html:em> normal form of <fr:tex display="inline"><![CDATA[xr]]></fr:tex> is then written</html:p>
+            <fr:tex display="block"><![CDATA[ {\color {DarkBlue}{\lfloor }}{{{\color {DarkRed}{\mathsf {var}}}\,x}\mathrel {{\color {DarkRed}{@}}}{r} \mid  r = 0 \hookrightarrow  {\color {DarkBlue}{\mathsf {tt}}}, r = 1 \hookrightarrow {\color {DarkBlue}{\mathsf {tt}}}}{\color {DarkBlue}{\rfloor }} ]]></fr:tex>
+            <html:p>where <fr:tex display="inline"><![CDATA[{\color {DarkBlue}{\mathsf {tt}}}]]></fr:tex> is the normal form representing the term <fr:tex display="inline"><![CDATA[\mathsf {tt}]]></fr:tex></html:p>
+            <html:p>Just as the embedding of neutrals into normals is “stabilized” by a com patible normal form defined on the neutral’s frontier of instability, so too must the Tait saturation yoga be adjusted. Conventionally one requires the computability predicate for a type <fr:tex display="inline"><![CDATA[A]]></fr:tex> to be equipped with a function that takes neutral forms <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}}]]></fr:tex> of terms <fr:tex display="inline"><![CDATA[e : A]]></fr:tex> to computability witnesses for the same term. In the <html:strong>stabilized Tait saturation yoga</html:strong>, we strengthen the induction hypothesis to require for each neutral form <fr:tex display="inline"><![CDATA[{\color {DarkRed}{e}}]]></fr:tex> a function that extends a computability witness defined only on the frontier of instability <fr:tex display="inline"><![CDATA[\boldsymbol {\partial }{\color {DarkRed}{e}}]]></fr:tex> to a computability witnessed defined everywhere</html:p>
+            <html:p>The twin innovations of <html:em>frontiers of instability</html:em> and <html:em>stabilization</html:em> then suffice to adapt the synthetic normalization argument of <fr:link href="/jms-0015/" title="Chapter 5: synthetic normalization by evaluation" uri="https://www.jonmsterling.com/jms-0015/" display-uri="jms-0015" type="local">Chapter 5</fr:link> to a proof of normalization (and thus decidability) for cubical type theory.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>

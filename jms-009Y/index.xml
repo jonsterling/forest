@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/default.xsl"?>
+<fr:tree xmlns:fr="http://www.forester-notes.org" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" root="false" base-url="/">
+  <fr:frontmatter>
+    <fr:authors>
+      <fr:author>
+        <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+      </fr:author>
+    </fr:authors>
+    <fr:date>
+      <fr:year>2023</fr:year>
+      <fr:month>10</fr:month>
+      <fr:day>5</fr:day>
+    </fr:date>
+    <fr:uri>https://www.jonmsterling.com/jms-009Y/</fr:uri>
+    <fr:display-uri>jms-009Y</fr:display-uri>
+    <fr:route>/jms-009Y/</fr:route>
+    <fr:title text="Algebras for a type">Algebras for a type</fr:title>
+    <fr:taxon>Definition</fr:taxon>
+  </fr:frontmatter>
+  <fr:mainmatter>
+    <html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a type; an <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebra <fr:tex display="inline"><![CDATA[X]]></fr:tex> is defined to be a type <fr:tex display="inline"><![CDATA[{\mathopen {}\left \lvert X\right \rvert \mathclose {}}]]></fr:tex> equipped with a function <fr:tex display="inline"><![CDATA[{A}\xrightarrow {{\alpha _A}}{{\mathopen {}\left \lvert X\right \rvert \mathclose {}}}]]></fr:tex>. A <html:em>homomorphism</html:em> <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f}}{Y}]]></fr:tex> of <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebras is defined to be a function <fr:tex display="inline"><![CDATA[{{\mathopen {}\left \lvert X\right \rvert \mathclose {}}}\xrightarrow {{{\mathopen {}\left \lvert f\right \rvert \mathclose {}}}}{{\mathopen {}\left \lvert Y\right \rvert \mathclose {}}}]]></fr:tex> together with a homotopy <fr:tex display="inline"><![CDATA[\alpha _f \colon  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y]]></fr:tex>. A <html:em>homotopy</html:em> <fr:tex display="inline"><![CDATA[H\colon  f\sim  g]]></fr:tex> between homomorphisms <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f,g}}{Y}]]></fr:tex> is given by a homotopy <fr:tex display="inline"><![CDATA[{\mathopen {}\left \lvert H\right \rvert \mathclose {}}\colon  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim {\mathopen {}\left \lvert g\right \rvert \mathclose {}}]]></fr:tex> together with an assignment to each <fr:tex display="inline"><![CDATA[a:A]]></fr:tex> of an identification <fr:tex display="inline"><![CDATA[\alpha _H a\colon  {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a \cdot  \eta _g a = \eta _f a]]></fr:tex>.</html:p>
+  </fr:mainmatter>
+  <fr:backmatter>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="References">References</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Context">Context</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>5</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-009W/</fr:uri>
+            <fr:display-uri>jms-009W</fr:display-uri>
+            <fr:route>/jms-009W/</fr:route>
+            <fr:title text="A formal language for contractibility">A formal language for contractibility</fr:title>
+            <fr:taxon>Idea</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter>
+            <html:p>One of the most common tasks when working in <fr:link href="/hottbook/" title="Homotopy Type Theory: univalent foundations of mathematics" uri="https://www.jonmsterling.com/hottbook/" display-uri="hottbook" type="local">univalent foundations</fr:link> is to characterize the path space of a given type, i.e. establish a structure identity principle. Formalized SIP proofs often follow a <fr:link href="https://www.cs.bham.ac.uk/~mhe/TypeTopology/Coslice.Hom.html" type="external">baroque style</fr:link> involving <fr:link href="/jms-004J/" title="Identity system" uri="https://www.jonmsterling.com/jms-004J/" display-uri="jms-004J" type="local">identity systems</fr:link> and the even more complex <fr:link href="/jms-004L/" title="Dependent identity system" uri="https://www.jonmsterling.com/jms-004L/" display-uri="jms-004L" type="local">displayed identity systems</fr:link>, etc. that sometimes obscure the very simple informal reasoning behind a given structure identity principle; <html:mark>the proposal is to develop a formal proof language to better reflect this informal reasoning, backed by a suite of lemmas and tactics</html:mark>.</html:p>
+            <html:p>To understand what I mean, let us consider how we might characterize the path spaces of morphisms in a co-slice <fr:tex display="inline"><![CDATA[A\downarrow  \mathcal {U}]]></fr:tex>.</html:p>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>5</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-009Y/</fr:uri>
+                <fr:display-uri>jms-009Y</fr:display-uri>
+                <fr:route>/jms-009Y/</fr:route>
+                <fr:title text="Algebras for a type">Algebras for a type</fr:title>
+                <fr:taxon>Definition</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter>
+                <html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a type; an <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebra <fr:tex display="inline"><![CDATA[X]]></fr:tex> is defined to be a type <fr:tex display="inline"><![CDATA[{\mathopen {}\left \lvert X\right \rvert \mathclose {}}]]></fr:tex> equipped with a function <fr:tex display="inline"><![CDATA[{A}\xrightarrow {{\alpha _A}}{{\mathopen {}\left \lvert X\right \rvert \mathclose {}}}]]></fr:tex>. A <html:em>homomorphism</html:em> <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f}}{Y}]]></fr:tex> of <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebras is defined to be a function <fr:tex display="inline"><![CDATA[{{\mathopen {}\left \lvert X\right \rvert \mathclose {}}}\xrightarrow {{{\mathopen {}\left \lvert f\right \rvert \mathclose {}}}}{{\mathopen {}\left \lvert Y\right \rvert \mathclose {}}}]]></fr:tex> together with a homotopy <fr:tex display="inline"><![CDATA[\alpha _f \colon  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y]]></fr:tex>. A <html:em>homotopy</html:em> <fr:tex display="inline"><![CDATA[H\colon  f\sim  g]]></fr:tex> between homomorphisms <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f,g}}{Y}]]></fr:tex> is given by a homotopy <fr:tex display="inline"><![CDATA[{\mathopen {}\left \lvert H\right \rvert \mathclose {}}\colon  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim {\mathopen {}\left \lvert g\right \rvert \mathclose {}}]]></fr:tex> together with an assignment to each <fr:tex display="inline"><![CDATA[a:A]]></fr:tex> of an identification <fr:tex display="inline"><![CDATA[\alpha _H a\colon  {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a \cdot  \eta _g a = \eta _f a]]></fr:tex>.</html:p>
+              </fr:mainmatter>
+            </fr:tree>
+            <fr:tree show-metadata="false">
+              <fr:frontmatter>
+                <fr:authors>
+                  <fr:author>
+                    <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+                  </fr:author>
+                </fr:authors>
+                <fr:date>
+                  <fr:year>2023</fr:year>
+                  <fr:month>10</fr:month>
+                  <fr:day>5</fr:day>
+                </fr:date>
+                <fr:uri>https://www.jonmsterling.com/jms-009X/</fr:uri>
+                <fr:display-uri>jms-009X</fr:display-uri>
+                <fr:route>/jms-009X/</fr:route>
+                <fr:title text="Structure identity principle for co-slice morphisms">Structure identity principle for co-slice morphisms</fr:title>
+                <fr:taxon>Lemma</fr:taxon>
+              </fr:frontmatter>
+              <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a type and let <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f}}{Y}]]></fr:tex> be a <fr:link href="/jms-009Y/" title="Algebras for a type" uri="https://www.jonmsterling.com/jms-009Y/" display-uri="jms-009Y" type="local">homomorphism of <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebras</fr:link>. Assuming function extensionality, the type <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}g\sim  f]]></fr:tex> of homomorphisms homotopic to <fr:tex display="inline"><![CDATA[f]]></fr:tex> is contractible.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>5</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>We expand the dependent sum <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}g\sim  f]]></fr:tex> as a flat record telescope:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      {\mathopen {}\left \lvert g\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert X\right \rvert \mathclose {}}\to  {\mathopen {}\left \lvert Y\right \rvert \mathclose {}}\\
+      \alpha _g &\colon  &{\mathopen {}\left \lvert g\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      {\mathopen {}\left \lvert H\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim  {\mathopen {}\left \lvert g\right \rvert \mathclose {}}\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a\cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>First we re-order the telescope:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      {\mathopen {}\left \lvert g\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert X\right \rvert \mathclose {}}\to  {\mathopen {}\left \lvert Y\right \rvert \mathclose {}}\\
+      {\mathopen {}\left \lvert H\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim  {\mathopen {}\left \lvert g\right \rvert \mathclose {}}\\
+      \alpha _g &\colon  &{\mathopen {}\left \lvert g\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a\cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>By <html:em>homotopy induction</html:em> (function extensionality), the first two fields contract to a point with substitution <fr:tex display="inline"><![CDATA[{\mathopen {}\left  [{\mathopen {}\left \lvert g\right \rvert \mathclose {}}:\equiv  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}; {\mathopen {}\left \lvert H\right \rvert \mathclose {}}:\equiv  \lambda \_.\mathsf {refl}\right  ]\mathclose {}}]]></fr:tex>. What remains of our telescope is the following:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      \alpha _g &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} \mathsf {refl} \cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>Zooming into the <fr:tex display="inline"><![CDATA[\alpha _H]]></fr:tex> component, we simplify it and then zoom back out:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      \alpha _g &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>By <html:em>dependent homotopy induction</html:em> (also function extensionality), the remaining data collapse to a point with substitution <fr:tex display="inline"><![CDATA[{\mathopen {}\left  [\alpha _g :\equiv  \alpha _f; \alpha _H :\equiv  \lambda \_.\mathsf {refl}\right  ]\mathclose {}}]]></fr:tex>. The remaining telescope is empty, so we are done.</html:p>
+
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+            </fr:tree>
+            <html:p>The steps performed in the proof of the <fr:link href="/jms-009X/" title="Structure identity principle for co-slice morphisms" uri="https://www.jonmsterling.com/jms-009X/" display-uri="jms-009X" type="local">SIP lemma for co-slice morphisms</fr:link> above are most naturally expressed at the level of a flat telescope (a context). The goal is always to contract a telescope to a point, and each step is either a rearrangement of the telescope, a “zooming in” step that adjusts a component of the telescope, or an application of some form of identity induction to kill off part of the telescope — path induction, homotopy induction, equivalence induction, etc. In general, we want to be able to easily point out the fragment of a telescope that contracts to a point, and then <html:em>use</html:em> the resulting substitution to modify the telescope and proceed further until the entire telescope is gone.</html:p>
+            <html:p>I believe that there is a reasonable and practical formal logic for doing such things, and that this logic can be implemented as a series of lemmas in homotopy type theory that can then be animated via tactics for interactive backward-inference proofs of contractibility.</html:p>
+          </fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Backlinks">Backlinks</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter>
+        <fr:tree show-metadata="true" expanded="false" toc="false" numbered="false">
+          <fr:frontmatter>
+            <fr:authors>
+              <fr:author>
+                <fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link>
+              </fr:author>
+            </fr:authors>
+            <fr:date>
+              <fr:year>2023</fr:year>
+              <fr:month>10</fr:month>
+              <fr:day>5</fr:day>
+            </fr:date>
+            <fr:uri>https://www.jonmsterling.com/jms-009X/</fr:uri>
+            <fr:display-uri>jms-009X</fr:display-uri>
+            <fr:route>/jms-009X/</fr:route>
+            <fr:title text="Structure identity principle for co-slice morphisms">Structure identity principle for co-slice morphisms</fr:title>
+            <fr:taxon>Lemma</fr:taxon>
+          </fr:frontmatter>
+          <fr:mainmatter><html:p>Let <fr:tex display="inline"><![CDATA[A]]></fr:tex> be a type and let <fr:tex display="inline"><![CDATA[{X}\xrightarrow {{f}}{Y}]]></fr:tex> be a <fr:link href="/jms-009Y/" title="Algebras for a type" uri="https://www.jonmsterling.com/jms-009Y/" display-uri="jms-009Y" type="local">homomorphism of <fr:tex display="inline"><![CDATA[A]]></fr:tex>-algebras</fr:link>. Assuming function extensionality, the type <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}g\sim  f]]></fr:tex> of homomorphisms homotopic to <fr:tex display="inline"><![CDATA[f]]></fr:tex> is contractible.</html:p>
+ 
+   
+   <fr:tree show-metadata="false" toc="false"><fr:frontmatter><fr:authors><fr:author><fr:link href="/jonmsterling/" title="Jon Sterling" uri="https://www.jonmsterling.com/jonmsterling/" display-uri="jonmsterling" type="local">Jon Sterling</fr:link></fr:author></fr:authors><fr:date><fr:year>2023</fr:year><fr:month>10</fr:month><fr:day>5</fr:day></fr:date><fr:taxon>Proof</fr:taxon></fr:frontmatter><fr:mainmatter>
+  <html:p>We expand the dependent sum <fr:tex display="inline"><![CDATA[\mathchoice {\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\textstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}{\scriptscriptstyle \sum _{{\mathopen {}\left (g\colon  X\to  Y\right )\mathclose {}}}}g\sim  f]]></fr:tex> as a flat record telescope:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      {\mathopen {}\left \lvert g\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert X\right \rvert \mathclose {}}\to  {\mathopen {}\left \lvert Y\right \rvert \mathclose {}}\\
+      \alpha _g &\colon  &{\mathopen {}\left \lvert g\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      {\mathopen {}\left \lvert H\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim  {\mathopen {}\left \lvert g\right \rvert \mathclose {}}\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a\cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>First we re-order the telescope:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      {\mathopen {}\left \lvert g\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert X\right \rvert \mathclose {}}\to  {\mathopen {}\left \lvert Y\right \rvert \mathclose {}}\\
+      {\mathopen {}\left \lvert H\right \rvert \mathclose {}} &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\sim  {\mathopen {}\left \lvert g\right \rvert \mathclose {}}\\
+      \alpha _g &\colon  &{\mathopen {}\left \lvert g\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} {\mathopen {}\left \lvert H\right \rvert \mathclose {}}\alpha _X a\cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>By <html:em>homotopy induction</html:em> (function extensionality), the first two fields contract to a point with substitution <fr:tex display="inline"><![CDATA[{\mathopen {}\left  [{\mathopen {}\left \lvert g\right \rvert \mathclose {}}:\equiv  {\mathopen {}\left \lvert f\right \rvert \mathclose {}}; {\mathopen {}\left \lvert H\right \rvert \mathclose {}}:\equiv  \lambda \_.\mathsf {refl}\right  ]\mathclose {}}]]></fr:tex>. What remains of our telescope is the following:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      \alpha _g &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} \mathsf {refl} \cdot  \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>Zooming into the <fr:tex display="inline"><![CDATA[\alpha _H]]></fr:tex> component, we simplify it and then zoom back out:</html:p>
+
+  <fr:tex display="block"><![CDATA[
+    \begin {bmatrix*}[l]
+      \alpha _g &\colon  &{\mathopen {}\left \lvert f\right \rvert \mathclose {}}\circ \alpha _X \sim  \alpha _Y\\
+      \alpha _H &\colon  &\mathchoice {\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\textstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}}{\scriptscriptstyle \prod _{{\mathopen {}\left (a:A\right )\mathclose {}}}} \alpha _g a = \alpha _f a
+    \end {bmatrix*}
+  ]]></fr:tex>
+
+  <html:p>By <html:em>dependent homotopy induction</html:em> (also function extensionality), the remaining data collapse to a point with substitution <fr:tex display="inline"><![CDATA[{\mathopen {}\left  [\alpha _g :\equiv  \alpha _f; \alpha _H :\equiv  \lambda \_.\mathsf {refl}\right  ]\mathclose {}}]]></fr:tex>. The remaining telescope is empty, so we are done.</html:p>
+
+</fr:mainmatter></fr:tree>
+ 
+</fr:mainmatter>
+        </fr:tree>
+      </fr:mainmatter>
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Related">Related</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+    <fr:tree show-metadata="false" hidden-when-empty="true">
+      <fr:frontmatter>
+        <fr:authors />
+        <fr:title text="Contributions">Contributions</fr:title>
+      </fr:frontmatter>
+      <fr:mainmatter />
+    </fr:tree>
+  </fr:backmatter>
+</fr:tree>
