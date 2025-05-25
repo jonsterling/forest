@@ -1,3 +1,3 @@
 #!/bin/bash
 
-opam exec -- forester build forest.toml --dev -vv
+opam exec -- forester build forest.toml -vv
